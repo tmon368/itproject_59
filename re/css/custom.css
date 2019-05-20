@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#title_table {
+	font-weight: 800;
+	font-size: 16px;
+}
+
+.table-bordered{
+	border: 1px solid rgba(85,34,34,1.00);
+}
+
+#style_table th{
+	/*border: 1px solid #dee2e6;*/
+	font-size: 14px;
+	font-weight: 800;
+	font-family: 'Prompt', sans-serif;
+}
+
+#style_table td{
+	/*border: 1px solid #dee2e6;*/
+	font-size: 15px;
+
+}
+
+#form_ct{
+    border-radius: 100px;
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+	height: 42px;
+	color: rgba(106,100,101,1.00);
+	font-family:"TH SarabunPSK";
+	font-size: 22px;
+	font-weight: 600;
+} /*CSS ช่อง textbox ในการค้นหา*/
+
+#btn_shape{
+	border-top-right-radius: 100px;
+	border-bottom-right-radius: 100px;
+	padding:13px 14px;
+
+}/*CSS ปุ่มค้นหา*/
+
+#card_1{
+	 text-align: -webkit-right;
+}
+
+#style_table th {
+    /* border: 1px solid #dee2e6; */
+    font-size: 14px;
+    font-weight: 800;
+    font-family: 'Prompt', sans-serif;
+}
