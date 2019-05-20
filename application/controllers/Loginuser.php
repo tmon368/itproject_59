@@ -8,7 +8,7 @@ public function _construct()
 }
 public function index(){
 
-	echo "Hiii login";
+	$this->load->view('login/login');
 }
 
 public function login(){
@@ -41,7 +41,7 @@ public function login_validation(){
 				} 
                 else  
                 {  
-                     $this->session->set_flashdata('error', '<br/>เธ�เธทเน�เธญเธ�เธนเน�เน�เธ�เน�เน�เธฅเธฐเธฃเธซเธฑเธชเธ�เน�เธฒเธ�เน�เธกเน�เธ–เธนเธ�เธ•เน�เธญเธ�');  
+                     $this->session->set_flashdata('error', '<br/>ชื่อผู้ใช้และรหัสผ่านไม่ถูกต้อง');  
                      redirect(base_url() . 'index.php/loginuser/login');  
                 }  
            }  
@@ -56,7 +56,7 @@ public function login_validation(){
            {  
                $this->load->model('login_model');
                $data['records'] = $this->login_model->getdata();
-                $this->load->view('allemployee',$data);
+                $this->load->view('login/allemployee',$data);
                 //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';  
                // echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';  
            }  
@@ -76,7 +76,7 @@ public function login_validation(){
        {  
           $this->load->model('login_model');
           $data['records'] = $this->login_model->getdata();
-          $this->load->view('showdata',$data);
+          $this->load->view('login/showdata',$data);
         } 
         function edit()  
         {  
@@ -87,7 +87,7 @@ public function login_validation(){
           //Check data from fetch_single_data model
           //var_dump($data['user_data']);
           //$data["fetch_data"] = $this->login_model->fetch_data();
-           $this->load->view('editdata',$data);
+           $this->load->view('login/editdata',$data);
          } 
 
          function editdata(){
@@ -110,26 +110,37 @@ public function login_validation(){
            //Check data from fetch_single_data model
            //var_dump($data['user_data']);
            //$data["fetch_data"] = $this->login_model->fetch_data();
-            $this->load->view('deldata',$data);
+            $this->load->view('login/deldata',$data);
           } 
+
           function deldata()  
           {  
-            //$id = $this->input->get('id'); 
-            //print_r($id);
-            //$this->load->model('login_model');
-           // $data['user_data'] = $this->login_model->fetch_single_data($id); 
-            //Check data from fetch_single_data model
-            //var_dump($data['user_data']);
-            //$data["fetch_data"] = $this->login_model->fetch_data();
-            // $this->load->view('deldata',$data);
+               $id = $this->input->get('id'); 
+               print_r($id);
+            $this->load->model('login_model');
+            $data = array(  
+               'flag'     =>    '1');
+            $this->login_model->deldata($id,$data);
+            redirect(base_url() . 'index.php/loginuser/select');
            } 
+
+
+          function truedeldata()  
+          {  
+               $id = $this->input->get('id'); 
+               print_r($id);
+            $this->load->model('login_model');
+            $this->login_model->truedeldata($id);
+            redirect(base_url() . 'index.php/loginuser/select');
+           } 
+
 
 
 
 
          function add()  
          {  
-            $this->load->view('adddata');
+            $this->load->view('login/adddata');
           } 
 
 
@@ -152,12 +163,5 @@ public function login_validation(){
                redirect(base_url() . 'index.php/loginuser/select');
            }
 
-           } 
-
-
-
-
-
-         
-
+           }     
 }

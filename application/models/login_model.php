@@ -9,6 +9,7 @@ class login_model extends CI_Model {
 
 
         public function getdata(){
+               $this->db->where('flag','0');
                 $query = $this->db->get('employee');
                 return $query->result();
 
@@ -44,12 +45,23 @@ class login_model extends CI_Model {
 
 
         }
-        public function deletedata(){
-          $this->db->where("E_ID",$id);  
-          $this->db->delete("employee",$data); 
+
+        public function deldata($id,$data){
+          $this->db->where("E_ID",$id);
+          $this->db->update("employee",$data); 
+          
 
 
         }
+
+/*  deletedata
+ public function truedeldata($id){
+          $this->db->where("E_ID",$id);
+          $this->db->delete("employee"); 
+
+
+
+        }*/
 
 
 
