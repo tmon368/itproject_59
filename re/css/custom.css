@@ -52,3 +52,22 @@
     font-weight: 800;
     font-family: 'Prompt', sans-serif;
 }
+#style_table{
+	width: 70%;
+}
+
+.breadcrumb{
+	font-family: 'Prompt',sans-serif;
+	font-size: 14px;
+}
+label{ /*รูปแบบของ label ใน form*/
+	font-family: "Prompt",sans-serif;
+	font-size: 14px;
+}
+.form-control {
+    font-size: 0.99rem;
+	}
+
+	.btn-inverse-primary {
+    font-family: "Prompt",sans-serif;
+}
