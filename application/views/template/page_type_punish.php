@@ -12,14 +12,7 @@
               			<h6 class="m-0 text-primary"><span class="fas fa-user-alt"></span>&nbsp;ประเภทผู้ใช้งาน</h6>
             		</div>
 				<div class="card-body" id="card_1">
-				<div class="form-group">
-						<div class="input-group">
-                          		<input type="text" class="form-control" id="form_ct" placeholder="ค้นหาประเภทผู้ใช้">
-									<span class="input-group-btn">
-												<button class="btn btn-primary btn-group-right" id="btn_shape" type="submit"><i class="fa fa-search"></i></button>
-									</span>&nbsp;&nbsp;
-						</div>
-				</div>
+				
 				<button type="button" class="btn btn-inverse-primary btn-fw" data-toggle="modal" data-target="#exampleModalCenter">
 									<i class="fas fa-user-plus"></i>เพิ่มกลุ่มผู้ใช้
 				</button>

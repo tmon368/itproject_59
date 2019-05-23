@@ -21,4 +21,6 @@
   <link rel="stylesheet" href="<?php echo base_url('re/css/custom.css');?>">
   <!-- endinject -->
   <link rel="shortcut icon" href="<?php echo base_url('re/images/favicon.png'); ?>" />
+
+
 </head>
