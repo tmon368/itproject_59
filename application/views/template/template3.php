@@ -115,7 +115,7 @@
 </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo site_url("Admin_dashboard") ?>">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">หน้าแรก</span>
             </a>
@@ -129,7 +129,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("usertype") ?>">กลุ่มผู้ใช้งาน</a>
+                  <a class="nav-link" href="<?php echo site_url("Usertype") ?>">กลุ่มผู้ใช้งาน</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/typography.html">หมวดความผิด</a>
@@ -153,9 +153,9 @@
               </ul>
             </div>
           </li>
-          
+
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo site_url("Import_data") ?>">
               <i class="menu-icon fas fa-download"></i>
               <span class="menu-title">การนำเข้าข้อมูล</span>
             </a>
