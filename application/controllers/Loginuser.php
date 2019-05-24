@@ -8,13 +8,13 @@ class Loginuser extends CI_Controller
     }
     public function index(){
         
-        $this->load->view('login');
+        $this->load->view('login/login');
     }
     
     public function login(){
         //$this->load->model('login_model');
         //$data['records'] = $this->login_model->getdata();
-        $this->load->view('login');
+        $this->load->view('login/login');
     }
     
     
@@ -56,7 +56,7 @@ class Loginuser extends CI_Controller
         {
             $this->load->model('login_model');
             $data['records'] = $this->login_model->getdata();
-            $this->load->view('allemployee',$data);
+            $this->load->view('login/allemployee',$data);
             //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';
             // echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';
         }
@@ -76,7 +76,7 @@ class Loginuser extends CI_Controller
     {
         $this->load->model('login_model');
         $data['records'] = $this->login_model->getdata();
-        $this->load->view('showdata',$data);
+        $this->load->view('login/showdata',$data);
     }
     function edit()
     {
@@ -87,7 +87,7 @@ class Loginuser extends CI_Controller
         //Check data from fetch_single_data model
         //var_dump($data['user_data']);
         //$data["fetch_data"] = $this->login_model->fetch_data();
-        $this->load->view('editdata',$data);
+        $this->load->view('login/editdata',$data);
     }
     
     function editdata(){
@@ -110,7 +110,7 @@ class Loginuser extends CI_Controller
         //Check data from fetch_single_data model
         //var_dump($data['user_data']);
         //$data["fetch_data"] = $this->login_model->fetch_data();
-        $this->load->view('deldata',$data);
+        $this->load->view('login/deldata',$data);
     }
     
     function deldata()
@@ -140,7 +140,7 @@ class Loginuser extends CI_Controller
     
     function add()
     {
-        $this->load->view('adddata');
+        $this->load->view('login/adddata');
     }
     
     
@@ -166,7 +166,7 @@ class Loginuser extends CI_Controller
     }
     
     public function excel(){
-        $this->load->view('excel_import');
+        //$this->load->view('login/excel_import');
         
         
         
