@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
 encoding//application/controllers/Loginuser.php=UTF-8
+encoding//application/views/login/adddata.php=UTF-8
+encoding//application/views/login/allemployee.php=UTF-8
+encoding//application/views/login/deldata.php=UTF-8
+encoding//application/views/login/editdata.php=UTF-8
+encoding//application/views/login/showdata.php=UTF-8

@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en">
-
+<meta charset="UTF-8">
 <head>
 
-  <title>เพิ่ม ลบ แก้ไข ข้อมูล admin</title>
+  <title>เน€เธ�เธดเน�เธก เธฅเธ� เน�เธ�เน�เน�เธ� เธ�เน�เธญเธกเธนเธฅ admin</title>
 
 </head>
 
 
 <body>
-  <meta charset="UTF-8">
+  
   <?php
 echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';  
 echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';  
@@ -18,7 +18,7 @@ echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></labe
 
 
 <?php 
-// ** เรียกดูข้อมูล **
+// ** เน€เธฃเธตเธขเธ�เธ”เธนเธ�เน�เธญเธกเธนเธฅ **
 /*
 <table border="1" width="80%" cellpadding="0">
     <thead>
@@ -46,7 +46,7 @@ foreach($records as $rec){ ?>
 
 
 <br><br>
-<a href="<?php echo base_url(); ?>index.php/loginuser/select" > ดูข้อมูล </a><br>
+<a href="<?php echo base_url(); ?>index.php/loginuser/select" > เธ”เธนเธ�เน�เธญเธกเธนเธฅ </a><br>
 
 
 
