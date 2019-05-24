@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="en">
-<meta charset="UTF-8">
+
 <head>
 
-  <title>เน�เธชเธ”เธ�เธ�เน�เธญเธกเธนเธฅ admin</title>
+  <title>แสดงข้อมูล admin</title>
 
 </head>
 <body>
-  
+  <meta charset="UTF-8">
   <?php 
-  echo '<label><a href="'.base_url().'index.php/loginuser/enter">เธ�เธฅเธฑเธ�</a></label>  <br>'; 
+  echo '<label><a href="'.base_url().'index.php/loginuser/enter">กลับ</a></label>  <br>'; 
 
 
-echo '<label><a href="'.base_url().'index.php/loginuser/add">เน€เธ�เธดเน�เธกเธ�เน�เธญเธกเธนเธฅ</a></label><br>';
+echo '<label><a href="'.base_url().'index.php/loginuser/add">เพิ่มข้อมูล</a></label><br>';
 ?>
 <table border="1" width="80%" cellpadding="0">
     <thead>
@@ -34,8 +34,8 @@ foreach($records as $rec){ ?>
             <td><?php echo $rec->E_ID; ?></td>
              <td><?php echo $rec->UName; ?></td>
               <td><?php echo $rec->Pass; ?></td>
-              <td><a href="<?php echo base_url().'index.php/loginuser/edit?id='.$rec->E_ID;?>"> เน�เธ�เน�เน�เธ�เธ�เน�เธญเธกเธนเธฅ </a><br></td>
-              <td><a href="<?php echo base_url().'index.php/loginuser/del?id='.$rec->E_ID;?>"> เธฅเธ�เธ�เน�เธญเธกเธนเธฅ </a><br></td>
+              <td><a href="<?php echo base_url().'index.php/loginuser/edit?id='.$rec->E_ID;?>"> แก้ไขข้อมูล </a><br></td>
+              <td><a href="<?php echo base_url().'index.php/loginuser/del?id='.$rec->E_ID;?>"> ลบข้อมูล </a><br></td>
           </tr>
           <?php } ?>
     </tbody>
