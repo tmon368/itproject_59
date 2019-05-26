@@ -10,9 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>res/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>res/node_modules/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>res/assest/css/custom.css" />
+  <link rel="stylesheet" href="<?php echo base_url(); ?>re/css/css_login/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>re/node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>re/css/css_login/custom.css" />
 
   <title>Student discipline system | Walailak University</title>
 
@@ -35,7 +35,7 @@
 
         </div>
         <div class="col-1" id="Logo_wu">
-			<img src="<?php echo base_url(); ?>res/img/Logo_walailak.png" class="img-fluid">
+			<img src="<?php echo base_url(); ?>re/images/Logo_walailak.png" class="img-fluid">
         </div>
 
         <div class="col-5" id="h_name">

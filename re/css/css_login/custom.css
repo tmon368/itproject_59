@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color:rgba(245,245,245,1.00);
+}
+
+#h_name{
+	padding-top: 15%;
+	font-family: "TH SarabunPSK";
+	/*background-color: aquamarine;*/
+}
+
+#Logo_wu{
+	padding-top: 12%;
+}
+
+#form_login{
+	padding-top: 2%;
+	font-family: "TH SarabunPSK";
+}
+
+
+
+
+
