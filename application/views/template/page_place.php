@@ -21,9 +21,12 @@
 					<div class="card-header" id="card_2">
               			<h6 class="m-0 text-primary"><span class="fas fa-user-alt"></span>&nbsp;สถานที่</h6>
             		</div>
+            		<?php  
+echo '<center><label class="text-danger">'.$this->session->flashdata
+("message").'</label></center>';  
+            ?>
             		
-            		
-           <form action="" method="post"  class="needs-validation" > 		
+           <form action="<?php echo base_url(); ?>index.php/place/addnew" method="post"  class="needs-validation" > 		
 				<div class="card-body" id="card_1">
 				
 				<button type="button" class="btn btn-inverse-primary btn-fw" data-toggle="modal" data-target="#exampleModalCenter">
@@ -69,8 +72,10 @@
      
    
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-        <button type="button" onclick="location.href='<?php echo base_url(); ?>index.php/place/addnew'" name="insert"  class="btn btn-success">เพิ่มข้อมูล</button>
+      <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+      <button  name="insert" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+            
+       
       </div>
  
     </div>
@@ -110,7 +115,7 @@
                                                     <a href="#" data-toggle="modal" data-target="#del_file"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a>
 
                                     <!--ส่วนของ madal จะใช้การจัดการด้วย id ส่วนของ data-target กับ id ของ class จะต้องเหมือนกัน -->
-<?php } ?>
+
                                     <!-- Modal ส่วน del -->
                                     <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -146,17 +151,20 @@
                                                         <div class="modal-content">
                                                           <div class="modal-header">
                                                             <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit" style="color:#47307b;"></i></span>แก้ไขข้อมูล</h2>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <!--  onclick="location.href='<?php echo base_url().'index.php/place/edit?id='.$rec->place_ID;?>'"
+                                                            -->
+                                                            <button type="button"   class="close" data-dismiss="modal" aria-label="Close">
                                                               <span aria-hidden="true">&times;</span>
                                                             </button>
                                                           </div>
                                                           <div class="modal-body">
 
                                                     		  <!--ฟอร์มแก้ไขข้อมูล-->
+                       
                                                     		  <center><div class="form-group">
                                                     				<div class="input-group">
                                                     					<label for="add_udroup">ประเภทผู้ใช้ :</label>&nbsp;
-                                                                        <input type="text" class="form-control" placeholder="เพิ่มประเภทผู้ใช้" aria-label="Username" aria-describedby="colored-addon1" value="<?php echo $rec->place_name; ?>" required>
+                                                                        <input type="text" class="form-control" placeholder="เพิ่มประเภทผู้ใช้" aria-label="Username" aria-describedby="colored-addon1" value="<?php echo $rec->place_name;?>" required>
 
                                                     				</div>
 
@@ -177,8 +185,9 @@
 
                                                 </tr>
                                              
-
+							<?php } ?>
                                             </tbody>
+                                            
                                         </table>
                                     </div>
                                 </div>

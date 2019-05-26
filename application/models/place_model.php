@@ -16,15 +16,15 @@ class place_model extends CI_Model {
         
     }
     public function insertdata($data){
-        $this->db->insert('employee',$data);
+        $this->db->insert('place',$data);
         
         
     }
     
     function fetch_single_data($id)
     {
-        $this->db->where('E_ID',$id);
-        $query = $this->db->get('employee');
+        $this->db->where('place_ID',$id);
+        $query = $this->db->get('place');
         return $query->result();
         //Select * FROM employee where id = '$id'
     }
