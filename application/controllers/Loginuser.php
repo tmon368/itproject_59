@@ -56,8 +56,8 @@ class Loginuser extends CI_Controller
         {
             //$this->load->model('login_model');
             //$data['records'] = $this->login_model->getdata();
-            redirect(base_url() . 'index.php/Admin_dashboard');
-            //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';
+            redirect(base_url() . 'index.php/loginuser/select');
+            //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';  Admin_dashboard
             // echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';
         }
         else

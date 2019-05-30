@@ -8,70 +8,71 @@ class place_model extends CI_Model {
     }
     
     
-    public function getdata(){
-        //$this->db->where('flag','0');
+ public function showAll(){
+        $this->db->order_by('place_ID', 'desc');
+        $this->db->where('flag', '0');
         $query = $this->db->get('place');
-        return $query->result();
-        
-        
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
     }
-    public function insertdata($data){
-        $this->db->insert('place',$data);
-        
-        
-    }
-    
-    function fetch_single_data($id)
-    {
-        $this->db->where('place_ID',$id);
-        $query = $this->db->get('place');
-        return $query->result();
-        //Select * FROM employee where id = '$id'
-    }
-    function fetch_data()
-    {
-        //$query = $this->db->get("tbl_user");
-        //select * from tbl_user
-        //$query = $this->db->query("SELECT * FROM tbl_user ORDER BY id DESC");
-        $this->db->select("*");
-        $this->db->from("employee");
-        $query = $this->db->get();
-        return $query;
-    }
-    public function editdata($id,$data){
-        $this->db->where("E_ID",$id);
-        $this->db->update("employee",$data);
-        //UPDATE tbl_user SET UName = '$username', Pass = '$password' WHERE employee = '$id'
-        
-        
-    }
-    
-    public function deldata($id,$data){
-        $this->db->where("E_ID",$id);
-        $this->db->update("employee",$data);
-        
-        
-        
-    }
-    
-    /*  deletedata
-     public function truedeldata($id){
-     $this->db->where("E_ID",$id);
-     $this->db->delete("employee");
-     
-     
-     
-     }*/
-    
 
-    
-    public function excel(){
-        $this->load->view('inputexcel');
-        
-        
-        
-        
+    public function addplace(){
+        $field = array(
+            'place_ID'=>$this->input->post('txtID'),
+            'place_name'=>$this->input->post('txtname')
+            
+            );
+        $this->db->insert('place', $field);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
-    
+
+    public function editplace(){
+        $id = $this->input->get('id');
+        $this->db->where('place_ID', $id);
+        $query = $this->db->get('place');
+        if($query->num_rows() > 0){
+            return $query->row();
+        }else{
+            return false;
+        }
+    }
+
+    public function updateplace(){
+        $id = $this->input->post('txteditID');
+        $field = array(
+        'place_name'=>$this->input->post('txteditname')
+
+        );
+        $this->db->where('place_ID', $id);
+        $this->db->update('place', $field);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function deleteplace(){
+         $id = $this->input->post('txtdelID');
+         
+        $field = array(
+        'flag'=> '1'
+
+        );
+        $this->db->where('place_ID', $id);
+        $this->db->update('place', $field);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }
