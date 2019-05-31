@@ -8534,8 +8534,8 @@ pre {
   .table-hover .table-danger:hover > th {
    background-color: #f5b9b8;
 
- 
-}	
+
+}
 
 .table-light,
 .table-light > th,
@@ -8760,7 +8760,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .form-group {
   margin-bottom: 1rem;
-  width: 60%;
 	}
 
 .form-text {
@@ -13319,7 +13318,7 @@ button.bg-dark:focus {
   color: #fff !important; }
 
 .text-primary {
-  color:white!important; 
+  color:white!important;
   font-family: 'Prompt', sans-serif;
   font-size: 15px;
 }
