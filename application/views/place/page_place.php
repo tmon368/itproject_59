@@ -124,7 +124,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
    
       <div class="modal-footer">
       <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="insert" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+      <button  name="insert" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
             
        
       </div>
@@ -157,13 +157,14 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                                               <span aria-hidden="true">&times;</span>
                                                             </button>
                                                           </div>
+                                                          <form action="" id="formdelete" method="post"  class="needs-validation" >
                                                           <div class="modal-body" id="showdel">
 
                                                           <!--ข้อความยืนยันการลบข้อมูล-->
-                                                          <form action="" id="formdelete" method="post"  class="needs-validation" >
+                                                          
       <center >
-          <label id="showddel"></label>
-        <input type="hidden" name="txtdelID" > 
+          <div id="showddel"></div>
+        <input  type="hidden" name="txtdelID" > 
         
       </center>
        
