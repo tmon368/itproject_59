@@ -147,9 +147,6 @@
                   <a class="nav-link" href="pages/ui-features/typography.html">หอพัก</a>
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html">การอบรม</a>
-                </li>
-        <li class="nav-item">
               	  <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
              	</li>
 
