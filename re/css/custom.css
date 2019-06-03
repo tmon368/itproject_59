@@ -72,3 +72,12 @@ label{ /*รูปแบบของ label ใน form*/
 	.btn-inverse-primary {
     font-family: "Prompt",sans-serif;
 }
+
+.alert1 {
+	padding:10px !important;
+	color: #3366ff;
+}
+.sty_a{
+	font-size:12px;
+	text-align: -webkit-right;
+}
