@@ -68,27 +68,53 @@ class login_model extends CI_Model {
     
     function can_login($username, $password)
     {
-        $this->db->where('UName', $username);
-        $this->db->where('Pass', $password);
-        $query = $this->db->get('employee');
-        //SELECT * FROM users WHERE employee = '$username' AND password = '$password'
-        if($query->num_rows() > 0)
-        {
-            return true;
+        
+        $this->db->select('UName, Pass');
+        $this->db->from('employee');
+        $query1 = $this->db->get()->result();
+        
+        
+        $this->db->select('UName, Pass');
+        $this->db->from('student');
+        $query2 = $this->db->get()->result();
+        
+        
+        $query3 = array_merge($query1, $query2);
+        
+        var_dump($query3);
+        foreach ($query3 as $value){
+            if($value->UName == $username  && $value->Pass == $password ){
+                return true;
+                
+                
+            }
+            
+            //echo $value->UName."  ";
+            // echo $value->Pass;
+            // echo "<br>";
+            
+            
         }
-        else
-        {
-            return false;
-        }
+        
+        return false;
+        
+        
+        /*
+         $this->db->where('UName', $username);
+         $this->db->where('Pass', $password);
+         $query = $this->db->get('employee');*/
+        //SELECT * FROM employee WHERE employee = '$username' AND password = '$password'
+        /* if($query->num_rows() > 0)
+         {
+         return true;
+         }
+         else
+         {
+         return false;
+         }*/
     }
     
-    public function excel(){
-        $this->load->view('inputexcel');
-        
-        
-        
-        
-    }
+   
     
     
 }
