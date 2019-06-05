@@ -39,13 +39,13 @@
                       <a class="nav-link" data-toggle="tab" href="#menu4"><span><i class="far fa-calendar-alt"></i></span>&nbsp;วันหยุด</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#menu5"><span><i class="fas fa-download"></i></span>&nbsp;ประเภทหอพัก</a>
+                      <a class="nav-link" data-toggle="tab" href="#menu5"><span><i class="fas fa-building"></i></span>&nbsp;ประเภทหอพัก</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#menu6"><span><i class="fas fa-download"></i></span>&nbsp;หอพัก</a>
+                      <a class="nav-link" data-toggle="tab" href="#menu6"><span><i class="fas fa-bed"></i></span>&nbsp;หอพัก</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" data-toggle="tab" href="#menu7"><span><i class="fas fa-download"></i></span>&nbsp;สถานที่</a>
+                      <a class="nav-link" data-toggle="tab" href="#menu7"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;สถานที่</a>
                     </li>
                   </ul>
 
@@ -54,7 +54,7 @@
                     <div id="home" class="container tab-pane active"><br>
                       <h3> <span><i class="fa fa-exclamation-circle" style="color:#5DADE2;"></i></span>&nbsp;อัพเดตข้อมูลล่าสุด</h3>
                     </br>
-                      <p>ชื่อไฟล์:&nbsp;&nbsp;DB_name_type.csv</p>
+                      <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv</p>
                       <p>การอัพเดตล่าสุด:&nbsp;&nbsp; วันศุกร์ 13 พฤษภาคม 2561</p>
                       <p>เวลา:&nbsp;&nbsp; 22:30:59 </p>
                       <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; 120 record </p>
@@ -65,13 +65,21 @@
                       <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูล</h3>
                       <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
 
-                      <form action="/action_page.php">
+                      <form action="">
                         <div class="form-group">
                           <input type="file" class="form-control-file border" name="file">
                         </div>
-                        <button type="submit" class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
+                        <button type="submit" class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;" onclick="newPopup()">ยืนยัน</button>
                       </form>
                     </div>
+                    1<script type="text/javascript">
+                    // Popup window code
+
+                    function newPopup(url) {
+                    	popupWindow = window.open(
+                    		url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+                    }
+                    </script>
 
                     <!--นำเข้าข้อมูลหมวดความผิด-->
                     <div id="menu2" class="container tab-pane fade"><br>
@@ -135,16 +143,14 @@
                     </div>
 
                     <div id="menu7" class="container tab-pane fade"><br>
-                      <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูลสถานที่</h3>
+                      <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูล</h3>
                       <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
-						<form action="<?php echo base_url(); ?>index.php/import_data/importplace" method="post" enctype="multipart/form-data" name="form1">
-                      
+
+                      <form action="/action_page.php">
                         <div class="form-group">
-                        <input type="file" name="_fileup" id="_fileup" class="form-control-file border">
-    
+                          <input type="file" class="form-control-file border" name="file">
                         </div>
-                        <button type="submit" name="btn_submit" class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
-                       
+                        <button type="submit" class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
                       </form>
                     </div>
 
