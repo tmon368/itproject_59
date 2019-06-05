@@ -142,7 +142,7 @@
                 </li>
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("DormType")?>">ประเภทหอพัก</a>
-                </li>
+                </li> 
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Dormitory")?>">หอพัก</a>
                 </li>
@@ -153,6 +153,7 @@
               </ul>
             </div>
           </li>
+
 
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url("Import_data") ?>">
