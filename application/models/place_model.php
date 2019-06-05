@@ -75,4 +75,16 @@ class place_model extends CI_Model {
         }
     }
     
+    
+    public function import_excelplace(){
+        $this->load->view('import_excelplace');
+        
+        
+        
+        
+    }
+    
+    
+    
+    
 }
