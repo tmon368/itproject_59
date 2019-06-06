@@ -52,7 +52,7 @@
                   <!-- Tab panes -->
                   <div class="tab-content">
                     <div id="home" class="container tab-pane active"><br>
-                      <h3> <span><i class="fa fa-exclamation-circle" style="color:#5DADE2;"></i></span>&nbsp;อัพเดตข้อมูลล่าสุด</h3>
+                      <h3> <span><i class="	fa fa-check-circle" style="color:#58D68D;font-size:28px;"></i></span>&nbsp;อัพเดตข้อมูลล่าสุด</h3>
                     </br>
                       <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv</p>
                       <p>การอัพเดตล่าสุด:&nbsp;&nbsp; วันศุกร์ 13 พฤษภาคม 2561</p>
@@ -72,12 +72,12 @@
                         <button type="submit" class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;" onclick="newPopup()">ยืนยัน</button>
                       </form>
                     </div>
-                    1<script type="text/javascript">
+                    <script type="text/javascript">
                     // Popup window code
 
                     function newPopup(url) {
-                    	popupWindow = window.open(
-                    		url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+                    	var myWindow = window.open("<?php echo site_url("Submit_to_db")?>", "", "width=700,height=800");
+
                     }
                     </script>
 
