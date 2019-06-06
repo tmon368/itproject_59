@@ -42,7 +42,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
 
 				</div>
-					<!-- Modal เพิ่มข้อมูล -->
+					 <!-- Modal เพิ่มข้อมูล -->
  
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
