@@ -96,6 +96,15 @@
 </head>
 
 <body>
+	<!--
+	<div class="alert alert-danger">
+	    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+	</div>-->
+
+	<div class="alert alert-success">
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+
 
 	<div id="container">
 		<h1>Import csv file to database</h1>
@@ -118,11 +127,11 @@
 
 			<div class="form-inline" id="f_inline">
 				<label>ทั้งหมด:</label>
-				&nbsp;<span class="badge badge-primary">240 record&nbsp;<span><i class="fa fa-eye"></i></span></a></span>
+				&nbsp;<span class="badge badge-primary">57 record&nbsp;<span><i class="fa fa-eye"></i></span></a></span>
 				&nbsp;<label>อัพโหลดสำเร็จ:</label>
-				&nbsp;<a href="#" data-toggle="collapse" data-target="#demo"><span class="badge badge-success" id="myBtn">200 record&nbsp;<span><i class="fa fa-eye"></i></span></span></a>
+				&nbsp;<a href="#" data-toggle="collapse" data-target="#demo"><span class="badge badge-success" id="myBtn">57 record&nbsp;<span><i class="fa fa-eye"></i></span></span></a>
 				&nbsp;<label>อัพโหลดไม่สำเร็จ:</label>
-				&nbsp;<span class="badge badge-danger">40 record&nbsp;<span><i class="fa fa-eye"></i></span></span>
+				&nbsp;<span class="badge badge-danger">0 record&nbsp;<span><i class="fa fa-eye"></i></span></span>
 			</div>
 
 
