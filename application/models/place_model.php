@@ -63,13 +63,14 @@ class place_model extends CI_Model {
 
     function deleteplace(){
          $id = $this->input->post('txtdelID');
-         
+         /*
         $field = array(
         'flag'=> '1'
 
-        );
+        );*/
         $this->db->where('place_ID', $id);
-        $this->db->update('place', $field);
+        $this->db->delete('place');
+        //$this->db->update('place', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
