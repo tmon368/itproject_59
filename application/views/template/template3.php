@@ -132,23 +132,23 @@
                   <a class="nav-link" href="<?php echo site_url("Usertype") ?>">กลุ่มผู้ใช้งาน</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html">หมวดความผิด</a>
+                  <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html">ฐานความผิด</a>
+                  <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
                 </li>
         <li class="nav-item" >
                   <a class="nav-link" href="<?php echo site_url("holiday") ?>">วันหยุด
                   </a>  
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html">ประเภทหอพัก</a>
+                  <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html">หอพัก</a>
+                  <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/typography.html">การอบรม</a>
+                  <a class="nav-link" href="<?php echo site_url("Training") ?>">การอบรม</a>
                 </li>
         <li class="nav-item">
               	  <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
