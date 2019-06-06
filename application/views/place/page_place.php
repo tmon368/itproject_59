@@ -20,8 +20,7 @@
                   </ol>
           </nav>
 </div>
-
-<div class="col-lg-12 grid-margin stretch-card">
+<div class="col-lg-8 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
               			<h6 class="m-0 text-primary"><span class="fas fa-user-alt"></span>&nbsp;สถานที่</h6>
@@ -35,7 +34,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="card-body" id="card_1">
 				
 				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<i class="fas fa-user-plus"></i>เพิ่มกลุ่มผู้ใช้
+									<i class="fas fa-user-plus"></i>เพิ่มสถานที่
 				</button>
 				&nbsp;
 
@@ -64,6 +63,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="input-group" >
 				
 					<label for="validationCustom01">รหัสสถานที่</label>&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="txtID"  class="form-control"  maxlength="4" onkeyup="count_down_id(this);" required>
 				</div>
 				<div class="form-group sty_a">
@@ -92,7 +92,8 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 					<label for="validationCustom02">ชื่อสถานที่</label>&nbsp;
-                    <input type="text" name="txtname"  class="form-control"  maxlength="50" onkeyup="count_down(this);" required>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="txtname"  class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
 				</div>
 				<div class="form-group sty_a">
         <span id="count3">0</span>
@@ -102,7 +103,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
       <!-- Alert for the number of characters-->
       <script>
-          function count_down(obj) {
+          function count_downname(obj) {
 
               document.getElementById('count3').innerHTML = obj.value.length;
               var element = document.getElementById('count4');
@@ -117,10 +118,46 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
           }
       </script>
 				</div>
+				
+				
+				
+				<div class="form-group" id="input_group_sty">
+				<div class="input-group" >
+					<label for="validationCustom02">คำอธิบายสถานที่</label>&nbsp;
+                    <textarea name="txtdescription"  class="form-control"  maxlength="100" onkeyup="count_downdescription(this);" required></textarea>
+				</div>
+				<div class="form-group sty_a">
+        <span id="count5">0</span>
+        <span>/</span>
+        <span id="count6" style="color:#6699ff;">100</span>
+      </div>
+
+      <!-- Alert for the number of characters-->
+      <script>
+          function count_downdescription(obj) {
+
+              document.getElementById('count5').innerHTML = obj.value.length;
+              var element = document.getElementById('count6');
+
+              element.innerHTML = 100 - obj.value.length;
+              if (100 - obj.value.length == 0) {
+                  element.style.color = 'red';
+
+              } else {
+                  element.style.color = '#6699ff';
+              }
+          }
+      </script>
+				</div>
+				
+				
+				
 			</center>
 			 
 		  <!------------------>
  </div>
+ 
+ 
      
    
       <div class="modal-footer">
@@ -129,8 +166,31 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
             
        
       </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
  </form>
     </div>
+    
+    
+    
+    
   </div>
 </div>
 
@@ -155,13 +215,94 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                    <!--ฟอร์มแก้ไขข้อมูล-->
      <form action="" id="formupdate" method="post"  class="needs-validation" >
       <center>
-      
+     <div class="form-group" id="input_group_sty" >
+				<div class="input-group" >
+				
+					<label for="validationCustom01">รหัสสถานที่</label>&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="txteditID"  class="form-control"  maxlength="4" onkeyup="count_down_editid(this);" required>
+				</div>
+				<div class="form-group sty_a">
+        <span id="count7">0</span>
+        <span>/</span>
+        <span id="count8" style="color:#6699ff;">4</span>
+      </div>
+
+      <!-- Alert for the number of characters-->
+      <script>
+          function count_down_editid(obj) {
+
+              document.getElementById('count7').innerHTML = obj.value.length;
+              var element = document.getElementById('count8');
+
+              element.innerHTML = 4 - obj.value.length;
+              if (4 - obj.value.length == 0) {
+                  element.style.color = 'red';
+
+              } else {
+                  element.style.color = '#6699ff';
+              }
+          }
+      </script>
+				<div class="form-group" id="input_group_sty">
+				<div class="input-group" >
+					<label for="validationCustom02">ชื่อสถานที่</label>&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="txteditname"  class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
+				</div>
+				<div class="form-group sty_a">
+        <span id="count9">0</span>
+        <span>/</span>
+        <span id="count10" style="color:#6699ff;">50</span>
+      </div>
+
+      <!-- Alert for the number of characters-->
+      <script>
+          function count_downname(obj) {
+
+              document.getElementById('count9').innerHTML = obj.value.length;
+              var element = document.getElementById('count10');
+
+              element.innerHTML = 50 - obj.value.length;
+              if (50 - obj.value.length == 0) {
+                  element.style.color = 'red';
+
+              } else {
+                  element.style.color = '#6699ff';
+              }
+          }
+      </script>
+				</div>
+        
         <div class="form-group" id="input_group_sty">
-        <div class="input-group" >
-          <label for="validationCustom02">ชื่อสถานที่</label>&nbsp;
-                     <input type="hidden" name="txteditID" >
-                    <input type="text" name="txteditname"  class="form-control"  maxlength="40" required>
-        </div></div>
+				<div class="input-group" >
+					<label for="validationCustom02">คำอธิบายสถานที่</label>&nbsp;
+                    <textarea name="txteditdescription"  class="form-control"  maxlength="100" onkeyup="count_downdescription(this);" required></textarea>
+				</div>
+				<div class="form-group sty_a">
+        <span id="count11">0</span>
+        <span>/</span>
+        <span id="count12" style="color:#6699ff;">100</span>
+      </div>
+
+      <!-- Alert for the number of characters-->
+      <script>
+          function count_downdescription(obj) {
+
+              document.getElementById('count11').innerHTML = obj.value.length;
+              var element = document.getElementById('count12');
+
+              element.innerHTML = 100 - obj.value.length;
+              if (100 - obj.value.length == 0) {
+                  element.style.color = 'red';
+
+              } else {
+                  element.style.color = '#6699ff';
+              }
+          }
+      </script>
+				</div>
+        
       </center>
        
       <!------------------>
@@ -248,6 +389,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
                                                     <th>#</th>
                                                     <th>ชื่อสถานที่</th>
+                                                    <th>คำอธิบายสถานที่</th>
                                                     <th>จัดการ</th>
 
                                                 </tr>
@@ -394,6 +536,7 @@ $("#edit_file").modal("show");
         success: function(data){
           $('input[name=txteditID]').val(data.place_ID);
           $('input[name=txteditname]').val(data.place_name);
+          $('textarea[name=txteditdescription]').val(data.description);
         },
         error: function(){
           alert('Could not Edit Data');
@@ -443,6 +586,7 @@ $("#edit_file").modal("show");
             html +='<tr>'+
                   '<td>'+data[i].place_ID+'</td>'+
                   '<td>'+data[i].place_name+'</td>'+
+                  '<td>'+data[i].description+'</td>'+
 
                   '<td>'+
                     '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].place_ID+'"></i></a>'+

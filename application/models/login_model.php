@@ -81,7 +81,7 @@ class login_model extends CI_Model {
         
         $query3 = array_merge($query1, $query2);
         
-        var_dump($query3);
+        //var_dump($query3);
         foreach ($query3 as $value){
             if($value->UName == $username  && $value->Pass == $password ){
                 return true;
