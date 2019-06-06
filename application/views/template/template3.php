@@ -34,7 +34,7 @@
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
+              <ul class="nav flex-column sub-menu"> 
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
                 </li>
@@ -132,19 +132,23 @@
                   <a class="nav-link" href="<?php echo site_url("Usertype") ?>">กลุ่มผู้ใช้งาน</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("OffenseCate")?>">หมวดความผิด</a>
+                  <a class="nav-link" href="pages/ui-features/typography.html">หมวดความผิด</a>
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Offense")?>">ฐานความผิด</a>
+                  <a class="nav-link" href="pages/ui-features/typography.html">ฐานความผิด</a>
+                </li>
+        <li class="nav-item" >
+                  <a class="nav-link" href="<?php echo site_url("holiday") ?>">วันหยุด
+                  </a>  
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Holiday")?>">วันหยุด</a>
+                  <a class="nav-link" href="pages/ui-features/typography.html">ประเภทหอพัก</a>
                 </li>
         <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("DormType")?>">ประเภทหอพัก</a>
-                </li> 
+                  <a class="nav-link" href="pages/ui-features/typography.html">หอพัก</a>
+                </li>
         <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Dormitory")?>">หอพัก</a>
+                  <a class="nav-link" href="pages/ui-features/typography.html">การอบรม</a>
                 </li>
         <li class="nav-item">
               	  <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
@@ -153,7 +157,6 @@
               </ul>
             </div>
           </li>
-
 
         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url("Import_data") ?>">
