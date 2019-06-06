@@ -147,9 +147,7 @@
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
                 </li>
-        <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Training") ?>">การอบรม</a>
-                </li>
+
         <li class="nav-item">
               	  <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
              	</li>
