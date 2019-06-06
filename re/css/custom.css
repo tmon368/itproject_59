@@ -57,6 +57,13 @@
 	width: 70%;
 }
 
+#footer_imp{
+	background: #ffffff;
+}
+#body{
+	font-size: 16px;
+}
+
 .breadcrumb{
 	font-family: 'Prompt',sans-serif;
 	font-size: 14px;
