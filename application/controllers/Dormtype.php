@@ -2,12 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dormtype extends CI_Controller {
-	public function index()
-	{
-		//$this->load->view('welcome_message');
-	}
-	
-	public function shows(){
+    
+	public function index(){
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
