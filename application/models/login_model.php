@@ -114,7 +114,47 @@ class login_model extends CI_Model {
          }*/
     }
     
-   
+    function checkusernameemployee($username)
+    {
+        
+        $this->db->select('UName');
+        $this->db->from('employee');
+        $query1 = $this->db->get()->result();
+        foreach ($query1 as $value){
+            if($value->UName == $username){
+                return true;
+                
+                
+            }
+    }
     
     
+}
+
+
+
+
+function checkusernamestudent($username)
+{
+    
+    $this->db->select('UName');
+    $this->db->from('student');
+    $query1 = $this->db->get()->result();
+    foreach ($query1 as $value){
+        if($value->UName == $username){
+            return true;
+            
+            
+        }
+    }
+    
+    
+}
+
+
+
+
+
+
+
 }

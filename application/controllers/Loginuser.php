@@ -52,11 +52,31 @@ class Loginuser extends CI_Controller
         }
     }
     function enter(){
-        if($this->session->userdata('username') != '')
+        $username=$this->session->userdata('username');
+        $this->load->model('login_model');
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameemployee($username))
         {
             //$this->load->model('login_model');
             //$data['records'] = $this->login_model->getdata();
+            //if($this->session->userdata('username')== employee.UName){
+            
             redirect(base_url() . 'index.php/Admin_dashboard');
+       
+            
+            //}
+            //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';  Admin_dashboard
+            // echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';
+        }
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamestudent($username))
+        {
+            //$this->load->model('login_model');
+            //$data['records'] = $this->login_model->getdata();
+            //if($this->session->userdata('username')== employee.UName){
+            
+            redirect(base_url() . 'index.php/user');
+            
+            
+            //}
             //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';  Admin_dashboard
             // echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';
         }
