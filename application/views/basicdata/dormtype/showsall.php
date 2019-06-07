@@ -9,12 +9,12 @@
 <div class="col-lg-8 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
-              			<h6 class="m-0 text-primary"></span>&nbsp;ประเภทหอพัก</h6>
+              			<h6 class="m-0 text-primary"><span class="fas fa-user-alt"></span>&nbsp;ประเภทหอพัก</h6>
             		</div>
 				<div class="card-body" id="card_1">
 
 				<button type="button" class="btn btn-inverse-primary btn-fw" data-toggle="modal" data-target="#exampleModalCenter">
-									<i class="fas fa-user-plus"></i>เพิ่มหอพัก
+									<i class="fas fa-user-plus"></i>เพิ่มประเภทหอพัก
 				</button>
 				&nbsp;
 
@@ -38,7 +38,7 @@
         <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 					<label for="add_udroup">ประเภทหอพัก</label>&nbsp;
-                    <input type="text" class="form-control" placeholder="เพิ่มประเภทผู้ใช้" aria-label="Username" aria-describedby="colored-addon1"  maxlength="40" required="" onkeyup="count_down(this);">
+                    <input type="text" class="form-control" placeholder="เพิ่มประเภทหอพัก" aria-label="Username" aria-describedby="colored-addon1"  maxlength="40" required="" onkeyup="count_down(this);">
         </div>
 
         <div class="form-group sty_a">
