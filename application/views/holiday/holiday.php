@@ -71,7 +71,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 </div>
         <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
-					<label  class="col-sm-4" for="validationCustom02">ชื่อวันหยุด</label>&nbsp;
+					<label  class="col-sm-4"  for="validationCustom02">ชื่อวันหยุด</label>&nbsp;
                     <input type="textarea" name="txtdescrip"  class="form-control" maxlength="50" onkeyup="count_down(this);" required>
            </div>
         	<div class="form-group sty_a">
