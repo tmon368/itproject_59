@@ -10,8 +10,8 @@ class Holiday extends CI_Controller {
 	public function index()
 	{
 		//List  ข้อมูลมาแสดงในหน้าจอ
-	    $this->template();
-
+		$this->template();
+		
 	}
 	
 	
@@ -25,12 +25,21 @@ class Holiday extends CI_Controller {
 	    /*$this->load->view('template/page_import_data');*/
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
-	    
-	    
-	    
+	
 	}
 
+
+
 	
+	public function edit(){
+		$this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+		$this->load->view('holiday/holiday');
+		$this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	}
+
 	public function showAll(){
 		$result = $this->model->showAll();
 		echo json_encode($result);
@@ -43,7 +52,7 @@ class Holiday extends CI_Controller {
 		if($result){
 			$msg['success'] = true;
 			$this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
-			 redirect(base_url() . 'index.php/holiday/index');
+			 redirect(base_url() . 'index.php/holiday/edit');
 
 		}
 		echo json_encode($msg);
@@ -62,9 +71,9 @@ class Holiday extends CI_Controller {
 		if($result){
 			$msg['success'] = true;
 			$this->session->set_flashdata('message', '<br/>แก้ไขข้อมูลเรียบร้อย');
-	    redirect(base_url() . 'index.php/holiday/index');
+	    redirect(base_url() . 'index.php/holiday/edit');
 		}
-		redirect(base_url() . 'index.php/holiday/index');
+		redirect(base_url() . 'index.php/holiday/edit');
 		//echo json_encode($msg);
 	}
 
@@ -76,7 +85,7 @@ class Holiday extends CI_Controller {
 		if($result){
 			$msg['success'] = true;
 				$this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
-	    redirect(base_url() . 'index.php/holiday/index');
+	    redirect(base_url() . 'index.php/holiday/edit');
 		}
 		echo json_encode($msg);
 	}

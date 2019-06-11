@@ -60,45 +60,19 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 		      
                   <form action="" id="formadd" method="post"  class="needs-validation" >
 		  <center>
-		  <div class="form-group" id="input_group_sty"  >
-				<div class="input-group" size =5>
-				
-					<label for="validationCustom01">รหัสสถานที่</label>&nbsp;
-                    <input  type="text" name="txtID"  class="form-control" size =5 maxlength="4" onkeyup="count_down_id(this);" required>
-				</div>
-				<div class="form-group sty_a">
-        <span id="count1">0</span>
-        <span>/</span>
-        <span id="count2" style="color:#6699ff;">4</span>
-      </div>
 
-      <!-- Alert for the number of characters-->
-      <script>
-          function count_down_id(obj) {
 
-              document.getElementById('count1').innerHTML = obj.value.length;
-              var element = document.getElementById('count2');
-
-              element.innerHTML = 4 - obj.value.length;
-              if (4 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
-				</div>
+      
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
-					<label for="validationCustom02">วันที่หยุด</label>&nbsp;
-                    <input type="date" name="txtdate"  class="form-control"  maxlength="50" onkeyup="count_down(this);" required>
+					<label  class="col-sm-4" for="validationCustom02">วันที่หยุด</label>&nbsp;
+                    <input type="date" name="txtdate"  class="form-control col-sm-5"  maxlength="50" onkeyup="count_down(this);" required>
         </div>
 </div>
         <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
-					<label for="validationCustom02">คำอธิบายวันหยุด</label>&nbsp;
-                    <input type="text" name="txtdescrip"  class="form-control" maxlength="50" onkeyup="count_down(this);" required>
+					<label  class="col-sm-4" for="validationCustom02">ชื่อวันหยุด</label>&nbsp;
+                    <input type="textarea" name="txtdescrip"  class="form-control" maxlength="50" onkeyup="count_down(this);" required>
            </div>
         	<div class="form-group sty_a">
         	<span id="count3">0</span>
@@ -124,7 +98,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 </div>
            <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
-					<label for="validationCustom02">ประเภทวันหยุด</label>&nbsp;
+					<label  class="col-sm-4" for="validationCustom02">ประเภทวันหยุด</label>&nbsp;
                 <select class="form-control" name="addtype">
                   <option  value="วันหยุดประจำปี" class="form-control">วันหยุดประจำปี</option>
                   <option  value="วันหยุดที่มีการเปลี่ยนแปลงแต่ละปี" class="form-control">วันหยุดที่มีการเปลี่ยนแปลงแต่ละปี</option>
@@ -167,78 +141,53 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
                    <!--ฟอร์มแก้ไขข้อมูล-->
      <form action="" id="formupdate" method="post"  class="needs-validation" >
-      <center>
+     <center>
+
+
       
-      <div class="form-group" id="input_group_sty">
-        <div class="input-group" >
-          <label for="validationCustom02">รหัสวันหยุด</label>&nbsp;
-                     <input type="hidden" name="txteditID" >
-                    <input type="text" name="txteditname"  class="form-control"  maxlength="40" required>
-        </div>
-				<div class="form-group sty_a">
-        <span id="count1">0</span>
-        <span>/</span>
-        <span id="count2" style="color:#6699ff;">4</span>
-      </div>
-
-      <!-- Alert for the number of characters-->
-      <script>
-          function count_down_id(obj) {
-
-              document.getElementById('count1').innerHTML = obj.value.length;
-              var element = document.getElementById('count2');
-
-              element.innerHTML = 4 - obj.value.length;
-              if (4 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
-				</div>
-        <div class="form-group" id="input_group_sty">
-        <div class="input-group" >
-          <label for="validationCustom02">วันหยุด</label>&nbsp;
-                    <input type="date" name="editdate"  class="form-control"  maxlength="40" required>
-        </div></div>
-        <div class="form-group" id="input_group_sty">
-				<div class="input-group" >
-					<label for="validationCustom02">คำอธิบายวันหยุด</label>&nbsp;
-                    <input type="text" name="editdescrip"  class="form-control" >
-                  </div>
-        	<div class="form-group sty_a">
-        	<span id="count3">0</span>
-        	<span>/</span>
-        	<span id="count4" style="color:#6699ff;">50</span>
-      </div>
-           <!-- Alert for the number of characters-->
-      <script>
-          function count_down(obj) {
-
-              document.getElementById('count3').innerHTML = obj.value.length;
-              var element = document.getElementById('count4');
-
-              element.innerHTML = 50 - obj.value.length;
-              if (50 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
+<div class="form-group" id="input_group_sty">
+<div class="input-group" >
+  <label  class="col-sm-4" for="validationCustom02">วันที่หยุด</label>&nbsp;
+            <input type="date" name="txtdate"  class="form-control col-sm-5"  maxlength="50" onkeyup="count_down(this);" required>
 </div>
-           <div class="form-group" id="input_group_sty">
-				<div class="input-group" >
-					<label for="validationCustom02">ประเภทวันหยุด</label>&nbsp;
-          <select  class="form-control" name="edittype" >
-            <option   value="วันหยุดประจำปี">วันหยุดประจำปี</option>
-            <option   value="วันหยุดประจำปี">วันหยุดที่มีการเปลี่ยนแปลงแต่ละปี</option>
-          </select>
-				</div></div>
-      </center>
+</div>
+<div class="form-group" id="input_group_sty">
+<div class="input-group" >
+<label  class="col-sm-4" for="validationCustom02">ชื่อวันหยุด</label>&nbsp;
+            <input type="textarea" name="txtdescrip"  class="form-control" maxlength="50" onkeyup="count_down(this);" required>
+   </div>
+  <div class="form-group sty_a">
+  <span id="count3">0</span>
+  <span>/</span>
+  <span id="count4" style="color:#6699ff;">50</span>
+</div>
+   <!-- Alert for the number of characters-->
+<script>
+  function count_down(obj) {
+
+      document.getElementById('count3').innerHTML = obj.value.length;
+      var element = document.getElementById('count4');
+
+      element.innerHTML = 50 - obj.value.length;
+      if (50 - obj.value.length == 0) {
+          element.style.color = 'red';
+
+      } else {
+          element.style.color = '#6699ff';
+      }
+  }
+</script>
+</div>
+   <div class="form-group" id="input_group_sty">
+<div class="input-group" >
+  <label  class="col-sm-4" for="validationCustom02">ประเภทวันหยุด</label>&nbsp;
+        <select class="form-control" name="addtype">
+          <option  value="วันหยุดประจำปี" class="form-control">วันหยุดประจำปี</option>
+          <option  value="วันหยุดที่มีการเปลี่ยนแปลงแต่ละปี" class="form-control">วันหยุดที่มีการเปลี่ยนแปลงแต่ละปี</option>
+        </select>
+</div></div>
+</center>
+
        
       <!------------------>
  </div>
@@ -323,7 +272,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
                                                     <th>#</th>
                                                     <th>วันที่หยุด</th>
-                                                    <th>คำอธิบาย</th>
+                                                    <th>ชื่อวันหยุด</th>
                                                     <th>ประเภทวันหยุด</th>
                                                     <th>จัดการ</th>
 
@@ -522,11 +471,11 @@ $("#edit_file").modal("show");
                   '<td>'+data[i].h_date+'</td>'+
                   '<td>'+data[i].description+'</td>'+
                   '<td>'+data[i].h_type+'</td>'+
-
-                  '<td>'+
+ '<td>'+
                     '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].h_ID+'"></i></a>'+
                     '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].h_ID+'"></i></a>'+
                   '</td>'+
+                 
                   '</tr>';
           }
           $('#showdata').html(html);

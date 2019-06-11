@@ -137,10 +137,7 @@
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
                 </li>
-        <li class="nav-item" >
-                  <a class="nav-link" href="<?php echo site_url("holiday") ?>">วันหยุด
-                  </a>  
-                </li>
+        
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
                 </li>
@@ -150,6 +147,9 @@
 
         <li class="nav-item">
               	  <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
+             	</li>
+        <li class="nav-item">
+              	  <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
              	</li>
 
               </ul>

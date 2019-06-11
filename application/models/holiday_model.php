@@ -21,7 +21,7 @@ class holiday_model extends CI_Model {
 
     public function addholiday(){
         $field = array(
-            'h_ID'=>$this->input->post('txtID'),
+            // 'h_ID'=>$this->input->post('txtID'),
             'h_date'=>$this->input->post('txtdate'),
             'description'=>$this->input->post('txtdescrip'),
             'h_type'=>$this->input->post('addtype')
