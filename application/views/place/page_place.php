@@ -23,7 +23,7 @@
 <div class="col-lg-8 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
-              			<h6 class="m-0 text-primary"><span class="fas fa-user-alt"></span>&nbsp;สถานที่</h6>
+              			<h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;สถานที่</h6>
             		</div>
             		<?php  
 echo '<center><label class="text-danger">'.$this->session->flashdata
@@ -34,7 +34,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="card-body" id="card_1">
 				
 				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<i class="fas fa-user-plus"></i>เพิ่มสถานที่
+									<span><i class="fas fa-map-marker-alt"></i></span>เพิ่มสถานที่
 				</button>
 				&nbsp;
 
@@ -62,16 +62,17 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 		  <div class="form-group" id="input_group_sty" >
 				<div class="input-group" >
 				
-					<label for="validationCustom01">รหัสสถานที่</label>&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label for="validationCustom01">รหัสสถานที่  </label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					&nbsp;&nbsp;&nbsp;
+					<div class="col-lg-3">
                     <input type="text" name="txtID"  class="form-control"  maxlength="4" onkeyup="count_down_id(this);" required>
-				</div>
+			
 				<div class="form-group sty_a">
         <span id="count1">0</span>
         <span>/</span>
         <span id="count2" style="color:#6699ff;">4</span>
-      </div>
-
+      </div></div></div>
       <!-- Alert for the number of characters-->
       <script>
           function count_down_id(obj) {
@@ -88,12 +89,13 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
               }
           }
       </script>
-				</div>
+				
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
-					<label for="validationCustom02">ชื่อสถานที่</label>&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="txtname"  class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
+					<label for="validationCustom02">ชื่อสถานที่</label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="txtname"   class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
 				</div>
 				<div class="form-group sty_a">
         <span id="count3">0</span>
@@ -123,8 +125,10 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
+				
 					<label for="validationCustom02">คำอธิบายสถานที่</label>&nbsp;
-                    <textarea name="txtdescription"  class="form-control"  maxlength="100" onkeyup="count_downdescription(this);" required></textarea>
+					
+                    <textarea  name="txtdescription" rows="4" class="form-control"  maxlength="100" onkeyup="count_downdescription(this);" required></textarea>
 				</div>
 				<div class="form-group sty_a">
         <span id="count5">0</span>
@@ -218,15 +222,17 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
      <div class="form-group" id="input_group_sty" >
 				<div class="input-group" >
 				
-					<label for="validationCustom01">รหัสสถานที่</label>&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label for="validationCustom01">รหัสสถานที่  </label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					&nbsp;&nbsp;&nbsp;
+					<div class="col-lg-3">
                     <input type="text" name="txteditID"  class="form-control"  maxlength="4" onkeyup="count_down_editid(this);" required>
-				</div>
+				
 				<div class="form-group sty_a">
         <span id="count7">0</span>
         <span>/</span>
         <span id="count8" style="color:#6699ff;">4</span>
-      </div>
+      </div></div></div>
 
       <!-- Alert for the number of characters-->
       <script>
@@ -248,7 +254,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="input-group" >
 					<label for="validationCustom02">ชื่อสถานที่</label>&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="txteditname"  class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
+                    <input type="text" name="txteditname"  class="form-control"  maxlength="50" onkeyup="count_down_editname(this);" required>
 				</div>
 				<div class="form-group sty_a">
         <span id="count9">0</span>
@@ -258,7 +264,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
       <!-- Alert for the number of characters-->
       <script>
-          function count_downname(obj) {
+          function count_down_editname(obj) {
 
               document.getElementById('count9').innerHTML = obj.value.length;
               var element = document.getElementById('count10');
@@ -277,7 +283,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
         <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 					<label for="validationCustom02">คำอธิบายสถานที่</label>&nbsp;
-                    <textarea name="txteditdescription"  class="form-control"  maxlength="100" onkeyup="count_downdescription(this);" required></textarea>
+                    <textarea name="txteditdescription"  rows="4" class="form-control"  maxlength="100" onkeyup="count_down_editdescription(this);" required></textarea>
 				</div>
 				<div class="form-group sty_a">
         <span id="count11">0</span>
@@ -287,7 +293,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
       <!-- Alert for the number of characters-->
       <script>
-          function count_downdescription(obj) {
+          function count_down_editdescription(obj) {
 
               document.getElementById('count11').innerHTML = obj.value.length;
               var element = document.getElementById('count12');
