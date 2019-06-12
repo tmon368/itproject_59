@@ -11,7 +11,7 @@ class place_model extends CI_Model {
  public function showAll(){
         $this->db->order_by('place_ID', 'desc');
         //$this->db->where('flag', '0');
-        $query = $this->db->get('place');
+        $query = $this->db->get('tmp_place');
         if($query->num_rows() > 0){
             return $query->result();
         }else{
@@ -37,7 +37,7 @@ class place_model extends CI_Model {
     public function editplace(){
         $id = $this->input->get('id');
         $this->db->where('place_ID', $id);
-        $query = $this->db->get('place');
+        $query = $this->db->get('tmp_place');
         if($query->num_rows() > 0){
             return $query->row();
         }else{
@@ -53,7 +53,7 @@ class place_model extends CI_Model {
 
         );
         $this->db->where('place_ID', $id);
-        $this->db->update('place', $field);
+        $this->db->update('tmp_place', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
@@ -69,7 +69,7 @@ class place_model extends CI_Model {
 
         );*/
         $this->db->where('place_ID', $id);
-        $this->db->delete('place');
+        $this->db->delete('tmp_place');
         //$this->db->update('place', $field);
         if($this->db->affected_rows() > 0){
             return true;

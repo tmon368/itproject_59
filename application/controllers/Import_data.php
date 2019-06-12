@@ -23,11 +23,12 @@ class Import_data extends CI_Controller {
 
 	public  function importplace()
 	{
-	    
+	    echo "Hi";
 	    
 	    
 	    if(isset($_POST['btn_submit'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
 	        echo "hii excel";
+	        $this->import_data_model->clearvalue();
 	        
 	        $tmpFile = $_FILES['_fileup']['tmp_name'];
 	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
@@ -142,19 +143,39 @@ if(isset($data_arr) && count($data_arr)>0){
 
 $BUILDID = $row['BUILDID'];
 $BUILDTHNAME = $row['BUILDTHNAME'];
+/*$query1 = $this->import_data_model->selectplace();
+foreach ($query1 as $value){
+if($value->place_ID != $BUILDID && $value->place_name != $BUILDTHNAME){
+*/
 $data = array(
     'place_ID'		=>	$BUILDID,
-    'place_name'			=>	$BUILDTHNAME,
-    'flag'				=>	'0'
+    'place_name'			=>	$BUILDTHNAME
    
 );
-$this->import_data_model->insertplace($data);
-        
 
-    }
+$this->import_data_model->insertplace($data);
+}
+/*
+if ($value->place_ID == $BUILDID && $value->place_name != $BUILDTHNAME){
+    $dataupdate = array(
+        'place_name'			=>	$BUILDTHNAME
+        
+    );
+    $this->import_data_model->updateplace($BUILDID,$dataupdate);
+    
+}
+
+
+
+
+
+
 
 }
- 
+    }*/
+
+
+}
 ?>    
 <?php 
 	    

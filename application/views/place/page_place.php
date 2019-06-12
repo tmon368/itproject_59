@@ -20,10 +20,11 @@
                   </ol>
           </nav>
 </div>
-<div class="col-lg-8 grid-margin stretch-card">
+
+<div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
-              			<h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;สถานที่</h6>
+              			<h6 class="m-0 text-primary"><span  class="fas fa-user-alt"></span>&nbsp;สถานที่</h6>
             		</div>
             		<?php  
 echo '<center><label class="text-danger">'.$this->session->flashdata
@@ -603,7 +604,7 @@ $("#edit_file").modal("show");
           $('#showdata').html(html);
         },
         error: function(){
-          alert('Could not get Data from Database');
+          alert('ไม่มีข้อมูล');
         }
       });
     }
