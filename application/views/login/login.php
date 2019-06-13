@@ -46,15 +46,14 @@
           <h3><strong>มหาวิทยาลัยวลัยลักษณ์</strong></h3>
           <h5>ระบบวินัยนักศึกษา</h5>
         </div>
+        
         <div class="col-1">
-          
         </div>
+        
         <div class="col-1">
-
         </div>
 
         <div class="col-1">
-
         </div>
       </div>
 
@@ -64,6 +63,7 @@
 
         </div>
         <div class="col-5" id="form_login">
+        <!-- Form login -->
         <form method="post" action="<?php echo base_url(); ?>index.php/loginuser/login_validation">
             <br>
             <p>ลงชื่อเข้าใช้งานด้วยบัญชีของมหาวิทยาลัย</p>
