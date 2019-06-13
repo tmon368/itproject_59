@@ -23,11 +23,11 @@ class Import_data extends CI_Controller {
 
 	public  function importplace()
 	{
-	    echo "Hi";
+	    
 	    
 	    
 	    if(isset($_POST['btn_submit'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
-	        echo "hii excel";
+	        
 	        $this->import_data_model->clearvalue();
 	        
 	        $tmpFile = $_FILES['_fileup']['tmp_name'];
@@ -68,7 +68,7 @@ class Import_data extends CI_Controller {
 	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
 	                }
 	            }
-	                 print_r($data_arr);
+	                 //print_r($data_arr);
 	        }
 	    }
 	    ?>
@@ -76,7 +76,8 @@ class Import_data extends CI_Controller {
   
  <br>
 <pre>
-<table class="table table-bordered">
+
+<!--  <table class="table table-bordered"> -->
 <?php
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
@@ -133,54 +134,33 @@ if(isset($data_arr) && count($data_arr)>0){
 */
 
 ?>
+<!--
     <tr>
         <td><?=$row['BUILDID']?></td>
         <td><?=$row['BUILDTHNAME']?></td>
 
     </tr>
-
+-->
 <?php
 
 $BUILDID = $row['BUILDID'];
 $BUILDTHNAME = $row['BUILDTHNAME'];
-/*$query1 = $this->import_data_model->selectplace();
-foreach ($query1 as $value){
-if($value->place_ID != $BUILDID && $value->place_name != $BUILDTHNAME){
-*/
 $data = array(
-    'place_ID'		=>	$BUILDID,
-    'place_name'			=>	$BUILDTHNAME
-   
+'place_ID'		=>	$BUILDID,
+'place_name'			=>	$BUILDTHNAME
+
 );
-
 $this->import_data_model->insertplace($data);
-}
-/*
-if ($value->place_ID == $BUILDID && $value->place_name != $BUILDTHNAME){
-    $dataupdate = array(
-        'place_name'			=>	$BUILDTHNAME
-        
-    );
-    $this->import_data_model->updateplace($BUILDID,$dataupdate);
-    
-}
-
-
-
-
-
+    }
 
 
 }
-    }*/
-
-
-}
+redirect(base_url() . 'index.php/import_data/index');
 ?>    
 <?php 
 	    
 	    
-	    
+
 	    
 	    
 	    
