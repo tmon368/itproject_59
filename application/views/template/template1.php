@@ -23,4 +23,5 @@
   <link rel="shortcut icon" href="<?php echo base_url('re/images/favicon.png'); ?>" />
 
 
+
 </head>
