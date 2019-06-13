@@ -8,11 +8,17 @@ class import_data_model extends CI_Model
 		$query = $this->db->get('place');
 		return $query->result();
 	}
+	function inserttmp_place($datatmp)
+	{
+	    
+	    $this->db->insert('tmp_place',$datatmp);
+	}
+	
     //insert place
 	function insertplace($data)
 	{
 	    
-		$this->db->insert('tmp_place',$data);
+		$this->db->insert('place',$data);
 	}
 	
 	function updateplace($BUILDID,$dataupdate)
@@ -25,7 +31,7 @@ class import_data_model extends CI_Model
 	
 	function clearvalue()
 	{
-	    $this->db->truncate('tmp_place');
+	    $this->db->truncate('place');
 	  
 	}
 	
