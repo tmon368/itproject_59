@@ -12,14 +12,17 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>re/css/css_login/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>re/node_modules/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>re/css/css_login/custom.css" />
+  <link rel="stylesheet" href="<?php echo base_url(); ?>re/css/css_login/custom.css" /> <!-- CSS File -->
+  
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Prompt|Sarabun&display=swap" rel="stylesheet">
 
   <title>Student discipline system | Walailak University</title>
 
 
 </head>
 
-
+<!-- หน้าจอส่วน Login -->
 <body>
   <meta charset="UTF-8">
   <div>
@@ -40,8 +43,8 @@
         </div>
 
         <div class="col-5" id="h_name">
-          <h1><strong>มหาวิทยาลัยวลัยลักษณ์</strong></h1>
-          <h3>ระบบวินัยนักศึกษา</h3>
+          <h3><strong>มหาวิทยาลัยวลัยลักษณ์</strong></h3>
+          <h5>ระบบวินัยนักศึกษา</h5>
         </div>
         <div class="col-1">
           
@@ -61,10 +64,9 @@
 
         </div>
         <div class="col-5" id="form_login">
-
         <form method="post" action="<?php echo base_url(); ?>index.php/loginuser/login_validation">
             <br>
-            <h5>ลงชื่อเข้าใช้งานด้วยบัญชีของมหาวิทยาลัย</h5>
+            <p>ลงชื่อเข้าใช้งานด้วยบัญชีของมหาวิทยาลัย</p>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="text" name="username"   class="form-control" placeholder="ชื่อผู้ใช้งาน" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
@@ -73,8 +75,8 @@
             <button class="btn btn-lg btn-primary btn-block" name="insert" type="submit">เข้าสู่ระบบ</button>
             <div class="form-group">  
             <?php  
-echo '<label class="text-danger">'.$this->session->flashdata
-("error").'</label>';  
+                echo '<label class="text-danger">'.$this->session->flashdata
+                ("error").'</label>';  
             ?>  
        </div>  
 			</form>

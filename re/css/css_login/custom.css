@@ -7,20 +7,24 @@ body{
 
 #h_name{
 	padding-top: 15%;
-	font-family: "TH SarabunPSK";
+	font-family: 'Sarabun', sans-serif;
 	/*background-color: aquamarine;*/
 }
+
 
 #Logo_wu{
 	padding-top: 12%;
 }
 
+/*CSS form login-*/
 #form_login{
 	padding-top: 2%;
-	font-family: "TH SarabunPSK";
+	font-family: 'Prompt', sans-serif;
 }
 
-
+.form-control{
+	 margin-bottom: 0.2rem;
+}
 
 
 
