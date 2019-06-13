@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap Admin Dashboard Template</title>
+  <title>ระบบวินัยนักศึกษา | มหาวิทยาลัยวลัยลักษณ์</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="<?php echo base_url('re/vendors/iconfonts/mdi/css/materialdesignicons.min.css');?>">
   <link rel="stylesheet" href="<?php echo base_url('re/vendors/css/vendor.bundle.base.css'); ?>">
