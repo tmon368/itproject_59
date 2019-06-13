@@ -24,7 +24,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
-              			<h6 class="m-0 text-primary"><span  class="fas fa-user-alt"></span>&nbsp;สถานที่</h6>
+              			<h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;สถานที่</h6>
             		</div>
             		<?php  
 echo '<center><label class="text-danger">'.$this->session->flashdata
@@ -217,7 +217,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                </div>
        <div class="modal-body">
 
-                   <!--ฟอร์มแก้ไขข้อมูล-->
+                   <!--ส่วนฟอร์มแก้ไขข้อมูล-->
      <form action="" id="formupdate" method="post"  class="needs-validation" >
       <center>
      <div class="form-group" id="input_group_sty" >
@@ -253,8 +253,9 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
       </script>
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
-					<label for="validationCustom02">ชื่อสถานที่</label>&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<label for="validationCustom02">ชื่อสถานที่</label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="txteditname"  class="form-control"  maxlength="50" onkeyup="count_down_editname(this);" required>
 				</div>
 				<div class="form-group sty_a">
@@ -351,6 +352,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                                               <span aria-hidden="true">&times;</span>
                                                             </button>
                                                           </div>
+                                                          <!--ส่วนฟอร์มลบข้อมูล-->
                                                           <form action="" id="formdelete" method="post"  class="needs-validation" >
                                                           <div class="modal-body" id="showdel">
 
@@ -457,17 +459,13 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
 
 <script>
-  /*
-    $(document).ready(function(){
-$("#edit_file").modal("show");
-
-    });*/
+ 
   $(function(){
 
   
     showAll();
 
-    //Add New
+    //เพิ่มข้อมูล
 
     $('#btnAdd').click(function(){
       $('#exampleModalCenter').modal('show');
@@ -519,19 +517,17 @@ $("#edit_file").modal("show");
             }
           },
           error: function(){
-            alert('Could not add data');
+            alert('ไม่สามารถเพิ่มข้อมูล');
           }
         });
       }
     });
 
-    //edit
+    //แก้ไขข้อมูล
  $('#showdata').on('click', '.fa-edit', function(){
       var id = $(this).attr('data');
       var popup = document.getElementById("editimage");
       $('#edit_file').modal('show');
-
-     // $('#exampleModalCenter').find('.modal-title').text('แก้ไขข้อมูล');
       $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/place/updateplace');
       $.ajax({
         type: 'ajax',
@@ -546,14 +542,14 @@ $("#edit_file").modal("show");
           $('textarea[name=txteditdescription]').val(data.description);
         },
         error: function(){
-          alert('Could not Edit Data');
+          alert('ไม่สามารถแก้ไขข้อมูล');
         }
       });
     });
 
    
 
-    //delete- 
+    //ลบข้อมูล
     $('#showdata').on('click', '.fa-trash-alt', function(){
       var id = $(this).attr('data');
       $('#del_file').modal('show');
@@ -571,7 +567,7 @@ $("#edit_file").modal("show");
             $('input[name=txtdelID]').val(data.place_ID);
         },
           error: function(){
-            alert('Error deleting');
+            alert('ไม่สามารถลบข้อมูล');
           }
         });
       });
@@ -579,7 +575,7 @@ $("#edit_file").modal("show");
 
 
 
-    //function
+    //แสดงข้อมูล
     function showAll(){
       $.ajax({
         type: 'ajax',
