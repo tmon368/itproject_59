@@ -30,12 +30,13 @@ class Place extends CI_Controller {
 	    
 	}
 
-	
+	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table place และแสดงข้อมูลในview
 	public function showAll(){
 		$result = $this->model->showAll();
 		echo json_encode($result);
 	}
-
+    
+	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addplace(){
 		$result = $this->model->addplace();
 		//$msg['success'] = false;
@@ -49,12 +50,14 @@ class Place extends CI_Controller {
 		echo json_encode($msg);
 	}
 
+	//ฟังก์ชันแสดงการแก้ไขข้อมูล
 	public function editplace(){
 	
 		$result = $this->model->editplace();
 		echo json_encode($result);
 	}
-
+	
+	//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
 	public function updateplace(){
 		$result = $this->model->updateplace();
 		$msg['success'] = false;
@@ -67,7 +70,8 @@ class Place extends CI_Controller {
 		redirect(base_url() . 'index.php/place/index');
 		//echo json_encode($msg);
 	}
-
+    
+	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deleteplace(){
 		$result = $this->model->deleteplace();
 		

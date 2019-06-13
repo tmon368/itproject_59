@@ -7,11 +7,10 @@ class place_model extends CI_Model {
         
     }
     
-    
+    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable place โดยเรียงลำดับจาก place_ID
  public function showAll(){
         $this->db->order_by('place_ID', 'desc');
-        //$this->db->where('flag', '0');
-        $query = $this->db->get('tmp_place');
+        $query = $this->db->get('place');
         if($query->num_rows() > 0){
             return $query->result();
         }else{
@@ -19,6 +18,7 @@ class place_model extends CI_Model {
         }
     }
 
+    //ฟังก์ชันเพิ่มข้อมูล ลงในtable place
     public function addplace(){
         $field = array(
             'place_ID'=>$this->input->post('txtID'),
@@ -34,17 +34,19 @@ class place_model extends CI_Model {
         }
     }
 
+    //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable place
     public function editplace(){
         $id = $this->input->get('id');
         $this->db->where('place_ID', $id);
-        $query = $this->db->get('tmp_place');
+        $query = $this->db->get('place');
         if($query->num_rows() > 0){
             return $query->row();
         }else{
             return false;
         }
     }
-
+    
+    //ฟังก์ชันอัพเดตข้อมูลในtable place
     public function updateplace(){
         $id = $this->input->post('txteditID');
         $field = array(
@@ -53,14 +55,14 @@ class place_model extends CI_Model {
 
         );
         $this->db->where('place_ID', $id);
-        $this->db->update('tmp_place', $field);
+        $this->db->update('place', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
             return false;
         }
     }
-
+    //ฟังก์ชันลบข้อมูลในtable place
     function deleteplace(){
          $id = $this->input->post('txtdelID');
          /*
@@ -69,7 +71,7 @@ class place_model extends CI_Model {
 
         );*/
         $this->db->where('place_ID', $id);
-        $this->db->delete('tmp_place');
+        $this->db->delete('place');
         //$this->db->update('place', $field);
         if($this->db->affected_rows() > 0){
             return true;
