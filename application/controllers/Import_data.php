@@ -15,7 +15,7 @@ class Import_data extends CI_Controller {
 		$this->load->view('template/template1');
 		$this->load->view('template/template2');
 		$this->load->view('template/template3');
-		$this->load->view('template/page_import_data');
+		$this->load->view('basicdata/importdata/page_import_data');
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 
