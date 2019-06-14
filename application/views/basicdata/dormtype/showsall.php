@@ -22,7 +22,7 @@
     <div class="col-lg-8 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
-                <h6 class="m-0 text-primary"><span><i class="fas fa-layer-group"></i></span>&nbsp;ประเภทหอพัก</h6>
+                <h6 class="m-0 text-primary"><span><i class="fas fa-building"></i></span>&nbsp;ประเภทหอพัก</h6>
             </div>
             <?php  
 echo '<center><label class="text-danger">'.$this->session->flashdata
@@ -32,7 +32,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
             <div class="card-body" id="card_1">
 
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-layer-group"></i></span>เพิ่มประเภทหอพัก
+                    <span><i class="fas fa-building"></i></span>เพิ่มประเภทหอพัก
                 </button>
                 &nbsp;
             </div>
