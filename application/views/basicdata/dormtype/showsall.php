@@ -308,7 +308,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                 dataType: 'json',
                 success: function(data) {
                     $('input[name=txteditID]').val(data.dormtype_ID);
-                    $('input[name=txteditname]').val(data.dormtype_desc);
+                    $('input[name=txteditname]').val(data.type_name);
 
                 },
                 error: function() {
@@ -334,7 +334,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    $('#showddel').html('ต้องการประเภท   "' + data.type_name + '"');
+                    $('#showddel').html('ต้องการลบประเภท   "' + data.type_name + '"');
                     $('input[name=txtdelID]').val(data.dormtype_ID);
                 },
                 error: function() {
