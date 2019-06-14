@@ -19,7 +19,7 @@ class Place extends CI_Controller {
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-	    $this->load->view('place/page_place');
+	    $this->load->view('basicdata/place/page_place');
 	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
 	    /*$this->load->view('template/page_usergroup');*/ /*หน้าเพิ่มประเภทผู้ใช้*/
 	    /*$this->load->view('template/page_import_data');*/

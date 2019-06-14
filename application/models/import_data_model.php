@@ -34,7 +34,21 @@ class import_data_model extends CI_Model
 	    $this->db->insert('usertype',$data);
 	}
 	
-	
+	function insertoffense($data)
+	{
+	    
+	    $this->db->insert('offense',$data);
+	}
+	function insertoffensecate($data)
+	{
+	    
+	    $this->db->insert('offensecate',$data);
+	}
+	function insertholiday($data)
+	{
+	    
+	    $this->db->insert('holiday',$data);
+	}
 	
 	function updateplace($BUILDID,$dataupdate)
 	{
