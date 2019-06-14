@@ -29,14 +29,14 @@
         </ul>-->
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
+            <!--
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="mdi mdi-file-document-box"></i>
               <span class="count">7</span>
-            </a>
+            </a>-->
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
               <div class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
-                </p>
+                <p class="mb-0 font-weight-normal float-left">You have 7 unread mails</p>
                 <span class="badge badge-info badge-pill float-right">View all</span>
               </div>
               <div class="dropdown-divider"></div>
@@ -84,31 +84,29 @@
             </div>
           </li>
           <li class="nav-item dropdown">
+
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell"></i>
-              <span class="count">4</span>
+              <!--<span class="count">4</span>-->
             </a>
+
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <a class="dropdown-item">
-                <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
-                </p>
+                <p class="mb-0 font-weight-normal float-left">การแจ้งเตือน</p>
                 <span class="badge badge-pill badge-warning float-right">View all</span>
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="mdi mdi-alert-circle-outline mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
+
+              <div class="preview-item-content">
+                  <!--<h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>-->
                   <p class="font-weight-light small-text">
-                    Just now
+                    ไม่มีการแจ้งเตือน
                   </p>
                 </div>
               </a>
               <div class="dropdown-divider"></div>
+              <!--
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-warning">
@@ -122,7 +120,9 @@
                   </p>
                 </div>
               </a>
+            -->
               <div class="dropdown-divider"></div>
+              <!--
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-info">
@@ -136,12 +136,13 @@
                   </p>
                 </div>
               </a>
+            -->
             </div>
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Hello, <?php  
-              echo $this->session->userdata('username');  
+              <span class="profile-text">Hello, <?php
+              echo $this->session->userdata('username');
             ?> !</span>
               <img class="img-xs rounded-circle" src="<?php echo base_url ('re/images/faces/face1.jpg');?>" alt="Profile image">
             </a>
