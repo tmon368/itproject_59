@@ -67,8 +67,9 @@ class offensecate_model extends CI_Model {
         'active_track'=> '1'
 
         );*/
+         
         $this->db->where('oc_ID', $id);
-        $this->db->update('offensecate');
+        $this->db->delete('offensecate');
         //$this->db->update('offensecate', $field);
         if($this->db->affected_rows() > 0){
             return true;

@@ -396,7 +396,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                             <thead>
                                                 <tr>
 
-                                                    <th>#</th>
+                                                    <th>รหัสสถานที่</th>
                                                     <th>ชื่อสถานที่</th>
                                                     <th>คำอธิบายสถานที่</th>
                                                     <th>จัดการ</th>
