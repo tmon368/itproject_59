@@ -67,60 +67,19 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-3">
-                    <input type="text" name="txtID"  class="form-control"  maxlength="4" onkeyup="count_down_id(this);" required>
+                    <input type="text" name="txtID"  class="form-control"  maxlength="4"  required>
 			
-				<div class="form-group sty_a">
-        <span id="count1">0</span>
-        <span>/</span>
-        <span id="count2" style="color:#6699ff;">4</span>
-      </div></div></div>
+			</div></div></div>
       <!-- Alert for the number of characters-->
-      <script>
-          function count_down_id(obj) {
-
-              document.getElementById('count1').innerHTML = obj.value.length;
-              var element = document.getElementById('count2');
-
-              element.innerHTML = 4 - obj.value.length;
-              if (4 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
+      
 				
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 					<label for="validationCustom02">ชื่อสถานที่</label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="txtname"   class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
-				</div>
-				<div class="form-group sty_a">
-        <span id="count3">0</span>
-        <span>/</span>
-        <span id="count4" style="color:#6699ff;">50</span>
-      </div>
-
-      <!-- Alert for the number of characters-->
-      <script>
-          function count_downname(obj) {
-
-              document.getElementById('count3').innerHTML = obj.value.length;
-              var element = document.getElementById('count4');
-
-              element.innerHTML = 50 - obj.value.length;
-              if (50 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
-				</div>
+                    <input type="text" name="txtname"   class="form-control"  maxlength="50"  required>
+				</div></div>
 				
 				
 				
@@ -229,58 +188,15 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 					<div class="col-lg-3">
                     <input type="text" name="txteditID"  class="form-control"  maxlength="4" onkeyup="count_down_editid(this);" required>
 				
-				<div class="form-group sty_a">
-        <span id="count7">0</span>
-        <span>/</span>
-        <span id="count8" style="color:#6699ff;">4</span>
-      </div></div></div>
+		</div></div></div>
 
-      <!-- Alert for the number of characters-->
-      <script>
-          function count_down_editid(obj) {
-
-              document.getElementById('count7').innerHTML = obj.value.length;
-              var element = document.getElementById('count8');
-
-              element.innerHTML = 4 - obj.value.length;
-              if (4 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 					<label for="validationCustom02">ชื่อสถานที่</label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="txteditname"  class="form-control"  maxlength="50" onkeyup="count_down_editname(this);" required>
-				</div>
-				<div class="form-group sty_a">
-        <span id="count9">0</span>
-        <span>/</span>
-        <span id="count10" style="color:#6699ff;">50</span>
-      </div>
-
-      <!-- Alert for the number of characters-->
-      <script>
-          function count_down_editname(obj) {
-
-              document.getElementById('count9').innerHTML = obj.value.length;
-              var element = document.getElementById('count10');
-
-              element.innerHTML = 50 - obj.value.length;
-              if (50 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
-				</div>
+                    <input type="text" name="txteditname"  class="form-control"  maxlength="50"  required>
+      </div></div>
         
         <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
