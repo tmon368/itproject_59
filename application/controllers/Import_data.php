@@ -378,7 +378,7 @@ if(isset($data_arr) && count($data_arr)>0){
 $BUILDID = $row['รหัสประเภทหอพัก' ];
 $BUILDTHNAME = $row['ชื่อประเภทหอพัก'];
 $data = array(
-'dorm_type'		=>	$BUILDID,
+'dormtype_ID'		=>	$BUILDID,
 'type_name'			=>	$BUILDTHNAME
 
 );
