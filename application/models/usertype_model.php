@@ -21,9 +21,7 @@ class usertype_model extends CI_Model {
     public function addusertype(){
         $field = array(
             'usertype_ID'=>$this->input->post('userID'),
-            'usertype_name'=>$this->input->post('username'),
-           
-            
+            'usertype_name'=>$this->input->post('username')  
             );
         $this->db->insert('usertype', $field);
         if($this->db->affected_rows() > 0){
@@ -40,14 +38,14 @@ class usertype_model extends CI_Model {
         if($query->num_rows() > 0){
             return $query->row();
         }else{
-            return false;
+            return false; 
         }
     }
 
     public function updateusertype(){
         $id = $this->input->post('typeeditID');
         $field = array(
-        'oc_desc'=>$this->input->post('typeeditname'),
+        'usertype_name	'=>$this->input->post('typeeditname'),
     
 
         );
@@ -59,34 +57,27 @@ class usertype_model extends CI_Model {
             return false;
         }
     }
-
-    function deleteoffensecate(){
-         $id = $this->input->post('txtdelID');
-        /*
-        $field = array(
-        'active_track'=> '1'
-
-        );*/
-        $this->db->where('oc_ID', $id);
-        $this->db->update('offensecate');
-        //$this->db->update('offensecate', $field);
-        if($this->db->affected_rows() > 0){
-            return true;
-        }else{
-            return false;
+    function deleteusertype(){
+            $id = $this->input->post('usertypeID');
+            /*
+             $field = array(
+             'active_track'=> '1'
+             
+             );*/
+            $this->db->where('usertype_ID', $id);
+            $this->db->delete('usertype');
+            //$this->db->update('offensecate', $field);
+            if($this->db->affected_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
         }
-    }
-    public function import_exceloffensecate(){
-        $this->load->view('import_exceloffensecate');
+        public function import_excelusertype(){
+            $this->load->view('import_excelusertype');
+                 
+            
+        }
         
-        
-        
-        
-    }
-    
-   
-    
-    
-    
     
 }

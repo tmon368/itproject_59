@@ -2,6 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usertype extends CI_Controller {
+    function __construct(){ 
+        parent:: __construct();
+        $this->load->model('usertype_model', 'model');
+    }
 
 	public function index()
 	{
@@ -52,9 +56,8 @@ class Usertype extends CI_Controller {
 	    redirect(base_url() . 'index.php/usertype/index');
 	    //echo json_encode($msg);
 	}
-	
-	public function deleteoffensecate(){
-	    $result = $this->model->deleteoffensecate();
+	public function deleteusertype(){
+	    $result = $this->model->deleteusertype();
 	    
 	    $msg['success'] = false;
 	    $msg['type'] = 'delete';
@@ -65,5 +68,5 @@ class Usertype extends CI_Controller {
 	    }
 	    echo json_encode($msg);
 	}
+	
 }
-

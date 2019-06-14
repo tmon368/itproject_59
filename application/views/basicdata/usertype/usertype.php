@@ -23,7 +23,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
-              		<h6 class="m-0 text-primary"><span><i class="fas fa-layer-group"></i></span>&nbsp;ประเภทผู้ใช้งาน</h6>
+              		<h6 class="m-0 text-primary"><span><i class="fas fa-users"></i></span>&nbsp;ประเภทผู้ใช้งาน</h6>
             		</div>
             		<?php  
 echo '<center><label class="text-danger">'.$this->session->flashdata
@@ -34,7 +34,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="card-body" id="card_1">
 				
 				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-				<span><i class="fas fa-layer-group"></i></span>เพิ่มประเภทผู้ใช้
+				<span><i class="fas fa-users"></i></span>เพิ่มประเภทผู้ใช้
 				</button>
 				&nbsp;
 
@@ -49,7 +49,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
       <div class="modal-header">
         <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มประเภทผู้ใช้งาน</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
+          <span aria-hidden="true">?</span>
         </button>
       </div>
       
@@ -83,7 +83,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
               element.innerHTML = 2 - obj.value.length;
               if (4 - obj.value.length == 0) {
                   element.style.color = 'red';
-
+  
               } else {
                   element.style.color = '#6699ff';
               }
@@ -94,9 +94,9 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="input-group" >
 				
 						<label for="validationCustom02..'">ประเภทผู้ใช้งาน </label>
-					<p class="text-danger">&nbsp;&nbsp;*</p>
-					&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="username"  class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
+					<p class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</p>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="username"  class="form-control"  maxlength="40" onkeyup="count_downname(this);" required>
 			
 			</div>
 			
@@ -104,7 +104,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="form-group sty_a">
         <span id="count3">0</span>
         <span>/</span>
-        <span id="count4" style="color:#6699ff;">50</span>
+        <span id="count4" style="color:#6699ff;">40</span>
       </div>
       <!-- Alert for the number of characters-->
       <script>
@@ -272,20 +272,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                                         </div>
                                                       </div>
                                                     </div>
-
-
-
-
-
-
-
-
-
 <!--------------------------------->
-
-
-
-
  <!-- Modal ส่วน del -->
                                     
                                     <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -305,7 +292,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                                           
       <center >
           <div id="showddel"></div>
-        <input  type="hidden" name="typedelID" > 
+        <input  type="hidden" name="usertypeID" > 
         
       </center>
        
@@ -357,7 +344,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                                     
 														<!--edit_file  del_file  -->
 													<!--	<a href="<?php echo base_url().'index.php/usertype/edit?id='.$rec->usertype_ID;?>" data-target="#edit_file"><i class="fas fa-edit" style="color:#47307b;"></i></a>
-                                                    <a href="<?php echo base_url().'index.php/usertype/edit?id='.$rec->usertype_ID;?>" data-toggle="modal" data-target="#edit_file" id="<?php echo $rec->usertype; ?>"><i class="fas fa-edit" style="color:#47307b;">แก้ไข</i></a>&nbsp;
+                                                    <a href="<?php echo base_url().'index.php/usertype/edit?id='.$rec->usertype_ID;?>" data-toggle="modal" data-target="#edit_file" id="<?php echo $rec->usertype_ID; ?>"><i class="fas fa-edit" style="color:#47307b;">แก้ไข</i></a>&nbsp;
                                                     <a href="<?php echo base_url().'index.php/usertype/edit?id='.$rec->usertype_ID;?>" data-toggle="modal" data-target="#"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)">ลบ</i></a>-->
 			
                                     <!--ส่วนของ madal จะใช้การจัดการด้วย id ส่วนของ data-target กับ id ของ class จะต้องเหมือนกัน -->
@@ -461,17 +448,17 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
       var id = $(this).attr('data');
       var popup = document.getElementById("editimage");
       $('#edit_file').modal('show');
-      $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/offensecate/updateoffensecate');
+      $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/usertype/updateusertype');
       $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/offensecate/editoffensecate',
+        url: '<?php echo base_url() ?>index.php/usertype/editusertype',
         data: {id: id},
         async: false,
         dataType: 'json',
         success: function(data){
-          $('input[name=txteditID]').val(data.oc_ID);
-          $('input[name=txteditname]').val(data.oc_desc);
+          $('input[name=typeeditID]').val(data.usertype_ID);
+          $('input[name=typeeditname]').val(data.usertype_name);
 
         },
         error: function(){
@@ -482,22 +469,23 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
    
 
-    //ลบข้อมูล
-    $('#showdata').on('click', '.fa-trash-alt', function(){
+   //ลบข้อมูล
+ 
+$('#showdata').on('click', '.fa-trash-alt', function(){
       var id = $(this).attr('data');
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
-       $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/offensecate/deleteoffensecate');
+       $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/usertype/deleteusertype');
         $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/offensecate/editoffensecate',
+        url: '<?php echo base_url() ?>index.php/usertype/editusertype',
         data: {id: id},
         async: false,
         dataType: 'json',
         success: function(data){
-            $('#showddel').html('ต้องการลบสถานที่   "'+data.oc_desc+'"');  
-            $('input[name=txtdelID]').val(data.oc_ID);
+            $('#showddel').html('ต้องการลบสถานที่   "'+data.usertype_name+'"');  
+            $('input[name=usertypeID]').val(data.usertype_ID);
         },
           error: function(){
             alert('ไม่สามารถลบข้อมูล');
@@ -507,12 +495,11 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
  
 
 
-
     //แสดงข้อมูล
     function showAll(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/offensecate/showAll',
+        url: '<?php echo base_url() ?>index.php/usertype/showAll',
         async: false,
         dataType: 'json',
         success: function(data){
@@ -520,13 +507,13 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
           var i;
           for(i=0; i<data.length; i++){
             html +='<tr>'+
-                  '<td>'+data[i].oc_ID+'</td>'+
-                  '<td>'+data[i].oc_desc+'</td>'+
+                  '<td>'+data[i].usertype_ID+'</td>'+
+                  '<td>'+data[i].usertype_name+'</td>'+
                 
 
                   '<td>'+
-                    '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].oc_ID+'"></i></a>'+
-                    '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].oc_ID+'"></i></a>'+
+                    '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].usertype_ID+'"></i></a>'+
+                    '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].usertype_ID+'"></i></a>'+
                   '</td>'+
                   '</tr>';
           }
