@@ -9,7 +9,7 @@ class Dormtype extends CI_Controller {
     
     public function index()
     {
-        //List ข้อมูลมาแสดงในหน้าจอ
+        //List ข้อมูลมาแสดงในหน้าจอ 
         $this->template();
         
     }
