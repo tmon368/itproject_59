@@ -5,6 +5,8 @@
     
   </div>
 <head>
+
+	<title>ประเภทหอพัก</title>
  
 </head>
 <body>
@@ -63,7 +65,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				
 					<label for="validationCustom01..'">รหัสประเภทหอพัก </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
-					&nbsp;&nbsp;&nbsp;
+					
 					<div class="col-lg-3">
                     <input type="text" name="txtID"  class="form-control"  maxlength="1" onkeyup="count_down_id(this);" required>
 			
@@ -94,7 +96,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				
 						<label for="validationCustom02..'">ประเภทหอพัก </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
-					&nbsp;&nbsp;&nbsp;
+					
                     <input type="text" name="txtname"  class="form-control"  maxlength="30" onkeyup="count_downname(this);" required>
 			
 			</div>
@@ -339,8 +341,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                         <table id="style_table" class="table table-hover">
                                             <thead>
                                                 <tr>
-
-                                                    <th>รหัสประเภทหอพัก <th>
+                                                    <th>รหัสประเภทหอพัก </th>
                                                     <th>ชื่อประเภทหอพัก </th>
 													<th>จัดการ</th>
 
