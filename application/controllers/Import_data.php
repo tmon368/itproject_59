@@ -411,6 +411,259 @@ redirect(base_url() . 'index.php/import_data/index');
 	
 	
 	
+	public  function importoffense()
+	{
+	    
+	    if(isset($_POST['btn_submitoffense'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
+	        
+	        
+	        $tmpFile = $_FILES['_fileup']['tmp_name'];
+	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+	        $_fileup = $_FILES['_fileup'];
+	        $info = pathinfo($fileName);
+	        $allow_file = array("csv","xls","xlsx");
+	        /*  print_r($info);         // ข้อมูลไฟล์
+	         print_r($_fileup);*/
+	        if($fileName!="" && in_array($info['extension'],$allow_file)){
+	            // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+	            $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
+	            
+	            
+	            // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+	            $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+	            
+	            // วนลูปแสดงข้อมูล
+	            $data_arr=array();
+	            foreach ($cell_collection as $cell) {
+	                // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+	                $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+	                // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+	                $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+	                // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+	                $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+	                
+	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
+	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+	                $start_row = 2;
+	                // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+	                $col_name = array(
+	                "A"=>"off_ID",
+	                "B"=>"off_desc",
+                    "C"=>"point",
+                    "D"=>"oc_ID"
+	                    
+	                    );
+	                if($row >= $start_row){
+	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+	                }
+	            }
+	            //print_r($data_arr);
+	        }
+	    }
+	    ?>
+ </pre>
+  
+ <br>
+<pre>
+
+<!--  <table class="table table-bordered"> -->
+<?php
+// สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+function prepare_data($data){
+    // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+    $arr_field = array("off_ID","off_desc","point","oc_ID");
+    if(is_array($data)){
+        foreach($arr_field as $v){
+            if(!isset($data[$v])){
+                $data[$v]="";           
+            }
+
+        }
+    }
+    return $data;
+}
+
+// นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+if(isset($data_arr) && count($data_arr)>0){
+    foreach($data_arr as $row){
+        $row = prepare_data($row);
+
+
+?>
+<!--  
+    <tr>
+        <td><?=$row['off_ID']?></td>
+        <td><?=$row['off_desc']?></td>
+        <td><?=$row['point']?></td>
+        <td><?=$row['oc_ID']?></td>
+
+    </tr>
+-->
+<?php
+
+$off_ID = $row['off_ID' ];
+$off_desc = $row['off_desc'];
+$point = $row['point' ];
+$oc_ID = $row['oc_ID'];
+$data = array(
+    'off_ID'		=>	$off_ID,
+    'off_desc'			=>	$off_desc,
+    'point'		=>	$point,
+    'oc_ID'			=>	$oc_ID
+
+);
+
+$this->import_data_model->insertoffense($data);
+
+    }
+
+}
+$this->session->set_flashdata('message', '<br/>importข้อมูลฐานความผิดเรียบร้อย');
+
+redirect(base_url() . 'index.php/import_data/index');
+
+?>    
+<?php 
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public  function importoffensecate()
+	{
+	    
+	    if(isset($_POST['btn_submitoffensecate'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
+	        
+	        
+	        $tmpFile = $_FILES['_fileup']['tmp_name'];
+	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+	        $_fileup = $_FILES['_fileup'];
+	        $info = pathinfo($fileName);
+	        $allow_file = array("csv","xls","xlsx");
+	        /*  print_r($info);         // ข้อมูลไฟล์
+	         print_r($_fileup);*/
+	        if($fileName!="" && in_array($info['extension'],$allow_file)){
+	            // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+	            $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
+	            
+	            
+	            // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+	            $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+	            
+	            // วนลูปแสดงข้อมูล
+	            $data_arr=array();
+	            foreach ($cell_collection as $cell) {
+	                // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+	                $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+	                // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+	                $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+	                // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+	                $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+	                
+	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
+	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+	                $start_row = 2;
+	                // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+	                $col_name = array(
+	                "A"=>"oc_ID",
+	                "B"=>"oc_desc"
+	            
+	                    
+	                    );
+	                if($row >= $start_row){
+	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+	                }
+	            }
+	            //print_r($data_arr);
+	        }
+	    }
+	    ?>
+ </pre>
+  
+ <br>
+<pre>
+
+<!--  <table class="table table-bordered"> -->
+<?php
+// สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+function prepare_data($data){
+    // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+    $arr_field = array("oc_ID","oc_desc");
+    if(is_array($data)){
+        foreach($arr_field as $v){
+            if(!isset($data[$v])){
+                $data[$v]="";           
+            }
+
+        }
+    }
+    return $data;
+}
+
+// นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+if(isset($data_arr) && count($data_arr)>0){
+    foreach($data_arr as $row){
+        $row = prepare_data($row);
+
+
+?>
+<!--  
+    <tr>
+        <td><?=$row['oc_ID']?></td>
+        <td><?=$row['oc_desc']?></td>
+
+
+    </tr>
+-->
+<?php
+
+$oc_ID = $row['oc_ID' ];
+$oc_desc = $row['oc_desc'];
+
+$data = array(
+    'oc_ID'		=>	$oc_ID,
+    'oc_desc'			=>	$oc_desc
+
+);
+
+$this->import_data_model->insertoffensecate($data);
+
+    }
+
+}
+$this->session->set_flashdata('message', '<br/>importข้อมูลหมวดความผิดเรียบร้อย');
+
+redirect(base_url() . 'index.php/import_data/index');
+
+?>    
+<?php 
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
