@@ -44,7 +44,11 @@ class import_data_model extends CI_Model
 	    
 	    $this->db->insert('offensecate',$data);
 	}
-	
+	function insertholiday($data)
+	{
+	    
+	    $this->db->insert('holiday',$data);
+	}
 	
 	function updateplace($BUILDID,$dataupdate)
 	{
