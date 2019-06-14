@@ -7,7 +7,6 @@ class dormtype_model extends CI_Model {
         
     }
     
- 
  public function showAll(){
         $this->db->order_by('dormtype_ID', 'desc');
         $query = $this->db->get('dormtype');

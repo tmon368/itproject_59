@@ -14,7 +14,6 @@ class Dormtype extends CI_Controller {
         
     }
  
-    
     public function template(){
         $this->load->view('template/template1');
         $this->load->view('template/template2');
