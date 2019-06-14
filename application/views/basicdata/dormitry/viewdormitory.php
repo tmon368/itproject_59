@@ -460,7 +460,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
         async: false,
         dataType: 'json',
         success: function(data){
-            $('#showddel').html('ต้องการลบฐานความผิด   "'+data.dname+'"');  
+            $('#showddel').html('ต้องการลบข้อมููลหอพัก  "'+data.dname+'"');  
             $('input[name=txtdelID]').val(data.dorm_ID);
         },
           error: function(){
