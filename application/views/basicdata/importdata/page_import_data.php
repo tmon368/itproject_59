@@ -53,17 +53,17 @@
                   <!-- Tab panes -->
                   <div class="tab-content">
                     <div id="home" class="container tab-pane active"><br>
-                    	<?php  
+                    	<?php
 echo '<center><label class="text-danger">'.$this->session->flashdata
-("message").'</label></center>';  
+("message").'</label></center>';
 
             ?>
                       <h3> <span><i class="	fa fa-check-circle" style="color:#58D68D;font-size:28px;"></i></span>&nbsp;อัพเดตข้อมูลล่าสุด</h3>
                     </br>
-                      <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv</p>
+                      <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv  &nbsp;&nbsp;ตาราง:&nbsp;&nbsp;usertype</p>
                       <p>การอัพเดตล่าสุด:&nbsp;&nbsp; วันศุกร์ 13 พฤษภาคม 2561</p>
                       <p>เวลา:&nbsp;&nbsp; 22:30:59 น. </p>
-                      <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; 120 ระเบียน </p>
+                      <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; 120 ระเบียน</p>
                     </div>
 
                     <!--นำเข้าข้อมูลกลุ่มผู้ใช้งาน-->
@@ -74,7 +74,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                       <form action="<?php echo base_url(); ?>index.php/import_data/importusertype" method="post" enctype="multipart/form-data" name="form1">
                         <div class="form-group">
                           <input type="file" name="_fileup" id="_fileup" class="form-control-file border">
-                          
+
                         </div>
                         <button type="submit" name="btn_submitusertype"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
                       </form>
@@ -100,7 +100,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                         <button type="submit" class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
                       </form>
                     </div>
-                    
+
                     <!--นำเข้าข้อมูลฐานความผิด-->
                     <div id="menu3" class="container tab-pane fade"><br>
                       <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูล</h3>
@@ -133,10 +133,10 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                       <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
 
                     <form action="<?php echo base_url(); ?>index.php/import_data/importdormtype" method="post" enctype="multipart/form-data" name="form1">
-                     
+
                         <div class="form-group">
                         <input type="file" name="_fileup" id="_fileup" class="form-control-file border">
-                          
+
                         </div>
                         <button type="submit" name="btn_submitdormtype"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
                       </form>
@@ -160,13 +160,13 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                       <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูลสถานที่</h3>
                       <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
 					<form action="<?php echo base_url(); ?>index.php/import_data/importplace" method="post" enctype="multipart/form-data" name="form1">
-                     
+
                         <div class="form-group">
                         <input type="file" name="_fileup" id="_fileup" class="form-control-file border">
-                          
+
                         </div>
                         <button type="submit" name="btn_submitplace"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
-                        
+
                       </form>
                     </div>
 
