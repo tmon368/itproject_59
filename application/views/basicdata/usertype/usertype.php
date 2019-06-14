@@ -49,7 +49,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
       <div class="modal-header">
         <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มประเภทผู้ใช้งาน</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">?</span>
+          <span aria-hidden="true">x</span>
         </button>
       </div>
       
