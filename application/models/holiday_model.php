@@ -6,6 +6,20 @@ class holiday_model extends CI_Model {
         parent::_construct();
         
     }
+
+public function findByYear($year){
+    // // $this->db->select('*')
+    // $this->db->from('holiday');
+    // $this->db->where('YEAR(h_date)','2018');
+    // // $this->db->like('')
+    // $query = $this->db->get();
+    // if($query->num_rows() > 0){
+    //     return $query->result();
+    // }else{
+    //     return false;
+    // }
+    
+}
     
     
  public function showAll(){
@@ -21,7 +35,7 @@ class holiday_model extends CI_Model {
 
     public function addholiday(){
         $field = array(
-            // 'h_ID'=>$this->input->post('txtID'),
+            'h_ID'=>$this->input->post('txtID'),
             'h_date'=>$this->input->post('txtdate'),
             'description'=>$this->input->post('txtdescrip'),
             'h_type'=>$this->input->post('addtype')
@@ -34,7 +48,7 @@ class holiday_model extends CI_Model {
         }else{
             return false;
         }
-    }
+    } 
 
     public function editholiday(){
         $id = $this->input->get('id');
@@ -48,12 +62,11 @@ class holiday_model extends CI_Model {
     }
 
     public function updateholiday(){
-        $id = $this->input->post('txteditID');
+        $id = $this->input->post('txteditid');
         $field = array(
-        'h_ID'=>$this->input->post('txteditname'),
-        'h_date'=>$this->input->post('editdate'),
-        'description'=>$this->input->post('editdescrip'),
-        'h_type'=>$this->input->post('edittype'),
+        'h_date'=>$this->input->post('txtdate'),
+        'description'=>$this->input->post('txtdescrip'),
+        'h_type'=>$this->input->post('addtype'),
 
         );
         $this->db->where('h_ID', $id);

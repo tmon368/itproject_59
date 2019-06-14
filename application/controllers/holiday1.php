@@ -19,7 +19,7 @@ class Holiday1 extends CI_Controller {
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-	    $this->load->view('ho/holiday1');
+	    $this->load->view('basicdata/ho/holiday1');
 	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
 	    /*$this->load->view('template/page_usergroup');*/ /*หน้าเพิ่มประเภทผู้ใช้*/
 	    /*$this->load->view('template/page_import_data');*/
@@ -35,7 +35,7 @@ class Holiday1 extends CI_Controller {
 		$this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-		$this->load->view('ho/holiday1');
+		$this->load->view('basicdata/ho/holiday1');
 		$this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	}
@@ -45,7 +45,7 @@ class Holiday1 extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function addholiday(){
+	public function addholiday(){ 
 		$result = $this->model->addholiday();
 		$msg['success'] = false;
 		$msg['type'] = 'add';
@@ -88,5 +88,20 @@ class Holiday1 extends CI_Controller {
 	    redirect(base_url() . 'index.php/holiday1/edit');
 		}
 		echo json_encode($msg);
+
+	
+	}
+
+	public function findHolidayByYear(){
+		$year = $_GET['year'];
+		$this->load->model('holiday_model');
+		$data['data'] = $this->holiday_model->findByYear($year);
+		
+		$this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+		$this->load->view('basicdata/holiday/holiday',$data);
+		$this->load->view('template/template5');
+	    $this->load->view('template/template6');
 	}
 }

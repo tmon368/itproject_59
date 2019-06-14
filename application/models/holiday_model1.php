@@ -13,7 +13,7 @@ class holiday_model1 extends CI_Model {
         $this->db->where('active_track', '0');
         $query = $this->db->get('holiday1');
         if($query->num_rows() > 0){
-            return $query->result();
+            return $query->result(); 
         }else{
             return false;
         }
@@ -21,8 +21,8 @@ class holiday_model1 extends CI_Model {
 
     public function addholiday(){
         $field = array(
-            'hh_ID'=>$this->input->post('txtID'),
-            'h_year'=>$this->input->post('txtdate'),
+            'hh_ID'=>$this->input->post('id'),
+            'h_year'=>$this->input->post('name'),
             
 
             
@@ -47,10 +47,10 @@ class holiday_model1 extends CI_Model {
     }
 
     public function updateholiday(){
-        $id = $this->input->post('txteditID');
+        $id = $this->input->post('id');
         $field = array(
-        'hh_ID'=>$this->input->post('txteditname'),
-        'h_year'=>$this->input->post('editdate'),
+        'hh_ID'=>$this->input->post('id'),
+        'h_year'=>$this->input->post('name'),
         
 
         );
@@ -75,7 +75,7 @@ class holiday_model1 extends CI_Model {
         if($this->db->affected_rows() > 0){
             return true;
         }else{
-            return false;
+            return false; 
         }
     }
     

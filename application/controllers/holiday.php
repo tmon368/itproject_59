@@ -12,14 +12,14 @@ class Holiday extends CI_Controller {
 		//List  ข้อมูลมาแสดงในหน้าจอ
 		$this->template();
 		
-	}
+	} 
 	
 	
 	public function template(){
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-	    $this->load->view('holiday/holiday');
+	    $this->load->view('basicdata/holiday/holiday');
 	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
 	    /*$this->load->view('template/page_usergroup');*/ /*หน้าเพิ่มประเภทผู้ใช้*/
 	    /*$this->load->view('template/page_import_data');*/
@@ -35,7 +35,7 @@ class Holiday extends CI_Controller {
 		$this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-		$this->load->view('holiday/holiday');
+		$this->load->view('basicdata/holiday/holiday');
 		$this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	}

@@ -1,5 +1,3 @@
-<!--Navigation Bar-->
-
 <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
       <!--<nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -16,7 +14,7 @@
                     <small class="designation text-muted">Manager</small>
                     <span class="status-indicator online"></span>
                   </div>
-                </div>
+                </div> 
               </div>
               <button class="btn btn-success btn-block">New Project
                 <i class="mdi mdi-plus"></i>
@@ -36,7 +34,7 @@
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
+              <ul class="nav flex-column sub-menu"> 
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
                 </li>
@@ -107,9 +105,7 @@
                   <img src="<?php echo base_url ('re/images/faces/face1.jpg'); ?>" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php  
-              echo $this->session->userdata('username');  
-            ?></p>
+                  <p class="profile-name">Richard V.Welsh</p>
                   <div>
                     <small class="designation text-muted">Manager</small>
                     <span class="status-indicator online"></span>
@@ -133,7 +129,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
+                  <a class="nav-link" href="<?php echo site_url("Usertype") ?>">กลุ่มผู้ใช้งาน</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
@@ -141,7 +137,7 @@
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
                 </li>
-
+        
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
                 </li>
