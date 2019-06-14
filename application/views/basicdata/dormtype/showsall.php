@@ -219,6 +219,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
                                         <!-- <form action="<?php echo base_url(); ?>index.php/dormtype/edit" method="post" id="editform"  class="needs-validation" >  -->
                                         <!------------------>
+                                        
                                     </td>
                                 </tr>
                             </tbody>
