@@ -9,7 +9,7 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('template/template1');
 		$this->load->view('template/template2');
 		$this->load->view('template/template3');
-		$this->load->view('template/blank'); /*หน้าเพิ่มหมวดความผิด*/
+		$this->load->view('template/blank'); 
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 

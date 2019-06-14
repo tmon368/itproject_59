@@ -3,7 +3,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html">
+        <a class="navbar-brand brand-logo" href="<?php echo site_url("Admin_dashboard") ?>">
           <img src="<?php echo base_url('re/images/logo_sys.png'); ?>" alt="logo" width="80" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
@@ -182,3 +182,4 @@
     </nav>
     <!--2-->
     <!-- partial -->
+    
