@@ -7,7 +7,7 @@
           <img src="<?php echo base_url('re/images/logo_sys.png'); ?>" alt="logo" width="80" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
-          <img src="<?php echo base_url('re/images/logo.svg'); ?>" alt="logo" />
+          <img src="<?php echo base_url('re/images/logo_sys.png'); ?>" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
