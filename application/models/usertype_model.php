@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class usertype_model extends CI_Model {
     public function _construct()

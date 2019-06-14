@@ -113,7 +113,8 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
               document.getElementById('count3').innerHTML = obj.value.length;
               var element = document.getElementById('count4');
 
-              element.innerHTML = 50 - obj.value.length;
+
+                element.innerHTML = 50 - obj.value.length;
               if (50 - obj.value.length == 0) {
                   element.style.color = 'red';
 
