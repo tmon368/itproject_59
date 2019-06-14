@@ -3,11 +3,11 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <div class="alert alert-success" style="display: none;">
     
-  </div>
+ </div>
 <head>
 
 	<title>ประเภทหอพัก</title>
- 
+
 </head>
 <body>
   <meta charset="UTF-8">
