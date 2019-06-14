@@ -39,7 +39,7 @@ class Holiday1 extends CI_Controller {
 		$this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	}
-
+ 
 	public function showAll(){
 		$result = $this->model->showAll();
 		echo json_encode($result);
