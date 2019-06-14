@@ -76,7 +76,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                           <input type="file" name="_fileup" id="_fileup" class="form-control-file border">
                           
                         </div>
-                        <button type="submit" name="btn_submit"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
+                        <button type="submit" name="btn_submitusertype"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
                       </form>
                     </div>
                     <script type="text/javascript">
@@ -132,11 +132,13 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                       <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูล</h3>
                       <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
 
-                      <form action="/action_page.php">
+                    <form action="<?php echo base_url(); ?>index.php/import_data/importdormtype" method="post" enctype="multipart/form-data" name="form1">
+                     
                         <div class="form-group">
-                          <input type="file" class="form-control-file border" name="file">
+                        <input type="file" name="_fileup" id="_fileup" class="form-control-file border">
+                          
                         </div>
-                        <button type="submit" class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
+                        <button type="submit" name="btn_submitdormtype"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
                       </form>
                     </div>
 
@@ -163,7 +165,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                         <input type="file" name="_fileup" id="_fileup" class="form-control-file border">
                           
                         </div>
-                        <button type="submit" name="btn_submit"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
+                        <button type="submit" name="btn_submitplace"class="btn btn-success btn-fw" style="font-family:'Prompt',sans-serif;">ยืนยัน</button>
                         
                       </form>
                     </div>

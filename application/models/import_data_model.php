@@ -21,6 +21,21 @@ class import_data_model extends CI_Model
 		$this->db->insert('place',$data);
 	}
 	
+	
+	function insertdormtype($data)
+	{
+	    
+	    $this->db->insert('dormtype',$data);
+	}
+	
+	function insertusertype($data)
+	{
+	    
+	    $this->db->insert('usertype',$data);
+	}
+	
+	
+	
 	function updateplace($BUILDID,$dataupdate)
 	{
 	    $this->db->where('place_ID', $BUILDID);
