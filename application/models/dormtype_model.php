@@ -59,14 +59,9 @@ class dormtype_model extends CI_Model {
             return false;
         }
     }
-
+ 
     function deletedormtype(){
          $id = $this->input->post('txtdelID');
-        /*
-        $field = array(
-        'active_track'=> '1'
-
-        );*/
         $this->db->where('dormtype_ID', $id);
         $this->db->delete('dormtype');
         //$this->db->delete('dormtype', $field);
