@@ -41,7 +41,7 @@ class Loginuser extends CI_Controller
             }
             else
             {
-                $this->session->set_flashdata('error', '<br/>ชื่อผู้ใช้และรหัสผ่านไม่ถูกต้อง');
+                $this->session->set_flashdata('error', '<br/>ชื่อผู้ใช้งานและรหัสผ่านไม่ถูกต้อง');
                 redirect(base_url() . 'index.php/loginuser/login');
             }
         }
@@ -60,7 +60,7 @@ class Loginuser extends CI_Controller
             //$data['records'] = $this->login_model->getdata();
             //if($this->session->userdata('username')== employee.UName){
             
-            redirect(base_url() . 'index.php/Admin_dashboard');
+            redirect(base_url() . 'index.php/Admin_dashboard',$username);
        
             
             //}
