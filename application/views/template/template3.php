@@ -1,3 +1,5 @@
+<!--Navigation Bar-->
+
 <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
       <!--<nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -34,7 +36,7 @@
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu"> 
+              <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
                   <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
                 </li>
@@ -129,7 +131,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Usertype") ?>">กลุ่มผู้ใช้งาน</a>
+                  <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
@@ -137,7 +139,7 @@
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
                 </li>
-        
+
         <li class="nav-item">
                   <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
                 </li>
