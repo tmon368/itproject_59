@@ -65,7 +65,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				
 					<label for="validationCustom01..'">รหัสหมวดความผิด  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
-					&nbsp;&nbsp;&nbsp;
+					
 					<div class="col-lg-3">
                     <input type="text" name="txtID"  class="form-control"  maxlength="2" onkeyup="count_down_id(this);" required>
 			
@@ -96,7 +96,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				
 						<label for="validationCustom02..'">ชื่อหมวดความผิด  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
-					&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="txtname"  class="form-control"  maxlength="50" onkeyup="count_downname(this);" required>
 			
 			</div>
@@ -508,7 +508,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
         async: false,
         dataType: 'json',
         success: function(data){
-            $('#showddel').html('ต้องการลบสถานที่   "'+data.oc_desc+'"');  
+            $('#showddel').html('ต้องการลบหมวดความผิด   "'+data.oc_desc+'"');  
             $('input[name=txtdelID]').val(data.oc_ID);
         },
           error: function(){
