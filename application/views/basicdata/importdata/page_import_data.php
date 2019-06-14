@@ -53,6 +53,11 @@
                   <!-- Tab panes -->
                   <div class="tab-content">
                     <div id="home" class="container tab-pane active"><br>
+                    	<?php  
+echo '<center><label class="text-danger">'.$this->session->flashdata
+("message").'</label></center>';  
+
+            ?>
                       <h3> <span><i class="	fa fa-check-circle" style="color:#58D68D;font-size:28px;"></i></span>&nbsp;อัพเดตข้อมูลล่าสุด</h3>
                     </br>
                       <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv</p>

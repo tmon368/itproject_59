@@ -155,7 +155,10 @@ $this->import_data_model->insertplace($data);
 
 
 }
+$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
+
 redirect(base_url() . 'index.php/import_data/index');
+
 ?>    
 <?php 
 	    
