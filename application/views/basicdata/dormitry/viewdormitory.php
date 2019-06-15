@@ -180,10 +180,10 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					<div class="col-lg-3" >
 					<select name="txtedittype"class="form-control"  required >
-					<option value ="1">     หอหญิง   </option>
-					<option value ="2">    หอชาย       </option>
-					<option value ="3">    หอพัก WU RESIDENCE      </option>
-					<option value ="4   ">        หอพักนอกมหาวิทยาลัย          </option>
+					<option value ="1">  1 </option>
+					<option value ="2">  2 </option>
+					<option value ="3">  3 </option>
+					<option value ="4">  4 </option>
 					</select>
 
       </div></div></div>
