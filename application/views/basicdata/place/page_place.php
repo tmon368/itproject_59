@@ -2,8 +2,8 @@
 <html lang="en">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <center>
-<div  class="alert alert-success" role="alert" style="display: none;">
-</div>
+<div  class="alert alert-success" role="alert" style="display: none;"></div>
+<div  class="alert alert-danger" role="alert" style="display: none;"></div>
 </center>
 <head>
 
@@ -61,9 +61,9 @@
                                             <label for="validationCustom01">รหัสสถานที่ </label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
-                                            <div class="col-lg-3">
-                                                <input type="text" name="txtID" class="form-control" maxlength="4"
-                                                    required>
+                                            <div class="col-lg-4">
+                                                <input type="text" name="txtID" id="place_ID" class="form-control" maxlength="4"
+                                                    required> <div id="msg1"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -357,6 +357,29 @@
     <script>
     $(function() {
         showAll();
+
+        $("#place_ID").change(function(){
+            var flag;
+            $.ajax({
+                url: "<?php echo base_url(); ?>index.php/place/checkkey",
+                data: "place_ID=" + $("#place_ID").val(),
+                type: "POST",
+                async:false,
+                success: function(data, status) { 
+                   var result = data.split(",");
+                   flag = result[0];
+                   var msg = result[1];
+                  // alert(msg)
+                   $("#msg1").html(msg);                                                                               
+
+                },
+                error: function(xhr, status, exception) { alert(status); }
+            });
+            return flag;
+        });
+    	
+
+        
         
 
         //เพิ่มข้อมูล
@@ -412,7 +435,11 @@
 						}
 					},
 					error: function(){
-						alert('Could not add data');
+						alert('id นี้ถูกใช้งานแล้ว');
+						$('#exampleModalCenter').modal('hide');
+						$('#formadd')[0].reset();		
+						$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+						showAll();
 					}
 				});
 			}

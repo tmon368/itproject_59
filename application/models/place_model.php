@@ -17,7 +17,22 @@ class place_model extends CI_Model {
             return false;
         }
     }
-
+//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
+    public function checkkey(){
+        $place_ID = $this->input->post('place_ID');
+        $this->db->where('place_ID', $place_ID);
+        $query = $this->db->get('place');
+        if($query->num_rows($query) == 0){
+            echo "true,<span style='color:green'>สามารถใช้งานได้</span>,";
+        }
+        else{
+            echo "false,<span style='color:red'>ไม่สามารถใช้งานได้</span>,";
+        }
+        
+    }
+    
+    
+    
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable place
     public function addplace(){
         $field = array(

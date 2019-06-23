@@ -35,6 +35,12 @@ class Place extends CI_Controller {
 		$result = $this->model->showAll();
 		echo json_encode($result);
 	}
+	
+	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
+	public function checkkey(){
+	    $result = $this->model->checkkey();
+	    echo json_encode($result);
+	}
     
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addplace(){
@@ -45,6 +51,9 @@ class Place extends CI_Controller {
 		
 		if($result){
 		    $msg['success'] = true;
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/place/index');
 		}
 		echo json_encode($msg);
 	}
