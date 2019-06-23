@@ -41,11 +41,10 @@ class Place extends CI_Controller {
 		$result = $this->model->addplace();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
+		$msg['success'] = false;
+		
 		if($result){
-			$msg['success'] = true;
-			$this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
-			 redirect(base_url() . 'index.php/place/index');
-
+		    $msg['success'] = true;
 		}
 		echo json_encode($msg);
 	}

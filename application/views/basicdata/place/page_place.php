@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<div class="alert alert-success" style="display: none;">
+<center>
+<div  class="alert alert-success" role="alert" style="display: none;">
 </div>
+</center>
 <head>
 
     <title>สถานที่ admin</title>
@@ -25,18 +27,17 @@
             <div class="card-header" id="card_2">
                 <h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;สถานที่</h6>
             </div>
-            <?php  
-echo '<center><label class="text-danger">'.$this->session->flashdata
-("message").'</label></center>';  
-            ?>
+          
+           
+           
 
             <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-map-marker-alt"></i></span>เพิ่มสถานที่
+                    <span><i class="fas fa-map-marker-alt" id="btnAdd"></i></span>เพิ่มสถานที่
                 </button>
                 &nbsp;
             </div>
-            
+            <div id="myModal"  > </div>
             <!-- Modal เพิ่มข้อมูล -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -115,12 +116,80 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="insert" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+                            <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
                         </div>
                         </form>
                     </div>
                 </div>
             </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        	<form id="myForm" action="" method="post" class="form-horizontal">
+        		<input type="hidden" name="txtId" value="0">
+        		<div class="form-group">
+        			<label for="name" class="label-control col-md-4">Employee Name</label>
+        			<div class="col-md-8">
+        				<input type="text" name="txtEmployeeName" class="form-control">
+        			</div>
+        		</div>
+        		<div class="form-group">
+        			<label for="address" class="label-control col-md-4">Address</label>
+        			<div class="col-md-8">
+        				<textarea class="form-control" name="txtAddress"></textarea>
+        			</div>
+        		</div>
+        	</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <!--------------------------------->
             <!-- Modal ส่วน edit -->
@@ -288,6 +357,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
     <script>
     $(function() {
         showAll();
+        
 
         //เพิ่มข้อมูล
         $('#btnAdd').click(function() {
@@ -295,56 +365,65 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
             $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/place/addplace');
         });
 
-        $('#btnSave').click(function() {
-            var url = $('#myForm').attr('action');
-            var data = $('#myForm').serialize();
-            //validate form
-            var empoyeeName = $('input[name=txtEmployeeName]');
-            var address = $('textarea[name=txtAddress]');
-            var result = '';
-            if (empoyeeName.val() == '') {
-                empoyeeName.parent().parent().addClass('has-error');
-            } else {
-                empoyeeName.parent().parent().removeClass('has-error');
-                result += '1';
-            }
-            if (address.val() == '') {
-                address.parent().parent().addClass('has-error');
-            } else {
-                address.parent().parent().removeClass('has-error');
-                result += '2';
-            }
+        $('#btnSave').click(function(){
+			var url = $('#formadd').attr('action');
+			var data = $('#formadd').serialize();
+			//validate form
+			var place_ID = $('input[name=txtID]');
+			var place_name = $('input[name=txtname]');
+			var description = $('textarea[name=txtdescription]');
+			var result = '';
+			
+			if(place_ID.val()==''){
+				place_ID.parent().parent().addClass('has-error');
+			}else{
+				place_ID.parent().parent().removeClass('has-error');
+				result +='1';
+			}
+			if(place_name.val()==''){
+				place_name.parent().parent().addClass('has-error');
+			}else{
+				place_name.parent().parent().removeClass('has-error');
+				result +='2';
+			}
+			if(description.val()==''){
+				description.parent().parent().addClass('has-error');
+			}else{
+				description.parent().parent().removeClass('has-error');
+				result +='3';
+			}
 
-            if (result == '12') {
-                $.ajax({
-                    type: 'ajax',
-                    method: 'post',
-                    url: url,
-                    data: data,
-                    async: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.success) {
-                            $('#myModal').modal('hide');
-                            $('#myForm')[0].reset();
-                            if (response.type == 'add') {
-                                var type = 'added'
-                            } else if (response.type == 'update') {
-                                var type = "updated"
-                            }
-                            $('.alert-success').html('Employee ' + type + ' successfully')
-                                .fadeIn().delay(4000).fadeOut('slow');
-                            showAllEmployee();
-                        } else {
-                            alert('Error');
-                        }
-                    },
-                    error: function() {
-                        alert('ไม่สามารถเพิ่มข้อมูล');
-                    }
-                });
-            }
-        });
+			if(result=='123'){
+				$.ajax({
+					type: 'ajax',
+					method: 'post',
+					url: url,
+					data: data,
+					async: false,
+					dataType: 'json',
+					success: function(response){
+						if(response.success){
+							$('#exampleModalCenter').modal('hide');
+							$('#formadd')[0].reset();		
+							$('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							showAll();
+						}else{
+							alert('Error');
+						}
+					},
+					error: function(){
+						alert('Could not add data');
+					}
+				});
+			}
+		});
+
+
+
+
+
+
+        
 
         //แก้ไขข้อมูล
         $('#showdata').on('click', '.fa-edit', function() {
