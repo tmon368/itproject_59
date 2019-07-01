@@ -2,8 +2,9 @@
 <html lang="en">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <center>
-<div  class="alert alert-success" role="alert" style="display: none;"></div>
-<div  class="alert alert-danger" role="alert" style="display: none;"></div>
+<strong><div  class="alert alert-success" role="alert" style="display: none;"></div></strong>
+<strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
+<strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
 </center>
 <head>
 
@@ -86,7 +87,7 @@
                                                 maxlength="100" onkeyup="count_downdescription(this);"
                                                 required></textarea>
                                         </div>
-                                        <div class="form-group sty_a">
+                                        <div class="form-group sty_a" id="textkey">
                                             <span id="count5">0</span>
                                             <span>/</span>
                                             <span id="count6" style="color:#6699ff;">100</span>
@@ -123,75 +124,18 @@
                 </div>
             </div>
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        	<form id="myForm" action="" method="post" class="form-horizontal">
-        		<input type="hidden" name="txtId" value="0">
-        		<div class="form-group">
-        			<label for="name" class="label-control col-md-4">Employee Name</label>
-        			<div class="col-md-8">
-        				<input type="text" name="txtEmployeeName" class="form-control">
-        			</div>
-        		</div>
-        		<div class="form-group">
-        			<label for="address" class="label-control col-md-4">Address</label>
-        			<div class="col-md-8">
-        				<textarea class="form-control" name="txtAddress"></textarea>
-        			</div>
-        		</div>
-        	</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             <!--------------------------------->
+
+            
+            
+            
+            
+           
+            
+            
+            
+            
+            
             <!-- Modal ส่วน edit -->
 
             <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -270,7 +214,7 @@
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="insert" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                            <button name="btnedit" type="submit" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
                         </div>
                         </form>
                     </div>
@@ -307,7 +251,7 @@
                             <div class="modal-footer">
                                 <button name="insert" type="reset" class="btn btn-secondary"
                                     data-dismiss="modal">ยกเลิก</button>
-                                <button name="insert" type="submit" class="btn btn-danger btn-fw">ลบ</button>
+                                <button name="btndel" id="btndel" type="submit" class="btn btn-danger btn-fw">ลบ</button>
 
                             </div>
                         </form>
@@ -355,7 +299,7 @@
     </div>
 
     <script>
-    $(function() {
+    $(document).ready(function(){
         showAll();
 
         $("#place_ID").change(function(){
@@ -383,6 +327,7 @@
         
 
         //เพิ่มข้อมูล
+        
         $('#btnAdd').click(function() {
             $('#exampleModalCenter').modal('show');
             $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/place/addplace');
@@ -427,8 +372,12 @@
 					success: function(response){
 						if(response.success){
 							$('#exampleModalCenter').modal('hide');
+							 //$(this).find('#formadd')[0].reset();
+							 
 							$('#formadd')[0].reset();		
 							$('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							$('#textkey').empty();			
+							$('#msg1').empty();
 							showAll();
 						}else{
 							alert('Error');
@@ -437,7 +386,7 @@
 					error: function(){
 						alert('id นี้ถูกใช้งานแล้ว');
 						$('#exampleModalCenter').modal('hide');
-						$('#formadd')[0].reset();		
+						$('#nav_sty')[0].reset();		
 						$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
 						showAll();
 					}
@@ -478,6 +427,99 @@
             });
         });
 
+
+
+
+
+
+        $('#btnedit').click(function(){
+			var url = $('#formupdate').attr('action');
+			var data = $('#formupdate').serialize();
+			//validate form
+			var place_ID = $('input[name=txteditID]');
+			var place_name = $('input[name=txteditname]');
+			var description = $('textarea[name=txteditdescription]');
+			var result = '';
+			
+			if(place_ID.val()==''){
+				place_ID.parent().parent().addClass('has-error');
+			}else{
+				place_ID.parent().parent().removeClass('has-error');
+				result +='1';
+			}
+			if(place_name.val()==''){
+				place_name.parent().parent().addClass('has-error');
+			}else{
+				place_name.parent().parent().removeClass('has-error');
+				result +='2';
+			}
+			if(description.val()==''){
+				description.parent().parent().addClass('has-error');
+			}else{
+				description.parent().parent().removeClass('has-error');
+				result +='3';
+			}
+
+
+			
+			if(result=='123'){
+				$.ajax({
+					type: 'ajax',
+					method: 'post',
+					url: url,
+					data: data,
+					async: false,
+					dataType: 'json',
+					success: function(response){
+						if(response.success){
+							$('#edit_file').modal('hide');
+							$('#formupdate')[0].reset();		
+							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							showAll();
+						}else{
+							alert('Error');
+						}
+					},
+					
+					error: function(){
+						//alert('id นี้ถูกใช้งานแล้ว');
+						$('#edit_file').modal('hide');
+						$('#formupdate')[0].reset();		
+						$('.alert-danger').html('แก้ไขเรยบร้อย').fadeIn().delay(2000).fadeOut('slow');
+						showAll();
+					}
+				});
+			}
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
         //ลบข้อมูล
         $('#showdata').on('click', '.fa-trash-alt', function() {
             var id = $(this).attr('data');
@@ -502,6 +544,77 @@
                 }
             });
         });
+
+
+
+
+
+
+        $('#btndel').click(function(){
+			var url = $('#formdelete').attr('action');
+			var data = $('#formdelete').serialize();
+		
+				$.ajax({
+					type: 'ajax',
+					method: 'post',
+					url: url,
+					data: data,
+					async: false,
+					dataType: 'json',
+					success: function(response){
+						if(response.success){
+							$('#del_file').modal('hide');
+							$('#formdelete')[0].reset();		
+							$('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							showAll();
+						}else{
+							alert('Error');
+						}
+					},
+					
+					error: function(){
+						//alert('id นี้ถูกใช้งานแล้ว');
+						$('#del_file').modal('hide');
+						$('#formdelete')[0].reset();		
+						$('.alert-danger').html('แก้ไขเรยบร้อย').fadeIn().delay(5000).fadeOut('slow');
+						showAll();
+					}
+				});
+			
+		});
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         //แสดงข้อมูล
         function showAll() {

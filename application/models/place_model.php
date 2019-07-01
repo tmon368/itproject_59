@@ -9,7 +9,7 @@ class place_model extends CI_Model {
     
     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable place โดยเรียงลำดับจาก place_ID
  public function showAll(){
-        $this->db->order_by('place_ID', 'desc');
+       $this->db->order_by('place_ID', 'ASC');
         $query = $this->db->get('place');
         if($query->num_rows() > 0){
             return $query->result();
@@ -80,11 +80,7 @@ class place_model extends CI_Model {
     //ฟังก์ชันลบข้อมูลในtable place
     function deleteplace(){
          $id = $this->input->post('txtdelID');
-         /*
-        $field = array(
-        'flag'=> '1'
-
-        );*/
+      
         $this->db->where('place_ID', $id);
         $this->db->delete('place');
         //$this->db->update('place', $field);

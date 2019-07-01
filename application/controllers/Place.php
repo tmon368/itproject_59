@@ -47,10 +47,12 @@ class Place extends CI_Controller {
 		$result = $this->model->addplace();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
-		$msg['success'] = false;
+		
 		
 		if($result){
 		    $msg['success'] = true;
+		    
+		    
 		}else{
 		    $msg['success'] = false;
 		    redirect(base_url() . 'index.php/place/index');
@@ -71,24 +73,22 @@ class Place extends CI_Controller {
 		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
-			$msg['success'] = true;
-			$this->session->set_flashdata('message', '<br/>แก้ไขข้อมูลเรียบร้อย');
-	    redirect(base_url() . 'index.php/place/index');
+		    $msg['success'] = true;
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/place/index');
 		}
-		redirect(base_url() . 'index.php/place/index');
-		//echo json_encode($msg);
+		echo json_encode($msg);
 	}
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deleteplace(){
 		$result = $this->model->deleteplace();
-		
-		$msg['success'] = false;
-		$msg['type'] = 'delete';
 		if($result){
-			$msg['success'] = true;
-				$this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
-	    redirect(base_url() . 'index.php/place/index');
+		    $msg['success'] = true;     
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/place/index');
 		}
 		echo json_encode($msg);
 	}
