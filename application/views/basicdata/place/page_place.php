@@ -87,13 +87,14 @@
                                                 maxlength="100" onkeyup="count_downdescription(this);"
                                                 required></textarea>
                                         </div>
+                                         <!-- 
                                         <div class="form-group sty_a" id="textkey">
                                             <span id="count5">0</span>
                                             <span>/</span>
                                             <span id="count6" style="color:#6699ff;">100</span>
                                         </div>
 
-                                        <!-- Alert for the number of characters-->
+                                        <!-- Alert for the number of characters
                                         
                                         <script>
                                         function count_downdescription(obj) {
@@ -109,7 +110,9 @@
                                             }
                                         }
                                         </script>
+                                        
                                     </div>
+                                    -->
                                 </center>
                                 <!------------------>
                         </div>
@@ -184,13 +187,15 @@
                                                 maxlength="100" onkeyup="count_down_editdescription(this);"
                                                 required></textarea>
                                         </div>
+                                        
+                                        <!--  
                                         <div class="form-group sty_a">
                                             <span id="count11">0</span>
                                             <span>/</span>
                                             <span id="count12" style="color:#6699ff;">100</span>
                                         </div>
 
-                                        <!-- Alert for the number of characters-->
+                                        <!-- Alert for the number of characters
                                         <script>
                                         function count_down_editdescription(obj) {
 
@@ -207,6 +212,7 @@
                                         }
                                         </script>
                                     </div>
+                                    -->
                                 </center>
                                 <!------------------>
                         </div>
@@ -386,8 +392,10 @@
 					error: function(){
 						alert('id นี้ถูกใช้งานแล้ว');
 						$('#exampleModalCenter').modal('hide');
-						$('#nav_sty')[0].reset();		
+						$('#formadd')[0].reset();
+						//$('#nav_sty')[0].reset();		
 						$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+						$('#msg1').empty();
 						showAll();
 					}
 				});
