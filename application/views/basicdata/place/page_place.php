@@ -117,7 +117,7 @@
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+                            <button name="btnSave" id="btnSave" type="button" class="btn btn-success">เพิ่มข้อมูล</button>
                         </div>
                         </form>
                     </div>
@@ -214,7 +214,7 @@
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="btnedit" type="submit" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
+                            <button name="btnedit" type="button" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
                         </div>
                         </form>
                     </div>
@@ -251,7 +251,7 @@
                             <div class="modal-footer">
                                 <button name="insert" type="reset" class="btn btn-secondary"
                                     data-dismiss="modal">ยกเลิก</button>
-                                <button name="btndel" id="btndel" type="submit" class="btn btn-danger btn-fw">ลบ</button>
+                                <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
 
                             </div>
                         </form>
@@ -553,7 +553,16 @@
         $('#btndel').click(function(){
 			var url = $('#formdelete').attr('action');
 			var data = $('#formdelete').serialize();
-		
+			var place_ID = $('input[name=txtdelID]');
+			var result = '';
+			
+			if(place_ID.val()==''){
+				place_ID.parent().parent().addClass('has-error');
+			}else{
+				place_ID.parent().parent().removeClass('has-error');
+				result +='1';
+			}
+			if(result=='1'){
 				$.ajax({
 					type: 'ajax',
 					method: 'post',
@@ -566,6 +575,7 @@
 							$('#del_file').modal('hide');
 							$('#formdelete')[0].reset();		
 							$('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							//$('#formdelete').empty();
 							showAll();
 						}else{
 							alert('Error');
@@ -580,7 +590,7 @@
 						showAll();
 					}
 				});
-			
+			}
 		});
         
 
