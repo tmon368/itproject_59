@@ -7,30 +7,44 @@ class holiday_model extends CI_Model {
         
     }
 
-public function findByYear($year){
-    // // $this->db->select('*')
-    // $this->db->from('holiday');
-    // $this->db->where('YEAR(h_date)','2018');
-    // // $this->db->like('')
-    // $query = $this->db->get();
-    // if($query->num_rows() > 0){
-    //     return $query->result();
-    // }else{
-    //     return false;
-    // }
-    
-}
+    public function findByYear($year){
+        // // $this->db->select('*')
+        // $this->db->from('holiday');
+        // $this->db->where('YEAR(h_date)','2018');
+        // // $this->db->like('')
+        // $query = $this->db->get();
+        // if($query->num_rows() > 0){
+        //     return $query->result();
+        // }else{
+        //     return false;
+        // }
+        
+    }
+        
     
     
  public function showAll(){
-        $this->db->order_by('h_ID', 'desc');
-        $this->db->where('active_track', '0');
-        $query = $this->db->get('holiday');
+    $this->db->order_by('h_ID', 'desc');
+    $this->db->where('active_track', '0');
+            $query = $this->db->get('holiday');
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
         }
+    }
+
+    public function checkkey(){
+        $place_ID = $this->input->post('h_ID');
+        $this->db->where('h_ID', $h_ID);
+        $query = $this->db->get('holiday');
+        if($query->num_rows($query) == 0){
+            echo "true,<span style='color:green'>สามารถใช้งานได้</span>,";
+        }
+        else{
+            echo "false,<span style='color:red'>ไม่สามารถใช้งานได้</span>,";
+        }
+        
     }
 
     public function addholiday(){
