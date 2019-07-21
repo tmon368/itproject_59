@@ -24,7 +24,7 @@ class holiday_model extends CI_Model {
     
     
  public function showAll(){
-    $this->db->order_by('h_ID', 'desc');
+    $this->db->order_by('h_ID', 'ASC');
     $this->db->where('active_track', '0');
             $query = $this->db->get('holiday');
         if($query->num_rows() > 0){
@@ -76,11 +76,12 @@ class holiday_model extends CI_Model {
     }
 
     public function updateholiday(){
-        $id = $this->input->post('txteditid');
+        $id = $this->input->post('txteditID');
         $field = array(
+        
         'h_date'=>$this->input->post('txtdate'),
-        'description'=>$this->input->post('txtdescrip'),
-        'h_type'=>$this->input->post('addtype'),
+        'description'=>$this->input->post('txteditname'),
+        'h_type'=>$this->input->post('edittype'),
 
         );
         $this->db->where('h_ID', $id);

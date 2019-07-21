@@ -54,11 +54,14 @@ class Holiday extends CI_Controller {
 		$result = $this->model->addholiday();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
+		
 		if($result){
-			$msg['success'] = true;
-			$this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
-			 redirect(base_url() . 'index.php/holiday/edit');
-
+		    $msg['success'] = true;
+		    
+		    
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/holiday/index');
 		}
 		echo json_encode($msg);
 	}
@@ -71,26 +74,25 @@ class Holiday extends CI_Controller {
 
 	public function updateholiday(){
 		$result = $this->model->updateholiday();
-		$msg['success'] = 'false';
+		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
-			$msg['success'] = true;
-			$this->session->set_flashdata('message', '<br/>แก้ไขข้อมูลเรียบร้อย');
-	    redirect(base_url() . 'index.php/holiday/edit');
+		    $msg['success'] = true;
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/holiday/index');
 		}
-		
 		echo json_encode($msg);
 	}
+    
 
 	public function deleteholiday(){
 		$result = $this->model->deleteholiday();
-		
-		//$msg['success'] = 'false';
-		//$msg['type'] = 'delete';
 		if($result){
-			$msg['success'] = true;
-				$this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
-	    redirect(base_url() . 'index.php/holiday/edit');
+		    $msg['success'] = true;     
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/holiday/index');
 		}
 		echo json_encode($msg);
 	}

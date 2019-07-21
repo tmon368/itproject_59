@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<div class="alert alert-success" style="display: none;">
-    
-  </div>
+
   <center>
 <strong><div  class="alert alert-success" role="alert" style="display: none;"></div></strong>
 <strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
@@ -31,50 +29,38 @@
 					<div class="card-header" id="card_2">
               			<h6 class="m-0 text-primary"><span  class="fas fa-calendar"></span>&nbsp;วันหยุด</h6>
             		</div>
-            		<?php  
-echo '<center><label class="text-danger">'.$this->session->flashdata
-("message").'</label></center>';  
 
-            ?>
            		
-				<div class="card-body" id="card_1">
-				
-				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<i class="fas fa-calendar" id="btnAdd"></i>เพิ่มวันหยุด
-				</button>
-				&nbsp;
-
-
-
-        </div>          
-        <div id="myModal"  > </div>
+               <div class="card-body" id="card_1">
+                <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
+                    <span><i class="fas fa-calendar" id="btnAdd"></i></span>เพิ่มสถานที่
+                </button>
+                &nbsp;
+            </div>
+            <div id="myModal"  > </div>
             <!-- Modal เพิ่มข้อมูล -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                          <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มวันหยุด</h2>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                          </button>             
-                      </div>
-                      <div class="modal-body">
+                            <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มสถานที่</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
 
-
-                      
-		  <!--ส่วนฟอร์มเพิ่มข้อมูล-->
-		      
-                  <form action="" id="formadd" method="post"  class="needs-validation" >
+                        <div class="modal-body">
+                        
+                            <!--ส่วนฟอร์มเพิ่มข้อมูล-->
+                            <form action="" id="formadd" method="post"  class="needs-validation" >
 		  <center>
       <div class="form-group" id="input_group_sty">
 <div class="input-group" >
-<label  class="col-sm-3" for="validationCustom02">รหัสวันหยุด</label>&nbsp;
-            <input type="text" name="txtID" id="h_ID"  class="form-control col-sm-2"  
-            maxlength="50" onkeyup="count_down(this);" required><div id="msg1"></div>
 
-  <label  class="col-sm-2" for="validationCustom02">วันที่หยุด</label>&nbsp;
-            <input type="date" name="txtdate"  class="form-control col-sm"  
+
+  <label  class="col-sm-3" for="validationCustom02">วันที่หยุด</label>&nbsp;
+            <input type="date" name="txtdate"  class="form-control col-sm-5"  
             maxlength="50" required>
 </div>
       </div>
@@ -118,38 +104,35 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 			 
 		  <!------------------>
  </div>
-     
-   
-      <div class="modal-footer">
-      <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="btnSave" id="btnSave" type="button" class="btn btn-success">เพิ่มข้อมูล</button>
-            
-       
-      </div>
- </form>
-    </div>
-  </div>
-</div>
 
+                        <div class="modal-footer">
+                            <button name="insert" type="reset" class="btn btn-secondary"
+                                data-dismiss="modal">ยกเลิก</button>
+                            <button name="btnSave" id="btnSave" type="button" class="btn btn-success">เพิ่มข้อมูล</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 <!--------------------------------->
 
 
 <!-- Modal ส่วน edit -->
+<div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit"
+                                        style="color:#47307b;"></i></span>แก้ไขข้อมูล</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
 
-
- <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-       <div class="modal-dialog modal-dialog-centered" role="document">
-           <div class="modal-content">
-        <div class="modal-header">
-    <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit" style="color:#47307b;"></i></span>แก้ไขข้อมูล</h2>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-             </button>
-               </div>
-       <div class="modal-body">
-
-                   <!--ฟอร์มแก้ไขข้อมูล-->
+                             <!--ฟอร์มแก้ไขข้อมูล-->
      <form action="" id="formupdate" method="post"  class="needs-validation" >
      <center>
 
@@ -158,7 +141,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 <div class="form-group" id="input_group_sty">
 <div class="input-group" >
 <label  class="col-sm-3" for="validationCustom02">รหัสวันหยุด</label>&nbsp;
-            <input type="text" name="txteditid"  class="form-control col-sm-2"  maxlength="50" onkeyup="count_down(this);" required>
+            <input type="text" name="txteditID"  class="form-control col-sm-2"  maxlength="50" onkeyup="count_down(this);" required>
 
   <label  class="col-sm-2" for="validationCustom02">วันที่หยุด</label>&nbsp;
             <input type="date" name="txtdate"  class="form-control col-sm"  maxlength="50" required>
@@ -167,7 +150,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 <div class="form-group" id="input_group_sty">
 <div class="input-group" >
 <label  class="col-sm-3" for="validationCustom02">ชื่อวันหยุด</label>&nbsp;
-            <input type="textarea" name="txtdescrip"  class="form-control" maxlength="50" onkeyup="count_down(this);" required>
+            <input type="textarea" name="txteditname"  class="form-control" maxlength="50" onkeyup="count_down(this);" required>
    </div>
   <div class="form-group sty_a">
   <span id="count3">0</span>
@@ -194,7 +177,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
    <div class="form-group" id="input_group_sty">
 <div class="input-group" >
   <label  class="col-sm-3" for="validationCustom02">ประเภทวันหยุด</label>&nbsp;
-        <select class="form-control" name="addtype">
+        <select class="form-control" name="edittype">
           <option  value="วันหยุดประจำปี" class="form-control">วันหยุดประจำปี</option>
           <option  value="วันหยุดที่มีการเปลี่ยนแปลงแต่ละปี" class="form-control">วันหยุดที่มีการเปลี่ยนแปลงแต่ละปี</option>
         </select>
@@ -203,22 +186,17 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
        
       <!------------------>
- </div>
-     
-   
-      <div class="modal-footer">
-      <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button name="btnedit" type="button" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
+                        </div>
 
-            
-       
-      </div>
- </form>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-
-
+                        <div class="modal-footer">
+                            <button name="insert" type="reset" class="btn btn-secondary"
+                                data-dismiss="modal">ยกเลิก</button>
+                            <button name="btnedit" type="button" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -380,67 +358,62 @@ $("#edit_file").modal("show");
         });
     //Add New
 
-    $('#btnAdd').click(function(){
-      $('#exampleModalCenter').modal('show');
-      $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday/addholiday');
-    });
+    $('#btnAdd').click(function() {
+            $('#exampleModalCenter').modal('show');
+            $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday/addholiday');
+        });
 
+        $('#btnSave').click(function(){
+			var url = $('#formadd').attr('action');
+			var data = $('#formadd').serialize();
+			//validate form
+			var date = $('input[name=txtdate]');
+			var descrip = $('input[name=txtdescrip]');
+			var type = $('input[name=addtype]');
+			var result = '';
+			
+			if(date.val()==''){
+				date.parent().parent().addClass('has-error');
+			}else{
+				date.parent().parent().removeClass('has-error');
+				result +='1';
+			}
+			if(descrip.val()==''){
+				descrip.parent().parent().addClass('has-error');
+			}else{
+				descrip.parent().parent().removeClass('has-error');
+				result +='2';
+			}
+			if(type.val()==''){
+				type.parent().parent().addClass('has-error');
+			}else{
+				type.parent().parent().removeClass('has-error');
+				result +='3';
+			}
 
-    $('#btnSave').click(function(){
-      var url = $('#formadd').attr('action');
-      var data = $('#formadd').serialize();
-      //validate form
-      var h_ID = $('input[name=txteditid]');
-      var h_date = $('input[name=txtdate]');
-      var description = $('textarea[name=txtdescrip]');
-      var h_type = $('input[name=addtype]');
-      var result = '';
-     if(h_ID.val()==''){
-        h_ID.parent().parent().addClass('has-error');
-      }else{
-        h_ID.parent().parent().removeClass('has-error');
-        result +='1';
-      }
-      if(h_date.val()==''){
-        h_date.parent().parent().addClass('has-error');
-      }else{
-        h_date.parent().parent().removeClass('has-error');
-        result +='2';
-      }
-      if(description.val()==''){
-        description.parent().parent().addClass('has-error');
-      }else{
-        description.parent().parent().removeClass('has-error');
-        result +='3';
-      }
-       if(h_type.val()==''){
-        h_type.parent().parent().addClass('has-error');
-      }else{
-        h_type.parent().parent().removeClass('has-error');
-        result +='4';
-      }
-
-      if(result=='1234'){
-        $.ajax({
-          type: 'ajax',
-          method: 'post',
-          url: url,
-          data: data,
-          async: false,
-          dataType: 'json',
-          success: function(response){
-            if(response.success){
-              $('#exampleModalCenter').modal('hide');
-              $('#formadd')[0].reset();
-              $('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-							$('#textkey').empty();			
-							$('#msg1').empty();
+			if(result=='123'){
+				$.ajax({
+					type: 'ajax',
+					method: 'post',
+					url: url,
+					data: data,
+					async: false,
+					dataType: 'json',
+					success: function(response){
+						if(response.success){
+							$('#exampleModalCenter').modal('hide');
+							 //$(this).find('#formadd')[0].reset();
+							 
+							$('#formadd')[0].reset();		
+							$('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+						//	$('#textkey').empty();			
+							//$('#msg1').empty();
 							showAll();
 						}else{
 							alert('Error');
 						}
 					},
-          error: function(){
+					error: function(){
 						alert('id นี้ถูกใช้งานแล้ว');
 						$('#exampleModalCenter').modal('hide');
 						$('#formadd')[0].reset();
@@ -453,39 +426,87 @@ $("#edit_file").modal("show");
 			}
 		});
 
+
+
+
+
+
+
+
+
+
+
+
     //edit
+    $('#showdata').on('click', '.fa-edit', function() {
+            var id = $(this).attr('data');
+            var popup = document.getElementById("editimage");
+            $('#edit_file').modal('show');
+            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/holiday/updateholiday');
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                url: '<?php echo base_url() ?>index.php/holiday/editholiday',
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    $('input[name=txteditID]').val(data.h_ID);
+                    $('input[name=txtdate]').val(data.h_date);
+                    $('input[name=txteditname]').val(data.description);
+                    $('input[name=edittype]').val(data.h_type);
+
+                },
+                error: function() {
+                    alert('ไม่สามารถแก้ไขข้อมูล');
+                }
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
 
     $('#btnedit').click(function(){
-      var url = $('#formadd').attr('action');
-      var data = $('#formadd').serialize();
+      var url = $('#formupdate').attr('action');
+      var data = $('#formupdate').serialize();
       //validate form
-      var h_ID = $('input[name=txteditid]');
-      var h_date = $('input[name=txtdate]');
-      var description = $('textarea[name=txtdescrip]');
-      var h_type = $('input[name=addtype]');
+      var ID = $('input[name=txteditID]');
+      var date = $('input[name=txtdate]');
+      var descrip = $('input[name=txteditname]');
+      var type = $('input[name=edittype]');
       var result = '';
-      if(h_ID.val()==''){
-        h_ID.parent().parent().addClass('has-error');
+      if(ID.val()==''){
+        ID.parent().parent().addClass('has-error');
       }else{
-        h_ID.parent().parent().removeClass('has-error');
+        ID.parent().parent().removeClass('has-error');
         result +='1';
       }
-      if(h_date.val()==''){
-        h_date.parent().parent().addClass('has-error');
+      if(date.val()==''){
+        date.parent().parent().addClass('has-error');
       }else{
-        h_date.parent().parent().removeClass('has-error');
+        date.parent().parent().removeClass('has-error');
         result +='2';
       }
-      if(description.val()==''){
-        description.parent().parent().addClass('has-error');
+      if(descrip.val()==''){
+        descrip.parent().parent().addClass('has-error');
       }else{
-        description.parent().parent().removeClass('has-error');
+        descrip.parent().parent().removeClass('has-error');
         result +='3';
       }
-       if(h_type.val()==''){
-        h_type.parent().parent().addClass('has-error');
+       if(type.val()==''){
+        type.parent().parent().addClass('has-error');
       }else{
-        h_type.parent().parent().removeClass('has-error');
+        type.parent().parent().removeClass('has-error');
         result +='4';
       }
 
@@ -574,7 +595,7 @@ $("#edit_file").modal("show");
 						}
 					},
 					
-					error: function(){
+				error: function(){
 						//alert('id นี้ถูกใช้งานแล้ว');
 						$('#del_file').modal('hide');
 						$('#formdelete')[0].reset();		
@@ -606,7 +627,7 @@ $("#edit_file").modal("show");
                   '<td>'+data[i].description+'</td>'+
                   '<td>'+data[i].h_type+'</td>'+
  '<td>'+
-                    '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].h_ID+'"></i></a>'+
+ '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].h_ID+'"></i></a>'+
                     '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].h_ID+'"></i></a>'+
                   '</td>'+
                  
@@ -621,7 +642,6 @@ $("#edit_file").modal("show");
     }
   });
 </script>
-
 
 
 
