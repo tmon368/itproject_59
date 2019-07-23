@@ -64,7 +64,9 @@
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-4">
                                                 <input type="text" name="txtID" id="place_ID" class="form-control" maxlength="4"
-                                                    required> <div id="msg1"></div>
+                                                    required> 
+                                                    <div id="msg1"></div>
+                                                   <!--   <div id="msg2" style="color:red"></div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -308,20 +310,25 @@
     $(document).ready(function(){
         showAll();
 
-        $("#place_ID").change(function(){
+        $("#place_ID").blur(function(){
             var flag;
             $.ajax({
                 url: "<?php echo base_url(); ?>index.php/place/checkkey",
                 data: "place_ID=" + $("#place_ID").val(),
-                type: "POST",
+                type: 'ajax',
+                method: 'post',
                 async:false,
-                success: function(data, status) { 
-                   var result = data.split(",");
-                   flag = result[0];
-                   var msg = result[1];
-                  // alert(msg)
-                   $("#msg1").html(msg);                                                                               
-
+                dataType: 'json',
+                success: function(data) { 
+                	$("#msg1").empty();
+                    //alert(data)
+                	if(data == true){
+                         $("#msg1").html('<div style="color:green">สามารถใช้งานได้</div>'); 
+					}else{
+						$("#msg1").html('<div style="color:red">ไม่สามารถใช้งานได้</div>');
+						$("#place_ID").focus();
+						
+					}
                 },
                 error: function(xhr, status, exception) { alert(status); }
             });
@@ -335,6 +342,8 @@
         //เพิ่มข้อมูล
         
         $('#btnAdd').click(function() {
+        	$('#formadd')[0].reset();
+        	$("#msg1").empty();
             $('#exampleModalCenter').modal('show');
             $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/place/addplace');
         });

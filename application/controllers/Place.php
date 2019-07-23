@@ -39,6 +39,14 @@ class Place extends CI_Controller {
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
 	public function checkkey(){
 	    $result = $this->model->checkkey();
+	    if($result){
+	        $msg['success'] = true;
+	        
+	        
+	    }else{
+	        $msg['success'] = false;
+	        
+	    }
 	    echo json_encode($result);
 	}
     
