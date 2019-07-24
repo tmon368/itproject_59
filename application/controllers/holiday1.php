@@ -47,11 +47,15 @@ class Holiday1 extends CI_Controller {
 
 	public function addholiday(){ 
 		$result = $this->model->addholiday();
-		$msg['success'] = false;
-		$msg['type'] = 'add';
+		//$msg['success'] = false;
+		//$msg['type'] = 'add';
+		
 		if($result){
-			$msg['success'] = true;
-			$this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
+		    $msg['success'] = true;
+		    
+		    
+		}else{
+		    $msg['success'] = false;
 			 redirect(base_url() . 'index.php/holiday1/edit');
 
 		}
@@ -79,18 +83,15 @@ class Holiday1 extends CI_Controller {
 
 	public function deleteholiday(){
 		$result = $this->model->deleteholiday();
-		
-		$msg['success'] = false;
-		$msg['type'] = 'delete';
 		if($result){
-			$msg['success'] = true;
-				$this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
-	    redirect(base_url() . 'index.php/holiday1/edit');
+		    $msg['success'] = true;     
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/holiday1/index');
 		}
 		echo json_encode($msg);
-
-	
 	}
+
 
 	public function findHolidayByYear(){
 		$year = $_GET['year'];
