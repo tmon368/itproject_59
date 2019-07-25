@@ -7,8 +7,9 @@ class dormtype_model extends CI_Model {
         
     }
     
+    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable dormtype โดยเรียงลำดับจาก dormtype_ID
  public function showAll(){
-        $this->db->order_by('dormtype_ID', 'desc');
+        $this->db->order_by('dormtype_ID', 'ASC');
         $query = $this->db->get('dormtype');
         if($query->num_rows() > 0){
             return $query->result();
@@ -16,7 +17,23 @@ class dormtype_model extends CI_Model {
             return false;
         }
     }
-
+    //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง dromtype
+    public function checkkey(){
+        $dormtype_ID = $this->input->post('dormtype_ID');
+        $this->db->where('dormtype_ID', $dormtype_ID);
+        $query = $this->db->get('dormtype');
+        if($query->num_rows($query) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
+    
+    
+    //ฟังก์ชันเพิ่มข้อมูล ลงในtable dromtype
     public function adddormtype(){
         $field = array(
            
@@ -32,6 +49,7 @@ class dormtype_model extends CI_Model {
         }
     }
 
+    //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable dormtype
     public function editdormtype(){
         $id = $this->input->get('id');
         $this->db->where('dormtype_ID', $id);
@@ -43,6 +61,7 @@ class dormtype_model extends CI_Model {
         }
     }
 
+    //ฟังก์ชันอัพเดตข้อมูลในtable dormtype
     public function updatedormtype(){
         $id = $this->input->post('txteditID');
         $field = array(
@@ -58,7 +77,7 @@ class dormtype_model extends CI_Model {
             return false;
         }
     }
- 
+    //ฟังก์ชันลบข้อมูลในtable dormtype
     function deletedormtype(){
          $id = $this->input->post('txtdelID');
         $this->db->where('dormtype_ID', $id);
@@ -79,6 +98,7 @@ class dormtype_model extends CI_Model {
     }
     
    
+    
     
     
     
