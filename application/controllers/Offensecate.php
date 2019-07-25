@@ -36,15 +36,27 @@ class Offensecate extends CI_Controller {
         echo json_encode($result);
     }
     
+    public function checkkey(){
+        $result = $this->model->checkkey();
+        if($result){
+            $msg['success'] = true;
+            
+            
+        }else{
+            $msg['success'] = false;
+            
+        }
+        echo json_encode($result);
+    }
     public function addoffensecate(){
         $result = $this->model->addoffensecate();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
+        }else{
+            $msg['success'] = false;
             redirect(base_url() . 'index.php/offensecate/index');
-            
         }
         echo json_encode($msg);
     }
@@ -61,24 +73,22 @@ class Offensecate extends CI_Controller {
         $msg['type'] = 'update';
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>แก้ไขข้อมูลเรียบร้อย');
+        }else{
+            $msg['success'] = false;
             redirect(base_url() . 'index.php/offensecate/index');
         }
-        redirect(base_url() . 'index.php/offensecate/index');
-        //echo json_encode($msg);
+        echo json_encode($msg);
     }
     
     public function deleteoffensecate(){
         $result = $this->model->deleteoffensecate();
         
-        $msg['success'] = false;
-        $msg['type'] = 'delete';
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
+        }else{
+            $msg['success'] = false;
             redirect(base_url() . 'index.php/offensecate/index');
         }
         echo json_encode($msg);
     }
 }
-
