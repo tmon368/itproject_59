@@ -26,10 +26,10 @@ class import_data_model extends CI_Model
 	    $BUILDID = $this->input->get($BUILDID);
 	    $this->db->where('place_ID', $BUILDID);
 	    $query = $this->db->get('place');
-	    if($query->num_rows() > 0){
-	        return false;
-	    }else{
+	    if($query->num_rows() == 0){
 	        return true;
+	    }else{
+	        return false;
 	    }
 	    
 	}
