@@ -31,7 +31,7 @@
 
 				<div class="card-body" id="card_1">
 				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<span><i class="fas fa-ban"></i></span>เพิ่มฐานความผิด
+									<span><i class="fas fa-ban" id="btnAdd"></i></span>เพิ่มฐานความผิด
 				</button>
 				&nbsp;
 
@@ -45,7 +45,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มฐานความผิด</h2>
+        <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มฐานความผิด2</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -77,7 +77,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" name="txtID"  class="form-control"  maxlength="3" onkeyup="count_down_id(this);" required>
+                    <input type="text" name="txtID"  id="off_ID"class="form-control"  maxlength="3" onkeyup="count_down_id(this);" required>
 			<div id="msg1"></div>
                                                    <!--   <div id="msg2" style="color:red"></div>-->
 			
@@ -143,7 +143,7 @@
    
       <div class="modal-footer">
       <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="insert" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+      <button  name="btnSave" id="btnSave" type="button" class="btn btn-success">เพิ่มข้อมูล</button>
             
        
       </div>
@@ -263,7 +263,7 @@
    
       <div class="modal-footer">
       <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="insert" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+      <button  name="btnedit" type="button" id="btnedit"class="btn btn-success">บันทึกข้อมูล</button>
             
        
       </div>
@@ -314,7 +314,7 @@
    
       <div class="modal-footer">
       <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="insert" type="submit" class="btn btn-danger btn-fw">ลบ</button>
+      <button  name="btndel" type="button" id="btndel" class="btn btn-danger btn-fw">ลบ</button>
             
        
       </div>
@@ -472,7 +472,7 @@ $(document).ready(function(){
 		}
 
 
-      if(result=='123'){
+      if(result=='1234'){
         $.ajax({
           type: 'ajax',
           method: 'post',
@@ -569,7 +569,7 @@ $(document).ready(function(){
 		}
 
 
-     if(result=='123'){
+     if(result=='1234'){
        $.ajax({
          type: 'ajax',
          method: 'post',

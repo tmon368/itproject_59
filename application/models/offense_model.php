@@ -9,7 +9,7 @@ class offense_model extends CI_Model {
     
     
  public function showAll(){
-        $this->db->order_by('off_ID', 'desc');
+        $this->db->order_by('off_ID', 'ASC');
         $query = $this->db->get('offense');
         if($query->num_rows() > 0){
             return $query->result();
