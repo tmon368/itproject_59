@@ -21,6 +21,41 @@ class import_data_model extends CI_Model
 		$this->db->insert('place',$data);
 	}
 	
+	public function checkimport($BUILDID)
+	{
+	    $BUILDID = $this->input->get($BUILDID);
+	    $this->db->where('place_ID', $BUILDID);
+	    $query = $this->db->get('place');
+	    if($query->num_rows() > 0){
+	        return false;
+	    }else{
+	        return true;
+	    }
+	    
+	}
+	
+	public function updateplace($data)
+	{
+	    $BUILDID = $data->$BUILDID;
+	    $BUILDTHNAME=$data->$BUILDTHNAME;
+	    $this->db->where('place_ID', $BUILDID);
+	    $this->db->update('place', $BUILDTHNAME);
+	    if($this->db->affected_rows() > 0){
+	        return true;
+	    }else{
+	        return false;
+	    }
+	    
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	function insertdormtype($data)
 	{
@@ -50,13 +85,7 @@ class import_data_model extends CI_Model
 	    $this->db->insert('holiday',$data);
 	}
 	
-	function updateplace($BUILDID,$dataupdate)
-	{
-	    $this->db->where('place_ID', $BUILDID);
-	    $this->db->update('place', $dataupdate);
-	    
-	   
-	}
+	
 	
 	function clearvalue()
 	{
