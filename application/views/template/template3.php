@@ -157,7 +157,7 @@
           </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url("Import_data") ?>">
+            <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">
               <i class="menu-icon fas fa-download"></i>
               <span class="menu-title">การนำเข้าข้อมูล</span>
             </a>
