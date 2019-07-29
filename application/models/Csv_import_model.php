@@ -12,10 +12,51 @@ class Csv_import_model extends CI_Model
 			return false;
 		}
 	}
+	
 	function selectstatus()
 	{
 	    $this->db->order_by('status_ID', 'ASC');
 	    $query = $this->db->get('tbl_status');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
+	
+	function checkstatus($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT * FROM status WHERE status_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+	    //print_r ($row);
+	    /*
+	     if (isset($row)) {
+	     echo $row->id;
+	     echo $row->first_name;
+	     echo $row->last_name;
+	     }
+	     */
+	}
+	
+	
+	
+	
+	
+	
+	
+	function selectcurriculum()
+	{
+	    $this->db->order_by('cur_ID', 'ASC');
+	    $query = $this->db->get('tbl_curriculum');
 	    
 	    if ($query->num_rows() > 0) {
 	        return $query->result();
@@ -59,7 +100,11 @@ class Csv_import_model extends CI_Model
 	    $this->db->insert_batch('tbl_status', $data);
 	}
 	
-	
+	function insertcurriculum($data)
+	{
+	    //cr table temp
+	    $this->db->insert_batch('tbl_curriculum', $data);
+	}
 	
 	
 	
@@ -83,5 +128,33 @@ class Csv_import_model extends CI_Model
 		} else {
 			return false;
 		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function insert_to_status($data)
+	{
+	    $this->db->empty_table('tbl_status');
+	    $this->db->query("TRUNCATE TABLE tbl_status");
+	    $this->db->insert_batch('status', $data);
+	}
+	
+	function update_datastatus($id, $data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('status_ID', $id);
+	    $this->db->update('status', $data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
 	}
 }

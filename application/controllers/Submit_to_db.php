@@ -41,7 +41,6 @@ class Submit_to_db extends CI_Controller
 		$this->csv_import_model->insert($data);
 		redirect("Submit_to_db/index");
 	}
-	
 	function importstatus()
 	{
 	    $file_data = $this->csvimport->get_array($_FILES["csv_file"]["tmp_name"]);
@@ -55,6 +54,9 @@ class Submit_to_db extends CI_Controller
 	    redirect("Submit_to_db/submit_status");
 	}
 	
+	
+	
+	
 	public function submit_status()
 	{
 	    //List ข้อมูลมาแสดงในหน้าจอ
@@ -63,6 +65,37 @@ class Submit_to_db extends CI_Controller
 	function showAllstatus()
 	{
 	    $result = $this->csv_import_model->selectstatus();
+	    //print_r ($result);
+	    echo json_encode($result);
+	    //echo ("xxx");
+	}
+	
+	
+	
+	function importcurriculum()
+	{
+	    $file_data = $this->csvimport->get_array($_FILES["csv_file"]["tmp_name"]);
+	    foreach ($file_data as $row) {
+	        $data[] = array(
+	            'cur_ID'	=>	$row["cur_ID"],
+	            'cur_name'		=>	$row["cur_name"],
+	            'active_track	'		=>	'0',
+	            'dept_ID'		=>	$row["dept_ID"]
+	            
+	        );
+	    }
+	    $this->csv_import_model->insertcurriculum($data);
+	    redirect("Submit_to_db/submit_curriculum");
+	}
+	
+	public function submit_curriculum()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('basicdata/submit_curriculum');
+	}
+	function showAllcurriculum()
+	{
+	    $result = $this->csv_import_model->selectcurriculum();
 	    //print_r ($result);
 	    echo json_encode($result);
 	    //echo ("xxx");
@@ -117,6 +150,70 @@ class Submit_to_db extends CI_Controller
 		//print_r($result);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function import_temp_to_dbstatus()
+	{
+	    
+	    echo "Function import_temp_to_db</br>";
+	    
+	    $result = $this->csv_import_model->selectstatus(); //ตาราง temp
+	    
+	    foreach ($result as $results) { //loop ตาราง temp
+	        //select by id
+	        $temp_a = $this->csv_import_model->checkstatus($results->status_ID);
+	        //echo $temp_a;
+	        
+	        if ($temp_a == 1) {
+	            //อัพเดตข้อมูล
+	            $data = array(
+	                //'id' => $results->id,
+	                'status_name'		=>	$results->status_name
+	            );
+	            $this->csv_import_model->update_datastatus($results->status_ID,$data);
+	        } else {
+	            //เพิ่มข้อมูล
+	            $data_a[] = array(
+	                'status_ID'	=>	$results->status_ID,
+	                'status_name'		=>	$results->status_name
+	            );
+	            $this->csv_import_model->insert_to_status($data_a);
+	        }
+	    }
+	    redirect("Csv_import");
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public function new()
 	{

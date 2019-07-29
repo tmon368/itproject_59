@@ -67,8 +67,9 @@
         <table id="example" class="cell-border" style="width:100%">
             <thead>
                 <tr>
-                    <th>status_id</th>
-                    <th>status_name</th>
+                    <th>cur_ID</th>
+                    <th>cur_name</th>
+                     <th>dept_ID</th>
 
                 </tr>
             </thead>
@@ -77,9 +78,9 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>status_id</th>
-                    <th>status_name</th>
-
+                   <th>cur_ID</th>
+                    <th>cur_name</th>
+                     <th>dept_ID</th>
 
                 </tr>
             </tfoot>
@@ -114,7 +115,7 @@
 
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo site_url("Submit_to_db/showAllstatus") ?>',
+                    url: '<?php echo site_url("Submit_to_db/showAllcurriculum") ?>',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -124,8 +125,9 @@
                         for (i = 0; i < data.length; i++) {
                             // html += data[i].id + "&nbsp;" + data[i].first_name + "&nbsp;" + data[i].last_name + "&nbsp;" + data[i].phone + "&nbsp;" + data[i].email +"</br>";
                             html += "<tr>" +
-                                "<td>" + data[i].status_ID + "</td>" +
-                                "<td>" + data[i].status_name + "</td>" +
+                                "<td>" + data[i].cur_ID + "</td>" +
+                                "<td>" + data[i].cur_name + "</td>" +
+                                "<td>" + data[i].dept_ID + "</td>" +
                                 "</tr>";
 
                         }
@@ -145,7 +147,7 @@
             //alert ("Save");
 
             $.get({
-                url: '<?php echo site_url("Submit_to_db/import_temp_to_dbstatus") ?>',
+                url: '<?php echo site_url("Submit_to_db/import_temp_to_db") ?>',
                 success: function() {
                     alert("Sucess!!")
                     window.location.href = "<?php echo site_url('Csv_import');?>";
