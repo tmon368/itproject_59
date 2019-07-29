@@ -206,6 +206,51 @@ class Submit_to_db extends CI_Controller
 	
 	
 	
+	function import_temp_to_dbcurriculum()
+	{
+	    
+	    echo "Function import_temp_to_db</br>";
+	    
+	    $result = $this->csv_import_model->selectcurriculum(); //ตาราง temp
+	    
+	    foreach ($result as $results) { //loop ตาราง temp
+	        //select by id
+	        $temp_a = $this->csv_import_model->checkcurriculum($results->cur_ID);
+	        //echo $temp_a;
+	        
+	        if ($temp_a == 1) {
+	            //อัพเดตข้อมูล
+	            $data = array(
+	                //'id' => $results->id,
+	                'cur_ID'		=>	$results->cur_ID,
+	                'cur_name'		=>	$results->cur_name,
+	                'active_track'		=>	$results->active_track,
+	                'dept_ID'		=>	$results->dept_ID 
+	            );
+	            $this->csv_import_model->update_datacurriculum($results->cur_ID,$data);
+	        } else {
+	            //เพิ่มข้อมูล
+	            $data_a[] = array(
+	                'cur_ID'	=>	$results->cur_ID,
+	                'cur_name'		=>	$results->cur_name,
+	                'active_track'		=>	$results->active_track,
+	                'dept_ID'		=>	$results->dept_ID
+	               
+	            );
+	            $this->csv_import_model->insert_to_curriculum($data_a);
+	        }
+	    }
+	    redirect("Csv_import");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

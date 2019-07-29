@@ -147,7 +147,7 @@
             //alert ("Save");
 
             $.get({
-                url: '<?php echo site_url("Submit_to_db/import_temp_to_db") ?>',
+                url: '<?php echo site_url("Submit_to_db/import_temp_to_dbcurriculum") ?>',
                 success: function() {
                     alert("Sucess!!")
                     window.location.href = "<?php echo site_url('Csv_import');?>";

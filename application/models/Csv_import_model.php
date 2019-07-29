@@ -47,7 +47,27 @@ class Csv_import_model extends CI_Model
 	     */
 	}
 	
-	
+	function checkcurriculum($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT * FROM curriculum WHERE cur_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+	    //print_r ($row);
+	    /*
+	     if (isset($row)) {
+	     echo $row->id;
+	     echo $row->first_name;
+	     echo $row->last_name;
+	     }
+	     */
+	}
 	
 	
 	
@@ -55,7 +75,7 @@ class Csv_import_model extends CI_Model
 	
 	function selectcurriculum()
 	{
-	    $this->db->order_by('cur_ID', 'ASC');
+	    $this->db->order_by('cur_ID','ASC');
 	    $query = $this->db->get('tbl_curriculum');
 	    
 	    if ($query->num_rows() > 0) {
@@ -157,4 +177,40 @@ class Csv_import_model extends CI_Model
 	        return false;
 	    }
 	}
+	
+	
+	
+	
+	
+	
+	
+	function insert_to_curriculum($data)
+	{
+	    $this->db->empty_table('tbl_curriculum');
+	    $this->db->query("TRUNCATE TABLE tbl_curriculum");
+	    $this->db->insert_batch('curriculum',$data);
+	}
+	
+	function update_datacurriculum($id, $data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('cur_ID',$id);
+	    $this->db->update('curriculum',$data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
