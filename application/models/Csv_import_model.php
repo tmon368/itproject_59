@@ -12,6 +12,17 @@ class Csv_import_model extends CI_Model
 			return false;
 		}
 	}
+	function selectstatus()
+	{
+	    $this->db->order_by('status_ID', 'ASC');
+	    $query = $this->db->get('tbl_status');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
 
 	function select_1($id)
 	{
@@ -41,6 +52,19 @@ class Csv_import_model extends CI_Model
 		//cr table temp 
 		$this->db->insert_batch('tbl_user', $data);
 	}
+	
+	function insertstatus($data)
+	{
+	    //cr table temp
+	    $this->db->insert_batch('tbl_status', $data);
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	function insert_to_users($data)
 	{

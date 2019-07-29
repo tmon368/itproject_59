@@ -41,6 +41,34 @@ class Submit_to_db extends CI_Controller
 		$this->csv_import_model->insert($data);
 		redirect("Submit_to_db/index");
 	}
+	
+	function importstatus()
+	{
+	    $file_data = $this->csvimport->get_array($_FILES["csv_file"]["tmp_name"]);
+	    foreach ($file_data as $row) {
+	        $data[] = array(
+	            'status_ID'	=>	$row["status_ID"],
+	            'status_name'		=>	$row["status_name"]
+	        );
+	    }
+	    $this->csv_import_model->insertstatus($data);
+	    redirect("Submit_to_db/submit_status");
+	}
+	
+	public function submit_status()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('basicdata/submit_status');
+	}
+	function showAllstatus()
+	{
+	    $result = $this->csv_import_model->selectstatus();
+	    //print_r ($result);
+	    echo json_encode($result);
+	    //echo ("xxx");
+	}
+	
+	
 
 	function import_temp_to_db()
 	{
