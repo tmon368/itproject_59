@@ -14,7 +14,7 @@
 </head>
 <body>
   <meta charset="UTF-8">
-  
+
 <div class="page-breadcrumb" id="nav_sty">
           <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -60,7 +60,7 @@
 
 
   <label  class="col-sm-3" for="validationCustom02">วันที่หยุด</label>&nbsp;
-            <input type="date" name="txtdate"  class="form-control col-sm-5"  
+            <input type="date" name="txtdate"  class="form-control col-sm-3"  
             maxlength="50" required>
 </div>
       </div>
@@ -614,7 +614,7 @@ $("#edit_file").modal("show");
     function showAll(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/holiday/showAll',
+        url: '<?php echo base_url() ?>index.php/holiday/showAll?year=<?php echo $year; ?>',
         async: false,
         dataType: 'json',
         success: function(data){

@@ -1,32 +1,32 @@
 <?php
 
 class holiday_model1 extends CI_Model {
-    public function _construct() 
+    public function _construct()
     {
         parent::_construct();
         
     }
     
     
- public function showAll(){
+    public function showAll(){
         $this->db->order_by('hh_ID', 'desc');
         $this->db->where('active_track', '0');
         $query = $this->db->get('holiday1');
         if($query->num_rows() > 0){
-            return $query->result(); 
+            return $query->result();
         }else{
             return false;
         }
     }
-
+    
     public function addholiday(){
         $field = array(
             'hh_ID'=>$this->input->post('txtid'),
             'h_year'=>$this->input->post('txtname'),
             
-
             
-            );
+            
+        );
         $this->db->insert('holiday1', $field);
         if($this->db->affected_rows() > 0){
             return true;
@@ -34,7 +34,7 @@ class holiday_model1 extends CI_Model {
             return false;
         }
     }
-
+    
     public function editholiday(){
         $id = $this->input->get('id');
         $this->db->where('hh_ID', $id);
@@ -45,14 +45,14 @@ class holiday_model1 extends CI_Model {
             return false;
         }
     }
-
+    
     public function updateholiday(){
         $id = $this->input->post('id');
         $field = array(
-        'hh_ID'=>$this->input->post('id'),
-        'h_year'=>$this->input->post('name'),
-        
-
+            'hh_ID'=>$this->input->post('id'),
+            'h_year'=>$this->input->post('name'),
+            
+            
         );
         $this->db->where('hh_ID', $id);
         $this->db->update('holiday1', $field);
@@ -62,20 +62,20 @@ class holiday_model1 extends CI_Model {
             return false;
         }
     }
-
+    
     function deleteholiday(){
-         $id = $this->input->post('txtdelID');
-         
+        $id = $this->input->post('txtdelID');
+        
         $field = array(
-        'active_track'=> '1'
-
+            'active_track'=> '1'
+            
         );
         $this->db->where('hh_ID', $id);
         $this->db->update('holiday1', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
-            return false; 
+            return false;
         }
     }
     

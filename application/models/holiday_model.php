@@ -8,24 +8,24 @@ class holiday_model extends CI_Model {
     }
 
     public function findByYear($year){
-        // // $this->db->select('*')
-        // $this->db->from('holiday');
-        // $this->db->where('YEAR(h_date)','2018');
-        // // $this->db->like('')
-        // $query = $this->db->get();
-        // if($query->num_rows() > 0){
-        //     return $query->result();
-        // }else{
-        //     return false;
-        // }
+        $this->db->select('*');
+        $this->db->from('holiday');
+        $this->db->where('YEAR(h_date)',$year);
+        $query = $this->db->get();
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
         
     }
         
     
     
- public function showAll(){
+ public function showAll($year){
     $this->db->order_by('h_ID', 'ASC');
     $this->db->where('active_track', '0');
+    $this->db->where('Year(h_date)', $year);
             $query = $this->db->get('holiday');
         if($query->num_rows() > 0){
             return $query->result();

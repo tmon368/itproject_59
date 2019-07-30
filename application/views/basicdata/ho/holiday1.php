@@ -24,26 +24,25 @@
 
 <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
-					<div class="card-header" id="card_2">
-              			<h6 class="m-0 text-primary"><span  class="fas fa-user-alt"></span>&nbsp;วันหยุด</h6>
-            		</div>
-            		<?php  
+          <div class="card-header" id="card_2">
+                    <h6 class="m-0 text-primary"><span  class="fas fa-user-alt"></span>&nbsp;วันหยุด</h6>
+                </div>
+                <?php  
 echo '<center><label class="text-danger">'.$this->session->flashdata
 ("message").'</label></center>';  
 
             ?>
-           		
-				<div class="card-body " id="card_1">
-				
-				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<i class="fas fa-user-plus"></i>เพิ่มวันหยุด
-				</button>
-				&nbsp;
+              
+        <div class="card-body " id="card_1">
+        
+        <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
+                  <i class="fas fa-user-plus"></i>เพิ่มวันหยุด
+        </button>
+        &nbsp;
 
 
-
-				</div> 
-					 <!-- Modal เพิ่มข้อมูล -->
+        </div> 
+           <!-- Modal เพิ่มข้อมูล -->
  
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -57,28 +56,27 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
       
       <div class="modal-body">
 
-		  <!--ส่วนฟอร์มเพิ่มข้อมูล--> 
-		      
+      <!--ส่วนฟอร์มเพิ่มข้อมูล--> 
+          
                   <form action="" id="formadd" method="post"  class="needs-validation" >
-		  <center>
-
+      <center>
 
       
-				<div class="form-group" id="input_group_sty">
-				<div class="input-group" >
-					<label  class="col-sm-4" for="validationCustom02">รหัสปี</label>&nbsp;
+        <div class="form-group" id="input_group_sty">
+        <div class="input-group" >
+          <label  class="col-sm-4" for="validationCustom02">รหัสปี</label>&nbsp;
                     <input type="text" name="txtid"  class="form-control col-sm-3"  maxlength="50" onkeyup="count_down(this);" required>
         </div>
 </div>
         <div class="form-group" id="input_group_sty">
-				<div class="input-group" >
-					<label  class="col-sm-4"  for="validationCustom02">พุทธศักราช</label>&nbsp;
+        <div class="input-group" >
+          <label  class="col-sm-4"  for="validationCustom02">พุทธศักราช</label>&nbsp;
                     <input type="text" name="txtname"  class="form-control col-sm-7" maxlength="4" onkeyup="count_down(this);" required>
            </div><div>
-        	<div class="form-group sty_a ">
-        	<span id="count3">0</span>
-        	<span>/</span>
-        	<span id="count4" style="color:#6699ff;">4</span>
+          <div class="form-group sty_a ">
+          <span id="count3">0</span>
+          <span>/</span>
+          <span id="count4" style="color:#6699ff;">4</span>
       </div>
            <!-- Alert for the number of characters-->
       <script>
@@ -99,9 +97,9 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 </div>
 </div>
           
-			</center>
-			 
-		  <!------------------>
+      </center>
+       
+      <!------------------>
  </div>
      
    
@@ -116,12 +114,9 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
   </div>
 </div>
 
-
 <!--------------------------------->
 
-
 <!-- Modal ส่วน edit -->
-
 
 <!--------------------------------->
 
@@ -163,8 +158,8 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                                
  <!-- Modal ส่วน select -->
 
-				<div class="card-body">
-			<div class="bootstrap-data-table-panel">
+        <div class="card-body">
+      <div class="bootstrap-data-table-panel">
                                     <div class="table-responsive">
                                         <table id="style_table" class="table table-hover">
                                             <thead>
@@ -185,50 +180,46 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                                     <td></td>
                                                     <td width="10px">
                                                     
-														<!--edit_file  del_file  -->
-													<!--	<a href="<?php echo base_url().'index.php/holiday1/edit?id='.$rec->hh_ID;?>" data-target="#edit_file"><i class="fas fa-edit" style="color:#47307b;"></i></a>
+                            <!--edit_file  del_file  -->
+                          <!--  <a href="<?php echo base_url().'index.php/holiday1/edit?id='.$rec->hh_ID;?>" data-target="#edit_file"><i class="fas fa-edit" style="color:#47307b;"></i></a>
                                                     <a href="<?php echo base_url().'index.php/holiday1/edit?id='.$rec->hh_ID;?>" data-toggle="modal" data-target="#edit_file" id="<?php echo $rec->holiday_ID; ?>"><i class="fas fa-edit" style="color:#47307b;">แก้ไข</i></a>&nbsp;
                                                     <a href="<?php echo base_url().'index.php/holiday1/edit?id='.$rec->hh_ID;?>" data-toggle="modal" data-target="#"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)">ลบ</i></a>-->
-			
+      
                                     <!--ส่วนของ madal จะใช้การจัดการด้วย id ส่วนของ data-target กับ id ของ class จะต้องเหมือนกัน -->
 
                                    
-
 
                                       
 
  
  
 
-	
-				
-			
-               	
+  
+        
+      
+                
                                      <!-- <form action="<?php echo base_url(); ?>index.php/holiday1/edit" method="post" id="editform"  class="needs-validation" >  -->
                                    
                                       <!------------------>
-								   					                        </td>
+                                                    </td>
 
                                                 </tr>
                                              
-							
+              
                                             </tbody>
                                             
                                         </table>
                                     </div>
                                 </div>
 
-			</div>
+      </div>
 
 
 
-
-	  		</div>
-
+        </div>
 
 
-		  </div>
-
+      </div>
 
 
 
@@ -302,9 +293,9 @@ $('#btnAdd').click(function() {
           $('#exampleModalCenter').modal('hide');
            //$(this).find('#formadd')[0].reset();
            
-          $('#formadd')[0].reset();		
+          $('#formadd')[0].reset();   
           $('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-        //	$('#textkey').empty();			
+        //  $('#textkey').empty();      
           //$('#msg1').empty();
           showAll();
         }else{
@@ -315,7 +306,7 @@ $('#btnAdd').click(function() {
         alert('id นี้ถูกใช้งานแล้ว');
         $('#exampleModalCenter').modal('hide');
         $('#formadd')[0].reset();
-        //$('#nav_sty')[0].reset();		
+        //$('#nav_sty')[0].reset();   
         $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
         $('#msg1').empty();
         showAll();
@@ -323,7 +314,6 @@ $('#btnAdd').click(function() {
     });
   }
 });
-
 
 
 
@@ -380,52 +370,51 @@ $('#btnAdd').click(function() {
       });
 
       $('#btndel').click(function(){
-			var url = $('#formdelete').attr('action');
-			var data = $('#formdelete').serialize();
-			var h_ID = $('input[name=txtdelID]');
-			var result = '';
-			
-			if(h_ID.val()==''){
-				h_ID.parent().parent().addClass('has-error');
-			}else{
-				h_ID.parent().parent().removeClass('has-error');
-				result +='1';
-			}
-			if(result=='1'){
-				$.ajax({
-					type: 'ajax',
-					method: 'post',
-					url: url,
-					data: data,
-					async: false,
-					dataType: 'json',
-					success: function(response){
-						if(response.success){
-							$('#del_file').modal('hide');
-							$('#formdelete')[0].reset();		
-							$('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-							//$('#formdelete').empty();
-							showAll();
-						}else{
-							alert('Error');
-						}
-					},
-					
-				error: function(){
-						//alert('id นี้ถูกใช้งานแล้ว');
-						$('#del_file').modal('hide');
-						$('#formdelete')[0].reset();		
-						$('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
-						showAll();
-					}
-				});
-			}
-		});
+      var url = $('#formdelete').attr('action');
+      var data = $('#formdelete').serialize();
+      var h_ID = $('input[name=txtdelID]');
+      var result = '';
+      
+      if(h_ID.val()==''){
+        h_ID.parent().parent().addClass('has-error');
+      }else{
+        h_ID.parent().parent().removeClass('has-error');
+        result +='1';
+      }
+      if(result=='1'){
+        $.ajax({
+          type: 'ajax',
+          method: 'post',
+          url: url,
+          data: data,
+          async: false,
+          dataType: 'json',
+          success: function(response){
+            if(response.success){
+              $('#del_file').modal('hide');
+              $('#formdelete')[0].reset();    
+              $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+              //$('#formdelete').empty();
+              showAll();
+            }else{
+              alert('Error');
+            }
+          },
+          
+        error: function(){
+            //alert('id นี้ถูกใช้งานแล้ว');
+            $('#del_file').modal('hide');
+            $('#formdelete')[0].reset();    
+            $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
+            showAll();
+          }
+        });
+      }
+    });
         
  
 
  
-
 
 
     //function
@@ -442,7 +431,7 @@ $('#btnAdd').click(function() {
             html +='<tr>'+
                   '<td>'+data[i].hh_ID+'</td>'+
                   '<td>'
-                  +'<a href="<?php echo base_url() ?>index.php/holiday1/findHolidayByYear?year=2018'+data[i].h_year+'">'
+                  +'<a href="<?php echo base_url() ?>index.php/holiday1/findHolidayByYear?year='+data[i].h_year+'">'
                   +data[i].h_year+'</a></td>'+
                   '<td>'+
                   '<a href="<?php echo base_url() ?>index.php/holiday/edit"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].hh_ID+'"></i></a>'+
@@ -461,7 +450,6 @@ $('#btnAdd').click(function() {
     }
   });
 </script>
-
 
 
 

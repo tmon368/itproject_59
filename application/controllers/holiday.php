@@ -41,7 +41,8 @@ class Holiday extends CI_Controller {
 	}
 
 	public function showAll(){
-		$result = $this->model->showAll();
+		$year = $_GET['year'];
+		$result = $this->model->showAll($year);
 		echo json_encode($result);
 	}
 	public function checkkey(){
