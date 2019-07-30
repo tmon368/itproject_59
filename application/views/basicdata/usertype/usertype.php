@@ -32,7 +32,7 @@
             <div class="card-body" id="card_1">
 
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-users"></i></span>เพิ่มประเภทผู้ใช้
+                    <span><i class="fas fa-plus"></i></span>เพิ่มประเภทผู้ใช้
                 </button>
                 &nbsp;
             </div>

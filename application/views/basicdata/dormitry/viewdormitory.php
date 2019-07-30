@@ -35,7 +35,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 				<div class="card-body" id="card_1">
 				
 				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<span><i class="fas fa-bed"></i></span>เพิ่มข้อมูลหอพัก
+									<span><i class="fas fa-plus"></i></span>เพิ่มข้อมูลหอพัก
 				</button>
 				&nbsp;
 
