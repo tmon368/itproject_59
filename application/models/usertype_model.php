@@ -16,7 +16,23 @@ class usertype_model extends CI_Model {
         }else{
             return false;
         }
+        
     }
+    //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
+    public function checkkey(){
+        $usertype_ID = $this->input->post('usertype_ID');
+        $this->db->where('usertype_ID', $usertype_ID);
+        $query = $this->db->get('usertype');
+        if($query->num_rows($query) == 0){
+            return  true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+        
+ 
 
     public function addusertype(){
         $field = array(
@@ -58,7 +74,7 @@ class usertype_model extends CI_Model {
         }
     }
     function deleteusertype(){
-            $id = $this->input->post('usertypeID');
+            $id = $this->input->post('usertypedelID');
             /*
              $field = array(
              'active_track'=> '1'
