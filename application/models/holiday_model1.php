@@ -6,7 +6,7 @@ class holiday_model1 extends CI_Model {
         parent::_construct();
         
     }
-    
+     
     
     public function showAll(){
         $this->db->order_by('hh_ID', 'desc');

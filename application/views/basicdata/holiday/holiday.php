@@ -606,8 +606,7 @@ $("#edit_file").modal("show");
 			}
 		});
         
- 
-
+  
 
 
     //function

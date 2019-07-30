@@ -6,7 +6,7 @@ class Holiday1 extends CI_Controller {
         parent:: __construct();
         $this->load->model('holiday_model1', 'model');
     }
-    
+     
     public function index()
     {
         //List  ข้อมูลมาแสดงในหน้าจอ
