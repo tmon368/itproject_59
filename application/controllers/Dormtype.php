@@ -9,12 +9,11 @@ class Dormtype extends CI_Controller {
     
     public function index()
     {
-        //List ข้อมูลมาแสดงในหน้าจอ 
+        //List แสดงข้อมูลบนหน้าจอ
         $this->template();
-        
+        //++
     }
  
-    
     public function template(){
         $this->load->view('template/template1');
         $this->load->view('template/template2');
@@ -59,8 +58,8 @@ class Dormtype extends CI_Controller {
         
         if($result){
             $msg['success'] = true;
-             //$this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
-            //redirect(base_url() . 'index.php/dormtype/index');           
+            
+            
         }else{
             $msg['success'] = false;
             redirect(base_url() . 'index.php/dromtype/index');

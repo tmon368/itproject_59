@@ -7,9 +7,9 @@ class dormtype_model extends CI_Model {
         
     }
     
-    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable dormtype โดยเรียงลำดับจาก dormtype_ID
+    //ฟังก์ชันแสดงข้อมูลทั้งหมด จาก table dormtype โดยเรียงลำดับจาก dormtype_ID
  public function showAll(){
-        $this->db->order_by('dormtype_ID', 'ASC');
+       $this->db->order_by('dormtype_ID', 'ASC');
         $query = $this->db->get('dormtype');
         if($query->num_rows() > 0){
             return $query->result();
@@ -80,15 +80,18 @@ class dormtype_model extends CI_Model {
     //ฟังก์ชันลบข้อมูลในtable dormtype
     function deletedormtype(){
          $id = $this->input->post('txtdelID');
+         
         $this->db->where('dormtype_ID', $id);
         $this->db->delete('dormtype');
-        //$this->db->delete('dormtype', $field);
+        
         if($this->db->affected_rows() > 0){
             return true;
         }else{
             return false;
         }
     }
+    
+    
     public function import_exceldormtype(){
         $this->load->view('import_exceldormtype');
         
@@ -98,9 +101,6 @@ class dormtype_model extends CI_Model {
     }
     
    
-    
-    
-    
-    
+       
     
 }
