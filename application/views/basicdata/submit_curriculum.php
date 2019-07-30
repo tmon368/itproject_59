@@ -67,11 +67,9 @@
         <table id="example" class="cell-border" style="width:100%">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
+                    <th>cur_ID</th>
+                    <th>cur_name</th>
+                     <th>dept_ID</th>
 
                 </tr>
             </thead>
@@ -80,11 +78,9 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
+                   <th>cur_ID</th>
+                    <th>cur_name</th>
+                     <th>dept_ID</th>
 
                 </tr>
             </tfoot>
@@ -119,7 +115,7 @@
 
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo site_url("Submit_to_db/showAll") ?>',
+                    url: '<?php echo site_url("Submit_to_db/showAllcurriculum") ?>',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -129,11 +125,9 @@
                         for (i = 0; i < data.length; i++) {
                             // html += data[i].id + "&nbsp;" + data[i].first_name + "&nbsp;" + data[i].last_name + "&nbsp;" + data[i].phone + "&nbsp;" + data[i].email +"</br>";
                             html += "<tr>" +
-                                "<td>" + data[i].id + "</td>" +
-                                "<td>" + data[i].first_name + "</td>" +
-                                "<td>" + data[i].last_name + "</td>" +
-                                "<td>" + data[i].phone + "</td>" +
-                                "<td>" + data[i].email + "</td>" +
+                                "<td>" + data[i].cur_ID + "</td>" +
+                                "<td>" + data[i].cur_name + "</td>" +
+                                "<td>" + data[i].dept_ID + "</td>" +
                                 "</tr>";
 
                         }
@@ -153,7 +147,7 @@
             //alert ("Save");
 
             $.get({
-                url: '<?php echo site_url("Submit_to_db/import_temp_to_db") ?>',
+                url: '<?php echo site_url("Submit_to_db/import_temp_to_dbcurriculum") ?>',
                 success: function() {
                     alert("Sucess!!")
                     window.location.href = "<?php echo site_url('Csv_import');?>";

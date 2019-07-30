@@ -1,6 +1,6 @@
 <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <!--<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <!-- partial:partials/_sidebar.html -->
+  <!--<nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -96,79 +96,82 @@
           </li>
         </ul>
       </nav>-->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item nav-profile">
-            <div class="nav-link">
-              <div class="user-wrapper">
-                <div class="profile-image">
-                  <img src="<?php echo base_url ('re/images/faces/face1.jpg'); ?>" alt="profile image">
-                </div>
-                <div class="text-wrapper">
-                  <p class="profile-name">Richard V.Welsh</p>
-                  <div>
-                    <small class="designation text-muted">Manager</small>
-                    <span class="status-indicator online"></span>
-                  </div>
-                </div>
-              </div>
-</div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url("Admin_dashboard") ?>">
-              <i class="menu-icon mdi mdi-television"></i>
-              <span class="menu-title">หน้าแรก</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-content-copy"></i>
-              <span class="menu-title">การจัดการข้อมูลพื้นฐาน</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
-                </li>
-        <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
-                </li>
-        
-        <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
-                </li>
-        <li class="nav-item">
-                  <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
-                </li>
-
-        <li class="nav-item">
-              	  <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
-             	</li>
-        <li class="nav-item">
-              	  <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
-             	</li>
-
-              </ul>
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-profile">
+        <div class="nav-link">
+          <div class="user-wrapper">
+            <div class="profile-image">
+              <img src="<?php echo base_url('re/images/faces/face1.jpg'); ?>" alt="profile image">
             </div>
-          </li>
+            <div class="text-wrapper">
+              <p class="profile-name">Richard V.Welsh</p>
+              <div>
+                <small class="designation text-muted">Manager</small>
+                <span class="status-indicator online"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url("Admin_dashboard") ?>">
+          <i class="menu-icon mdi mdi-television"></i>
+          <span class="menu-title">หน้าแรก</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <i class="menu-icon mdi mdi-content-copy"></i>
+          <span class="menu-title">การจัดการข้อมูลพื้นฐาน</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("#") ?>">สถานะนักศึกษา</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
+            </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url("Import_data") ?>">
-              <i class="menu-icon fas fa-download"></i>
-              <span class="menu-title">การนำเข้าข้อมูล</span>
-            </a>
-        </li>
-        </ul>
-      </nav>
-      <!--3-->
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <!--
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
+            </li>
+
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">
+          <i class="menu-icon fas fa-download"></i>
+          <span class="menu-title">การนำเข้าข้อมูล</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!--3-->
+  <!-- partial -->
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <!--
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">

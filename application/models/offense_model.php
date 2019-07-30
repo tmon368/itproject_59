@@ -9,13 +9,26 @@ class offense_model extends CI_Model {
     
     
  public function showAll(){
-        $this->db->order_by('off_ID', 'desc');
+        $this->db->order_by('off_ID', 'ASC');
         $query = $this->db->get('offense');
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
         }
+    }
+    
+    public function checkkey(){
+        $off_ID = $this->input->post('off_ID');
+        $this->db->where('off_ID', $off_ID);
+        $query = $this->db->get('offense');
+        if($query->num_rows($query) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     }
 
     public function addoffense(){

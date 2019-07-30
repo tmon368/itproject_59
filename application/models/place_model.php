@@ -23,10 +23,10 @@ class place_model extends CI_Model {
         $this->db->where('place_ID', $place_ID);
         $query = $this->db->get('place');
         if($query->num_rows($query) == 0){
-            echo "true,<span style='color:green'>สามารถใช้งานได้</span>,";
+            return true;
         }
         else{
-            echo "false,<span style='color:red'>ไม่สามารถใช้งานได้</span>,";
+            return false;
         }
         
     }

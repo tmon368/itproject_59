@@ -118,10 +118,27 @@ $data = array(
 'place_name'			=>	$BUILDTHNAME
 
 );
-$this->import_data_model->insertplace($data);
+$this->import_data_model->inserttmp_place($data);
+
+$check=$this->import_data_model->checkimport($BUILDID);
+if($check==true){
+    $this->import_data_model->insertplace($data);
+    
+    
+    
+}else{
+    $this->import_data_model->updateplace($data);
+    
+    
+    
+}
     }
 
 }
+
+
+
+
 $this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
 
 redirect(base_url() . 'index.php/import_data/index');
@@ -132,28 +149,11 @@ redirect(base_url() . 'index.php/import_data/index');
 	}
 	
 	
+
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	public  function importusertype()

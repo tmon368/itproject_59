@@ -14,6 +14,7 @@ class Dormtype extends CI_Controller {
         
     }
  
+    
     public function template(){
         $this->load->view('template/template1');
         $this->load->view('template/template2');
@@ -29,53 +30,73 @@ class Dormtype extends CI_Controller {
         
     }
     
-    
+    //ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table dormtype และแสดงข้อมูลในview
     public function showAll(){
         $result = $this->model->showAll();
         echo json_encode($result);
     }
     
+    //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางdormtype
+    public function checkkey(){
+        $result = $this->model->checkkey();
+        if($result){
+            $msg['success'] = true;
+            
+            
+        }else{
+            $msg['success'] = false;
+            
+        }
+        echo json_encode($result);
+    }
+    
+    //ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
     public function adddormtype(){
         $result = $this->model->adddormtype();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
+        
+        
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
-            redirect(base_url() . 'index.php/dormtype/index');
-            
+             //$this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
+            //redirect(base_url() . 'index.php/dormtype/index');           
+        }else{
+            $msg['success'] = false;
+            redirect(base_url() . 'index.php/dromtype/index');
         }
         echo json_encode($msg);
     }
     
+    //ฟังก์ชันแสดงการแก้ไขข้อมูล
     public function editdormtype(){
         
         $result = $this->model->editdormtype();
         echo json_encode($result);
     }
     
+    //ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
     public function updatedormtype(){
         $result = $this->model->updatedormtype();
         $msg['success'] = false;
         $msg['type'] = 'update';
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>แก้ไขข้อมูลเรียบร้อย');
-            redirect(base_url() . 'index.php/dormtype/index');
+        }else{
+            $msg['success'] = false;
+            redirect(base_url() . 'index.php/dromtype/index');
         }
-        redirect(base_url() . 'index.php/dormtype/index');
-        //echo json_encode($msg);
+        echo json_encode($msg);
     }
     
+    //ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
     public function deletedormtype(){
         $result = $this->model->deletedormtype();
-        
-        $msg['success'] = false;
-        $msg['type'] = 'delete';
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
-            redirect(base_url() . 'index.php/dormtype/index');
+        }else{
+            $msg['success'] = false;
+            redirect(base_url() . 'index.php/dromtype/index');
         }
         echo json_encode($msg);
     }

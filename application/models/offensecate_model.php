@@ -9,7 +9,7 @@ class offensecate_model extends CI_Model {
     
     
  public function showAll(){
-        $this->db->order_by('oc_ID', 'desc');
+        $this->db->order_by('oc_ID', 'ASC');
         $query = $this->db->get('offensecate');
         if($query->num_rows() > 0){
             return $query->result();
@@ -17,6 +17,20 @@ class offensecate_model extends CI_Model {
             return false;
         }
     }
+    public function checkkey(){
+        $oc_ID = $this->input->post('oc_ID');
+        $this->db->where('oc_ID', $oc_ID);
+        $query = $this->db->get('offensecate');
+        if($query->num_rows($query) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
+    
 
     public function addoffensecate(){
         $field = array(
