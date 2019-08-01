@@ -56,6 +56,10 @@
                             <!--ส่วนฟอร์มเพิ่มข้อมูล-->
                             <form action="" id="formadd" method="post" class="needs-validation">
                                 <center>
+
+
+
+                                
                                     <div class="form-group" id="input_group_sty">
                                         <div class="input-group">
 
@@ -276,10 +280,21 @@
                         <table id="style_table" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>รหัสสถานที่</th>
-                                    <th>ชื่อสถานที่</th>
-                                    <th>คำอธิบายสถานที่</th>
-                                    <th>จัดการ</th>
+                                    <th>รหัสบุคลากร</th>
+                                    <th>ชื่อ</th>
+                                    <th>นามสกุล</th>
+                                    <th>ตำแหน่ง</th>
+                                    <th>บทบาท</th>
+                                    <th>อีเมล</th>
+                                    <th>หมายเลขโทรศัพท์มือถือ</th>
+                                    <th>หมายเลขโทรศัพท์ที่ทำงาน</th>
+                                    <th>รหัสหน่วยงานที่สังกัด</th>
+                                    <th>รหัสหลักสูตรที่สังกัด</th>
+                                    <th>รหัสประเภทผู้ใช้งาน</th>
+                                    <th>ผู้เข้าใช้ระบบ</th>
+                                    <th>รหัสผ่านผู้เข้าใช้ระบบ</th>
+                                    <th>สถานะการใช้งาน</th>
+                                
                                 </tr>
                             </thead>
                             <tbody id="showdata">
@@ -744,6 +759,20 @@
                     for (i = 0; i < data.length; i++) {
                         html += '<tr>' +
                             '<td>' + data[i].person_ID + '</td>' +
+                            '<td>' + data[i].person_fname + '</td>' +
+                            '<td>' + data[i].person_lname + '</td>' +
+                            '<td>' + data[i].position + '</td>' +
+                            '<td>' + data[i].role + '</td>' +
+                            '<td>' + data[i].email + '</td>' +
+                            '<td>' + data[i].phone1 + '</td>' +
+                            '<td>' + data[i].phone2 + '</td>' +
+                            '<td>' + data[i].dept_ID + '</td>' +
+                            '<td>' + data[i].cur_ID + '</td>' +
+                            '<td>' + data[i].usertype_ID + '</td>' +
+                            '<td>' + data[i].username + '</td>' +
+                            '<td>' + data[i].password + '</td>' +
+                            '<td>' + data[i].status + '</td>' +
+
 
                             '<td>' +
                             '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +
