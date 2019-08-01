@@ -34,7 +34,7 @@
             
             </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2"><span><i class="fas fa-users"></i></span>&nbsp;สถานะนักศึกษา</a>
+                <a class="nav-link" data-toggle="tab" href="#menu2"><span><i class="fas fa-users"></i></span>&nbsp;บุคลากร</a>
               </li>
               
                </li>
