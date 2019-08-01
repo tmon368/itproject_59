@@ -34,7 +34,7 @@
 
             <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-map-marker-alt" id="btnAdd"></i></span>เพิ่มสถานที่
+                    <span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มสถานที่
                 </button>
                 &nbsp;
             </div>

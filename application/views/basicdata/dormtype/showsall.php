@@ -14,6 +14,7 @@
 
 <body>
     <meta charset="UTF-8">
+    
     <div class="page-breadcrumb" id="nav_sty">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -23,13 +24,11 @@
         </nav>
     </div>
 
-    <div class="col-lg-8 grid-margin stretch-card">
+    <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
                 <h6 class="m-0 text-primary"><span><i class="fas fa-building"></i></span>&nbsp;ประเภทหอพัก</h6>
             </div>
-           
-           
            
            
             <div class="card-body" id="card_1">
@@ -78,7 +77,7 @@
                                             <label for="validationCustom02">ประเภทหอพัก </label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="txtname" class="form-control" maxlength="50"
+                                            <input type="text" name="txtname" class="form-control" maxlength="30"
                                                 required>                                   
                                         </div>
                                     </div>
@@ -301,7 +300,7 @@
                          $("#msg1").html('<div style="color:green">สามารถใช้งานได้</div>'); 
 					}else{
 						$("#msg1").html('<div style="color:red">ไม่สามารถใช้งานได้</div>');
-						$("#place_ID").focus();
+						$("#dormtype_ID").focus();
 						
 					}
                 },

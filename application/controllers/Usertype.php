@@ -24,17 +24,33 @@ class Usertype extends CI_Controller {
 	    $result = $this->model->showAll();
 	    echo json_encode($result);
 	}
+	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง Usertype
+	public function checkkey(){
+	    $result = $this->model->checkkey();
+	    if($result){
+	        $msg['success'] = true;
+	        
+	        
+	    }else{
+	        $msg['success'] = false;
+	        
+	    }
+	    echo json_encode($result);
+	}
 	
+	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addusertype(){
 	    $result = $this->model->addusertype();
 	    //$msg['success'] = false;
 	    //$msg['type'] = 'add';
 	    if($result){
 	        $msg['success'] = true;
-	        $this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
-	        redirect(base_url() . 'index.php/usertype/index');
 	        
-	    }
+	    }else {
+	        $msg['success'] = false;
+	        redirect(base_url() . 'index.php/usertype/index');
+  
+	    } 
 	    echo json_encode($msg);
 	}
 	
@@ -44,18 +60,21 @@ class Usertype extends CI_Controller {
 	    echo json_encode($result);
 	}
 	
+
+   
 	public function updateusertype(){
 	    $result = $this->model->updateusertype();
 	    $msg['success'] = false;
 	    $msg['type'] = 'update';
 	    if($result){
 	        $msg['success'] = true;
-	        $this->session->set_flashdata('message', '<br/>แก้ไขข้อมูลเรียบร้อย');
+	    }else {
+	        $msg['success'] = false;
 	        redirect(base_url() . 'index.php/usertype/index');
-	    }
-	    redirect(base_url() . 'index.php/usertype/index');
-	    //echo json_encode($msg);
+	    }   
+	     echo json_encode($msg);
 	}
+	
 	public function deleteusertype(){
 	    $result = $this->model->deleteusertype();
 	    
@@ -63,7 +82,8 @@ class Usertype extends CI_Controller {
 	    $msg['type'] = 'delete';
 	    if($result){
 	        $msg['success'] = true;
-	        $this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
+	    }else{
+	        $msg['success'] = false;
 	        redirect(base_url() . 'index.php/usertype/index');
 	    }
 	    echo json_encode($msg);

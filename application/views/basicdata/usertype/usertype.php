@@ -1,8 +1,11 @@
 <!doctype html>
 <html lang="en">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<div class="alert alert-success" style="display: none;">
-</div>
+<center>
+<strong><div  class="alert alert-success" role="alert" style="display: none;"></div></strong>
+<strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
+<strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
+</center>
 <head>
 
     <title>ประเภทผู้ใช้</title>
@@ -18,20 +21,18 @@
             </ol>
         </nav>
     </div>
+    
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
                 <h6 class="m-0 text-primary"><span><i class="fas fa-users"></i></span>&nbsp;ประเภทผู้ใช้งาน</h6>
             </div>
-            <?php  
-echo '<center><label class="text-danger">'.$this->session->flashdata
-("message").'</label></center>';  
-            ?>
+            
 
             <div class="card-body" id="card_1">
 
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-users"></i></span>เพิ่มประเภทผู้ใช้
+                    <span><i class="fas fa-plus"></i></span>เพิ่มประเภทผู้ใช้
                 </button>
                 &nbsp;
             </div>
@@ -62,8 +63,10 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                                <input type="text" name="userID" class="form-control" maxlength="2"
+                                                <input type="text" name="userID" id="userID" class="form-control" maxlength="2"
                                                     onkeyup="count_down_id(this);" required>
+                                                    <div id="msg1"></div>
+                                                   <!--   <div id="msg2" style="color:red"></div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -76,17 +79,44 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                             <p class="text-danger">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</p>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="username" class="form-control" maxlength="40"
+                                            <input type="text" name="username" id="username" class="form-control" maxlength="40"
                                                 onkeyup="count_downname(this);" required>
                                         </div>
-                                </center>
+                             
 
+                                <!-- 
+                                        <div class="form-group sty_a" id="textkey">
+                                            <span id="count5">0</span>
+                                            <span>/</span>
+                                            <span id="count6" style="color:#6699ff;">100</span>
+                                        </div>
+
+                                        <!-- Alert for the number of characters
+                                        
+                                        <script>
+                                        function count_downdescription(obj) {
+                                            document.getElementById('count5').innerHTML = obj.value.length;
+                                            var element = document.getElementById('count6');
+
+                                            element.innerHTML = 100 - obj.value.length;
+                                            if (100 - obj.value.length == 0) {
+                                                element.style.color = 'red';
+
+                                            } else {
+                                                element.style.color = '#6699ff';
+                                            }
+                                        }
+                                        </script>
+                                        
+                                    </div>
+                                    -->
+                                </center>
                                 <!------------------>
                         </div>
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="insert" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+                            <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
                         </div>
                         </form>
                     </div>
@@ -121,26 +151,36 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
                                                 <input type="text" name="typeeditID" class="form-control" maxlength="2"
-                                                    onkeyup="count_down_editid(this);" required>
-
-                                                <div class="form-group sty_a">
-                                                    <span id="count7">0</span>
-                                                    <span>/</span>
-                                                    <span id="count8" style="color:#6699ff;">2</span>
-                                                </div>
+                                                   onkeyup="count_down_editid(this);" required>
                                             </div>
                                         </div>
+                                        </div>
+                                      
+                                        <div class="form-group" id="input_group_sty">
+                                            <div class="input-group">
+                                                <label for="validationCustom02">ประเภทผู้ใช้งาน</label>
+                                                <p class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</p>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="text" name="typeeditname" class="form-control"
+                                                    maxlength="50" onkeyup="count_down_editname(this);" required>
+                                            </div>
+                                            </div>
+                                             <!--  
+                                        <div class="form-group sty_a">
+                                            <span id="count11">0</span>
+                                            <span>/</span>
+                                            <span id="count12" style="color:#6699ff;">100</span>
+                                        </div>
 
-                                        <!-- Alert for the number of characters-->
-                                        
+                                        <!-- Alert for the number of characters
                                         <script>
-                                        function count_down_editid(obj) {
+                                        function count_down_editdescription(obj) {
 
-                                            document.getElementById('count7').innerHTML = obj.value.length;
-                                            var element = document.getElementById('count8');
+                                            document.getElementById('count11').innerHTML = obj.value.length;
+                                            var element = document.getElementById('count12');
 
-                                            element.innerHTML = 2 - obj.value.length;
-                                            if (2 - obj.value.length == 0) {
+                                            element.innerHTML = 100 - obj.value.length;
+                                            if (100 - obj.value.length == 0) {
                                                 element.style.color = 'red';
 
                                             } else {
@@ -148,37 +188,10 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                                             }
                                         }
                                         </script>
-                                        <div class="form-group" id="input_group_sty">
-                                            <div class="input-group">
-                                                <label for="validationCustom02">ประเภทผู้ใช้งาน</label>
-                                                <p class="text-danger">&nbsp;&nbsp;*</p>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <input type="text" name="typeeditname" class="form-control"
-                                                    maxlength="50" onkeyup="count_down_editname(this);" required>
-                                            </div>
-                                            <div class="form-group sty_a">
-                                                <span id="count9">0</span>
-                                                <span>/</span>
-                                                <span id="count10" style="color:#6699ff;">50</span>
-                                            </div>
-
-                                            <!-- Alert for the number of characters-->
-                                            <script>
-                                            function count_down_editname(obj) {
-
-                                                document.getElementById('count9').innerHTML = obj.value.length;
-                                                var element = document.getElementById('count10');
-
-                                                element.innerHTML = 50 - obj.value.length;
-                                                if (50 - obj.value.length == 0) {
-                                                    element.style.color = 'red';
-
-                                                } else {
-                                                    element.style.color = '#6699ff';
-                                                }
-                                            }
-                                            </script>
-                                        </div>
+                                    </div>
+                                    -->
+                                           
+                                       
                                 </center>
 
                                 <!------------------>
@@ -188,7 +201,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="insert" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                           <button name="btnedit" type="button" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
                         </div>
                         </form>
                     </div>
@@ -218,18 +231,16 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 
                                 <center>
                                     <div id="showddel"></div>
-                                    <input type="hidden" name="usertypeID">
-
+                                    <input type="hidden" name="usertypedelID">
                                 </center>
 
                                 <!------------------>
                             </div>
 
-
                             <div class="modal-footer">
                                 <button name="insert" type="reset" class="btn btn-secondary"
                                     data-dismiss="modal">ยกเลิก</button>
-                                <button name="insert" type="submit" class="btn btn-danger btn-fw">ลบ</button>
+                                <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
                             </div>
                         </form>
                     </div>
@@ -277,32 +288,66 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
     </div>
     <script>
     
-    $(function() {
+    $(document).ready(function(){
         showAll();
+
+
+        $("#usertype_ID").blur(function(){
+            var flag;
+            $.ajax({
+                url: "<?php echo base_url(); ?>index.php/usertype/checkkey",
+                data: "usertype_ID=" + $("#usertype_ID").val(),
+                type: 'ajax',
+                method: 'post',
+                async:false,
+                dataType: 'json',
+                success: function(data) { 
+                	$("#msg1").empty();
+                    //alert(data)
+                	if(data == true){
+                         $("#msg1").html('<div style="color:green">สามารถใช้งานได้</div>'); 
+					}else{
+						$("#msg1").html('<div style="color:red">ไม่สามารถใช้งานได้</div>');
+						$("#usertype_ID").focus();
+						
+					}
+                },
+                error: function(xhr, status, exception) { alert(status); }
+            });
+            return flag;
+        });
+
+
+
+
+
+
         
         //เพิ่มข้อมูล
         $('#btnAdd').click(function() {
+        	$('#formadd')[0].reset();
+        	$("#msg1").empty();
             $('#exampleModalCenter').modal('show');
             $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/usertype/addusertype');
         });
 
         $('#btnSave').click(function() {
-            var url = $('#myForm').attr('action');
-            var data = $('#myForm').serialize();
+            var url = $('#formadd').attr('action');
+            var data = $('#formadd').serialize();
             //validate form
-            var empoyeeName = $('input[name=txtEmployeeName]');
-            var address = $('textarea[name=txtAddress]');
+            var usertype_ID = $('input[name=userID]');
+            var usertype_name = $('input[name=username]');
             var result = '';
-            if (empoyeeName.val() == '') {
-                empoyeeName.parent().parent().addClass('has-error');
+            if (usertype_ID.val() == '') {
+            	usertype_ID.parent().parent().addClass('has-error');
             } else {
-                empoyeeName.parent().parent().removeClass('has-error');
+            	usertype_ID.parent().parent().removeClass('has-error');
                 result += '1';
             }
-            if (address.val() == '') {
-                address.parent().parent().addClass('has-error');
+            if (usertype_name.val() == '') {
+            	usertype_name.parent().parent().addClass('has-error');
             } else {
-                address.parent().parent().removeClass('has-error');
+            	usertype_name.parent().parent().removeClass('has-error');
                 result += '2';
             }
 
@@ -316,26 +361,30 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                     dataType: 'json',
                     success: function(response) {
                         if (response.success) {
-                            $('#myModal').modal('hide');
-                            $('#myForm')[0].reset();
-                            if (response.type == 'add') {
-                                var type = 'added'
-                            } else if (response.type == 'update') {
-                                var type = "updated"
-                            }
-                            $('.alert-success').html('Employee ' + type + ' successfully')
-                                .fadeIn().delay(4000).fadeOut('slow');
-                            showAllEmployee();
+                        	$('#exampleModalCenter').modal('hide');
+                            //$('#myForm')[0].reset();
+                          $('#formadd')[0].reset();		
+							$('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							$('#textkey').empty();			
+							$('#msg1').empty();
+							showAll();
                         } else {
                             alert('Error');
                         }
                     },
-                    error: function() {
-                        alert('ไม่สามารถเพิ่มข้อมูล');
-                    }
-                });
-            }
-        });
+                    error: function(){
+						alert('id นี้ถูกใช้งานแล้ว');
+						$('#exampleModalCenter').modal('hide');
+						$('#formadd')[0].reset();
+						//$('#nav_sty')[0].reset();		
+						$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+						$('#msg1').empty();
+						showAll();
+					}
+				});
+			}
+		});
+
 
         //แก้ไขข้อมูล
         $('#showdata').on('click', '.fa-edit', function() {
@@ -362,7 +411,63 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                 }
             });
         });
+  
+        $('#btnedit').click(function(){
+        	var url = $('#formupdate').attr('action');
+			var data = $('#formupdate').serialize();
+			//validate form
+            var usertype_ID = $('input[name=typeeditID]');
+            var usertype_name = $('input[name=typeeditname]');
+            var result = '';   
+            
+            if (usertype_ID.val() == '') {
+            	usertype_ID.parent().parent().addClass('has-error');
+            } else {
+            	usertype_ID.parent().parent().removeClass('has-error');
+                result += '1';
+            }
+            if (usertype_name.val() == '') {
+            	usertype_name.parent().parent().addClass('has-error');
+            } else {
+            	usertype_name.parent().parent().removeClass('has-error');
+                result += '2';
+            }
 
+            if(result=='12'){
+				$.ajax({
+					type: 'ajax',
+					method: 'post',
+					url: url,
+					data: data,
+					async: false,
+					dataType: 'json',
+					success: function(response){
+						if(response.success){
+							$('#edit_file').modal('hide');
+							$('#formupdate')[0].reset();		
+							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							showAll();
+						}else{
+							alert('Error');
+						}
+					},
+					
+					
+					error: function(){
+						//alert('id นี้ถูกใช้งานแล้ว');
+						$('#edit_file').modal('hide');
+						$('#formupdate')[0].reset();		
+						$('.alert-danger').html('แก้ไขเรยบร้อย').fadeIn().delay(2000).fadeOut('slow');
+						showAll();
+					}
+				});
+			}
+		});
+
+
+ 
+
+        
         //ลบข้อมูล
         $('#showdata').on('click', '.fa-trash-alt', function() {
             var id = $(this).attr('data');
@@ -380,14 +485,76 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    $('#showddel').html('ต้องการลบสถานที่   "' + data.usertype_name + '"');
-                    $('input[name=usertypeID]').val(data.usertype_ID);
+                    $('#showddel').html('ต้องการลบประเภทผู้ใช้งาน  "' + data.usertype_name + '"');
+                    $('input[name=usertypedelID]').val(data.usertype_ID);
                 },
                 error: function() {
                     alert('ไม่สามารถลบข้อมูล');
                 }
             });
         });
+
+
+
+        $('#btndel').click(function(){
+			var url = $('#formdelete').attr('action');
+			var data = $('#formdelete').serialize();
+			var usertype_ID = $('input[name=usertypedelID]');
+			var result = '';
+			
+			if(usertype_ID.val()==''){
+				usertype_ID.parent().parent().addClass('has-error');
+			}else{
+				usertype_ID.parent().parent().removeClass('has-error');
+				result +='1';
+			}
+			if(result=='1'){
+				$.ajax({
+					type: 'ajax',
+					method: 'post',
+					url: url,
+					data: data,
+					async: false,
+					dataType: 'json',
+					success: function(response){
+						if(response.success){
+							$('#del_file').modal('hide');
+							$('#formdelete')[0].reset();		
+							$('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							//$('#formdelete').empty();
+							showAll();
+						}else{
+							alert('Error');
+						}
+					},
+					
+					error: function(){
+						//alert('id นี้ถูกใช้งานแล้ว');
+						$('#del_file').modal('hide');
+						$('#formdelete')[0].reset();		
+						$('.alert-danger').html('แก้ไขเรยบร้อย').fadeIn().delay(5000).fadeOut('slow');
+						showAll();
+					}
+				});
+			}
+		});
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         //แสดงข้อมูล
         function showAll() {
