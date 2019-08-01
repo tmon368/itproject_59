@@ -28,7 +28,7 @@ class Import_data extends CI_Controller {
 	    
 	    if(isset($_POST['btn_submitplace'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
 	        
-	        $this->import_data_model->clearvalue();
+	        //$this->import_data_model->clearvalue();
 	        
 	        $tmpFile = $_FILES['_fileup']['tmp_name'];
 	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
@@ -61,7 +61,8 @@ class Import_data extends CI_Controller {
 	                // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
 	                $col_name = array(
 	                    "A"=>"BUILDID",
-	                    "B"=>"BUILDTHNAME"
+	                    "B"=>"BUILDTHNAME",
+	                    "C"=> "description"
 	                    
 	                );
 	                if($row >= $start_row){
@@ -82,7 +83,7 @@ class Import_data extends CI_Controller {
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
     // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
-    $arr_field = array("BUILDID","BUILDTHNAME");
+    $arr_field = array("BUILDID","BUILDTHNAME","description");
     if(is_array($data)){
         foreach($arr_field as $v){
             if(!isset($data[$v])){
@@ -98,6 +99,7 @@ function prepare_data($data){
 
 // นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
 if(isset($data_arr) && count($data_arr)>0){
+    $this->import_data_model->empty_tmp_place();
     foreach($data_arr as $row){
         $row = prepare_data($row);
 
@@ -113,13 +115,14 @@ if(isset($data_arr) && count($data_arr)>0){
 
 $BUILDID = $row['BUILDID'];
 $BUILDTHNAME = $row['BUILDTHNAME'];
+$description = $row['description'];
 $data = array(
 'place_ID'		=>	$BUILDID,
-'place_name'			=>	$BUILDTHNAME
-
+'place_name'			=>	$BUILDTHNAME,
+'description'			=>	$description
 );
 $this->import_data_model->inserttmp_place($data);
-
+/*
 $check=$this->import_data_model->checkimport($BUILDID);
 if($check==true){
     $this->import_data_model->insertplace($data);
@@ -132,24 +135,120 @@ if($check==true){
     
     
 }
+*/
     }
 
 }
 
+redirect("import_data/submit_place");
 
 
+//$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
 
-$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
-
-redirect(base_url() . 'index.php/import_data/index');
+//redirect(base_url() . 'index.php/import_data/index');
 
 ?>    
 <?php 
 
 	}
 	
+	public  function showAlltmpplace()
+	{
+	    $result = $this->import_data_model->selecttmpplace();
+	    //print_r ($result);
+	    echo json_encode($result);
+	    
+	    
+	}
 	
+	public function submit_place()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('basicdata/submit_place');
+	}
+	
+	
+	
+	
+	
+	function import_temp_to_dbplace()
+	{
+	    
+	    echo "Function import_temp_to_db</br>";
+	    
+	    $result = $this->import_data_model->selecttmpplace(); //ตาราง temp
+	    
+	    foreach ($result as $row) { //loop ตาราง temp
+	        //select by id
+	        
+	       
+	        $temp_a = $this->import_data_model->checkplace($row->place_ID);
+	       
+	        if ($temp_a == 1) {
+	            
+	            //อัพเดตข้อมูล
+	            $data = array(
+	            //'id' => $results->id,
+	            'place_name' => $row->place_name,
+	            'description' => $row->description
+	            );
+	            $this->import_data_model->update_dataplace($row->place_ID,$data);
+	        } else{
+	            //เพิ่มข้อมูล
+	            $data_a =  array();
+	            $data_a['place_ID'] = $row->place_ID;
+	            $data_a['place_name'] = $row->place_name;
+	            $data_a['description'] = $row->description;
+	            $this->import_data_model->insert_to_place($data_a);
 
+	        }
+	        
+	    }
+	    
+	    //redirect("Csv_import");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
