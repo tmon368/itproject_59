@@ -6,7 +6,6 @@ class dormtype_model extends CI_Model {
         parent::_construct();
         
     }
-    
     //ฟังก์ชันแสดงข้อมูลทั้งหมด จาก table dormtype โดยเรียงลำดับจาก dormtype_ID
  public function showAll(){
        $this->db->order_by('dormtype_ID', 'ASC');

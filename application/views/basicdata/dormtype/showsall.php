@@ -31,7 +31,6 @@
             </div>
            
            
-           
             <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
                     <span><i class="fas fa-building"></i></span>เพิ่มประเภทหอพัก
@@ -301,7 +300,7 @@
                          $("#msg1").html('<div style="color:green">สามารถใช้งานได้</div>'); 
 					}else{
 						$("#msg1").html('<div style="color:red">ไม่สามารถใช้งานได้</div>');
-						$("#place_ID").focus();
+						$("#dormtype_ID").focus();
 						
 					}
                 },
