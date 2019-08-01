@@ -86,10 +86,11 @@
                                         <div class="input-group">
                                             <label for="validationCustom02">คำอธิบายสถานที่</label>&nbsp;
                                             <textarea name="txtdescription" rows="4" class="form-control"
-                                                maxlength="100" onkeyup="count_downdescription(this);"
-                                                required></textarea>
+                                                maxlength="100" 
+                                                ></textarea>
                                         </div>
                                          <!-- 
+                                         onkeyup="count_downdescription(this);"
                                         <div class="form-group sty_a" id="textkey">
                                             <span id="count5">0</span>
                                             <span>/</span>
@@ -122,7 +123,7 @@
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="btnSave" id="btnSave" type="button" class="btn btn-success">เพิ่มข้อมูล</button>
+                            <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
                         </div>
                         </form>
                     </div>
@@ -222,7 +223,7 @@
                         <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary"
                                 data-dismiss="modal">ยกเลิก</button>
-                            <button name="btnedit" type="button" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
+                            <button name="btnedit" type="submit" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
                         </div>
                         </form>
                     </div>
@@ -376,7 +377,7 @@
 				result +='3';
 			}
 
-			if(result=='123'){
+			if(result=='12' || result=='123'){
 				$.ajax({
 					type: 'ajax',
 					method: 'post',
@@ -479,7 +480,7 @@
 
 
 			
-			if(result=='123'){
+			if(result=='12' || result=='123'){
 				$.ajax({
 					type: 'ajax',
 					method: 'post',
