@@ -132,6 +132,9 @@
               <a class="nav-link" href="<?php echo site_url("#") ?>">สถานะนักศึกษา</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("personnel") ?>">บุคลกร</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
             </li>
             <li class="nav-item">
