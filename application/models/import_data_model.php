@@ -4,14 +4,24 @@ class import_data_model extends CI_Model
     // select from place
 	function selectplace()
 	{
-		$this->db->order_by('place_ID', 'DESC');
+		$this->db->order_by('place_ID','ASC');
 		$query = $this->db->get('place');
 		return $query->result();
 	}
-	function inserttmp_place($datatmp)
+	function selecttmpplace()
 	{
+	    $this->db->order_by('place_ID','ASC');
+	    $query = $this->db->get('tmp_place');
 	    
-	    $this->db->insert('tmp_place',$datatmp);
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
+	function inserttmp_place($data)
+	{
+	    $this->db->insert('tmp_place',$data);
 	}
 	
     //insert place
@@ -20,6 +30,67 @@ class import_data_model extends CI_Model
 	    
 		$this->db->insert('place',$data);
 	}
+	
+	
+	function checkplace($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT *FROM place WHERE place_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+
+	}
+	
+	function empty_tmp_place()
+	{
+	    $this->db->empty_table('tmp_place');
+	    $this->db->query("TRUNCATE TABLE tmp_place");
+	   //$this->db->insert_batch('place',$data);
+	}
+	
+	function insert_to_place($data)
+	{
+	   
+	    $this->db->insert('place',$data);
+	}
+	
+	function update_dataplace($id,$data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('place_ID',$id);
+	    $this->db->update('place',$data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public function checkimport($BUILDID)
 	{
@@ -89,7 +160,7 @@ class import_data_model extends CI_Model
 	
 	function clearvalue()
 	{
-	    $this->db->truncate('place');
+	    $this->db->truncate('tmp_place');
 	  
 	}
 	
