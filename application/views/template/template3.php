@@ -129,7 +129,7 @@
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("#") ?>">สถานะนักศึกษา</a>
+              <a class="nav-link" href="<?php echo site_url("status") ?>">สถานะนักศึกษา</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("personnel") ?>">บุคลกร</a>
@@ -142,6 +142,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("curriculum") ?>">หลักสูตร</a>
             </li>
 
             <li class="nav-item">
