@@ -7,7 +7,7 @@ class vehicles_model extends CI_Model {
         
     }
     
-    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable vehicles โดยเรียงลำดับจาก v_ID
+     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable vehicles โดยเรียงลำดับจาก v_ID
  public function showAll(){
        $this->db->order_by('v_ID', 'ASC');
         $query = $this->db->get('vehicles');

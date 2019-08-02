@@ -6,7 +6,6 @@ class student extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('student_model', 'model');
 	}
-
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ

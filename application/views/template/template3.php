@@ -10,7 +10,7 @@
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Richard V.Welsh</p>
-                  <div>
+                  <div> 
                     <small class="designation text-muted">Manager</small>
                     <span class="status-indicator online"></span>
                   </div>

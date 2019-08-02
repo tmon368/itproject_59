@@ -10,7 +10,7 @@
 
     <title>สถานะนักศึกษา admin</title>
 
-</head>
+</head> 
 
 <body>
     <meta charset="UTF-8">

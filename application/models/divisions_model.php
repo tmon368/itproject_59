@@ -7,7 +7,7 @@ class divisions_model extends CI_Model {
         
     }
     
-    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable divisions โดยเรียงลำดับจาก dept_ID
+     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable divisions โดยเรียงลำดับจาก dept_ID
  public function showAll(){
        $this->db->order_by('dept_ID', 'ASC');
         $query = $this->db->get('divisions');

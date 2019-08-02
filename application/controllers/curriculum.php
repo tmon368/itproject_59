@@ -13,7 +13,7 @@ class curriculum extends CI_Controller {
 	    $this->template();
 
 	}
-	
+
 	
 	public function template(){
 	    $this->load->view('template/template1');

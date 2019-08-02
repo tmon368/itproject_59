@@ -6,7 +6,6 @@ class status extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('status_model', 'model');
 	}
-
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ

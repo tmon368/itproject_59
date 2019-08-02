@@ -6,7 +6,6 @@ class divisions extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('divisions_model', 'model');
 	}
-
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ

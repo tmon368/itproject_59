@@ -10,7 +10,7 @@
 
     <title>นักศึกษา admin</title>
 
-</head>
+</head> 
 
 <body>
     <meta charset="UTF-8">

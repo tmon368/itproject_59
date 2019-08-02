@@ -6,7 +6,6 @@ class vehicles extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('vehicles_model', 'model');
 	}
-
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ

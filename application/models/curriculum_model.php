@@ -7,7 +7,7 @@ class curriculum_model extends CI_Model {
         
     }
     
-    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable place โดยเรียงลำดับจาก place_ID
+     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable place โดยเรียงลำดับจาก place_ID
  public function showAll(){
        $this->db->order_by(' cur_ID', 'ASC');
         $query = $this->db->get('curriculum');

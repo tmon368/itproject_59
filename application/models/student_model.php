@@ -7,7 +7,7 @@ class student_model extends CI_Model {
         
     }
     
-    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
+     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
  public function showAll(){
        $this->db->order_by('S_ID', 'ASC');
         $query = $this->db->get('student');
