@@ -8,7 +8,7 @@
 </center>
 <head>
 
-    <title>สถานะนักศึกษา admin</title>
+    <title>หน่วยงาน admin</title>
 
 </head>
 
@@ -18,7 +18,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">จัดการข้อมูลพื้นฐาน</a></li>
-                <li class="breadcrumb-item active" aria-current="page">สถานะนักศึกษา</li>
+                <li class="breadcrumb-item active" aria-current="page">หน่วยงาน</li>
             </ol>
         </nav>
     </div>
@@ -26,7 +26,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
-                <h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;สถานะนักศึกษา</h6>
+                <h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;หน่วยงาน</h6>
             </div>
           
            
@@ -79,9 +79,10 @@
                         <table id="style_table" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>รหัสสถานะนักศึกษา</th>
-                                    <th>ชื่อสถานะนักศึกษา</th>
-                                
+                                    <th>รหัสหน่วยงาน</th>
+                                    <th>ชื่อหน่วยงาน</th>
+                      
+
                                 </tr>
                             </thead>
                             <tbody id="showdata">
@@ -90,13 +91,13 @@
                                     <td></td>
                                     <td width="10px">
                                         <!--edit_file  del_file  -->
-                                        <!--	<a href="<?php echo base_url().'index.php/status/edit?id='.$rec->status_ID;?>" data-target="#edit_file"><i class="fas fa-edit" style="color:#47307b;"></i></a>
-                                                    <a href="<?php echo base_url().'index.php/status/edit?id='.$rec->status_ID;?>" data-toggle="modal" data-target="#edit_file" id="<?php echo $rec->status_ID; ?>"><i class="fas fa-edit" style="color:#47307b;">แก้ไข</i></a>&nbsp;
-                                                    <a href="<?php echo base_url().'index.php/status/edit?id='.$rec->status_ID;?>" data-toggle="modal" data-target="#"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)">ลบ</i></a>-->
+                                        <!--	<a href="<?php echo base_url().'index.php/divisions/edit?id='.$rec->dept_ID;?>" data-target="#edit_file"><i class="fas fa-edit" style="color:#47307b;"></i></a>
+                                                    <a href="<?php echo base_url().'index.php/divisions/edit?id='.$rec->dept_ID;?>" data-toggle="modal" data-target="#edit_file" id="<?php echo $rec->dept_ID; ?>"><i class="fas fa-edit" style="color:#47307b;">แก้ไข</i></a>&nbsp;
+                                                    <a href="<?php echo base_url().'index.php/divisions/edit?id='.$rec->dept_ID;?>" data-toggle="modal" data-target="#"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)">ลบ</i></a>-->
 
                                         <!--ส่วนของ madal จะใช้การจัดการด้วย id ส่วนของ data-target กับ id ของ class จะต้องเหมือนกัน -->
 
-                                        <!-- <form action="<?php echo base_url(); ?>index.php/person/edit" method="post" id="editform"  class="needs-validation" >  -->
+                                        <!-- <form action="<?php echo base_url(); ?>index.php/divisions/edit" method="post" id="editform"  class="needs-validation" >  -->
                                         <!------------------>
                                     </td>
                                 </tr>
@@ -112,11 +113,11 @@
     $(document).ready(function(){
         showAll();
 
-        $("#status_ID").blur(function(){
+        $("#dept_ID").blur(function(){
             var flag;
             $.ajax({
-                url: "<?php echo base_url(); ?>index.php/status/checkkey",
-                data: "status_ID=" + $("#status_ID").val(),
+                url: "<?php echo base_url(); ?>index.php/divisions/checkkey",
+                data: "dept_ID=" + $("#dept_ID").val(),
                 type: 'ajax',
                 method: 'post',
                 async:false,
@@ -128,7 +129,7 @@
                          $("#msg1").html('<div style="color:green">สามารถใช้งานได้</div>'); 
 					}else{
 						$("#msg1").html('<div style="color:red">ไม่สามารถใช้งานได้</div>');
-						$("#status_ID").focus();
+						$("#dept_ID").focus();
 						
 					}
                 },
@@ -147,14 +148,14 @@
         	$('#formadd')[0].reset();
         	$("#msg1").empty();
             $('#exampleModalCenter').modal('show');
-            $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/status/addstatus');
+            $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/divisions/adddivisions');
         });
 
         $('#btnSave').click(function(){
 			var url = $('#formadd').attr('action');
 			var data = $('#formadd').serialize();
 			//validate form
-			var status_ID = $('input[name=txtID]');
+			var person_ID = $('input[name=txtID]');
 			var person_fname = $('input[name=txtfname]');
 			var person_lname = $('input[name=txtlname]');
             var position = $('input[name=txtpos]');
@@ -171,10 +172,10 @@
 
 			var result = '';
 			
-			if(status_ID.val()==''){
-				status_ID.parent().parent().addClass('has-error');
+			if(person_ID.val()==''){
+				person_ID.parent().parent().addClass('has-error');
 			}else{
-				status_ID.parent().parent().removeClass('has-error');
+				person_ID.parent().parent().removeClass('has-error');
 				result +='1';
 			}
 			if(person_fname.val()==''){
@@ -313,11 +314,11 @@
             var id = $(this).attr('data');
             var popup = document.getElementById("editimage");
             $('#edit_file').modal('show');
-            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/status/updatestatus');
+            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/divisions/updatedivisions');
             $.ajax({
                 type: 'ajax',
                 method: 'get',
-                url: '<?php echo base_url() ?>index.php/status/editstatus',
+                url: '<?php echo base_url() ?>index.php/divisions/editdivisions',
                 data: {
                     id: id
                 },
@@ -432,11 +433,11 @@
             var id = $(this).attr('data');
             $('#del_file').modal('show');
             //prevent previous handler - unbind()
-            $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/status/deletestatus');
+            $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/divisions/deletedivisions');
             $.ajax({
                 type: 'ajax',
                 method: 'get',
-                url: '<?php echo base_url() ?>index.php/status/editstatus',
+                url: '<?php echo base_url() ?>index.php/divisions/editdivisions',
                 data: {
                     id: id
                 },
@@ -444,7 +445,7 @@
                 dataType: 'json',
                 success: function(data) {
                     $('#showddel').html('ต้องการลบสถานที่   "' + data.person_fname + '"');
-                    $('input[name=txtdelID]').val(data.status_ID);
+                    $('input[name=txtdelID]').val(data.person_ID);
                 },
                 error: function() {
                     alert('ไม่สามารถลบข้อมูล');
@@ -537,7 +538,7 @@
         function showAll() {
             $.ajax({
                 type: 'ajax',
-                url: '<?php echo base_url() ?>index.php/status/showAll',
+                url: '<?php echo base_url() ?>index.php/divisions/showAll',
                 async: false,
                 dataType: 'json',
                 success: function(data) {
@@ -545,14 +546,18 @@
                     var i;
                     for (i = 0; i < data.length; i++) {
                         html += '<tr>' +
-                            '<td>' + data[i].status_ID + '</td>' +
-                            '<td>' + data[i].status_name + '</td>' +
+                            '<td>' + data[i].dept_ID + '</td>' +
+                            '<td>' + data[i].dept_name + '</td>' +
+                        
+                            
+                            
+
 
                             '<td>' +
                             '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +
-                            data[i].status_ID + '"></i></a>' +
+                            data[i].dept_ID + '"></i></a>' +
                             '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="' +
-                            data[i].status_ID + '"></i></a>' +
+                            data[i].dept_ID + '"></i></a>' +
                             '</td>' +
                             '</tr>';
                     }

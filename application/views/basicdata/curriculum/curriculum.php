@@ -8,7 +8,7 @@
 </center>
 <head>
 
-    <title>บุคลากร admin</title>
+    <title>หลักสูตร admin</title>
 
 </head>
 
@@ -18,7 +18,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">จัดการข้อมูลพื้นฐาน</a></li>
-                <li class="breadcrumb-item active" aria-current="page">บุคลากร</li>
+                <li class="breadcrumb-item active" aria-current="page">หลักสูตร</li>
             </ol>
         </nav>
     </div>
@@ -26,7 +26,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
-                <h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;บุคลากร</h6>
+                <h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;หลักสูตร</h6>
             </div>
           
            
