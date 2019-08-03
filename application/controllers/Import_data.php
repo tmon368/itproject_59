@@ -173,7 +173,9 @@ redirect("import_data/submit_place");
 	
 	function import_temp_to_dbplace()
 	{
-	    
+	    $inst=0;
+	    $updt=0;
+	    $dtnull=0;
 	    echo "Function import_temp_to_db</br>";
 	    
 	    $result = $this->import_data_model->selecttmpplace(); //ตาราง temp
@@ -184,6 +186,8 @@ redirect("import_data/submit_place");
 	       
 	        $temp_a = $this->import_data_model->checkplace($row->place_ID);
 	       
+	        
+	        if($row->place_ID != "" && $row->place_name != "" && $row->description != ""){
 	        if ($temp_a == 1) {
 	            
 	            //อัพเดตข้อมูล
@@ -193,6 +197,7 @@ redirect("import_data/submit_place");
 	            'description' => $row->description
 	            );
 	            $this->import_data_model->update_dataplace($row->place_ID,$data);
+	            $updt+=1;
 	        } else{
 	            //เพิ่มข้อมูล
 	            $data_a =  array();
@@ -200,8 +205,15 @@ redirect("import_data/submit_place");
 	            $data_a['place_name'] = $row->place_name;
 	            $data_a['description'] = $row->description;
 	            $this->import_data_model->insert_to_place($data_a);
+	            $inst+=1;
 
 	        }
+	        }else{
+	            $dtnull+=1;
+	            
+	            
+	        }
+	        
 	        
 	    }
 	    
