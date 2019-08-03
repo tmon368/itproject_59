@@ -88,6 +88,79 @@ class import_data_model extends CI_Model
 	
 	
 	
+	function empty_tmp_divisions()
+	{
+	    $this->db->empty_table('tmp_divisions');
+	    $this->db->query("TRUNCATE TABLE tmp_divisions");
+	    //$this->db->insert_batch('place',$data);
+	}
+	
+	function inserttmp_divisions($data)
+	{
+	    $this->db->insert('tmp_divisions',$data);
+	}
+	
+	function selecttmpdivisions()
+	{
+	    $this->db->order_by('dept_ID','ASC');
+	    $query = $this->db->get('tmp_divisions');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
+	
+
+	
+	function checkdivisions($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT *FROM divisions WHERE dept_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+	    
+	}
+	
+	function insert_to_divisions($data)
+	{
+	    
+	    $this->db->insert('divisions',$data);
+	}
+	
+	function update_datadivisions($id,$data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('dept_ID',$id);
+	    $this->db->update('divisions',$data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
