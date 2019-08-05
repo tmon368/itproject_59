@@ -100,11 +100,5 @@ class offense_model extends CI_Model {
         
         
         
-    }
-    
-   
-    
-    
-    
-    
+    }   
 }

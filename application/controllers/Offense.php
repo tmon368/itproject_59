@@ -87,5 +87,6 @@ class Offense extends CI_Controller {
 	        redirect(base_url() . 'index.php/offense/index');
 	    }
 	    echo json_encode($msg);
-	}
+	} 
+	
 }
