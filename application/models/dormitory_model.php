@@ -4,7 +4,7 @@ class dormitory_model extends CI_Model {
     public function _construct()
     {
         parent::_construct();
-        
+         
     }
     
     
@@ -17,13 +17,24 @@ class dormitory_model extends CI_Model {
             return false;
         }
     }
-
+    public function checkkey(){
+        $dorm_ID= $this->input->post('dorm_ID');
+        $this->db->where('dorm_ID', $dorm_ID);
+        $query = $this->db->get('dormitory');
+        if($query->num_rows($query) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
     public function adddormitory(){
         $field = array(
             'dorm_ID'=>$this->input->post('txtID'),
             'dname'=>$this->input->post('txtname'),
-            'dorm_type'=>$this->input->post('txttype')   
-            
+            'dorm_type'=>$this->input->post('txttype'),
+ 
             );
         $this->db->insert('dormitory', $field);
         if($this->db->affected_rows() > 0){
@@ -49,6 +60,8 @@ class dormitory_model extends CI_Model {
         $field = array(
         'dname'=>$this->input->post('txteditname'),
         'dorm_type'=>$this->input->post('txtedittype'),
+    
+            
         );
         $this->db->where('dorm_ID', $id);
         $this->db->update('dormitory', $field);
@@ -63,13 +76,13 @@ class dormitory_model extends CI_Model {
          $id = $this->input->post('txtdelID');
         /*
         $field = array(
-        'active_track'=> '1'
+        'active_track'=> '1'  
 
         );*/
          
         $this->db->where('dorm_ID', $id);
         $this->db->delete('dormitory');
-        //$this->db->update('offense', $field);
+        //$this->db->update('dormitory', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{

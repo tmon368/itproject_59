@@ -31,21 +31,36 @@ class Dormitory extends CI_Controller {
         $result = $this->model->showAll();
         echo json_encode($result);
     }
+    public function checkkey(){
+        $result = $this->model->checkkey();
+        if($result){
+            $msg['success'] = true;
+            
+            
+        }else{
+            $msg['success'] = false;
+            
+        }
+        echo json_encode($result);
+    }
     
+  
     public function adddormitory(){
         $result = $this->model->adddormitory();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>เพิ่มข้อมูลเรียบร้อย');
-            redirect(base_url() . 'index.php/dormitory/index');
             
+        }else{
+            $msg['success'] = false;
+            redirect(base_url() . 'index.php/dormitory/index');    
         }
-        echo json_encode($msg);
+        echo json_encode($msg);   
     }
     
     public function editdormitory(){
+        
         
         $result = $this->model->editdormitory();
         echo json_encode($result);
@@ -56,22 +71,20 @@ class Dormitory extends CI_Controller {
         $msg['success'] = false;
         $msg['type'] = 'update';
         if($result){
-            $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>แก้ไขข้อมูลเรียบร้อย');
+           $msg['success'] = true;
+        }else{
+            $msg['success'] = false;
             redirect(base_url() . 'index.php/dormitory/index');
         }
-        redirect(base_url() . 'index.php/dormitory/index');
-        //echo json_encode($msg);
+        echo json_encode($msg);
     }
     
     public function deletedormitory(){
         $result = $this->model->deletedormitory();
-        
-        $msg['success'] = false;
-        $msg['type'] = 'delete';
         if($result){
             $msg['success'] = true;
-            $this->session->set_flashdata('message', '<br/>ลบข้อมูลเรียบร้อย');
+        }else{
+            $msg['success'] = false;
             redirect(base_url() . 'index.php/dormitory/index');
         }
         echo json_encode($msg);
