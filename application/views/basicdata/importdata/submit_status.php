@@ -114,7 +114,7 @@
 
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo site_url("Submit_to_db/showAllstatus") ?>',
+                    url: '<?php echo site_url("import_data/showAlltmpstatus") ?>',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -145,7 +145,7 @@
             //alert ("Save");
 
             $.get({
-                url: '<?php echo site_url("Submit_to_db/import_temp_to_dbstatus") ?>',
+                url: '<?php echo site_url("import_data/import_temp_to_dbstatus") ?>',
                 success: function() {
                     alert("Sucess!!")
                     window.location.href = "<?php echo site_url('Csv_import');?>";

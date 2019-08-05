@@ -115,7 +115,7 @@
 
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo site_url("Submit_to_db/showAllcurriculum") ?>',
+                    url: '<?php echo site_url("import_data/showAlltmpcurriculum") ?>',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -147,7 +147,7 @@
             //alert ("Save");
 
             $.get({
-                url: '<?php echo site_url("Submit_to_db/import_temp_to_dbcurriculum") ?>',
+                url: '<?php echo site_url("import_data/import_temp_to_dbcurriculum") ?>',
                 success: function() {
                     alert("Sucess!!")
                     window.location.href = "<?php echo site_url('Csv_import');?>";

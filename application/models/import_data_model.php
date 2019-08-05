@@ -163,6 +163,159 @@ class import_data_model extends CI_Model
 	
 	
 	
+	function empty_tmp_curriculum()
+	{
+	    $this->db->empty_table('tmp_curriculum');
+	    $this->db->query("TRUNCATE TABLE tmp_curriculum");
+	    //$this->db->insert_batch('place',$data);
+	}
+	
+	function inserttmp_curriculum($data)
+	{
+	    $this->db->insert('tmp_curriculum',$data);
+	}
+	
+	function selecttmpcurriculum()
+	{
+	    $this->db->order_by('cur_ID','ASC');
+	    $query = $this->db->get('tmp_curriculum');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	function checkcurriculum($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT *FROM curriculum WHERE cur_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+	    
+	}
+	
+	function insert_to_curriculum($data)
+	{
+	    
+	    $this->db->insert('curriculum',$data);
+	}
+	
+	function update_datacurriculum($id,$data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('cur_ID',$id);
+	    $this->db->update('curriculum',$data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function empty_tmp_status()
+	{
+	    $this->db->empty_table('tmp_status');
+	    $this->db->query("TRUNCATE TABLE tmp_status");
+	    //$this->db->insert_batch('place',$data);
+	}
+	
+	function inserttmp_status($data)
+	{
+	    $this->db->insert('tmp_status',$data);
+	}
+	
+	function selecttmpstatus()
+	{
+	    $this->db->order_by('status_ID','ASC');
+	    $query = $this->db->get('tmp_status');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	function checkstatus($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT *FROM status WHERE status_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+	    
+	}
+	
+	function insert_to_status($data)
+	{
+	    
+	    $this->db->insert('status',$data);
+	}
+	
+	function update_datastatus($id,$data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('status_ID',$id);
+	    $this->db->update('status',$data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public function checkimport($BUILDID)

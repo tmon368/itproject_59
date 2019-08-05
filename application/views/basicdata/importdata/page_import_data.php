@@ -48,7 +48,9 @@
                 <a class="nav-link" data-toggle="tab" href="#menu5"><span><i class="fas fa-users"></i></span>&nbsp;หน่วยงาน</a>
               </li>
               
-              
+               <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu6"><span><i class="fas fa-users"></i></span>&nbsp;สถานะนักศึกษา</a>
+              </li>
               
               
               
@@ -106,13 +108,13 @@
                 <div id="menu3" class="container tab-pane fade"><br>
                 <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูล</h3>
                 <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
-   
+    
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
-                <form action="<?php echo site_url() ?>/Submit_to_db/importcurriculum" method="post" id="#" enctype="multipart/form-data">
+                <form method="post"  action="<?php echo site_url() ?>/import_data/importcurriculum" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="csv_file" id="csv_file" required accept=".csv" />
+                    <input type="file" name="_fileup" id="_fileup" required accept=".csv" />
                   </div>
-                  <button type="submit" name="import_csv" class="btn btn-success btn-fw" id="import_csv_btn">Import CSV</button>
+                  <button type="submit" name="btn_submitcurriculum" class="btn btn-success btn-fw" id="btn_submitcurriculum">Import CSV</button>
                 </form>
               </div>
               
@@ -156,7 +158,18 @@
               
               
               
-              
+              <div id="menu6" class="container tab-pane fade"><br>
+                <h3><span><i class="fas fa-download" style="color:#5DADE2;"></i></span>&nbsp;นำเข้าข้อมูล</h3>
+                <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
+    
+                <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
+                <form method="post"  action="<?php echo site_url() ?>/import_data/importstatus" method="post" id="#" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <input type="file" name="_fileup" id="_fileup" required accept=".csv" />
+                  </div>
+                  <button type="submit" name="btn_submitstatus" class="btn btn-success btn-fw" id="btn_submitstatus">Import CSV</button>
+                </form>
+              </div>
               
               
               

@@ -465,6 +465,207 @@ redirect("import_data/submit_divisions");
 	
 	
 	
+	public  function importcurriculum()
+	{
+	    
+	    
+	    
+	    if(isset($_POST['btn_submitcurriculum'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
+	        
+	        //$this->import_data_model->clearvalue();
+	        
+	        $tmpFile = $_FILES['_fileup']['tmp_name'];
+	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+	        $_fileup = $_FILES['_fileup'];
+	        $info = pathinfo($fileName);
+	        $allow_file = array("csv","xls","xlsx");
+	        /*  print_r($info);         // ข้อมูลไฟล์
+	         print_r($_fileup);*/
+	        if($fileName!="" && in_array($info['extension'],$allow_file)){
+	            // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+	            $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
+	            
+	            
+	            // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+	            $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+	            
+	            // วนลูปแสดงข้อมูล
+	            $data_arr=array();
+	            foreach ($cell_collection as $cell) {
+	                // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+	                $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+	                // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+	                $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+	                // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+	                $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+	                
+	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
+	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+	                $start_row = 2;
+	                // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+	                $col_name = array(
+	                "A"=>"cur_ID",
+	                "B"=>"cur_name",
+	                "C"=> "dept_ID"
+        
+        );
+	                if($row >= $start_row){
+	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+	                }
+	            }
+	            //print_r($data_arr);
+	        }
+	    }
+	    ?>
+ </pre>
+  
+ <br>
+<pre>
+
+<!--  <table class="table table-bordered"> -->
+<?php
+// สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+function prepare_data($data){
+    // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+    $arr_field = array("cur_ID","cur_name","dept_ID");
+    if(is_array($data)){
+        foreach($arr_field as $v){
+            if(!isset($data[$v])){
+                $data[$v]="";           
+            }
+
+
+        }
+    }
+    return $data;
+}
+
+
+// นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+if(isset($data_arr) && count($data_arr)>0){
+    $this->import_data_model->empty_tmp_curriculum();
+    foreach($data_arr as $row){
+        $row = prepare_data($row);
+
+?>
+<!--
+    <tr>
+        <td><?=$row['BUILDID']?></td>
+        <td><?=$row['BUILDTHNAME']?></td>
+
+    </tr>
+-->
+<?php
+
+$cur_ID= $row['cur_ID'];
+$cur_name = $row['cur_name'];
+$dept_ID = $row['dept_ID'];
+$data = array(
+    'cur_ID'		=>	$cur_ID,
+    'cur_name'			=>	$cur_name,
+    'dept_ID'			=>	$dept_ID,
+    'status'    =>	'0'
+);
+$this->import_data_model->inserttmp_curriculum($data);
+/*
+$check=$this->import_data_model->checkimport($BUILDID);
+if($check==true){
+    $this->import_data_model->insertplace($data);
+    
+    
+    
+}else{
+    $this->import_data_model->updateplace($data);
+    
+    
+    
+}
+*/
+    }
+
+}
+
+redirect("import_data/submit_curriculum");
+
+
+//$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
+
+//redirect(base_url() . 'index.php/import_data/index');
+
+?>    
+<?php 
+
+	}
+	
+	public  function showAlltmpcurriculum()
+	{
+	    $result = $this->import_data_model->selecttmpcurriculum();
+	    //print_r ($result);
+	    echo json_encode($result);
+	    
+	    
+	}
+	
+	public function submit_curriculum()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('basicdata/importdata/submit_curriculum');
+	}
+	
+	
+	
+	
+	
+	function import_temp_to_dbcurriculum()
+	{
+	    $inst=0;
+	    $updt=0;
+	    $dtnull=0;
+	    echo "Function import_temp_to_db</br>";
+	    
+	    $result = $this->import_data_model->selecttmpcurriculum(); //ตาราง temp
+	    
+	    foreach ($result as $row) { //loop ตาราง temp
+	        //select by id
+	        
+	       
+	        $temp_a = $this->import_data_model->checkcurriculum($row->cur_ID);
+	       
+	        
+	        if($row->cur_ID != "" && $row->cur_name != "" && $row->dept_ID != ""){
+	        if ($temp_a == 1) {
+	            
+	            //อัพเดตข้อมูล
+	            $data = array(
+	            //'id' => $results->id,
+	            'cur_name' => $row->cur_name,
+	            'active_track' => '0',
+	            'dept_ID' => $row->dept_ID
+	            );
+	            $this->import_data_model->update_datacurriculum($row->cur_ID,$data);
+	            $updt+=1;
+	        } else{
+	            //เพิ่มข้อมูล
+	            $data_a =  array();
+	            $data_a['cur_ID'] = $row->cur_ID;
+	            $data_a['cur_name'] = $row->cur_name;
+	            $data_a['active_track'] = '0';
+	            $data_a['dept_ID'] = $row->dept_ID;
+	            $this->import_data_model->insert_to_curriculum($data_a);
+	            $inst+=1;
+
+	        }
+	        }else{
+	            $dtnull+=1;
+	            
+	            
+	        }
+	        
+	        
+	    }
+	    
+	    //redirect("Csv_import");
+	}
 	
 	
 	
@@ -472,6 +673,210 @@ redirect("import_data/submit_divisions");
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public  function importstatus()
+	{
+	    
+	    
+	    
+	    if(isset($_POST['btn_submitstatus'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
+	        
+	        //$this->import_data_model->clearvalue();
+	        
+	        $tmpFile = $_FILES['_fileup']['tmp_name'];
+	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+	        $_fileup = $_FILES['_fileup'];
+	        $info = pathinfo($fileName);
+	        $allow_file = array("csv","xls","xlsx");
+	        /*  print_r($info);         // ข้อมูลไฟล์
+	         print_r($_fileup);*/
+	        if($fileName!="" && in_array($info['extension'],$allow_file)){
+	            // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+	            $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
+	            
+	            
+	            // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+	            $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+	            
+	            // วนลูปแสดงข้อมูล
+	            $data_arr=array();
+	            foreach ($cell_collection as $cell) {
+	                // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+	                $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+	                // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+	                $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+	                // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+	                $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+	                
+	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
+	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+	                $start_row = 2;
+	                // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+	                $col_name = array(
+	                "A"=>"status_ID",
+	                "B"=>"status_name"
+    
+    );
+	                if($row >= $start_row){
+	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+	                }
+	            }
+	            //print_r($data_arr);
+	        }
+	    }
+	    ?>
+ </pre>
+  
+ <br>
+<pre>
+
+<!--  <table class="table table-bordered"> -->
+<?php
+// สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+function prepare_data($data){
+    // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+    $arr_field = array("status_ID","status_name");
+    if(is_array($data)){
+        foreach($arr_field as $v){
+            if(!isset($data[$v])){
+                $data[$v]="";           
+            }
+
+
+        }
+    }
+    return $data;
+}
+
+
+// นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+if(isset($data_arr) && count($data_arr)>0){
+    $this->import_data_model->empty_tmp_status();
+    foreach($data_arr as $row){
+        $row = prepare_data($row);
+
+?>
+<!--
+    <tr>
+        <td><?=$row['status_ID']?></td>
+        <td><?=$row['status_name']?></td>
+
+    </tr>
+-->
+<?php
+
+$status_ID= $row['status_ID'];
+$status_name = $row['status_name'];
+$data = array(
+    'status_ID'		=>	$status_ID,
+    'status_name'			=>	$status_name
+);
+$this->import_data_model->inserttmp_status($data);
+/*
+$check=$this->import_data_model->checkimport($BUILDID);
+if($check==true){
+    $this->import_data_model->insertplace($data);
+    
+    
+    
+}else{
+    $this->import_data_model->updateplace($data);
+    
+    
+    
+}
+*/
+    }
+
+}
+
+redirect("import_data/submit_status");
+
+
+//$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
+
+//redirect(base_url() . 'index.php/import_data/index');
+
+?>    
+<?php 
+
+	}
+	
+	public  function showAlltmpstatus()
+	{
+	    $result = $this->import_data_model->selecttmpstatus();
+	    //print_r ($result);
+	    echo json_encode($result);
+	    
+	    
+	}
+	
+	public function submit_status()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('basicdata/importdata/submit_status');
+	}
+	
+	
+	
+	
+	
+	function import_temp_to_dbstatus()
+	{
+	    $inst=0;
+	    $updt=0;
+	    $dtnull=0;
+	    echo "Function import_temp_to_db</br>";
+	    
+	    $result = $this->import_data_model->selecttmpstatus(); //ตาราง temp
+	    
+	    foreach ($result as $row) { //loop ตาราง temp
+	        //select by id
+	        
+	       
+	        $temp_a = $this->import_data_model->checkstatus($row->status_ID);
+	       
+	        
+	        if($row->status_ID != "" && $row->status_name != ""){
+	        if ($temp_a == 1) {
+	            
+	            //อัพเดตข้อมูล
+	            $data = array(
+	            //'id' => $results->id,
+	            'cur_name' => $row->cur_name,
+	            'status_name' => $row->status_name
+	            );
+	            $this->import_data_model->update_datastatus($row->status_ID,$data);
+	            $updt+=1;
+	        } else{
+	            //เพิ่มข้อมูล
+	            $data_a =  array();
+	            $data_a['status_ID'] = $row->status_ID;
+	            $data_a['status_name'] = $row->status_name;
+	            $this->import_data_model->insert_to_status($data_a);
+	            $inst+=1;
+
+	        }
+	        }else{
+	            $dtnull+=1;
+	            
+	            
+	        }
+	        
+	        
+	    }
+	    
+	    //redirect("Csv_import");
+	}
 	
 	
 	
@@ -485,6 +890,42 @@ redirect("import_data/submit_divisions");
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public  function importusertype()
