@@ -38,8 +38,8 @@
 			 <div id="myModal"  > </div>
 					<!-- Modal เพิ่มข้อมูล -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" width="800px" height="50 px">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 620px!important;" role="document">
+    <div class="modal-content" >
       <div class="modal-header">
         <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มฐานความผิด</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -59,9 +59,9 @@
 					<div class="col-lg-9" >
 					<select name="txtfy"class="form-control"  required >
 					<option value ="6">6 : ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</option>
-					<option value ="8">8</option>
-					<option value ="9">9</option>
-					<option value ="11">11</option>
+					<option value ="8">8:  ความผิดเกี่ยวกับวินัยจราจร</option>
+					<option value ="9">9: ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม  </option>
+					<option value ="11">11: ความผิดเกี่ยวกับความสะอาดเรียบร้อย </option>
 					</select>
 					
       </div></div></div>
@@ -154,7 +154,7 @@
 
 
  <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-       <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-dialog modal-dialog-centered"style="max-width: 620px!important;" role="document">
            <div class="modal-content">
         <div class="modal-header">
     <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit" style="color:#47307b;"></i></span>แก้ไขข้อมูล</h2>
@@ -172,12 +172,12 @@
 				
 					<label for="validationCustom02..'">รหัสหมวดความผิด  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
-					<div class="col-lg-3" >
+					<div class="col-lg-9" >
 					<select name="txteditfy"class="form-control"  required >
-					<option value ="6">6</option>
-					<option value ="8">8</option>
-					<option value ="9">9</option>
-					<option value ="11">11</option>
+					<option value ="6">6 : ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</option>
+					<option value ="8">8:  ความผิดเกี่ยวกับวินัยจราจร</option>
+					<option value ="9">9: ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม  </option>
+					<option value ="11">11: ความผิดเกี่ยวกับความสะอาดเรียบร้อย </option>
 					</select>
 					
                    

@@ -43,7 +43,7 @@
 
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-sm-1" role="document" >
+                <div class="modal-dialog modal-dialog-centered " style="max-width: 650px!important;" role="document" >
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มหมวดความผิด</h2>
@@ -124,7 +124,7 @@
 
             <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered"style="max-width: 650px!important;" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit"
@@ -242,7 +242,7 @@
                         <table id="style_table" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>รหัสหมวดความผิด</th>
+                                    <th width="10px" >รหัสหมวดความผิด</th>
                                     <th>ชื่อหมวดความผิด</th>
                                     <th>จัดการ</th>
                                 </tr>
