@@ -6,7 +6,7 @@ class holiday_model extends CI_Model {
         parent::_construct();
         
     }
-
+ 
     public function findByYear($year){
         $this->db->select('*');
         $this->db->from('holiday');

@@ -33,7 +33,7 @@
            		
                <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-calendar" id="btnAdd"></i></span>เพิ่มสถานที่
+                    <span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มวันหยุด
                 </button>
                 &nbsp;
             </div>
@@ -60,7 +60,7 @@
 
 
   <label  class="col-sm-3" for="validationCustom02">วันที่หยุด</label>&nbsp;
-            <input type="date" name="txtdate"  class="form-control col-sm-3"  
+            <input type="date" name="txtdate"  class="form-control col-sm-5"  
             maxlength="50" required>
 </div>
       </div>
@@ -606,8 +606,7 @@ $("#edit_file").modal("show");
 			}
 		});
         
- 
-
+  
 
 
     //function

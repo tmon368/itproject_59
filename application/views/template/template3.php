@@ -10,7 +10,7 @@
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Richard V.Welsh</p>
-                  <div>
+                  <div> 
                     <small class="designation text-muted">Manager</small>
                     <span class="status-indicator online"></span>
                   </div>
@@ -127,10 +127,23 @@
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu">
+          <ul class="nav flex-column sub-menu"> 
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("#") ?>">สถานะนักศึกษา</a>
+              <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("student") ?>">นักศึกษา</a>
+              </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("personnel") ?>">บุคลากร</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("status") ?>">สถานะนักศึกษา</a>
+            </li>
+           
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
             </li>
@@ -138,23 +151,25 @@
               <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
+              <a class="nav-link" href="<?php echo site_url("vehicles") ?>">ยานพาหนะ</a>
             </li>
-
+         
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
-            </li>
-
+              <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
+            </li> 
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
+              <a class="nav-link" href="<?php echo site_url("curriculum") ?>">หลักสูตร</a>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("divisions") ?>">หน่วยงาน</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
+            </li>
+          </li>
           </ul>
         </div>
       </li>

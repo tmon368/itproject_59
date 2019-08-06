@@ -7,7 +7,7 @@
 <strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
 </center>
 <head>
-
+ 
   <title>วันหยุด admin</title>
 
 </head>
@@ -36,7 +36,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
         <div class="card-body " id="card_1">
         
         <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-                  <i class="fas fa-user-plus"></i>เพิ่มวันหยุด
+                  <i class="fas fa-plus"></i>เพิ่มวันหยุด
         </button>
         &nbsp;
 
