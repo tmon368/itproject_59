@@ -9,7 +9,7 @@
 <head>
 
     <title>ประเภทหอพัก</title>
-
+ 
 </head>
 
 <body>
@@ -33,12 +33,12 @@
            
             <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-building"></i></span>เพิ่มประเภทหอพัก
+                    <span><i class="fas fa-plus"></i></span>เพิ่มประเภทหอพัก
                 </button>
                 &nbsp;
             </div>
             <div id="myModal"  > </div>
-            <!-- Modal เพิ่มข้อมูล -->
+            <!-- Modal การเพิ่มข้อมูล -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">

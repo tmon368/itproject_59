@@ -213,6 +213,7 @@ redirect("import_data/submit_place");
 	
 	
 	
+	
 	public  function importdivisions()
 	{
 	    
@@ -759,7 +760,171 @@ redirect("import_data/submit_status");
 
 	
 	
+	public  function importvehicles()
+	{
+	    
+	    
+	    
+	    if(isset($_POST['btn_submitvehicles'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
+	        
+	        //$this->import_data_model->clearvalue();
+	        
+	        $tmpFile = $_FILES['_fileup']['tmp_name'];
+	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+	        $_fileup = $_FILES['_fileup'];
+	        $info = pathinfo($fileName);
+	        $allow_file = array("csv","xls","xlsx");
+	        /*  print_r($info);         // ข้อมูลไฟล์
+	         print_r($_fileup);*/
+	        if($fileName!="" && in_array($info['extension'],$allow_file)){
+	            // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+	            $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
+	            
+	            
+	            // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+	            $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+	            
+	            // วนลูปแสดงข้อมูล
+	            $data_arr=array();
+	            foreach ($cell_collection as $cell) {
+	                // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+	                $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+	                // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+	                $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+	                // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+	                $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+	                
+	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
+	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+	                $start_row = 2;
+	                // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+	                $col_name = array(
+	                    "A"=>"BUILDID",
+	                    "B"=>"BUILDTHNAME",
+	                    "C"=> "description"
+	                    
+	                );
+	                if($row >= $start_row){
+	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+	                }
+	            }
+	            //print_r($data_arr);
+	        }
+	    }
+	    
+	    // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+	    function prepare_data($data){
+	        // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+	        $arr_field = array("BUILDID","BUILDTHNAME","description");
+	        if(is_array($data)){
+	            foreach($arr_field as $v){
+	                if(!isset($data[$v])){
+	                    $data[$v]="";
+	                }
+	                
+	                
+	            }
+	        }
+	        return $data;
+	    }
+	    
+	    
+	    // นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+	    if(isset($data_arr) && count($data_arr)>0){
+	        $this->import_data_model->empty_tmp_vehicles();
+	        foreach($data_arr as $row){
+	            $row = prepare_data($row);
+	            
+	            
+	            $BUILDID = $row['BUILDID'];
+	            $BUILDTHNAME = $row['BUILDTHNAME'];
+	            $description = $row['description'];
+	            $data = array(
+	                'place_ID'		=>	$BUILDID,
+	                'place_name'			=>	$BUILDTHNAME,
+	                'description'			=>	$description
+	            );
+	            $this->import_data_model->inserttmp_vehicles($data);
+	            
+	        }
+	        
+	    }
+	    
+	    redirect("import_data/submit_vehicles");
+	    
+	    
+	}
 	
+	
+	
+	
+	public  function showAlltmpvehicles()
+	{
+	    $result = $this->import_data_model->selecttmpvehicles();
+	    //print_r ($result);
+	    echo json_encode($result);
+	    
+	    
+	}
+	
+	public function submit_vehicles()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('basicdata/importdata/submit_vehicles');
+	}
+	
+	
+	
+	
+	
+	function import_temp_to_dbvehicles()
+	{
+	    $inst=0;
+	    $updt=0;
+	    $dtnull=0;
+	    echo "Function import_temp_to_db</br>";
+	    
+	    $result = $this->import_data_model->selecttmpvehicles(); //ตาราง temp
+	    
+	    foreach ($result as $row) { //loop ตาราง temp
+	        //select by id
+	        
+	        
+	        $temp_a = $this->import_data_model->checkvehicles($row->place_ID);
+	        
+	        
+	        if($row->place_ID != "" && $row->place_name != "" && $row->description != ""){
+	            if ($temp_a == 1) {
+	                
+	                //อัพเดตข้อมูล
+	                $data = array(
+	                    //'id' => $results->id,
+	                    'place_name' => $row->place_name,
+	                    'description' => $row->description
+	                );
+	                $this->import_data_model->update_datavehicles($row->place_ID,$data);
+	                $updt+=1;
+	            } else{
+	                //เพิ่มข้อมูล
+	                $data_a =  array();
+	                $data_a['place_ID'] = $row->place_ID;
+	                $data_a['place_name'] = $row->place_name;
+	                $data_a['description'] = $row->description;
+	                $this->import_data_model->insert_to_place($data_a);
+	                $inst+=1;
+	                
+	            }
+	        }else{
+	            $dtnull+=1;
+	            
+	            
+	        }
+	        
+	        
+	    }
+	    
+	    //redirect("Csv_import");
+	}
 	
 	
 	
