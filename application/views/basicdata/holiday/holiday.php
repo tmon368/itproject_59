@@ -60,7 +60,7 @@
 
 
   <label  class="col-sm-3" for="validationCustom02">วันที่หยุด</label>&nbsp;
-            <input type="date" name="txtdate"  class="form-control col-sm-3"  
+            <input type="date" name="txtdate"  class="form-control col-sm-5"  
             maxlength="50" required>
 </div>
       </div>
