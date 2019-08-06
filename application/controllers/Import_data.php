@@ -72,14 +72,7 @@ class Import_data extends CI_Controller {
 	                 //print_r($data_arr);
 	        }
 	    }
-	    ?>
- </pre>
-  
- <br>
-<pre>
 
-<!--  <table class="table table-bordered"> -->
-<?php
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
     // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
@@ -103,15 +96,6 @@ if(isset($data_arr) && count($data_arr)>0){
     foreach($data_arr as $row){
         $row = prepare_data($row);
 
-?>
-<!--
-    <tr>
-        <td><?=$row['BUILDID']?></td>
-        <td><?=$row['BUILDTHNAME']?></td>
-
-    </tr>
--->
-<?php
 
 $BUILDID = $row['BUILDID'];
 $BUILDTHNAME = $row['BUILDTHNAME'];
@@ -122,20 +106,7 @@ $data = array(
 'description'			=>	$description
 );
 $this->import_data_model->inserttmp_place($data);
-/*
-$check=$this->import_data_model->checkimport($BUILDID);
-if($check==true){
-    $this->import_data_model->insertplace($data);
-    
-    
-    
-}else{
-    $this->import_data_model->updateplace($data);
-    
-    
-    
-}
-*/
+
     }
 
 }
@@ -143,14 +114,10 @@ if($check==true){
 redirect("import_data/submit_place");
 
 
-//$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
-
-//redirect(base_url() . 'index.php/import_data/index');
-
-?>    
-<?php 
-
 	}
+	
+	
+	
 	
 	public  function showAlltmpplace()
 	{
@@ -296,14 +263,7 @@ redirect("import_data/submit_place");
 	            //print_r($data_arr);
 	        }
 	    }
-	    ?>
- </pre>
-  
- <br>
-<pre>
 
-<!--  <table class="table table-bordered"> -->
-<?php
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
     // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
@@ -327,15 +287,6 @@ if(isset($data_arr) && count($data_arr)>0){
     foreach($data_arr as $row){
         $row = prepare_data($row);
 
-?>
-<!--
-    <tr>
-        <td><?=$row['dept_ID']?></td>
-        <td><?=$row['dept_name']?></td>
-
-    </tr>
--->
-<?php
 
 $dept_ID = $row['dept_ID'];
 $dept_name = $row['dept_name'];
@@ -345,20 +296,7 @@ $data_divisions = array(
     'flag'        =>     '0'
 );
 $this->import_data_model->inserttmp_divisions($data_divisions);
-/*
-$check=$this->import_data_model->checkimport($BUILDID);
-if($check==true){
-    $this->import_data_model->insertplace($data);
-    
-    
-    
-}else{
-    $this->import_data_model->updateplace($data);
-    
-    
-    
-}
-*/
+
     }
 
 }
@@ -366,14 +304,10 @@ if($check==true){
 redirect("import_data/submit_divisions");
 
 
-//$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
-
-//redirect(base_url() . 'index.php/import_data/index');
-
-?>    
-<?php 
-
 	}
+	
+	
+	
 	
 	public  function showAlltmpdivisions()
 	{
@@ -516,14 +450,7 @@ redirect("import_data/submit_divisions");
 	            //print_r($data_arr);
 	        }
 	    }
-	    ?>
- </pre>
-  
- <br>
-<pre>
 
-<!--  <table class="table table-bordered"> -->
-<?php
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
     // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
@@ -547,15 +474,6 @@ if(isset($data_arr) && count($data_arr)>0){
     foreach($data_arr as $row){
         $row = prepare_data($row);
 
-?>
-<!--
-    <tr>
-        <td><?=$row['BUILDID']?></td>
-        <td><?=$row['BUILDTHNAME']?></td>
-
-    </tr>
--->
-<?php
 
 $cur_ID= $row['cur_ID'];
 $cur_name = $row['cur_name'];
@@ -567,33 +485,13 @@ $data = array(
     'status'    =>	'0'
 );
 $this->import_data_model->inserttmp_curriculum($data);
-/*
-$check=$this->import_data_model->checkimport($BUILDID);
-if($check==true){
-    $this->import_data_model->insertplace($data);
-    
-    
-    
-}else{
-    $this->import_data_model->updateplace($data);
-    
-    
-    
-}
-*/
+
     }
 
 }
 
 redirect("import_data/submit_curriculum");
 
-
-//$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
-
-//redirect(base_url() . 'index.php/import_data/index');
-
-?>    
-<?php 
 
 	}
 	
@@ -656,11 +554,9 @@ redirect("import_data/submit_curriculum");
 
 	        }
 	        }else{
-	            $dtnull+=1;
+	            $dtnull+=1;  
 	            
-	            
-	        }
-	        
+	        }  
 	        
 	    }
 	    
