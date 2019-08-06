@@ -733,14 +733,9 @@ redirect("import_data/submit_curriculum");
 	            //print_r($data_arr);
 	        }
 	    }
-	    ?>
- </pre>
-  
- <br>
-<pre>
+	 
 
-<!--  <table class="table table-bordered"> -->
-<?php
+
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
     // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
@@ -764,15 +759,8 @@ if(isset($data_arr) && count($data_arr)>0){
     foreach($data_arr as $row){
         $row = prepare_data($row);
 
-?>
-<!--
-    <tr>
-        <td><?=$row['status_ID']?></td>
-        <td><?=$row['status_name']?></td>
-
-    </tr>
--->
-<?php
+        
+        
 
 $status_ID= $row['status_ID'];
 $status_name = $row['status_name'];
@@ -781,20 +769,7 @@ $data = array(
     'status_name'			=>	$status_name
 );
 $this->import_data_model->inserttmp_status($data);
-/*
-$check=$this->import_data_model->checkimport($BUILDID);
-if($check==true){
-    $this->import_data_model->insertplace($data);
-    
-    
-    
-}else{
-    $this->import_data_model->updateplace($data);
-    
-    
-    
-}
-*/
+
     }
 
 }
@@ -802,14 +777,10 @@ if($check==true){
 redirect("import_data/submit_status");
 
 
-//$this->session->set_flashdata('message', '<br/>importข้อมูลสถานที่เรียบร้อย');
-
-//redirect(base_url() . 'index.php/import_data/index');
-
-?>    
-<?php 
-
 	}
+	
+	
+	
 	
 	public  function showAlltmpstatus()
 	{
