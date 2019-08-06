@@ -81,7 +81,7 @@
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
                 <form action="<?php echo site_url() ?>/Submit_to_db/import" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="csv_file" id="csv_file" required accept=".csv" />
+                    <input type="file" name="csv_file" id="csv_file" required accept=".csv, .xls,.xlsx" />
                   </div>
                   <button type="submit" name="import_csv" class="btn btn-success btn-fw" id="import_csv_btn">Import CSV</button>
                 </form>
@@ -95,7 +95,7 @@
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
                 <form action="<?php echo site_url() ?>/Submit_to_db/importstatus" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="csv_file" id="csv_file" required accept=".csv" />
+                    <input type="file" name="csv_file" id="csv_file" required accept=".csv, .xls,.xlsx" />
                   </div>
                   <button type="submit" name="import_csv" class="btn btn-success btn-fw" id="import_csv_btn">Import CSV</button>
                 </form>
@@ -112,7 +112,7 @@
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
                 <form method="post"  action="<?php echo site_url() ?>/import_data/importcurriculum" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="_fileup" id="_fileup" required accept=".csv" />
+                    <input type="file" name="_fileup" id="_fileup" required accept=".csv, .xls,.xlsx" />
                   </div>
                   <button type="submit" name="btn_submitcurriculum" class="btn btn-success btn-fw" id="btn_submitcurriculum">Import CSV</button>
                 </form>
@@ -128,7 +128,7 @@
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
                 <form method="post"  action="<?php echo site_url() ?>/import_data/importplace" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="_fileup" id="_fileup" required accept=".csv" />
+                    <input type="file" name="_fileup" id="_fileup" required accept=".csv, .xls,.xlsx" />
                   </div>
                   <button type="submit" name="btn_submitplace" class="btn btn-success btn-fw" id="btn_submitplace">Import CSV</button>
                 </form>
@@ -149,7 +149,7 @@
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
                 <form method="post"  action="<?php echo site_url() ?>/import_data/importdivisions" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="_fileup" id="_fileup" required accept=".csv" />
+                    <input type="file" name="_fileup" id="_fileup" required accept=".csv, .xls,.xlsx" />
                   </div>
                   <button type="submit" name="btn_submitdivisions" class="btn btn-success btn-fw" id="btn_submitdivisions">Import CSV</button>
                 </form>
@@ -165,7 +165,7 @@
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
                 <form method="post"  action="<?php echo site_url() ?>/import_data/importstatus" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="_fileup" id="_fileup" required accept=".csv" />
+                    <input type="file" name="_fileup" id="_fileup" required accept=".csv, .xls,.xlsx"/>
                   </div>
                   <button type="submit" name="btn_submitstatus" class="btn btn-success btn-fw" id="btn_submitstatus">Import CSV</button>
                 </form>
