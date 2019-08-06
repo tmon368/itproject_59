@@ -560,7 +560,7 @@
                             '<td>' + data[i].type + '</td>' +
                             '<td>' + data[i].regist_date + '</td>' +
                             '<td>' + data[i].expired_date + '</td>' +
-                            '<td>' + data[i].behavior_score + '</td>' +
+                            //'<td>' + data[i].behavior_score + '</td>' +
                             '<td>' + data[i].S_ID + '</td>' +
                             
                             

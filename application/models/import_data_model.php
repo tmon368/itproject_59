@@ -303,6 +303,67 @@ class import_data_model extends CI_Model
 	
 	
 	
+	function empty_tmp_vehicles()
+	{
+	    $this->db->empty_table('tmp_vehicles');
+	    $this->db->query("TRUNCATE TABLE tmp_vehicles");
+	    //$this->db->insert_batch('place',$data);
+	}
+	
+	function inserttmp_vehicles($data)
+	{
+	    $this->db->insert('tmp_vehicles',$data);
+	}
+	
+	function selecttmpvehicles()
+	{
+	    $this->db->order_by('v_ID','ASC');
+	    $query = $this->db->get('tmp_vehicles');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
+	function checkvehicles($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT *FROM vehicles WHERE S_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+	    
+	}
+	
+	function insert_to_vehicles($data)
+	{
+	    
+	    $this->db->insert('vehicles',$data);
+	}
+	
+	function update_datavehicles($id,$data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('S_ID',$id);
+	    $this->db->update('vehicles',$data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+	
+	
+	
 	
 	
 	

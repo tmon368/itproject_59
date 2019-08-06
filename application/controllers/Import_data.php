@@ -799,9 +799,14 @@ redirect("import_data/submit_status");
 	                $start_row = 2;
 	                // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
 	                $col_name = array(
-	                    "A"=>"BUILDID",
-	                    "B"=>"BUILDTHNAME",
-	                    "C"=> "description"
+	                    "A"=>"regist_num",
+	                    "B"=>"province",
+	                    "C"=> "brand",
+	                    "D"=> "color",
+	                    "E"=> "type",
+	                    "F"=> "regist_date",
+	                    "G"=> "expired_date",
+	                    "H"=> "std_ID",
 	                    
 	                );
 	                if($row >= $start_row){
@@ -815,7 +820,7 @@ redirect("import_data/submit_status");
 	    // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 	    function prepare_data($data){
 	        // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
-	        $arr_field = array("BUILDID","BUILDTHNAME","description");
+	        $arr_field = array("regist_num","province","brand","color","type","regist_date","expired_date","std_ID");
 	        if(is_array($data)){
 	            foreach($arr_field as $v){
 	                if(!isset($data[$v])){
@@ -836,13 +841,23 @@ redirect("import_data/submit_status");
 	            $row = prepare_data($row);
 	            
 	            
-	            $BUILDID = $row['BUILDID'];
-	            $BUILDTHNAME = $row['BUILDTHNAME'];
-	            $description = $row['description'];
+	            $regist_num = $row['regist_num'];
+	            $province = $row['province'];
+	            $brand = $row['brand'];
+	            $color = $row['color'];
+	            $type = $row['type'];
+	            $regist_date = $row['regist_date'];
+	            $expired_date = $row['expired_date'];
+	            $std_ID = $row['std_ID'];
 	            $data = array(
-	                'place_ID'		=>	$BUILDID,
-	                'place_name'			=>	$BUILDTHNAME,
-	                'description'			=>	$description
+	                'regist_num'			=>	$regist_num,
+	                'province'			=>	$province,
+	                'brand'			=>	$brand,
+	                'color'			=>	$color,
+	                'type'			=>	$type,
+	                'regist_date'			=>	"2019-08-08",
+	                'expired_date'			=>	"2020-08-08",
+	                'std_ID'			=>	$std_ID
 	            );
 	            $this->import_data_model->inserttmp_vehicles($data);
 	            
@@ -890,27 +905,38 @@ redirect("import_data/submit_status");
 	        //select by id
 	        
 	        
-	        $temp_a = $this->import_data_model->checkvehicles($row->place_ID);
+	        $temp_a = $this->import_data_model->checkvehicles($row->std_ID);
 	        
 	        
-	        if($row->place_ID != "" && $row->place_name != "" && $row->description != ""){
+	        if($row->regist_num != "" && $row->province != "" && $row->brand != "" && $row->color != "" && $row->type != "" && $row->regist_date != "" && $row->expired_date != "" && $row->std_ID != ""){
 	            if ($temp_a == 1) {
 	                
 	                //อัพเดตข้อมูล
 	                $data = array(
 	                    //'id' => $results->id,
-	                    'place_name' => $row->place_name,
-	                    'description' => $row->description
+	                    'regist_num' => $row->regist_num,
+	                    'province' => $row->province,
+	                    'brand' => $row->brand,
+	                    'color' => $row->color,
+	                    'type' => $row->type,
+	                    'regist_date' => $row->regist_date,
+	                    'expired_date' => $row->expired_date,
+	                    'S_ID' => $row->std_ID,
 	                );
-	                $this->import_data_model->update_datavehicles($row->place_ID,$data);
+	                $this->import_data_model->update_datavehicles($row->std_ID,$data);
 	                $updt+=1;
 	            } else{
 	                //เพิ่มข้อมูล
 	                $data_a =  array();
-	                $data_a['place_ID'] = $row->place_ID;
-	                $data_a['place_name'] = $row->place_name;
-	                $data_a['description'] = $row->description;
-	                $this->import_data_model->insert_to_place($data_a);
+	                $data_a['regist_num'] = $row->regist_num;
+	                $data_a['province'] = $row->province;
+	                $data_a['brand'] = $row->brand;
+	                $data_a['color'] = $row->color;
+	                $data_a['type'] = $row->type;
+	                $data_a['regist_date'] = $row->regist_date;
+	                $data_a['expired_date'] = $row->expired_date;
+	                $data_a['S_ID'] = $row->std_ID;
+	                $this->import_data_model->insert_to_vehicles($data_a);
 	                $inst+=1;
 	                
 	            }

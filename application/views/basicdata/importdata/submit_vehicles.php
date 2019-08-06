@@ -67,8 +67,15 @@
         <table id="example" class="cell-border" style="width:100%">
             <thead>
                 <tr>
-                    <th>status_id</th>
-                    <th>status_name</th>
+                    <th>v_ID</th>
+                    <th>regist_num</th>
+                     <th>province</th>
+                      <th>brand</th>
+                       <th>color</th>
+                        <th>type</th>
+                         <th>regist_date</th>
+                          <th>expired_date</th>
+                           <th>std_ID</th>
 
                 </tr>
             </thead>
@@ -77,9 +84,15 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>status_id</th>
-                    <th>status_name</th>
-
+                    <th>v_ID</th>
+                    <th>regist_num</th>
+                     <th>province</th>
+                      <th>brand</th>
+                       <th>color</th>
+                        <th>type</th>
+                         <th>regist_date</th>
+                          <th>expired_date</th>
+                           <th>std_ID</th>
 
                 </tr>
             </tfoot>
@@ -124,8 +137,15 @@
                         for (i = 0; i < data.length; i++) {
                             // html += data[i].id + "&nbsp;" + data[i].first_name + "&nbsp;" + data[i].last_name + "&nbsp;" + data[i].phone + "&nbsp;" + data[i].email +"</br>";
                             html += "<tr>" +
-                                "<td>" + data[i].status_ID + "</td>" +
-                                "<td>" + data[i].status_name + "</td>" +
+                                "<td>" + data[i].v_ID + "</td>" +
+                                "<td>" + data[i].regist_num + "</td>" +
+                                "<td>" + data[i].province + "</td>" +
+                                "<td>" + data[i].brand + "</td>" +
+                                "<td>" + data[i].color + "</td>" +
+                                "<td>" + data[i].type + "</td>" +
+                                "<td>" + data[i].regist_date + "</td>" +
+                                "<td>" + data[i].expired_date + "</td>" +
+                                "<td>" + data[i].std_ID + "</td>" +
                                 "</tr>";
 
                         }
