@@ -93,11 +93,11 @@
                 <p style="color:#99A3A4;">รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลลงฐานข้อมูล</p>
    
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
-                <form action="<?php echo site_url() ?>/Submit_to_db/importstatus" method="post" id="#" enctype="multipart/form-data">
+                <form action="<?php echo site_url() ?>/import_data/importpersonnel" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
                     <input type="file" name="csv_file" id="csv_file" required accept=".csv, .xls,.xlsx" />
                   </div>
-                  <button type="submit" name="import_csv" class="btn btn-success btn-fw" id="import_csv_btn">Import CSV</button>
+                  <button type="submit" name="btn_submitpersonnel" class="btn btn-success btn-fw" id="btn_submitpersonnel">Import CSV</button>
                 </form>
               </div>
               
