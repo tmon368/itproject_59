@@ -1444,6 +1444,233 @@ redirect(base_url() . 'index.php/import_data/index');
 	
 	
 	
+
+
+
+	public  function importpersonnel()
+	{
+	    
+	    
+	    
+	    if(isset($_POST['btn_submitpersonnel'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
+	        
+	        //$this->import_data_model->clearvalue();
+	        
+	        $tmpFile = $_FILES['_fileup']['tmp_name'];
+	        $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+	        $_fileup = $_FILES['_fileup'];
+	        $info = pathinfo($fileName);
+	        $allow_file = array("csv","xls","xlsx");
+	        /*  print_r($info);         // ข้อมูลไฟล์
+	         print_r($_fileup);*/
+	        if($fileName!="" && in_array($info['extension'],$allow_file)){
+	            // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+	            $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
+	            
+	            
+	            // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+	            $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+	            
+	            // วนลูปแสดงข้อมูล
+	            $data_arr=array();
+	            foreach ($cell_collection as $cell) {
+	                // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+	                $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+	                // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+	                $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+	                // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+	                $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+	                
+	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
+	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+	                $start_row = 2;
+					// กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+				    
+	                $col_name = array(
+	                "A"=>"person_ID",
+					"B"=>"person_fname",
+					"C"=>"person_lname",
+					"D"=>"position",
+					"E"=>"role",
+					"F"=>"email",
+					"G"=>"phone1",
+					"H"=>"phone2",
+					"I"=>"dept_ID",
+					"J"=>"cur_ID",
+					"K"=>"usertype_ID",
+					"L"=>"username",
+					"M"=>"password"
+        
+        );
+	                if($row >= $start_row){
+	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+	                }
+	            }
+	            //print_r($data_arr);
+	        }
+	    }
+
+// สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+function prepare_data($data){
+    // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+	$arr_field = array("person_ID","person_fname","person_lname","position","role","email"
+						,"phone1","phone2","dept_ID","cur_ID","usertype_ID","username","password");
+    if(is_array($data)){
+        foreach($arr_field as $v){
+            if(!isset($data[$v])){
+                $data[$v]="";           
+            }
+
+
+        }
+    }
+    return $data;
+}
+
+
+// นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+if(isset($data_arr) && count($data_arr)>0){
+    $this->import_data_model->empty_tmp_personnel();
+    foreach($data_arr as $row){
+        $row = prepare_data($row);
+
+
+$person_ID = $row['person_ID'];
+$person_fname = $row['person_fname'];
+$person_lname = $row['person_lname'];
+$position = $row['position'];
+$role = $row['role'];
+$email = $row['email'];
+$phone1 = $row['phone1'];
+$phone2 = $row['phone2'];
+$dept_ID = $row['dept_ID'];
+$cur_ID = $row['cur_ID'];
+$usertype_ID = $row['usertype_ID'];
+$username = $row['username'];
+$password = $row['password'];
+
+
+$data_personnel = array(
+    'person_ID'				=>	$person_ID,
+	'person_fname'			=>	$person_fname,
+	'person_lname'			=>	$person_lname,
+	'position'				=>	$position,
+	'role'					=>	$role,
+	'email'					=>	$email,
+	'phone1'				=>	$phone1,
+	'phone2'				=>	$phone2,
+	'dept_ID'				=>	$dept_ID,
+	'cur_ID'				=>	$cur_ID,
+	'usertype_ID'			=>	$usertype_ID,
+	'username'				=>	$username,
+	'password'				=>	$password,
+    'active_track'       	 =>     '0'
+);
+$this->import_data_model->inserttmp_personnel($data_personnel);
+
+    }
+
+}
+
+redirect("import_data/submit_personnel");
+
+
+	}
+	
+	
+	
+	
+	public  function showAlltmppersonnel()
+	{
+	    $result = $this->import_data_model->selecttmppersonnel();
+	    //print_r ($result);
+	    echo json_encode($result);
+	    
+	    
+	}
+	
+	public function submit_personnel()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('basicdata/importdata/submit_personnel');
+	}
+	
+	
+	
+	
+	
+	function import_temp_to_dbpersonnel()
+	{
+	    $inst=0;
+	    $updt=0;
+	    $dtnull=0;
+	    echo "Function import_temp_to_db</br>";
+	    
+	    $result = $this->import_data_model->selecttmppersonnel(); //ตาราง temp
+	    
+	    foreach ($result as $row) { //loop ตาราง temp
+	        //select by id
+	        
+	       
+	        $temp_a = $this->import_data_model->checkpersonnel($row->dept_ID);
+	       
+	        
+	        if($row->dept_ID != "" && $row->dept_name != ""){
+	        if ($temp_a == 1) {
+	            
+	            //อัพเดตข้อมูล
+	            $data = array(
+	            //'id' => $results->id,
+				'person_ID'				=>	$person_ID,
+				'person_fname'			=>	$person_fname,
+				'person_lname'			=>	$person_lname,
+				'position'			=>	$position,
+				'role'			=>	$role,
+				'email'			=>	$email,
+				'phone1'			=>	$phone1,
+				'phone2'			=>	$phone2,
+				'dept_ID'			=>	$dept_ID,
+				'cur_ID'			=>	$cur_ID,
+				'usertype_ID'			=>	$usertype_ID,
+				'username'			=>	$username,
+				'password'			=>	$password,
+				
+				'active_track'        =>     '0'
+	            );
+	            $this->import_data_model->update_datapersonnel($row->dept_ID,$data);
+	            $updt+=1;
+	        } else{
+	            //เพิ่มข้อมูล
+	            $data_a =  array();
+				$person_ID = $row['person_ID'];
+				$person_fname = $row['person_fname'];
+				$person_lname = $row['person_lname'];
+				$position = $row['position'];
+				$role = $row['role'];
+				$email = $row['email'];
+				$phone1 = $row['phone1'];
+				$phone2 = $row['phone2'];
+				$dept_ID = $row['dept_ID'];
+				$cur_ID = $row['cur_ID'];
+				$usertype_ID = $row['usertype_ID'];
+				$username = $row['username'];
+				$password = $row['password'];
+	            $data_a['active_track'] = '0' ;
+	            $this->import_data_model->insert_to_personnel($data_a);
+	            $inst+=1;
+
+	        }
+	        }else{
+	            $dtnull+=1;
+	            
+	            
+	        }
+	        
+	        
+	    }
+	    
+	    //redirect("Csv_import");
+	}
 	
 	
 	

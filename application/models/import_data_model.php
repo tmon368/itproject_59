@@ -293,6 +293,71 @@ class import_data_model extends CI_Model
 	    }
 	}
 	
+
+
+
+
+
+
+	function empty_tmp_personnel()
+	{
+	    $this->db->empty_table('tmp_personnel');
+	    $this->db->query("TRUNCATE TABLE tmp_personnel");
+	    //$this->db->insert_batch('place',$data);
+	}
+	
+	function inserttmp_personnel($data)
+	{
+	    $this->db->insert('tmp_personnel',$data);
+	}
+	
+	function selecttmppersonnel()
+	{
+	    $this->db->order_by('person_ID','ASC');
+	    $query = $this->db->get('tmp_personnel');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
+	
+
+	
+	function checkpersonnel($id)
+	{
+	    // select ของตารางจริงในตาราง users
+	    $query = $this->db->query("SELECT *FROM personnel WHERE person_ID = $id");
+	    $row = $query->row();
+	    
+	    if ($row != NULL){
+	        return TRUE;
+	    }
+	    else {
+	        return FALSE;
+	    }
+	    
+	}
+	
+	function insert_to_personnel($data)
+	{
+	    
+	    $this->db->insert('personnel',$data);
+	}
+	
+	function update_datapersonnel($id,$data)
+	{
+	    //อัพเดตเมื่อมี id ซ้ำกัน
+	    $this->db->where('person_ID',$id);
+	    $this->db->update('personnel',$data);
+	    if ($this->db->affected_rows() > 0) {
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+	
 	
 	
 	
