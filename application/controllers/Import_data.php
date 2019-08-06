@@ -1449,11 +1449,11 @@ redirect(base_url() . 'index.php/import_data/index');
 
 	public  function importpersonnel()
 	{
-	    
+	    echo "5555";
 	    
 	    
 	    if(isset($_POST['btn_submitpersonnel'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
-	        
+			
 	        //$this->import_data_model->clearvalue();
 	        
 	        $tmpFile = $_FILES['_fileup']['tmp_name'];
@@ -1462,7 +1462,8 @@ redirect(base_url() . 'index.php/import_data/index');
 	        $info = pathinfo($fileName);
 	        $allow_file = array("csv","xls","xlsx");
 	        /*  print_r($info);         // ข้อมูลไฟล์
-	         print_r($_fileup);*/
+			 print_r($_fileup);*/
+			 
 	        if($fileName!="" && in_array($info['extension'],$allow_file)){
 	            // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
 	            $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
@@ -1483,7 +1484,7 @@ redirect(base_url() . 'index.php/import_data/index');
 	                
 	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
 	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
-	                $start_row = 2;
+	                $start_row = 13;
 					// กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
 				    
 	                $col_name = array(
@@ -1513,8 +1514,7 @@ redirect(base_url() . 'index.php/import_data/index');
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
     // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
-	$arr_field = array("person_ID","person_fname","person_lname","position","role","email"
-						,"phone1","phone2","dept_ID","cur_ID","usertype_ID","username","password");
+	$arr_field = array("person_ID","person_fname","person_lname","position","role","email","phone1","phone2","dept_ID","cur_ID","usertype_ID","username","password",);
     if(is_array($data)){
         foreach($arr_field as $v){
             if(!isset($data[$v])){
@@ -1534,7 +1534,7 @@ if(isset($data_arr) && count($data_arr)>0){
     foreach($data_arr as $row){
         $row = prepare_data($row);
 
-
+		
 $person_ID = $row['person_ID'];
 $person_fname = $row['person_fname'];
 $person_lname = $row['person_lname'];
@@ -1548,9 +1548,7 @@ $cur_ID = $row['cur_ID'];
 $usertype_ID = $row['usertype_ID'];
 $username = $row['username'];
 $password = $row['password'];
-
-
-$data_personnel = array(
+$data = array(
     'person_ID'				=>	$person_ID,
 	'person_fname'			=>	$person_fname,
 	'person_lname'			=>	$person_lname,
@@ -1564,7 +1562,7 @@ $data_personnel = array(
 	'usertype_ID'			=>	$usertype_ID,
 	'username'				=>	$username,
 	'password'				=>	$password,
-    'active_track'       	 =>     '0'
+	'active_track'        =>     '0'
 );
 $this->import_data_model->inserttmp_personnel($data_personnel);
 
@@ -1612,10 +1610,12 @@ redirect("import_data/submit_personnel");
 	        //select by id
 	        
 	       
-	        $temp_a = $this->import_data_model->checkpersonnel($row->dept_ID);
+	        $temp_a = $this->import_data_model->checkpersonnel($row->person_ID);
 	       
 	        
-	        if($row->dept_ID != "" && $row->dept_name != ""){
+			if($row->person_ID != "" && $row->person_fname != ""&& $row->person_fname != ""&& $row->person_lname != ""&& $row->position != ""
+			&& $row->role != ""&& $row->email != ""&& $row->phone1 != ""&& $row->phone2 != ""&& $row->dept_ID != ""&& $row->cur_ID != ""
+			&& $row->usertype_ID != ""&& $row->password != ""){
 	        if ($temp_a == 1) {
 	            
 	            //อัพเดตข้อมูล
@@ -1634,28 +1634,28 @@ redirect("import_data/submit_personnel");
 				'usertype_ID'			=>	$usertype_ID,
 				'username'			=>	$username,
 				'password'			=>	$password,
-				
 				'active_track'        =>     '0'
 	            );
-	            $this->import_data_model->update_datapersonnel($row->dept_ID,$data);
+	            $this->import_data_model->update_datapersonnel($row->person_ID,$data);
 	            $updt+=1;
 	        } else{
 	            //เพิ่มข้อมูล
-	            $data_a =  array();
-				$person_ID = $row['person_ID'];
-				$person_fname = $row['person_fname'];
-				$person_lname = $row['person_lname'];
-				$position = $row['position'];
-				$role = $row['role'];
-				$email = $row['email'];
-				$phone1 = $row['phone1'];
-				$phone2 = $row['phone2'];
-				$dept_ID = $row['dept_ID'];
-				$cur_ID = $row['cur_ID'];
-				$usertype_ID = $row['usertype_ID'];
-				$username = $row['username'];
-				$password = $row['password'];
-	            $data_a['active_track'] = '0' ;
+				$data_a =  array();
+				$data_a['person_ID'] = $row->person_ID;
+				$data_a['person_fname'] = $row->person_fname;
+				$data_a['person_lname'] = $row->person_lname;
+				$data_a['position'] = $row->position;
+				$data_a['role'] = $row->role;
+				$data_a['email'] = $row->email;
+				$data_a['phone1'] = $row->phone1;
+				$data_a['phone2'] = $row->phone2;
+				$data_a['dept_ID'] = $row->dept_ID;
+				$data_a['cur_ID'] = $row->cur_ID;
+				$data_a['dept_ID'] = $row->status_ID;
+				$data_a['usertype_ID'] = $row->usertype_ID;
+				$data_a['username'] = $row->username;
+				$data_a['password'] = $row->password;
+				$data_a['active_track'] = '0';
 	            $this->import_data_model->insert_to_personnel($data_a);
 	            $inst+=1;
 
