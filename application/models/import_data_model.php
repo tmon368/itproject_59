@@ -335,7 +335,7 @@ class import_data_model extends CI_Model
 	        return TRUE;
 	    }
 	    else {
-	        return FALSE;
+	        return FALSE; 
 	    }
 	    
 	}

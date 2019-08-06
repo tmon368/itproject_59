@@ -1443,7 +1443,7 @@ $data = array(
     'oc_desc'			=>	$oc_desc
 
 );
-
+ 
 $this->import_data_model->insertoffensecate($data);
 
     }
