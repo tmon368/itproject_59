@@ -157,11 +157,11 @@
                                 "<td>" + data[i].email + "</td>" +
                                 "<td>" + data[i].phone1 + "</td>" +
                                 "<td>" + data[i].phone2 + "</td>" +
-                                "<td>" + data[i].dept_ID + "</td>" +
-                                "<td>" + data[i].cur_ID + "</td>" +
-                                "<td>" + data[i].usertype_ID + "</td>" +
                                 "<td>" + data[i].username + "</td>" +
                                 "<td>" + data[i].password + "</td>" +
+                                "<td>" + data[i].usertype_ID + "</td>" +
+                                "<td>" + data[i].cur_ID + "</td>" +
+                                "<td>" + data[i].dept_ID + "</td>" +
                                 "<td>" + data[i].active_track + "</td>" +
                                 "</tr>";
 

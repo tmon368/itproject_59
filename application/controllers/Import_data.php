@@ -1675,7 +1675,7 @@ redirect(base_url() . 'index.php/import_data/index');
 	                
 	                // เริ่มขึ้นตอนจัดเตรียมข้อมูล
 	                // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
-	                $start_row = 13;
+	                $start_row = 2;
 					// กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
 				    
 	                $col_name = array(
@@ -1687,11 +1687,11 @@ redirect(base_url() . 'index.php/import_data/index');
 					"F"=>"email",
 					"G"=>"phone1",
 					"H"=>"phone2",
-					"I"=>"dept_ID",
-					"J"=>"cur_ID",
+					"I"=>"username",
+					"J"=>"password",
 					"K"=>"usertype_ID",
-					"L"=>"username",
-					"M"=>"password"
+					"L"=>"cur_ID",
+					"M"=>"dept_ID"
         
         );
 	                if($row >= $start_row){
@@ -1705,7 +1705,7 @@ redirect(base_url() . 'index.php/import_data/index');
 // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
 function prepare_data($data){
     // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
-	$arr_field = array("person_ID","person_fname","person_lname","position","role","email","phone1","phone2","dept_ID","cur_ID","usertype_ID","username","password",);
+	$arr_field = array("person_ID","person_fname","person_lname","position","role","email","phone1","phone2","username","password","usertype_ID","cur_ID","dept_ID",);
     if(is_array($data)){
         foreach($arr_field as $v){
             if(!isset($data[$v])){
@@ -1748,14 +1748,15 @@ $data = array(
 	'email'					=>	$email,
 	'phone1'				=>	$phone1,
 	'phone2'				=>	$phone2,
-	'dept_ID'				=>	$dept_ID,
-	'cur_ID'				=>	$cur_ID,
-	'usertype_ID'			=>	$usertype_ID,
-	'username'				=>	$username,
-	'password'				=>	$password,
-	'active_track'        =>     '0'
+    'username'				=>	$username,
+    'password'				=>	$password,
+    'active_track'          =>  0,
+    'usertype_ID'			=>	$usertype_ID,
+    'cur_ID'				=>	$cur_ID,
+	'dept_ID'				=>	$dept_ID
+  
 );
-$this->import_data_model->inserttmp_personnel($data_personnel);
+$this->import_data_model->inserttmp_personnel($data);
 
     }
 
