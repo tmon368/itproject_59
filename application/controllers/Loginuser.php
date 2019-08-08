@@ -73,7 +73,7 @@ class Loginuser extends CI_Controller
             //$data['records'] = $this->login_model->getdata();
             //if($this->session->userdata('username')== employee.UName){
             
-            redirect(base_url() . 'index.php/student');
+            redirect(base_url() . 'index.php/Studentpage');
             
             
             //}
