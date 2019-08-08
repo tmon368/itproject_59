@@ -470,7 +470,7 @@ class import_data_model extends CI_Model
     function selecttmpstudent()
     {
         $this->db->order_by('S_ID','ASC');
-        $query = $this->db->get('student');
+        $query = $this->db->get('tmp_student');
         
         if ($query->num_rows() > 0) {
             return $query->result();
@@ -484,7 +484,7 @@ class import_data_model extends CI_Model
     function checkstudent($id)
     {
         // select ของตารางจริงในตาราง users
-        $query = $this->db->query("SELECT *FROM status WHERE S_ID = $id");
+        $query = $this->db->query("SELECT *FROM student WHERE S_ID = $id");
         $row = $query->row();
         
         if ($row != NULL){

@@ -420,7 +420,7 @@ redirect("import_data/submit_divisions");
 	            //'id' => $results->id,
 	            'dept_ID' => $row->dept_ID,
 	            'dept_name' => $row->dept_name,
-	            'flag'        =>   '0'
+	            'active_track'        =>   '0'
 	            );
 	            $this->import_data_model->update_datadivisions($row->dept_ID,$data);
 	            $updt+=1;
@@ -429,7 +429,7 @@ redirect("import_data/submit_divisions");
 	            $data_a =  array();
 	            $data_a['dept_ID'] = $row->dept_ID;
 	            $data_a['dept_name'] = $row->dept_name;
-	            $data_a['flag'] = '0' ;
+	            $data_a['active_track'] = '0' ;
 	            $this->import_data_model->insert_to_divisions($data_a);
 	            $inst+=1;
 
@@ -1303,14 +1303,14 @@ redirect("import_data/submit_status");
         
         
         if(isset($_POST['btn_submitstudent'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
-            
-            //$this->import_data_model->clearvalue();
+        
             
             $tmpFile = $_FILES['_fileup']['tmp_name'];
             $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
             $_fileup = $_FILES['_fileup'];
             $info = pathinfo($fileName);
             $allow_file = array("csv","xls","xlsx");
+            
             /*  print_r($info);         // ข้อมูลไฟล์
              print_r($_fileup);*/
             if($fileName!="" && in_array($info['extension'],$allow_file)){
@@ -1333,7 +1333,7 @@ redirect("import_data/submit_status");
                     
                     // เริ่มขึ้นตอนจัดเตรียมข้อมูล
                     // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
-                    $start_row = 14;
+                    $start_row = 2;
                     // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
                     $col_name = array(
                         "A"=>"S_ID",
@@ -1349,8 +1349,12 @@ redirect("import_data/submit_status");
                         "K"=> "status_ID",
                         "L"=> "usertype_ID",
                         "M"=> "username",
-                        "N"=> "password"
+                        "N"=> "password",
+                        "O"=> "flag"
                     );
+                    
+                    
+                    
                     if($row >= $start_row){
                         $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
                     }
@@ -1362,7 +1366,7 @@ redirect("import_data/submit_status");
         // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
         function prepare_data($data){
             // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
-            $arr_field = array("S_ID","std_fname","std_lname","email","phone","image","behavior_score","cur_ID","person_ID","status_ID","usertype_ID","username","password");
+            $arr_field = array("S_ID","std_fname","std_lname","email","phone","image","behavior_score","cur_ID","person_ID","status_ID","usertype_ID","username","password","flag");
             if(is_array($data)){
                 foreach($arr_field as $v){
                     if(!isset($data[$v])){
@@ -1376,55 +1380,44 @@ redirect("import_data/submit_status");
         }
         
         
+        
         // นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
         if(isset($data_arr) && count($data_arr)>0){
             $this->import_data_model->empty_tmp_student();
             foreach($data_arr as $row){
                 $row = prepare_data($row);
                 
+
                 
-                $S_ID = $row['S_ID'];
-                $std_fname = $row['std_fname'];
-                $std_lname = $row['std_lname'];
-                $email = $row['email'];
-                $phone = $row['phone'];
-                $image = $row['image'];
-                $behavior_score = $row['behavior_score'];
-                $cur_ID = $row['cur_ID'];
-                $person_ID = $row['person_ID'];
-                $status_ID = $row['status_ID'];
-                $usertype_ID = $row['usertype_ID'];
-                $username = $row['username'];
-                $person_ID = $row['password'];
-                $data = array(
-                    'S_ID'              =>  $S_ID,
-                    'std_fname'         =>  $std_fname,
-                    'std_lname'         =>  $std_lname,
-                    'email'             =>  $email,
-                    'phone'             =>  $phone,
-                    'image'             =>  $image,
-                    'behavior_score'    =>  $behavior_score,
-                    'cur_ID'            =>  $cur_ID,
-                    'person_ID'         =>  $person_ID,
-                    'status_ID'         =>  $status_ID,
-                    'usertype_ID'       =>  $usertype_ID,
-                    'username'          =>  $username,
-                    'password'          =>  $password,
-                );
-                $this->import_data_model->inserttmp_student($data);
+                $data_student =  array();
+                $data_student['S_ID'] = $row['S_ID'];
+                $data_student['std_fname'] = $row['std_fname'];
+                $data_student['std_lname'] = $row['std_lname'];
+                $data_student['email'] = $row['email'];
+                $data_student['phone'] = $row['phone'];
+                $data_student['image'] = $row['image'];
+                $data_student['behavior_score'] = $row['behavior_score'];
+                $data_student['cur_ID'] = $row['cur_ID'];
+                $data_student['person_ID'] = $row['person_ID'];
+                $data_student['status_ID'] = $row['status_ID'];
+                $data_student['usertype_ID'] = $row['usertype_ID'];
+                $data_student['username'] = $row['username'];
+                $data_student['password'] = $row['password'];
+                $data_student['flag'] = $row['flag'];
+                
+                
+          
+                
+                $this->import_data_model->inserttmp_student($data_student);
                 
             }
             
         }
         
         redirect("import_data/submit_student");
-        
-        
+       
     }
-    
-    
-    
-    
+
     public  function showAlltmpstudent()
     {
         $result = $this->import_data_model->selecttmpstudent();
@@ -1461,29 +1454,27 @@ redirect("import_data/submit_status");
             
         
             
-            if($row->S_ID != "" && $row->std_fname != "" && $row->std_lname != "" && $row->email != "" && $row->phone != ""
-                                && $row->image != "" && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
-                                && $row->status_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
+            //if($row->S_ID != "" && $row->std_fname != "" && $row->std_lname != "" && $row->email != "" && $row->phone != ""
+                               // && $row->image != "" && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
+                               // && $row->status_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
                 if ($temp_a == 1) {
                     
-     
-                    $data = array(
-                        //'id' => $results->id,
-
-                        'std_fname' => $row->std_fname,
-                        'std_lname' => $row->std_lname,
-                        'email' => $row->email,
-                        'phone' => $row->phone,
-                        'image' => $row->image,
-                        'behavior_score' => $row->behavior_score,
-                        'cur_ID' => $row->cur_ID,
-                        'person_ID' => $row->person_ID,
-                        'status_ID' => $row->status_ID,
-                        'usertype_ID' => $row->usertype_ID,
-                        'username' => $row->username,
-                        'password' => $row->password
-                    );
-                    $this->import_data_model->update_datastudent($row->S_ID,$data);
+                    $data_u =  array();
+                    $data_u['std_fname'] = $row->std_fname;
+                    $data_u['std_lname'] = $row->std_lname;
+                    $data_u['email'] = $row->email;
+                    $data_u['phone'] = $row->phone;
+                    $data_u['image'] = $row->image;
+                    $data_u['behavior_score'] = $row->behavior_score;
+                    $data_u['cur_ID'] = $row->cur_ID;
+                    $data_u['dorm_ID'] = $row-> dorm_ID;
+                    $data_u['person_ID'] = $row-> person_ID;
+                    $data_u['status_ID'] = $row->status_ID;
+                    $data_u['usertype_ID'] = $row->usertype_ID;
+                    $data_u['username'] = $row->username;
+                    $data_u['password'] = $row->password;
+                    $data_u['flag'] = $row->flag;
+                    $this->import_data_model->update_datastudent($row->S_ID,$data_u);
                     $updt+=1; 
                 } else{
                     //เพิ่มข้อมูล
@@ -1496,20 +1487,25 @@ redirect("import_data/submit_status");
                     $data_a['image'] = $row->image;
                     $data_a['behavior_score'] = $row->behavior_score;
                     $data_a['cur_ID'] = $row->cur_ID;
-                    $data_a['person_ID'] = $row->person_ID;
+                    $data_a['dorm_ID'] = $row-> dorm_ID;
+                    $data_a['person_ID'] = $row-> person_ID;
                     $data_a['status_ID'] = $row->status_ID;
                     $data_a['usertype_ID'] = $row->usertype_ID;
                     $data_a['username'] = $row->username;
                     $data_a['password'] = $row->password;
+                    $data_a['flag'] = $row->flag;
+   
+                    
+                    
                     $this->import_data_model->insert_to_student($data_a);
                     $inst+=1;
                     
                 }
-            }else{
-                $dtnull+=1;
+           // }else{
+           //     $dtnull+=1;
                 
                 
-            }
+          //  }
             
             
         }

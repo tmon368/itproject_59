@@ -33,9 +33,9 @@
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
                 <form action="<?php echo site_url() ?>/import_data/importstatus" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
-                    <input type="file" name="csv_file" id="csv_file"  required accept=".csv, .xls,.xlsx" />
+                    <input type="file" name="_fileup" id="_fileup"  required accept=".csv, .xls,.xlsx" />
                   </div>
-                  <button type="submit" name="import_csv" class="btn btn-success btn-fw" id="import_csv_btn">นำเข้า</button>
+                  <button type="submit" name="btn_submitstatus" class="btn btn-success btn-fw" id="btn_submitstatus">นำเข้า</button>
                 </form>
            
         </div>
