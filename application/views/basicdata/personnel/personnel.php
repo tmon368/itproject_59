@@ -292,7 +292,7 @@
 							 //$(this).find('#formadd')[0].reset();
 							 
 							$('#formadd')[0].reset();		
-							$('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							$('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
 							$('#textkey').empty();			
 							$('#msg1').empty();
 							showAll();
@@ -317,8 +317,7 @@
 
 
 
-
-        
+   
 
         //แก้ไขข้อมูล
         $('#showdata').on('click', '.fa-edit', function() {
@@ -404,7 +403,7 @@
 						//alert('id นี้ถูกใช้งานแล้ว');
 						$('#edit_file').modal('hide');
 						$('#formupdate')[0].reset();		
-						$('.alert-danger').html('แก้ไขเรยบร้อย').fadeIn().delay(2000).fadeOut('slow');
+						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
 						showAll();
 					}
 				});
@@ -505,7 +504,7 @@
 						//alert('id นี้ถูกใช้งานแล้ว');
 						$('#del_file').modal('hide');
 						$('#formdelete')[0].reset();		
-						$('.alert-danger').html('แก้ไขเรยบร้อย').fadeIn().delay(5000).fadeOut('slow');
+						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
 						showAll();
 					}
 				});
