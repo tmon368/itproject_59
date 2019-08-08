@@ -31,9 +31,9 @@ class dormitory_model extends CI_Model {
     }
     public function adddormitory(){
         $field = array(
-            'dorm_ID'=>$this->input->post('txtID'),
-            'dname'=>$this->input->post('txtname'),
-            'dorm_type'=>$this->input->post('txttype'),
+            'dorm_ID'=>$this->input->post('dormID'),
+            'dname'=>$this->input->post('dormname'),
+            'dorm_type'=>$this->input->post('dormtype'),
  
             );
         $this->db->insert('dormitory', $field);
@@ -56,10 +56,10 @@ class dormitory_model extends CI_Model {
     }
 
     public function updatedormitory(){
-        $id = $this->input->post('txteditID');
+        $id = $this->input->post('dormeditID');
         $field = array(
-        'dname'=>$this->input->post('txteditname'),
-        'dorm_type'=>$this->input->post('txtedittype'),
+        'dname'=>$this->input->post('dormeditname'),
+        'dorm_type'=>$this->input->post('dormedittype'),
     
             
         );
@@ -73,7 +73,7 @@ class dormitory_model extends CI_Model {
     }
 
     function deletedormitory(){
-         $id = $this->input->post('txtdelID');
+         $id = $this->input->post('dormdelID');
         /*
         $field = array(
         'active_track'=> '1'  
