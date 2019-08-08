@@ -1278,6 +1278,246 @@ redirect("import_data/submit_status");
 	
 	
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public  function importstudent()
+    {
+        
+        
+        
+        if(isset($_POST['btn_submitstudent'])  && isset($_FILES['_fileup']['name']) && $_FILES['_fileup']['name']!=""){
+            
+            //$this->import_data_model->clearvalue();
+            
+            $tmpFile = $_FILES['_fileup']['tmp_name'];
+            $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+            $_fileup = $_FILES['_fileup'];
+            $info = pathinfo($fileName);
+            $allow_file = array("csv","xls","xlsx");
+            /*  print_r($info);         // ข้อมูลไฟล์
+             print_r($_fileup);*/
+            if($fileName!="" && in_array($info['extension'],$allow_file)){
+                // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+                $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
+                
+                
+                // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+                $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+                
+                // วนลูปแสดงข้อมูล
+                $data_arr=array();
+                foreach ($cell_collection as $cell) {
+                    // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+                    $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+                    // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+                    $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+                    // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+                    $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+                    
+                    // เริ่มขึ้นตอนจัดเตรียมข้อมูล
+                    // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+                    $start_row = 14;
+                    // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+                    $col_name = array(
+                        "A"=>"S_ID",
+                        "B"=>"std_fname",
+                        "C"=> "std_lname",
+                        "D"=> "email",
+                        "E"=> "phone",
+                        "F"=> "image ",
+                        "G"=> "behavior_score",
+                        "H"=> "cur_ID",
+                        "I"=> "dorm_ID",
+                        "J"=> "person_ID",
+                        "K"=> "status_ID",
+                        "L"=> "usertype_ID",
+                        "M"=> "username",
+                        "N"=> "password"
+                    );
+                    if($row >= $start_row){
+                        $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+                    }
+                }
+                //print_r($data_arr);
+            }
+        }
+        
+        // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+        function prepare_data($data){
+            // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+            $arr_field = array("S_ID","std_fname","std_lname","email","phone","image","behavior_score","cur_ID","person_ID","status_ID","usertype_ID","username","password");
+            if(is_array($data)){
+                foreach($arr_field as $v){
+                    if(!isset($data[$v])){
+                        $data[$v]="";
+                    }
+                    
+                    
+                }
+            }
+            return $data;
+        }
+        
+        
+        // นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+        if(isset($data_arr) && count($data_arr)>0){
+            $this->import_data_model->empty_tmp_student();
+            foreach($data_arr as $row){
+                $row = prepare_data($row);
+                
+                
+                $S_ID = $row['S_ID'];
+                $std_fname = $row['std_fname'];
+                $std_lname = $row['std_lname'];
+                $email = $row['email'];
+                $phone = $row['phone'];
+                $image = $row['image'];
+                $behavior_score = $row['behavior_score'];
+                $cur_ID = $row['cur_ID'];
+                $person_ID = $row['person_ID'];
+                $status_ID = $row['status_ID'];
+                $usertype_ID = $row['usertype_ID'];
+                $username = $row['username'];
+                $person_ID = $row['password'];
+                $data = array(
+                    'S_ID'              =>  $S_ID,
+                    'std_fname'         =>  $std_fname,
+                    'std_lname'         =>  $std_lname,
+                    'email'             =>  $email,
+                    'phone'             =>  $phone,
+                    'image'             =>  $image,
+                    'behavior_score'    =>  $behavior_score,
+                    'cur_ID'            =>  $cur_ID,
+                    'person_ID'         =>  $person_ID,
+                    'status_ID'         =>  $status_ID,
+                    'usertype_ID'       =>  $usertype_ID,
+                    'username'          =>  $username,
+                    'password'          =>  $password,
+                );
+                $this->import_data_model->inserttmp_student($data);
+                
+            }
+            
+        }
+        
+        redirect("import_data/submit_student");
+        
+        
+    }
+    
+    
+    
+    
+    public  function showAlltmpstudent()
+    {
+        $result = $this->import_data_model->selecttmpstudent();
+        //print_r ($result);
+        echo json_encode($result);
+        
+        
+    }
+    
+    public function submit_student()
+    {
+        //List ข้อมูลมาแสดงในหน้าจอ
+        $this->load->view('basicdata/importdata/submit_student');
+    }
+    
+    
+    
+    
+    
+    function import_temp_to_dbstudent()
+    {
+        $inst=0;
+        $updt=0;
+        $dtnull=0;
+        echo "Function import_temp_to_db</br>";
+        
+        $result = $this->import_data_model->selecttmpstudent(); //ตาราง temp
+        
+        foreach ($result as $row) { //loop ตาราง temp
+            //select by id
+            
+            
+            $temp_a = $this->import_data_model->checkstudent($row->S_ID);
+            
+        
+            
+            if($row->S_ID != "" && $row->std_fname != "" && $row->std_lname != "" && $row->email != "" && $row->phone != ""
+                                && $row->image != "" && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
+                                && $row->status_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
+                if ($temp_a == 1) {
+                    
+     
+                    $data = array(
+                        //'id' => $results->id,
+
+                        'std_fname' => $row->std_fname,
+                        'std_lname' => $row->std_lname,
+                        'email' => $row->email,
+                        'phone' => $row->phone,
+                        'image' => $row->image,
+                        'behavior_score' => $row->behavior_score,
+                        'cur_ID' => $row->cur_ID,
+                        'person_ID' => $row->person_ID,
+                        'status_ID' => $row->status_ID,
+                        'usertype_ID' => $row->usertype_ID,
+                        'username' => $row->username,
+                        'password' => $row->password
+                    );
+                    $this->import_data_model->update_datastudent($row->S_ID,$data);
+                    $updt+=1;
+                } else{
+                    //เพิ่มข้อมูล
+                    $data_a =  array();
+                    $data_a['S_ID'] = $row->S_ID;
+                    $data_a['std_fname'] = $row->std_fname;
+                    $data_a['std_lname'] = $row->std_lname;
+                    $data_a['email'] = $row->email;
+                    $data_a['phone'] = $row->phone;
+                    $data_a['image'] = $row->image;
+                    $data_a['behavior_score'] = $row->behavior_score;
+                    $data_a['cur_ID'] = $row->cur_ID;
+                    $data_a['person_ID'] = $row->person_ID;
+                    $data_a['status_ID'] = $row->status_ID;
+                    $data_a['usertype_ID'] = $row->usertype_ID;
+                    $data_a['username'] = $row->username;
+                    $data_a['password'] = $row->password;
+                    $this->import_data_model->insert_to_student($data_a);
+                    $inst+=1;
+                    
+                }
+            }else{
+                $dtnull+=1;
+                
+                
+            }
+            
+            
+        }
+        
+        //redirect("Csv_import");
+    }
+    
+
 	
     
 	public function new()
