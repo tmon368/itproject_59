@@ -4,7 +4,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หน้าแรก</a></li>
       <li class="breadcrumb-item active" aria-current="page">การนำเข้าข้อมูลพื้นฐาน</li>
-      <li class="breadcrumb-item active" aria-current="page">นักศึกษา</li>
+      <li class="breadcrumb-item active" aria-current="page">หลักสูตร</li>
     </ol>
   </nav>
 </div>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="card-body">
-           <h3> นักศึกษา</h3>
+           <h3>หลักสูตร</h3>
     
       
                 <a class="nav-link" data-toggle="tab" ><span><i class="fas fa-download"></i></span>&nbsp;นำเข้าข้อมูล</a>
@@ -31,7 +31,7 @@
                 
 
                 <!-- ส่งค่าไปยัง Contrller Submit_to_db method:import-->
-                <form action="<?php echo site_url() ?>/import_data/importstudent" method="post" id="#" enctype="multipart/form-data">
+                <form action="<?php echo site_url() ?>/import_data/importcurriculum" method="post" id="#" enctype="multipart/form-data">
                   <div class="form-group">
                     <input type="file" name="csv_file" id="csv_file"  required accept=".csv, .xls,.xlsx" />
                   </div>

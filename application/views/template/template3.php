@@ -186,25 +186,30 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Import_data/pagestudent") ?>">นักศึกษา</a>
               </li> 
+              
+              <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/pagestatus") ?>">สถานะนักศึกษา</a>
+            </li>
+              
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">บุคลากร</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data/pagepersonnel") ?>">บุคลากร</a>
             </li> 
             
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">สถานะนักศึกษา</a>
-            </li>
+            
            
             
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">ยานพาหนะ</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data/pagevehicles") ?>">ยานพาหนะ</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/pagedivisions") ?>">หน่วยงาน</a>
             </li>
          
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">หลักสูตร</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data/pagecurriculum") ?>">หลักสูตร</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">หน่วยงาน</a>
-            </li>
+            
           
           </li>
           </ul>
