@@ -436,7 +436,6 @@ $("#edit_file").modal("show");
 
 
 
-
     //edit
     $('#showdata').on('click', '.fa-edit', function() {
             var id = $(this).attr('data');

@@ -321,7 +321,6 @@
 
 
 
-
         
         //เพิ่มข้อมูล
         $('#btnAdd').click(function() {

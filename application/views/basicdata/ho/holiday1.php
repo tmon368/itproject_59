@@ -102,7 +102,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
       <!------------------>
  </div>
      
-   
+  
       <div class="modal-footer ">
       <button  name="insert" type="reset" class="btn btn-secondary " data-dismiss="modal">ยกเลิก</button>
       <button name="btnSave" id="btnSave" type="button" class="btn btn-success">บันทึกข้อมูล</button>

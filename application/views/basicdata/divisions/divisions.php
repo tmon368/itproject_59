@@ -307,7 +307,7 @@
 
 
 
-        
+   
 
         //แก้ไขข้อมูล
         $('#showdata').on('click', '.fa-edit', function() {

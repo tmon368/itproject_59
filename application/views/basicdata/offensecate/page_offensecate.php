@@ -365,7 +365,7 @@
             }
         });
 
-        //แก้ไขข้อมูล
+        // แก้ไขข้อมูล
         $('#showdata').on('click', '.fa-edit', function() {
             var id = $(this).attr('data');
             var popup = document.getElementById("editimage");

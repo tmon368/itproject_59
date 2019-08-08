@@ -665,7 +665,6 @@ $(document).ready(function(){
  
 
 
-
     //แสดงข้อมูล
     function showAll(){
       $.ajax({
