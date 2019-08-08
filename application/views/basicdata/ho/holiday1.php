@@ -105,7 +105,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
    
       <div class="modal-footer ">
       <button  name="insert" type="reset" class="btn btn-secondary " data-dismiss="modal">ยกเลิก</button>
-      <button name="btnSave" id="btnSave" type="button" class="btn btn-success">เพิ่มข้อมูล</button>
+      <button name="btnSave" id="btnSave" type="button" class="btn btn-success">บันทึกข้อมูล</button>
             
        
       </div>
@@ -294,7 +294,7 @@ $('#btnAdd').click(function() {
            //$(this).find('#formadd')[0].reset();
            
           $('#formadd')[0].reset();   
-          $('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+          $('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
         //  $('#textkey').empty();      
           //$('#msg1').empty();
           showAll();
