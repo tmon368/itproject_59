@@ -77,7 +77,7 @@
                     <th>usertype_ID</th>
                     <th>username</th>
                     <th>password</th>
-                </tr>
+                </tr>  
             </thead>
             <tbody>
                 <!-- Display content-->
@@ -182,7 +182,7 @@
                     alert('Error');
                 }
             });
-
+  
         });
     </script>
 </body>

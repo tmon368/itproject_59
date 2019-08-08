@@ -32,6 +32,9 @@ class import_data_model extends CI_Model
 	}
 	
 	
+	
+	
+	
 	function checkplace($id)
 	{
 	    // select ของตารางจริงในตาราง users
@@ -491,7 +494,7 @@ class import_data_model extends CI_Model
             return FALSE;
         }
         
-    }
+    }  
     
     function insert_to_student($data)
     {
