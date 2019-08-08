@@ -481,7 +481,7 @@ class import_data_model extends CI_Model
     
     
     
-    function checkstatus($id)
+    function checkstudent($id)
     {
         // select ของตารางจริงในตาราง users
         $query = $this->db->query("SELECT *FROM status WHERE S_ID = $id");
