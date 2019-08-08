@@ -8,7 +8,7 @@ class Import_data extends CI_Controller {
         $this->load->model('import_data_model');
         $this->load->library('Classes/PHPExcel');
     }
-    
+     
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
@@ -1455,8 +1455,6 @@ redirect("import_data/submit_status");
                     $data_a['username'] = $row->username;
                     $data_a['password'] = $row->password;
                     $data_a['flag'] = $row->flag;
-   
-                    
                     
                     $this->import_data_model->insert_to_student($data_a);
                     $inst+=1;
