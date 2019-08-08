@@ -67,7 +67,7 @@
         <table id="example" class="cell-border" style="width:100%">
             <thead>
                 <tr>
-                    <th>person_ID</th>
+                   <th>person_ID</th>
                     <th>person_fname</th>
                     <th>person_lname</th>
                     <th>position</th>
@@ -75,12 +75,12 @@
                     <th>email</th>
                     <th>phone1</th>
                     <th>phone2</th>
-                    <th>dept_ID</th>
-                    <th>cur_ID</th>
-                    <th>usertype_ID</th>
                     <th>username</th>
                     <th>password</th>
                     <th>active_track</th>
+                    <th>usertype_ID</th>
+                    <th>cur_ID</th>
+                    <th>dept_ID</th>
                   
 
                 </tr>
@@ -98,12 +98,16 @@
                     <th>email</th>
                     <th>phone1</th>
                     <th>phone2</th>
-                    <th>dept_ID</th>
-                    <th>cur_ID</th>
-                    <th>usertype_ID</th>
                     <th>username</th>
                     <th>password</th>
                     <th>active_track</th>
+                    <th>usertype_ID</th>
+                    <th>cur_ID</th>
+                    <th>dept_ID</th>
+                    
+                    
+                    
+                    
 
 
                 </tr>
@@ -159,10 +163,10 @@
                                 "<td>" + data[i].phone2 + "</td>" +
                                 "<td>" + data[i].username + "</td>" +
                                 "<td>" + data[i].password + "</td>" +
+                                "<td>" + data[i].active_track + "</td>" +
                                 "<td>" + data[i].usertype_ID + "</td>" +
                                 "<td>" + data[i].cur_ID + "</td>" +
                                 "<td>" + data[i].dept_ID + "</td>" +
-                                "<td>" + data[i].active_track + "</td>" +
                                 "</tr>";
 
                         }
