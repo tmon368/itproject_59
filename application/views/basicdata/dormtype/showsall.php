@@ -530,7 +530,7 @@
 
 
         
-        //แสดงข้อมูล
+        //การแสดงข้อมูล
         function showAll() {
             $.ajax({
                 type: 'ajax',
