@@ -69,12 +69,12 @@ class login_model extends CI_Model {
     function can_login($username, $password)
     {
         
-        $this->db->select('UName, Pass');
+        $this->db->select('username, password');
         $this->db->from('employee');
         $query1 = $this->db->get()->result();
         
         
-        $this->db->select('UName, Pass');
+        $this->db->select('username, password');
         $this->db->from('student');
         $query2 = $this->db->get()->result();
         
@@ -83,7 +83,7 @@ class login_model extends CI_Model {
         
         //var_dump($query3);
         foreach ($query3 as $value){
-            if($value->UName == $username  && $value->Pass == $password ){
+            if($value->username == $username  && $value->password == $password ){
                 return true;
                 
                 
@@ -117,11 +117,11 @@ class login_model extends CI_Model {
     function checkusernameemployee($username)
     {
         
-        $this->db->select('UName');
+        $this->db->select('username');
         $this->db->from('employee');
         $query1 = $this->db->get()->result();
         foreach ($query1 as $value){
-            if($value->UName == $username){
+            if($value->username == $username){
                 return true;
                 
                 
@@ -137,11 +137,11 @@ class login_model extends CI_Model {
 function checkusernamestudent($username)
 {
     
-    $this->db->select('UName');
+    $this->db->select('username');
     $this->db->from('student');
     $query1 = $this->db->get()->result();
     foreach ($query1 as $value){
-        if($value->UName == $username){
+        if($value->username == $username){
             return true;
             
             
