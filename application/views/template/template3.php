@@ -171,53 +171,41 @@
             </li>
           </li>
           </ul>
-        </div>
-      </li>
-<li class="nav-item">
+       
+
+      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-import" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon fas fa-download"></i>
           <span class="menu-title">การนำเข้าข้อมูล</span>
           <i class="menu-arrow"></i>
         </a>
-        
-        
-        <!--  
-        <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu">
-      <li class="nav-item">
-        <a class="nav-link" href="#ui-import">
-          <i class="menu-icon fas fa-download"></i>
-          <span class="menu-title">การนำเข้าข้อมูล</span>
-        </a>-->
-        
-        
-        
-        
         <div class="collapse" id="ui-import">
-          <ul class="nav flex-column sub-menu"> 
-           
+          <ul class="nav flex-column sub-menu">
+        </a>
+        
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">นักศึกษา</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data/pagestudent") ?>">นักศึกษา</a>
               </li> 
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">บุคลากร</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">บุคลากร</a>
             </li> 
-     
+            
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">สถานะนักศึกษา</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">สถานะนักศึกษา</a>
             </li>
-  
+           
+            
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">ยานพาหนะ</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">ยานพาหนะ</a>
             </li>
-
+         
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">หลักสูตร</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">หลักสูตร</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">หน่วยงาน</a>
+              <a class="nav-link" href="<?php echo site_url("Import_data") ?>">หน่วยงาน</a>
             </li>
-
+          
           </li>
           </ul>
         </div>

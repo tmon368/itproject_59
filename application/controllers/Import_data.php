@@ -20,6 +20,17 @@ class Import_data extends CI_Controller {
 		$this->load->view('template/template6');
 
 	}
+	public function pagestudent()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/importstudent');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
 
 	public  function importplace()
 	{
