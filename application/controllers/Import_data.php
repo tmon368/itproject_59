@@ -1271,35 +1271,35 @@ redirect("import_data/submit_status");
         
             
             $tmpFile = $_FILES['_fileup']['tmp_name'];
-            $fileName = $_FILES['_fileup']['name'];  // เก็บชื่อไฟล์
+            $fileName = $_FILES['_fileup']['name'];  // à¡çºª×èÍä¿Åì
             $_fileup = $_FILES['_fileup'];
             $info = pathinfo($fileName);
             $allow_file = array("csv","xls","xlsx");
             
-            /*  print_r($info);         // ข้อมูลไฟล์
+            /*  print_r($info);         // ¢éÍÁÙÅä¿Åì
              print_r($_fileup);*/
             if($fileName!="" && in_array($info['extension'],$allow_file)){
-                // อ่านไฟล์จาก path temp ชั่วคราวที่เราอัพโหลด
+                // ÍèÒ¹ä¿Åì¨Ò¡ path temp ªÑèÇ¤ÃÒÇ·ÕèàÃÒÍÑ¾âËÅ´
                 $objPHPExcel = PHPExcel_IOFactory::load($tmpFile);
                 
                 
-                // ดึงข้อมูลของแต่ละเซลในตารางมาไว้ใช้งานในรูปแบบตัวแปร array
+                // ´Ö§¢éÍÁÙÅ¢Í§áµèÅÐà«Åã¹µÒÃÒ§ÁÒäÇéãªé§Ò¹ã¹ÃÙ»áººµÑÇá»Ã array
                 $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
                 
-                // วนลูปแสดงข้อมูล
+                // Ç¹ÅÙ»áÊ´§¢éÍÁÙÅ
                 $data_arr=array();
                 foreach ($cell_collection as $cell) {
-                    // ค่าสำหรับดูว่าเป็นคอลัมน์ไหน เช่น A B C ....
+                    // ¤èÒÊÓËÃÑº´ÙÇèÒà»ç¹¤ÍÅÑÁ¹ìäË¹ àªè¹ A B C ....
                     $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
-                    // คำสำหรับดูว่าเป็นแถวที่เท่าไหร่ เช่น 1 2 3 .....
+                    // ¤ÓÊÓËÃÑº´ÙÇèÒà»ç¹á¶Ç·Õèà·èÒäËÃè àªè¹ 1 2 3 .....
                     $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
-                    // ค่าของข้อมูลในเซลล์นั้นๆ เช่น A1 B1 C1 ....
+                    // ¤èÒ¢Í§¢éÍÁÙÅã¹à«ÅÅì¹Ñé¹æ àªè¹ A1 B1 C1 ....
                     $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
                     
-                    // เริ่มขึ้นตอนจัดเตรียมข้อมูล
-                    // เริ่มเก็บข้อมูลบรรทัดที่ 2 เป็นต้นไป
+                    // àÃÔèÁ¢Öé¹µÍ¹¨Ñ´àµÃÕÂÁ¢éÍÁÙÅ
+                    // àÃÔèÁà¡çº¢éÍÁÙÅºÃÃ·Ñ´·Õè 2 à»ç¹µé¹ä»
                     $start_row = 2;
-                    // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
+                    // ¡ÓË¹´ª×èÍ column ·ÕèµéÍ§¡ÒÃä»àÃÕÂ¡ãªé§Ò¹
                     $col_name = array(
                         "A"=>"S_ID",
                         "B"=>"std_fname",
@@ -1328,9 +1328,9 @@ redirect("import_data/submit_status");
             }
         }
         
-        // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
+        // ÊÃéÒ§¿Ñ§¡ìªÑè¹ÊÓËÃÑº¨Ñ´¡ÒÃ¡Ñº¢éÍÁØÅ·Õèà»ç¹¤èÒÇèÒ§ ËÃ×ÍäÁèÁÕ¢éÍÁÙÅ¹éé¹
         function prepare_data($data){
-            // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
+            // ¡ÓË¹´ª×èÍ filed ãËéµÃ§¡Ñº $col_name ´éÒ¹º¹
             $arr_field = array("S_ID","std_fname","std_lname","email","phone","image","behavior_score","cur_ID","person_ID","status_ID","usertype_ID","username","password","flag");
             if(is_array($data)){
                 foreach($arr_field as $v){
@@ -1346,7 +1346,7 @@ redirect("import_data/submit_status");
         
         
         
-        // นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
+        // ¹Ó¢éÍÁÙÅ·Õè´Ö§¨Ò¡ excel ËÃ×Í csv ä¿Åì ÁÒÇ¹ÅÙ»áÊ´§
         if(isset($data_arr) && count($data_arr)>0){
             $this->import_data_model->empty_tmp_student();
             foreach($data_arr as $row){
@@ -1363,6 +1363,7 @@ redirect("import_data/submit_status");
                 $data_student['image'] = $row['image'];
                 $data_student['behavior_score'] = $row['behavior_score'];
                 $data_student['cur_ID'] = $row['cur_ID'];
+                $data_student['dorm_ID'] = $row['dorm_ID'];
                 $data_student['person_ID'] = $row['person_ID'];
                 $data_student['status_ID'] = $row['status_ID'];
                 $data_student['usertype_ID'] = $row['usertype_ID'];
@@ -1394,24 +1395,19 @@ redirect("import_data/submit_status");
     
     public function submit_student()
     {
-        //List ข้อมูลมาแสดงในหน้าจอ
+        //List ¢éÍÁÙÅÁÒáÊ´§ã¹Ë¹éÒ¨Í
         $this->load->view('basicdata/importdata/submit_student');
     }
-    
-    
-    
-    
-    
-    function import_temp_to_dbstudent()
+     function import_temp_to_dbstudent()
     {
         $inst=0;
         $updt=0;
         $dtnull=0;
         echo "Function import_temp_to_db</br>";
         
-        $result = $this->import_data_model->selecttmpstudent(); //ตาราง temp
+        $result = $this->import_data_model->selecttmpstudent(); //µÒÃÒ§ temp
         
-        foreach ($result as $row) { //loop ตาราง temp
+        foreach ($result as $row) { //loop µÒÃÒ§ temp
             //select by id
             
             
@@ -1442,7 +1438,7 @@ redirect("import_data/submit_status");
                     $this->import_data_model->update_datastudent($row->S_ID,$data_u);
                     $updt+=1; 
                 } else{
-                    //เพิ่มข้อมูล
+                    //à¾ÔèÁ¢éÍÁÙÅ
                     $data_a =  array();
                     $data_a['S_ID'] = $row->S_ID;
                     $data_a['std_fname'] = $row->std_fname;
@@ -1478,6 +1474,7 @@ redirect("import_data/submit_status");
         //redirect("Csv_import");
     }
     
+
 
 	
     
