@@ -29,8 +29,7 @@
   <!-- Custom js for this page-->
   <script src="<?php echo base_url ('re/js/dashboard.js');?>"></script>
   <!-- End custom js for this page-->
-
-
+ 
   <script>
       $(document).ready(function() {
           $('#style_table').DataTable();

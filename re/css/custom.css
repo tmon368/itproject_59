@@ -97,3 +97,14 @@ label{ /*รูปแบบของ label ใน form*/
     margin: auto;
     vertical-align: middle;
 }
+
+.text-c{
+	color: #708090
+}
+
+.icon{
+	color: #9999FF;
+}
+.m-b-25 {
+    margin-bottom: 25px;
+}
