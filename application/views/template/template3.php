@@ -173,12 +173,55 @@
           </ul>
         </div>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">
+<li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-import" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon fas fa-download"></i>
           <span class="menu-title">การนำเข้าข้อมูล</span>
+          <i class="menu-arrow"></i>
         </a>
+        
+        
+        <!--  
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+      <li class="nav-item">
+        <a class="nav-link" href="#ui-import">
+          <i class="menu-icon fas fa-download"></i>
+          <span class="menu-title">การนำเข้าข้อมูล</span>
+        </a>-->
+        
+        
+        
+        
+        <div class="collapse" id="ui-import">
+          <ul class="nav flex-column sub-menu"> 
+           
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">นักศึกษา</a>
+              </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">บุคลากร</a>
+            </li> 
+     
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">สถานะนักศึกษา</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">ยานพาหนะ</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">หลักสูตร</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Csv_import") ?>">หน่วยงาน</a>
+            </li>
+
+          </li>
+          </ul>
+        </div>
+      </li>
       </li>
     </ul>
   </nav>
