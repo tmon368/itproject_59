@@ -115,7 +115,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("Admin_dashboard") ?>">
+        <a class="nav-link" href="<?php echo site_url("Student_dashboard") ?>">
           <i class="menu-icon mdi mdi-television"></i>
           <span class="menu-title">หน้าแรก</span>
         </a>
