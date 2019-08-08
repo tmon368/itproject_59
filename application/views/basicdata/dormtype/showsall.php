@@ -533,6 +533,7 @@
         //การแสดงข้อมูล
         function showAll() {
             $.ajax({
+                
                 type: 'ajax',
                 url: '<?php echo base_url() ?>index.php/dormtype/showAll',
                 async: false,
