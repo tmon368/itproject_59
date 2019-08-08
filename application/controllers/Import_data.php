@@ -1211,7 +1211,7 @@ redirect("import_data/submit_status");
 			        $data_personnel['person_fname'] = $row->person_fname;
 			        $data_personnel['person_lname'] = $row->person_lname;
 			        $data_personnel['position'] = $row->position;
-			        $data_personnel['role'] = $row->role;
+			        $data_personnel['role']  = $row->role;
 			        $data_personnel['email'] = $row->email;
 			        $data_personnel['phone1'] =$row->phone1;
 			        $data_personnel['phone2'] = $row->phone2;

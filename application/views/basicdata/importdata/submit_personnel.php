@@ -137,7 +137,7 @@
         $(document).ready(function() {
             //$('#example').DataTable();
 
-            showAll();
+             showAll();
 
             function showAll() {
 

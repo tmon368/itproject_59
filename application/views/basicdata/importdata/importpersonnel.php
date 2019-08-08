@@ -23,7 +23,7 @@
           <h3> บุคลากร</h3><br>
     
       
-               <h3> <a class="nav-link" data-toggle="tab" ><span>&nbsp;&nbsp;<i class="fas fa-download"></i></span>&nbsp;&nbsp;&nbsp;นำเข้าข้อมูล</a></h3>
+           <h3> <a class="nav-link" data-toggle="tab" ><span>&nbsp;&nbsp;<i class="fas fa-download"></i></span>&nbsp;&nbsp;&nbsp;นำเข้าข้อมูล</a></h3>
           
 			<p style="color:#99A3A4;">**รองรับไฟล์ประเภท .csv ในการนำเข้าข้อมูลเข้าเพื่อลงฐานข้อมูล</p>
       		<p style="color:#99A3A4;">กรุณาเลือกไฟล์ที่ต้องการนำเข้า</p>

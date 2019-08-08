@@ -337,7 +337,7 @@ class import_data_model extends CI_Model
 	
 	function checkpersonnel($id)
 	{
-	    // select ของตารางจริงในตาราง users
+	   // select ของตารางจริงในตาราง users
 	    $query = $this->db->query("SELECT *FROM personnel WHERE person_ID = $id");
 	    $row = $query->row();
 	    
