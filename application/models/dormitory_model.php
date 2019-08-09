@@ -9,7 +9,7 @@ class dormitory_model extends CI_Model {
     
     
  public function showAll(){
-        $this->db->order_by('dorm_ID', 'desc');
+        $this->db->order_by('dorm_ID', 'ASC');
         $query = $this->db->get('dormitory');
         if($query->num_rows() > 0){
             return $query->result();
@@ -33,7 +33,7 @@ class dormitory_model extends CI_Model {
         $field = array(
             'dorm_ID'=>$this->input->post('dormID'),
             'dname'=>$this->input->post('dormname'),
-            'dorm_type'=>$this->input->post('dormtype'),
+            'dorm_type'=>$this->input->post('dormtype')
  
             );
         $this->db->insert('dormitory', $field);
@@ -73,16 +73,9 @@ class dormitory_model extends CI_Model {
     }
 
     function deletedormitory(){
-         $id = $this->input->post('dormdelID');
-        /*
-        $field = array(
-        'active_track'=> '1'  
-
-        );*/
-         
+         $id = $this->input->post('dormdelID');   
         $this->db->where('dorm_ID', $id);
         $this->db->delete('dormitory');
-        //$this->db->update('dormitory', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
