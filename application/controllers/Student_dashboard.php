@@ -17,7 +17,7 @@ class Student_dashboard extends CI_Controller {
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 		$this->load->view('menu/student/menu_student'); //ส่วนเมนู
-		$this->load->view('student/StudentPersonal/std_personal');//ส่วนเนื้อหา
+		$this->load->view('student/StudentPersonal/std_infopage');//ส่วนเนื้อหา
 	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
