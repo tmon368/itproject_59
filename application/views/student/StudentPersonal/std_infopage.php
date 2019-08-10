@@ -39,7 +39,10 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="card shadow mb-4">
-                
+
+                <div class="card-header">
+                    <h5 class="m-0 text-primary">รายการความผิดของคะแนนที่โดนหัก</h5>
+                </div>
                 <div class="card table-card">
                     <div class="card-block p-b-0">
                         <div class="table-responsive">
@@ -52,6 +55,7 @@
                                         <th>ฐานความผิด</th>
                                         <th>คะแนนที่หัก</th>
                                         <th>สถานะการกระทำความผิด</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,17 +65,17 @@
                                         <td>5</td>
                                         <td>ชับขี่หรือซ้อนท้ายโดยไม่สวมหมวกนิรภัย</td>
                                         <td>10</td>
-                                        <td>รอการอบรม</td>
+                                        <td><span class="badge badge-warning">รอการอบรม</span></td>
 
                                     </tr>
-                                   
+
                                     <tr>
                                         <td>2</td>
                                         <td>19/12/61</td>
                                         <td>4</td>
                                         <td>ชับขี่หรือซ้อนท้ายโดยไม่สวมหมวกนิรภัย</td>
                                         <td>0</td>
-                                        <td>คืนคะแนนเรียบร้อยแล้ว</td>
+                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
 
                                     </tr>
 
@@ -81,7 +85,7 @@
                                         <td>1</td>
                                         <td>ขับรถโดยไม่มีใบอนุญาติขับขี่</td>
                                         <td>0</td>
-                                        <td>คืนคะแนนเรียบร้อยแล้ว</td>
+                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
 
                                     </tr>
 
@@ -91,7 +95,7 @@
                                         <td>2</td>
                                         <td>ขับรถย้อนศร</td>
                                         <td>0</td>
-                                        <td>คืนคะแนนเรียบร้อยแล้ว</td>
+                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
 
                                     </tr>
 
@@ -101,18 +105,18 @@
                                         <td>1</td>
                                         <td>ขับรถโดยไม่มีใบอนุญาติขับขี่</td>
                                         <td>0</td>
-                                        <td>คืนคะแนนเรียบร้อยแล้ว</td>
+                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
 
                                     </tr>
-                                   
+
                                 </tbody>
                             </table>
                         </div>
-                    
-                </div>
 
+                    </div>
+
+                </div>
             </div>
-        </div>
         </div>
 
         <div class="col-lg-4">
