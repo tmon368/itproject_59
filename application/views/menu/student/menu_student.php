@@ -122,28 +122,28 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("#") ?>">
+        <a class="nav-link" href="<?php echo site_url("Std_info") ?>">
           <i class="menu-icon  fas fa-user-alt"></i>
           <span class="menu-title">ข้อมูลส่วนตัว</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("#") ?>">
+        <a class="nav-link" href="<?php echo site_url("Reportstudent") ?>">
           <i class="menu-icon fa fa-exclamation-triangle"></i>
           <span class="menu-title">แจ้งเหตุกระทำความผิด</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("#") ?>">
+        <a class="nav-link" href="<?php echo site_url("Report") ?>">
           <i class="menu-icon fa fa-vcard"></i>
           <span class="menu-title">รายงานตัวกระทำความผิด</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("#") ?>">
+        <a class="nav-link" href="<?php echo site_url("VolunteerAc")?>">
           <i class="menu-icon fas fa-handshake"></i>
           <span class="menu-title">การบำเพ็ญประโยชน์</span>
         </a>
