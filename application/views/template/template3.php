@@ -213,6 +213,51 @@
           
           </li>
           </ul>
+          
+          
+          
+          
+          
+          <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-status" aria-expanded="false" aria-controls="ui-basic">
+          <i class="menu-icon fas fa-download"></i>
+          <span class="menu-title">อัพเดตสถานะการนำเข้าข้อมูล</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-status">
+          <ul class="nav flex-column sub-menu">
+        </a>
+        
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstudent") ?>">นักศึกษา</a>
+              </li> 
+              
+              <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstatus") ?>">สถานะนักศึกษา</a>
+            </li>
+              
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportpersonnel") ?>">บุคลากร</a>
+            </li> 
+            
+            
+           
+            
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportvehicles") ?>">ยานพาหนะ</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportdivisions") ?>">หน่วยงาน</a>
+            </li>
+         
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportcurriculum") ?>">หลักสูตร</a>
+            </li>
+            
+          
+          </li>
+          </ul>
         </div>
       </li>
       </li>

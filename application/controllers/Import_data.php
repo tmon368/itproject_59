@@ -87,6 +87,91 @@ class Import_data extends CI_Controller {
 	    
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public function statusimportstudent()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/statusimportstudent');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
+	public function statusimportpersonnel()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/statusimportpersonnel');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
+	public function statusimportstatus()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/statusimportstatus');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
+	public function statusimportvehicles()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/statusimportvehicles');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
+	public function statusimportdivisions()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/statusimportdivisions');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
+	public function statusimportcurriculum()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/statusimportcurriculum');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
+	
+	
+	
+	
+	
 
 	public  function importplace()
 	{
