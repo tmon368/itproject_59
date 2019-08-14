@@ -73,7 +73,7 @@
 						<div class="col-lg-4">
                     <input type="text" name="txtID"  id="off_ID"class="form-control"  maxlength="3" onkeyup="count_down_id(this);" required>
 			<div id="msg1"></div>
-                                                   <!--   <div id="msg2" style="color:red"></div>-->
+                                               
 			
 			
 			
@@ -357,18 +357,6 @@
 			
                                     <!--ส่วนของ madal จะใช้การจัดการด้วย id ส่วนของ data-target กับ id ของ class จะต้องเหมือนกัน -->
 
-                                   
-
-
-                                      
-
- 
- 
-
-	
-				
-			
-               	
                                      <!-- <form action="<?php echo base_url(); ?>index.php/offense/edit" method="post" id="editform"  class="needs-validation" >  -->
                                    
                                       <!------------------>
@@ -502,7 +490,7 @@ $(document).ready(function(){
     });
 
     //แก้ไขข้อมูล
- $('#showdata').on('click', '.fa-edit', function(){
+ $('#showdata').on('click', '.edit_data', function(){
       var id = $(this).attr('data');
       var popup = document.getElementById("editimage");
       $('#edit_file').modal('show');
@@ -596,7 +584,7 @@ $(document).ready(function(){
    
 
     //ลบข้อมูล
-    $('#showdata').on('click', '.fa-trash-alt', function(){
+    $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
@@ -684,10 +672,8 @@ $(document).ready(function(){
                   
                 
 
-                  '<td>'+
-                    '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].off_ID+'"></i></a>'+
-                    '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].off_ID+'"></i></a>'+
-                  '</td>'+
+                  '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].place_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].place_ID +'>ลบข้อมูล</button></td>'
+                  + 
                   '</tr>';
           }
           $('#showdata').html(html);
