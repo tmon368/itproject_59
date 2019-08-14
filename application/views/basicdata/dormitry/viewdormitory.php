@@ -59,11 +59,10 @@
 				<div class="input-group" >
 					<label for="validationCustom02..'">ประเภทหอพัก  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
-					<div class="col-lg-3" >
+					<div class="col-lg-4" >
 					<select name="dormtype"class="form-control"  required >
-					<option value ="1"> F: หอหญิง </option>
-					<option value ="2"> M: หอชาย </option>
-					<option value ="3"> O: หอนอกมหาวิทยาลัย </option>
+					<option value ="F: หอหญิง"> F: หอหญิง </option>
+					<option value ="M: หอชาย "> M: หอชาย </option>
 					</select>
 
       </div></div></div>
@@ -74,14 +73,12 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" name="dormID"  id="dorm_ID"class="form-control"  maxlength="3" onkeyup="count_down_id(this);" 
-                    required><div id="msg1"></div>
+                    <input type="text" name="dormID"  id="dorm_ID"class="form-control"  maxlength="2" onkeyup="count_down_id(this);" required>
+			<div id="msg1"></div>
 			<!--   <div id="msg2" style="color:red"></div>-->
 			
+			
 				</div></div></div>
-		      
-          
-				
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 				
@@ -91,7 +88,17 @@
 					<div class="col-lg-9">
                     <input type="text" name="dormname"  class="form-control"  maxlength="20" onkeyup="count_downname(this);" required>
 			
-	</div>
+			
+			
+	</div></div></div>
+				<div class="form-group" id="input_group_sty">
+				<div class="input-group" >
+						<label for="validationCustom02..'">รหัสที่ปรึกษาหอพัก </label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<div class="col-lg-5">
+                    <input type="text" name="dormtxt"  class="form-control"  maxlength="10"  onkeyup="count_downtxt(this);"required>
+             </div>
 				<!-- <div class="form-group sty_a" id="textkey">
                                             <span id="count5">0</span>
                                             <span>/</span>
@@ -127,7 +134,7 @@
    
       <div class="modal-footer">
       <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="btnSave" id="btnSave" type="button" class="btn btn-success">เพิ่มข้อมูล</button>
+      <button  name="btnSave" id="btnSave" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
             
        
       </div>
@@ -164,9 +171,8 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					<div class="col-lg-3" >
 					<select name="dormedittype"class="form-control"  required >
-					<option value ="1"> F: หอหญิง </option>
-					<option value ="2"> M: หอชาย </option>
-					<option value ="3"> O: หอนอกมหาวิทยาลัย </option>
+					<option value ="F: หอหญิง"> F: หอหญิง </option>
+					<option value ="M: หอชาย"> M: หอชาย </option>
 					</select>
 
       </div></div></div>
@@ -192,9 +198,17 @@
 					<div class="col-lg-9">
                     <input type="text" name="dormeditname"  class="form-control"  maxlength="100" onkeyup="count_downeditname(this);" required>
 			
-	 </div>
-                                        
-                                  <!--  
+	 </div></div></div>
+	 <div class="form-group" id="input_group_sty">
+				<div class="input-group" >
+				
+						<label for="validationCustom02..'">รหัสที่ปรึกษาหอพัก  </label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div class="col-lg-4">
+                    <input type="text" name="dormedittxt"  class="form-control"  maxlength="10" onkeyup="count_downedittxt(this);" required>
+                                        </div>
+                                 <!--  
                                         <div class="form-group sty_a">
                                             <span id="count11">0</span>
                                             <span>/</span>
@@ -220,7 +234,6 @@
                                     </div>
                                     -->
 		
-		
 			
 				
 				
@@ -228,6 +241,7 @@
        
       <!------------------>
  </div>
+     
      
    
       <div class="modal-footer">
@@ -305,7 +319,8 @@
                                                 <tr>
                                                     <th>ประเภทหอพัก</th>
                                                     <th>รหัสหอพัก</th>
-                                                    <th>ชื่อหอพัก</th>                                        
+                                                    <th>ชื่อหอพัก</th>        
+                                                    <th>รหัสที่ปรึกษาหอพัก</th>                                   
 													<th>จัดการ</th>
 
                                                 </tr>
@@ -398,6 +413,7 @@ $(document).ready(function(){
         var dorm_ID = $('input[name=dormID]');
 		var dname = $('input[name=dormname]');
 		var dormtype_ID = $('input[name=dormtype]');
+		var person_ID = $('input[name=dormtxt]');
 		var result = '';
 		 
 		if(dorm_ID.val()==''){
@@ -418,9 +434,14 @@ $(document).ready(function(){
 			dormtype_ID.parent().parent().removeClass('has-error');
 			result +='3';
 		}
-	
+		if(	person_ID.val()==''){
+			person_ID.parent().parent().addClass('has-error');
+		}else{
+			person_ID.parent().parent().removeClass('has-error');
+			result +='4';
+		}
 
-      if(result=='123'){
+      if(result=='1234'){
         $.ajax({
           type: 'ajax',
           method: 'post',
@@ -443,7 +464,7 @@ $(document).ready(function(){
 				}
 			},
           error: function(){
-        	  alert('id นี้ถูกใช้งานแล้ว');
+        	  alert('id นี้ถูกใช้งานแล้ว'    );
 				$('#exampleModalCenter').modal('hide');
 				$('#formadd')[0].reset();
 				//$('#nav_sty')[0].reset();		
@@ -472,21 +493,23 @@ $(document).ready(function(){
           $('input[name=dormeditID]').val(data.dorm_ID);
           $('input[name=dormeditname]').val(data.dname);
           $('input[name=dormedittype]').val(data.dormtype_ID);
+          $('input[name=dormedittxt]').val(data.person_ID);
 
         },
         error: function(){
           alert('ไม่สามารถแก้ไขข้อมูล');
         }
       });
-    });
+    }); 
  
  $('#btnedit').click(function(){
      var url = $('#formupdat').attr('action');
      var data = $('#formupdat').serialize();
-     //validate form
-     var dorm_ID = $('input[name=dormeditID]');
+     //validate forms
+        var dorm_ID = $('input[name=dormeditID]');
 		var dname = $('input[name=dormeditname]');
-		var 	dormtype_ID = $('textarea[name=dormedittype]');
+		var dormtype_ID = $('input[name=dormedittype]');
+		var person_ID = $('input[name=dormedittxt]');
 		var result = '';
 		if(dorm_ID.val()==''){
 			dorm_ID.parent().parent().addClass('has-error');
@@ -506,9 +529,16 @@ $(document).ready(function(){
 			dormtype_ID.parent().parent().removeClass('has-error');
 			result +='3';
 		}
+		if(	person_ID.val()==''){
+			person_ID.parent().parent().addClass('has-error');
+		}else{
+			person_ID.parent().parent().removeClass('has-error');
+			result +='4';
+		}
+		
  
 
-     if(result=='123'){
+     if(result=='1234'){
        $.ajax({
          type: 'ajax',
          method: 'post',
@@ -526,19 +556,17 @@ $(document).ready(function(){
 					alert('Error');
 				}
 			},
-         error: function(){
-        		//alert('id นี้ถูกใช้งานแล้ว');
-				$('#edit_file').modal('hide');
-				$('#formupdate')[0].reset();		
-				$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-				showAll();
-         }
-       });
-     }
-   });
+			 error: function(){
+	        		//alert('id นี้ถูกใช้งานแล้ว');
+					$('#edit_file').modal('hide');
+					$('#formupdate')[0].reset();		
+					$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+					showAll();
+	         }
+	       });
+	     }
+	   });
 
-
-   
 
     //ลบข้อมูล
     $('#showdata').on('click', '.fa-trash-alt', function(){
@@ -553,9 +581,9 @@ $(document).ready(function(){
         data: {id: id},
         async: false,
         dataType: 'json',
-        success: function(data){
+        success: function(data) {
             $('#showddel').html('ต้องการลบหอพัก   "'+data.dname+'"');  
-            $('input[name=txtdelID]').val(data.dorm_ID);
+            $('input[name=dormdelID]').val(data.dorm_ID);
         },
           error: function(){
             alert('ไม่สามารถลบข้อมูล');
@@ -566,11 +594,11 @@ $(document).ready(function(){
     $('#btndel').click(function(){
 		var url = $('#formdelete').attr('action');
 		var data = $('#formdelete').serialize();
-		var dorm_ID = $('input[name=dormedelID]');
+		var dorm_ID = $('input[name=dormdelID]');
 		var result = '';
 		
 		if(dorm_ID.val()==''){
-			odorm_ID.parent().parent().addClass('has-error');
+			dorm_ID.parent().parent().addClass('has-error');
 		}else{
 			dorm_ID.parent().parent().removeClass('has-error');
 			result +='1';
@@ -626,6 +654,7 @@ $(document).ready(function(){
             	  '<td>'+data[i].dorm_ID+'</td>'+
                   '<td>'+data[i].dname+'</td>'+
                   '<td>'+data[i].dormtype_ID+'</td>'+
+                  '<td>'+data[i].person_ID+'</td>'+
                   
                   
 

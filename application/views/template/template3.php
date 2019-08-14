@@ -127,36 +127,42 @@
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu"> 
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("student") ?>">นักศึกษา</a>
-              </li> 
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("personnel") ?>">บุคลากร</a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
-            </li>
+          <ul class="nav flex-column sub-menu">
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("status") ?>">สถานะนักศึกษา</a>
             </li>
-           
+
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("student") ?>">นักศึกษา</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("personnel") ?>">บุคลากร</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("vehicles") ?>">ยานพาหนะ</a>
             </li>
-         
+
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
-            </li> 
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("place") ?>">สถานที่</a>
             </li>
@@ -166,108 +172,107 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("divisions") ?>">หน่วยงาน</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
-            </li>
-          </li>
-          </ul>
-       
 
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-import" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon fas fa-download"></i>
-          <span class="menu-title">การนำเข้าข้อมูล</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="ui-import">
-          <ul class="nav flex-column sub-menu">
-        </a>
-        
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/pagestudent") ?>">นักศึกษา</a>
-              </li> 
-              
-              <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/pagestatus") ?>">สถานะนักศึกษา</a>
-            </li>
-              
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/pagepersonnel") ?>">บุคลากร</a>
-            </li> 
-            
-            
-           
-            
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/pagevehicles") ?>">ยานพาหนะ</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/pagedivisions") ?>">หน่วยงาน</a>
-            </li>
-         
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/pagecurriculum") ?>">หลักสูตร</a>
-            </li>
-            
-          
-          </li>
-          </ul>
-          
-          
-          
-          
-          
-          <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-status" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon fas fa-download"></i>
-          <span class="menu-title">อัพเดตสถานะการนำเข้าข้อมูล</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="ui-status">
-          <ul class="nav flex-column sub-menu">
-        </a>
-        
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstudent") ?>">นักศึกษา</a>
-              </li> 
-              
-              <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstatus") ?>">สถานะนักศึกษา</a>
-            </li>
-              
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportpersonnel") ?>">บุคลากร</a>
-            </li> 
-            
-            
-           
-            
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportvehicles") ?>">ยานพาหนะ</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportdivisions") ?>">หน่วยงาน</a>
-            </li>
-         
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Import_data/statusimportcurriculum") ?>">หลักสูตร</a>
-            </li>
-            
-          
-          </li>
-          </ul>
-        </div>
-      </li>
+
       </li>
     </ul>
-  </nav>
-  <!--3-->
-  <!-- partial -->
-  <div class="main-panel">
-    <div class="content-wrapper">
-      <!--
+
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-import" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon fas fa-download"></i>
+        <span class="menu-title">การนำเข้าข้อมูล</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-import">
+        <ul class="nav flex-column sub-menu">
+          </a>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/pagestudent") ?>">นักศึกษา</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/pagestatus") ?>">สถานะนักศึกษา</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/pagepersonnel") ?>">บุคลากร</a>
+          </li>
+
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/pagevehicles") ?>">ยานพาหนะ</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/pagedivisions") ?>">หน่วยงาน</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/pagecurriculum") ?>">หลักสูตร</a>
+          </li>
+
+
+    </li>
+    </ul>
+
+
+
+
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-status" aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon fas fa-download"></i>
+        <span class="menu-title">อัพเดตสถานะการนำเข้าข้อมูล</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-status">
+        <ul class="nav flex-column sub-menu">
+          </a>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstudent") ?>">นักศึกษา</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstatus") ?>">สถานะนักศึกษา</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/statusimportpersonnel") ?>">บุคลากร</a>
+          </li>
+
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/statusimportvehicles") ?>">ยานพาหนะ</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/statusimportdivisions") ?>">หน่วยงาน</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url("Import_data/statusimportcurriculum") ?>">หลักสูตร</a>
+          </li>
+
+
+    </li>
+    </ul>
+</div>
+</li>
+</li>
+</ul>
+</nav>
+<!--3-->
+<!-- partial -->
+<div class="main-panel">
+  <div class="content-wrapper">
+    <!--
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">

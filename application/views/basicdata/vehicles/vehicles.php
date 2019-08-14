@@ -26,7 +26,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
-                <h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;ยานพาหนะ</h6>
+                <h6 class="m-0 text-primary"><span><i class="fas fa-car-side"></i></span>&nbsp;ยานพาหนะ</h6>
             </div>
           
            

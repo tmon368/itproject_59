@@ -25,7 +25,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
           <div class="card-header" id="card_2">
-                    <h6 class="m-0 text-primary"><span  class="fas fa-user-alt"></span>&nbsp;วันหยุด</h6>
+                    <h6 class="m-0 text-primary"><span  class="	fas fa-calendar-alt"></span>&nbsp;วันหยุด</h6>
                 </div>
                 <?php  
 echo '<center><label class="text-danger">'.$this->session->flashdata
@@ -289,37 +289,7 @@ $('#btnAdd').click(function() {
     });
   }
 });
-
-
-
-    //edit
-  /*
- $('#showdata').on('click', '.fa-edit', function(){
-      var id = $(this).attr('data');
-      var popup = document.getElementById("editimage");
-      $('#edit_file').modal('show');
-
-     // $('#exampleModalCenter').find('.modal-title').text('แก้ไขข้อมูล');
-      $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/holiday1/edit');
-      $.ajax({
-        type: 'ajax',
-        method: 'get',
-        url: '<?php echo base_url() ?>index.php/holiday1/edit',
-        data: {id: id},
-        async: false,
-        dataType: 'json',
-        success: function(data){
-          $('input[name=txteditID]').val(data.hh_ID);
-          $('input[name=txteditname]').val(data.holiday_name);
-        },
-        error: function(){
-          alert('Could not Edit Data');
-        }
-      });
-    });
-  */
-
-   
+  
 
     //delete- 
     $('#showdata').on('click', '.fa-trash-alt', function(){
@@ -387,12 +357,7 @@ $('#btnAdd').click(function() {
       }
     });
         
- 
-
- 
-
-
-    //function
+     //function
     function showAll(){
       $.ajax({
         type: 'ajax',
@@ -408,12 +373,7 @@ $('#btnAdd').click(function() {
                   '<td>'
                   +'<a href="<?php echo base_url() ?>index.php/holiday1/findHolidayByYear?year='+data[i].h_year+'">'
                   +data[i].h_year+'</a></td>'+
-                  '<td>'+
-                  '<a href="<?php echo base_url() ?>index.php/holiday/edit"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].hh_ID+'"></i></a>'+
-                  '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].hh_ID+'"></i></a>'+
-                  '</td>'+
-
-                  
+                  '<td>'+'<button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].hh_ID + '>ลบข้อมูล</button>'+'</td>'+
                   '</tr>';
           }
           $('#showdata').html(html);
@@ -426,25 +386,5 @@ $('#btnAdd').click(function() {
   });
 </script>
 
-
-
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
-
 </html>

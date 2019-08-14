@@ -136,7 +136,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("Report") ?>">
+        <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">
           <i class="menu-icon fa fa-vcard"></i>
           <span class="menu-title">รายงานตัวกระทำความผิด</span>
         </a>
