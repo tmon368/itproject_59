@@ -569,7 +569,7 @@
                         html += '<tr>' +
                             '<td>' + data[i].usertype_ID + '</td>' +
                             '<td>' + data[i].usertype_name + '</td>' +
-                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].place_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].place_ID +'>ลบข้อมูล</button></td>'
+                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].usertype_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].usertype_ID +'>ลบข้อมูล</button></td>'
                             + 
                                
                             '</tr>';

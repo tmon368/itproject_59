@@ -672,7 +672,7 @@ $(document).ready(function(){
                   
                 
 
-                  '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].place_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].place_ID +'>ลบข้อมูล</button></td>'
+                  '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].off_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].off_ID +'>ลบข้อมูล</button></td>'
                   + 
                   '</tr>';
           }
