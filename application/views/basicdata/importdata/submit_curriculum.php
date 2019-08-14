@@ -145,7 +145,6 @@
         $("#Save_btn").click(function() {
 
             //alert ("Save");
-
             $.get({
                 url: '<?php echo site_url("import_data/import_temp_to_dbcurriculum") ?>',
                 success: function() {

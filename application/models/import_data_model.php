@@ -249,13 +249,8 @@ class import_data_model extends CI_Model
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	function empty_tmp_status()
+
+	function empty_tmp_status() 
 	{
 	    $this->db->empty_table('tmp_status');
 	    $this->db->query("TRUNCATE TABLE tmp_status");
