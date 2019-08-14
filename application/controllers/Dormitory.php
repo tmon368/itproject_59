@@ -1,12 +1,12 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dormitory extends CI_Controller { 
+class Dormitory extends CI_Controller  { 
     function __construct(){
         parent:: __construct();
         $this->load->model('dormitory_model', 'model');
     } 
-     
+      
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
@@ -43,7 +43,6 @@ class Dormitory extends CI_Controller {
         }
         echo json_encode($result);
     }
-    
   
     public function adddormitory(){
         $result = $this->model->adddormitory();
