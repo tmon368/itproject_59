@@ -29,6 +29,10 @@ class holiday_model1 extends CI_Model {
         );
         $this->db->insert('holiday1', $field);
         if($this->db->affected_rows() > 0){
+            $gg = ($this->input->post('txtname') - 543)-2019;
+            $this->db->query("INSERT INTO holiday(h_date,description,h_type,active_track) 
+                            SELECT DATE_ADD(h_date, INTERVAL '".$gg."' YEAR),description,h_type,active_track 
+                            FROM holiday WHERE year(h_date)=2019 AND h_type = 'วันหยุดประจำปี' ");
             return true;
         }else{
             return false;

@@ -19,13 +19,17 @@ class holiday_model extends CI_Model {
         }
         
     }
+
+
+
         
     
     
  public function showAll($year){
-    $this->db->order_by('h_ID', 'ASC');
+    $this->db->select('DATE_ADD(h_date, INTERVAL 543 YEAR) AS dd, h_ID, description, h_type, active_track`');
     $this->db->where('active_track', '0');
-    $this->db->where('Year(h_date)', $year);
+    $this->db->where('Year(h_date)', $year-543);
+    $this->db->order_by('h_ID', 'ASC');
             $query = $this->db->get('holiday');
         if($query->num_rows() > 0){
             return $query->result();

@@ -580,8 +580,8 @@ $("#edit_file").modal("show");
           var i;
           for(i=0; i<data.length; i++){
             html +='<tr>'+
-                  '<td>'+data[i].h_ID+'</td>'+
-                  '<td>'+data[i].h_date+'</td>'+
+                  '<td>'+(i+1)+'</td>'+
+                  '<td>'+data[i].dd+'</td>'+ 
                   '<td>'+data[i].description+'</td>'+
                   '<td>'+data[i].h_type+'</td>'+
  '<td>'+
