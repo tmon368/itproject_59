@@ -1,3 +1,4 @@
+
 <!-- Navigation Bar-->
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
@@ -43,12 +44,15 @@
                 <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv &nbsp;&nbsp;ตาราง:&nbsp;&nbsp;usertype</p>
                 <p>การอัพเดตล่าสุด:&nbsp;&nbsp; วันศุกร์ 13 พฤษภาคม 2561</p>
                 <p>เวลา:&nbsp;&nbsp; 22:30:59 น. </p>
-                <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; 120 ระเบียน</p>
+                 <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->flashdata("updt").'</label>';?>ระเบียน </p>
+ <p>จำนวนข้อมูลที่เพิ่ม:&nbsp;&nbsp;<?php echo '<label class="text-danger">'.$this->session->flashdata("inst").'</label>';?>  ระเบียน</p>
+ <p>จำนวนข้อมูลว่าง:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->flashdata("dtnull").'</label>';?>  ระเบียน</p>
+                <p>จำนวนข้อมูลทั้งหมด:&nbsp;&nbsp; 120 ระเบียน</p>
               </div>
 
+ 
               
-              
-              
+             
               
               
               

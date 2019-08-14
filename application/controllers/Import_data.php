@@ -12,12 +12,12 @@ class Import_data extends CI_Controller {
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
-		$this->load->view('template/template1');
-		$this->load->view('template/template2');
-		$this->load->view('template/template3');
-		$this->load->view('basicdata/importdata/page_import_data');
-		$this->load->view('template/template5');
-		$this->load->view('template/template6');
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('basicdata/importdata/page_import_data');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
 
 	}
 	public function pagestudent()
@@ -158,6 +158,7 @@ class Import_data extends CI_Controller {
 	}
 	public function statusimportcurriculum()
 	{
+	    
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -620,7 +621,6 @@ function prepare_data($data){
     return $data;
 }
 
-
 // นำข้อมูลที่ดึงจาก excel หรือ csv ไฟล์ มาวนลูปแสดง
 if(isset($data_arr) && count($data_arr)>0){
     $this->import_data_model->empty_tmp_curriculum();
@@ -663,6 +663,12 @@ redirect("import_data/submit_curriculum");
 	    $this->load->view('basicdata/importdata/submit_curriculum');
 	}
 	
+	public function checkalldatatmp()
+	{
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $result = $this->import_data_model->checkalldatatmp();
+	}
+	
 	
 	
 	
@@ -672,6 +678,7 @@ redirect("import_data/submit_curriculum");
 	    $inst=0;
 	    $updt=0;
 	    $dtnull=0;
+	    $checkimpt =0;
 	    echo "Function import_temp_to_db</br>";
 	    
 	    $result = $this->import_data_model->selecttmpcurriculum(); //ตาราง temp
@@ -712,14 +719,83 @@ redirect("import_data/submit_curriculum");
 	        }  
 	        
 	    }
+	    $checkalldatatmp = $this->import_data_model->checkalldatatmp();
+	    //var_dump($checkalldatatmp);
+	   // var_dump($checkalldatatmp);
+	    foreach ($checkalldatatmp as $row){
+	        $checkalldatatmp= $row->amm;
+	        
+	        
+	    }
+	   // echo $checkalldatatmp.amm;
+	    $checkimpt=1;
 	    
-	    //redirect("Csv_import");
+	    $dateData=time();
+
+	    $datecur = $this->thai_date($dateData);
+	    $timecur = $this->thai_time($dateData);
+	    
+	    echo $datecur."<br>";
+	    echo $timecur;
+	    //echo $dateData;
+	    /*
+	    $dayTH = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+	    $monthTH = [null,'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+	    //$monthTH_brev = [null,'ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+	    $dateData=time(); // วันเวลาขณะนั้น
+	    //global $dayTH,$monthTH;
+	    $thai_date_return = date("j");
+	    $thai_date_return.=" ".$monthTH[date("n")];
+	    $thai_date_return.= " ".(date("Y")+543);
+	    $thai_date_return.= " ".(date("H")+5).date(":i:s");
+	    //$thai_date_return.= " เวลา ".date("H".+5.":i:s");
+	    echo $thai_date_return;
+	    */
+	   // echo thai_date_and_time($dateData);
+	   // $strDate = date("d-m-Y");
+	   // $ddd= DateThai($strDate);
+	   // echo $ddd;
+	  
+	    
+	    //$this->session->set_flashdata('updt',$updt);
+	    $session_dataa = array(
+	        'updt'     =>     $updt,
+	        'inst'     =>     $inst,
+	        'dtnull'   =>     $dtnull,
+	        'checkalldatatmp'     =>     $checkalldatatmp,
+	        'datecur'     =>     $datecur,
+	        'timecur'     =>     $timecur
+	        
+	        
+	        
+	    );
+	    $this->session->set_userdata($session_dataa);
+	    
+
+	    //$this->load->view('basicdata/importdata/page_import_data',$data);
+	   //redirect('import_data/index',$data);
 	}
 	
 	
 	
 	
+	function thai_date($time){   // 19 ธันวาคม 2556 เวลา 10:10:43
+	    $dayTH = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+	    $monthTH = [null,'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+	    //global $dayTH,$monthTH;
+	    $thai_date_return = date("j",$time);
+	    $thai_date_return.=" ".$monthTH[date("n",$time)];
+	    $thai_date_return.= " ".(date("Y",$time)+543);
+	    return $thai_date_return;
+	}
 	
+	
+	
+	
+	function thai_time($time){   // 19 ธันวาคม 2556 เวลา 10:10:43
+	    $thai_time_return = (date("H")+5).date(":i:s");
+	    return $thai_time_return;
+	}
 	
 	
 	

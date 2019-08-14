@@ -41,9 +41,12 @@
                 <h3> <span><i class="	fa fa-check-circle" style="color:#58D68D;font-size:28px;"></i></span>&nbsp;อัพเดตข้อมูลล่าสุด</h3>
 
                 <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv &nbsp;&nbsp;ตาราง:&nbsp;&nbsp;usertype</p>
-                <p>การอัพเดตล่าสุด:&nbsp;&nbsp; วันศุกร์ 13 พฤษภาคม 2561</p>
-                <p>เวลา:&nbsp;&nbsp; 22:30:59 น. </p>
-                <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; 120 ระเบียน</p>
+                <p>การอัพเดตล่าสุด:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata('datecur').'</label>';?></p>
+                <p>เวลา:&nbsp;&nbsp;<?php echo '<label class="text-danger">'.$this->session->userdata('timecur').'</label>';?>  น. </p>
+                <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata('updt').'</label>';?>ระเบียน </p>
+ <p>จำนวนข้อมูลที่เพิ่ม:&nbsp;&nbsp;<?php echo '<label class="text-danger">'.$this->session->userdata("inst").'</label>';?>  ระเบียน</p>
+ <p>จำนวนข้อมูลว่าง:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata("dtnull").'</label>';?>  ระเบียน</p>
+                <p>จำนวนข้อมูลทั้งหมด:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata("checkalldatatmp").'</label>';?> ระเบียน</p>
               </div>
 
               

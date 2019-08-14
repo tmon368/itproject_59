@@ -232,7 +232,18 @@ class import_data_model extends CI_Model
 	    }
 	}
 	
-	
+	function checkalldatatmp()
+	{
+	 $query = $this->db->query("SELECT COUNT(*) as amm FROM tmp_curriculum");
+	   // $this->db->order_by('cur_ID','ASC');
+	    //$query = $this->db->get('tmp_curriculum');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
 	
 	
 	

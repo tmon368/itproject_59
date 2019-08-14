@@ -43,6 +43,9 @@
                 <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv &nbsp;&nbsp;ตาราง:&nbsp;&nbsp;usertype</p>
                 <p>การอัพเดตล่าสุด:&nbsp;&nbsp; วันศุกร์ 13 พฤษภาคม 2561</p>
                 <p>เวลา:&nbsp;&nbsp; 22:30:59 น. </p>
+                <p>อัพเดต:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->flashdata("updt").'</label>';?>ระเบียน </p>
+<p>เพิ่ม:&nbsp;&nbsp;<?php echo '<label class="text-danger">'.$this->session->flashdata("inst").'</label>';?>  ระเบียน</p>
+<p>ข้อมูลว่าง:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->flashdata("dtnull").'</label>';?>  ระเบียน</p>
                 <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; 120 ระเบียน</p>
               </div>
 

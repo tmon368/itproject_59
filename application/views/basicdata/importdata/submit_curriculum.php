@@ -150,7 +150,7 @@
                 url: '<?php echo site_url("import_data/import_temp_to_dbcurriculum") ?>',
                 success: function() {
                     alert("Sucess!!")
-                    window.location.href = "<?php echo site_url('Csv_import');?>";
+                    window.location.href = "<?php echo site_url('import_data/statusimportcurriculum');?>";
                 },
                 error: function() {
                     alert('Error');
