@@ -44,7 +44,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มสถานที่</h2>
+                            <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มวันหยุด</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -70,27 +70,7 @@
             <input type="textarea" name="txtdescrip"  class="form-control" 
             maxlength="50" onkeyup="count_down(this);" required>
    </div>
-  <div class="form-group sty_a">
-  <span id="count3">0</span>
-  <span>/</span>
-  <span id="count4" style="color:#6699ff;">50</span>
-</div>
-   <!-- Alert for the number of characters-->
-<script>
-  function count_down(obj) {
-
-      document.getElementById('count3').innerHTML = obj.value.length;
-      var element = document.getElementById('count4');
-
-      element.innerHTML = 50 - obj.value.length;
-      if (50 - obj.value.length == 0) {
-          element.style.color = 'red';
-
-      } else {
-          element.style.color = '#6699ff';
-      }
-  }
-</script>
+ 
 </div>
    <div class="form-group" id="input_group_sty">
 <div class="input-group" >
@@ -152,27 +132,6 @@
 <label  class="col-sm-3" for="validationCustom02">ชื่อวันหยุด</label>&nbsp;
             <input type="textarea" name="txteditname"  class="form-control" maxlength="50" onkeyup="count_down(this);" required>
    </div>
-  <div class="form-group sty_a">
-  <span id="count3">0</span>
-  <span>/</span>
-  <span id="count4" style="color:#6699ff;">50</span>
-</div>
-   <!-- Alert for the number of characters-->
-<script>
-  function count_down(obj) {
-
-      document.getElementById('count3').innerHTML = obj.value.length;
-      var element = document.getElementById('count4');
-
-      element.innerHTML = 50 - obj.value.length;
-      if (50 - obj.value.length == 0) {
-          element.style.color = 'red';
-
-      } else {
-          element.style.color = '#6699ff';
-      }
-  }
-</script>
 </div>
    <div class="form-group" id="input_group_sty">
 <div class="input-group" >
