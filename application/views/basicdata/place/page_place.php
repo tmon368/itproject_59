@@ -28,9 +28,7 @@
             <div class="card-header" id="card_2">
                 <h6 class="m-0 text-primary"><span><i class="fas fa-map-marker-alt"></i></span>&nbsp;สถานที่</h6>
             </div>
-          
-           
-           
+                     
 
             <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
@@ -66,7 +64,7 @@
                                                 <input type="text" name="txtID" id="place_ID" class="form-control" maxlength="4"
                                                     required> 
                                                     <div id="msg1"></div>
-                                                   <!--   <div id="msg2" style="color:red"></div>-->
+                                                   
                                             </div>
                                         </div>
                                     </div>
@@ -411,15 +409,10 @@
 			}
 		});
 
-
-
-
-
-
-        
+      
 
         //แก้ไขข้อมูล
-        $('#showdata').on('click', '.fa-edit', function() {
+        $('#showdata').on('click', '.edit_data', function() {
             var id = $(this).attr('data');
             var popup = document.getElementById("editimage");
             $('#edit_file').modal('show');
@@ -443,10 +436,6 @@
                 }
             });
         });
-
-
-
-
 
 
         $('#btnedit').click(function(){
@@ -509,36 +498,9 @@
 			}
 		});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
         
         //ลบข้อมูล
-        $('#showdata').on('click', '.fa-trash-alt', function() {
+        $('#showdata').on('click', '.del_data', function() {
             var id = $(this).attr('data');
             $('#del_file').modal('show');
             //prevent previous handler - unbind()
@@ -561,9 +523,6 @@
                 }
             });
         });
-
-
-
 
 
 
@@ -610,38 +569,7 @@
 			}
 		});
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+      
 
         //แสดงข้อมูล
         function showAll() {
@@ -659,12 +587,9 @@
                             '<td>' + data[i].place_name + '</td>' +
                             '<td>' + data[i].description + '</td>' +
 
-                            '<td>' +
-                            '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +
-                            data[i].place_ID + '"></i></a>' +
-                            '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="' +
-                            data[i].place_ID + '"></i></a>' +
-                            '</td>' +
+                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].place_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].place_ID +'>ลบข้อมูล</button></td>'
+                            + 
+                                                        
                             '</tr>';
                     }
                     $('#showdata').html(html);
