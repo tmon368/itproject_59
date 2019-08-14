@@ -65,7 +65,7 @@
 										<select name="txtID"class="form-control"  required >
 											<option value ="F"> F </option>
 											<option value ="M"> M </option>
-											
+										
 										</select>
 											&nbsp;&nbsp;&nbsp;
                                            
