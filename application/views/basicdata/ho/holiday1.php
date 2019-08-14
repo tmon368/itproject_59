@@ -62,38 +62,13 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
       <center>
 
       
-        <div class="form-group" id="input_group_sty">
-        <div class="input-group" >
-          <label  class="col-sm-4" for="validationCustom02">รหัสปี</label>&nbsp;
-                    <input type="text" name="txtid"  class="form-control col-sm-3"  maxlength="50" onkeyup="count_down(this);" required>
-        </div>
-</div>
+  
         <div class="form-group" id="input_group_sty">
         <div class="input-group" >
           <label  class="col-sm-4"  for="validationCustom02">พุทธศักราช</label>&nbsp;
                     <input type="text" name="txtname"  class="form-control col-sm-7" maxlength="4" onkeyup="count_down(this);" required>
            </div><div>
-          <div class="form-group sty_a ">
-          <span id="count3">0</span>
-          <span>/</span>
-          <span id="count4" style="color:#6699ff;">4</span>
-      </div>
-           <!-- Alert for the number of characters-->
-      <script>
-          function count_down(obj) {
-
-              document.getElementById('count3').innerHTML = obj.value.length;
-              var element = document.getElementById('count4');
-
-              element.innerHTML = 4 - obj.value.length;
-              if (4 - obj.value.length == 0) {
-                  element.style.color = 'red';
-
-              } else {
-                  element.style.color = '#6699ff';
-              }
-          }
-      </script>
+       
 </div>
 </div>
           
@@ -453,7 +428,8 @@ $('#btnAdd').click(function() {
 
 
 
-
+ 
+ 
 
 
 
