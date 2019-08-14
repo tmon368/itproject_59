@@ -39,6 +39,7 @@
                 &nbsp;
             </div>
              <div id="myModal"  > </div>
+
             <!-- Modal เพิ่มข้อมูล -->
 
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -80,31 +81,7 @@
                                             <input type="text" name="txtname" class="form-control" maxlength="50"
                                                 onkeyup="count_downname(this);" required>
                                         </div>
-                                         <!-- 
-                                        <div class="form-group sty_a" id="textkey">
-                                            <span id="count5">0</span>
-                                            <span>/</span>
-                                            <span id="count6" style="color:#6699ff;">100</span>
-                                        </div>
-
-                                        <!-- Alert for the number of characters
                                         
-                                        <script>
-                                        function count_downdescription(obj) {
-                                            document.getElementById('count5').innerHTML = obj.value.length;
-                                            var element = document.getElementById('count6');
-
-                                            element.innerHTML = 100 - obj.value.length;
-                                            if (100 - obj.value.length == 0) {
-                                                element.style.color = 'red';
-
-                                            } else {
-                                                element.style.color = '#6699ff';
-                                            }
-                                        }
-                                        </script>
-                                    </div>
-                                      -->
                                 </center>
 
                                 <!------------------>
@@ -158,31 +135,7 @@
                                             <input type="text" name="txteditname" class="form-control" maxlength="50"
                                                 onkeyup="count_down_editname(this);" required>
                                         </div>
-                                         <!--  
-                                        <div class="form-group sty_a">
-                                            <span id="count11">0</span>
-                                            <span>/</span>
-                                            <span id="count12" style="color:#6699ff;">100</span>
-                                        </div>
-
-                                        <!-- Alert for the number of characters
-                                        <script>
-                                        function count_down_editdescription(obj) {
-
-                                            document.getElementById('count11').innerHTML = obj.value.length;
-                                            var element = document.getElementById('count12');
-
-                                            element.innerHTML = 100 - obj.value.length;
-                                            if (100 - obj.value.length == 0) {
-                                                element.style.color = 'red';
-
-                                            } else {
-                                                element.style.color = '#6699ff';
-                                            }
-                                        }
-                                        </script>
-                                    </div>
-                                     -->
+                                         
                                 </center>
                                 <!------------------>
                         </div>
@@ -366,7 +319,7 @@
         });
 
         // แก้ไขข้อมูล
-        $('#showdata').on('click', '.fa-edit', function() {
+        $('#showdata').on('click', '.edit_data', function() {
             var id = $(this).attr('data');
             var popup = document.getElementById("editimage");
             $('#edit_file').modal('show');
@@ -446,7 +399,7 @@
 		});
 
         //ลบข้อมูล
-        $('#showdata').on('click', '.fa-trash-alt', function() {
+        $('#showdata').on('click', '.del_data', function() {
             var id = $(this).attr('data');
             $('#del_file').modal('show');
             //prevent previous handler - unbind()
@@ -529,14 +482,7 @@
                         html += '<tr>' +
                             '<td>' + data[i].oc_ID + '</td>' +
                             '<td>' + data[i].oc_desc + '</td>' +
-
-
-                            '<td>' +
-                            '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +
-                            data[i].oc_ID + '"></i></a>' +
-                            '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="' +
-                            data[i].oc_ID + '"></i></a>' +
-                            '</td>' +
+                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data=' + data[i].oc_ID  + '>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].oc_ID  + '>ลบข้อมูล</button></td>' +
                             '</tr>';
                     }
                     $('#showdata').html(html);
