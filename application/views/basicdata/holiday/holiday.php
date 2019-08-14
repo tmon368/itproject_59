@@ -577,18 +577,17 @@ $("#edit_file").modal("show");
         dataType: 'json',
         success: function(data){
           var html = '';
-          var i;
+          var i; 
           for(i=0; i<data.length; i++){
             html +='<tr>'+
                   '<td>'+(i+1)+'</td>'+
-                  '<td>'+data[i].dd+'</td>'+ 
+                  '<td>'+data[i].dd+'</td>'+  
                   '<td>'+data[i].description+'</td>'+
                   '<td>'+data[i].h_type+'</td>'+
  '<td>'+
  '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].h_ID+'"></i></a>'+
                     '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].h_ID+'"></i></a>'+
                   '</td>'+
-                 
                   '</tr>';
           }
           $('#showdata').html(html);
