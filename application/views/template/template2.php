@@ -141,7 +141,7 @@
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-sign-out-alt"></i><span>ออกจากระบบ</span>
+              <i class="fas fa-sign-out-alt"></i>
             </a>
           </li>
           
