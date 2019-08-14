@@ -42,10 +42,10 @@
                 <p>ชื่อไฟล์:&nbsp;&nbsp;Table_usergroup.csv &nbsp;&nbsp;ตาราง:&nbsp;&nbsp;usertype</p>
                 <p>การอัพเดตล่าสุด:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata('datecur').'</label>';?></p>
                 <p>เวลา:&nbsp;&nbsp;<?php echo '<label class="text-danger">'.$this->session->userdata('timecur').'</label>';?>  น. </p>
-                <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata('updt').'</label>';?>ระเบียน </p>
- <p>จำนวนข้อมูลที่เพิ่ม:&nbsp;&nbsp;<?php echo '<label class="text-danger">'.$this->session->userdata("inst").'</label>';?>  ระเบียน</p>
- <p>จำนวนข้อมูลว่าง:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata("dtnull").'</label>';?>  ระเบียน</p>
-                <p>จำนวนข้อมูลทั้งหมด:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata("checkalldatatmp").'</label>';?> ระเบียน</p>
+                <p>จำนวนข้อมูลที่อัพเดท:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata('updtcur').'</label>';?>ระเบียน </p>
+ <p>จำนวนข้อมูลที่เพิ่ม:&nbsp;&nbsp;<?php echo '<label class="text-danger">'.$this->session->userdata("instcur").'</label>';?>  ระเบียน</p>
+ <p>จำนวนข้อมูลว่าง:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata("dtnullcur").'</label>';?>  ระเบียน</p>
+                <p>จำนวนข้อมูลทั้งหมด:&nbsp;&nbsp; <?php echo '<label class="text-danger">'.$this->session->userdata("checkalldatatmpcur").'</label>';?> ระเบียน</p>
               </div>
 
               

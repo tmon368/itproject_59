@@ -675,10 +675,10 @@ redirect("import_data/submit_curriculum");
 	
 	function import_temp_to_dbcurriculum()
 	{
-	    $inst=0;
-	    $updt=0;
-	    $dtnull=0;
-	    $checkimpt =0;
+	    $instcur=0;
+	    $updtcur=0;
+	    $dtnullcur=0;
+	    $checkimptcur =0;
 	    echo "Function import_temp_to_db</br>";
 	    
 	    $result = $this->import_data_model->selecttmpcurriculum(); //ตาราง temp
@@ -701,7 +701,7 @@ redirect("import_data/submit_curriculum");
 	            'dept_ID' => $row->dept_ID
 	            );
 	            $this->import_data_model->update_datacurriculum($row->cur_ID,$data);
-	            $updt+=1;
+	            $updtcur+=1;
 	        } else{
 	            //เพิ่มข้อมูล
 	            $data_a =  array();
@@ -710,26 +710,26 @@ redirect("import_data/submit_curriculum");
 	            $data_a['active_track'] = '0';
 	            $data_a['dept_ID'] = $row->dept_ID;
 	            $this->import_data_model->insert_to_curriculum($data_a);
-	            $inst+=1;
+	            $instcur+=1;
 
 	        }
 	        }else{
-	            $dtnull+=1;  
+	            $dtnullcur+=1;  
 	            
 	        }  
 	        
 	    }
-	    $checkalldatatmp = $this->import_data_model->checkalldatatmp();
+	    $checkalldatatmpcur = $this->import_data_model->checkalldatatmpcur();
 	    //var_dump($checkalldatatmp);
 	   // var_dump($checkalldatatmp);
-	    foreach ($checkalldatatmp as $row){
-	        $checkalldatatmp= $row->amm;
+	    foreach ($checkalldatatmpcur as $row){
+	        $checkalldatatmpcur= $row->amm;
 	        
 	        
 	    }
 	   // echo $checkalldatatmp.amm;
-	    $checkimpt=1;
-	    
+	
+	    date_default_timezone_set('Asia/Bangkok');
 	    $dateData=time();
 
 	    $datecur = $this->thai_date($dateData);
@@ -758,10 +758,10 @@ redirect("import_data/submit_curriculum");
 	    
 	    //$this->session->set_flashdata('updt',$updt);
 	    $session_dataa = array(
-	        'updt'     =>     $updt,
-	        'inst'     =>     $inst,
-	        'dtnull'   =>     $dtnull,
-	        'checkalldatatmp'     =>     $checkalldatatmp,
+	        'updtcur'     =>     $updtcur,
+	        'instcur'     =>     $instcur,
+	        'dtnullcur'   =>     $dtnullcur,
+	        'checkalldatatmpcur'     =>     $checkalldatatmpcur,
 	        'datecur'     =>     $datecur,
 	        'timecur'     =>     $timecur
 	        
@@ -792,7 +792,8 @@ redirect("import_data/submit_curriculum");
 	
 	
 	function thai_time($time){   // 19 ธันวาคม 2556 เวลา 10:10:43
-	    $thai_time_return = (date("H")+5).date(":i:s");
+	    $thai_time_return = date("H:i:s");
+	   // $thai_time_return = (date("H")+5).date(":i:s");
 	    return $thai_time_return;
 	}
 	
