@@ -173,6 +173,35 @@ class Import_data extends CI_Controller {
 	
 	
 	
+	function thai_date($time){   // 19 ธันวาคม 2556 เวลา 10:10:43
+	    $dayTH = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+	    $monthTH = [null,'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+	    //global $dayTH,$monthTH;
+	    $thai_date_return = date("j",$time);
+	    $thai_date_return.=" ".$monthTH[date("n",$time)];
+	    $thai_date_return.= " ".(date("Y",$time)+543);
+	    return $thai_date_return;
+	}
+	
+	
+	
+	
+	function thai_time($time){   // 19 ธันวาคม 2556 เวลา 10:10:43
+	    $thai_time_return = date("H:i:s");
+	    // $thai_time_return = (date("H")+5).date(":i:s");
+	    return $thai_time_return;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public  function importplace()
 	{
@@ -410,8 +439,11 @@ redirect("import_data/submit_place");
 	                "B"=>"dept_name"
         
         );
+	              
 	                if($row >= $start_row){
+	                    
 	                    $data_arr[$row-$start_row][$col_name[$column]] = $data_value;
+	                    
 	                }
 	            }
 	            //print_r($data_arr);
@@ -439,18 +471,23 @@ function prepare_data($data){
 if(isset($data_arr) && count($data_arr)>0){
     $this->import_data_model->empty_tmp_divisions();
     foreach($data_arr as $row){
+       // var_dump($data_arr);
         $row = prepare_data($row);
 
 
 $dept_ID = $row['dept_ID'];
 $dept_name = $row['dept_name'];
-$data_divisions = array(
-    'dept_ID'		=>	$dept_ID,
-    'dept_name'			=>	$dept_name,
-    'flag'        =>     '0'
-);
+
+//var_dump($dept_ID);
+if($dept_ID != 0) {
+$data_divisions = array();
+$data_divisions['dept_ID']		=	$dept_ID;
+$data_divisions['dept_name']	=	$dept_name;
+$data_divisions['flag']         =   '0';
+
 $this->import_data_model->inserttmp_divisions($data_divisions);
 
+}
     }
 
 }
@@ -484,9 +521,9 @@ redirect("import_data/submit_divisions");
 	
 	function import_temp_to_dbdivisions()
 	{
-	    $inst=0;
-	    $updt=0;
-	    $dtnull=0;
+	    $instdivisions=0;
+	    $updtdivisions=0;
+	    $dtnulldivisions=0;
 	    echo "Function import_temp_to_db</br>";
 	    
 	    $result = $this->import_data_model->selecttmpdivisions(); //ตาราง temp
@@ -509,7 +546,7 @@ redirect("import_data/submit_divisions");
 	            'active_track'        =>   '0'
 	            );
 	            $this->import_data_model->update_datadivisions($row->dept_ID,$data);
-	            $updt+=1;
+	            $updtdivisions+=1;
 	        } else{
 	            //เพิ่มข้อมูล
 	            $data_a =  array();
@@ -517,11 +554,11 @@ redirect("import_data/submit_divisions");
 	            $data_a['dept_name'] = $row->dept_name;
 	            $data_a['active_track'] = '0' ;
 	            $this->import_data_model->insert_to_divisions($data_a);
-	            $inst+=1;
+	            $instdivisions+=1;
 
 	        }
 	        }else{
-	            $dtnull+=1;
+	            $dtnulldivisions+=1;
 	            
 	            
 	        }
@@ -529,7 +566,34 @@ redirect("import_data/submit_divisions");
 	        
 	    }
 	    
-	    //redirect("Csv_import");
+	    $checkalldatatmpdivisions = $this->import_data_model->checkalldatatmpdivisions();
+	    //var_dump($checkalldatatmp);
+	    // var_dump($checkalldatatmp);
+	    foreach ($checkalldatatmpdivisions as $row){
+	        $checkalldatatmpdivisions= $row->amm;
+	        
+	        
+	    }
+	    // echo $checkalldatatmp.amm;
+	    
+	    date_default_timezone_set('Asia/Bangkok');
+	    $dateData=time();
+	    
+	    $datedivisions = $this->thai_date($dateData);
+	    $timedivisions = $this->thai_time($dateData);
+
+	    $session_dataa = array(
+	        'updtdivisions'     =>     $updtdivisions,
+	        'instdivisions'     =>     $instdivisions,
+	        'dtnulldivisions'   =>     $dtnulldivisions,
+	        'checkalldatatmpdivisions'     =>     $checkalldatatmpdivisions,
+	        'datedivisions'     =>     $datedivisions,
+	        'timedivisions'     =>     $timedivisions
+	        
+	        
+	        
+	    );
+	    $this->session->set_userdata($session_dataa);
 	}
 	
 	
@@ -778,24 +842,7 @@ redirect("import_data/submit_curriculum");
 	
 	
 	
-	function thai_date($time){   // 19 ธันวาคม 2556 เวลา 10:10:43
-	    $dayTH = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
-	    $monthTH = [null,'มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
-	    //global $dayTH,$monthTH;
-	    $thai_date_return = date("j",$time);
-	    $thai_date_return.=" ".$monthTH[date("n",$time)];
-	    $thai_date_return.= " ".(date("Y",$time)+543);
-	    return $thai_date_return;
-	}
 	
-	
-	
-	
-	function thai_time($time){   // 19 ธันวาคม 2556 เวลา 10:10:43
-	    $thai_time_return = date("H:i:s");
-	   // $thai_time_return = (date("H")+5).date(":i:s");
-	    return $thai_time_return;
-	}
 	
 	
 	
@@ -1122,9 +1169,9 @@ redirect("import_data/submit_status");
 	
 	function import_temp_to_dbvehicles()
 	{
-	    $inst=0;
-	    $updt=0;
-	    $dtnull=0;
+	    $instvehicles=0;
+	    $updtvehicles=0;
+	    $dtnullvehicles=0;
 	    echo "Function import_temp_to_db</br>";
 	    
 	    $result = $this->import_data_model->selecttmpvehicles(); //ตาราง temp
@@ -1152,7 +1199,7 @@ redirect("import_data/submit_status");
 	                    'S_ID' => $row->std_ID,
 	                );
 	                $this->import_data_model->update_datavehicles($row->std_ID,$data);
-	                $updt+=1;
+	                $updtvehicles+=1;
 	            } else{
 	                //เพิ่มข้อมูล
 	                $data_a =  array();
@@ -1165,11 +1212,11 @@ redirect("import_data/submit_status");
 	                $data_a['expired_date'] = $row->expired_date;
 	                $data_a['S_ID'] = $row->std_ID;
 	                $this->import_data_model->insert_to_vehicles($data_a);
-	                $inst+=1;
+	                $instvehicles+=1;
 	                
 	            }
 	        }else{
-	            $dtnull+=1;
+	            $dtnullvehicles+=1;
 	            
 	            
 	        }
@@ -1177,7 +1224,34 @@ redirect("import_data/submit_status");
 	        
 	    }
 	    
-	    //redirect("Csv_import");
+	    $checkalldatatmpvehicles = $this->import_data_model->checkalldatatmpvehicles();
+	    //var_dump($checkalldatatmp);
+	    // var_dump($checkalldatatmp);
+	    foreach ($checkalldatatmpvehicles as $row){
+	        $checkalldatatmpvehicles= $row->amm;
+	        
+	        
+	    }
+	    // echo $checkalldatatmp.amm;
+	    
+	    date_default_timezone_set('Asia/Bangkok');
+	    $dateData=time();
+	    
+	    $datevehicles = $this->thai_date($dateData);
+	    $timevehicles = $this->thai_time($dateData);
+	    
+	    $session_dataa = array(
+	        'updtvehicles'     =>     $updtvehicles,
+	        'instvehicles'     =>     $instvehicles,
+	        'dtnullvehicles'   =>     $dtnullvehicles,
+	        'checkalldatatmpvehicles'     =>     $checkalldatatmpvehicles,
+	        'datevehicles'     =>     $datevehicles,
+	        'timevehicles'     =>     $timevehicles
+	        
+	        
+	        
+	    );
+	    $this->session->set_userdata($session_dataa);
 	}
 	
 	
