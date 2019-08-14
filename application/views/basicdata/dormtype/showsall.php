@@ -52,6 +52,7 @@
                         
                         <div class="modal-body">
 
+
                             <!--ส่วนฟอร์มเพิ่มข้อมูล-->
                             <form action="" id="formadd" method="post" class="needs-validation">
                                 <center>
@@ -59,12 +60,16 @@
                                         <div class="input-group">
 
                                             <label for="validationCustom01">รหัสประเภทหอพัก </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
+                                            <p class="text-danger">&nbsp;&nbsp;*</p>&nbsp;&nbsp;&nbsp;
+                                            <div class="col-lg-3" >
+										<select name="txtID"class="form-control"  required >
+											<option value ="F"> F </option>
+											<option value ="M"> M </option>
+											
+										</select>
 											&nbsp;&nbsp;&nbsp;
-                                            <div class="col-lg-4">
-                                                <input type="text" name="txtID" id="dormtype_ID" class="form-control" maxlength="1"
-                                                	required>
-                                                    <div id="msg1"></div>
+                                           
+                                                    <div id="msg1"></div> 
                                                    <!--   <div id="msg2" style="color:red"></div>-->
                                             </div>
                                         </div>
@@ -76,8 +81,9 @@
                                         <div class="input-group">
                                             <label for="validationCustom02">ประเภทหอพัก </label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="txtname" class="form-control" maxlength="30"
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div class="col-lg-6">
+                                            <input type="text" name="txtname" class="form-control" maxlength="20"
                                                 required>                                   
                                         </div>
                                     </div>
@@ -147,8 +153,13 @@
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                                <input type="text" name="txteditID" class="form-control" maxlength="1"
-                                                    onkeyup="count_down_editid(this);" required>
+                                            
+										<select name="txteditID"class="form-control"  required >
+											<option value ="F"> F </option>
+											<option value ="M"> M </option>
+											
+										</select>
+                                                
                                             </div>
                                         </div>
                                     </div>
