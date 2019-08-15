@@ -33,7 +33,8 @@ class dormitory_model extends CI_Model {
         $field = array(
             'dorm_ID'=>$this->input->post('dormID'),
             'dname'=>$this->input->post('dormname'),
-            'dorm_type'=>$this->input->post('dormtype')
+            'dormtype_ID'=>$this->input->post('dormtype'),
+            'person_ID'=>$this->input->post('dormtxt')
  
             );
         $this->db->insert('dormitory', $field);
@@ -59,8 +60,10 @@ class dormitory_model extends CI_Model {
         $id = $this->input->post('dormeditID');
         $field = array(
         'dname'=>$this->input->post('dormeditname'),
-        'dorm_type'=>$this->input->post('dormedittype'),
+        'dormtype_ID'=>$this->input->post('dormedittype'),
+        'person_ID'=>$this->input->post('dormedittxt'),
     
+            
             
         );
         $this->db->where('dorm_ID', $id);
@@ -71,7 +74,7 @@ class dormitory_model extends CI_Model {
             return false;
         }
     }
-
+    
     function deletedormitory(){
          $id = $this->input->post('dormdelID');   
         $this->db->where('dorm_ID', $id);

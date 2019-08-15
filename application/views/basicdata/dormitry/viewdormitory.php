@@ -6,19 +6,18 @@
 <strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
 <strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
 </center> 
-<head> 
+<head>
 
-  <title>หอพักแอดมิน</title>
+  <title>ฐานความผิด admin</title>
 
 </head>
 <body>
   <meta charset="UTF-8">
-  
 <div class="page-breadcrumb" id="nav_sty">
           <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">จัดการข้อมูลพื้นฐาน</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">หอพัก</li>
+                        <li class="breadcrumb-item active" aria-current="page">ฐานความผิด</li>
                   </ol>
           </nav>
 </div>
@@ -26,24 +25,24 @@
 <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
-              			<h6 class="m-0 text-primary"><span><i class="fas fa-bed"></i></span>&nbsp;หอพัก</h6>
+              			<h6 class="m-0 text-primary"><span><i class="fas fa-ban"></i></span>&nbsp;ฐานความผิด</h6>
             		</div>
-           		
+            		 
+
 				<div class="card-body" id="card_1">
-				
 				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มข้อมูลหอพัก
-			</button>
+									<span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มฐานความผิด
+				</button>
 				&nbsp;
 				</div>
 			 <div id="myModal"  > </div>
-					<!-- Modal เพิ่มข้อมูล -->
+					<!-- Modal เพิ่มข้อมูล-->
  
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มข้อมูลหอพัก</h2>
+        <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มหอพัก</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -51,21 +50,11 @@
       
       <div class="modal-body">
 
-		  <!--ส่วนฟอร์มเพิ่มข้อมูล-->
+		  <!--เพิ่มข้อมูล-->
 		  
 		  <form action="" id="formadd" method="post"  class="needs-validation" >
 		  <center>
-		  <div class="form-group" id="input_group_sty" >
-				<div class="input-group" >
-					<label for="validationCustom02..'">ประเภทหอพัก  </label>
-					<p class="text-danger">&nbsp;&nbsp;*</p>
-					<div class="col-lg-4" >
-					<select name="dormtype"class="form-control"  required >
-					<option value ="F: หอหญิง"> F: หอหญิง </option>
-					<option value ="M: หอชาย "> M: หอชาย </option>
-					</select>
-
-      </div></div></div>
+		  
 		  <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 				
@@ -73,7 +62,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" name="dormID"  id="dorm_ID"class="form-control"  maxlength="2" onkeyup="count_down_id(this);" required>
+                    <input type="text" name="dormID"  id="dorm_ID"class="form-control"  maxlength="2"  required>
 			<div id="msg1"></div>
 			<!--   <div id="msg2" style="color:red"></div>-->
 			
@@ -86,18 +75,29 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-9">
-                    <input type="text" name="dormname"  class="form-control"  maxlength="20" onkeyup="count_downname(this);" required>
+                    <input type="text" name="dormname"  class="form-control"  maxlength="20"  required>
 			
 			
 			
 	</div></div></div>
+	<div class="form-group" id="input_group_sty" >
+				<div class="input-group" >
+					<label for="validationCustom02..'">ประเภทหอพัก </label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					<div class="col-lg-4" >
+					<select name="dormtype"class="form-control"  required >
+					<option value ="F:"> F: หอหญิง </option>
+					<option value ="M:"> M: หอชาย </option>
+					</select>
+
+      </div></div></div>
 				<div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 						<label for="validationCustom02..'">รหัสที่ปรึกษาหอพัก </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-5">
-                    <input type="text" name="dormtxt"  class="form-control"  maxlength="10"  onkeyup="count_downtxt(this);"required>
+                    <input type="text" name="dormtxt"  class="form-control"  maxlength="10"  required>
              </div>
 				<!-- <div class="form-group sty_a" id="textkey">
                                             <span id="count5">0</span>
@@ -134,7 +134,7 @@
    
       <div class="modal-footer">
       <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="btnSave" id="btnSave" type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+      <button  name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
             
        
       </div>
@@ -147,7 +147,7 @@
 <!--------------------------------->
 
 
-<!-- Modal ส่วน edit -->
+<!-- Modal แก้ไข edit -->
 
  <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
        <div class="modal-dialog modal-dialog-centered" role="document">
@@ -160,30 +160,19 @@
                </div>
        <div class="modal-body">
 
-                   <!-- ส่วนฟอร์มแก้ไขข้อมูล-->
+                   <!-- แก้ไข-->
             
                     <form action="" id="formupdate" method="post"  class="needs-validation" >
       <center>
-      <div class="form-group" id="input_group_sty" >
-				<div class="input-group" >
-				
-					<label for="validationCustom02..'">ประเภทหอพัก  </label>
-					<p class="text-danger">&nbsp;&nbsp;*</p>
-					<div class="col-lg-3" >
-					<select name="dormedittype"class="form-control"  required >
-					<option value ="F: หอหญิง"> F: หอหญิง </option>
-					<option value ="M: หอชาย"> M: หอชาย </option>
-					</select>
-
-      </div></div></div>
+     
                    <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 				
-						<label for="validationCustom01..'">รหัสหอพัก  </label>
+						<label for="validationCustom01..'">รหัสหอพัก </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" name="dormeditID"  class="form-control"  maxlength="3" onkeyup="count_down_editid(this);" required>
+                    <input type="text" name="dormeditID"  class="form-control"  maxlength="2"  required>
 			
 			
 				</div></div></div>
@@ -196,9 +185,21 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-9">
-                    <input type="text" name="dormeditname"  class="form-control"  maxlength="100" onkeyup="count_downeditname(this);" required>
+                    <input type="text" name="dormeditname"  class="form-control"  maxlength="100"  required>
 			
 	 </div></div></div>
+	  <div class="form-group" id="input_group_sty" >
+				<div class="input-group" >
+				
+					<label for="validationCustom02..'">ประเภทหอพัก  </label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					<div class="col-lg-4" >
+					<select name="dormedittype"class="form-control"  required >
+					<option value ="F:"> F: หอหญิง </option>
+					<option value ="M:"> M: หอชาย </option>
+					</select>
+
+      </div></div></div>
 	 <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 				
@@ -206,7 +207,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-4">
-                    <input type="text" name="dormedittxt"  class="form-control"  maxlength="10" onkeyup="count_downedittxt(this);" required>
+                    <input type="text" name="dormedittxt"  class="form-control"  maxlength="10"  required>
                                         </div>
                                  <!--  
                                         <div class="form-group sty_a">
@@ -246,7 +247,7 @@
    
       <div class="modal-footer">
       <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="btnedit" type="button" id="btnedit"class="btn btn-success">บันทึกข้อมูล</button>
+     <button  name="btnedit" type="button" id="btnedit"class="btn btn-success">บันทึกข้อมูล</button>
             
        
       </div>
@@ -268,23 +269,23 @@
 
 
 
- <!-- Modal ส่วน del -->
+ <!-- Modal ลบ del -->
                              
                                     
                                     <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                       <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                           <div class="modal-header">
-                                                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                                                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>????????</h2>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                               <span aria-hidden="true">&times;</span>
                                                             </button>
                                                           </div>
-                                                          <!--ส่วนฟอร์มลบข้อมูล-->
+                                                          <!--ลบ-->
                                                           <form action="" id="formdelete" method="post"  class="needs-validation" >
                                                           <div class="modal-body" id="showdel">
 
-                                                          <!--ข้อความยืนยันการลบข้อมูล-->
+                                                          <!--ลบ-->
                                                           
       <center >
           <div id="showddel"></div>
@@ -309,7 +310,7 @@
                                                  
                                       <!------------------>
 
- <!-- Modal ส่วน select -->
+ <!-- Modal ???? select -->
 
 				<div class="card-body">
 			<div class="bootstrap-data-table-panel">
@@ -317,9 +318,9 @@
                                         <table id="style_table" class="table table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>ประเภทหอพัก</th>
                                                     <th>รหัสหอพัก</th>
-                                                    <th>ชื่อหอพัก</th>        
+                                                    <th>ชื่อหอพัก</th>
+                                                    <th>ประเภทหอพัก</th>        
                                                     <th>รหัสที่ปรึกษาหอพัก</th>                                   
 													<th>จัดการ</th>
 
@@ -338,7 +339,7 @@
                                                     <a href="<?php echo base_url().'index.php/dormitory/edit?id='.$rec->dorm_ID;?>" data-toggle="modal" data-target="#edit_file" id="<?php echo $rec->dorm_ID; ?>"><i class="fas fa-edit" style="color:#47307b;">แก้ไข</i></a>&nbsp;
                                                     <a href="<?php echo base_url().'index.php/dormitory/edit?id='.$rec->dorm_ID;?>" data-toggle="modal" data-target="#"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)">ลบ</i></a>-->
 			
-                                    <!--ส่วนของ madal จะใช้การจัดการด้วย id ส่วนของ data-target กับ id ของ class จะต้องเหมือนกัน -->
+                                  
 
                            
                                      <!-- <form action="<?php echo base_url(); ?>index.php/dormitory/edit" method="post" id="editform"  class="needs-validation" >  -->
@@ -396,7 +397,7 @@ $(document).ready(function(){
     });
 	
 
-    //เพิ่มข้อมูล
+    //เพิ่ม
 
     $('#btnAdd').click(function(){
       $('#formadd')[0].reset();
@@ -455,7 +456,7 @@ $(document).ready(function(){
 					 //$(this).find('#formadd')[0].reset();
 					 
 					$('#formadd')[0].reset();		
-					$('.alert-success').html('เพิ่มข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+					$('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
 					$('#textkey').empty();			
 					$('#msg1').empty();
 					showAll();
@@ -476,8 +477,8 @@ $(document).ready(function(){
       }
     });
 
-    //แก้ไขข้อมูล
- $('#showdata').on('click', '.fa-edit', function(){
+    //แก้ไข
+ $('#showdata').on('click', '.edit_data', function(){
       var id = $(this).attr('data');
       var popup = document.getElementById("editimage");
       $('#edit_file').modal('show');
@@ -503,14 +504,15 @@ $(document).ready(function(){
     }); 
  
  $('#btnedit').click(function(){
-     var url = $('#formupdat').attr('action');
-     var data = $('#formupdat').serialize();
+	  var url = $('#formupdat').attr('action');
+	     var data = $('#formupdat').serialize();
      //validate forms
         var dorm_ID = $('input[name=dormeditID]');
 		var dname = $('input[name=dormeditname]');
 		var dormtype_ID = $('input[name=dormedittype]');
 		var person_ID = $('input[name=dormedittxt]');
 		var result = '';
+		
 		if(dorm_ID.val()==''){
 			dorm_ID.parent().parent().addClass('has-error');
 		}else{
@@ -557,7 +559,7 @@ $(document).ready(function(){
 				}
 			},
 			 error: function(){
-	        		//alert('id นี้ถูกใช้งานแล้ว');
+	        		//alert('id ????????????????');
 					$('#edit_file').modal('hide');
 					$('#formupdate')[0].reset();		
 					$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
@@ -568,8 +570,8 @@ $(document).ready(function(){
 	   });
 
 
-    //ลบข้อมูล
-    $('#showdata').on('click', '.fa-trash-alt', function(){
+    //ลบ
+    $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
@@ -624,7 +626,7 @@ $(document).ready(function(){
 				},
 				
 				error: function(){
-					//alert('id นี้ถูกใช้งานแล้ว');
+					//alert('id นี้ถูกใช้งานแล้');
 					$('#del_file').modal('hide');
 					$('#formdelete')[0].reset();		
 					$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
@@ -639,7 +641,8 @@ $(document).ready(function(){
 
 
 
-    //แสดงข้อมูล
+    //แสดง
+    
     function showAll(){
       $.ajax({
         type: 'ajax',
@@ -658,10 +661,8 @@ $(document).ready(function(){
                   
                   
 
-                  '<td>'+
-                    '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].dorm_ID+'"></i></a>'+
-                    '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].dorm_ID+'"></i></a>'+
-                  '</td>'+
+                  '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].dorm_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].dorm_ID +'>ลบข้อมูล</button></td>'
+                  + 
                   '</tr>';
           }
           $('#showdata').html(html);
