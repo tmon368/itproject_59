@@ -260,6 +260,13 @@ class import_data_model extends CI_Model
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
 
 	function empty_tmp_status() 
 	{
@@ -320,10 +327,28 @@ class import_data_model extends CI_Model
 	    }
 	}
 	
+	function checkalldatatmpstatus()
+	{
+	    $query = $this->db->query("SELECT COUNT(*) as amm FROM tmp_status");
+	    // $this->db->order_by('cur_ID','ASC');
+	    //$query = $this->db->get('tmp_curriculum');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
 
 
 
-
+	
+	
+	
+	
+	
+	
+	
 
 
 	function empty_tmp_personnel()
@@ -385,7 +410,18 @@ class import_data_model extends CI_Model
 	    }
 	}
 
-	
+	function checkalldatatmppersonnel()
+	{
+	    $query = $this->db->query("SELECT COUNT(*) as amm FROM tmp_personnel");
+	    // $this->db->order_by('cur_ID','ASC');
+	    //$query = $this->db->get('tmp_curriculum');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+	}
 	
 	
 	
@@ -541,7 +577,18 @@ class import_data_model extends CI_Model
             return false;
         }
     }
-
+    function checkalldatatmpstudent()
+    {
+        $query = $this->db->query("SELECT COUNT(*) as amm FROM tmp_student");
+        // $this->db->order_by('cur_ID','ASC');
+        //$query = $this->db->get('tmp_curriculum');
+        
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
 	
 	
 	

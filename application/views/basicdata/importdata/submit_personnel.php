@@ -189,7 +189,7 @@
                 url: '<?php echo site_url("import_data/import_temp_to_dbpersonnel") ?>',
                 success: function() {
                     alert("Sucess!!")
-                    window.location.href = "<?php echo site_url('Csv_import');?>";
+                    window.location.href = "<?php echo site_url('import_data/statusimportpersonnel');?>";
                 },
                 error: function() {
                     alert('Error');

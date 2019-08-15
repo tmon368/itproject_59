@@ -695,6 +695,7 @@ if(isset($data_arr) && count($data_arr)>0){
 $cur_ID= $row['cur_ID'];
 $cur_name = $row['cur_name'];
 $dept_ID = $row['dept_ID'];
+if($cur_ID != 0) {
 $data = array(
     'cur_ID'		=>	$cur_ID,
     'cur_name'			=>	$cur_name,
@@ -702,7 +703,7 @@ $data = array(
     'status'    =>	'0'
 );
 $this->import_data_model->inserttmp_curriculum($data);
-
+}
     }
 
 }
@@ -936,12 +937,13 @@ if(isset($data_arr) && count($data_arr)>0){
 
 $status_ID= $row['status_ID'];
 $status_name = $row['status_name'];
+if($status_ID != 0){
 $data = array(
     'status_ID'		=>	$status_ID,
     'status_name'			=>	$status_name
 );
 $this->import_data_model->inserttmp_status($data);
-
+}
     }
 
 }
@@ -975,9 +977,9 @@ redirect("import_data/submit_status");
 	
 	function import_temp_to_dbstatus()
 	{
-	    $inst=0;
-	    $updt=0;
-	    $dtnull=0;
+	    $inststatus=0;
+	    $updtstatus=0;
+	    $dtnullstatus=0;
 	    echo "Function import_temp_to_db</br>";
 	    
 	    $result = $this->import_data_model->selecttmpstatus(); //ตาราง temp
@@ -999,26 +1001,50 @@ redirect("import_data/submit_status");
 	            'status_name' => $row->status_name
 	            );
 	            $this->import_data_model->update_datastatus($row->status_ID,$data);
-	            $updt+=1;
+	            $updtstatus+=1;
 	        } else{
 	            //เพิ่มข้อมูล
 	            $data_a =  array();
 	            $data_a['status_ID'] = $row->status_ID;
 	            $data_a['status_name'] = $row->status_name;
 	            $this->import_data_model->insert_to_status($data_a);
-	            $inst+=1;
+	            $inststatus+=1;
 
 	        }
 	        }else{
-	            $dtnull+=1;
+	            $dtnullstatus+=1;
 	            
 	            
 	        }
 	        
 	        
 	    }
+	    $checkalldatatmpstatus = $this->import_data_model->checkalldatatmpstatus();
+	    //var_dump($checkalldatatmp);
+	    // var_dump($checkalldatatmp);
+	    foreach ($checkalldatatmpstatus as $row){
+	        $checkalldatatmpstatus= $row->amm;
+	        
+	        
+	    }
+	    date_default_timezone_set('Asia/Bangkok');
+	    $dateData=time();
 	    
-	    //redirect("Csv_import");
+	    $datestatus = $this->thai_date($dateData);
+	    $timestatus = $this->thai_time($dateData);
+	    
+	    $session_dataa = array(
+	        'updtstatus'     =>     $updtstatus,
+	        'inststatus'     =>     $inststatus,
+	        'dtnullstatus'   =>     $dtnullstatus,
+	        'checkalldatatmpstatus'     =>     $checkalldatatmpstatus,
+	        'datestatus'     =>     $datestatus,
+	        'timestatus'     =>     $timestatus
+	        
+	        
+	        
+	    );
+	    $this->session->set_userdata($session_dataa);
 	}
 	
 	
@@ -1124,6 +1150,7 @@ redirect("import_data/submit_status");
 	            $regist_date = $row['regist_date'];
 	            $expired_date = $row['expired_date'];
 	            $std_ID = $row['std_ID'];
+	            
 	            $data = array(
 	                'regist_num'			=>	$regist_num,
 	                'province'			=>	$province,
@@ -1424,9 +1451,9 @@ redirect("import_data/submit_status");
 	
 	function import_temp_to_dbpersonnel()
 	{
-	    $inst=0;
-	    $updt=0;
-	    $dtnull=0;
+	    $instpersonnel=0;
+	    $updtpersonnel=0;
+	    $dtnullpersonnel=0;
 	    echo "Function import_temp_to_db</br>";
 	    
 	    $result = $this->import_data_model->selecttmppersonnel(); //ตาราง temp
@@ -1439,7 +1466,9 @@ redirect("import_data/submit_status");
 	       
 	       
 			
-
+	        if($row->person_fname != "" && $row->person_lname != "" && $row->position != "" && $row->role != "" && $row->email != "" && $row->phone1 != "" 
+	            && $row->phone2 != "" && $row->dept_ID != "" && $row->cur_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
+	            
 	        if ($temp_a == 1) {
 			        
 			        $data_personnel =  array();
@@ -1457,7 +1486,7 @@ redirect("import_data/submit_status");
 			        $data_personnel['password'] = $row->password;
 			        $data_personnel['active_track'] = $row->active_track;
 			        $this->import_data_model->update_datapersonnel($row->person_ID,$data_personnel);
-			        $updt+=1;
+			        $updtpersonnel+=1;
 			    } else{
 			        //เพิ่มข้อมูล
 			        $data_a =  array();
@@ -1476,16 +1505,48 @@ redirect("import_data/submit_status");
 			        $data_a['password'] = $row->password;
 			        $data_a['active_track'] = $row->active_track;
 			        $this->import_data_model->insert_to_personnel($data_a);
-			        $inst+=1;
+			        $instpersonnel+=1;
 			        
 			    }
+	        }else{
+	            $dtnullpersonnel+=1;
+	            
+	            
+	        }
 	    
 	   
 	        
 	        
 	    }
 	    
-	    //redirect("Csv_import");
+	    $checkalldatatmppersonnel = $this->import_data_model->checkalldatatmppersonnel();
+	    //var_dump($checkalldatatmp);
+	    // var_dump($checkalldatatmp);
+	    foreach ($checkalldatatmppersonnel as $row){
+	        $checkalldatatmppersonnel= $row->amm;
+	        
+	        
+	    }
+	    // echo $checkalldatatmp.amm;
+	    
+	    date_default_timezone_set('Asia/Bangkok');
+	    $dateData=time();
+	    
+	    $datepersonnel = $this->thai_date($dateData);
+	    $timepersonnel = $this->thai_time($dateData);
+	    
+	    $session_dataa = array(
+	        'updtpersonnel'     =>     $updtpersonnel,
+	        'instpersonnel'     =>     $instpersonnel,
+	        'dtnullpersonnel'   =>     $dtnullpersonnel,
+	        'checkalldatatmppersonnel'     =>     $checkalldatatmppersonnel,
+	        'datepersonnel'     =>     $datepersonnel,
+	        'timepersonnel'     =>     $timepersonnel
+	        
+	        
+	        
+	    );
+	    $this->session->set_userdata($session_dataa);
 	}
 	
 	
@@ -1618,11 +1679,11 @@ redirect("import_data/submit_status");
                 $data_student['password'] = $row['password'];
                 $data_student['flag'] = $row['flag'];
                 
-                
+                if($row['S_ID'] != 0){
           
                 
                 $this->import_data_model->inserttmp_student($data_student);
-                
+                }
             }
             
         }
@@ -1647,9 +1708,9 @@ redirect("import_data/submit_status");
     }
      function import_temp_to_dbstudent()
     {
-        $inst=0;
-        $updt=0;
-        $dtnull=0;
+        $inststudent=0;
+        $updtstudent=0;
+        $dtnullstudent=0;
         echo "Function import_temp_to_db</br>";
         
         $result = $this->import_data_model->selecttmpstudent(); //µÒÃÒ§ temp
@@ -1662,9 +1723,9 @@ redirect("import_data/submit_status");
             
         
             
-            //if($row->S_ID != "" && $row->std_fname != "" && $row->std_lname != "" && $row->email != "" && $row->phone != ""
-                               // && $row->image != "" && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
-                               // && $row->status_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
+            if($row->S_ID != "" && $row->std_fname != "" && $row->std_lname != "" && $row->email != "" && $row->phone != ""
+                                && $row->image != "" && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
+                                && $row->status_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
                 if ($temp_a == 1) {
                     
                     $data_u =  array();
@@ -1683,7 +1744,7 @@ redirect("import_data/submit_status");
                     $data_u['password'] = $row->password;
                     $data_u['flag'] = $row->flag;
                     $this->import_data_model->update_datastudent($row->S_ID,$data_u);
-                    $updt+=1; 
+                    $updtstudent+=1; 
                 } else{
                     //à¾ÔèÁ¢éÍÁÙÅ
                     $data_a =  array();
@@ -1704,19 +1765,45 @@ redirect("import_data/submit_status");
                     $data_a['flag'] = $row->flag;
                     
                     $this->import_data_model->insert_to_student($data_a);
-                    $inst+=1;
+                    $inststudent+=1;
                     
                 }
-           // }else{
-           //     $dtnull+=1;
-                
-                
-          //  }
+            }else{
+                $dtnullstudent+=1;
+    
+           }
             
             
         }
         
-        //redirect("Csv_import");
+        $checkalldatatmpstudent = $this->import_data_model->checkalldatatmpstudent();
+        //var_dump($checkalldatatmp);
+        // var_dump($checkalldatatmp);
+        foreach ($checkalldatatmpstudent as $row){
+            $checkalldatatmpstudent= $row->amm;
+            
+            
+        }
+        // echo $checkalldatatmp.amm;
+        
+        date_default_timezone_set('Asia/Bangkok');
+        $dateData=time();
+        
+        $datestudent = $this->thai_date($dateData);
+        $timestudent = $this->thai_time($dateData);
+        
+        $session_dataa = array(
+            'updtstudent'     =>     $updtstudent,
+            'inststudent'     =>     $inststudent,
+            'dtnullstudent'   =>     $dtnullstudent,
+            'checkalldatatmpstudent'     =>     $checkalldatatmpstudent,
+            'datestudent'     =>     $datestudent,
+            'timestudent'     =>     $timestudent
+            
+            
+            
+        );
+        $this->session->set_userdata($session_dataa);
     }
     
 
