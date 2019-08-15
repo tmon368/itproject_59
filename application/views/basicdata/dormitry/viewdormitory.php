@@ -6,7 +6,7 @@
 <strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
 <strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
 </center> 
-<head>
+<head> 
 
   <title>หอพักแอดมิน</title>
 
