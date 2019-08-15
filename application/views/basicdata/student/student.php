@@ -467,12 +467,17 @@
                             '<td>' + data[i].phone + '</td>' +
                             '<td>' + data[i].image + '</td>' +
                             '<td>' + data[i].behavior_score + '</td>' +
+                            '<td>' + data[i].cur_ID + '</td>' +
+                            '<td>' + data[i].dorm_ID + '</td>' +
+                            '<td>' + data[i].person_ID + '</td>' +
+                            '<td>' + data[i].status_ID + '</td>' +
+                            '<td>' + data[i].usertype_ID + '</td>' +
                             '<td>' + data[i].username + '</td>' +
                             '<td>' + data[i].password + '</td>' +
-                            '<td>' + data[i].usertype_ID + '</td>' +
-                            '<td>' + data[i].dorm_ID + '</td>' +
-                            '<td>' + data[i].status_ID + '</td>' +
-                            '<td>' + data[i].cur_ID + '</td>' +
+                            
+                            
+                            
+                            
                             
                             '<td>' +
                             '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +

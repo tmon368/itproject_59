@@ -24,5 +24,12 @@ class student extends CI_Controller {
 	    
 	    
 	}
+	
+	public function showAll(){
+	    $result = $this->model->showAll();
+	    echo json_encode($result);
+	}
+	
+	
 
 }

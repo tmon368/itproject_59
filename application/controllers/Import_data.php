@@ -1721,10 +1721,10 @@ redirect("import_data/submit_status");
             
             $temp_a = $this->import_data_model->checkstudent($row->S_ID);
             
-        
+            //&& $row->image != ""
             
             if($row->S_ID != "" && $row->std_fname != "" && $row->std_lname != "" && $row->email != "" && $row->phone != ""
-                                && $row->image != "" && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
+                                 && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
                                 && $row->status_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
                 if ($temp_a == 1) {
                     
