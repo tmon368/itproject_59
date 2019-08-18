@@ -17,7 +17,7 @@
           <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">จัดการข้อมูลพื้นฐาน</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">ฐานความผิด</li>
+                        <li class="breadcrumb-item active" aria-current="page">หอพัก</li>
                   </ol>
           </nav>
 </div>
@@ -25,13 +25,13 @@
 <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
 					<div class="card-header" id="card_2">
-              			<h6 class="m-0 text-primary"><span><i class="fas fa-ban"></i></span>&nbsp;ฐานความผิด</h6>
+              			<h6 class="m-0 text-primary"><span><i class="fas fa-bed"></i></span>&nbsp;หอพัก</h6>
             		</div>
             		 
 
 				<div class="card-body" id="card_1">
 				<button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-									<span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มฐานความผิด
+									<span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มหอพัก
 				</button>
 				&nbsp;
 				</div>
@@ -262,7 +262,7 @@
 
 
 
-
+ 
 
 <!--------------------------------->
 
@@ -276,7 +276,7 @@
                                                       <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                           <div class="modal-header">
-                                                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>????????</h2>
+                                                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                               <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -626,7 +626,7 @@ $(document).ready(function(){
 				},
 				
 				error: function(){
-					//alert('id นี้ถูกใช้งานแล้');
+					//alert('id นี้ถูกใช้งานแล้ว');
 					$('#del_file').modal('hide');
 					$('#formdelete')[0].reset();		
 					$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
