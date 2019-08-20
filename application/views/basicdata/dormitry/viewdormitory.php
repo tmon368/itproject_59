@@ -591,7 +591,7 @@ $(document).ready(function(){
             alert('ไม่สามารถลบข้อมูล');
           }
         });
-      });
+      }); 
     
     $('#btndel').click(function(){
 		var url = $('#formdelete').attr('action');
