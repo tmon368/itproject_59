@@ -413,7 +413,7 @@ $(document).ready(function(){
       //validate form
         var dorm_ID = $('input[name=dormID]');
 		var dname = $('input[name=dormname]');
-		var dormtype_ID = $('input[name=dormtype]');
+		var dormtype_ID = $('textarea[name=dormtype]');
 		var person_ID = $('input[name=dormtxt]');
 		var result = '';
 		 
@@ -478,16 +478,17 @@ $(document).ready(function(){
     });
 
     //แก้ไข
- $('#showdata').on('click', '.edit_data', function(){
-      var id = $(this).attr('data');
-      var popup = document.getElementById("editimage");
-      $('#edit_file').modal('show');
-      $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/dormitory/updatedormitory');
-      $.ajax({
-        type: 'ajax',
-        method: 'get',
-        url: '<?php echo base_url() ?>index.php/dormitory/editdormitory',
-        data: {id: id},
+  $('#showdata').on('click', '.edit_data', function() {
+            var id = $(this).attr('data');
+            var popup = document.getElementById("editimage");
+            $('#edit_file').modal('show');
+            $('#formupdate').attr('action',
+    	      '<?php echo base_url() ?>index.php/dormitory/updatedormitory');
+            $.ajax({
+                type: 'ajax', 
+                method: 'get',
+                url: '<?php echo base_url() ?>index.php/dormitory/editdormitory',
+                data: {id: id },
         async: false,
         dataType: 'json',
         success: function(data){
@@ -503,13 +504,13 @@ $(document).ready(function(){
       });
     }); 
  
- $('#btnedit').click(function(){
-	  var url = $('#formupdat').attr('action');
-	     var data = $('#formupdat').serialize();
-     //validate forms
+  $('#btnedit').click(function(){
+  	var url = $('#formupdate').attr('action');
+		var data = $('#formupdate').serialize();
+		//validate form
         var dorm_ID = $('input[name=dormeditID]');
 		var dname = $('input[name=dormeditname]');
-		var dormtype_ID = $('input[name=dormedittype]');
+		var dormtype_ID = $('textarea[name=dormedittype]');
 		var person_ID = $('input[name=dormedittxt]');
 		var result = '';
 		
@@ -538,36 +539,35 @@ $(document).ready(function(){
 			result +='4';
 		}
 		
- 
+		 if(result=='1234'){
+		       $.ajax({
+		         type: 'ajax',
+		         method: 'post',
+		         url: url,
+		         data: data,
+		         async: false,
+		         dataType: 'json',
+		         success: function(response){
+		        	 if(response.success){
+							$('#edit_file').modal('hide');
+							$('#formupdate')[0].reset();		
+							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+							showAll();
+						}else{
+							alert('Error');
+						}
+					},
+		         error: function(){
+		        		//alert('id นี้ถูกใช้งานแล้ว');
+						$('#edit_file').modal('hide');
+						$('#formupdate')[0].reset();		
+						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+						showAll();
+		         }
+		       });
+		     }
+		   });
 
-     if(result=='1234'){
-       $.ajax({
-         type: 'ajax',
-         method: 'post',
-         url: url,
-         data: data,
-         async: false,
-         dataType: 'json',
-         success: function(response){
-        	 if(response.success){
-					$('#edit_file').modal('hide');
-					$('#formupdate')[0].reset();		
-					$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-					showAll();
-				}else{
-					alert('Error');
-				}
-			},
-			 error: function(){
-	        		//alert('id ????????????????');
-					$('#edit_file').modal('hide');
-					$('#formupdate')[0].reset();		
-					$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-					showAll();
-	         }
-	       });
-	     }
-	   });
 
 
     //ลบ
