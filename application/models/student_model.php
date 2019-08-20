@@ -7,6 +7,20 @@ class student_model extends CI_Model {
         
     }
     
+    
+ 
+    function selectstudent(){
+        //$id = $this->input->post('txtdelID');
+        $username = $this->session->userdata('username');
+       $this->db->where('S_ID', $username);
+        $query = $this->db->get('student');
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
  public function showAll(){
        $this->db->order_by('S_ID', 'ASC');

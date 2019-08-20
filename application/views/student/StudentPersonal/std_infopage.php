@@ -26,7 +26,7 @@
 
 <body>
     <meta charset="UTF-8">
-
+ 
     <div class="page-breadcrumb" id="nav_sty">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -35,11 +35,15 @@
             </ol>
         </nav>
     </div>
-
+    
+    
+    
+    
+   
     <div class="row">
         <div class="col-lg-8">
             <div class="card shadow mb-4">
-
+            
                 <div class="card-header">
                     <h5 class="m-0 text-primary">รายการความผิดของคะแนนที่โดนหัก</h5>
                 </div>
@@ -148,11 +152,34 @@
 
 
     </div>
+     
 </body>
 
 </html>
 <script>
     $(document).ready(function() {
-        $('[data-toggle="popover"]').popover();
+    	 showAll();
+        //$('[data-toggle="popover"]').popover();
+
+        
+        
+        
+    function showAll() {
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudent',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+
+                    	$("#msg1").html(data[0].std_lname);
+
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+            }
+
     });
 </script>

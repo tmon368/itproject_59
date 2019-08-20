@@ -8,6 +8,8 @@ class Student_dashboard extends CI_Controller {
 	}
 	public function index()
 	{
+	    //$username = $this->session->userdata('username');
+	    //$this->selectstudent();
 		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->template();
 
@@ -24,6 +26,14 @@ class Student_dashboard extends CI_Controller {
 	    
 	    
 	    
+	}
+	function selectstudent(){
+	   // $username = $this->session->userdata('username');
+	   // echo $username;
+	    
+	    $result = $this->model->selectstudent();
+	    //var_dump($result);
+	    echo json_encode($result);
 	}
 
 }
