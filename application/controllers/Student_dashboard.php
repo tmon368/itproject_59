@@ -27,6 +27,7 @@ class Student_dashboard extends CI_Controller {
 	    
 	    
 	}
+	/*
 	function selectstudent(){
 	   // $username = $this->session->userdata('username');
 	   // echo $username;
@@ -35,5 +36,5 @@ class Student_dashboard extends CI_Controller {
 	    //var_dump($result);
 	    echo json_encode($result);
 	}
-
+*/
 }
