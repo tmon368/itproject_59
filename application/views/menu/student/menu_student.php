@@ -131,7 +131,7 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url("Notifyoffense") ?>">
           <i class="menu-icon fa fa-exclamation-triangle"></i>
-          <span class="menu-title">แจ้งเหตุกระทำความผิด</span>
+          <span class="menu-title">แจ้งเหตุกระทำความผิด</span> <!--dd-->
         </a>
       </li>
 
