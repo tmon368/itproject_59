@@ -29,84 +29,94 @@
     <div class="page-breadcrumb" id="nav_sty">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ข้อมูลส่วนตัว</a></li>
+                <li class="breadcrumb-item">ข้อมูลส่วนตัว</a></li>
                 <!--  <li class="breadcrumb-item active" aria-current="page">ประเภทหอพัก</li> -->
-            </ol>
+            </ol>  
         </nav>
     </div>
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
-                <h6 class="m-0 text-primary"><span><i class="fas fa-building"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
-            </div>
-            
-    ข้อมูลส่วนตัว <br>
-    ---------------- <br>
-    1.นักศึกษา
+                <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="breadcrumb" id="t1">1.นักศึกษา</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">รหัสนักศึกษา :&nbsp;</a></li>
-      <li id="msg1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อ :&nbsp;</a></li>
-      <li id="msg2"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สกุล :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หลักสูตร :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สำนักวิชา :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;</br>
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หมายเลขโทรศัพท์ :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">อีเมล์ :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อหอพัก :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ประเภทหอพัก :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">รหัสนักศึกษา :&nbsp;</a></li>
+      <li id="S_ID"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">ชื่อ :&nbsp;</a></li>
+      <li id="std_fname"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">สกุล :&nbsp;</a></li>
+      <li id="std_lname"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">หลักสูตร :&nbsp;</a></li>
+      <li id="cur_name"> </li>&nbsp;&nbsp;    
+      <li class="breadcrumb-item">สำนักวิชา :&nbsp;</a></li>
+      <li id="dept_name"> </li>&nbsp;&nbsp;</br>
+      <li class="breadcrumb-item">หมายเลขโทรศัพท์ :&nbsp;</a></li>
+      <li id="phone"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">อีเมล์ :&nbsp;</a></li>
+      <li id="email"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">ชื่อหอพัก :&nbsp;</a></li>
+      <li id="dname"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">ประเภทหอพัก :&nbsp;</a></li>
+      <li id="type_name"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
 </div>
-    2.อาจารย์ที่ปรึกษา
+<div class="breadcrumb" id="1a">2.อาจารย์ที่ปรึกษา</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อ :&nbsp;</a></li>
-      <li id="msg1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สกุล :&nbsp;</a></li>
-      <li id="msg2"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ตำแหน่ง :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หน่วยงาน :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หลักสูตร :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;</br>
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หมายเลขโทรศัพท์ :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">อีเมล์ :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">ชื่อ :&nbsp;</a></li>
+      <li id="person_fname"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">สกุล :&nbsp;</a></li>
+      <li id="person_lname"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">ตำแหน่ง :&nbsp;</a></li>
+      <li id="position"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">หน่วยงาน :&nbsp;</a></li>
+      <li id="dept_name"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">หลักสูตร :&nbsp;</a></li>
+      <li id="cur_name"> </li>&nbsp;&nbsp;</br>
+      <li class="breadcrumb-item">หมายเลขโทรศัพท์ :&nbsp;</a></li>
+      <li id="phone1"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">อีเมล์ :&nbsp;</a></li>
+      <li id="email"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
 </div>
-<div class="breadcrumb">3.ยานพาหนะ</div>
+<div class="breadcrumb" id="1a">3.ยานพาหนะ</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-    3.1
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อ :&nbsp;</a></li>
-      <li id="msg1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สกุล :&nbsp;</a></li>
-      <li id="msg2"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ตำแหน่ง :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หน่วยงาน :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หลักสูตร :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;</br>
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หมายเลขโทรศัพท์ :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">อีเมล์ :&nbsp;</a></li>
-      <li id="msg3"> </li>&nbsp;&nbsp;
+    3.1 รถจักรยานยนต์
+      <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
+      <li id="regist_num"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
+      <li id="province"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">ยี่ห้อ :&nbsp;</a></li>
+      <li id="brand"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">สี :&nbsp;</a></li>
+      <li id="color"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">วันที่ลงทะเบียนสติ๊กเกอร์ :&nbsp;</a></li>
+      <li id="regist_date"> </li>&nbsp;&nbsp;</br>
+      <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
+      <li id="expired_date"> </li>&nbsp;&nbsp;
+     </ol>
+     <ol class="breadcrumb">
+     3.2 รถยนต์
+      <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
+      <li id="regist_num"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
+      <li id="province"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">ยี่ห้อ :&nbsp;</a></li>
+      <li id="brand"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">สี :&nbsp;</a></li>
+      <li id="color"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item">วันที่ลงทะเบียนสติ๊กเกอร์ :&nbsp;</a></li>
+      <li id="regist_date"> </li>&nbsp;&nbsp;</br>
+      <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
+      <li id="expired_date"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
 </div>
@@ -127,6 +137,8 @@
 <script>
     $(document).ready(function() {
     	 showAll();
+    	 selectpersonnel();
+    	 selectvehicles();
         //$('[data-toggle="popover"]').popover();
 
         
@@ -140,16 +152,74 @@
                     dataType: 'json',
                     success: function(data) {
 
-                    	$("#msg1").html(data[0].S_ID);
-                    	$("#msg2").html(data[0].std_fname);
-                    	$("#msg3").html(data[0].std_lname);
-
+                    	$("#S_ID").html(data[0].S_ID);
+                    	$("#std_fname").html(data[0].std_fname);
+                    	$("#std_lname").html(data[0].std_lname);
+                    	$("#S_ID").html(data[0].S_ID);
+                    	$("#S_ID").html(data[0].S_ID);
+                    	$("#S_ID").html(data[0].S_ID);
+                    	$("#S_ID").html(data[0].S_ID);
+                    	
                     },
                     error: function() {
                         alert('ไม่มีข้อมูล');
                     }
                 });
             }
+    
+    function selectdormitory() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/Std_info/selectdormitory',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+
+            	$("#dname ").html(data[0].dname );
+            	$("#dorm_type").html(data[0].dorm_type);
+            },
+            error: function() {
+                alert('ไม่มีข้อมูล');
+            }
+        });
+    }
+    
+
+    function selectpersonnel() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/Std_info/selectpersonnel',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+
+            	$("#msg11").html(data[0].person_fname);
+            	
+
+            },
+            error: function() {
+                alert('ไม่มีข้อมูล');
+            }
+        });
+    }
+
+    function selectvehicles() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/Std_info/selectvehicles',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+
+            	$("#msg111").html(data[0].regist_num);
+            	
+
+            },
+            error: function() {
+                alert('ไม่มีข้อมูล');
+            }
+        });
+    }
 
     });
 </script>

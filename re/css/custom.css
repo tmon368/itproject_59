@@ -121,3 +121,8 @@ label{ /*รูปแบบของ label ใน form*/
     /*color: #212529;*/
     background-color: #808080;
 }
+
+#t1{
+	color:black;
+	font-size: 20px;
+	}
