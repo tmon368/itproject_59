@@ -129,7 +129,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("Reportstudent") ?>">
+        <a class="nav-link" href="<?php echo site_url("Notifyoffense") ?>">
           <i class="menu-icon fa fa-exclamation-triangle"></i>
           <span class="menu-title">แจ้งเหตุกระทำความผิด</span>
         </a>
