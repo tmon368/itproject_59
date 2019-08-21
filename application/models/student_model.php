@@ -8,7 +8,7 @@ class student_model extends CI_Model {
     }
     
     
- 
+
     function selectstudent(){
         //$id = $this->input->post('txtdelID');
         $username = $this->session->userdata('username');

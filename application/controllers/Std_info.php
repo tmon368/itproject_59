@@ -21,8 +21,7 @@ class Std_info extends CI_Controller {
 	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
-	    
-	    
+	        
 	    
 	}
 	function selectstudent(){
