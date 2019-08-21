@@ -36,7 +36,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
         <div class="card-body " id="card_1">
         
         <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-                  <i class="fas fa-plus"></i>เพิ่มวันหยุด
+                  <i class="fas fa-plus"></i>เพิ่มพุทธศักราช
         </button>
         &nbsp;
 
@@ -48,7 +48,7 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มวันหยุด</h2>
+        <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มพุทธศักราช</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -292,7 +292,7 @@ $('#btnAdd').click(function() {
   
 
     //delete- 
-    $('#showdata').on('click', '.fa-trash-alt', function(){
+    $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
@@ -369,7 +369,7 @@ $('#btnAdd').click(function() {
           var i;
           for(i=0; i<data.length; i++){
             html +='<tr>'+
-                  '<td>'+data[i].hh_ID+'</td>'+
+                  '<td>'+(i+1)+'</td>'+
                   '<td>'
                   +'<a href="<?php echo base_url() ?>index.php/holiday1/findHolidayByYear?year='+data[i].h_year+'">'
                   +data[i].h_year+'</a></td>'+
