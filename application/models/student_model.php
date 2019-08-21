@@ -19,6 +19,33 @@ class student_model extends CI_Model {
             return false;
         }
     }
+    function selectpersonnel($person_ID){
+        //$id = $this->input->post('txtdelID');
+        //echo $person_ID;
+        $username = $this->session->userdata('username');
+        $this->db->where('person_ID', $person_ID);
+        $query = $this->db->get('personnel');
+        
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    function selectvehicles($username){
+        //$id = $this->input->post('txtdelID');
+        //echo $person_ID;
+       // $username = $this->session->userdata('username');
+        $this->db->where('S_ID', $username);
+        $query = $this->db->get('vehicles');
+        
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    
     
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
  public function showAll(){
