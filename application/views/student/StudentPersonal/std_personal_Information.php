@@ -27,29 +27,93 @@
 <body>
     <meta charset="UTF-8">
     <div class="page-breadcrumb" id="nav_sty">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">รหัสนักศึกษา : &nbsp;&nbsp; </a></li>
-      <li id="msg1"> </li>
-    </ol>
-  </nav>
-</div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ข้อมูลส่วนตัว</a></li>
+                <!--  <li class="breadcrumb-item active" aria-current="page">ประเภทหอพัก</li> -->
+            </ol>
+        </nav>
+    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card shadow mb-4">
+            <div class="card-header" id="card_2">
+                <h6 class="m-0 text-primary"><span><i class="fas fa-building"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
+            </div>
+            
+    ข้อมูลส่วนตัว <br>
+    ---------------- <br>
+    1.นักศึกษา
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อ : &nbsp;&nbsp; </a></li>
-      <li id="msg2"> </li>
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">รหัสนักศึกษา :&nbsp;</a></li>
+      <li id="msg1"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อ :&nbsp;</a></li>
+      <li id="msg2"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สกุล :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หลักสูตร :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สำนักวิชา :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;</br>
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หมายเลขโทรศัพท์ :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">อีเมล์ :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อหอพัก :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ประเภทหอพัก :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
 </div>
+    2.อาจารย์ที่ปรึกษา
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">นามสกุล : &nbsp;&nbsp; </a></li>
-      <li id="msg3"> </li>
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อ :&nbsp;</a></li>
+      <li id="msg1"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สกุล :&nbsp;</a></li>
+      <li id="msg2"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ตำแหน่ง :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หน่วยงาน :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หลักสูตร :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;</br>
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หมายเลขโทรศัพท์ :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">อีเมล์ :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
 </div>
+<div class="breadcrumb">3.ยานพาหนะ</div>
+<div class="page-breadcrumb" id="nav_sty">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+    3.1
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ชื่อ :&nbsp;</a></li>
+      <li id="msg1"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">สกุล :&nbsp;</a></li>
+      <li id="msg2"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">ตำแหน่ง :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หน่วยงาน :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หลักสูตร :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;</br>
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หมายเลขโทรศัพท์ :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">อีเมล์ :&nbsp;</a></li>
+      <li id="msg3"> </li>&nbsp;&nbsp;
+    </ol>
+  </nav>
+</div>
+</div>
+</div>
+
+
 
     
     
@@ -71,7 +135,7 @@
     function showAll() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudent',
+                    url: '<?php echo base_url() ?>index.php/Std_info/selectstudent',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
