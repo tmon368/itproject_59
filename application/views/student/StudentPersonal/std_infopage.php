@@ -158,7 +158,7 @@
 </html>
 <script>
     $(document).ready(function() {
-    	 showAll();
+    	 
         //$('[data-toggle="popover"]').popover();
 
         
