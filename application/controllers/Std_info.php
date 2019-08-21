@@ -33,5 +33,4 @@ class Std_info extends CI_Controller {
 	    echo json_encode($result);
 	}
 
-	
 }
