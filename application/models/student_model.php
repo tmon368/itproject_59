@@ -19,6 +19,8 @@ class student_model extends CI_Model {
         $this->db->join('divisions dvs', 'c.dept_ID=dvs.dept_ID');
         $this->db->join('dormitory d', 's.dorm_ID=d.dorm_ID');
         $this->db->join('dormtype dt', 'd.dormtype_ID=dt.dormtype_ID');
+         $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        
         /*
          $this->db->join('state s', 't.state=s.state_id');
          $this->db->join('city ct', 't.city=ct.city_id');
