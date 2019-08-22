@@ -63,7 +63,7 @@
     </ol>
   </nav>
 </div>
-<div class="breadcrumb" id="t1">2.อาจารย์ที่ปรึกษา</div>
+<div class="breadcrumb" id="T1">2.อาจารย์ที่ปรึกษา</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -84,7 +84,7 @@
     </ol>
   </nav>
 </div>
-<div class="breadcrumb" id="t1">3.ยานพาหนะ</div>
+<div class="breadcrumb" id="T1">3.ยานพาหนะ</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -103,7 +103,7 @@
       <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
       <li id="expired_date"> </li>&nbsp;&nbsp;
      </ol>
-     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      3.2 รถยนต์  <br>
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
       <li id="regist_num"> </li>&nbsp;&nbsp;
@@ -161,6 +161,10 @@
                     	$("#email").html(data[0].email);    
                     	$("#dname").html(data[0].dname);
                     	$("#type_name").html(data[0].type_name);  
+
+                    	$("#dept_name1").html(data[0].dept_name);
+                    	$("#cur_name1").html(data[0].cur_name);
+                    	
                     	
                     	//$("#email1").html(data[0].email);    	
                     },
