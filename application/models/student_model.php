@@ -8,7 +8,8 @@ class student_model extends CI_Model {
     }
     
     
-  
+    
+    
     
     function selectstudent(){
         $username = $this->session->userdata('username');
@@ -35,7 +36,7 @@ class student_model extends CI_Model {
     
     function selectcurriculum($cur_ID){
         //$id = $this->input->post('txtdelID');
-       // $cur_ID = $this->session->userdata('cur_ID');
+        // $cur_ID = $this->session->userdata('cur_ID');
         $this->db->where('cur_ID', $cur_ID);
         $query = $this->db->get('curriculum');
         if($query->num_rows() > 0){
@@ -95,7 +96,7 @@ class student_model extends CI_Model {
     function selectvehicles($username){
         //$id = $this->input->post('txtdelID');
         //echo $person_ID;
-       // $username = $this->session->userdata('username');
+        // $username = $this->session->userdata('username');
         $this->db->where('S_ID', $username);
         $query = $this->db->get('vehicles');
         
@@ -107,9 +108,9 @@ class student_model extends CI_Model {
     }
     
     
-     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
- public function showAll(){
-       $this->db->order_by('S_ID', 'ASC');
+    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
+    public function showAll(){
+        $this->db->order_by('S_ID', 'ASC');
         $query = $this->db->get('student');
         if($query->num_rows() > 0){
             return $query->result();
@@ -117,7 +118,7 @@ class student_model extends CI_Model {
             return false;
         }
     }
-//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
+    //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
     public function checkkey(){
         $S_ID = $this->input->post('S_ID');
         $this->db->where('S_ID', $S_ID);
@@ -140,7 +141,7 @@ class student_model extends CI_Model {
             'student_name'=>$this->input->post('txtname'),
             'description'=>$this->input->post('txtdescription')
             
-            );
+        );
         $this->db->insert('student', $field);
         if($this->db->affected_rows() > 0){
             return true;
@@ -148,7 +149,7 @@ class student_model extends CI_Model {
             return false;
         }
     }
-
+    
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable student
     public function editstudent(){
         $id = $this->input->get('id');
@@ -165,9 +166,9 @@ class student_model extends CI_Model {
     public function updatestudent(){
         $id = $this->input->post('txteditID');
         $field = array(
-        'student_name'=>$this->input->post('txteditname'),
-        'description'=>$this->input->post('txteditdescription')
-
+            'student_name'=>$this->input->post('txteditname'),
+            'description'=>$this->input->post('txteditdescription')
+            
         );
         $this->db->where('S_ID', $id);
         $this->db->update('student', $field);
@@ -179,8 +180,8 @@ class student_model extends CI_Model {
     }
     //ฟังก์ชันลบข้อมูลในtable student
     function deletestudent(){
-         $id = $this->input->post('txtdelID');
-      
+        $id = $this->input->post('txtdelID');
+        
         $this->db->where('S_ID', $id);
         $this->db->delete('student');
         //$this->db->update('student', $field);
