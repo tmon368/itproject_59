@@ -38,11 +38,11 @@
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
                 <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
-            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div><br>
 <div class="breadcrumb" id="t1">1.นักศึกษา</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <li class="breadcrumb-item">รหัสนักศึกษา :&nbsp;</a></li>
       <li id="S_ID"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">ชื่อ :&nbsp;</a></li>
@@ -67,11 +67,11 @@
 <div class="breadcrumb" id="1a">2.อาจารย์ที่ปรึกษา</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <li class="breadcrumb-item">ชื่อ :&nbsp;</a></li>
       <li id="person_fname"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">สกุล :&nbsp;</a></li>
-      <li id="person_lname"> </li>&nbsp;&nbsp;
+      <li id="person_name"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">ตำแหน่ง :&nbsp;</a></li>
       <li id="position"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">หน่วยงาน :&nbsp;</a></li>
@@ -88,8 +88,9 @@
 <div class="breadcrumb" id="1a">3.ยานพาหนะ</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-    3.1 รถจักรยานยนต์
+    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    3.1 รถจักรยานยนต์    <br>
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
       <li id="regist_num"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
@@ -103,8 +104,8 @@
       <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
       <li id="expired_date"> </li>&nbsp;&nbsp;
      </ol>
-     <ol class="breadcrumb">
-     3.2 รถยนต์
+     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     3.2 รถยนต์  <br>
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
       <li id="regist_num"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
