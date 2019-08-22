@@ -8,17 +8,78 @@ class student_model extends CI_Model {
     }
     
     
+  
+    
+    
     function selectstudent(){
-        //$id = $this->input->post('txtdelID');
         $username = $this->session->userdata('username');
-       $this->db->where('S_ID', $username);
-        $query = $this->db->get('student');
+        $this->db->select('*');
+        $this->db->from('student s');
+        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+        $this->db->join('divisions dvs', 'c.dept_ID=dvs.dept_ID');
+        $this->db->join('dormitory d', 's.dorm_ID=d.dorm_ID');
+        $this->db->join('dormtype dt', 'd.dormtype_ID=dt.dormtype_ID');
+        /*
+         $this->db->join('state s', 't.state=s.state_id');
+         $this->db->join('city ct', 't.city=ct.city_id');
+         $this->db->order_by('t.id','desc');*/
+        $this->db->where('S_ID',$username);
+        $query = $this->db->get();
+        //var_dump($query->result());
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
         }
     }
+    
+    
+    function selectcurriculum($cur_ID){
+        //$id = $this->input->post('txtdelID');
+       // $cur_ID = $this->session->userdata('cur_ID');
+        $this->db->where('cur_ID', $cur_ID);
+        $query = $this->db->get('curriculum');
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    function selectdormitory($dorm_ID){
+        //$id = $this->input->post('txtdelID');
+        // $cur_ID = $this->session->userdata('cur_ID');
+        $this->db->where('dorm_ID', $dorm_ID);
+        $query = $this->db->get('dormitory');
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    function selectdivisions($dept_ID){
+        //$id = $this->input->post('txtdelID');
+        // $cur_ID = $this->session->userdata('cur_ID');
+        $this->db->where('dept_ID', $dept_ID);
+        $query = $this->db->get('divisions');
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    function selectdormtype($dormtype_ID){
+        //$id = $this->input->post('txtdelID');
+        // $cur_ID = $this->session->userdata('cur_ID');
+        $this->db->where('dormtype_ID', $dormtype_ID);
+        $query = $this->db->get('dormtype');
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    
+    
     function selectpersonnel($person_ID){
         //$id = $this->input->post('txtdelID');
         //echo $person_ID;

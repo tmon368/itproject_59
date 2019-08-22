@@ -24,15 +24,15 @@ class Std_info extends CI_Controller {
 	        
 	    
 	}
+
+	
+	
+	
 	function selectstudent(){
-	    // $username = $this->session->userdata('username');
-	    // echo $username;
-	    
-	    $result = $this->model->selectstudent();
-	    //var_dump($result);
+	    $result =  $this->model->selectstudent();
 	    echo json_encode($result);
 	}
-	function selectpersonnel(){
+	function selectpersonnel($row){
 	    // $username = $this->session->userdata('username');
 	    
 	    $result = $this->model->selectstudent();
@@ -40,6 +40,7 @@ class Std_info extends CI_Controller {
 	       $person_ID = $row->person_ID;
 	        
 	    }
+	    $this->session->userdata('cur_ID');
 	    //echo $person_ID;
 	    $results = $this->model->selectpersonnel($person_ID);
 
