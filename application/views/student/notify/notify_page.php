@@ -36,14 +36,14 @@
 
                 <div class="card-body" id="card_1">
                     <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                        <span><i class="fas fa-plus" id="btnAdd"></i></span>แจ้งเหตุการกระทำความผิด
+                        <span><i class="fas fa-bullhorn" id="btnAdd"></i></span>แจ้งเหตุการกระทำความผิด
                     </button>
                     &nbsp;
                 </div>
 
 
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" style="max-width:1000px!important;" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
                         <div class="modal-content">
 
                             <div class="modal-header">
@@ -126,7 +126,7 @@
                                 </div>
 
                                 <div>
-                                    <div class="form-inline add_person">
+                                    <div class="row add_person">
                                         <!--
                                         <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id="">
                                         <label for="">ชื่อ:</label> <input type="text" name="" id="">
@@ -224,7 +224,7 @@
             $('#add').click(function() {
                 //alert ("Hello");
                 i++;
-                $('.add_person').append('3');
+                $('.add_person').append(' <div class="col-sm-12"><label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""> <label for="">ชื่อ:</label> <input type="text" name="" id=""> <label for="">นามสกุล:</label> <input type="text" name="" id="">');
             });
 
 
@@ -235,12 +235,6 @@
 
 
         });
-
-
-
-
-
-
 
         $('#btnAdd').click(function() {
             //$('#formadd')[0].reset();
