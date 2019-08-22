@@ -155,7 +155,7 @@
                     	$("#S_ID").html(data[0].S_ID);
                     	$("#std_fname").html(data[0].std_fname);
                     	$("#std_lname").html(data[0].std_lname);
-                    	$("#S_ID").html(data[0].S_ID);
+                    	$("#cur_name").html(data[0].cur_name);
                     	$("#S_ID").html(data[0].S_ID);
                     	$("#S_ID").html(data[0].S_ID);
                     	$("#S_ID").html(data[0].S_ID);
