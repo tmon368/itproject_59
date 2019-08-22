@@ -36,125 +36,94 @@
         </nav>
     </div>
     
-    
-    
-    
-   
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="card shadow mb-4">
-            
-                <div class="card-header">
-                    <h5 class="m-0 text-primary">รายการความผิดของคะแนนที่โดนหัก</h5>
-                </div>
-                <div class="card table-card">
-                    <div class="card-block p-b-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover m-b-0">
-                                <thead>
-                                    <tr>
-                                        <th>ลำดับ</th>
-                                        <th>วันที่ทำผิด</th>
-                                        <th>จำนวนครั้ง</th>
-                                        <th>ฐานความผิด</th>
-                                        <th>คะแนนที่หัก</th>
-                                        <th>สถานะการกระทำความผิด</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>22/12/62</td>
-                                        <td>5</td>
-                                        <td>ชับขี่หรือซ้อนท้ายโดยไม่สวมหมวกนิรภัย</td>
-                                        <td>10</td>
-                                        <td><span class="badge badge-warning">รอการอบรม</span></td>
 
-                                    </tr>
-
-                                    <tr>
-                                        <td>2</td>
-                                        <td>19/12/61</td>
-                                        <td>4</td>
-                                        <td>ชับขี่หรือซ้อนท้ายโดยไม่สวมหมวกนิรภัย</td>
-                                        <td>0</td>
-                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>3</td>
-                                        <td>10/06/60</td>
-                                        <td>1</td>
-                                        <td>ขับรถโดยไม่มีใบอนุญาติขับขี่</td>
-                                        <td>0</td>
-                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>4</td>
-                                        <td>01/12/59</td>
-                                        <td>2</td>
-                                        <td>ขับรถย้อนศร</td>
-                                        <td>0</td>
-                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
-
-                                    </tr>
-
-                                    <tr>
-                                        <td>5</td>
-                                        <td>30/10/59</td>
-                                        <td>1</td>
-                                        <td>ขับรถโดยไม่มีใบอนุญาติขับขี่</td>
-                                        <td>0</td>
-                                        <td><span class="badge badge-secondary">คืนคะแนนเรียบร้อยแล้ว</span></td>
-
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-
-            <div class="card comp-card">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="m-b-25">คะแนนความประพฤติ</h6>
-
-                            <!--Progress Bar-->
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:100%"></div>
-                            </div>
-                            <h3 class="f-w-700 text-c">100</h3>
-                            <p class="m-b-0">สถานะนักศึกษา: <font color="green">ปกติ</font> &nbsp;
-                                <a href="#" title="หมายเหตุ" data-toggle="popover" data-trigger="focus" data-content="คะแนนคงเหลือ 90 คะแนน / คะแนนที่หัก 10 คะแนน"><span><i class="fa fa-question-circle" id="ExpScr"></i></span></a></p>
-
-                        </div>
-                        <div class="col-auto">
-                            <h2><i class="fa fa-user icon"></i></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
+   <div class="container">
+<div class="row">
+ <div class="col-sm-4">
+ <div class="card comp-card">
+<div class="card-body">
+<div class="breadcrumb">
+ <div class="table-responsive">
+<table class="table table-hover m-b-0">
+<div class="breadcrumb" id="t1">ข้อมูลส่วนตัว</div> 
+<center><img src="<?php echo base_url('re/images/faces/face1.jpg'); ?>" alt="profile image" width="100"></center>
+            					
+            					<br><br>      
+            					รหัสนักศึกษา : <input type="text"value="59143339"size="10"style="border:0px; text-align:center;"><br><br>
+  								ชื่อ : <input type="text"value="panupong"size="10"style="border:0px; text-align:center;"><br><br>
+  								สกุล : <input type="text"value="tharaporn"size="10"style="border:0px; text-align:center;"><br><br>
+  								หลักสูตร : <input type="text"value="เทคโนโลยีสารสนเทศ"size="12"style="border:0px; text-align:center;"><br><br>
+  								สำนักวิชา : <input type="text"value="สารสนเทศศาตร์"size="10"style="border:0px; text-align:center;"><br><br>
+  								สถานะศึกษา : <input type="text"value="นักศึกษาปัจจุบัน"size="10"style="border:0px; text-align:center;"><br><br>     			
+	                          
+  </table>
+  </div>
+  </div>
+</div>
+</div>
+</div>
 
 
-        </div>
-
-
-    </div>
-     
+<div class="col-sm-4">
+ <div class="card comp-card">
+<div class="card-body">
+<div class="breadcrumb">
+ <div class="table-responsive">
+ <table class="table table-hover">
+  <td width="2px"><div class="breadcrumb" id="t1">คะแนนที่หัก</div></td>
+ 						<tr>
+ 					   <th><img src="<?php echo base_url('re/images/faces/dislike.png'); ?>"></th>
+ 					    <th><h1>20</h1></th>
+ 					    </tr>
+ 				<td width="2px"><div class="breadcrumb" id="t1">คะแนนคงเหลือ</div></td>
+ 					    <tr>
+ 					    <th><img src="<?php echo base_url('re/images/faces/like.png'); ?>"  width="70"></th>
+ 					    <th><h1>80</h1></th>
+ 					    </tr>
+ 				<td width="2px"><div class="breadcrumb" id="t1">เกณฑ์คะแนน</div><center><h1> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;ปกติ</h1></center></td>
+ 					<tr>
+ 					    <th></th>
+ 					    <th></th>
+ 					    </tr>	
+ 					</table>
+ 					</div>
+ 					</div>
+ 					
+</div>
+</div>
+</div>
+<div class="col-sm-4">
+ <div class="card comp-card">
+<div class="card-body">
+<div class="breadcrumb">
+ <div class="table-responsive">
+ <table class="table table-hover m-b-0">
+<div class="breadcrumb" id="t1">จำนวนครั้งที่ทำผิด</div>
+<br>
+ 					<br>
+ 					<br>
+ 					<br>
+ 					<br>
+ 					<br>
+ 					<br>
+ 					
+ 				
+                                                      รอรายงานตัว :   <input type="text"size="8" value="1"style="border:0px; text-align:center;">ครั้ง<br><br>
+  						รอการอบรม :   <input type="text"size="10"value="0"style="border:0px; text-align:center;">ครั้ง<br><br>
+  						รออนุมัติหลักฐานแย้ง : <input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
+  						รอการบำเพ็ญประโยชน์ :<input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
+  						รอการรับรองกิจกรรม : <input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
+  						คืนคะแนนเรียบร้อยแล้ว :<input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br> 
+  						</table>
+  						</div>  
+  						</div>
+                       
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
-
 </html>
 <script>
     $(document).ready(function() {
