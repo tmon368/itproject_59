@@ -63,7 +63,7 @@
     </ol>
   </nav>
 </div>
-<div class="breadcrumb" id="1a">2.อาจารย์ที่ปรึกษา</div>
+<div class="breadcrumb" id="t1">2.อาจารย์ที่ปรึกษา</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -84,14 +84,14 @@
     </ol>
   </nav>
 </div>
-<div class="breadcrumb" id="1a">3.ยานพาหนะ</div>
+<div class="breadcrumb" id="t1">3.ยานพาหนะ</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     3.1 รถจักรยานยนต์    <br>
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
-      <li id="regist_num"> </li>&nbsp;&nbsp;
+      <li id="regist_num1"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
       <li id="province"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">ยี่ห้อ :&nbsp;</a></li>
@@ -103,7 +103,7 @@
       <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
       <li id="expired_date"> </li>&nbsp;&nbsp;
      </ol>
-     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      3.2 รถยนต์  <br>
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
       <li id="regist_num"> </li>&nbsp;&nbsp;
@@ -161,19 +161,40 @@
                     	$("#email").html(data[0].email);    
                     	$("#dname").html(data[0].dname);
                     	$("#type_name").html(data[0].type_name);  
-                    	$("#person_fname").html(data[0].person_fname);
-                    	$("#person_name").html(data[0].person_lname);      
-                    	$("#position").html(data[0].position);       
-                    	$("#dept_name1").html(data[0].dept_name);   
-                    	$("#phone1").html(data[0].phone);
-                    	$("#email1").html(data[0].email);    	
+                    	
+                    	//$("#email1").html(data[0].email);    	
                     },
                     error: function() {
                         alert('ไม่มีข้อมูล'); 
                     }
                 });
             }
-   
+
+    function selectpersonnel() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/Std_info/selectpersonnel',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+            	$("#person_fname").html(data[0].person_fname);
+            	$("#person_name").html(data[0].person_lname);      
+            	$("#position").html(data[0].position);       
+            	$("#dept_name1").html(data[0].dept_name);   
+            	$("#phone1").html(data[0].phone);
+            	$("#email1").html(data[0].email);
+            	
+
+            },
+            error: function() {
+                alert('ไม่มีข้อมูล');
+            }
+        });
+    }
+
+
+
+    
     function selectvehicles() {
         $.ajax({
             type: 'ajax',
@@ -182,7 +203,7 @@
             dataType: 'json',
             success: function(data) {
 
-            	$("#msg111").html(data[0].regist_num);
+            	$("#regist_num1").html(data[0].regist_num);
             	
 
             },
