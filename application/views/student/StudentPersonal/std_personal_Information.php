@@ -75,13 +75,13 @@
       <li class="breadcrumb-item">ตำแหน่ง :&nbsp;</a></li>
       <li id="position"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">หน่วยงาน :&nbsp;</a></li>
-      <li id="dept_name"> </li>&nbsp;&nbsp;
+      <li id="dept_name1"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">หลักสูตร :&nbsp;</a></li>
-      <li id="cur_name"> </li>&nbsp;&nbsp;</br>
+      <li id="cur_name1"> </li>&nbsp;&nbsp;</br>
       <li class="breadcrumb-item">หมายเลขโทรศัพท์ :&nbsp;</a></li>
       <li id="phone1"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">อีเมล์ :&nbsp;</a></li>
-      <li id="email"> </li>&nbsp;&nbsp;
+      <li id="email1"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
 </div>
@@ -161,50 +161,20 @@
                     	$("#phone").html(data[0].phone);
                     	$("#email").html(data[0].email);    
                     	$("#dname").html(data[0].dname);
-                    	$("#type_name").html(data[0].type_name);                  	
+                    	$("#type_name").html(data[0].type_name);  
+                    	$("#person_fname").html(data[0].person_fname);
+                    	$("#person_name").html(data[0].person_lname);      
+                    	$("#position").html(data[0].position);       
+                    	$("#dept_name1").html(data[0].dept_name);   
+                    	$("#phone1").html(data[0].phone);
+                    	$("#email1").html(data[0].email);    	
                     },
                     error: function() {
                         alert('ไม่มีข้อมูล');
                     }
                 });
             }
-    
-    function selectdormitory() {
-        $.ajax({
-            type: 'ajax',
-            url: '<?php echo base_url() ?>index.php/Std_info/selectdormitory',
-            async: false,
-            dataType: 'json',
-            success: function(data) {
-
-            	$("#dname ").html(data[0].dname );
-            	$("#dorm_type").html(data[0].dorm_type);
-            },
-            error: function() {
-                alert('ไม่มีข้อมูล');
-            }
-        });
-    }
-    
-
-    function selectpersonnel() {
-        $.ajax({
-            type: 'ajax',
-            url: '<?php echo base_url() ?>index.php/Std_info/selectpersonnel',
-            async: false,
-            dataType: 'json',
-            success: function(data) {
-
-            	$("#msg11").html(data[0].person_fname);
-            	
-
-            },
-            error: function() {
-                alert('ไม่มีข้อมูล');
-            }
-        });
-    }
-
+   
     function selectvehicles() {
         $.ajax({
             type: 'ajax',
