@@ -156,10 +156,12 @@
                     	$("#S_ID").html(data[0].S_ID);
                     	$("#std_fname").html(data[0].std_fname);
                     	$("#std_lname").html(data[0].std_lname);
-                    	$("#S_ID").html(data[0].S_ID);
-                    	$("#S_ID").html(data[0].S_ID);
-                    	$("#S_ID").html(data[0].S_ID);
-                    	$("#S_ID").html(data[0].S_ID);                    	
+                    	$("#cur_name").html(data[0].cur_name);
+                    	$("#dept_name").html(data[0].dept_name);
+                    	$("#phone").html(data[0].phone);
+                    	$("#email").html(data[0].email);    
+                    	$("#dname").html(data[0].dname);
+                    	$("#type_name").html(data[0].type_name);                  	
                     },
                     error: function() {
                         alert('ไม่มีข้อมูล');
