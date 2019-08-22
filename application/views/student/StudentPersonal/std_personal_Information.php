@@ -196,7 +196,7 @@
             	$("#msg11").html(data[0].person_fname);
             	
 
-            },
+            }, 
             error: function() {
                 alert('ไม่มีข้อมูล');
             }
@@ -218,8 +218,5 @@
             error: function() {
                 alert('ไม่มีข้อมูล');
             }
-        });
-    }
-
-    });
+       
 </script>
