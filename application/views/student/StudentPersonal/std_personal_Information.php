@@ -152,14 +152,14 @@
                     async: false,
                     dataType: 'json',
                     success: function(data) {
+
                     	$("#S_ID").html(data[0].S_ID);
                     	$("#std_fname").html(data[0].std_fname);
                     	$("#std_lname").html(data[0].std_lname);
-                    	$("#cur_name").html(data[0].cur_name);
                     	$("#S_ID").html(data[0].S_ID);
                     	$("#S_ID").html(data[0].S_ID);
                     	$("#S_ID").html(data[0].S_ID);
-                    	
+                    	$("#S_ID").html(data[0].S_ID);                    	
                     },
                     error: function() {
                         alert('ไม่มีข้อมูล');
@@ -196,7 +196,7 @@
             	$("#msg11").html(data[0].person_fname);
             	
 
-            }, 
+            },
             error: function() {
                 alert('ไม่มีข้อมูล');
             }
@@ -218,5 +218,8 @@
             error: function() {
                 alert('ไม่มีข้อมูล');
             }
-       
+        });
+    }
+
+    });
 </script>
