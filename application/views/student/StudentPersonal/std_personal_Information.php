@@ -19,7 +19,6 @@
 </center>
 
 <head>
-
     <title>...</title>
 
 </head>
