@@ -77,8 +77,7 @@ class student_model extends CI_Model {
         
     }
     
-    
-    
+        
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable student
     public function addstudent(){
         $field = array(

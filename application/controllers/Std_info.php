@@ -24,8 +24,7 @@ class Std_info extends CI_Controller {
         
         
     }
-    
-    
+       
     
     
     function selectstudent(){
