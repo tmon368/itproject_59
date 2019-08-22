@@ -34,78 +34,22 @@ class student_model extends CI_Model {
         }
     }
     
-    
-    function selectcurriculum($cur_ID){
-        //$id = $this->input->post('txtdelID');
-        // $cur_ID = $this->session->userdata('cur_ID');
-        $this->db->where('cur_ID', $cur_ID);
-        $query = $this->db->get('curriculum');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
-    function selectdormitory($dorm_ID){
-        //$id = $this->input->post('txtdelID');
-        // $cur_ID = $this->session->userdata('cur_ID');
-        $this->db->where('dorm_ID', $dorm_ID);
-        $query = $this->db->get('dormitory');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
-    function selectdivisions($dept_ID){
-        //$id = $this->input->post('txtdelID');
-        // $cur_ID = $this->session->userdata('cur_ID');
-        $this->db->where('dept_ID', $dept_ID);
-        $query = $this->db->get('divisions');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
-    function selectdormtype($dormtype_ID){
-        //$id = $this->input->post('txtdelID');
-        // $cur_ID = $this->session->userdata('cur_ID');
-        $this->db->where('dormtype_ID', $dormtype_ID);
-        $query = $this->db->get('dormtype');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
-    
-    
-    function selectpersonnel($person_ID){
+
+    function selectvehicles(){
         //$id = $this->input->post('txtdelID');
         //echo $person_ID;
-        $username = $this->session->userdata('username');
-        $this->db->where('person_ID', $person_ID);
-        $query = $this->db->get('personnel');
-        
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
-    function selectvehicles($username){
-        //$id = $this->input->post('txtdelID');
-        //echo $person_ID;
-        // $username = $this->session->userdata('username');
-        $this->db->where('S_ID', $username);
+         $username = $this->session->userdata('username');
+       
+         $this->db->where('S_ID', $username);
         $query = $this->db->get('vehicles');
+       // var_dump($query->result());
         
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
         }
+       
     }
     
     
@@ -133,8 +77,7 @@ class student_model extends CI_Model {
         
     }
     
-    
-    
+        
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable student
     public function addstudent(){
         $field = array(
