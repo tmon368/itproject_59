@@ -170,7 +170,7 @@
                     	$("#email1").html(data[0].email);    	
                     },
                     error: function() {
-                        alert('ไม่มีข้อมูล');
+                        alert('ไม่มีข้อมูล'); 
                     }
                 });
             }
