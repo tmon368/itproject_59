@@ -10,7 +10,6 @@ class student_model extends CI_Model {
     
   
     
-    
     function selectstudent(){
         $username = $this->session->userdata('username');
         $this->db->select('*');
