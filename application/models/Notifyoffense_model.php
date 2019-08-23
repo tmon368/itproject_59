@@ -8,22 +8,22 @@ class Notifyoffense_model extends CI_Model {
     }
     
     
-    function selectstudent(){
+   /* function selectstudent(){
         //$id = $this->input->post('txtdelID');
         //$username = $thisata('username')->session->userd;
-       $this->db->where('S_ID', $username);
+       
         $query = $this->db->get('student');
         $S_ID= ($this->input->post('S_ID')
             $this->db->query("SELECT s.S_ID, s.std_fname ,s.std_lname, s.phone, v.regist_num
                               FROM student s   LEFT JOIN vehicles  v ON v.S_ID = s.S_ID 
-                              WHERE s.S_ID = '".$S_ID."'  ORDER BY s.S_ID ASC")
+                              WHERE s.S_ID = '".$59111111."'  ORDER BY s.S_ID ASC")
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
         }
     }
-    
+    */
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
  public function showAll(){
        $this->db->order_by('oh_ID', 'ASC');
@@ -58,7 +58,7 @@ class Notifyoffense_model extends CI_Model {
 
 
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
-    public function addnotify(){
+  /*  public function addnotify(){
         $field = array(
             
             'oh_ID'=>$this->input->post('oh_ID'),
@@ -143,7 +143,7 @@ class Notifyoffense_model extends CI_Model {
             return false;
         }
     }
-    
+ */   
     function selectplace()
 	{
 	    $this->db->order_by('place_ID','ASC');
@@ -192,7 +192,7 @@ class Notifyoffense_model extends CI_Model {
 	        return false;
 	    }
     }
-    /*
+    
     function selectstudent()
 	{
 	    $this->db->order_by('S_ID','ASC');
@@ -204,7 +204,7 @@ class Notifyoffense_model extends CI_Model {
 	        return false;
 	    }
     }
-    */
+    
     
     
     function selectoffevidence()
@@ -255,6 +255,6 @@ class Notifyoffense_model extends CI_Model {
    */
     
     
-    
+        }
     
 }
