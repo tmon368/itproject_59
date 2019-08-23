@@ -122,11 +122,12 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label for="">ผู้กระทำความผิด:</label> <a href="javascript:;" id="add"><span class="badge badge-pill badge-primary"> + เพิ่มผู้กระทำผิด</span></a>
+
                                     </div>
                                 </div>
 
                                 <div>
-                                    <div class="row add_person">
+                                    <div class="add_person">
                                         <!--
                                         <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id="">
                                         <label for="">ชื่อ:</label> <input type="text" name="" id="">
@@ -180,10 +181,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
+             
 
 
                 <div class="card-body">
@@ -216,6 +214,8 @@
 
             </div>
         </div>
+        
+
     </div>
     <script>
         $(document).ready(function() {
@@ -224,15 +224,15 @@
             $('#add').click(function() {
                 //alert ("Hello");
                 i++;
-                $('.add_person').append(' <div class="col-sm-12"><label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""> <label for="">ชื่อ:</label> <input type="text" name="" id=""> <label for="">นามสกุล:</label> <input type="text" name="" id="">');
+                
+                
+                $('.add_person').append('<div id="test552"><div class="row"><div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div></div>');
+                $('.add_person').append('<div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>');
+                $('.add_person').append('<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>');
+                $('.add_person').append('<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>');
+                $('.add_person').append('<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button>  </div> </div>');
+                
             });
-
-
-
-
-
-
-
 
         });
 
@@ -241,6 +241,10 @@
             //$("#msg1").empty();
             $('#exampleModalCenter').modal('show');
             //$('#formadd').attr('action', '<?php echo base_url(); ?>index.php/place/addplace');
+        });
+
+        $('.dlt').click(function() {
+            $("#adf55").remove();
         });
     </script>
 
