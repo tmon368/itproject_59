@@ -397,7 +397,7 @@ $("#edit_file").modal("show");
 
 
     //edit
-    $('#showdata').on('click', '.fa-edit', function() {
+    $('#showdata').on('click', '.edit_data', function() {
             var id = $(this).attr('data');
             var popup = document.getElementById("editimage");
             $('#edit_file').modal('show');
@@ -500,7 +500,7 @@ $("#edit_file").modal("show");
    
 
     //delete- 
-    $('#showdata').on('click', '.fa-trash-alt', function(){
+    $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
@@ -584,11 +584,7 @@ $("#edit_file").modal("show");
                   '<td>'+data[i].dd+'</td>'+  
                   '<td>'+data[i].description+'</td>'+
                   '<td>'+data[i].h_type+'</td>'+
- '<td>'+
-
- 
- '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="'+data[i].h_ID+'"></i></a>'+
-                    '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="'+data[i].h_ID+'"></i></a>'+
+                  '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data=' + data[i].h_ID + '>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].h_ID + '>ลบข้อมูล</button></td>' +
                   '</td>'+
                   '</tr>';
           }
