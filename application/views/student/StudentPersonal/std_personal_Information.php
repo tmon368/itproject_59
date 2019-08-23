@@ -63,7 +63,7 @@
     </ol>
   </nav>
 </div>
-<div class="breadcrumb" id="T1">2.อาจารย์ที่ปรึกษา</div>
+<div class="breadcrumb" id="t1">2.อาจารย์ที่ปรึกษา</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -84,7 +84,7 @@
     </ol>
   </nav>
 </div>
-<div class="breadcrumb" id="T1">3.ยานพาหนะ</div>
+<div class="breadcrumb" id="t1">3.ยานพาหนะ</div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
