@@ -63,7 +63,7 @@ class Notifyoffense extends CI_Controller {
 		    
 		}else{
 		    $msg['success'] = false;
-		    redirect(base_url() . 'index.php/Notifyoffense/index');
+		    redirect(base_url() . 'index.php/notify_page/index');
 		}
 		echo json_encode($msg);
 	}
@@ -84,7 +84,7 @@ class Notifyoffense extends CI_Controller {
 		    $msg['success'] = true;
 		}else{
 		    $msg['success'] = false;
-		    redirect(base_url() . 'index.php/Notifyoffense/index');
+		    redirect(base_url() . 'index.php/notify_page/index');
 		}
 		echo json_encode($msg);
 	}
@@ -96,7 +96,7 @@ class Notifyoffense extends CI_Controller {
 		    $msg['success'] = true;     
 		}else{
 		    $msg['success'] = false;
-		    redirect(base_url() . 'index.php/Notifyoffense/index');
+		    redirect(base_url() . 'index.php/notify_page/index');
 		}
 		echo json_encode($msg);
 	}
