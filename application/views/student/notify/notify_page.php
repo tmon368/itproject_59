@@ -58,20 +58,20 @@
 
                                 <div class="row">
                                     <div class="col-sm-6"> </div>
-                                    <div class="col-sm-6"><label for="">รหัสการกระทำความผิด:</label><input type="email" id="email"></div>
+                                    <div class="col-sm-6"><label for="">รหัสการกระทำความผิด:</label><input type="email" id="email" class="form-control"></div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-4"> <label for="" class="">วันที่แจ้งเหตุ:</label> <input type="date" name="" id=""> </div>
-                                    <div class="col-sm-4"> <label for="">วันที่กระทำความผิด:</label> <input type="date" name="" id=""></div>
-                                    <div class="col-sm-2"> <label for="">เวลา:</label> <input type="time" name="" id=""> </div>
+                                    <div class="col-sm-4"> <label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="" id="test" class="form-control" disabled> </div>
+                                    <div class="col-sm-4"> <label for="">วันที่กระทำความผิด:</label> <input type="date" name="" id="" class="form-control"></div>
+                                    <div class="col-sm-2"> <label for="">เวลา:</label> <input type="time" name="" id="" class="form-control"> </div>
 
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12" >
                                         <label for="">สถานที่:</label>
-                                        <select name="">
+                                        <select name="" class="form-control">
                                             <option selected>Custom Select Menu</option>
                                             <option value="volvo">Volvo</option>
                                             <option value="fiat">Fiat</option>
@@ -98,7 +98,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="">หมวดความผิด:</label>
-                                        <select name="" class="">
+                                        <select name="" class="form-control">
                                             <option selected>Custom Select Menu</option>
                                             <option value="volvo">Volvo</option>
                                             <option value="fiat">Fiat</option>
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="">ฐานความผิด:</label>
-                                        <select name="" class="">
+                                        <select name="" class="form-control">
                                             <option selected>Custom Select Menu</option>
                                             <option value="volvo">Volvo</option>
                                             <option value="fiat">Fiat</option>
@@ -221,26 +221,24 @@
         $(document).ready(function() {
 
             var i = 1;
+            html = '<div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
+                ' <div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>' +
+                '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
+                '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
+                '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button>  </div> </div>'
+
             $('#add').click(function() {
-                //alert ("Hello");
                 i++;
-                
-                
-                $('.add_person').append('<div id="test552"><div class="row"><div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div></div>');
-                $('.add_person').append('<div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>');
-                $('.add_person').append('<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>');
-                $('.add_person').append('<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>');
-                $('.add_person').append('<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button>  </div> </div>');
-                
+                $('.add_person').append(html);
             });
 
         });
 
         $('#btnAdd').click(function() {
-            //$('#formadd')[0].reset();
-            //$("#msg1").empty();
+            var date = new Date();
+            date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
             $('#exampleModalCenter').modal('show');
-            //$('#formadd').attr('action', '<?php echo base_url(); ?>index.php/place/addplace');
+            $('#test').val(date_off); //set of date in form
         });
 
         $('.dlt').click(function() {
