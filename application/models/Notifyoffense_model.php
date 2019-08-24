@@ -11,7 +11,7 @@ class Notifyoffense_model extends CI_Model {
     function selectstudent(){
         //$id = $this->input->post('txtdelID');
         //$username = $thisata('username')->session->userd;
-       
+          
         $query = $this->db->get('student');
         $S_ID= $this->input->post('S_ID');
             $this->db->query("SELECT s.S_ID, s.std_fname ,s.std_lname, s.phone, v.regist_num
@@ -107,24 +107,24 @@ class Notifyoffense_model extends CI_Model {
     }
     
     //ฟังก์ชันอัพเดตข้อมูลในtable notify
-   /* public function updatenotify(){
+    public function updatenotify(){
         $id = $this->input->post('editID');
        
- 
-            $off_ID =$this->input->post('off_ID')
-            $person_ID=$this->input->post('person_ID')
-            $std_ID=$this->input->post('std_ID')
-            $place_ID=$this->input->post('place_ID')
-            $committed_date=$this->input->post('committed_date')
-            $committed_time=$this->input->post('committed_time')
-            $notifica_date=$this->input->post('notifica_date')
-            $num_off=$this->input->post('num_off')
-            $explanation=$this->input->post('explanation')
-            $proof_results=$this->input->post('proof_results')
-            $offeviden_ID=$this->input->post('offeviden_ID')
-            $oh_ID = $this->input->post('oh_ID')
-            $evidenre_name=$this->input->post('evidenre_name')
-            $record_date=$this->input->post('record_date')
+            $oh_ID = $this->input->post('oh_ID'),
+            'off_ID'=>$this->input->post('off_ID'),
+            'person_ID'=>$this->input->post('person_ID'),
+            'std_ID'=>$this->input->post('std_ID'),
+            'place_ID'=>$this->input->post('place_ID'),
+            'committed_date'=>$this->input->post('committed_date'),
+            'committed_time'=>$this->input->post('committed_time'),
+            'notifica_date'=>$this->input->post('notifica_date'),
+            'num_off'=>$this->input->post('num_off'),
+            'explanation'=>$this->input->post('explanation'),
+            'proof_results'=>$this->input->post('proof_results'),
+            'offeviden_ID'=>$this->input->post('offeviden_ID'),
+            'oh_ID'=>$this->input->post('oh_ID'),
+            'evidenre_name'=>$this->input->post('evidenre_name'),
+        '   record_date'=>$this->input->post('record_date')
         $this->db->query("UPDATE offensehead o 
                             INNER JOIN offevidence oo ON o.oh_ID = oo.oh_ID 
                             SET o.oh_ID = '".$oh_ID."', oo.evidenre_name = 'test' 
@@ -136,7 +136,7 @@ class Notifyoffense_model extends CI_Model {
         }else{
             return false;
         }
-    }*/
+    }
     //ฟังก์ชันลบข้อมูลในtable notify
     function deletenotify(){
          $id = $this->input->post('delID');
