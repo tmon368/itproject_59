@@ -4,10 +4,25 @@
 
 <head>
 
-    <title>สถานที่ admin</title>
+    <title>แจ้งเหตุกระทำความผิด | ระบบวินัยนักศึกษา</title>
     <style>
         label {
             padding: 0.4rem;
+        }
+
+        .style_input {
+            font-size: 0.8rem;
+        }
+
+        #oh_ID {
+            width: 50%;
+        }
+
+        .padding_b {
+            padding-bottom: 0.9rem;
+        }
+        #add_place{
+            width: 100%;
         }
     </style>
 
@@ -58,25 +73,35 @@
 
                                 <div class="row">
                                     <div class="col-sm-6"> </div>
-                                    <div class="col-sm-6"><label for="">รหัสการกระทำความผิด:</label><input type="email" id="email" class="form-control"></div>
+                                    <div class="col-sm-6 padding_b">
+                                        <div class="form-inline"><label for="">รหัสการกระทำความผิด:</label><input type="text" name="oh_ID" id="oh_ID" class="form-control style_input" disabled></div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-4"> <label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="" id="test" class="form-control" disabled> </div>
-                                    <div class="col-sm-4"> <label for="">วันที่กระทำความผิด:</label> <input type="date" name="" id="" class="form-control"></div>
-                                    <div class="col-sm-2"> <label for="">เวลา:</label> <input type="time" name="" id="" class="form-control"> </div>
-
+                                    <div class="col-sm-4">
+                                        <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="" id="test" class="form-control style_input" disabled></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด:</label> <input type="date" name="" id="" class="form-control style_input"></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา:</label> <input type="time" name="" id="" class="form-control style_input"></div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12" >
-                                        <label for="">สถานที่:</label>
-                                        <select name="" class="form-control">
-                                            <option selected>Custom Select Menu</option>
-                                            <option value="volvo">Volvo</option>
-                                            <option value="fiat">Fiat</option>
-                                            <option value="audi">Audi</option>
-                                        </select>
+                                    <div class="col-sm-12">
+                                        <div class="form-inline">
+                                            <span><i class="far fa-building"></i></span>
+                                            <label for="">สถานที่:</label>
+                                            <select name="add_place" id="add_place" class="form-control style_input">
+                                                <option selected>ระบุสถานที่กระทำความผิด</option>
+                                                <option value="1">1001 อาคารบริหาร</option>
+                                                <option value="2">1002 อาคารหน่วยประสานงาน</option>
+                                                
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -181,7 +206,7 @@
                         </div>
                     </div>
                 </div>
-             
+
 
 
                 <div class="card-body">
@@ -214,7 +239,7 @@
 
             </div>
         </div>
-        
+
 
     </div>
     <script>
