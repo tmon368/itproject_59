@@ -7,8 +7,6 @@ class Notifyoffense_model extends CI_Model {
         
     }
     
-      
-    
    
     function selectstudent(){
         //$id = $this->input->post('txtdelID');
