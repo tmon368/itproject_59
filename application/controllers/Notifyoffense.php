@@ -114,7 +114,7 @@ class Notifyoffense extends CI_Controller {
 	    
 	    $result = $this->model->selectplace();
 	    
-	    //echo json_encode($result);
+	    echo json_encode($result);
 	}
 	function selectvehicles(){
 	   
