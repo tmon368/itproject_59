@@ -95,12 +95,13 @@
                                         <div class="form-inline">
                                             <span><i class="far fa-building"></i></span>
                                             <label for="">สถานที่:</label>
+                                            <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาสถานที่">
+                                            <!--
                                             <select name="add_place" id="add_place" class="form-control style_input">
                                                 <option selected>ระบุสถานที่กระทำความผิด</option>
                                                 <option value="1">1001 อาคารบริหาร</option>
                                                 <option value="2">1002 อาคารหน่วยประสานงาน</option>
-                                                
-                                            </select>
+                                            </select>-->
                                         </div>
                                     </div>
                                 </div>
