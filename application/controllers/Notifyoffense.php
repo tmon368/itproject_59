@@ -15,6 +15,8 @@ class Notifyoffense extends CI_Controller {
 	}
 	
 	
+	
+	
 	public function template(){
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -113,7 +115,6 @@ class Notifyoffense extends CI_Controller {
 	   
 	    
 	    $result = $this->model->selectplace();
-	    
 	    echo json_encode($result);
 	}
 	function selectvehicles(){
