@@ -110,7 +110,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12">การกระทำความผิด</div>
+                                    <div class="col-sm-12"><label for="">การกระทำความผิด</label></div>
                                 </div>
 
                                 <div class="row">
@@ -157,22 +157,9 @@
 
                                 <div>
                                     <div class="add_person">
-                                        <!--
-                                        <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id="">
-                                        <label for="">ชื่อ:</label> <input type="text" name="" id="">
-                                        <label for="">นามสกุล:</label> <input type="text" name="" id="">
-                                        <label for="">สำนักวิชา:</label> <input type="text" name="" id="">
-                                        <label for="">หลักสูตร:</label> <input type="text" name="" id="">
-                                    </div>
+                                        
 
-                                    <div class="form-inline">
-                                        <label for="">เลขทะเบียนรถจักรยานยนต์:</label> <input type="text" name="" id="">
-                                        <label for="">จังหวัด:</label> <input type="text" name="" id="">
-                                    </div>
-
-                                    <div class="form-inline">
-                                        <label for="">เลขทะเบียนรถยนต์:</label> <input type="text" name="" id="">
-                                        <label for="">จังหวัด:</label> <input type="text" name="" id="">-->
+                                    
                                     </div>
 
                                     <div class="row">
