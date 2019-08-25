@@ -31,6 +31,7 @@ class Std_info extends CI_Controller {
         $result =  $this->model->selectstudent();
         echo json_encode($result);
     }
+    
     function selectpersonnel(){
         $result =  $this->model->selectstudent();
         foreach ($result as $row){

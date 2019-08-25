@@ -8,8 +8,7 @@ class student_model extends CI_Model {
     }
     
     
-    
-    
+      
     
     function selectstudent(){
         $username = $this->session->userdata('username');
@@ -35,15 +34,14 @@ class student_model extends CI_Model {
     function selectpersonnel($person_ID){
         //$id = $this->input->post('txtdelID');
         //echo $person_ID;
-       // $username = $this->session->userdata('username');
+        // $username = $this->session->userdata('username');
         $this->db->select('*');
         $this->db->from('personnel p');
         $this->db->join('curriculum c', 'p.cur_ID=c.cur_ID');
         $this->db->join('divisions dvs', 'c.dept_ID=dvs.dept_ID');
         $this->db->where('person_ID', $person_ID);
         $query = $this->db->get();
-        var_dump($query->result());
-
+        
         if($query->num_rows() > 0){
             return $query->result();
         }else{
