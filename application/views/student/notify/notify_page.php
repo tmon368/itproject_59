@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
 <head>
 
@@ -21,7 +23,8 @@
         .padding_b {
             padding-bottom: 0.9rem;
         }
-        #add_place{
+
+        #add_place {
             width: 100%;
         }
     </style>
@@ -95,7 +98,7 @@
                                         <div class="form-inline">
                                             <span><i class="far fa-building"></i></span>
                                             <label for="">สถานที่:</label>
-                                            <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาสถานที่">
+                                            <input type="text" name="add_place" id="add_place" class="form-control style_input" autocomplete="off" placeholder="ค้นหาสถานที่">
                                             <!--
                                             <select name="add_place" id="add_place" class="form-control style_input">
                                                 <option selected>ระบุสถานที่กระทำความผิด</option>
@@ -257,6 +260,31 @@
                 i++;
                 $('.add_person').append(html);
             });
+
+
+        });
+
+
+        $('#add_place').typeahead({
+
+            //source: ["นายศุภกฤต", "C++"]
+            source: function(query, result) {
+                $.ajax({
+                    url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
+                    method: "POST",
+                    data: {
+                        query: query
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        //alert(data[0].place_ID+data[0].description);
+                        result($.map(data, function(item) {
+                            return item.place_name; //return value place_name
+                        }));
+                    }
+                })
+            }
+
 
         });
 
