@@ -106,17 +106,17 @@
      <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      3.2 รถยนต์  <br>
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
-      <li id="regist_num"> </li>&nbsp;&nbsp;
+      <li id="regist_num2"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
-      <li id="province"> </li>&nbsp;&nbsp;
+      <li id="province1"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">ยี่ห้อ :&nbsp;</a></li>
-      <li id="brand"> </li>&nbsp;&nbsp;
+      <li id="brand1"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">สี :&nbsp;</a></li>
-      <li id="color"> </li>&nbsp;&nbsp;
+      <li id="color1"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">วันที่ลงทะเบียนสติ๊กเกอร์ :&nbsp;</a></li>
-      <li id="regist_date"> </li>&nbsp;&nbsp;</br>
+      <li id="regist_date1"> </li>&nbsp;&nbsp;</br>
       <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
-      <li id="expired_date"> </li>&nbsp;&nbsp;
+      <li id="expired_date1"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
 </div>
@@ -162,8 +162,7 @@
                     	$("#dname").html(data[0].dname);
                     	$("#type_name").html(data[0].type_name);  
 
-                    	$("#dept_name1").html(data[0].dept_name);
-                    	$("#cur_name1").html(data[0].cur_name);
+                    	
                     	
                     	
                     	//$("#email1").html(data[0].email);    	
@@ -184,8 +183,9 @@
             	$("#person_fname").html(data[0].person_fname);
             	$("#person_name").html(data[0].person_lname);      
             	$("#position").html(data[0].position);       
-            	$("#dept_name1").html(data[0].dept_name);   
-            	$("#phone1").html(data[0].phone);
+            	$("#dept_name1").html(data[0].dept_name); 
+               $("#cur_name1").html(data[0].cur_name); 
+            	$("#phone1").html(data[0].phone1);
             	$("#email1").html(data[0].email);
             	
 
@@ -208,6 +208,11 @@
             success: function(data) {
 
             	$("#regist_num1").html(data[0].regist_num);
+            	$("#province").html(data[0].province);
+            	$("#brand").html(data[0].brand);
+            	$("#color").html(data[0].color);
+            	$("#regist_date").html(data[0].regist_date);
+            	$("#expired_date").html(data[0].expired_date);
             	
 
             },
