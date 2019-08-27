@@ -29,6 +29,15 @@
         }
     </style>
 
+    <script>
+        var off_per =1;
+            function click_btnre(id){
+                alert("yyy"+id);
+                $('#student'+id).html('');
+            }
+        
+    </script>
+
 
 </head>
 
@@ -132,11 +141,9 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="">ฐานความผิด:</label>
-                                            <select name="" class="form-control">
-                                                <option selected>เลือกฐานความผิด</option>
-                                                <option value="volvo">Volvo</option>
-                                                <option value="fiat">Fiat</option>
-                                                <option value="audi">Audi</option>
+                                            <select name="txt_off" id="txt_off" class="form-control">
+                                                <option value="">เลือกฐานความผิด</option>
+                                                
                                             </select>
 
 
@@ -225,52 +232,70 @@
     <script>
         $(document).ready(function() {
 
+            sct_show();
+
             $('#add').click(function() {
-                var i = 1;
-                html = '<div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
+                
+                html = '<div id="student'+off_per+'"><div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
                     ' <div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>' +
                     '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
                     '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
-                    '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button>  </div> </div>'
+                    '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre('+off_per+')">X</button></div></div></div>'
 
-
-
-                i++;
+                    off_per++;
                 $('.add_person').append(html);
             });
 
+            
 
 
 
-            $.ajax({
-                type: 'ajax',
-                url: '<?php echo site_url("Notifyoffense/selectoffensecate") ?>',
-                dataType: 'json',
-                success: function(data) {
-                    //alert(data[0].oc_ID);
 
-                    for (i = 0; i < data.length; i++) {
-                        //alert(data[i].oc_ID+data[i].oc_desc);
-                        $('#txt_oc').append('<option value="' + data[i].id + '">' + data[i].oc_desc + '</option>');
+
+
+            
+            function sct_show() {
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo site_url("Notifyoffense/selectoffensecate") ?>',
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert(data[0].oc_ID);
+
+                        for (i = 0; i < data.length; i++) {
+                            //alert(data[i].oc_ID+":"+data[i].oc_desc+""+data[i].id);
+                            $('#txt_oc').append('<option value="' + data[i].oc_ID + '">' + data[i].oc_desc + '</option>');
+
+                        }
 
                     }
+                });
+            }
 
-                }
-            });
-
-
-
-            /*$('#txt_oc').change(function(){
+            $('#txt_oc').ready(function(){
                 //alert("xxx");
                 var oc_id = $(this).val();
-                //alert(oc_id);
                 $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo site_url("#/#") ?>',
+                    data: oc_id,
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert(data[0].oc_ID);
 
+                        for (i = 0; i < data.length; i++) {
+                            //alert(data[i].oc_ID+":"+data[i].oc_desc+""+data[i].id);
+                            $('#txt_oc').append('<option value="' + data[i].oc_ID + '">' + data[i].oc_desc + '</option>');
+
+                        }
+
+                    }
                 });
-            });*/
-
-
-
+                //$('#txt_off').append('<option value="1">xxx</option>');
+                //alert(oc_id);
+     
+            });
+           
 
         });
 
