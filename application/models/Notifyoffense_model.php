@@ -4,10 +4,12 @@ class Notifyoffense_model extends CI_Model {
     public function _construct()
     {
         parent::_construct();
+         
         
     }
+     
     
-   
+   /*
     function selectstudent(){
         //$id = $this->input->post('txtdelID');
         //$username = $thisata('username')->session->userd;
@@ -23,7 +25,7 @@ class Notifyoffense_model extends CI_Model {
             return false;
         }
     }
-    
+    */
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
  public function showAll(){
        $this->db->order_by('oh_ID', 'ASC');
@@ -127,7 +129,13 @@ class Notifyoffense_model extends CI_Model {
             $record_date=$this->input->post('record_date');
         $this->db->query("UPDATE offensehead o 
                             INNER JOIN offevidence oo ON o.oh_ID = oo.oh_ID 
-                            SET o.oh_ID = '".$oh_ID."', oo.evidenre_name = 'test' 
+                            SET o.off_ID = '".$off_ID."', o.person_ID = '".$person_ID."', o.std_ID = '".$std_ID."', o.place_ID = '".$place_ID."',
+                                o.committed_date = '".$committed_date."', o.committed_time = '".$committed_time."', o.notifica_date = '".$notifica_date."',
+                                o.num_off = '".$num_off."', o.explanation = '".$explanation."',o.proof_results = '".$proof_results."', 
+                                oo.offeviden_ID = '".$offeviden_ID."', oo.oh_ID = '".$oh_ID."', oo.evidenre_name = '".$evidenre_name."',
+                                oo.record_date = '".$record_date."',
+                                
+
                             WHERE o.oh_ID = '".$oh_ID."' ");
                
         if($this->db->affected_rows() > 0){
@@ -164,29 +172,7 @@ class Notifyoffense_model extends CI_Model {
 	    }
     }
     
-    function selectOffense()
-	{
-	    $this->db->order_by('off_ID','ASC');
-	    $query = $this->db->get('Offense');
-	    
-	    if ($query->num_rows() > 0) {
-	        return $query->result();
-	    } else {
-	        return false;
-	    }
-    }
-
-    function selectoffensecate()
-	{
-	    $this->db->order_by('oc_ID','ASC');
-	    $query = $this->db->get('offensecate');
-	    
-	    if ($query->num_rows() > 0) {
-	        return $query->result();
-	    } else {
-	        return false;
-	    }
-    }
+  
     
     function selectvehicles()
 	{
@@ -226,8 +212,38 @@ class Notifyoffense_model extends CI_Model {
 	        return false;
 	    }
     }
+// select หมวดและฐานความผิด
+    function selectOffenseoffevidence(){
+    $oc_ID = $this->input->post('oc_ID');
+    $this->db->select('*');
+        $this->db->from('offensecate o');
+        $this->db->join('Offense oo', 'o.oc_ID=oo.oc_ID');
 
-/*
+        // $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        
+       
+         $this->db->where('oc_ID',$oc_ID);
+        $query = $this->db->get();
+        //var_dump($query->result());
+  
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+
+    function selectoffensecate()
+	{
+	    $this->db->order_by('oc_ID','ASC');
+	    $query = $this->db->get('offensecate');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+    }
      
     function selectstudent(){
         $username = $this->session->userdata('username');
@@ -251,7 +267,7 @@ class Notifyoffense_model extends CI_Model {
             return false;
         }
     }
-/*
+
 
     function can_login($username, $password)
     {
@@ -285,7 +301,7 @@ class Notifyoffense_model extends CI_Model {
         $queryall = $this->db->query($query1 . ' UNION ALL ' . $query2 . ' UNION ALL ' . $query3 . ' UNION ALL ' . $query4 . ' UNION ALL ' . $query5 . ' UNION ALL' . $query6);
 
      }
-   */
+   
     
     
         

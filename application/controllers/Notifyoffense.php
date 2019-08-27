@@ -6,6 +6,8 @@ class Notifyoffense extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('Notifyoffense_model', 'model');
 	}
+	
+	
 
 	public function index()
 	{
@@ -15,7 +17,7 @@ class Notifyoffense extends CI_Controller {
 	}
 	
 	
-	
+	 
 	
 	public function template(){
 	    $this->load->view('template/template1');
@@ -140,10 +142,10 @@ class Notifyoffense extends CI_Controller {
 	}
 
 
-	function selectOffense(){
+	function selectOffenseoffevidence(){
 	   
 	    
-	    $result = $this->model->selectOffense();
+	    $result = $this->model->selectOffenseoffevidence();
 		
 		
 	    echo json_encode($result);
