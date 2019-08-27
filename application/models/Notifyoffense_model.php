@@ -9,7 +9,7 @@ class Notifyoffense_model extends CI_Model {
     }
      
     
-   /*
+   
     function selectstudent(){
         //$id = $this->input->post('txtdelID');
         //$username = $thisata('username')->session->userd;
@@ -25,7 +25,7 @@ class Notifyoffense_model extends CI_Model {
             return false;
         }
     }
-    */
+    
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
  public function showAll(){
        $this->db->order_by('oh_ID', 'ASC');
@@ -214,15 +214,11 @@ class Notifyoffense_model extends CI_Model {
     }
 // select หมวดและฐานความผิด
     function selectOffenseoffevidence(){
-    $oc_ID = $this->input->post('oc_ID');
-    $this->db->select('*');
+        $oc_ID = $this->input->post('oc_ID');
+        $this->db->select('*');
         $this->db->from('offensecate o');
         $this->db->join('Offense oo', 'o.oc_ID=oo.oc_ID');
-
-        // $this->db->join('personnel p', 's.person_ID=p.person_ID');
-        
-       
-         $this->db->where('oc_ID',$oc_ID);
+       // $this->db->where('oc_ID',$oc_ID);
         $query = $this->db->get();
         //var_dump($query->result());
   
@@ -244,7 +240,7 @@ class Notifyoffense_model extends CI_Model {
 	        return false;
 	    }
     }
-     
+     /*
     function selectstudent(){
         $username = $this->session->userdata('username');
    
@@ -267,7 +263,7 @@ class Notifyoffense_model extends CI_Model {
             return false;
         }
     }
-
+*/
 
     function can_login($username, $password)
     {
