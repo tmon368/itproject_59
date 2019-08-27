@@ -17,7 +17,7 @@ class Notifyoffense extends CI_Controller {
 	}
 	
 	
-	
+	 
 	
 	public function template(){
 	    $this->load->view('template/template1');
