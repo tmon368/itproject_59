@@ -32,7 +32,7 @@
     <script>
         var off_per =1;
             function click_btnre(id){
-                alert("yyy"+id);
+                //alert("yyy"+id);
                 $('#student'+id).html('');
             }
         
@@ -249,10 +249,6 @@
             
 
 
-
-
-
-
             
             function sct_show() {
                 $.ajax({
@@ -272,21 +268,21 @@
                 });
             }
 
-            $('#txt_oc').ready(function(){
+            $('#txt_oc').change(function(){
                 //alert("xxx");
-                var oc_id = $(this).val();
+                var oc_ID = $(this).val();
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo site_url("#/#") ?>',
-                    data: oc_id,
+                    url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
+                    data: oc_ID,
                     dataType: 'json',
                     success: function(data) {
-                        //alert(data[0].oc_ID);
-
+                        
                         for (i = 0; i < data.length; i++) {
-                            //alert(data[i].oc_ID+":"+data[i].oc_desc+""+data[i].id);
-                            $('#txt_oc').append('<option value="' + data[i].oc_ID + '">' + data[i].oc_desc + '</option>');
-
+                            //alert(data[i].oc_ID+":"+data[i].oc_desc+"");
+                            $('#txt_off').append('<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>');
+                            //alert(data[j].off_ID+data[j].off_desc);
+                            
                         }
 
                     }
