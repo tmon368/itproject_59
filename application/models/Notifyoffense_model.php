@@ -157,7 +157,7 @@ class Notifyoffense_model extends CI_Model {
         //$this->db->update('notify', $field);
         if($this->db->affected_rows() > 0){
             return true;
-                $this->db->where('offevidence_ID', $id);
+                $this->db->where('oh_ID', $id);
                 $this->db->delete('offevidence');
             if($this->db->affected_rows() > 0){  
                 return true;
@@ -217,9 +217,10 @@ class Notifyoffense_model extends CI_Model {
 // select หมวดและฐานความผิด
     function selectOffenseoffevidence(){
         $oc_ID = $this->input->post('oc_ID');
+        //$oc_ID = 8;
         $this->db->select('*');
         $this->db->from('offensecate o');
-        $this->db->join('Offense oc', 'o.oc_ID=oo.oc_ID');
+        $this->db->join('Offense oc', 'o.oc_ID=oc.oc_ID');
        // $this->db->where('oc_ID',$oc_ID);
         $query = $this->db->get();
         //var_dump($query->result());
