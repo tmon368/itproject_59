@@ -74,119 +74,108 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <div class="row">
-                                    <div class="col-sm-6"> </div>
-                                    <div class="col-sm-6 padding_b">
-                                        <div class="form-inline"><label for="">รหัสการกระทำความผิด:</label><input type="text" name="oh_ID" id="oh_ID" class="form-control style_input" disabled></div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="" id="test" class="form-control style_input" disabled></div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด:</label> <input type="date" name="" id="" class="form-control style_input"></div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา:</label> <input type="time" name="" id="" class="form-control style_input"></div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-inline">
-                                            <span><i class="far fa-building"></i></span>
-                                            <label for="">สถานที่:</label>
-                                            <input type="text" name="add_place" id="add_place" class="form-control style_input" autocomplete="off" placeholder="ค้นหาสถานที่">
-                                            <!--
-                                            <select name="add_place" id="add_place" class="form-control style_input">
-                                                <option selected>ระบุสถานที่กระทำความผิด</option>
-                                                <option value="1">1001 อาคารบริหาร</option>
-                                                <option value="2">1002 อาคารหน่วยประสานงาน</option>
-                                            </select>-->
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-sm-6"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">รหัสการกระทำความผิด:</label><input type="text" name="oh_ID" id="oh_ID" class="form-control style_input" disabled></div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12"><label for="">การกระทำความผิด</label></div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-
-                                        <div class="form-group">
-                                            <label for="">คำอธิบายบริเวณที่เกิดเหตุ:</label>
-                                            <textarea class="form-control" rows="5" id=""></textarea>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="" id="test" class="form-control style_input" disabled></div>
                                         </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label for="">หมวดความผิด:</label>
-                                        <select name="" class="form-control">
-                                            <option selected>Custom Select Menu</option>
-                                            <option value="volvo">Volvo</option>
-                                            <option value="fiat">Fiat</option>
-                                            <option value="audi">Audi</option>
-                                        </select>
-
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="">ฐานความผิด:</label>
-                                        <select name="" class="form-control">
-                                            <option selected>Custom Select Menu</option>
-                                            <option value="volvo">Volvo</option>
-                                            <option value="fiat">Fiat</option>
-                                            <option value="audi">Audi</option>
-                                        </select>
-
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <label for="">ผู้กระทำความผิด:</label> <a href="javascript:;" id="add"><span class="badge badge-pill badge-primary"> + เพิ่มผู้กระทำผิด</span></a>
-
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="add_person">
-                                        
-
-                                    
+                                        <div class="col-sm-4">
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด:</label> <input type="date" name="" id="" class="form-control style_input"></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา:</label> <input type="time" name="" id="" class="form-control style_input"></div>
+                                        </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label for="">แนบไฟล์หลักฐาน</label><input type="file" class="form-control-file border">
+                                            <div class="form-inline">
+                                                <span><i class="far fa-building"></i></span>
+                                                <label for="">สถานที่:</label>
+                                                <input type="text" name="add_place" id="add_place" class="form-control style_input" autocomplete="off" placeholder="ค้นหาสถานที่">
+
                                             </div>
                                         </div>
+                                    </div>
 
+                                    <div class="row">
+                                        <div class="col-sm-12"><label for="">การกระทำความผิด</label></div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-12">
+
                                             <div class="form-group">
-                                                <label for="">คำอธิบายหลักฐาน:</label><textarea class="form-control" rows="5" id=""></textarea>
+                                                <label for="">คำอธิบายบริเวณที่เกิดเหตุ:</label>
+                                                <textarea class="form-control" rows="5" id=""></textarea>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label for="">หมวดความผิด:</label>
+                                            <select name="txt_oc" id="txt_oc" class="form-control">
+                                                <option value="">เลือกหมวดความผิด</option>
+
+
+                                            </select>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="">ฐานความผิด:</label>
+                                            <select name="" class="form-control">
+                                                <option selected>เลือกฐานความผิด</option>
+                                                <option value="volvo">Volvo</option>
+                                                <option value="fiat">Fiat</option>
+                                                <option value="audi">Audi</option>
+                                            </select>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label for="">ผู้กระทำความผิด:</label> <a href="javascript:;" id="add"><span class="badge badge-pill badge-primary"> + เพิ่มผู้กระทำผิด</span></a>
+
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="add_person">
+
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="">แนบไฟล์หลักฐาน</label><input type="file" class="form-control-file border">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="">คำอธิบายหลักฐาน:</label><textarea class="form-control" rows="5" id=""></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
 
-
-
-
-
-                                </div>
-
-                                </form>
                             </div>
 
                             <div class="modal-footer">
@@ -236,17 +225,51 @@
     <script>
         $(document).ready(function() {
 
-            var i = 1;
-            html = '<div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
-                ' <div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>' +
-                '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
-                '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
-                '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button>  </div> </div>'
-
             $('#add').click(function() {
+                var i = 1;
+                html = '<div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
+                    ' <div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>' +
+                    '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
+                    '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
+                    '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button>  </div> </div>'
+
+
+
                 i++;
                 $('.add_person').append(html);
             });
+
+
+
+
+            $.ajax({
+                type: 'ajax',
+                url: '<?php echo site_url("Notifyoffense/selectoffensecate") ?>',
+                dataType: 'json',
+                success: function(data) {
+                    //alert(data[0].oc_ID);
+
+                    for (i = 0; i < data.length; i++) {
+                        //alert(data[i].oc_ID+data[i].oc_desc);
+                        $('#txt_oc').append('<option value="' + data[i].id + '">' + data[i].oc_desc + '</option>');
+
+                    }
+
+                }
+            });
+
+
+
+            /*$('#txt_oc').change(function(){
+                //alert("xxx");
+                var oc_id = $(this).val();
+                //alert(oc_id);
+                $.ajax({
+
+                });
+            });*/
+
+
 
 
         });
@@ -281,6 +304,12 @@
             $('#exampleModalCenter').modal('show');
             $('#test').val(date_off); //set of date in form
         });
+
+        $('#btnSave').click(function() {
+            alert("กด Save");
+        });
+
+
 
         $('.dlt').click(function() {
             $("#adf55").remove();
