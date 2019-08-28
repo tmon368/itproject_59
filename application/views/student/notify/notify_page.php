@@ -306,7 +306,7 @@
                             
                             for (i = 0; i < data.length; i++) {
 
-                                html_code += '<option value="'+ data[i].off_ID+'">'+data[i].off_ID+'</option>';
+                                html_code += '<option value="'+ data[i].off_ID+'">'+data[i].off_desc+'</option>';
                                
                             }
                             $('#txt_off').html(html_code);        
