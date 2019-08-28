@@ -138,7 +138,8 @@
     $(document).ready(function() {
     	 showAll();
     	 selectpersonnel();
-    	 selectvehicles();
+    	 selectvehiclesmotorcycle();
+    	 selectvehiclesmotorcycar();
         //$('[data-toggle="popover"]').popover();
 
         
@@ -215,12 +216,12 @@
             	$("#expired_date").html(data[0].expired_date);
          	
             
-            },
+            }, 
             error: function() {
                 alert('ไม่มีข้อมูล');
             }
         }); 
-    } 
+    }
     function selectvehiclescar() {
         $.ajax({
             type: 'ajax',
