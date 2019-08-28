@@ -220,7 +220,7 @@
                 alert('ไม่มีข้อมูล');
             }
         }); 
-    }
+    } 
     function selectvehiclescar() {
         $.ajax({
             type: 'ajax',
