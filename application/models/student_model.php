@@ -52,14 +52,16 @@ class student_model extends CI_Model {
     
 
     function selectvehicles(){
-        //$id = $this->input->post('txtdelID');
-        //echo $person_ID;
+
          $username = $this->session->userdata('username');
-       
+         $this->db->select('*');
+         $this->db->from('vehicles v');
+         $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
          $this->db->where('S_ID', $username);
-        $query = $this->db->get('vehicles');
-       // var_dump($query->result());
+         $query = $this->db->get();
+        var_dump($query->result());
         
+       
         if($query->num_rows() > 0){
             return $query->result();
         }else{
