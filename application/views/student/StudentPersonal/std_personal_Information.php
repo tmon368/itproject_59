@@ -19,7 +19,7 @@
 </center>
 
 <head>
-    <title>...</title>
+    <title>ข้อมูลส่วนตัว</title>
 
 </head>
 
@@ -105,7 +105,7 @@
      </ol>
      <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      3.2 รถยนต์  <br>
-      <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
+      <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li> 
       <li id="regist_num2"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
       <li id="province1"> </li>&nbsp;&nbsp;
@@ -199,21 +199,43 @@
 
 
     
-    function selectvehicles() {
+    function selectvehiclesmotorcycle() {
         $.ajax({
             type: 'ajax',
-            url: '<?php echo base_url() ?>index.php/Std_info/selectvehicles',
+            url: '<?php echo base_url() ?>index.php/Std_info/selectvehiclesmotorcycle',
             async: false,
             dataType: 'json',
             success: function(data) {
-
+     
             	$("#regist_num1").html(data[0].regist_num);
             	$("#province").html(data[0].province);
             	$("#brand").html(data[0].brand);
             	$("#color").html(data[0].color);
             	$("#regist_date").html(data[0].regist_date);
             	$("#expired_date").html(data[0].expired_date);
-            	
+         	
+            
+            },
+            error: function() {
+                alert('ไม่มีข้อมูล');
+            }
+        }); 
+    }
+    function selectvehiclescar() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/Std_info/selectvehiclescar',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+     
+          
+            	$("#regist_num2").html(data[0].regist_num);
+            	$("#province1").html(data[0].province);
+            	$("#brand1").html(data[0].brand);
+            	$("#color1").html(data[0].color);
+            	$("#regist_date1").html(data[0].regist_date);
+            	$("#expired_date1").html(data[0].expired_date);
 
             },
             error: function() {
@@ -221,6 +243,5 @@
             }
         }); 
     }
-
     });
 </script>
