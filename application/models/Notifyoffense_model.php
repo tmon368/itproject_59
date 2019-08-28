@@ -187,7 +187,7 @@ class Notifyoffense_model extends CI_Model {
     }
     
    
-    function selectplacet()
+    function selectplace()
 	{
 	    $this->db->order_by('place_ID','ASC');
 	    $query = $this->db->get('place');
