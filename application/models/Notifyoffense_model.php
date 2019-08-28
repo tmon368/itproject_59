@@ -186,11 +186,11 @@ class Notifyoffense_model extends CI_Model {
        
     }
     
-   /* 
-    function selectstudent()
+   
+    function selectplacet()
 	{
-	    $this->db->order_by('S_ID','ASC');
-	    $query = $this->db->get('student');
+	    $this->db->order_by('place_ID','ASC');
+	    $query = $this->db->get('place');
 	    
 	    if ($query->num_rows() > 0) {
 	        return $query->result();
@@ -198,7 +198,7 @@ class Notifyoffense_model extends CI_Model {
 	        return false;
 	    }
     }
-    */
+    
     
     
     
