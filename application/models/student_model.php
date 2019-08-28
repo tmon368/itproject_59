@@ -51,15 +51,17 @@ class student_model extends CI_Model {
     }
     
 
-    function selectvehicles(){
-
+    function selectvehiclescar(){
+        $car ="รถยนต์";
          $username = $this->session->userdata('username');
          $this->db->select('*');
          $this->db->from('vehicles v');
          $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
+         //$this->db->where('vetype_name','รถยนต์ ');
          $this->db->where('S_ID', $username);
+         $this->db->where('vetype_name', $car);
          $query = $this->db->get();
-        var_dump($query->result());
+       // var_dump($query->result());
         
        
         if($query->num_rows() > 0){
@@ -68,6 +70,28 @@ class student_model extends CI_Model {
             return false;
         }
        
+    }
+    
+    
+    function selectvehiclesmotorcycle(){
+        $motorcycle = "รถจักรยานยนต์";
+        $username = $this->session->userdata('username');
+        $this->db->select('*');
+        $this->db->from('vehicles v');
+        $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
+        //$this->db->where('vetype_name','รถยนต์ ');
+        $this->db->where('S_ID', $username);
+        $this->db->where('vetype_name', $motorcycle);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        
+        
+         if($query->num_rows() > 0){
+         return $query->result();
+         }else{
+         return false;
+         }
+        
     }
     
     

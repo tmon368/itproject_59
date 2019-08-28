@@ -43,11 +43,18 @@ class Std_info extends CI_Controller {
         echo json_encode($results);
     }
     
-    function selectvehicles(){
+    function selectvehiclescar(){
       //  $username = $this->session->userdata('username');
         
-        $result = $this->model->selectvehicles();
+        $result = $this->model->selectvehiclescar();
         echo json_encode($result);
+    }
+    
+    function selectvehiclesmotorcycle(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->model->selectvehiclesmotorcycle();
+         echo json_encode($result);
     }
     
 }
