@@ -216,13 +216,14 @@ class Notifyoffense_model extends CI_Model {
 
 // select หมวดและฐานความผิด
     function selectOffenseoffevidence(){
-        $oc_ID = $this->input->post('oc_ID');
+        $oc_ID = $this->input->get('oc_ID');
         //$oc_ID = 8;
-        $this->db->select('*');
-        $this->db->from('offensecate o');
-        $this->db->join('Offense oc', 'o.oc_ID=oc.oc_ID');
-       // $this->db->where('oc_ID',$oc_ID);
-        $query = $this->db->get();
+        //$this->db->select('*');
+        //$this->db->from('offensecate o');
+        //$this->db->join('Offense oc', 'o.oc_ID=oc.oc_ID');
+        //$this->db->where('oc_ID',$oc_ID);
+        
+        $query = $this->db->query('SELECT * FROM offensecate,offense  WHERE offensecate.oc_ID = '.$oc_ID.' AND offensecate.oc_ID=offense.oc_ID');
         //var_dump($query->result());
   
         if($query->num_rows() > 0){
