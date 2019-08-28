@@ -30,12 +30,12 @@
     </style>
 
     <script>
-        var off_per =1;
-            function click_btnre(id){
-                //alert("yyy"+id);
-                $('#student'+id).html('');
-            }
-        
+        var off_per = 1;
+
+        function click_btnre(id) {
+            //alert("yyy"+id);
+            $('#student' + id).html('');
+        }
     </script>
 
 
@@ -108,7 +108,7 @@
                                             <div class="form-inline">
                                                 <span><i class="far fa-building"></i></span>
                                                 <label for="">สถานที่:</label>
-                                                <input type="text" name="add_place" id="add_place" class="form-control style_input" autocomplete="off" placeholder="ค้นหาสถานที่">
+                                                <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาสถานที่">
 
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                             <label for="">ฐานความผิด:</label>
                                             <select name="txt_off" id="txt_off" class="form-control">
                                                 <option value="">เลือกฐานความผิด</option>
-                                                
+
                                             </select>
 
 
@@ -232,24 +232,114 @@
     <script>
         $(document).ready(function() {
 
-            sct_show();
+            //sct_show();
+
+            load_json_data('txt_oc');
 
             $('#add').click(function() {
-                
-                html = '<div id="student'+off_per+'"><div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
+
+                html = '<div id="student' + off_per + '"><div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
                     ' <div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>' +
                     '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
                     '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
-                    '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre('+off_per+')">X</button></div></div></div>'
+                    '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button></div></div></div>'
 
-                    off_per++;
+                off_per++;
                 $('.add_person').append(html);
             });
 
-            
 
 
-            
+
+
+            function load_json_data(id, parent_id) {
+                var html_code = '';
+
+                $.getJSON('<?php echo site_url('Notifyoffense/selectoffensecate') ?>', function(data) {
+
+                    //alert(data[0].oc_ID + data[0].oc_desc);
+
+                    html_code += '<option value="">Select ' + id + '</option>';
+                    $.each(data, function(key, value) {
+
+
+                        html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
+                        /*
+                        if (id == 'txt_oc') {
+                            //alert(value.oc_ID);
+                            if (value.parent_id == '0') {
+                                html_code += '<option value="' + value.id + '">' + value.name + '</option>';
+                            }
+                    } else {
+                            if (value.parent_id == parent_id) {
+                                html_code += '<option value="' + value.id + '">' + value.name + '</option>';
+                            }
+                        }*/
+
+
+
+                    });
+                    $('#' + id).html(html_code);
+                });
+
+            }
+
+
+            $('#txt_oc').on('change', function() {
+                //alert("mmmm");
+                var html_code = '';
+                var ocID = $(this).val();
+                //alert(oc_ID);
+
+                if (ocID) {
+                    
+                    //alert("mmmm");
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
+                        data: 'oc_ID='+ocID,
+                        dataType: 'json',
+                        success: function(data) {
+
+                            //alert(data[1].off_ID);
+                            
+                            for (i = 0; i < data.length; i++) {
+
+                                html_code += '<option value="'+ data[i].off_ID+'">'+data[i].off_ID+'</option>';
+                               
+                            }
+                            $('#txt_off').html(html_code);        
+
+                        }
+
+                    });
+
+
+
+
+                }
+                /* else {
+                                    $('#state').html('<option value="">Select country first</option>');
+                                    $('#city').html('<option value="">Select state first</option>');*/
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*
             function sct_show() {
                 $.ajax({
                     type: 'ajax',
@@ -268,30 +358,32 @@
                 });
             }
 
-            $('#txt_oc').change(function(){
-                //alert("xxx");
-                var oc_ID = $(this).val();
-                $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
-                    data: oc_ID,
-                    dataType: 'json',
-                    success: function(data) {
-                        
-                        for (i = 0; i < data.length; i++) {
-                            //alert(data[i].oc_ID+":"+data[i].oc_desc+"");
-                            $('#txt_off').append('<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>');
-                            //alert(data[j].off_ID+data[j].off_desc);
-                            
-                        }
+            /*
+                        $('#txt_oc').ready(function(){
+                            //alert("xxx");
+                            var oc_ID = $(this).val();
 
-                    }
-                });
-                //$('#txt_off').append('<option value="1">xxx</option>');
-                //alert(oc_id);
-     
-            });
-           
+                            
+                            $.ajax({
+                                type: 'ajax',
+                                url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
+                                data: oc_ID,
+                                dataType: 'json',
+                                success: function(data) {
+                                    
+                                    for (i = 0; i < data.length; i++) {
+                                        //alert(data[i].oc_ID+":"+data[i].oc_desc+"");
+                                        $('#txt_off').append('<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>');
+                                        //alert(data[j].off_ID+data[j].off_desc);
+                                        
+                                    }
+
+                                }
+                            });
+                            //$('#txt_off').append('<option value="1">xxx</option>');
+                            //alert(oc_id);
+                        });*/
+
 
         });
 
@@ -299,6 +391,7 @@
         $('#add_place').typeahead({
 
             //source: ["นายศุภกฤต", "C++"]
+
             source: function(query, result) {
                 $.ajax({
                     url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
@@ -318,6 +411,10 @@
 
 
         });
+
+
+
+
 
         $('#btnAdd').click(function() {
             var date = new Date();

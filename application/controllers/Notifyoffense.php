@@ -145,10 +145,9 @@ class Notifyoffense extends CI_Controller {
 	function selectOffenseoffevidence(){
 	   
 	    
-	    $result = $this->model->selectOffenseoffevidence();
-		
-		
-	    echo json_encode($result);
+		$result = $this->model->selectOffenseoffevidence();
+		//print_r($result);
+		echo json_encode($result);
 	}
 }
 
