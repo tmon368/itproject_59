@@ -1,5 +1,6 @@
 <body>
   <div class="container-scroller">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -140,7 +141,7 @@
             </div>
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false" onclick="test()">
+            <a class="nav-link" id="logoutsession" href="#"  data-toggle="dropdown" aria-expanded="false" >
               <i class="fas fa-sign-out-alt"></i>
             
             </a>
@@ -156,13 +157,18 @@
     <!-- partial -->
     <script>
 
-/*
-      $('#UserDropdown').click(function{
-        alert("XXXX");
-      });*/
-                
+      $('#logoutsession').on('click', '.fa-sign-out-alt', function() {
+    	  $(location).attr('href','<?php echo base_url() ?>index.php/Loginuser');
+    	 
+      });
+
+
+      
+                /*
                 function test(){
-                  alert("XXXX");
-                }
+                  //alert("XXXX");
+                  $(location).attr('href','<?php echo base_url() ?>index.php/Loginuser');
+               
+                }*/
               
     </script>
