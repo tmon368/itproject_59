@@ -140,8 +140,9 @@
             </div>
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false" onclick="test()">
               <i class="fas fa-sign-out-alt"></i>
+            
             </a>
           </li>
           
@@ -153,3 +154,15 @@
     </nav>
     <!--2-->
     <!-- partial -->
+    <script>
+
+/*
+      $('#UserDropdown').click(function{
+        alert("XXXX");
+      });*/
+                
+                function test(){
+                  alert("XXXX");
+                }
+              
+    </script>
