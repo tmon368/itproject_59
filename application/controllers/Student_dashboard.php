@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Student_dashboard extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('student_model', 'model');
+		$this->load->model('student_dashboard_model', 'model');
 	}
 	
 	
@@ -43,6 +43,22 @@ class Student_dashboard extends CI_Controller {
 	    
 	    
 	    
+	}
+	
+	
+	
+	function selectstudentfirstpage(){
+	    //  $username = $this->session->userdata('username');
+	    
+	    $result = $this->model->selectstudentfirstpage();
+	   // echo json_encode($result);
+	}
+	
+	function selectdetailfirstpage(){
+	    //  $username = $this->session->userdata('username');
+	    
+	    $result = $this->model->selectdetailfirstpage();
+	    echo json_encode($result);
 	}
 	/*
 	function selectstudent(){

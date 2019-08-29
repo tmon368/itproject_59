@@ -43,12 +43,8 @@ class Std_info extends CI_Controller {
         
     }
     
-    function selectfirstpage(){
-        //  $username = $this->session->userdata('username');
-        
-        $result = $this->model->selectfirstpage();
-        echo json_encode($result);
-    }
+    
+   
        
     
     
