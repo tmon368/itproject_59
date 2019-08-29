@@ -8,6 +8,28 @@ class student_model extends CI_Model {
     }
     
     
+    
+    
+    public function selectfirstpage(){
+        $username = $this->session->userdata('username');
+        $this->db->select('*');
+        $this->db->from('offensehead oh');
+        $this->db->join('offense o', 'oh.off_ID=o.off_ID');
+        
+        
+        $this->db->where('S_ID',$username);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        
+     
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    
+    
       
     
     function selectstudent(){
