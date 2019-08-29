@@ -6,8 +6,25 @@ class Student_dashboard extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('student_model', 'model');
 	}
+	
+	
+	
+	
 	public function index()
 	{
+	    
+	    $username = $this->session->userdata('username');
+	    //echo $username;
+	    // die();
+	    $this->session->mark_as_temp('username',5);
+	    if($username == ""){
+	        
+	        redirect(base_url() . 'index.php/Loginuser');
+	        //redirect(base_url() .'index.php/Loginuser');
+	        
+	        
+	        
+	    }
 	    //$username = $this->session->userdata('username');
 	    //$this->selectstudent();
 		//List ข้อมูลมาแสดงในหน้าจอ

@@ -7,13 +7,27 @@ class Notifyoffense extends CI_Controller {
 		$this->load->model('Notifyoffense_model', 'model');
 	}
 	
-	
+	public function logoutsession(){
+	    
+	    $username = $this->session->userdata('username');
+	    //echo $username;
+	    // die();
+	    $this->session->mark_as_temp('username',5);
+	    if($username == ""){
+	        
+	        redirect(base_url() . 'index.php/Loginuser');
+	        //redirect(base_url() .'index.php/Loginuser');
+	        
+	        
+	        
+	    }
+	}
 
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->template();
-
+	    $this->logoutsession();
 	}
 	
 	

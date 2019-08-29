@@ -72,10 +72,15 @@ class student_model extends CI_Model {
         
     }
     
+    
+    //$this->session->mark_as_temp('username',10);
 
     function selectvehiclescar(){
         $car ="รถยนต์";
          $username = $this->session->userdata('username');
+        
+         //echo $username;
+
          $this->db->select('*');
          $this->db->from('vehicles v');
          $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
