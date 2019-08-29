@@ -5,6 +5,7 @@ class Admin_dashboard extends CI_Controller {
 
 	public function index()
 	{
+	    $this->logoutsession();
 		//List ข้อมูลมาแสดงในหน้าจอ
 		$this->load->view('template/template1');
 		$this->load->view('template/template2');
@@ -13,6 +14,22 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 
+	}
+	
+	public function logoutsession(){
+	    
+	    $username = $this->session->userdata('username');
+	    //echo $username;
+	    // die();
+	    $this->session->mark_as_temp('username',600);
+	    if($username == ""){
+	        
+	        redirect(base_url() . 'index.php/Loginuser');
+	        //redirect(base_url() .'index.php/Loginuser');
+	        
+	        
+	        
+	    }
 	}
 
 	public function new()
