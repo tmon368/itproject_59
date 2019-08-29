@@ -65,18 +65,7 @@ class Std_info extends CI_Controller {
     }
     
     function selectvehiclescar(){
-        $username = $this->session->userdata('username');
-       // echo $username;
-       // die();
-        $this->session->mark_as_temp('username',5);
-        if($username == ""){
-            
-            redirect(base_url() . 'index.php/Loginuser');
-            //redirect(base_url() .'index.php/Loginuser');
-            
-            
-            
-        }
+       
         $result = $this->model->selectvehiclescar();
         echo json_encode($result);
     }
