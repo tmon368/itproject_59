@@ -12,7 +12,7 @@ class Notifyoffense extends CI_Controller {
 	    $username = $this->session->userdata('username');
 	    //echo $username;
 	    // die();
-	    $this->session->mark_as_temp('username',5);
+	    $this->session->mark_as_temp('username',600);
 	    if($username == ""){
 	        
 	        redirect(base_url() . 'index.php/Loginuser');
