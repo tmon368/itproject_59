@@ -172,7 +172,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" name="dormeditID"  class="form-control"  maxlength="2"  required>
+                    <input type="text" name="dormeditID"  disabled="disabled"class="form-control"  maxlength="2"  required>
 			
 			
 				</div></div></div>
