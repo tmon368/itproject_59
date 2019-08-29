@@ -139,7 +139,7 @@
     	 showAll();
     	 selectpersonnel();
     	 selectvehiclesmotorcycle();
-    	 selectvehiclesmotorcycar();
+    	 selectvehiclescar();
         //$('[data-toggle="popover"]').popover();
 
         
@@ -207,6 +207,17 @@
             async: false,
             dataType: 'json',
             success: function(data) {
+            	if(data == false){
+            		$("#regist_num1").html('-');
+                	$("#province").html('-');
+                	$("#brand").html('-');
+                	$("#color").html('-');
+                	$("#regist_date").html('-');
+                	$("#expired_date").html('-');
+
+            	}else{
+                	
+                
      
             	$("#regist_num1").html(data[0].regist_num);
             	$("#province").html(data[0].province);
@@ -214,10 +225,11 @@
             	$("#color").html(data[0].color);
             	$("#regist_date").html(data[0].regist_date);
             	$("#expired_date").html(data[0].expired_date);
-         	
+            	}
             
             }, 
             error: function() {
+            	
                 alert('ไม่มีข้อมูล');
             }
         }); 
@@ -229,7 +241,17 @@
             async: false,
             dataType: 'json',
             success: function(data) {
-     
+     			if(data == false){
+     				$("#regist_num2").html('-');
+                	$("#province1").html('-');
+                	$("#brand1").html('-');
+                	$("#color1").html('-');
+                	$("#regist_date1").html('-');
+                	$("#expired_date1").html('-');
+
+
+
+     			}else{
           
             	$("#regist_num2").html(data[0].regist_num);
             	$("#province1").html(data[0].province);
@@ -237,6 +259,8 @@
             	$("#color1").html(data[0].color);
             	$("#regist_date1").html(data[0].regist_date);
             	$("#expired_date1").html(data[0].expired_date);
+     			}
+            	
 
             },
             error: function() {
