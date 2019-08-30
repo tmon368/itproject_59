@@ -24,12 +24,26 @@
 </head>
 
 <body>
+
+<style type="text/css">
+
+   p.pro{
+        font-size: 20px;
+        font-family: Prompt;
+    }
+     p.pro2{
+        font-size: 18px;
+        font-family: Prompt;
+    }
+ 
+</style>
+
     <meta charset="UTF-8">
     <div class="page-breadcrumb" id="nav_sty">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">ข้อมูลส่วนตัว</a></li>
-                <!--  <li class="breadcrumb-item active" aria-current="page">ประเภทหอพัก</li> -->
+               <p class="breadcrumb-item"> ข้อมูลส่วนตัว  </p>
+             <!--  <li class="breadcrumb-item">  --> 
             </ol>  
         </nav>
     </div>
@@ -38,18 +52,18 @@
             <div class="card-header" id="card_2">
                 <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
             </div><br>
-<div class="breadcrumb" id="t1">1.นักศึกษา</div>
+		<div class="breadcrumb"><p class="pro">1.นักศึกษา</p></div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <li class="breadcrumb-item">รหัสนักศึกษา :&nbsp;</a></li>
+    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <li class="breadcrumb-item">รหัสนักศึกษา : &nbsp;</li>
       <li id="S_ID"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">ชื่อ :&nbsp;</a></li>
       <li id="std_fname"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">สกุล :&nbsp;</a></li>
       <li id="std_lname"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">หลักสูตร :&nbsp;</a></li>
-      <li id="cur_name"> </li>&nbsp;&nbsp;    
+      <li id="cur_name"> </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <li class="breadcrumb-item">สำนักวิชา :&nbsp;</a></li>
       <li id="dept_name"> </li>&nbsp;&nbsp;</br>
       <li class="breadcrumb-item">หมายเลขโทรศัพท์ :&nbsp;</a></li>
@@ -60,10 +74,10 @@
       <li id="dname"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">ประเภทหอพัก :&nbsp;</a></li>
       <li id="type_name"> </li>&nbsp;&nbsp;
-    </ol>
+    </p></ol>
   </nav>
 </div>
-<div class="breadcrumb" id="t1">2.อาจารย์ที่ปรึกษา</div>
+<div class="breadcrumb"><p class="pro">2.อาจารย์ที่ปรึกษา</p></div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -84,12 +98,11 @@
     </ol>
   </nav>
 </div>
-<div class="breadcrumb" id="t1">3.ยานพาหนะ</div>
+<div class="breadcrumb"><p class="pro">3.ยานพาหนะ</p></div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    
-    3.1 รถจักรยานยนต์    <br>
+  <div class="breadcrumb">3.1 รถจักรยานยนต์</div>
+    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
       <li id="regist_num1"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
@@ -103,8 +116,9 @@
       <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
       <li id="expired_date"> </li>&nbsp;&nbsp;
      </ol>
+     
+     <div class="breadcrumb">3.2 รถยนต์</div>
      <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     3.2 รถยนต์  <br>
       <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li> 
       <li id="regist_num2"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
