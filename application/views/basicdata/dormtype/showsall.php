@@ -154,7 +154,7 @@
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
                                             
-										<select name="txteditID"class="form-control"  required >
+										<select name="txteditID" disabled="disabled"class="form-control"  required >
 											<option value ="F"> F </option>
 											<option value ="M"> M </option>
 											

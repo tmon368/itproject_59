@@ -1,8 +1,13 @@
 <!doctype html>
 <html lang="en">
+<link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+
+
+
+
 
 <head>
 
@@ -32,9 +37,38 @@
     <script>
         var off_per = 1;
 
+        function student_change(id) {
+            $(".loader").show();
+            $('#std_2').typeahead({
+
+                source: ["นายศุภกฤต", "C++"]
+                //onkeypress="student_change(this)"
+            });
+
+            /*
+            $("#std_name").val("ศุภกฤต");
+            $("#std_lname").val("วงค์ปัญญา");
+            $("#dept_name").val("สำนักวิชาสารสนเทศศาสตร์");
+            $("#cur_name").val("สาขาเทคโนโลยีสารสนเทศ");
+            $("#regis_num").val("รมร25");
+            $("#province_bic").val("กรุงเทพมหานคร");
+            $("#regis_car").val("-");
+            $("#provin_car").val("-");
+            */
+            //alert (id.value);
+
+
+        }
+
+        function test() {
+            alert("XXX");
+        }
+
         function click_btnre(id) {
             //alert("yyy"+id);
+
             $('#student' + id).html('');
+
         }
     </script>
 
@@ -54,6 +88,8 @@
                 </ol>
             </nav>
         </div>
+
+        <!--<input type="text" name="" id="test223">-->
 
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
@@ -237,18 +273,51 @@
             load_json_data('txt_oc');
 
             $('#add').click(function() {
-
-                html = '<div id="student' + off_per + '"><div class="row"><div class="col-sm-4 tt"> <label for="">รหัสนักศึกษา:</label> <input type="text" name="" id=""></div> <div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id=""> </div> <div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id=""></div></div>' +
-                    ' <div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id=""></div></div>' +
-                    '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
-                    '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id=""></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id=""></div></div>' +
-                    '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button></div></div></div>'
+                html = '<div id="student' + off_per + '"><div class="row"><div class="col-sm-6"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="" id="std_id"></div>  <div class="col-sm-6"> <a href="javascript:;" id="Seachdata"><span class="badge badge-success">ค้นหา</span></a> </div>  </div> ' +
+                    '<div class="row"><div class="col-sm-6">  <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" disabled> </div> <div class="col-sm-6"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" disabled> </div></div> ' +
+                    ' <div class="row"><div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name" disabled></div> <div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name" disabled></div></div>' +
+                    '<div class="row"><div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num" disabled></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic" disabled></div></div>' +
+                    '<div class="row"><div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car" disabled></div> <div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car" disabled></div></div>' +
+                    '<div class="row"><div class="col-sm-12" style="text-align: right;"> <button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button></div></div></div> </div>'
 
                 off_per++;
                 $('.add_person').append(html);
+
+                $('#Seachdata').click(function(){
+                    //var idtest = $(this).val();
+                    var idstd = $('#std_id').val();
+                    alert("กำลังค้นหา");
+
+                    if (idstd == "59120808"){
+
+                        //alert("i see");
+                        $('#std_name').val("ศุภกฤต");
+                        $('#std_lname').val("วงค์ปัญญา");
+                        $('#dept_name').val("สำนักวิชาสารสนเทศศาสตร");
+                        $('#cur_name').val("หลักสูตรเทคโนโลยีสารสนเทศ");
+                        $('#regis_num').val("รมท774");
+                        $('#province_bic').val("กาญจนบุรี");
+                        $('#regis_car').val("สส999");
+                        $('#provin_car').val("กรุงเทพมหานคร");
+
+
+
+                    }
+                    else{
+                        alert("Not see");
+                    }
+                    //alert(idstd);
+
+                });
+
+                /*$('#std_2').typeahead({
+
+                    source: ["นายศุภกฤต", "C++"]
+                    //onkeypress="student_change(this)"
+                });*/
+
+
             });
-
-
 
 
 
@@ -259,7 +328,7 @@
 
                     //alert(data[0].oc_ID + data[0].oc_desc);
 
-                    html_code += '<option value="">Select ' + id + '</option>';
+                    html_code += '<option value=""> เลือกหมวดความผิด </option>';
                     $.each(data, function(key, value) {
 
 
@@ -292,24 +361,24 @@
                 //alert(oc_ID);
 
                 if (ocID) {
-                    
+
                     //alert("mmmm");
 
                     $.ajax({
                         type: 'GET',
                         url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
-                        data: 'oc_ID='+ocID,
+                        data: 'oc_ID=' + ocID,
                         dataType: 'json',
                         success: function(data) {
 
                             //alert(data[1].off_ID);
-                            
+
                             for (i = 0; i < data.length; i++) {
 
-                                html_code += '<option value="'+ data[i].off_ID+'">'+data[i].off_desc+'</option>';
-                               
+                                html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
+
                             }
-                            $('#txt_off').html(html_code);        
+                            $('#txt_off').html(html_code);
 
                         }
 
@@ -339,58 +408,18 @@
 
 
 
-            /*
-            function sct_show() {
-                $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo site_url("Notifyoffense/selectoffensecate") ?>',
-                    dataType: 'json',
-                    success: function(data) {
-                        //alert(data[0].oc_ID);
 
-                        for (i = 0; i < data.length; i++) {
-                            //alert(data[i].oc_ID+":"+data[i].oc_desc+""+data[i].id);
-                            $('#txt_oc').append('<option value="' + data[i].oc_ID + '">' + data[i].oc_desc + '</option>');
 
-                        }
-
-                    }
-                });
-            }
-
-            /*
-                        $('#txt_oc').ready(function(){
-                            //alert("xxx");
-                            var oc_ID = $(this).val();
-
-                            
-                            $.ajax({
-                                type: 'ajax',
-                                url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
-                                data: oc_ID,
-                                dataType: 'json',
-                                success: function(data) {
-                                    
-                                    for (i = 0; i < data.length; i++) {
-                                        //alert(data[i].oc_ID+":"+data[i].oc_desc+"");
-                                        $('#txt_off').append('<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>');
-                                        //alert(data[j].off_ID+data[j].off_desc);
-                                        
-                                    }
-
-                                }
-                            });
-                            //$('#txt_off').append('<option value="1">xxx</option>');
-                            //alert(oc_id);
-                        });*/
 
 
         });
 
 
+
         $('#add_place').typeahead({
 
             //source: ["นายศุภกฤต", "C++"]
+            //onkeypress="student_change(this)"
 
             source: function(query, result) {
                 $.ajax({
@@ -414,8 +443,6 @@
 
 
 
-
-
         $('#btnAdd').click(function() {
             var date = new Date();
             date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
@@ -425,12 +452,6 @@
 
         $('#btnSave').click(function() {
             alert("กด Save");
-        });
-
-
-
-        $('.dlt').click(function() {
-            $("#adf55").remove();
         });
     </script>
 

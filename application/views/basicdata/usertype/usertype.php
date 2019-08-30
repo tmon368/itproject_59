@@ -150,7 +150,7 @@
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                                <input type="text" name="typeeditID" class="form-control" maxlength="2"
+                                                <input type="text" name="typeeditID" disabled="disabled" class="form-control" maxlength="2"
                                                    onkeyup="count_down_editid(this);" required>
                                             </div>
                                         </div>
