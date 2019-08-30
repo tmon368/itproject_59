@@ -158,7 +158,7 @@
     <script>
 
       $('#logoutsession').on('click', '.fa-sign-out-alt', function() {
-    	  $(location).attr('href','<?php echo base_url() ?>index.php/Loginuser');
+    	  $(location).attr('href','<?php echo base_url() ?>index.php/Loginuser/logout');
     	 
       });
 
