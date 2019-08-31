@@ -75,8 +75,7 @@
      			</div>   
 
      			<div class="col-sm-6">
-     			สกุล :  <span id="std_lname"></span>
-     	
+     			สกุล :  <span id="std_lname"></span>	
      			</div>
      		
      		</div>  
