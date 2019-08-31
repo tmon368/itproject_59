@@ -29,4 +29,10 @@ class VolunteerAc extends Student_dashboard {
         
     }
     
+
+    public function showAll(){
+		$result = $this->VolunteerAc_model->showAll();
+		echo json_encode($result);
+	}
+	
 }

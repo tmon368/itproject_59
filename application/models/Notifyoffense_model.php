@@ -169,22 +169,6 @@ class Notifyoffense_model extends CI_Model {
         }
     }
 
-    function selectvehicles(){
-        //$id = $this->input->post('txtdelID');
-        //echo $person_ID;
-         $username = $this->session->userdata('username');
-       
-         $this->db->where('S_ID', $username);
-        $query = $this->db->get('vehicles');
-       // var_dump($query->result());
-        
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-       
-    }
     
    
     function selectplace()
@@ -201,18 +185,7 @@ class Notifyoffense_model extends CI_Model {
     
     
     
-    
-    function selectoffevidence()
-	{
-	    $this->db->order_by('offeviden_ID','ASC');
-	    $query = $this->db->get('offevidence');
-	    
-	    if ($query->num_rows() > 0) {
-	        return $query->result();
-	    } else {
-	        return false;
-	    }
-    }
+
 
 // select หมวดและฐานความผิด
     function selectOffenseoffevidence(){
@@ -233,33 +206,26 @@ class Notifyoffense_model extends CI_Model {
         }
     }
 
-    function selectoffensecate()
-	{
-	    $this->db->order_by('oc_ID','ASC');
-	    $query = $this->db->get('offensecate');
-	    
-	    if ($query->num_rows() > 0) {
-	        return $query->result();
-	    } else {
-	        return false;
-	    }
-    }
+ 
      
     function selectstudent(){
        // $username = $this->session->userdata('username');
         $username= $this->input->post('S_ID');
+        //$username = 59123456;
         $this->db->select('*');
-        $this->db->from('vehicles v');
+        $this->db->from('vehiclestype vt');
+        $this->db->join('vehicles v', 'vt.vetype_ID=v.vetype_ID');
         $this->db->join('student s', 'v.S_ID=s.S_ID');
         $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
         $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+        
         // $this->db->join('personnel p', 's.person_ID=p.person_ID');
         
        
          $this->db->where('v.S_ID',$username);
     
         $query = $this->db->get();
-            //var_dump($query->result());
+           // var_dump($query->result());
   
         if($query->num_rows() > 0){
             return $query->result();
@@ -268,42 +234,51 @@ class Notifyoffense_model extends CI_Model {
         }
     }
 
-/*
-    function can_login($username, $password)
-    {
-        
-        $this->db->select('*');
-        $this->db->from('place');
-        $query1 = $this->db->get()->result();
-        
-        
-        $this->db->select('*');
-        $this->db->from('Offense');
-        $query2 = $this->db->get()->result();
-        
-        $this->db->select('*');
-        $this->db->from('offensecate');
-        $query3 = $this->db->get()->result();
-        
-        $this->db->select('*');
-        $this->db->from('vehicles');
-        $query4 = $this->db->get()->result();
-        
-        $this->db->select('*');
-        $this->db->from('student');
-        $query5 = $this->db->get()->result();
-        
-        $this->db->select('*');
-        $this->db->from('offevidence');
-        $query6 = $this->db->get()->result();
-        
-        
-        $queryall = $this->db->query($query1 . ' UNION ALL ' . $query2 . ' UNION ALL ' . $query3 . ' UNION ALL ' . $query4 . ' UNION ALL ' . $query5 . ' UNION ALL' . $query6);
 
-     }
-   
-    
-    */
+    function selectvehiclescar(){
+        $car ="รถยนต์";
+         $student = $this->session->userdata('student');
         
+         //echo $student;
+
+         $this->db->select('*');
+         $this->db->from('vehicles v');
+         $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
+         //$this->db->where('vetype_name','รถยนต์ ');
+         $this->db->where('S_ID', $student);
+         $this->db->where('vetype_name', $car);
+         $query = $this->db->get();
+       // var_dump($query->result());
+        
+       
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+       
+    }
+    
+    
+    function selectvehiclesmotorcycle(){
+        $motorcycle = "รถจักรยานยนต์";
+        $student = $this->session->userdata('student');
+        $this->db->select('*');
+        $this->db->from('vehicles v');
+        $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
+        //$this->db->where('vetype_name','รถยนต์ ');
+        $this->db->where('S_ID', $student);
+        $this->db->where('vetype_name', $motorcycle);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        
+        
+         if($query->num_rows() > 0){
+         return $query->result();
+         }else{
+         return false;
+         }
+        
+    }
     
 }

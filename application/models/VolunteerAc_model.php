@@ -8,14 +8,28 @@ class VolunteerAc_model extends CI_Model {
     }
     
     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
-    public function showAll(){
-        $this->db->order_by('service_ID', 'ASC');
-        $query = $this->db->get('Service');
+ 
+    function showAll(){
+      
+         
+        //$service_ID= $this->input->post('txtdelID');
+        $username=59111111;
+        //echo $person_ID;
+        // $username = $this->session->userdata('username');
+        $this->db->select('*');
+        $this->db->from('student s');
+        $this->db->join('service sv', 's.S_ID=sv.S_ID');
+        $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
+        $this->db->where('s.S_ID', $username);
+        $query = $this->db->get();
+        var_dump($query->result());
+        /*
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
-        }
+        }*/
+        
     }
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
     public function checkkey(){

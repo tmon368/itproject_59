@@ -153,12 +153,8 @@
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                            
-										<select name="txteditID" readonly class="form-control"  required >
-											<option value ="F"> F </option>
-											<option value ="M"> M </option>
-											
-										</select>
+                                            <input type="text" readonly name="txteditID"  class="form-control"  maxlength="1" onkeyup="count_down_editid(this);" required>
+									
                                                 
                                             </div>
                                         </div>
