@@ -100,7 +100,8 @@ class Loginuser extends CI_Controller
     }
     function logout()
     {
-        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('admin');
+        $this->session->unset_userdata('student');
         redirect(base_url() . 'index.php/loginuser/login');
     }
     
