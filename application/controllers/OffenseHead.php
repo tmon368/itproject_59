@@ -15,6 +15,7 @@ class OffenseHead extends Std_info {
         
     }
     
+    
     public function template(){
         $this->load->view('template/template1');
         $this->load->view('template/template2');
