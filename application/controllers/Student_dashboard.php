@@ -13,7 +13,7 @@ class Student_dashboard extends CI_Controller {
 	    $student = $this->session->userdata('student');
 	    //echo $username;
 	    // die();
-	    $this->session->mark_as_temp('student',5);
+	    $this->session->mark_as_temp('student',1800);
 	    if($student == ""){
 	        
 	        redirect(base_url() . 'index.php/Loginuser');
