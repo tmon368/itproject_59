@@ -424,7 +424,7 @@
                             //alert('id นี้ถูกใช้งานแล้ว');
                             $('#edit_file').modal('hide');
                             $('#formupdate')[0].reset();
-                            $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                            $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
                             showAll();
                         }
                     });
