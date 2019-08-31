@@ -1,7 +1,8 @@
 <?php
+require_once('Std_info.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class VolunteerAc extends CI_Controller {
+class VolunteerAc extends Std_info {
     function __construct(){
         parent:: __construct();
         $this->load->model('VolunteerAc_model', 'model');
@@ -9,6 +10,7 @@ class VolunteerAc extends CI_Controller {
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
+        $this->logoutsession();
         $this->template();
         
     }
