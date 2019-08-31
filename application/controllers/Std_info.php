@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Std_info extends Student_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('student_model', 'model');
+        $this->load->model('student_model', 'student_model');
     }
     
    
@@ -36,31 +36,31 @@ class Std_info extends Student_dashboard {
     
     
     function selectstudent(){
-        $result =  $this->model->selectstudent();
+        $result =  $this->student_model->selectstudent();
         echo json_encode($result);
     }
     
     function selectpersonnel(){
-        $result =  $this->model->selectstudent();
+        $result =  $this->student_model->selectstudent();
         foreach ($result as $row){
             $person_ID = $row->person_ID;
  
         }
         
-        $results =  $this->model->selectpersonnel($person_ID);
+        $results =  $this->student_model->selectpersonnel($person_ID);
         echo json_encode($results);
     }
     
     function selectvehiclescar(){
        
-        $result = $this->model->selectvehiclescar();
+        $result = $this->student_model->selectvehiclescar();
         echo json_encode($result);
     }
     
     function selectvehiclesmotorcycle(){
         //  $username = $this->session->userdata('username');
         
-        $result = $this->model->selectvehiclesmotorcycle();
+        $result = $this->student_model->selectvehiclesmotorcycle();
          echo json_encode($result);
     }
     
