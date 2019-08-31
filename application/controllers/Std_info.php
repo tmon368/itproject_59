@@ -9,11 +9,11 @@ class Std_info extends CI_Controller {
     
     public function logoutsession(){
 
-        $username = $this->session->userdata('username');
+        $student = $this->session->userdata('student');
         //echo $username;
         // die();
-        $this->session->mark_as_temp('username',600);
-        if($username == ""){
+        $this->session->mark_as_temp('student',5);
+        if($student == ""){
             
             redirect(base_url() . 'index.php/Loginuser');
             //redirect(base_url() .'index.php/Loginuser');

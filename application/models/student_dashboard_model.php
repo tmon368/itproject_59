@@ -8,7 +8,7 @@ class student_dashboard_model extends CI_Model {
     }
     
     public function selectstudentfirstpage(){
-        $username = $this->session->userdata('username');
+        $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('student s');
         $this->db->join('status st', 's.status_ID=st.status_ID');
@@ -16,7 +16,7 @@ class student_dashboard_model extends CI_Model {
         $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
         
         
-        $this->db->where('S_ID',$username);
+        $this->db->where('S_ID',$student);
         $query = $this->db->get();
         var_dump($query->result());
         
@@ -31,13 +31,13 @@ class student_dashboard_model extends CI_Model {
     
     
     public function selectdetailfirstpage(){
-        $username = $this->session->userdata('username');
+        $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('offensehead oh');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');
         
         
-        $this->db->where('S_ID',$username);
+        $this->db->where('S_ID',$student);
         $query = $this->db->get();
         //var_dump($query->result());
         

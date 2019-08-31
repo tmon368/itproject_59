@@ -1,7 +1,8 @@
 <?php
+require_once('Std_info.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Student_dashboard extends CI_Controller {
+class Student_dashboard extends Std_info {
 	function __construct(){
 		parent:: __construct();
 		$this->load->model('student_dashboard_model', 'model');
@@ -12,7 +13,9 @@ class Student_dashboard extends CI_Controller {
 	
 	public function index()
 	{
+	    $this->logoutsession();
 	    
+	    /*
 	    $username = $this->session->userdata('username');
 	    //echo $username;
 	    // die();
@@ -24,7 +27,7 @@ class Student_dashboard extends CI_Controller {
 	        
 	        
 	        
-	    }
+	    }*/
 	    //$username = $this->session->userdata('username');
 	    //$this->selectstudent();
 		//List ข้อมูลมาแสดงในหน้าจอ
