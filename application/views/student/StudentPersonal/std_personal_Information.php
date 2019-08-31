@@ -170,7 +170,8 @@
      			<div class="col-sm-6">
      			
      			</div> 	
-		
+     			
+     			
      		</div>
      		
 
@@ -407,9 +408,6 @@
         }); 
     }
     function selectvehiclescar() {
-
-
-        
         $.ajax({
             type: 'ajax',
             url: '<?php echo base_url() ?>index.php/Std_info/selectvehiclescar',
@@ -425,12 +423,6 @@
                 	$("#expired_date1").html('-');
 
 
-
-
-
-
-
-                	
 
      			}else{
           
