@@ -5,31 +5,46 @@ class Admin_dashboard extends CI_Controller {
 
 	public function index()
 	{
-	    $this->logoutsession();
-		//List ข้อมูลมาแสดงในหน้าจอ
-		$this->load->view('template/template1');
-		$this->load->view('template/template2');
-		$this->load->view('template/template3');
-		$this->load->view('template/blank'); 
-		$this->load->view('template/template5');
-		$this->load->view('template/template6');
+	    $this->checkAutoriry();
+	    $this->template();
 
 	}
 	
-	public function logoutsession(){
+	public function template()
+	{
 	    
-	    $username = $this->session->userdata('username');
+	    //List ข้อมูลมาแสดงในหน้าจอ
+	    $this->load->view('template/template1');
+	    $this->load->view('template/template2');
+	    $this->load->view('template/template3');
+	    $this->load->view('template/blank');
+	    $this->load->view('template/template5');
+	    $this->load->view('template/template6');
+	    
+	}
+	
+	
+	function checkAutoriry() {
+	    //$admin = $this->session->userdata('admin');
+	    // $student = $this->session->userdata('student');
 	    //echo $username;
 	    // die();
-	    $this->session->mark_as_temp('username',600);
-	    if($username == ""){
+	    
+	    $this->session->mark_as_temp('login',1800);
+	    if($this->session->userdata('login') == true){
 	        
+	       
+	        if($this->session->userdata('autority') == "student"){
+	            redirect(base_url() . 'index.php/Student_dashboard');
+	        }
+	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
 	        
 	        
 	    }
+	    
+	    
+	    
 	}
 
 	public function new()
