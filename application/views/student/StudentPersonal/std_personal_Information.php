@@ -275,7 +275,6 @@
      			
      			</div>
      			
-     		
      		</div>   
      		<div class="row sty_text">
      			<div class="col-sm-3">
