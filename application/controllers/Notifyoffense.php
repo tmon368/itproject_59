@@ -14,7 +14,7 @@ class Notifyoffense extends Student_dashboard {
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->template();
-	    $this->logoutsession();
+	    $this->checkAutoriry();
 	}
 	
 	

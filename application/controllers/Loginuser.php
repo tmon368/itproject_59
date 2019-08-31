@@ -34,7 +34,8 @@ class Loginuser extends CI_Controller
             if($this->login_model->can_login($username, $password))
             {
                 $session_data = array(
-                    'username'     =>     $username
+                    'username'     =>     $username,
+                    'login'     =>     true
                 );
                 $this->session->set_userdata($session_data);
                 redirect(base_url() . 'index.php/loginuser/enter');
@@ -58,7 +59,8 @@ class Loginuser extends CI_Controller
         {
             $admin=$this->session->userdata('username');
             $session_admin = array(
-                'admin'     =>     $admin
+                'admin'     =>     $admin,
+                'autority' => 'admin' 
             );
             
             $this->session->set_userdata($session_admin);
@@ -66,7 +68,7 @@ class Loginuser extends CI_Controller
             //$data['records'] = $this->login_model->getdata();
             //if($this->session->userdata('username')== employee.UName){
             
-            redirect(base_url() . 'index.php/Admin_dashboard');
+            redirect(base_url() . 'index.php/Admin_dashboard',$session_admin);
        
             
             //}
@@ -78,7 +80,9 @@ class Loginuser extends CI_Controller
             
             $student=$this->session->userdata('username');
             $session_student = array(
-                'student'     =>     $student
+                'student'     =>     $student,
+                'autority' => 'student'
+                
             );
             
             $this->session->set_userdata($session_student);
@@ -102,6 +106,9 @@ class Loginuser extends CI_Controller
     {
         $this->session->unset_userdata('admin');
         $this->session->unset_userdata('student');
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('login');
+        $this->session->unset_userdata('autority');
         redirect(base_url() . 'index.php/loginuser/login');
     }
     
