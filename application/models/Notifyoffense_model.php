@@ -182,6 +182,20 @@ class Notifyoffense_model extends CI_Model {
 	        return false;
 	    }
     }
+
+
+
+    function selectoffensecate()
+	{
+	    $this->db->order_by('oc_ID','ASC');
+	    $query = $this->db->get('offensecate');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+    }
     
     
     
