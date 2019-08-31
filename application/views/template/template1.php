@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="<?php echo base_url('re/vendors/css/vendor.bundle.base.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('re/vendors/css/vendor.bundle.addons.css'); ?>">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> <!--รูปแบบ icon-->
-  <link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet"> <!--รูปแบบฟอนต์-->
+  <!--<link href="https://fonts.googleapis.com/css?family=Prompt&display=swap" rel="stylesheet">--> <!--รูปแบบฟอนต์-->
   <!-- endinject -->
   <!-- plugin css for this page -->
   <link rel="stylesheet" href="<?php echo base_url();?>re/vendors/iconfonts/font-awesome/css/font-awesome.css">

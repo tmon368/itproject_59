@@ -13771,7 +13771,8 @@ input:focus {
       display: flex;
       -webkit-flex-direction: column;
       flex-direction: column;
-      height: auto; }
+      height: auto; 
+      background: rgb(213,171,255);}
       .sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper {
         display: -webkit-flex;
         display: flex;
@@ -13877,7 +13878,7 @@ input:focus {
 /* Navbar */
 .navbar.default-layout {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(100deg, #4d1c6d, #4d1c6d);
+  background: rgb(149,78,202);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
   -moz-transition: background 0.25s ease;
@@ -13887,7 +13888,7 @@ input:focus {
     -webkit-transition: width 0.25s ease, background 0.25s ease;
     -moz-transition: width 0.25s ease, background 0.25s ease;
     -ms-transition: width 0.25s ease, background 0.25s ease;
-    background: #ffffff;
+    background: rgb(149,78,202);
     width: 255px;
     height: 63px; }
     .sidebar-dark .navbar.default-layout .navbar-brand-wrapper {
