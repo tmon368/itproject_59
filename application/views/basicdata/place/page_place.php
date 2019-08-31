@@ -128,7 +128,7 @@
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                                <input type="text" disabled="disabled" name="txteditID" class="form-control" maxlength="4" onkeyup="count_down_editid(this);" required>
+                                                <input type="text" readonly name="txteditID" class="form-control" maxlength="4" onkeyup="count_down_editid(this);" required>
                                             </div>
                                         </div>
                                     </div>

@@ -122,7 +122,7 @@
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                                <input type="text" name="txteditID" class="form-control" maxlength="2"
+                                                <input type="text" readonly name="txteditID" class="form-control" maxlength="2"
                                                     onkeyup="count_down_editid(this);" required>
                                             </div>
                                         </div>
