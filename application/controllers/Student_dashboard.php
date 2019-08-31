@@ -106,10 +106,9 @@ class Student_dashboard extends CI_Controller {
 	    //echo $username;
 	    // die();
 	    
-	    $this->session->mark_as_temp('student',1800);
+	    $this->session->mark_as_temp('login',1800);
 	    if($this->session->userdata('login') == true){
-	        $vbvb = $this->session->userdata('autority');
-	       // echo $vbvb;
+	 
 	    //login = true {
 	    /*
 	        if($this->session->userdata('autority') == 'student'){
