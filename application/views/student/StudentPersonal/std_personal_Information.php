@@ -424,6 +424,12 @@
 
 
 
+
+
+
+
+                	
+
      			}else{
           
             	$("#regist_num2").html(data[0].regist_num);
