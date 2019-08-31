@@ -6,12 +6,7 @@ class service_model extends CI_Model {
         parent::_construct();
         
     }
-    
-    
-    
-    
-  
-      
+   
     /*
     function selectstudent(){
         $username = $this->session->userdata('username');
@@ -34,7 +29,7 @@ class service_model extends CI_Model {
     }
     */
     
-    function selectservice($service_ID){
+    function selectservice($sevice_ID){
         $service_ID= $this->input->post('txtdelID');
         //echo $person_ID;
         // $username = $this->session->userdata('username');

@@ -246,20 +246,20 @@ class Notifyoffense_model extends CI_Model {
     }
      
     function selectstudent(){
-        $username = $this->session->userdata('username');
-   
+       // $username = $this->session->userdata('username');
+        $username= $this->input->post('S_ID');
         $this->db->select('*');
-        $this->db->from('student s');
+        $this->db->from('vehicles v');
+        $this->db->join('student s', 'v.S_ID=s.S_ID');
         $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
-        $this->db->join('divisions dvs', 'c.dept_ID=dvs.dept_ID');
-        $this->db->join('dormitory d', 's.dorm_ID=d.dorm_ID');
-        $this->db->join('dormtype dt', 'd.dormtype_ID=dt.dormtype_ID');
+        $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
         // $this->db->join('personnel p', 's.person_ID=p.person_ID');
         
        
-         $this->db->where('S_ID',$username);
+         $this->db->where('v.S_ID',$username);
+    
         $query = $this->db->get();
-        //var_dump($query->result());
+            //var_dump($query->result());
   
         if($query->num_rows() > 0){
             return $query->result();

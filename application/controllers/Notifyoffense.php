@@ -119,13 +119,9 @@ class Notifyoffense extends CI_Controller {
 		echo json_encode($msg);
 	}
 	function selectstudent(){
-	   
-	    
-	    $result = $this->model->selectstudent();
-		
- 
-		 echo json_encode($results);
-	 }
+        $result =  $this->model->selectstudent();
+        echo json_encode($result);
+    }
 
 	function selectplace(){
 	   
