@@ -70,42 +70,27 @@
         <div class="breadcrumb2">1.นักศึกษา</p></div>
 
      		<div class="row sty_text">
-     			<div class="col-sm-2">
-     			
-     			รหัสนักศึกษา : 5912555
+     			<div class="col-sm-2"  > 
+     			รหัสนักศึกษา :  <span id="S_ID"></span>                       
      			</div>
      			
      			<div class="col-sm-1">
      		
      			</div>
      			<div class="col-sm-1">
-     			ชื่อ :
-     			</div>
+     			ชื่อ :<span id=""></span>
+     			</div>   
      			<div class="col-sm-1">
      			
      			</div>
      			<div class="col-sm-1">
-     			สกุล : 
+     			สกุล : <span id=""></span>
      			</div>
      			<div class="col-sm-1">
      			
      			</div>
      			
-     			<div class="col-sm-1">
      			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
      			
      		
      		</div>   
