@@ -1,27 +1,14 @@
 <?php
+require_once('Student_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Notifyoffense extends CI_Controller {
+class Notifyoffense extends Student_dashboard {
 	function __construct(){
 		parent:: __construct();
 		$this->load->model('Notifyoffense_model', 'model');
 	}
 	
-	public function logoutsession(){
-	    
-	    $username = $this->session->userdata('username');
-	    //echo $username;
-	    // die();
-	    $this->session->mark_as_temp('username',600);
-	    if($username == ""){
-	        
-	        redirect(base_url() . 'index.php/Loginuser');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
-	        
-	        
-	    }
-	}
+
 
 	public function index()
 	{

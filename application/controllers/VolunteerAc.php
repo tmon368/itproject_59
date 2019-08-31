@@ -1,8 +1,8 @@
 <?php
-require_once('Std_info.php');
+require_once('Student_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class VolunteerAc extends Std_info {
+class VolunteerAc extends Student_dashboard {
     function __construct(){
         parent:: __construct();
         $this->load->model('VolunteerAc_model', 'model');

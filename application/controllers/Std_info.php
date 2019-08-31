@@ -1,27 +1,14 @@
 <?php
+require_once('Student_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Std_info extends CI_Controller {
+class Std_info extends Student_dashboard {
     function __construct(){
         parent:: __construct();
         $this->load->model('student_model', 'model');
     }
     
-    public function logoutsession(){
-
-        $student = $this->session->userdata('student');
-        //echo $username;
-        // die();
-        $this->session->mark_as_temp('student',1800);
-        if($student == ""){
-            
-            redirect(base_url() . 'index.php/Loginuser');
-            //redirect(base_url() .'index.php/Loginuser');
-            
-            
-            
-        }
-    }
+   
     
     public function index()
     {
