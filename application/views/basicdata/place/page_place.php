@@ -128,7 +128,7 @@
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                                <input type="text" disabled="disabled" name="txteditID" class="form-control" maxlength="4" onkeyup="count_down_editid(this);" required>
+                                                <input type="text" readonly name="txteditID" class="form-control" maxlength="4" onkeyup="count_down_editid(this);" required>
                                             </div>
                                         </div>
                                     </div>
@@ -424,7 +424,7 @@
                             //alert('id นี้ถูกใช้งานแล้ว');
                             $('#edit_file').modal('hide');
                             $('#formupdate')[0].reset();
-                            $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                            $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
                             showAll();
                         }
                     });

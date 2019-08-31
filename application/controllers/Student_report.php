@@ -9,11 +9,11 @@ class Student_report extends CI_Controller {
     
     public function logoutsession(){
 
-        $username = $this->session->userdata('username');
-        //echo $username;
+        $student = $this->session->userdata('student');
+        //echo $student;
         // die();
-        $this->session->mark_as_temp('username',600);
-        if($username == ""){
+        $this->session->mark_as_temp('student',600);
+        if($student == ""){
             
             redirect(base_url() . 'index.php/Loginuser');
             //redirect(base_url() .'index.php/Loginuser');
@@ -43,7 +43,7 @@ class Student_report extends CI_Controller {
     }
     
     function selectfirstpage(){
-        //  $username = $this->session->userdata('username');
+        //  $student = $this->session->userdata('student');
         
         $result = $this->model->selectfirstpage();
         echo json_encode($result);
@@ -68,24 +68,13 @@ class Student_report extends CI_Controller {
     }
     
     function selectvehiclescar(){
-        $username = $this->session->userdata('username');
-       // echo $username;
-       // die();
-        $this->session->mark_as_temp('username',5);
-        if($username == ""){
-            
-            redirect(base_url() . 'index.php/Loginuser');
-            //redirect(base_url() .'index.php/Loginuser');
-            
-            
-            
-        }
+      
         $result = $this->model->selectvehiclescar();
         echo json_encode($result);
     }
     
     function selectvehiclesmotorcycle(){
-        //  $username = $this->session->userdata('username');
+        //  $student = $this->session->userdata('student');
         
         $result = $this->model->selectvehiclesmotorcycle();
          echo json_encode($result);

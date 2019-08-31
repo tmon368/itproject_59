@@ -25,7 +25,7 @@
 
 <body>
 
-<style type="text/css">
+<style>
 
    p.pro{
         font-size: 20px;
@@ -35,6 +35,21 @@
         font-size: 18px;
         font-family: Prompt;
     }
+    .sty_text{
+        padding-left:3rem;
+    }
+    #xxx{
+    
+    }
+    .breadcrumb2{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.56rem 1.13rem;
+   <!-- margin-bottom: 1rem; --!>
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0.25rem;
+}
  
 </style>
     <meta charset="UTF-8">
@@ -51,7 +66,254 @@
             <div class="card-header" id="card_2">
                 <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
             </div><br>
-		<div class="breadcrumb"><p class="pro">1.นักศึกษา</p></div>
+            
+        <div class="breadcrumb2">1.นักศึกษา</p></div>
+
+     		<div class="row sty_text">
+     			<div class="col-sm-2"  > 
+     			รหัสนักศึกษา :  <span id="S_ID"></span>                       
+     			</div>
+     			
+     			<div class="col-sm-1">
+     		
+     			</div>
+     			<div class="col-sm-1">
+     			ชื่อ :<span id=""></span>
+     			</div>   
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			สกุล : <span id=""></span>
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			
+     			
+     			
+     		
+     		</div>   
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			หลักสูตร :
+     			</div>
+     			<div class="col-sm-1">
+     			สำนักวิชา :
+     			</div>  
+     			<div class="col-sm-2">
+     			
+     			</div>  	
+     			<div class="col-sm-6">
+     			
+     			</div> 		
+     		</div> 
+     		
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			หมายเลขโทรศัพท์ :
+     			</div>
+     			<div class="col-sm-1">
+     			อีเมล์ :
+     			</div>
+     			<div class="col-sm-2">
+     			
+     			</div>  	
+     			<div class="col-sm-6">
+     			
+     			</div> 	
+     			
+     			
+     		</div>
+     		
+     		 <div class="row sty_text">
+     			<div class="col-sm-3">
+     			ชื่อหอพัก :
+     			</div>
+     			<div class="col-sm-3">
+     			ประเภทหอพัก :
+     			</div>	
+     			<div class="col-sm-6">
+     			
+     			</div> 	
+
+     		</div>
+     		
+     		
+     		
+     	<div class="breadcrumb2">2.อาจารย์ที่ปรึกษา</p></div>
+
+     		<div class="row sty_text">
+     			<div class="col-sm-1">
+     			
+     			ชื่อ :
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			สกุล : 
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-2">
+     			ตำแหน่ง :
+     			</div>
+     			
+     			
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			
+     		
+     		</div>   
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			หน่วยงาน :
+     			</div>
+     			<div class="col-sm-1">
+     			หลักสูตร :
+     			</div>  
+     			<div class="col-sm-2">
+     			
+     			</div>  	
+     			<div class="col-sm-6">
+     			
+     			</div> 		
+     		</div> 
+     		
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			หมายเลขโทรศัพท์ :
+     			</div>
+     			<div class="col-sm-1">
+     			อีเมล์ :
+     			</div>
+     			<div class="col-sm-2">
+     			
+     			</div>  	
+     			<div class="col-sm-6">
+     			
+     			</div> 	
+     			
+     			
+     		</div>
+     		
+
+<div class="breadcrumb2">3.ยานพาหนะ</p></div>
+
+     		<div class="row sty_text">
+     			<div class="col-sm-1">
+     			
+     			ชื่อ :
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			สกุล : 
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-2">
+     			ตำแหน่ง :
+     			</div>
+     			
+     			
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			
+     		</div>   
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			สำนักวิชา :
+     			</div>
+     			<div class="col-sm-1">
+     			หลักสูตร :
+     			</div>  
+     			<div class="col-sm-2">
+     			
+     			</div>  	
+     			<div class="col-sm-6">
+     			
+     			</div> 		
+     		</div> 
+     		
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			หมายเลขโทรศัพท์ :
+     			</div>
+     			<div class="col-sm-1">
+     			อีเมล์ :
+     			</div>
+     			<div class="col-sm-2">
+     			
+     			</div>  	
+     			<div class="col-sm-6">
+     			
+     			</div> 	
+     			
+     			
+     		</div>
+     		
+     		  
+        </div>
+      
+ 			
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+<!-- 
+
+
+<div class="breadcrumb"><p class="pro">1.นักศึกษา</p></div>
 <div class="page-breadcrumb" id="nav_sty">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -62,9 +324,9 @@
       <li class="breadcrumb-item">สกุล :&nbsp;</a></li>
       <li id="std_lname"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">หลักสูตร :&nbsp;</a></li>
-      <li id="cur_name"> </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <li id="cur_name"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">สำนักวิชา :&nbsp;</a></li>
-      <li id="dept_name"> </li>&nbsp;&nbsp;</br>
+      <li id="dept_name"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">หมายเลขโทรศัพท์ :&nbsp;</a></li>
       <li id="phone"> </li>&nbsp;&nbsp;
       <li class="breadcrumb-item">อีเมล์ :&nbsp;</a></li>
@@ -132,6 +394,14 @@
       <li id="expired_date1"> </li>&nbsp;&nbsp;
     </ol>
   </nav>
+  
+
+
+
+
+ -->
+		
+  
 </div>
 </div>
 </div>

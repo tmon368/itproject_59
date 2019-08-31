@@ -7,95 +7,47 @@ class OffenseHead_model extends CI_Model {
         
     }
     
-    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
-    public function showAll(){
-        $this->db->order_by('oh_ID', 'ASC');
-        $query = $this->db->get('OffenseHead');
+    public function selectstudentoffensehead(){
+        $student = $this->session->userdata('student');
+        $this->db->select('*');
+        $this->db->from('student s');
+        $this->db->join('status st', 's.status_ID=st.status_ID');
+        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+        $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+        
+        
+        $this->db->where('S_ID',$student);
+        $query = $this->db->get();
+        var_dump($query->result());
+        
+        /*
+         if($query->num_rows() > 0){
+         return $query->result();
+         }else{
+         return false;
+         }*/
+    }
+    
+    function selectstudent(){
+        $student = $this->session->userdata('student');
+        
+        $this->db->select('*');
+        $this->db->from('student s');
+        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+        $this->db->join('divisions dvs', 'c.dept_ID=dvs.dept_ID');
+        $this->db->join('dormitory d', 's.dorm_ID=d.dorm_ID');
+        $this->db->join('dormtype dt', 'd.dormtype_ID=dt.dormtype_ID');
+        $this->db->where('S_ID',$student);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
         }
     }
-    //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
-    public function checkkey(){
-        $oh_ID = $this->input->post('oh_ID');
-        $this->db->where('oh_ID', $oh_ID);
-        $query = $this->db->get('OffenseHead');
-        if($query->num_rows($query) == 0){
-            return true;
-        }
-        else{
-            return false;
-        }
-        
-    }
     
-    
-    
-    //ฟังก์ชันเพิ่มข้อมูล ลงในtable student
-    public function addOffenseHead(){
-        $field = array(
-            'oh_ID'=>$this->input->post('txtID'),
-            
-        );
-        $this->db->insert('OffenseHead', $field);
-        if($this->db->affected_rows() > 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable student
-    public function editOffenseHead(){
-        $id = $this->input->get('id');
-        $this->db->where('oh_ID', $id);
-        $query = $this->db->get('OffenseHead');
-        if($query->num_rows() > 0){
-            return $query->row();
-        }else{
-            return false;
-        }
-    }
-    
-    //ฟังก์ชันอัพเดตข้อมูลในtable student
-    public function updateOffenseHead(){
-        $id = $this->input->post('txteditID');
-        $field = array(
-            
-            
-        );
-        $this->db->where('oh_ID', $id);
-        $this->db->update('OffenseHead', $field);
-        if($this->db->affected_rows() > 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    //ฟังก์ชันลบข้อมูลในtable student
-    function deleteOffenseHead(){
-        $id = $this->input->post('txtdelID');
-        
-        $this->db->where('oh_ID', $id);
-        $this->db->delete('OffenseHead');
-        //$this->db->update('OffenseHead', $field);
-        if($this->db->affected_rows() > 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    
-    
-    public function import_excelOffenseHead(){
-        $this->load->view('import_excelOffenseHead');
-        
-        
-        
-        
-    }
     
     
     

@@ -11,13 +11,13 @@ class student_report_model extends CI_Model {
     
     
     public function selectfirstpage(){
-        $username = $this->session->userdata('username');
+        $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('offensehead oh');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');
         
         
-        $this->db->where('S_ID',$username);
+        $this->db->where('S_ID',$student);
         $query = $this->db->get();
         //var_dump($query->result());
         
@@ -33,7 +33,7 @@ class student_report_model extends CI_Model {
       
     
     function selectstudent(){
-        $username = $this->session->userdata('username');
+        $student = $this->session->userdata('student');
    
         $this->db->select('*');
         $this->db->from('student s');
@@ -41,7 +41,7 @@ class student_report_model extends CI_Model {
         $this->db->join('divisions dvs', 'c.dept_ID=dvs.dept_ID');
         $this->db->join('dormitory d', 's.dorm_ID=d.dorm_ID');
         $this->db->join('dormtype dt', 'd.dormtype_ID=dt.dormtype_ID');
-         $this->db->where('S_ID',$username);
+         $this->db->where('S_ID',$student);
         $query = $this->db->get();
         //var_dump($query->result());
   
@@ -56,7 +56,7 @@ class student_report_model extends CI_Model {
     function selectpersonnel($person_ID){
         //$id = $this->input->post('txtdelID');
         //echo $person_ID;
-        // $username = $this->session->userdata('username');
+        // $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('personnel p');
         $this->db->join('curriculum c', 'p.cur_ID=c.cur_ID');
@@ -73,19 +73,19 @@ class student_report_model extends CI_Model {
     }
     
     
-    //$this->session->mark_as_temp('username',10);
+    //$this->session->mark_as_temp('student',10);
 
     function selectvehiclescar(){
         $car ="รถยนต์";
-         $username = $this->session->userdata('username');
+         $student = $this->session->userdata('student');
         
-         //echo $username;
+         //echo $student;
 
          $this->db->select('*');
          $this->db->from('vehicles v');
          $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
          //$this->db->where('vetype_name','รถยนต์ ');
-         $this->db->where('S_ID', $username);
+         $this->db->where('S_ID', $student);
          $this->db->where('vetype_name', $car);
          $query = $this->db->get();
        // var_dump($query->result());
@@ -102,12 +102,12 @@ class student_report_model extends CI_Model {
     
     function selectvehiclesmotorcycle(){
         $motorcycle = "รถจักรยานยนต์";
-        $username = $this->session->userdata('username');
+        $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('vehicles v');
         $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
         //$this->db->where('vetype_name','รถยนต์ ');
-        $this->db->where('S_ID', $username);
+        $this->db->where('S_ID', $student);
         $this->db->where('vetype_name', $motorcycle);
         $query = $this->db->get();
         //var_dump($query->result());

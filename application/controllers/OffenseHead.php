@@ -1,17 +1,20 @@
 <?php
+require_once('Student_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class OffenseHead extends CI_Controller {
+class OffenseHead extends Student_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('OffenseHead_model', 'model');
+        $this->load->model('OffenseHead_model', 'OffenseHead_model');
     }
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
+        $this->logoutsession();
         $this->template();
         
     }
+    
     
     public function template(){
         $this->load->view('template/template1');
@@ -25,5 +28,14 @@ class OffenseHead extends CI_Controller {
         
         
     }
+    
+    function selectstudentoffensehead(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->OffenseHead_model->selectstudentoffensehead();
+        // echo json_encode($result);
+    }
+    
+    
     
 }

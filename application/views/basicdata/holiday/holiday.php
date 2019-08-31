@@ -122,7 +122,7 @@
 <div class="form-group" id="input_group_sty">
 <div class="input-group" >
 <label  class="col-sm-3" for="validationCustom02">รหัสวันหยุด</label>&nbsp;
-            <input type="text" disabled="disabled"  name="txteditID"  class="form-control col-sm-2"  maxlength="50" onkeyup="count_down(this);" required>
+            <input type="text" readonly  name="txteditID"  class="form-control col-sm-2"  maxlength="50" onkeyup="count_down(this);" required>
 
   <label  class="col-sm-2" for="validationCustom02">วันที่หยุด</label>&nbsp;
             <input type="date" name="txtdate"  class="form-control col-sm"  maxlength="50" required>

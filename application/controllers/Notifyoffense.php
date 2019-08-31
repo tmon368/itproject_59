@@ -1,27 +1,14 @@
 <?php
+require_once('Student_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Notifyoffense extends CI_Controller {
+class Notifyoffense extends Student_dashboard {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('Notifyoffense_model', 'model');
+		$this->load->model('Notifyoffense_model', 'Notifyoffense_model');
 	}
 	
-	public function logoutsession(){
-	    
-	    $username = $this->session->userdata('username');
-	    //echo $username;
-	    // die();
-	    $this->session->mark_as_temp('username',600);
-	    if($username == ""){
-	        
-	        redirect(base_url() . 'index.php/Loginuser');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
-	        
-	        
-	    }
-	}
+
 
 	public function index()
 	{
@@ -50,13 +37,13 @@ class Notifyoffense extends CI_Controller {
 
 	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table personnel และแสดงข้อมูลในview
 	public function showAll(){
-		$result = $this->model->showAll();
+		$result = $this->Notifyoffense_model->showAll();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางpersonnel
 	/*public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->Notifyoffense_model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -70,7 +57,7 @@ class Notifyoffense extends CI_Controller {
     */
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addnotify(){
-		$result = $this->model->addnotify();
+		$result = $this->Notifyoffense_model->addnotify();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		
@@ -89,13 +76,13 @@ class Notifyoffense extends CI_Controller {
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
 	public function editnotify(){
 	
-		$result = $this->model->editnotify();
+		$result = $this->Notifyoffense_model->editnotify();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
 	public function updatenotify(){
-		$result = $this->model->updatenotify();
+		$result = $this->Notifyoffense_model->updatenotify();
 		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
@@ -109,7 +96,7 @@ class Notifyoffense extends CI_Controller {
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deletenotify(){
-		$result = $this->model->deletenotify();
+		$result = $this->Notifyoffense_model->deletenotify();
 		if($result){
 		    $msg['success'] = true;     
 		}else{
@@ -119,38 +106,34 @@ class Notifyoffense extends CI_Controller {
 		echo json_encode($msg);
 	}
 	function selectstudent(){
-	   
-	    
-	    $result = $this->model->selectstudent();
-		
- 
-		 echo json_encode($results);
-	 }
+        $result =  $this->Notifyoffense_model->selectstudent();
+        echo json_encode($result);
+    }
 
 	function selectplace(){
 	   
 	    
-	    $result = $this->model->selectplace();
+	    $result = $this->Notifyoffense_model->selectplace();
 	    echo json_encode($result);
 	}
 	function selectvehicles(){
 	   
 	    
-	    $result = $this->model->selectvehicles();
+	    $result = $this->Notifyoffense_model->selectvehicles();
 	    
 	    echo json_encode($result);
 	}
 	function selectoffevidence(){
 	   
 	    
-	    $result = $this->model->selectoffevidence();
+	    $result = $this->Notifyoffense_model->selectoffevidence();
 	    
 	    echo json_encode($result);
 	}
 	function selectoffensecate(){
 	   
 	    
-	    $result = $this->model->selectoffensecate();
+	    $result = $this->Notifyoffense_model->selectoffensecate();
 	    
 	    echo json_encode($result);
 	}
@@ -159,7 +142,7 @@ class Notifyoffense extends CI_Controller {
 	function selectOffenseoffevidence(){
 	   
 	    
-		$result = $this->model->selectOffenseoffevidence();
+		$result = $this->Notifyoffense_model->selectOffenseoffevidence();
 		//print_r($result);
 		echo json_encode($result);
 	}
