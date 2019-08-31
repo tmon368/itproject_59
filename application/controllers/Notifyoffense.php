@@ -105,11 +105,14 @@ class Notifyoffense extends Student_dashboard {
 		}
 		echo json_encode($msg);
 	}
+	function selectstudent1(){
+        $result =  $this->Notifyoffense_model->selectstudent1();
+        echo json_encode($result);
+    }
 	function selectstudent(){
         $result =  $this->Notifyoffense_model->selectstudent();
         echo json_encode($result);
     }
-
 	function selectplace(){
 	   
 	    
@@ -123,17 +126,11 @@ class Notifyoffense extends Student_dashboard {
 	    
 	    echo json_encode($result);
 	}
-	function selectoffevidence(){
+
+	function selectoffensehead(){
 	   
 	    
-	    $result = $this->Notifyoffense_model->selectoffevidence();
-	    
-	    echo json_encode($result);
-	}
-	function selectoffensecate(){
-	   
-	    
-	    $result = $this->Notifyoffense_model->selectoffensecate();
+	    $result = $this->Notifyoffense_model->selectoffensehead();
 	    
 	    echo json_encode($result);
 	}

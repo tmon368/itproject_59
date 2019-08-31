@@ -106,6 +106,8 @@ class Notifyoffense_model extends CI_Model {
         $this->db->from('offensehead o');
         $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
         $query = $this->db->get();
+        var_dump($query->result());
+        die();
         if($query->num_rows() > 0){
             
             return $query->row();
@@ -114,10 +116,27 @@ class Notifyoffense_model extends CI_Model {
         }
     }
     
+    function selectoffensehead(){
+       $oh_ID = $this->input->get('oh_ID');
+       // $oh_ID = 1;
+        //$this->db->select('*');
+        //$this->db->from('offensecate o');
+        //$this->db->join('Offense oc', 'o.oc_ID=oc.oc_ID');
+        //$this->db->where('oc_ID',$oc_ID);
+        
+        $query = $this->db->query('SELECT * FROM offensehead,offevidence  WHERE offensehead.oh_ID = '.$oh_ID.' AND offensehead.oh_ID=offevidence.oh_ID');
+       // var_dump($query->result());
+  //die();
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
     //ฟังก์ชันอัพเดตข้อมูลในtable notify
     public function updatenotify(){
         $id = $this->input->post('editID');
-       
+
  
             $off_ID =$this->input->post('off_ID');
             $person_ID=$this->input->post('person_ID');
@@ -189,8 +208,8 @@ class Notifyoffense_model extends CI_Model {
 
 // select หมวดและฐานความผิด
     function selectOffenseoffevidence(){
-        $oc_ID = $this->input->get('oc_ID');
-        //$oc_ID = 8;
+       // $oc_ID = $this->input->get('oc_ID');
+        $oc_ID = 8;
         //$this->db->select('*');
         //$this->db->from('offensecate o');
         //$this->db->join('Offense oc', 'o.oc_ID=oc.oc_ID');
@@ -210,28 +229,55 @@ class Notifyoffense_model extends CI_Model {
      
     function selectstudent(){
        // $username = $this->session->userdata('username');
-        $username= $this->input->post('S_ID');
-        //$username = 59123456;
+        //$username= $this->input->post('S_ID');
+        $std_ID = 59123456;
+        /*
         $this->db->select('*');
         $this->db->from('vehiclestype vt');
         $this->db->join('vehicles v', 'vt.vetype_ID=v.vetype_ID');
         $this->db->join('student s', 'v.S_ID=s.S_ID');
         $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
         $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+        */
+
+        $this->db->where('S_ID',$std_ID);
+        $query = $this->db->get("student");
+        $student = array();
+        $student = $query->result_array();
+
+        $this->db->where('S_ID',$std_ID);
+        $query = $this->db->get("vehicles");
+        $student['verhicles'] = $query->result_array();
+        var_dump($student);
+
+        die();
+
+
+       /* $student = array(
+            "studentID" => "",
+            "stName" => ""
+            "vehicles" => array("id"=>"xx","name":"xxx")
+        );
+
+        */
+        //$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
         
+
+
         // $this->db->join('personnel p', 's.person_ID=p.person_ID');
         
        
-         $this->db->where('v.S_ID',$username);
+//         $this->db->where('v.S_ID',$username);
     
-        $query = $this->db->get();
-           // var_dump($query->result());
-  
+//        $query = $this->db->get();
+//            var_dump($query->result());
+  /*
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
-        }
+        }*/
     }
 
 
@@ -280,5 +326,12 @@ class Notifyoffense_model extends CI_Model {
          }
         
     }
+
+
+
+
+
+
+    
     
 }
