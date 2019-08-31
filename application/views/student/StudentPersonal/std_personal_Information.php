@@ -408,6 +408,9 @@
         }); 
     }
     function selectvehiclescar() {
+
+
+        
         $.ajax({
             type: 'ajax',
             url: '<?php echo base_url() ?>index.php/Std_info/selectvehiclescar',
