@@ -36,7 +36,7 @@ class offense_model extends CI_Model {
             'off_ID'=>$this->input->post('txtID'),
             'off_desc'=>$this->input->post('txtname'),
             'point'=>$this->input->post('txtpoint'),
-            'oc_ID'=>$this->input->post('txtfy'),
+            'oc_ID'=>$this->input->post('txt_oc'),
            
             
             );
@@ -64,7 +64,7 @@ class offense_model extends CI_Model {
         $field = array(
         'off_desc'=>$this->input->post('txteditname'),
         'point'=>$this->input->post('txteditpoint'),
-        'oc_ID'=>$this->input->post('txteditfy'),
+        'oc_ID'=>$this->input->post('txteditoc'),
     
 
         );
@@ -94,6 +94,20 @@ class offense_model extends CI_Model {
             return false;
         }
     }
+    function selectoffensecate()
+    {
+        $this->db->order_by('oc_ID','ASC');
+        $query = $this->db->get('offensecate');
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+    
+    
+    
     public function import_exceloffense(){
         $this->load->view('import_exceloffense');
         
