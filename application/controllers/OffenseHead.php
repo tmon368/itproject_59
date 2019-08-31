@@ -10,7 +10,7 @@ class OffenseHead extends Student_dashboard {
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
-        $this->logoutsession();
+        $this->checkAutoriry();
         $this->template();
         
     }

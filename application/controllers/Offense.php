@@ -89,4 +89,8 @@ class Offense extends CI_Controller {
 	    echo json_encode($msg);
 	} 
 	
+	function selectoffensecate(){
+	    $result = $this->model->selectoffensecate();
+	    echo json_encode($result);
+	}
 }
