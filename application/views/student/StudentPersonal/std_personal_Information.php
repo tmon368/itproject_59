@@ -36,6 +36,9 @@
         font-family: Prompt;
     }
     .sty_text{
+        padding-left:5rem;
+    }
+    .sty_text2{
         padding-left:3rem;
     }
     #xxx{
@@ -67,12 +70,12 @@
                 <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
             </div><br>
             
-        <div class="breadcrumb2">1.นักศึกษา</p></div>
+        <div class="breadcrumb2">1.นักศึกษา </div>
 
      		<div class="row sty_text">
      			<div class="col-sm-2">
      			
-     			รหัสนักศึกษา : 5912555
+     			รหัสนักศึกษา :  <span id="S_ID"></span>
      			</div>
      			
      			<div class="col-sm-1">
@@ -156,7 +159,7 @@
      		
      		
      		
-     	<div class="breadcrumb2">2.อาจารย์ที่ปรึกษา</p></div>
+     	<div class="breadcrumb2">2.อาจารย์ที่ปรึกษา     </div>
 
      		<div class="row sty_text">
      			<div class="col-sm-1">
@@ -233,35 +236,36 @@
      		</div>
      		
 
-<div class="breadcrumb2">3.ยานพาหนะ</p></div>
+	<div class="breadcrumb2">3.ยานพาหนะ    </div>
+		<div class="row sty_text2">
+     			<div class="col-sm-12">
+     			
+     			3.1 รถจักรยานยนต์ 
+     			</div>
+     	</div>
 
      		<div class="row sty_text">
-     			<div class="col-sm-1">
+     			<div class="col-sm-3">
      			
-     			ชื่อ :
+     			เลขทะเบียนยานพาหนะ :
      			</div>
      			
      			<div class="col-sm-1">
-     			สกุล : 
+     			จังหวัด : 
      			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-2">
-     			ตำแหน่ง :
-     			</div>
-     			
-     			
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			
      			<div class="col-sm-1">
      			
      			</div>
      			<div class="col-sm-1">
+     			ยี่ห้อ :
+     			</div>
+     			<div class="col-sm-1">
      			
      			</div>
+     			<div class="col-sm-1">
+     			สี :
+     			</div>
+     			
      			<div class="col-sm-1">
      			
      			</div>
@@ -274,39 +278,79 @@
      			<div class="col-sm-1">
      			
      			</div>
+     		
      			
      		</div>   
      		<div class="row sty_text">
      			<div class="col-sm-3">
-     			สำนักวิชา :
+     			วันที่ลงทะเบียนสติ๊กเกอร์ :
+     			</div>
+     			<div class="col-sm-3">
+     			วันที่หมดอายุสติ๊กเกอร์ :
+     			</div>  
+     				
+     			<div class="col-sm-6">
+     			
+     			</div> 		
+     		</div> 
+  <div class="row sty_text2">
+     			<div class="col-sm-12">
+     			
+     			3.2 รถยนต์ 
+     			</div>
+     	</div>
+
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			
+     			เลขทะเบียนยานพาหนะ :
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			จังหวัด : 
      			</div>
      			<div class="col-sm-1">
-     			หลักสูตร :
-     			</div>  
-     			<div class="col-sm-2">
      			
-     			</div>  	
+     			</div>
+     			<div class="col-sm-1">
+     			ยี่ห้อ :
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			สี :
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     		
+     			
+     		</div>   
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			วันที่ลงทะเบียนสติ๊กเกอร์ :
+     			</div>
+     			<div class="col-sm-3">
+     			วันที่หมดอายุสติ๊กเกอร์ :
+     			</div>  
+     				
      			<div class="col-sm-6">
      			
      			</div> 		
      		</div> 
      		
-     		<div class="row sty_text">
-     			<div class="col-sm-3">
-     			หมายเลขโทรศัพท์ :
-     			</div>
-     			<div class="col-sm-1">
-     			อีเมล์ :
-     			</div>
-     			<div class="col-sm-2">
-     			
-     			</div>  	
-     			<div class="col-sm-6">
-     			
-     			</div> 	
-     			
-     			
-     		</div>
+     		
      		
      		  
         </div>
