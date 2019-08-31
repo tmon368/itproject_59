@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Notifyoffense extends Student_dashboard {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('Notifyoffense_model', 'Notifyoffense_model');
+		$this->load->model('Notifyoffense_model', 'model');
 	}
 	
 
@@ -14,7 +14,7 @@ class Notifyoffense extends Student_dashboard {
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->template();
-	    $this->logoutsession();
+	    $this->checkAutoriry();
 	}
 	
 	
@@ -37,13 +37,13 @@ class Notifyoffense extends Student_dashboard {
 
 	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table personnel และแสดงข้อมูลในview
 	public function showAll(){
-		$result = $this->Notifyoffense_model->showAll();
+		$result = $this->model->showAll();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางpersonnel
 	/*public function checkkey(){
-	    $result = $this->Notifyoffense_model->checkkey();
+	    $result = $this->model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -57,7 +57,7 @@ class Notifyoffense extends Student_dashboard {
     */
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addnotify(){
-		$result = $this->Notifyoffense_model->addnotify();
+		$result = $this->model->addnotify();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		
@@ -76,13 +76,13 @@ class Notifyoffense extends Student_dashboard {
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
 	public function editnotify(){
 	
-		$result = $this->Notifyoffense_model->editnotify();
+		$result = $this->model->editnotify();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
 	public function updatenotify(){
-		$result = $this->Notifyoffense_model->updatenotify();
+		$result = $this->model->updatenotify();
 		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
@@ -96,7 +96,7 @@ class Notifyoffense extends Student_dashboard {
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deletenotify(){
-		$result = $this->Notifyoffense_model->deletenotify();
+		$result = $this->model->deletenotify();
 		if($result){
 		    $msg['success'] = true;     
 		}else{
@@ -105,32 +105,35 @@ class Notifyoffense extends Student_dashboard {
 		}
 		echo json_encode($msg);
 	}
-	function selectstudent1(){
-        $result =  $this->Notifyoffense_model->selectstudent1();
-        echo json_encode($result);
-    }
 	function selectstudent(){
-        $result =  $this->Notifyoffense_model->selectstudent();
+        $result =  $this->model->selectstudent();
         echo json_encode($result);
     }
+
 	function selectplace(){
 	   
 	    
-	    $result = $this->Notifyoffense_model->selectplace();
+	    $result = $this->model->selectplace();
 	    echo json_encode($result);
 	}
 	function selectvehicles(){
 	   
 	    
-	    $result = $this->Notifyoffense_model->selectvehicles();
+	    $result = $this->model->selectvehicles();
 	    
 	    echo json_encode($result);
 	}
-
-	function selectoffensehead(){
+	function selectoffevidence(){
 	   
 	    
-	    $result = $this->Notifyoffense_model->selectoffensehead();
+	    $result = $this->model->selectoffevidence();
+	    
+	    echo json_encode($result);
+	}
+	function selectoffensecate(){
+	   
+	    
+	    $result = $this->model->selectoffensecate();
 	    
 	    echo json_encode($result);
 	}
@@ -139,7 +142,7 @@ class Notifyoffense extends Student_dashboard {
 	function selectOffenseoffevidence(){
 	   
 	    
-		$result = $this->Notifyoffense_model->selectOffenseoffevidence();
+		$result = $this->model->selectOffenseoffevidence();
 		//print_r($result);
 		echo json_encode($result);
 	}

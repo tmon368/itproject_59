@@ -14,7 +14,7 @@ class Std_info extends Student_dashboard {
     {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->template();
-        $this->logoutsession();
+        $this->checkAutoriry();
         
         
     }
@@ -31,8 +31,7 @@ class Std_info extends Student_dashboard {
     }
     
     
-   
-       
+          
     
     
     function selectstudent(){
