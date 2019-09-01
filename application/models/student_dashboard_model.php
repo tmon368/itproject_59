@@ -35,6 +35,7 @@ class student_dashboard_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('offensehead oh');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');
+        $this->db->join('Offensestd os', 'os.offensestd_ID=ot.offensestd_ID');
         
         
         $this->db->where('S_ID',$student);
