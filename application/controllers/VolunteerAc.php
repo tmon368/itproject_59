@@ -5,12 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class VolunteerAc extends Student_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('VolunteerAc_model', 'VolunteerAc_model');
+        $this->load->model('VolunteerAc_model', 'model');
     }
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
-        $this->logoutsession();
+        $this->checkAutoriry();
         $this->template();
         
     }

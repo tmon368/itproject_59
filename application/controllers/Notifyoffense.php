@@ -41,20 +41,7 @@ class Notifyoffense extends Student_dashboard {
 		echo json_encode($result);
 	}
 	
-	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางpersonnel
-	/*public function checkkey(){
-	    $result = $this->model->checkkey();
-	    if($result){
-	        $msg['success'] = true;
-	        
-	        
-	    }else{
-	        $msg['success'] = false;
-	        
-	    }
-	    echo json_encode($result);
-	}
-    */
+
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addnotify(){
 		$result = $this->model->addnotify();
