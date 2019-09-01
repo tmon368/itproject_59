@@ -91,4 +91,9 @@ class Offense extends Admin_dashboard {
 	    echo json_encode($msg);
 	} 
 	
+	
+	function selectoffensecate(){
+	    $result = $this->offense_model->selectoffensecate();
+	    echo json_encode($result);
+	}
 }

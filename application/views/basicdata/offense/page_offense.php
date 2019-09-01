@@ -57,12 +57,9 @@
 					<label for="validationCustom02..'">รหัสหมวดความผิด  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					<div class="col-lg-9" >
-					<select name="txtfy"class="form-control"  required >
-					<option value ="6">6 : ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</option>
-					<option value ="8">8:  ความผิดเกี่ยวกับวินัยจราจร</option>
-					<option value ="9">9: ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม  </option>
-					<option value ="11">11: ความผิดเกี่ยวกับความสะอาดเรียบร้อย </option>
-					</select>
+					<select name="txt_oc" id="txt_oc" class="form-control">
+                  <option value="">เลือกหมวดความผิด</option>
+                  </select>
 					
       </div></div></div>
 				<div class="form-group" id="input_group_sty">
@@ -173,12 +170,9 @@
 					<label for="validationCustom02..'">รหัสหมวดความผิด  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					<div class="col-lg-9" >
-					<select name="txteditfy"class="form-control"  required >
-					<option value ="6">6 : ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</option>
-					<option value ="8">8:  ความผิดเกี่ยวกับวินัยจราจร</option>
-					<option value ="9">9: ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม  </option>
-					<option value ="11">11: ความผิดเกี่ยวกับความสะอาดเรียบร้อย </option>
-					</select>
+					<select name="txteditoc" id="txteditoc" class="form-control">
+                  	<option value="">เลือกหมวดความผิด</</option>
+                  	</select>
 					
                    
       </div></div></div>
@@ -188,7 +182,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" name="txteditID"  class="form-control"  maxlength="3" onkeyup="count_down_editid(this);" required>
+                    <input type="text" readonly name="txteditID"  class="form-control"  maxlength="3" onkeyup="count_down_editid(this);" required>
 			
 			
 			
@@ -424,8 +418,8 @@ $(document).ready(function(){
       //validate form
         var off_ID = $('input[name=txtID]');
 		var off_desc = $('input[name=txtname]');
-		var point = $('textarea[name=txtpoint]');
-		var oc_ID = $('textarea[name=txtfy]');
+		var point = $('input[name=txtpoint]');
+		var oc_ID = $('select[name=txt_oc]');
 		var result = '';
 		
 		if(off_ID.val()==''){
@@ -506,7 +500,7 @@ $(document).ready(function(){
           $('input[name=txteditID]').val(data.off_ID);
           $('input[name=txteditname]').val(data.off_desc);
           $('input[name=txteditpoint]').val(data.point);
-          $('input[name=txteditfy]').val(data.oc_ID);
+          $('select[name=txteditoc]').val(data.oc_ID);
 
         },
         error: function(){
@@ -516,13 +510,13 @@ $(document).ready(function(){
     });
  
  $('#btnedit').click(function(){
-     var url = $('#formupdat').attr('action');
-     var data = $('#formupdat').serialize();
+     var url = $('#formupdate').attr('action');
+     var data = $('#formupdate').serialize();
      //validate form
         var off_ID = $('input[name=txteditID]');
 		var off_desc = $('input[name=txteditname]');
-		var point = $('textarea[name=txteditpoint]');
-		var oc_ID = $('textarea[name=txteditfy]');
+		var point = $('input[name=txteditpoint]');
+		var oc_ID = $('select[name=txteditoc]');
 		var result = '';
 		
 		if(off_ID.val()==''){
@@ -649,7 +643,20 @@ $(document).ready(function(){
 		}
 	});
     
-
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo site_url("Offense/selectoffensecate") ?>',
+        dataType: 'json',
+        success: function(data) {
+            //alert(data[0].oc_ID);
+            for (i = 0; i < data.length; i++) {
+                //alert(data[i].oc_ID+data[i].oc_desc);
+                
+                $('#txt_oc').append('<option value="' + data[i].oc_ID + '">' + data[i].oc_desc + '</option>');
+                $('#txteditoc').append('<option value="' + data[i].oc_ID + '">' + data[i].oc_desc + '</option>');
+            }
+        }
+    });
  
 
 
