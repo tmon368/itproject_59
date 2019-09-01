@@ -232,7 +232,7 @@ class Notifyoffense_model extends CI_Model {
     function selectstudent(){
        // $username = $this->session->userdata('username');
         //$username= $this->input->post('S_ID');
-        $std_ID= $this->input->post('S_ID');
+        $std_ID= $this->input->get('S_ID');
         //$std_ID = 59123456;
         /*
         $this->db->select('*');
