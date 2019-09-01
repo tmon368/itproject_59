@@ -1,15 +1,17 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Holiday extends CI_Controller {
+class Holiday extends Admin_dashboard {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('holiday_model', 'model');
+		$this->load->model('holiday_model', 'holiday_model');
 	}
  
 	public function index()
 	{
 		//List  ข้อมูลมาแสดงในหน้าจอ
+	    $this->checkAutoriry();
 		$this->template();
 		
 	} 
@@ -42,17 +44,17 @@ class Holiday extends CI_Controller {
 
 	public function showAll(){
 		$year = $_GET['year'];
-		$result = $this->model->showAll($year);
+		$result = $this->holiday_model->showAll($year);
 		echo json_encode($result);
 	}
 	public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->holiday_model->checkkey();
 	    echo json_encode($result);
 	}
     
 
 	public function addholiday(){
-		$result = $this->model->addholiday();
+	    $result = $this->holiday_model->addholiday();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		
@@ -69,12 +71,12 @@ class Holiday extends CI_Controller {
 
 	public function editholiday(){
 	
-		$result = $this->model->editholiday();
+	    $result = $this->holiday_model->editholiday();
 		echo json_encode($result);
 	}
 
 	public function updateholiday(){
-		$result = $this->model->updateholiday();
+	    $result = $this->holiday_model->updateholiday();
 		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
@@ -88,7 +90,7 @@ class Holiday extends CI_Controller {
     
 
 	public function deleteholiday(){
-		$result = $this->model->deleteholiday();
+	    $result = $this->holiday_model->deleteholiday();
 		if($result){
 		    $msg['success'] = true;     
 		}else{
