@@ -1,14 +1,16 @@
 <?php 
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usertype extends CI_Controller {
+class Usertype extends Admin_dashboard {
     function __construct(){ 
         parent:: __construct();
-        $this->load->model('usertype_model', 'model');
+        $this->load->model('usertype_model', 'usertype_model');
     }
 
 	public function index()
 	{
+	    $this->checkAutoriry();
 		//List ข้อมูลมาแสดงในหน้าจอ
 		$this->load->view('template/template1');
 		$this->load->view('template/template2');
@@ -21,12 +23,12 @@ class Usertype extends CI_Controller {
 
 	}
 	public function showAll(){
-	    $result = $this->model->showAll();
+	    $result = $this->usertype_model->showAll();
 	    echo json_encode($result);
 	}
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง Usertype
 	public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->usertype_model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -40,7 +42,7 @@ class Usertype extends CI_Controller {
 	
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addusertype(){
-	    $result = $this->model->addusertype();
+	    $result = $this->usertype_model->addusertype();
 	    //$msg['success'] = false;
 	    //$msg['type'] = 'add';
 	    if($result){
@@ -56,14 +58,14 @@ class Usertype extends CI_Controller {
 	
 	public function editusertype(){
 	    
-	    $result = $this->model->editusertype();
+	    $result = $this->usertype_model->editusertype();
 	    echo json_encode($result);
 	}
 	
 
    
 	public function updateusertype(){
-	    $result = $this->model->updateusertype();
+	    $result = $this->usertype_model->updateusertype();
 	    $msg['success'] = false;
 	    $msg['type'] = 'update';
 	    if($result){
@@ -76,7 +78,7 @@ class Usertype extends CI_Controller {
 	}
 	
 	public function deleteusertype(){
-	    $result = $this->model->deleteusertype();
+	    $result = $this->usertype_model->deleteusertype();
 	    
 	    $msg['success'] = false;
 	    $msg['type'] = 'delete';

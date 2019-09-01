@@ -101,24 +101,11 @@ class Student_dashboard extends CI_Controller {
 */
 	
 	function checkAutoriry() {
-	    //$admin = $this->session->userdata('admin');
-	   // $student = $this->session->userdata('student');
-	    //echo $username;
-	    // die();
+
 	    
-	    $this->session->mark_as_temp('student',1800);
+	    $this->session->mark_as_temp('login',1800);
 	    if($this->session->userdata('login') == true){
-	        $vbvb = $this->session->userdata('autority');
-	       // echo $vbvb;
-	    //login = true {
-	    /*
-	        if($this->session->userdata('autority') == 'student'){
-	            echo "อุอิ";
-	            //$this->index();
-	            //redirect(base_url() . 'index.php/Student_dashboard');
-	            
-	            //load view
-	        }else */ 
+ 
 	        if($this->session->userdata('autority') == "admin"){
 	            redirect(base_url() . 'index.php/Admin_dashboard');
 	            }
@@ -128,25 +115,6 @@ class Student_dashboard extends CI_Controller {
 	        
 	    }
 	    
-	
-	    //else redirect to login 
-	    
-	    /*
-	    if($admin !=""){
-	        
-	        redirect(base_url() . 'index.php/Admin_dashboard');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
-	        
-	        
-	    }
-	    if(!$this->session->userdata('student')){
-	        
-	        redirect(base_url() . 'index.php/Loginuser');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
-	        
-	        
-	    }*/
+
         }
 }

@@ -31,8 +31,7 @@ class Std_info extends Student_dashboard {
     }
     
     
-   
-       
+          
     
     
     function selectstudent(){
