@@ -1,7 +1,8 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Import_data extends CI_Controller {
+class Import_data extends Admin_dashboard {
     public function __construct()
     {
         parent::__construct();
@@ -11,6 +12,7 @@ class Import_data extends CI_Controller {
      
 	public function index()
 	{
+	    $this->checkAutoriry();
 		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -22,6 +24,7 @@ class Import_data extends CI_Controller {
 	}
 	public function pagestudent()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -33,6 +36,7 @@ class Import_data extends CI_Controller {
 	}
 	public function pagepersonnel()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -44,6 +48,7 @@ class Import_data extends CI_Controller {
 	}
 	public function pagestatus()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -55,6 +60,7 @@ class Import_data extends CI_Controller {
 	}
 	public function pagevehicles()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -66,6 +72,7 @@ class Import_data extends CI_Controller {
 	}
 	public function pagedivisions()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -77,6 +84,7 @@ class Import_data extends CI_Controller {
 	}
 	public function pagecurriculum()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
