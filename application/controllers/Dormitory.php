@@ -1,15 +1,17 @@
 <?php 
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dormitory extends CI_Controller  { 
+class Dormitory extends Admin_dashboard  { 
     function __construct(){
         parent:: __construct();
-        $this->load->model('dormitory_model', 'model');
+        $this->load->model('dormitory_model', 'dormitory_model');
     } 
       
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
+        $this->checkAutoriry();
         $this->template();
         
     }
@@ -28,11 +30,11 @@ class Dormitory extends CI_Controller  {
     }
     
     public function showAll(){
-        $result = $this->model->showAll();
+        $result = $this->dormitory_model->showAll();
         echo json_encode($result);
     }
     public function checkkey(){
-        $result = $this->model->checkkey();
+        $result = $this->dormitory_model->checkkey();
         if($result){
             $msg['success'] = true;
             
@@ -45,7 +47,7 @@ class Dormitory extends CI_Controller  {
     }
   
     public function adddormitory(){
-        $result = $this->model->adddormitory();
+        $result = $this->dormitory_model->adddormitory();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
         if($result){
@@ -61,12 +63,12 @@ class Dormitory extends CI_Controller  {
     public function editdormitory(){
         
         
-        $result = $this->model->editdormitory();
+        $result = $this->dormitory_model->editdormitory();
         echo json_encode($result);
     }
     
     public function updatedormitory(){
-        $result = $this->model->updatedormitory();
+        $result = $this->dormitory_model->updatedormitory();
         $msg['success'] = false;
         $msg['type'] = 'update';
         if($result){
@@ -79,7 +81,7 @@ class Dormitory extends CI_Controller  {
     }
     
     public function deletedormitory(){
-        $result = $this->model->deletedormitory();
+        $result = $this->dormitory_model->deletedormitory();
         if($result){
             $msg['success'] = true;
         }else{
