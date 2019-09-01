@@ -111,6 +111,7 @@ class Import_data extends Admin_dashboard {
 	
 	public function statusimportstudent()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -122,6 +123,7 @@ class Import_data extends Admin_dashboard {
 	}
 	public function statusimportpersonnel()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -133,6 +135,7 @@ class Import_data extends Admin_dashboard {
 	}
 	public function statusimportstatus()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -144,6 +147,7 @@ class Import_data extends Admin_dashboard {
 	}
 	public function statusimportvehicles()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -155,6 +159,7 @@ class Import_data extends Admin_dashboard {
 	}
 	public function statusimportdivisions()
 	{
+	    $this->checkAutoriry();
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
@@ -166,6 +171,7 @@ class Import_data extends Admin_dashboard {
 	}
 	public function statusimportcurriculum()
 	{
+	    $this->checkAutoriry();
 	    
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
