@@ -45,43 +45,105 @@
                 //onkeypress="student_change(this)"
             });
 
-            /*
-            $("#std_name").val("ศุภกฤต");
-            $("#std_lname").val("วงค์ปัญญา");
-            $("#dept_name").val("สำนักวิชาสารสนเทศศาสตร์");
-            $("#cur_name").val("สาขาเทคโนโลยีสารสนเทศ");
-            $("#regis_num").val("รมร25");
-            $("#province_bic").val("กรุงเทพมหานคร");
-            $("#regis_car").val("-");
-            $("#provin_car").val("-");
-            */
-            //alert (id.value);
-
-
-        }
-
-        function test(id) {
-            alert("XXX");
         }
 
         function click_btnre(id) {
-            //alert("yyy"+id);
-
+            //alert(id.value);
             $('#student' + id).html('');
 
         }
 
-        function myfunction(id) {
-            //alert(id.value);
-            var std_id = id.value;
+
+        //clear value on text
+        function clear_value() {
+            $('#std_name').val("");
+            $('#std_lname').val("");
+            $('#dept_name').val("");
+            $('#cur_name').val("");
+            $('#regis_num').val("");
+            $('#province_bic').val("");
+            $('#regis_car').val("");
+            $('#provin_car').val("");
+        }
+
+        //Search student data in form
+        function Search_data(id) {
+
+            var idstd = id.value;
+            alert("กำลังค้นหา");
+            clear_value(); //clear value on textbox
+            //alert(idstd);
 
 
-            if (std_id == "59120808") {
+            if (idstd) {
+                //alert ("GGG");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo site_url("Notifyoffense/selectstudent") ?>',
+                    data: 'S_ID=' + idstd,
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("Having Data...");
+
+                        $.each(data, function(key, value) {
+
+                            var temp = value;
+
+                            if (key == 0) {
+                                //alert("Array student");
+                                $('#std_name').val(value.std_fname);
+                                $('#std_lname').val(value.std_lname);
+                                $('#dept_name').val(value.dept_name);
+                                $('#cur_name').val(value.cur_name);
 
 
+                                //alert(key);
+
+                            } else if (key == "verhicles") {
+                                //alert("SEE verhicles");
+                                var verhicle = value;
+
+                                $.each(verhicle, function(key, value) {
+                                    //alert(key);
+
+
+                                    //check type vehicle
+                                    if (value.vetype_ID == 1) {
+                                        //alert ("Motorcycles TYPE");
+                                        $('#regis_num').val(value.regist_num);
+                                        $('#province_bic').val(value.province);
+                                    } else if (value.vetype_ID == 2) {
+                                        //alert("CAR TYPE");
+                                        $('#regis_car').val(value.regist_num);
+                                        $('#provin_car').val(value.province);
+
+                                    } else {
+
+                                    }
+                                    //alert(value.regist_num);
+                                });
+
+                            }
+
+                            //console.log(data.verhicles);
+
+                        });
+
+                        //console.log(data);
+
+                    }
+
+                });
             } else {
-
+                alert("Not see");
             }
+
+
+
+
+
+
 
         }
     </script>
@@ -260,14 +322,9 @@
                                 </tr>
                             </thead>
                             <tbody id="showdata">
-                                <tr>
-                                    <td>1</td>
-                                    <td>12/03/2017</td>
-                                    <td>จอดรถในที่ห้ามจอด</td>
-                                    <td>อาคารเรียนรวม 5</td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                </tr>
+
+
+
                             </tbody>
                         </table>
                     </div>
@@ -282,121 +339,13 @@
     <script>
         $(document).ready(function() {
 
+            //alert("Ready");
             //sct_show();
-
+            show_all();
             load_json_data('txt_oc');
 
-            $('#add').click(function() {
-                var html = '';
-
-                html += '<div id="student' + off_per + '">';
-
-                html += '<div class="row">';
-                html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="" id="std_id"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-                html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" disabled>   </div>';
-                html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" disabled>  </div>';
-                html += '</div>';
-
-                html += '<div class="row">';
-                html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-                html += '<div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name" disabled>   </div>';
-                html += '</div>';
-
-                html += '<div class="row">';
-                html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-                html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic" disabled>   </div>';
-                html += '</div>';
-
-                html += '<div class="row">';
-                html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-                html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car" disabled>   </div>';
-                html += '</div>';
-
-                html += '<div class="row">';
-                html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-                html += '</div>';
-
-                //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
-
-                html += '</div>'
 
 
-                off_per++;
-                $('.add_person').append(html);
-
-
-                $('#Seachdata').click(function() {
-                    //var idtest = $(this).val();
-                    var idstd = $('#std_id').val();
-                    alert("กำลังค้นหา");
-
-                    if (idstd) {
-                        //alert ("GGG");
-
-                        $.ajax({
-                            type: 'POST',
-                            url: '<?php echo site_url("Notifyoffense/selectstudent") ?>',
-                            data: 'S_ID=' + idstd,
-                            dataType: 'json',
-                            success: function(data) {
-
-                                var i;
-                                for (i = 0; i < data.length; i++) {
-                                    //alert("SEE DATA"+data[i].S_ID);
-                                    if (idstd == data[i].S_ID) {
-                                        //alert ("i see data");
-                                        $('#std_name').val(data[i].std_fname);
-                                        $('#std_lname').val(data[i].std_std_lname);
-                                        $('#dept_name').val(data[i].std_fname);
-                                        $('#cur_name').val(data[i].std_fname);
-                                        $('#regis_num').val(data[i].std_fname);
-                                        $('#province_bic').val(data[i].std_fname);
-                                        $('#regis_car').val(data[i].std_fname);
-                                        $('#provin_car').val(data[i].std_fname);
-                                    }
-                                }
-
-                                //alert(data[1].off_ID);
-                                //alert("SEE DATA"+data[0].S_ID);
-                                //alert("SEE DATA"+data[1].S_ID);
-                            }
-
-                        });
-
-
-
-
-
-
-
-                        /*
-                        alert("i see");
-                        $('#std_name').val("ศุภกฤต");
-                        $('#std_lname').val("วงค์ปัญญา");
-                        $('#dept_name').val("สำนักวิชาสารสนเทศศาสตร");
-                        $('#cur_name').val("หลักสูตรเทคโนโลยีสารสนเทศ");
-                        $('#regis_num').val("รมท774");
-                        $('#province_bic').val("กาญจนบุรี");
-                        $('#regis_car').val("สส999");
-                        $('#provin_car').val("กรุงเทพมหานคร");
-                        */
-
-
-                    } else {
-                        alert("Not see");
-                    }
-                    //alert(idstd);
-
-                });
-
-                /*$('#std_2').typeahead({
-
-                    source: ["นายศุภกฤต", "C++"]
-                    //onkeypress="student_change(this)"
-                });*/
-
-
-            });
 
 
 
@@ -413,16 +362,16 @@
 
                         html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
                         /*
-                        if (id == 'txt_oc') {
-                            //alert(value.oc_ID);
-                            if (value.parent_id == '0') {
-                                html_code += '<option value="' + value.id + '">' + value.name + '</option>';
-                            }
-                    } else {
-                            if (value.parent_id == parent_id) {
-                                html_code += '<option value="' + value.id + '">' + value.name + '</option>';
-                            }
-                        }*/
+                            if (id == 'txt_oc') {
+                                //alert(value.oc_ID);
+                                if (value.parent_id == '0') {
+                                    html_code += '<option value="' + value.id + '">' + value.name + '</option>';
+                                }
+                        } else {
+                                if (value.parent_id == parent_id) {
+                                    html_code += '<option value="' + value.id + '">' + value.name + '</option>';
+                                }
+                            }*/
 
 
 
@@ -430,68 +379,98 @@
                     $('#' + id).html(html_code);
                 });
 
+            } //End function load_json_data
+
+            function show_all() {
+
+                //alert("Start Show_all function");
+                html = '';
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '<?php echo site_url("Notifyoffense/editnotify") ?>',
+                    //data: 'S_ID=' + idstd,
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("Having Data...");
+                        //alert(data.oh_ID);
+                        html += '<tr>';
+                        html += '<td>' + data.oh_ID + '</td>';
+                        html += '<td>12/03/2017</td>';
+                        html += '<td>จอดรถในที่ห้ามจอด</td>';
+                        html += '<td>อาคารเรียนรวม 5</td>';
+                        html += '<td> //</td>';
+                        html += '<td><a href="#"><i class="fas fa-edit" style="color:#47307b;"></i></a> <a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a></td>';
+                        html += '</tr>';
+                        /*
+                                
+                            </tr>*/
+                        $('#showdata').html(html);
+                    }
+
+
+                });
             }
 
 
-            $('#txt_oc').on('change', function() {
+
+
+
+        }); //End Ready function
+
+
+
+
+
+        $('#txt_oc').on('change', function() {
+            //alert("mmmm");
+            var html_code = '';
+            var ocID = $(this).val();
+            //alert(oc_ID);
+
+            if (ocID) {
+
                 //alert("mmmm");
-                var html_code = '';
-                var ocID = $(this).val();
-                //alert(oc_ID);
 
-                if (ocID) {
+                $.ajax({
+                    type: 'GET',
+                    url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
+                    data: 'oc_ID=' + ocID,
+                    dataType: 'json',
+                    success: function(data) {
 
-                    //alert("mmmm");
+                        //alert(data[1].off_ID);
 
-                    $.ajax({
-                        type: 'GET',
-                        url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
-                        data: 'oc_ID=' + ocID,
-                        dataType: 'json',
-                        success: function(data) {
+                        for (i = 0; i < data.length; i++) {
 
-                            //alert(data[1].off_ID);
-
-                            for (i = 0; i < data.length; i++) {
-
-                                html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
-
-                            }
-                            $('#txt_off').html(html_code);
+                            html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
 
                         }
+                        $('#txt_off').html(html_code);
 
-                    });
+                    }
 
-
-
-
-                }
-                /* else {
-                                    $('#state').html('<option value="">Select country first</option>');
-                                    $('#city').html('<option value="">Select state first</option>');*/
-
-            });
+                });
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+            /* else {
+                                $('#state').html('<option value="">Select country first</option>');
+                                $('#city').html('<option value="">Select state first</option>');*/
 
         });
+
+
+
+        //});
+
+
+
+
+
 
 
 
@@ -529,8 +508,52 @@
             $('#test').val(date_off); //set of date in form
         });
 
+
+
         $('#btnSave').click(function() {
             alert("กด Save");
+        });
+
+
+
+
+        $('#add').click(function() {
+            var html = '';
+
+            html += '<div id="student' + off_per + '">';
+
+            html += '<div class="row">';
+            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="" id="std_id"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" disabled>   </div>';
+            html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" disabled>  </div>';
+            html += '</div>';
+
+            html += '<div class="row">';
+            html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name" disabled>   </div>';
+            html += '</div>';
+
+            html += '<div class="row">';
+            html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic" disabled>   </div>';
+            html += '</div>';
+
+            html += '<div class="row">';
+            html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car" disabled>   </div>';
+            html += '</div>';
+
+            html += '<div class="row">';
+            html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(std_id)"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '</div>';
+
+            //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
+
+            html += '</div>';
+
+
+            off_per++;
+            $('.add_person').append(html);
         });
     </script>
 
