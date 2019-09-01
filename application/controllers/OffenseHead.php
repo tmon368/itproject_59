@@ -5,12 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class OffenseHead extends Student_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('OffenseHead_model', 'model');
+        $this->load->model('OffenseHead_model', 'OffenseHead_model');
     }
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
-        $this->checkAutoriry();
+        $this->logoutsession();
         $this->template();
         
     }
@@ -28,5 +28,14 @@ class OffenseHead extends Student_dashboard {
         
         
     }
+    
+    function selectstudentoffensehead(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->OffenseHead_model->selectstudentoffensehead();
+        // echo json_encode($result);
+    }
+    
+    
     
 }

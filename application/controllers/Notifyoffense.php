@@ -122,6 +122,8 @@ class Notifyoffense extends Student_dashboard {
 	    $result = $this->model->selectvehicles();
 	    
 	    echo json_encode($result);
+	    
+	    
 	}
 	function selectoffevidence(){
 	   
