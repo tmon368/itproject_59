@@ -1,15 +1,17 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Place extends CI_Controller {
+class Place extends Admin_dashboard {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('place_model', 'model');
+		$this->load->model('place_model', 'place_model');
 	}
 
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
+	    $this->checkAutoriry();
 	    $this->template();
 
 	}
@@ -32,13 +34,13 @@ class Place extends CI_Controller {
 
 	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table place และแสดงข้อมูลในview
 	public function showAll(){
-		$result = $this->model->showAll();
+	    $result = $this->place_model->showAll();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
 	public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->place_model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -52,7 +54,7 @@ class Place extends CI_Controller {
     
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addplace(){
-		$result = $this->model->addplace();
+	    $result = $this->place_model->addplace();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		
@@ -71,13 +73,13 @@ class Place extends CI_Controller {
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
 	public function editplace(){
 	
-		$result = $this->model->editplace();
+	    $result = $this->place_model->editplace();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
 	public function updateplace(){
-		$result = $this->model->updateplace();
+	    $result = $this->place_model->updateplace();
 		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
@@ -91,7 +93,7 @@ class Place extends CI_Controller {
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deleteplace(){
-		$result = $this->model->deleteplace();
+	    $result = $this->place_model->deleteplace();
 		if($result){
 		    $msg['success'] = true;     
 		}else{

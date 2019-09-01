@@ -1,15 +1,17 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class personnel extends CI_Controller {
+class personnel extends Admin_dashboard {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('personnel_model', 'model');
+		$this->load->model('personnel_model', 'personnel_model');
 	}
 
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
+	    $this->checkAutoriry();
 	    $this->template();
 
 	}
@@ -32,13 +34,13 @@ class personnel extends CI_Controller {
 
 	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table personnel และแสดงข้อมูลในview
 	public function showAll(){
-		$result = $this->model->showAll();
+	    $result = $this->personnel_model->showAll();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางpersonnel
 	public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->personnel_model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -52,7 +54,7 @@ class personnel extends CI_Controller {
     
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addpersonnel(){
-		$result = $this->model->addpersonnel();
+	    $result = $this->personnel_model->addpersonnel();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		
@@ -71,13 +73,13 @@ class personnel extends CI_Controller {
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
 	public function editpersonnel(){
 	
-		$result = $this->model->editpersonnel();
+	    $result = $this->personnel_model->editpersonnel();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
 	public function updatepersonnel(){
-		$result = $this->model->updatepersonnel();
+	    $result = $this->personnel_model->updatepersonnel();
 		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
@@ -91,7 +93,7 @@ class personnel extends CI_Controller {
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deletepersonnel(){
-		$result = $this->model->deletepersonnel();
+	    $result = $this->personnel_model->deletepersonnel();
 		if($result){
 		    $msg['success'] = true;     
 		}else{

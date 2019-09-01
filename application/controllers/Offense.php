@@ -1,15 +1,17 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Offense extends CI_Controller {
+class Offense extends Admin_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('offense_model', 'model');
+        $this->load->model('offense_model', 'offense_model');
     }
     
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
+        $this->checkAutoriry();
         $this->template();
         
     }
@@ -28,12 +30,12 @@ class Offense extends CI_Controller {
 	}
 
 	public function showAll(){
-	    $result = $this->model->showAll();
+	    $result = $this->offense_model->showAll();
 	    echo json_encode($result);
 	}
 	
 	public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->offense_model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -46,7 +48,7 @@ class Offense extends CI_Controller {
 	}
 	
 	public function addoffense(){
-	    $result = $this->model->addoffense();
+	    $result = $this->offense_model->addoffense();
 	    //$msg['success'] = false;
 	    //$msg['type'] = 'add';
 	    if($result){
@@ -61,12 +63,12 @@ class Offense extends CI_Controller {
 	
 	public function editoffense(){
 	    
-	    $result = $this->model->editoffense();
+	    $result = $this->offense_model->editoffense();
 	    echo json_encode($result);
 	}
 	
 	public function updateoffense(){
-	    $result = $this->model->updateoffense();
+	    $result = $this->offense_model->updateoffense();
 	    $msg['success'] = false;
 	    $msg['type'] = 'update';
 	    if($result){
@@ -79,7 +81,7 @@ class Offense extends CI_Controller {
 	}
 	
 	public function deleteoffense(){
-	    $result = $this->model->deleteoffense();
+	    $result = $this->offense_model->deleteoffense();
 	    if($result){
 	        $msg['success'] = true;
 	    }else{

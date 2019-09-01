@@ -1,15 +1,17 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dormtype extends CI_Controller {
+class Dormtype extends Admin_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('dormtype_model', 'model');
+        $this->load->model('dormtype_model', 'dormtype_model');
     }
     
     public function index()
     {
         //List แสดงข้อมูลบนหน้าจอ
+        $this->checkAutoriry();
         $this->template();
         //++
     }
@@ -31,13 +33,13 @@ class Dormtype extends CI_Controller {
     
     //ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table dormtype และแสดงข้อมูลในview
     public function showAll(){
-        $result = $this->model->showAll();
+        $result = $this->dormtype_model->showAll();
         echo json_encode($result);
     }
     
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางdormtype
     public function checkkey(){
-        $result = $this->model->checkkey();
+        $result = $this->dormtype_model->checkkey();
         if($result){
             $msg['success'] = true;
             
@@ -51,7 +53,7 @@ class Dormtype extends CI_Controller {
     
     //ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
     public function adddormtype(){
-        $result = $this->model->adddormtype();
+        $result = $this->dormtype_model->adddormtype();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
         
@@ -70,13 +72,13 @@ class Dormtype extends CI_Controller {
     //ฟังก์ชันแสดงการแก้ไขข้อมูล
     public function editdormtype(){
         
-        $result = $this->model->editdormtype();
+        $result = $this->dormtype_model->editdormtype();
         echo json_encode($result);
     }
     
     //ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
     public function updatedormtype(){
-        $result = $this->model->updatedormtype();
+        $result = $this->dormtype_model->updatedormtype();
         $msg['success'] = false;
         $msg['type'] = 'update';
         if($result){
@@ -90,7 +92,7 @@ class Dormtype extends CI_Controller {
     
     //ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
     public function deletedormtype(){
-        $result = $this->model->deletedormtype();
+        $result = $this->dormtype_model->deletedormtype();
         if($result){
             $msg['success'] = true;
         }else{

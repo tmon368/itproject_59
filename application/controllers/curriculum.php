@@ -1,15 +1,17 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class curriculum extends CI_Controller {
+class curriculum extends Admin_dashboard {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('curriculum_model', 'model');
+		$this->load->model('curriculum_model', 'curriculum_model');
 	}
 
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
+	    $this->checkAutoriry();
 	    $this->template();
 
 	}
@@ -32,13 +34,13 @@ class curriculum extends CI_Controller {
 
 	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table curriculum และแสดงข้อมูลในview
 	public function showAll(){
-		$result = $this->model->showAll();
+	    $result = $this->curriculum_model->showAll();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางcurriculum
 	public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->curriculum_model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -52,7 +54,7 @@ class curriculum extends CI_Controller {
     
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addcurriculum(){
-		$result = $this->model->addcurriculum();
+	    $result = $this->curriculum_model->addcurriculum();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		
@@ -71,13 +73,13 @@ class curriculum extends CI_Controller {
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
 	public function editcurriculum(){
 	
-		$result = $this->model->editcurriculum();
+	    $result = $this->curriculum_model->editcurriculum();
 		echo json_encode($result);
 	}
 	
 	//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
 	public function updatecurriculum(){
-		$result = $this->model->updatecurriculum();
+	    $result = $this->curriculum_model->updatecurriculum();
 		$msg['success'] = false;
 		$msg['type'] = 'update';
 		if($result){
@@ -91,7 +93,7 @@ class curriculum extends CI_Controller {
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deletecurriculum(){
-		$result = $this->model->deletecurriculum();
+	    $result = $this->curriculum_model->deletecurriculum();
 		if($result){
 		    $msg['success'] = true;     
 		}else{
