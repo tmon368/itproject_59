@@ -1,15 +1,17 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Offensecate extends CI_Controller {
+class Offensecate extends Admin_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('offensecate_model', 'model');
+        $this->load->model('offensecate_model', 'offensecate_model');
     }
     
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
+        $this->checkAutoriry();
         $this->template();
         
     }
@@ -32,12 +34,12 @@ class Offensecate extends CI_Controller {
     
     
     public function showAll(){
-        $result = $this->model->showAll();
+        $result = $this->offensecate_model->showAll();
         echo json_encode($result);
     }
     
     public function checkkey(){
-        $result = $this->model->checkkey();
+        $result = $this->offensecate_model->checkkey();
         if($result){
             $msg['success'] = true;
             
@@ -49,7 +51,7 @@ class Offensecate extends CI_Controller {
         echo json_encode($result);
     }
     public function addoffensecate(){
-        $result = $this->model->addoffensecate();
+        $result = $this->offensecate_model->addoffensecate();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
         if($result){
@@ -63,12 +65,12 @@ class Offensecate extends CI_Controller {
     
     public function editoffensecate(){
         
-        $result = $this->model->editoffensecate();
+        $result = $this->offensecate_model->editoffensecate();
         echo json_encode($result);
     }
     
     public function updateoffensecate(){
-        $result = $this->model->updateoffensecate();
+        $result = $this->offensecate_model->updateoffensecate();
         $msg['success'] = false;
         $msg['type'] = 'update';
         if($result){
@@ -81,7 +83,7 @@ class Offensecate extends CI_Controller {
     }
     
     public function deleteoffensecate(){
-        $result = $this->model->deleteoffensecate();
+        $result = $this->offensecate_model->deleteoffensecate();
         
         if($result){
             $msg['success'] = true;
