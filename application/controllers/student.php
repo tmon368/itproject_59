@@ -1,14 +1,16 @@
 <?php
+require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class student extends CI_Controller {
+class student extends Admin_dashboard {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('student_model', 'model');
+		$this->load->model('student_model', 'student_model');
 	}
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
+	    $this->checkAutoriry();
 	    $this->template();
 
 	}
@@ -26,7 +28,7 @@ class student extends CI_Controller {
 	}
 	
 	public function showAll(){
-	    $result = $this->model->showAll();
+	    $result = $this->student_model->showAll();
 	    echo json_encode($result);
 	}
 	
