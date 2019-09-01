@@ -299,7 +299,6 @@ class Notifyoffense_model extends CI_Model {
        
     }
     
-    
     function selectvehiclesmotorcycle(){
         $motorcycle = "รถจักรยานยนต์";
         $student = $this->session->userdata('student');
