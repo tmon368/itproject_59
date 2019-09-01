@@ -224,8 +224,8 @@ class Notifyoffense_model extends CI_Model {
 
 // select หมวดและฐานความผิด
     function selectOffenseoffevidence(){
-       // $oc_ID = $this->input->get('oc_ID');
-        $oc_ID = 8;
+        $oc_ID = $this->input->get('oc_ID');
+        //$oc_ID = 8;
         //$this->db->select('*');
         //$this->db->from('offensecate o');
         //$this->db->join('Offense oc', 'o.oc_ID=oc.oc_ID');
@@ -333,22 +333,6 @@ class Notifyoffense_model extends CI_Model {
          }
         
     }
-
-    function selectoffensecate()
-	{
-	    $this->db->order_by('oc_ID','ASC');
-	    $query = $this->db->get('offensecate');
-	    
-	    if ($query->num_rows() > 0) {
-	        return $query->result();
-	    } else {
-	        return false;
-	    }
-    }
-
-
-
-
-    
+       
     
 }
