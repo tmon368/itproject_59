@@ -241,11 +241,25 @@ class Notifyoffense_model extends CI_Model {
         $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
         $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
         */
-
-        $this->db->where('S_ID',$std_ID);
-        $query = $this->db->get("student");
+        
+        
+        $this->db->select('*');
+        $this->db->from('student s');
+        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+        $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+        $this->db->where('s.S_ID',$std_ID);
+        $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
+        
+        
+        /*
+        $this->db->where('S_ID',$std_ID);
+        
+        $query = $this->db->get("student");
+        
+        $student = array();
+        $student = $query->result_array();*/
 
         $this->db->where('S_ID',$std_ID);
         $query = $this->db->get("vehicles");
