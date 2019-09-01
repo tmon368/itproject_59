@@ -246,8 +246,8 @@ class Notifyoffense_model extends CI_Model {
     function selectstudent(){
        // $username = $this->session->userdata('username');
         //$username= $this->input->post('S_ID');
-        //$std_ID= $this->input->get('S_ID');
-        $std_ID = 59123456;
+        $std_ID= $this->input->post('S_ID');
+       // $std_ID = 59123456;
         /*
         $this->db->select('*');
         $this->db->from('vehiclestype vt');
@@ -272,10 +272,7 @@ class Notifyoffense_model extends CI_Model {
         $this->db->where('S_ID',$std_ID);
         $query = $this->db->get("vehicles");
         $student['verhicles'] = $query->result_array();
-        //var_dump($student);
-
-       // die();
-
+   
 
        /* $student = array(
             "studentID" => "",
@@ -283,20 +280,7 @@ class Notifyoffense_model extends CI_Model {
             "vehicles" => array("id"=>"xx","name":"xxx")
         );
 
-        */
-        //$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
-
-        
-
-
-        // $this->db->join('personnel p', 's.person_ID=p.person_ID');
-        
-       
-//         $this->db->where('v.S_ID',$username);
-    
-//        $query = $this->db->get();
-//            var_dump($query->result());
-  
+  */
         if($student > 0){
             return $student;
         }else{
@@ -329,7 +313,6 @@ class Notifyoffense_model extends CI_Model {
        
     }
     
-    
     function selectvehiclesmotorcycle(){
         $motorcycle = "รถจักรยานยนต์";
         $student = $this->session->userdata('student');
@@ -351,7 +334,17 @@ class Notifyoffense_model extends CI_Model {
         
     }
 
-
+    function selectoffensecate()
+	{
+	    $this->db->order_by('oc_ID','ASC');
+	    $query = $this->db->get('offensecate');
+	    
+	    if ($query->num_rows() > 0) {
+	        return $query->result();
+	    } else {
+	        return false;
+	    }
+    }
 
 
 
