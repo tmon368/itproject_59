@@ -1,4 +1,5 @@
 <?php
+
 require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 

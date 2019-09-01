@@ -1,5 +1,6 @@
 <?php
 
+
 class offense_model extends CI_Model {
     public function _construct()
     {
