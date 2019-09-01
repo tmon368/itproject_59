@@ -232,8 +232,8 @@ class Notifyoffense_model extends CI_Model {
     function selectstudent(){
        // $username = $this->session->userdata('username');
         //$username= $this->input->post('S_ID');
-        $std_ID= $this->input->get('S_ID');
-        //$std_ID = 59123456;
+        //$std_ID= $this->input->get('S_ID');
+        $std_ID = 59123456;
         /*
         $this->db->select('*');
         $this->db->from('vehiclestype vt');
@@ -283,8 +283,8 @@ class Notifyoffense_model extends CI_Model {
 //        $query = $this->db->get();
 //            var_dump($query->result());
   
-        if($query->num_rows() > 0){
-            return $query->result();
+        if($student > 0){
+            return $student;
         }else{
             return false;
         }
