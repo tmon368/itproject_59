@@ -22,7 +22,7 @@
         }
 
         #oh_ID {
-            width: 50%;
+            width: 50%; 
         }
 
         .padding_b {
