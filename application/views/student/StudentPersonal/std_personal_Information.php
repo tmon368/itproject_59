@@ -27,21 +27,17 @@
 
 <style>
 
-   p.pro{
-        font-size: 20px;
-        font-family: Prompt;
-    }
-     p.pro2{
-        font-size: 18px;
-        font-family: Prompt;
-    }
+  
     .sty_text{
+        padding-left:5rem;
+    }
+    .sty_text2{
         padding-left:3rem;
     }
-    #xxx{
     
-    }
     .breadcrumb2{
+    font-size: 20px;
+    font-weight: 600;
     display: flex;
     flex-wrap: wrap;
     padding: 0.56rem 1.13rem;
@@ -49,6 +45,12 @@
     list-style: none;
     background-color: transparent;
     border-radius: 0.25rem;
+}
+
+    .breadcrumb3{
+    
+    margin-bottom: 1rem;
+  
 }
  
 </style>
@@ -67,71 +69,54 @@
                 <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp;ข้อมูลส่วนตัว</h6>
             </div><br>
             
-        <div class="breadcrumb2">1.นักศึกษา</p></div>
+        <div class="breadcrumb2">1.นักศึกษา </div>
 
      		<div class="row sty_text">
-     			<div class="col-sm-2"  > 
-     			รหัสนักศึกษา :  <span id="S_ID"></span>                       
-     			</div>
-     			
-     			<div class="col-sm-1">
-     		
-     			</div>
-     			<div class="col-sm-1">
-     			ชื่อ :<span id=""></span>
-     			</div>   
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			สกุล : <span id=""></span>
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			
-     			
-     			
-     		
-     		</div>   
-     		<div class="row sty_text">
-     			<div class="col-sm-3">
-     			หลักสูตร :
-     			</div>
-     			<div class="col-sm-1">
-     			สำนักวิชา :
-     			</div>  
      			<div class="col-sm-2">
-     			
-     			</div>  	
+     			รหัสนักศึกษา :  <span id="S_ID"></span>
+				</div>
+				
+     			<div class="col-sm-2">
+     			ชื่อ :  <span id="std_fname"></span>
+     			</div>   
+
      			<div class="col-sm-6">
-     			
+     			สกุล :  <span id="std_lname"></span>	
+     			</div>
+     		
+     		</div>  
+     	
+			<div class="row sty_text">
+     			<div class="col-sm-3">
+     			หลักสูตร :  <span id="cur_name"></span>
+     			</div>
+     			<div class="col-sm-3">
+     			สำนักวิชา :  <span id="dept_name"></span>
+     			</div>    	
+     			<div class="col-sm-6">
      			</div> 		
      		</div> 
      		
      		<div class="row sty_text">
      			<div class="col-sm-3">
-     			หมายเลขโทรศัพท์ :
+     			หมายเลขโทรศัพท์ :  <span id="phone"></span>
      			</div>
-     			<div class="col-sm-1">
-     			อีเมล์ :
+     			<div class="col-sm-3">
+     			อีเมล์ :  <span id="email"></span>
      			</div>
-     			<div class="col-sm-2">
-     			
-     			</div>  	
      			<div class="col-sm-6">
-     			
-     			</div> 	
+     			</div>	
+     		
      			
      			
      		</div>
      		
      		 <div class="row sty_text">
      			<div class="col-sm-3">
-     			ชื่อหอพัก :
+     			ชื่อหอพัก :  <span id="dname"></span>
      			</div>
      			<div class="col-sm-3">
-     			ประเภทหอพัก :
+     			ประเภทหอพัก :  <span id="type_name"></span>
      			</div>	
      			<div class="col-sm-6">
      			
@@ -141,60 +126,40 @@
      		
      		
      		
-     	<div class="breadcrumb2">2.อาจารย์ที่ปรึกษา</p></div>
+     	<div class="breadcrumb2">2.อาจารย์ที่ปรึกษา     </div>
 
      		<div class="row sty_text">
      			<div class="col-sm-1">
      			
-     			ชื่อ :
+     			ชื่อ :  <span id="person_fname"></span>
      			</div>
      			
      			<div class="col-sm-1">
-     			สกุล : 
+     			สกุล :  <span id="person_lname"></span>
      			</div>
      			<div class="col-sm-1">
      			
      			</div>
      			<div class="col-sm-2">
-     			ตำแหน่ง :
+     			ตำแหน่ง :  <span id="position"></span>
      			</div>
      			
      			
-     			<div class="col-sm-1">
+     			<div class="col-sm-7">
      			
      			</div>
      			
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
      			
      		
      		</div>   
      		<div class="row sty_text">
      			<div class="col-sm-3">
-     			หน่วยงาน :
+     			หน่วยงาน :  <span id="dept_name1"></span>
      			</div>
-     			<div class="col-sm-1">
-     			หลักสูตร :
+     			<div class="col-sm-3">
+     			หลักสูตร :  <span id="cur_name1"></span>
      			</div>  
-     			<div class="col-sm-2">
-     			
-     			</div>  	
+     			  	
      			<div class="col-sm-6">
      			
      			</div> 		
@@ -202,14 +167,12 @@
      		
      		<div class="row sty_text">
      			<div class="col-sm-3">
-     			หมายเลขโทรศัพท์ :
+     			หมายเลขโทรศัพท์ :  <span id="phone1"></span>
      			</div>
-     			<div class="col-sm-1">
-     			อีเมล์ :
+     			<div class="col-sm-3">
+     			อีเมล์ :  <span id="email1"></span>
      			</div>
-     			<div class="col-sm-2">
-     			
-     			</div>  	
+     			 	
      			<div class="col-sm-6">
      			
      			</div> 	
@@ -218,38 +181,32 @@
      		</div>
      		
 
-<div class="breadcrumb2">3.ยานพาหนะ</p></div>
+	<div class="breadcrumb2">3.ยานพาหนะ    </div>
+		<div class="row sty_text2">
+     			<div class="col-sm-12">
+     			
+     			3.1 รถจักรยานยนต์ 
+     			</div>
+     	</div>
 
      		<div class="row sty_text">
-     			<div class="col-sm-1">
+     			<div class="col-sm-3">
      			
-     			ชื่อ :
+     			เลขทะเบียนยานพาหนะ :  <span id="regist_num1"></span>
      			</div>
      			
-     			<div class="col-sm-1">
-     			สกุล : 
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
      			<div class="col-sm-2">
-     			ตำแหน่ง :
+     			จังหวัด :  <span id="province"></span>
      			</div>
      			
+     			<div class="col-sm-2">
+     			ยี่ห้อ :  <span id="brand"></span>
+     			</div>
      			
      			<div class="col-sm-1">
-     			
+     			สี :  <span id="color"></span>
      			</div>
      			
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
-     			<div class="col-sm-1">
-     			
-     			</div>
      			<div class="col-sm-1">
      			
      			</div>
@@ -259,159 +216,105 @@
      			<div class="col-sm-1">
      			
      			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     		
      			
      		</div>   
      		<div class="row sty_text">
      			<div class="col-sm-3">
-     			สำนักวิชา :
+     			วันที่ลงทะเบียนสติ๊กเกอร์ :  <span id="regist_date"></span>
      			</div>
-     			<div class="col-sm-1">
-     			หลักสูตร :
+     			<div class="col-sm-3">
+     			วันที่หมดอายุสติ๊กเกอร์ :  <span id="expired_date"></span>
      			</div>  
-     			<div class="col-sm-2">
-     			
-     			</div>  	
+     				
      			<div class="col-sm-6">
      			
      			</div> 		
      		</div> 
-     		
+  <div class="row sty_text2">
+     			<div class="col-sm-12">
+     			
+     			3.2 รถยนต์ 
+     			</div>
+     	</div>
+
      		<div class="row sty_text">
      			<div class="col-sm-3">
-     			หมายเลขโทรศัพท์ :
+     			
+     			เลขทะเบียนยานพาหนะ :  <span id="regist_num2"></span>
+     			</div>
+     			
+     			<div class="col-sm-2">
+     			จังหวัด :  <span id="province1"></span>
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			ยี่ห้อ :  <span id="brand1"></span>
      			</div>
      			<div class="col-sm-1">
-     			อีเมล์ :
-     			</div>
-     			<div class="col-sm-2">
      			
-     			</div>  	
+     			</div>
+     			<div class="col-sm-1">
+     			สี :  <span id="color1"></span>
+     			</div>
+     			
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     			<div class="col-sm-1">
+     			
+     			</div>
+     		
+     			
+     		</div>   
+     		<div class="row sty_text">
+     			<div class="col-sm-3">
+     			วันที่ลงทะเบียนสติ๊กเกอร์ :  <span id="regist_date1"></span>
+     			</div>
+     			<div class="col-sm-3">
+     			วันที่หมดอายุสติ๊กเกอร์ :  <span id="expired_date1"></span>
+     			</div>  
+     				
      			<div class="col-sm-6">
      			
-     			</div> 	
-     			
-     			
-     		</div>
-     		
-     		  
+     			</div> 		
+     		</div> 
+     		<br><br>
+     		<div class="col-sm-12 ">
+     		 <!--  <center><button onclick="myFunction() class="btn "><a href="Student_dashboard.html"> ย้อนกลับ</button></center></a>  -->
+     		 
+     		 
+     		 <!-- <button type="button"  onclick="test()">ย้อนกลับ</button> -->
+     		 
+     		 
+     		 <center> <a href=<?php echo base_url() ?>index.php/Student_dashboard><input type="button" value="ย้อนกลับ"></a> </center>
+     		 
+     		</div> 
         </div>
+        
+      
       
  			
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-<!-- 
 
-
-<div class="breadcrumb"><p class="pro">1.นักศึกษา</p></div>
-<div class="page-breadcrumb" id="nav_sty">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <li class="breadcrumb-item">รหัสนักศึกษา : &nbsp;</li>
-      <li id="S_ID"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">ชื่อ :&nbsp;</a></li>
-      <li id="std_fname"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">สกุล :&nbsp;</a></li>
-      <li id="std_lname"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">หลักสูตร :&nbsp;</a></li>
-      <li id="cur_name"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">สำนักวิชา :&nbsp;</a></li>
-      <li id="dept_name"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">หมายเลขโทรศัพท์ :&nbsp;</a></li>
-      <li id="phone"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">อีเมล์ :&nbsp;</a></li>
-      <li id="email"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">ชื่อหอพัก :&nbsp;</a></li>
-      <li id="dname"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">ประเภทหอพัก :&nbsp;</a></li>
-      <li id="type_name"> </li>&nbsp;&nbsp;
-    </p></ol>
-  </nav>
 </div>
-<div class="breadcrumb"><p class="pro">2.อาจารย์ที่ปรึกษา</p></div>
-<div class="page-breadcrumb" id="nav_sty">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <li class="breadcrumb-item">ชื่อ :&nbsp;</a></li>
-      <li id="person_fname"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">สกุล :&nbsp;</a></li>
-      <li id="person_name"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">ตำแหน่ง :&nbsp;</a></li>
-      <li id="position"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">หน่วยงาน :&nbsp;</a></li>
-      <li id="dept_name1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">หลักสูตร :&nbsp;</a></li>
-      <li id="cur_name1"> </li>&nbsp;&nbsp;</br>
-      <li class="breadcrumb-item">หมายเลขโทรศัพท์ :&nbsp;</a></li>
-      <li id="phone1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">อีเมล์ :&nbsp;</a></li>
-      <li id="email1"> </li>&nbsp;&nbsp;
-    </ol>
-  </nav>
-</div>
-<div class="breadcrumb"><p class="pro">3.ยานพาหนะ</p></div>
-<div class="page-breadcrumb" id="nav_sty">
-  <nav aria-label="breadcrumb">
-  <div class="breadcrumb">3.1 รถจักรยานยนต์</div>
-    <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li>
-      <li id="regist_num1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
-      <li id="province"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">ยี่ห้อ :&nbsp;</a></li>
-      <li id="brand"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">สี :&nbsp;</a></li>
-      <li id="color"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">วันที่ลงทะเบียนสติ๊กเกอร์ :&nbsp;</a></li>
-      <li id="regist_date"> </li>&nbsp;&nbsp;</br>
-      <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
-      <li id="expired_date"> </li>&nbsp;&nbsp;
-     </ol>
-     
-     <div class="breadcrumb">3.2 รถยนต์</div>
-     <ol class="breadcrumb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <li class="breadcrumb-item">เลขทะเบียนยานพาหนะ :&nbsp;</a></li> 
-      <li id="regist_num2"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">จังหวัด :&nbsp;</a></li>
-      <li id="province1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">ยี่ห้อ :&nbsp;</a></li>
-      <li id="brand1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">สี :&nbsp;</a></li>
-      <li id="color1"> </li>&nbsp;&nbsp;
-      <li class="breadcrumb-item">วันที่ลงทะเบียนสติ๊กเกอร์ :&nbsp;</a></li>
-      <li id="regist_date1"> </li>&nbsp;&nbsp;</br>
-      <li class="breadcrumb-item">วันที่หมดอายุสติ๊กเกอร์ :&nbsp;</a></li>
-      <li id="expired_date1"> </li>&nbsp;&nbsp;
-    </ol>
-  </nav>
-  
 
-
-
-
- -->
-		
-  
-</div>
-</div>
-</div>
 
 
 
     
     
     
-    
+   
    
    
 </body>
@@ -423,12 +326,19 @@
     	 selectpersonnel();
     	 selectvehiclesmotorcycle();
     	 selectvehiclescar();
+    	 //test();
         //$('[data-toggle="popover"]').popover();
 
         
+    /* function test(){
+     //alert("XXXX");
+        $(location).attr('href','<?php echo base_url() ?>index.php/Student_dashboard');   
+        }
+    	*/
         
         
     function showAll() {
+        
                 $.ajax({
                     type: 'ajax',
                     url: '<?php echo base_url() ?>index.php/Std_info/selectstudent',
@@ -465,7 +375,7 @@
             dataType: 'json',
             success: function(data) {
             	$("#person_fname").html(data[0].person_fname);
-            	$("#person_name").html(data[0].person_lname);      
+            	$("#person_lname").html(data[0].person_lname);      
             	$("#position").html(data[0].position);       
             	$("#dept_name1").html(data[0].dept_name); 
                $("#cur_name1").html(data[0].cur_name); 
