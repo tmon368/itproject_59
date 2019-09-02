@@ -11,7 +11,7 @@
 
 <head>
 
-    <title>แจ้งเหตุกระทำความผิด | ระบบวินัยนักศึกษา</title>
+    <title>เสนอกิจกรรมบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
     <style>
         label {
             padding: 0.4rem;
@@ -78,7 +78,7 @@
             </nav>
         </div>
 
-        <!--<input type="text" name="" id="test223">-->
+        
 
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
@@ -221,12 +221,15 @@
                             </thead>
                             <tbody id="showdata">
                                 <tr>
-                                    <td>1</td>
-                                    <td>12/03/2017</td>
-                                    <td>จอดรถในที่ห้ามจอด</td>
-                                    <td>อาคารเรียนรวม 5</td>
-                                    <td>#</td>
-                                    <td>#</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
