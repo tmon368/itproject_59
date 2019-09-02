@@ -17,12 +17,7 @@ class OffenseHead_model extends CI_Model {
         $student = array();
         $student = $query->result_array();
         
-        
-        
-        
-        
-        var_dump($student);
-        die();
+
         
         if($student > 0){
             return $student;
@@ -43,15 +38,10 @@ class OffenseHead_model extends CI_Model {
         $offenseorder = array();
         $offenseorder = $query->result_array();
         
+
         
-        
-        
-        
-        var_dump($offenseorder);
-        die();
-        
-        if($student > 0){
-            return $student;
+        if($offenseorder > 0){
+            return $offenseorder;
         }else{
             return false;
         }

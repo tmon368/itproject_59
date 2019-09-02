@@ -34,7 +34,7 @@ class OffenseHead extends Student_dashboard {
         //  $username = $this->session->userdata('username');
         
         $result = $this->OffenseHead_model->selectstudentoffensehead();
-        // echo json_encode($result);
+         echo json_encode($result);
     }
     
     
@@ -42,7 +42,7 @@ class OffenseHead extends Student_dashboard {
         //  $username = $this->session->userdata('username');
         
         $result = $this->OffenseHead_model->selectoffenseorder();
-        // echo json_encode($result);
+         echo json_encode($result);
     }
     
     
