@@ -339,8 +339,7 @@
     <script>
         $(document).ready(function() {
 
-            //alert("Ready");
-            //sct_show();
+            check_id();
             show_all();
             load_json_data('txt_oc');
 
@@ -381,6 +380,9 @@
 
             } //End function load_json_data
 
+
+
+
             function show_all() {
 
                 //alert("Start Show_all function");
@@ -389,28 +391,104 @@
                 $.ajax({
 
                     type: 'POST',
-                    url: '<?php echo site_url("Notifyoffense/editnotify") ?>',
+                    url: '<?php echo site_url("Notifyoffense/showAll") ?>',
                     //data: 'S_ID=' + idstd,
                     dataType: 'json',
                     success: function(data) {
                         //alert("Having Data...");
-                        //alert(data.oh_ID);
-                        html += '<tr>';
-                        html += '<td>' + data.oh_ID + '</td>';
-                        html += '<td>12/03/2017</td>';
-                        html += '<td>จอดรถในที่ห้ามจอด</td>';
-                        html += '<td>อาคารเรียนรวม 5</td>';
-                        html += '<td> //</td>';
-                        html += '<td><a href="#"><i class="fas fa-edit" style="color:#47307b;"></i></a> <a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a></td>';
-                        html += '</tr>';
-                        /*
-                                
-                            </tr>*/
-                        $('#showdata').html(html);
+
+                        $.each(data, function(key, value) {
+
+
+                            html += '<tr>';
+                            html += '<td>' + value.oh_ID + '</td>';
+                            html += '<td>' + value.notifica_date + '</td>';
+                            html += '<td>' + value.off_ID + '</td>';
+                            html += '<td>' + value.place_ID + '</td>';
+                            html += '<td> //</td>';
+                            html += '<td><a href="#"><i class="fas fa-edit" style="color:#47307b;"></i></a> <a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a></td>';
+                            html += '</tr>';
+                            /*
+                                    
+                                </tr>*/
+                            $('#showdata').html(html);
+
+
+
+
+
+                        });
+
+
+
+
+
+
+
+
                     }
 
 
                 });
+            }
+
+
+
+
+
+
+
+            //check id and create id
+            function check_id() {
+
+                title = 'L';
+                var date = new Date();
+                date_t = date.getFullYear();
+                B_E=date_t+543; //แปลง ค.ศ. => พ.ศ.
+                convert_be=B_E.toString(); //convert to string
+                BE=convert_be.substring(2);
+                               
+                console.log(BE);
+                console.log(typeof convert_be);
+                //console.log(typeof B_E);
+
+                i=1;
+                Runnning_num = 0000;
+                //console.log(typeof Runnning_num); //check type
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '<?php echo site_url("Notifyoffense/showAll") ?>',
+                    //data: 'S_ID=' + idstd,
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("Having Data...");
+                        if (data == 0) {
+                            //console.log("NULL");
+                            
+                            $('#oh_ID').val(title + BE + Runnning_num);
+                        }
+
+
+
+
+                    },
+                    error: function() {
+                        alert('No Data');
+                    }
+
+
+                });
+
+
+
+
+
+
+
+
+
             }
 
 
