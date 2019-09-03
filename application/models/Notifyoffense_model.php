@@ -74,9 +74,9 @@ class Notifyoffense_model extends CI_Model {
         $field = array(
             
             'oh_ID'=>$this->input->post('oh_ID'),
-            'off_ ID'=>$this->input->post('off_ ID'),
+            'off_ID'=>$this->input->post('off_ID'),
             'person_ID'=>$this->input->post('person_ID'),
-            'std_ID'=>$this->input->post('std_ID'),
+            'S_ID'=>$this->input->post('S_ID'),
             'place_ID'=>$this->input->post('place_ID'),
             'committed_date'=>$this->input->post('committed_date'),
             'committed_time'=>$this->input->post('committed_time'),
