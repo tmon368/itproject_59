@@ -7,28 +7,28 @@ class VolunteerAc_model extends CI_Model {
         
     }
     
-    //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
+   
  
     function showAll(){
       
          
         //$service_ID= $this->input->post('txtdelID');
-        $username=59123456;
+        //$username=59123456;
         //echo $person_ID;
         // $username = $this->session->userdata('username');
         $this->db->select('*');
         $this->db->from('student s');
         $this->db->join('service sv', 's.S_ID=sv.S_ID');
         $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
-        $this->db->where('s.S_ID', $username);
+        //$this->db->where('s.S_ID', $username);
         $query = $this->db->get();
-        var_dump($query->result());
-        /*
-        if($query->num_rows() > 0){
+        //var_dump($query->result());
+       
+        if($query->result() > 0){
             return $query->result();
         }else{
             return false;
-        }*/
+        }
         
     }
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
@@ -62,9 +62,9 @@ class VolunteerAc_model extends CI_Model {
         'end_time'=>$this->input->post('end_time'),
         'service_time'=>$this->input->post('service_time'),
         'service_hour'=>$this->input->post('service_hour'),
-        'status'=>$this->input->post('status')
-        'results'=>$this->input->post('results')
-        'document_file'=>$this->input->post('document_file')
+        'status'=>$this->input->post('status'),
+        'results'=>$this->input->post('results'),
+        'document_file'=>$this->input->post('document_file'),
         'explanation '=>$this->input->post('explanation ')
 
     );
