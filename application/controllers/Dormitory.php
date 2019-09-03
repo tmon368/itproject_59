@@ -62,7 +62,7 @@ class Dormitory extends Admin_dashboard  {
      
     public function editdormitory(){
         
-        
+         
         $result = $this->dormitory_model->editdormitory();
         echo json_encode($result);
     }
