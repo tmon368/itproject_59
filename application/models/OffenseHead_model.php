@@ -48,7 +48,15 @@ class OffenseHead_model extends CI_Model {
         }
     }
     
-   
+    public function showAll(){
+        $this->db->order_by('S_ID', 'ASC');
+        $query = $this->db->get('student');
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
     
     
     
