@@ -113,7 +113,7 @@
                                     <div class="row">
                                         <div class="col-sm-6"> </div>
                                         <div class="col-sm-6 padding_b">
-                                            <div class="form-inline"><label for="">รหัสกิจกรรม:</label><input type="text" name="..." id="..." class="form-control style_input" disabled></div>
+                                            <div class="form-inline"><label for="">รหัสกิจกรรม:</label><input type="text" name="service_ID" id="service_ID" class="form-control style_input" disabled></div>
                                         </div>
                                     </div>
                                     
@@ -121,7 +121,7 @@
                                         <div class="col-sm-8">
                                             <div class="col-sm-6 padding_b">
                                                 <label for="">ชื่อกิจกรรม</label> <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                           <input type="text" name="" id="" class=" style_input"  maxlength="25"  >
+                                           <input type="text" name="service_name" id="service_name" class=" style_input"  maxlength="25"  >
                                             </div>
                                         </div>     
                                     </div>
@@ -130,7 +130,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-inline"><label for="">วันที่จัดกิจกรรม<label> 
                                             <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="date" name="" id="" class="style_input">
+                                            <input type="date" name="service_date" id="service_date" class="style_input">
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -210,9 +210,8 @@
                                 <tr>
                                     <th>ลำดับ</th>
                                     <th>ชื่อกิจกรรม</th>
-                                    <th>วันที่</th>
-                                    <th>วันที่</th>
-                                    <th>จำนวนรับ</th>
+                                    <th>วันที่</th>    
+                                    <th>ระยะเวลากิจกรรม</th>
                                     <th>ผู้ควบคุม</th>
                                      <th>รายละเอียดกิจกรรม</th>
                                       <th>สถานะการเสนอกิจกรรม</th>
@@ -220,17 +219,7 @@
                                 </tr>
                             </thead>
                             <tbody id="showdata">
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                               
                             </tbody>
                         </table>
                     </div>
@@ -243,112 +232,30 @@
 
     </div>
     <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
 
-            //sct_show();
-
-            load_json_data('txt_oc');
-
-            $('#add').click(function() {
-                var html = '';
-
-                html += '<div id="student' + off_per + '">';
-
-                html += '<div class="row">';
-                //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-                html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" >   </div>';
-                html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" >  </div>';
-                html += '</div>';
-
-                html += '<div class="row">';
-                html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-                html += '</div>';
-
-                //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
-
-                html += '</div>'
-
-
-                off_per++;
-                $('.add_person').append(html);
-
-
-                $('#Seachdata').click(function() {
-                    //var idtest = $(this).val();
-                    var idstd = $('#std_id').val();
-                    alert("กำลังค้นหา");
-
-                    if (idstd) {
-                        //alert ("GGG");
-
-                        $.ajax({
-                            type: 'POST',
-                            url: '<?php echo site_url("Notifyoffense/selectstudent") ?>',
-                            data: 'S_ID=' + idstd,
-                            dataType: 'json',
-                            success: function(data) {
-
-                                var i;
-                                for (i = 0; i < data.length; i++) {
-                                    //alert("SEE DATA"+data[i].S_ID);
-                                    if (idstd == data[i].S_ID) {
-                                        //alert ("i see data");
-                                        $('#std_name').val(data[i].std_fname);
-                                        $('#std_lname').val(data[i].std_std_lname);
-                                        $('#dept_name').val(data[i].std_fname);
-                                        $('#cur_name').val(data[i].std_fname);
-                                        $('#regis_num').val(data[i].std_fname);
-                                        $('#province_bic').val(data[i].std_fname);
-                                        $('#regis_car').val(data[i].std_fname);
-                                        $('#provin_car').val(data[i].std_fname);
-                                    }
-                                }
-
-                               
-                            }
-
-                        });
+        check_id();
+        show_all();
+        load_json_data('txt_oc');
 
 
 
 
 
 
+        function load_json_data(id, parent_id) {
+            var html_code = '';
 
-                        
+            $.getJSON('<?php echo site_url('Notifyoffense/selectoffensecate') ?>', function(data) {
 
+                //alert(data[0].oc_ID + data[0].oc_desc);
 
-                    } else {
-                        alert("ไม่มีข้อมูล");
-                    }
-                    //alert(idstd);
-
-                });
-
-                /*$('#std_2').typeahead({
-
-                    source: ["นายศุภกฤต", "C++"]
-                    //onkeypress="student_change(this)"
-                });*/
+                html_code += '<option value=""> เลือกหมวดความผิด </option>';
+                $.each(data, function(key, value) {
 
 
-            });
-
-
-
-            function load_json_data(id, parent_id) {
-                var html_code = '';
-
-                $.getJSON('<?php echo site_url('Notifyoffense/selectoffensecate') ?>', function(data) {
-
-                    //alert(data[0].oc_ID + data[0].oc_desc);
-
-                    html_code += '<option value=""> เลือกหมวดความผิด </option>';
-                    $.each(data, function(key, value) {
-
-
-                        html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
-                        /*
+                    html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
+                    /*
                         if (id == 'txt_oc') {
                             //alert(value.oc_ID);
                             if (value.parent_id == '0') {
@@ -362,50 +269,110 @@
 
 
 
-                    });
-                    $('#' + id).html(html_code);
                 });
+                $('#' + id).html(html_code);
+            });
 
-            }
+        } //End function load_json_data
 
 
-            $('#txt_oc').on('change', function() {
-                //alert("mmmm");
-                var html_code = '';
-                var ocID = $(this).val();
-                //alert(oc_ID);
 
-                if (ocID) {
 
-                    //alert("mmmm");
+        function show_all() {
 
-                    $.ajax({
-                        type: 'GET',
-                        url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
-                        data: 'oc_ID=' + ocID,
-                        dataType: 'json',
-                        success: function(data) {
+            //alert("Start Show_all function");
+            html = '';
 
-                            //alert(data[1].off_ID);
+            $.ajax({
 
-                            for (i = 0; i < data.length; i++) {
+                type: 'POST',
+                url: '<?php echo site_url("VolunteerAC/showAll") ?>',
+                //data: 'S_ID=' + idstd,
+                dataType: 'json',
+                success: function(data) {
+                    //alert("Having Data...");
 
-                                html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
+                    $.each(data, function(key, value) {
 
-                            }
-                            $('#txt_off').html(html_code);
 
-                        }
+                        html += '<tr>';
+                        html += '<td>' + value.service_ID + '</td>';
+                        html += '<td>' + value.service_name +'</td>';
+                        html += '<td>' + value.service_date + '</td>';
+                        html += '<td>' + '</td>';
+                        html += '<td> </td>';
+                        html += '<td></td>';
+                        html += '</tr>';
+                        /*
+                                
+                            </tr>*/
+                        $('#showdata').html(html);
+
+
+
+
 
                     });
+
+
+
+
 
 
 
 
                 }
-                /* else {
-                                    $('#state').html('<option value="">Select country first</option>');
-                                    $('#city').html('<option value="">Select state first</option>');*/
+
+
+            });
+        }
+
+
+
+
+
+
+
+        //check id and create id
+        function check_id() {
+
+            title = 'L';
+            var date = new Date();
+            date_t = date.getFullYear();
+            B_E=date_t+543; //แปลง ค.ศ. => พ.ศ.
+            convert_be=B_E.toString(); //convert to string
+            BE=convert_be.substring(2);
+                           
+            console.log(BE);
+            console.log(typeof convert_be);
+            //console.log(typeof B_E);
+
+            i=1;
+            Runnning_num = 0000;
+            //console.log(typeof Runnning_num); //check type
+
+            $.ajax({
+
+                type: 'POST',
+                url: '<?php echo site_url("Notifyoffense/showAll") ?>',
+                //data: 'S_ID=' + idstd,
+                dataType: 'json',
+                success: function(data) {
+                    //alert("Having Data...");
+                    if (data == 0) {
+                        //console.log("NULL");
+                        
+                        $('#oh_ID').val(title + BE + Runnning_num);
+                    }
+
+
+
+
+                },
+                error: function() {
+                    alert('No Data');
+                }
+
 
             });
 
@@ -417,58 +384,137 @@
 
 
 
+        }
 
 
 
 
 
+    }); //End Ready function
 
 
 
 
 
-        });
+    $('#txt_oc').on('change', function() {
+        //alert("mmmm");
+        var html_code = '';
+        var ocID = $(this).val();
+        //alert(oc_ID);
 
+        if (ocID) {
 
+            //alert("mmmm");
 
-        $('#add_place').typeahead({
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
+                data: 'oc_ID=' + ocID,
+                dataType: 'json',
+                success: function(data) {
 
-            //source: ["นายศุภกฤต", "C++"]
-            //onkeypress="student_change(this)"
+                    //alert(data[1].off_ID);
 
-            source: function(query, result) {
-                $.ajax({
-                    url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
-                    method: "POST",
-                    data: {
-                        query: query
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        //alert(data[0].place_ID+data[0].description);
-                        result($.map(data, function(item) {
-                            return item.place_name; //return value place_name
-                        }));
+                    for (i = 0; i < data.length; i++) {
+
+                        html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
+
                     }
-                })
-            }
+                    $('#txt_off').html(html_code);
+
+                }
+
+            });
 
 
-        });
+
+
+        }
+        /* else {
+                            $('#state').html('<option value="">Select country first</option>');
+                            $('#city').html('<option value="">Select state first</option>');*/
+
+    });
 
 
 
-        $('#btnAdd').click(function() {
-            var date = new Date();
-            date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-            $('#exampleModalCenter').modal('show');
-            $('#test').val(date_off); //set of date in form
-        });
+    //});
 
-        $('#btnSave').click(function() {
-            alert("กด Save");
-        });
-    </script>
+
+
+
+
+
+
+
+    $('#add_place').typeahead({
+
+        //source: ["นายศุภกฤต", "C++"]
+        //onkeypress="student_change(this)"
+
+        source: function(query, result) {
+            $.ajax({
+                url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
+                method: "POST",
+                data: {
+                    query: query
+                },
+                dataType: "json",
+                success: function(data) {
+                    //alert(data[0].place_ID+data[0].description);
+                    result($.map(data, function(item) {
+                        return item.place_name; //return value place_name
+                    }));
+                }
+            })
+        }
+
+
+    });
+
+
+
+    $('#btnAdd').click(function() {
+        var date = new Date();
+        date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+        $('#exampleModalCenter').modal('show');
+        $('#test').val(date_off); //set of date in form
+    });
+
+
+
+    $('#btnSave').click(function() {
+        alert("กด Save");
+    });
+
+
+
+
+    $('#add').click(function() {
+        var html = '';
+
+        html += '<div id="student' + off_per + '">';
+
+        html += '<div class="row">';
+        
+        html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" disabled>   </div>';
+        html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" disabled>  </div>';
+        html += '</div>';
+
+        
+        html += '<div class="row">';
+        html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(std_id)"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+        html += '</div>';
+
+        //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
+
+        html += '</div>';
+
+
+        off_per++;
+        $('.add_person').append(html);
+    });
+</script>
 
 
 
