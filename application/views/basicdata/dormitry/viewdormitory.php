@@ -85,9 +85,8 @@
 					<label for="validationCustom02..'">ประเภทหอพัก </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					<div class="col-lg-4" >
-					<select name="dormtype"class="form-control"  required >
-					<option value ="F:"> F: หอหญิง </option>
-					<option value ="M:"> M: หอชาย </option>
+					<select name="dormtype" id="dormtype" class="form-control"  required >
+					<option value =""> เลือกประเภทหอพัก </option>
 					</select>
 
       </div></div></div>
@@ -194,9 +193,8 @@
 					<label for="validationCustom02..'">ประเภทหอพัก  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					<div class="col-lg-4" >
-					<select name="dormedittype"class="form-control"  required >
-					<option value ="F:"> F: หอหญิง </option>
-					<option value ="M:"> M: หอชาย </option>
+					<select name="dormedittype" id="dormedittype"class="form-control"   >
+					<option value =""> เลือกประเภทหอพัก </optio>
 					</select>
 
       </div></div></div>
@@ -635,7 +633,20 @@ $(document).ready(function(){
 			});
 		}
 	});
-    
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo site_url("dormitory/selectdormitory") ?>',
+        dataType: 'json',
+        success: function(data) {
+         
+            for (i = 0; i < data.length; i++) {
+               
+                
+                $('#dormtype').append('<option value="' + data[i].dormtype_ID + '">' + data[i].type_name + '</option>');
+                $('#dormedittype').append('<option value="' + data[i].dormtype_ID + '">' + data[i].type_name + '</option>');
+            }
+        }
+    });
 
  
 

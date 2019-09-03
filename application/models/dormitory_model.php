@@ -85,6 +85,16 @@ class dormitory_model extends CI_Model {
             return false;
         }
     }
+    function selectdormitory()
+    {
+        $this->db->order_by('dormtype_ID','ASC');
+        $query = $this->db->get('dormtype');
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
     public function import_exceldormitory(){
         $this->load->view('import_exceldormitory');
         
