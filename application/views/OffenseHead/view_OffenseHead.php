@@ -287,6 +287,7 @@ function selectoffenseorder() {
     });
 }
 
+
         //แสดงข้อมูล
         function showAll() {
             $.ajax({

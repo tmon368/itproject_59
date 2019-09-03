@@ -45,6 +45,7 @@ class OffenseHead extends Student_dashboard {
          echo json_encode($result);
     }
     
+   
     
     
 }
