@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class VolunteerAc extends Student_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('VolunteerAc_model', 'model');
+        $this->load->model('VolunteerAc_model', 'VolunteerAc_model');
     }
     public function index()
     {
@@ -33,6 +33,32 @@ class VolunteerAc extends Student_dashboard {
     public function showAll(){
 		$result = $this->VolunteerAc_model->showAll();
 		echo json_encode($result);
+    }
+
+    public function addVolunteerAc(){
+		$result = $this->VolunteerAc_model->addVolunteerAc();
+		echo json_encode($result);
+    }
+
+    
+    public function editVolunteerAc(){
+		$result = $this->VolunteerAc_model->editVolunteerAc();
+		echo json_encode($result);
+    }
+
+    
+    public function deleteVolunteerAc(){
+		$result = $this->VolunteerAc_model->deleteVolunteerAc();
+		echo json_encode($result);
+    }
+
+
+    
+	function selectplace(){
+	   
+	    
+	    $result = $this->VolunteerAc_model->selectplace();
+	    echo json_encode($result);
 	}
 	
 }

@@ -30,16 +30,24 @@ class Notifyoffense_model extends CI_Model {
     }
     */
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
- public function showAll(){
-       $this->db->order_by('oh_ID', 'ASC');
-        $query = $this->db->get('offensehead');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
+     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
+     public function showAll(){
 
+        $this->db->select('*');
+            $this->db->from('place p');
+            $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
+            $this->db->join('Offense ov', 'o.off_ID=ov.off_ID');
+            $query = $this->db->get();
+            //var_dump($query->result());
+            //die();
+            if($query->result() > 0){
+                
+                return $query->result();
+            }else{
+                return false;
+            }
+        }
+          
     /*
 //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
     public function checkkey(){
