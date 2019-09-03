@@ -17,12 +17,7 @@ class OffenseHead_model extends CI_Model {
         $student = array();
         $student = $query->result_array();
         
-        
-        
-        
-        
-        var_dump($student);
-        die();
+
         
         if($student > 0){
             return $student;
@@ -38,20 +33,16 @@ class OffenseHead_model extends CI_Model {
         $this->db->join('student s', 'oh.S_ID=s.S_ID');
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');
+        $this->db->join('offevidence od', 'oh.oh_ID=od.oh_ID');
         $this->db->where('oh.S_ID',$student);
         $query = $this->db->get();
         $offenseorder = array();
         $offenseorder = $query->result_array();
         
+
         
-        
-        
-        
-        var_dump($offenseorder);
-        die();
-        
-        if($student > 0){
-            return $student;
+        if($offenseorder > 0){
+            return $offenseorder;
         }else{
             return false;
         }
