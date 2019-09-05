@@ -195,25 +195,27 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <form action="">
+                                <form action="" id="formadd" name="formadd" method="post">
                                     <div class="row">
                                         <div class="col-sm-6"> </div>
                                         <div class="col-sm-6 padding_b">
-                                            <div class="form-inline"><label for="">รหัสการกระทำความผิด:</label><input type="text" name="oh_ID" id="oh_ID" class="form-control style_input" disabled></div>
+                                            <div class="form-inline"><label for="">รหัสการกระทำความผิด:</label><input type="text" name="oh_ID" id="oh_ID" class="form-control style_input"></div>
                                         </div>
                                     </div>
 
+
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="" id="test" class="form-control style_input" disabled></div>
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="notifica_date" id="notifica_date" class="form-control style_input"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด:</label> <input type="date" name="" id="" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด:</label> <input type="date" name="committed_date" id="committed_date" class="form-control style_input"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา:</label> <input type="time" name="" id="" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา:</label> <input type="time" name="committed_time" id="committed_time" class="form-control style_input"></div>
                                         </div>
                                     </div>
+
 
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -221,25 +223,26 @@
                                                 <span><i class="far fa-building"></i></span>
                                                 <label for="">สถานที่:</label>
                                                 <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาสถานที่">
+                                                <input type="hidden" name="place_ID" id="place_ID">
 
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-12"><label for="">การกระทำความผิด</label></div>
-                                    </div>
+
+
 
                                     <div class="row">
                                         <div class="col-sm-12">
 
                                             <div class="form-group">
                                                 <label for="">คำอธิบายบริเวณที่เกิดเหตุ:</label>
-                                                <textarea class="form-control" rows="5" id=""></textarea>
+                                                <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
                                             </div>
 
                                         </div>
                                     </div>
+
 
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -263,10 +266,9 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-sm-12">
-                                            <label for="">ผู้กระทำความผิด:</label> <a href="javascript:;" id="add"><span class="badge badge-pill badge-primary"> + เพิ่มผู้กระทำผิด</span></a>
+                                        <div class="col-sm-12"><label for="">การกระทำความผิด</label></div>
+                                        <label for="">ผู้กระทำความผิด:</label> <a href="javascript:;" id="add"><span class="badge badge-pill badge-primary"> + เพิ่มผู้กระทำผิด</span></a>
 
-                                        </div>
                                     </div>
 
                                     <div>
@@ -276,23 +278,40 @@
 
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="">แนบไฟล์หลักฐาน</label><input type="file" class="form-control-file border">
-                                                </div>
-                                            </div>
+                                    </div>
 
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="">แนบไฟล์หลักฐาน</label><input type="file" id="" name="" class="form-control-file border">
+                                                <input type="hidden" name="evidenre_name" id="evidenre_name">
+                                            </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="">คำอธิบายหลักฐาน:</label><textarea class="form-control" rows="5" id=""></textarea>
-                                                </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="">คำอธิบายหลักฐาน:</label><textarea class="form-control" rows="5" id="#" name="#"></textarea>
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
+
+
+                                </form>
+
+
+
+
+
+
 
 
                             </div>
@@ -301,8 +320,9 @@
                                 <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                                 <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
                             </div>
-                            </form>
+
                         </div>
+
                     </div>
                 </div>
 
@@ -405,7 +425,7 @@
                             html += '<td>' + value.notifica_date + '</td>';
                             html += '<td>' + value.off_ID + '</td>';
                             html += '<td>' + value.place_ID + '</td>';
-                            html += '<td> //</td>';
+                            html += '<td>' + value.explanation +'</td>';
                             html += '<td><a href="#"><i class="fas fa-edit" style="color:#47307b;"></i></a> <a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a></td>';
                             html += '</tr>';
                             /*
@@ -434,29 +454,27 @@
 
 
 
-
-
-
-
             //check id and create id
             function check_id() {
 
                 title = 'L';
                 var date = new Date();
                 date_t = date.getFullYear();
-                B_E=date_t+543; //แปลง ค.ศ. => พ.ศ.
-                convert_be=B_E.toString(); //convert to string
-                BE=convert_be.substring(2);
-                               
-                console.log(BE);
-                console.log(typeof convert_be);
+                B_E = date_t + 543; //แปลง ค.ศ. => พ.ศ.
+                convert_be = B_E.toString(); //convert to string
+                BE = convert_be.substring(2);
+
+                //console.log(BE);
+                //console.log(typeof convert_be);
                 //console.log(typeof B_E);
 
-                i=1;
+                i = 1;
                 Runnning_num = 0000;
+                $('#oh_ID').val(title + BE + i);
                 //console.log(typeof Runnning_num); //check type
 
-                $.ajax({
+
+                /*$.ajax({
 
                     type: 'POST',
                     url: '<?php echo site_url("Notifyoffense/showAll") ?>',
@@ -466,11 +484,8 @@
                         //alert("Having Data...");
                         if (data == 0) {
                             //console.log("NULL");
-                            
-                            $('#oh_ID').val(title + BE + Runnning_num);
+                            $('#oh_ID').val(title + BE + i);
                         }
-
-
 
 
                     },
@@ -479,24 +494,10 @@
                     }
 
 
-                });
-
-
-
-
-
-
-
-
+                });*/
 
             }
-
-
-
-
-
         }); //End Ready function
-
 
 
 
@@ -568,6 +569,8 @@
                     success: function(data) {
                         //alert(data[0].place_ID+data[0].description);
                         result($.map(data, function(item) {
+                            //alert(item.place_ID);
+                            $('#place_ID').val(item.place_ID);
                             return item.place_name; //return value place_name
                         }));
                     }
@@ -581,15 +584,58 @@
 
         $('#btnAdd').click(function() {
             var date = new Date();
-            date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+            //date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+            date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
             $('#exampleModalCenter').modal('show');
-            $('#test').val(date_off); //set of date in form
+            $('#notifica_date').val(date_off); //set of date in form
+
+        });
+
+
+
+        //get file name
+        $('input[type="file"]').change(function(e) {
+            var fileName = e.target.files[0].name;
+            $('#evidenre_name').val(fileName);
+            //alert('The file "' + fileName +  '" has been selected.');
         });
 
 
 
         $('#btnSave').click(function() {
-            alert("กด Save");
+
+            var form_data = $('#formadd').serialize();
+            //alert(form_data);
+            console.log(form_data);
+
+            //console.log(typeof form_data);
+
+            //var data = $('#formdata').serialize();
+            //var id = $(this).attr('data');
+
+            $.ajax({
+                type: 'ajax',
+                method: 'post',
+                url: '<?php echo site_url("Notifyoffense/addnotify") ?>',
+                data: form_data,
+                async: false,
+                /*dataType: 'json',*/
+                success: function(data) {
+                    alert(data);
+                    //alert("Sucess updata !!")
+                    location.reload();
+                }
+
+            });
+
+
+
+
+
+
+
+
+
         });
 
 
