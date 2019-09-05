@@ -17,6 +17,7 @@
 </head>
 <body>
     <meta charset="UTF-8">
+ 
     <div class="page-breadcrumb" id="nav_sty">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -33,159 +34,124 @@
            
 
         
-             <div id="myModal"  > </div>
-
+    
             <!-- Modal เพิ่มข้อมูล -->
 
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered " style="max-width: 650px!important;" role="document" >
+                <div class="modal-dialog modal-dialog-centered " style="max-width: 750px!important;" role="document" >
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มหมวดความผิด</h2>
+                            <h2 class="modal-title" id="exampleModalLongTitle">ใบสั่งการกระทำความผิด</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                        
+
                             <!--ส่วนฟอร์มเพิ่มข้อมูล-->
 
-                            <form action="" id="formadd" method="post" class="needs-validation">
-                                <center>
-                                    <div class="form-group" id="input_group_sty">
-                                        <div class="input-group">
-
-                                            <label for="validationCustom01..'">รหัสหมวดความผิด </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
-
-                                            <div class="col-lg-3">
-                                                <input type="text" name="txtID" id="oc_ID"class="form-control" maxlength="2"
-                                                    onkeyup="count_down_id(this);" required>
-                                           <div id="msg1"></div>
-                                                   <!--   <div id="msg2" style="color:red"></div>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="input_group_sty">
-                                        <div class="input-group">
-
-                                            <label for="validationCustom02..'">ชื่อหมวดความผิด </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="txtname" class="form-control" maxlength="50"
-                                                onkeyup="count_downname(this);" required>
-                                        </div>
+                            <form action="" id="formadd" >
+                              
+                                 <div class="row"  >
+                                 <div class="col-sm-4"  >
+                                 	<label>ชื่อ</label><p id="std_fname"></p>
+                                 </div>
+                                 <div class="col-sm-8">
+                                 	<label>สกุล</label><p id=""></p>
+                                 		</div>
+                                 </div>
+                                 <div class="row">
+                                 <div class="col-sm-6">
+                                 <label>วันที่กระทำความผิด</label><p id=""></p>
+                                 </div>
+                                 <div class="col-sm-6">
+                                 <label>เวลา</label><p id=""></p>
+                                 </div>
+                                 </div>
+                                 <div class="row">
+                                 <div class="col-sm-12">
+                                 <label>สถานที่</label><p id=""></p>
+                                 </div>
+                                 </div>
+                                 <div class="row">
+                                 <div class="col-sm-12">
+                                 <label>คำอธิบายบริเวณที่เกิดเหตุ</label><p id=""></p>
+                                 </div>
+                                 </div>
+                                 <div class="row">
+                                 <div class="col-sm-12" >
+                                 <label>ฐานความผิด</label><p id=""></p>
+                                 </div>
+                                 </div>
+                                 <div class="row">
+                                 <div class="col-sm-12">
+                                 <label>ไฟล์หลักฐาน</label>
+                                 </div>
+                                 <br>  <br>  <br>  <br>  <br>
+                                 </div>
                                         
-                                </center>
-
-                                <!------------------>
+                                
+						</form>
+						 </div>
+                              </div> 
                         </div>
-                        <div class="modal-footer">
-                            <button name="insert" type="reset" class="btn btn-secondary"
-                                data-dismiss="modal">ยกเลิก</button>
-                            <button name="btnSave" id="btnSave" type="button" class="btn btn-success">บันทึกข้อมูล</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!--------------------------------->
-            <!-- Modal ส่วน edit -->
-
-            <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered"style="max-width: 650px!important;" role="document">
+                         </div>
+                         
+                         
+                         <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " style="max-width: 750px!important;" role="document" >
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit"
-                                        style="color:#47307b;"></i></span>แก้ไขข้อมูล</h2>
+                            <h2 class="modal-title" id="exampleModalLongTitle">แย้งการกระทำความผิด</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
-
-                            <!--ส่วนฟอร์มแก้ไขข้อมูล-->
-                            <form action="" id="formupdate" method="post" class="needs-validation">
-                                <center>
-                                    <div class="form-group" id="input_group_sty">
-                                        <div class="input-group">
-
-                                            <label for="validationCustom01">รหัสหมวดความผิด </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
-                                            &nbsp;&nbsp;&nbsp;
-                                            <div class="col-lg-3">
-                                                <input type="text" readonly name="txteditID" class="form-control" maxlength="2"
-                                                    onkeyup="count_down_editid(this);" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="input_group_sty">
-                                        <div class="input-group">
-                                            <label for="validationCustom02">ชื่อหมวดความผิด</label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="txteditname" class="form-control" maxlength="50"
-                                                onkeyup="count_down_editname(this);" required>
-                                        </div>
-                                         
-                                </center>
-                                <!------------------>
+                        <form action="" id="formadd2" method="post">
+                        <div class="row">
+                        <div class="col-sm-12">
+                        <label>วันที่บันทึกหลักฐาน</label><p id=""></p>
                         </div>
-                        <div class="modal-footer">
-                            <button name="insert" type="reset" class="btn btn-secondary"
-                                data-dismiss="modal">ยกเลิก</button>
-                            <button name="btnedit" type="button" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-11">
+                        <label>คำอธิบาย</label><textarea name="txtexplanation" rows="4" class="form-control" maxlength="100"></textarea>
+                        </div>
+                        <div class="col-sm-1">
+                        </div>
+                        </div>
+                          <br>
+                        <div class="row">
+                        <div class="col-sm-12">
+                        <label>แนบไฟล์หลักฐาน</label><input type="file" name="txtproofname" class="form-control-file border">
+                        </div>
+                        <br>  <br>  <br>  <br>  <br>
                         </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-           
-            <!--------------------------------->
-            <!-- Modal ส่วน del -->
-
-            <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i
-                                        class="fa fa-exclamation-triangle"
-                                        style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                         </div>
-                        <!--ส่วนฟอร์มลบข้อมูล-->
-                        <form action="" id="formdelete" method="post" class="needs-validation">
-                            <div class="modal-body" id="showdel">
-
-                                <!--ข้อความยืนยันการลบข้อมูล-->
-                                <center>
-                                    <div id="showddel"></div>
-                                    <input type="hidden" name="txtdelID">
-                                </center>
-                                <!------------------>
-                            </div>
-                            
-                            <div class="modal-footer">
-                                <button name="insert" type="reset" class="btn btn-secondary"
-                                    data-dismiss="modal">ยกเลิก</button>
-                                <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!------------------>
+                         <div class="modal-footer">
+                            <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                            <button name="btnSave2" id="btnSave2" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                        </div>
+                        
+                        
+                        </div>
+                        </div>
+                        </div>
+                       
+                         
+                         
+                         
+                        
             <!-- Modal ส่วน select -->
+            
+            
 
             <div class="card-body">
-                <div class="bootstrap-data-table-panel">
-                    <div class="table-responsive">
+                     <div class="table-responsive">
                         <table id="style_table" class="table table-hover">
                             <thead>
                                 <tr>
@@ -199,12 +165,13 @@
                             </thead>
                             <tbody id="showdata" >
                                 <tr>
-                                    <td width="10px"></td>
-                                    <td><p id="committed_date"></p></td>
-                                    <td width="10px"><p id="committed_time"></p></td>
-                                    <td align="center"><i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw edit_data"></i></td>
+                                    <td width="10px" >1</td>
+                                    <td id="committed_date"></td>
+                                    <td width="10px" id="off_desc"></td>
+                                    <td align="center"><i style="font-size:25px;color:blue" id="btnAdd" data-toggle="modal"class="far fa-file-alt btn-fw "></i></td>
                                     <td align="center"> <input type="checkbox" name="logo1" class="largerCheckbox" ></td>
-                                  	<td align="center"> <i style="font-size:25px;color:black" class="far fa-file-archive btn-fw edit_data"></i></td>
+                                    <td align="center"> <i style="font-size:25px;color:black" id="btnBdd" data-toggle="modal" class="far fa-file-archive btn-fw edit_data"></i></td>
+                               
                                 </tr>
                             </tbody>
                             <tbody id="showdata" >
@@ -222,15 +189,16 @@
                             	</tbody>
                         </table>
                     </div>
-            </div>
                 </div> 
             </div>
         </div>
+
 
     
     <script>
     $(document).ready(function(){
         showAll();
+
         selectstudentoffensehead();
         selectoffenseorder();
 
@@ -245,8 +213,9 @@ function selectstudentoffensehead() {
             success: function(data) {
 
             	$("#S_ID").html(data[0].S_ID);
+            	$("#oh_ID").html(data[0].oh_ID);
             	$("#committed_date").html(data[0].committed_date);
-            	$("#committed_time").html(data[0].committed_time);
+            	$("#off_desc").html(data[0].off_desc);
             
             	
             	
@@ -288,6 +257,84 @@ function selectoffenseorder() {
 }
 
 
+
+//เพิ่มข้อมูล
+$('#btnAdd').click(function() {
+ 	$('#formadd')[0].reset();
+ 	$("#msg1").empty();
+     $('#exampleModalCenter').modal('show');
+     //$('#formadd').attr('action', '<?php echo base_url(); ?>index.php/OffenseHead/showAll2');
+ });
+
+$('#btnBdd').click(function() {
+ 	$('#formadd2')[0].reset();
+ 	//$("#msg1").empty();
+     $('#exampleModalCenter2').modal('show');
+    $('#formadd2').attr('action', '<?php echo base_url(); ?>index.php/OffenseHead/addoffensehead');
+ });
+
+$('#btnSave2').click(function(){
+	  var url = $('#formadd2').attr('action');
+	  var data = $('#formadd2').serialize();
+	  //validate form
+	  var proof_ID = $('input[name=txtproofid]');
+	  var explanation = $('input[name=txtexplanation]');
+	  var proof_name =$('input[name=txtproofname]')
+	  var result = '';
+
+	  if(proof_ID.val()==''){
+		  proof_ID.parent().parent().addClass('has-error');
+	  }else{
+		  proof_ID.parent().parent().removeClass('has-error');
+	    result +='1';
+	  } 
+	  if(explanation.val()==''){
+		  explanation.parent().parent().addClass('has-error');
+	  }else{
+		  explanation.parent().parent().removeClass('has-error');
+	    result +='2';
+	  }
+	  if(proof_name.val()==''){
+		  proof_name.parent().parent().addClass('has-error');
+	  }else{
+		  proof_name.parent().parent().removeClass('has-error');
+	    result +='3';
+	  }
+
+	  if(result=='123'){
+	    $.ajax({
+	      type: 'ajax',
+	      method: 'post',
+	      url: url,
+	      data: data,
+	      async: false,
+	      dataType: 'json',
+	      success: function(response){
+	        if(response.success){
+	          $('#exampleModalCenter2').modal('hide');
+	           //$(this).find('#formadd')[0].reset();
+	           
+	          $('#formadd2')[0].reset();   
+	          $('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+	        //  $('#textkey').empty();      
+	          //$('#msg1').empty();
+	          //showAll();
+	        }else{
+	          alert('Error');
+	        }
+	      },
+	      error: function(){
+	        alert('id นี้ถูกใช้งานแล้ว');
+	        $('#exampleModalCenter2').modal('hide');
+	        $('#formadd2')[0].reset();
+	        //$('#nav_sty')[0].reset();   
+	        $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+	        $('#msg1').empty();
+	        //showAll();
+	      }
+	    });
+	  }
+	});
         //แสดงข้อมูล
         function showAll() {
             $.ajax({
@@ -298,20 +345,20 @@ function selectoffenseorder() {
                 success: function(data) {
                     var html = '';
                     var i;
-                    for (i = 0; i < data.length; i++) {
+                    for (i=0; i<data.length; i++) {
                         html += '<tr>' +
-                        	'<td>' + ($i++) + '</td>' +
+                        	'<td>' + (i+1) + '</td>' +
                             '<td>' + data[i].committed_date + '</td>' +
-                            '<td>' + data[i].committed_time + '</td>' +
-                        
+                            '<td>' + data[i].off_desc + '</td>' +
+                    
                             
-                            
+                      
                             '</tr>';
                     }
                     $('#showdata').html(html);
                 },
                 error: function() {
-                //    alert('ไม่มีข้อมูล');
+                 //alert('ไม่มีข้อมูล');
                 }
             });
         }

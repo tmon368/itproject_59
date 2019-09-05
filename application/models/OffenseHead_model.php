@@ -49,7 +49,7 @@ class OffenseHead_model extends CI_Model {
     }
     
     public function showAll(){
-        $this->db->order_by('S_ID', 'ASC');
+        $this->db->order_by('S_ID', 'desc');
         $query = $this->db->get('student');
         if($query->num_rows() > 0){
             return $query->result();
@@ -58,8 +58,20 @@ class OffenseHead_model extends CI_Model {
         }
     }
     
-    
-    
-    
+  
+    public function addoffensehead(){
+        $field = array(
+            'proof_ID'=>$this->input->post('txtproofid'),
+            'explanation'=>$this->input->post('txtexplanation'),
+            'proof_name'=>$this->input->post('txtproofname')
+            
+        );
+        $this->db->insert('proofargument', $field);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }
