@@ -68,15 +68,7 @@ class Notifyoffense extends Student_dashboard {
 		$this->Notifyoffense_model->addnotify($field,$field_2);
 
 		print_r($field);
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 		//$result = $this->Notifyoffense_model->addnotify();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
