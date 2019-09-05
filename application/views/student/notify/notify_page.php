@@ -295,13 +295,12 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label for="">คำอธิบายหลักฐาน:</label><textarea class="form-control" rows="5" id="#" name="#"></textarea>
+                                                <label for="">คำอธิบายหลักฐาน:</label><textarea class="form-control" rows="5" id="explanoff" name="explanoff"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-
-
+                                <input type="hidden" name="evidenre_date" id="evidenre_date">
 
 
 
@@ -588,6 +587,7 @@
             date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
             $('#exampleModalCenter').modal('show');
             $('#notifica_date').val(date_off); //set of date in form
+            $('#evidenre_date').val(date_off); //set of date in form
 
         });
 
@@ -647,7 +647,7 @@
             html += '<div id="student' + off_per + '">';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="" id="std_id"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="std_id" id="std_id"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
             html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" disabled>   </div>';
             html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" disabled>  </div>';
             html += '</div>';

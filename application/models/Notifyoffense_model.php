@@ -70,7 +70,20 @@ class Notifyoffense_model extends CI_Model {
 
 
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
-  public function addnotify(){
+  public function addnotify($data,$data_2){
+
+    $this->db->insert('offensehead', $data);
+    $this->db->insert('offevidence', $data_2);
+
+
+
+    if ($this->db->affected_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+    
+      /*
         $field = array(
             
             'oh_ID'=>$this->input->post('oh_ID'),
@@ -91,19 +104,21 @@ class Notifyoffense_model extends CI_Model {
                 'offeviden_ID'=>$this->input->post('offeviden_ID'),
                 'oh_ID'=>$this->input->post('oh_ID'),
                 'evidenre_name'=>$this->input->post('evidenre_name'),
-                'record_date'=>$this->input->post('record_date'),
-                'explanoff'=>$this->input->post('explanoff')
+                'record_date'=>$this->input->post('record_date')
                 );
             $this->db->insert('offevidence', $field2);
-       
+        if($this->db->affected_rows() > 0){  
+
 
             return true;
-        
-        
+        }else{
+            return false;
+        }
     }else{
         return false;
-    }
+    }*/
 }
+
 
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable notify
     public function editnotify(){

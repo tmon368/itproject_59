@@ -44,11 +44,44 @@ class Notifyoffense extends Student_dashboard {
 
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addnotify(){
-	    $result = $this->Notifyoffense_model->addnotify();
+		
+		$field = array(
+            
+			'oh_ID'=>$this->input->post('oh_ID'),
+			'notifica_date'=>$this->input->post('notifica_date'),
+			'committed_date'=>$this->input->post('committed_date'),
+			'committed_time'=>$this->input->post('committed_time'),
+			'place_ID'=>$this->input->post('place_ID'),
+			'explanation'=>$this->input->post('explanation'),
+			'off_ID'=>$this->input->post('txt_off'),
+			'S_ID'=>$this->input->post('std_id'),/*,
+			'evidenre_name'=>$this->input->post('evidenre_name')*/
+		);
+
+		$field_2 = array(
+			'oh_ID'=>$this->input->post('oh_ID'),
+			'evidenre_name'=>$this->input->post('evidenre_name'),
+			'record_date'=>$this->input->post('evidenre_date'),
+			'explanoff'=>$this->input->post('explanoff'),
+		);
+
+		$this->Notifyoffense_model->addnotify($field,$field_2);
+
+		print_r($field);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//$result = $this->Notifyoffense_model->addnotify();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		
-		
+		/*
 		if($result){
 		    $msg['success'] = true;
 		    
@@ -56,8 +89,9 @@ class Notifyoffense extends Student_dashboard {
 		}else{
 		    $msg['success'] = false;
 		    redirect(base_url() . 'index.php/notify_page/index');
-		}
-		echo json_encode($result);
+		}*/
+
+		//echo json_encode($msg);
 	}
 
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
