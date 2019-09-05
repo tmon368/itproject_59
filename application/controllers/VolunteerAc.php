@@ -53,12 +53,16 @@ class VolunteerAc extends Student_dashboard {
     }
 
 
-    
-	function selectplace(){
-	   
-	    
+    function selectplace(){
 	    $result = $this->VolunteerAc_model->selectplace();
 	    echo json_encode($result);
-	}
-	
+    }
+  
+
+
+	  function selectservice(){
+      $result = $this->VolunteerAc_model->selectservice();
+      echo json_encode($result);
+    }
+
 }

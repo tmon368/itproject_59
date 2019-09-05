@@ -58,12 +58,11 @@ class VolunteerAc_model extends CI_Model {
         'S_ID'=>$this->input->post('S_ID'),
         'place'=>$this->input->post('place'),
         'service_date'=>$this->input->post('service_date'),
-        'start_time'=>$this->input->post('start_time'),
-        'end_time'=>$this->input->post('end_time'),
         'service_time'=>$this->input->post('service_time'),
         'service_hour'=>$this->input->post('service_hour'),
         'status'=>$this->input->post('status'),
-        'results'=>$this->input->post('results'),
+        'approval_date'=>$this->input->post('approval_date'),
+        'offer_status	'=>$this->input->post('offer_status	'),
         'document_file'=>$this->input->post('document_file'),
         'explanation '=>$this->input->post('explanation ')
 
@@ -85,8 +84,9 @@ class VolunteerAc_model extends CI_Model {
         $id = $this->input->get('id');
         $this->db->where('service_ID', $id);
         $query = $this->db->get('Service');
-        if($query->num_rows() > 0){
-            return $query->row();
+        if($query->result() > 0){
+                
+            return $query->result();
         }else{
             return false;
         }
@@ -96,6 +96,18 @@ class VolunteerAc_model extends CI_Model {
     public function updateVolunteerAc(){
         $id = $this->input->post('txteditID');
         $field = array(
+            'service_name'=>$this->input->post('service_name'),
+            'person_ID'=>$this->input->post('person_ID'),
+            'S_ID'=>$this->input->post('S_ID'),
+            'place'=>$this->input->post('place'),
+            'service_date'=>$this->input->post('service_date'),
+            'service_time'=>$this->input->post('service_time'),
+            'service_hour'=>$this->input->post('service_hour'),
+            'status'=>$this->input->post('status'),
+            'approval_date'=>$this->input->post('approval_date'),
+            'offer_status	'=>$this->input->post('offer_status	'),
+            'document_file'=>$this->input->post('document_file'),
+            'explanation '=>$this->input->post('explanation ')
             
             
         );
@@ -107,6 +119,8 @@ class VolunteerAc_model extends CI_Model {
             return false;
         }
     }
+
+
     //ฟังก์ชันลบข้อมูลในtable student
     function deleteVolunteerAc(){
         $id = $this->input->post('txtdelID');
@@ -128,24 +142,27 @@ class VolunteerAc_model extends CI_Model {
 	    $this->db->order_by('place_ID','ASC');
 	    $query = $this->db->get('place');
 	    
-	    if ($query->num_rows() > 0) {
-	        return $query->result();
-	    } else {
-	        return false;
-	    }
+        if($query->result() > 0){
+                
+            return $query->result();
+        }else{
+            return false;
+        }
     }
 
-    
-    
-    public function import_excelVolunteerAc(){
-        $this->load->view('import_excelVolunteerAc');
-        
-        
-        
-        
+
+
+    function selectservice()
+	{
+	    $this->db->order_by('service_ID','ASC');
+	    $query = $this->db->get('Service');
+	    
+        if($query->result() > 0){
+                
+            return $query->result();
+        }else{
+            return false;
+        }
     }
-    
-    
-    
     
 }

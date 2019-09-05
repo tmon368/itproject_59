@@ -57,7 +57,7 @@ class Notifyoffense extends Student_dashboard {
 		    $msg['success'] = false;
 		    redirect(base_url() . 'index.php/notify_page/index');
 		}
-		echo json_encode($msg);
+		echo json_encode($result);
 	}
 
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
