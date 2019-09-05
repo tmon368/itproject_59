@@ -32,11 +32,12 @@ class Notifyoffense_model extends CI_Model {
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
      public function showAll(){
-
+        $student = $this->session->userdata('student');
         $this->db->select('*');
             $this->db->from('place p');
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
             $this->db->join('Offense ov', 'o.off_ID=ov.off_ID');
+            $this->db->where('o.S_ID', $student);
             $query = $this->db->get();
             //var_dump($query->result());
             //die();
@@ -70,55 +71,36 @@ class Notifyoffense_model extends CI_Model {
 
 
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
-  public function addnotify($data,$data_2){
-
-    $this->db->insert('offensehead', $data);
-    $this->db->insert('offevidence', $data_2);
-
-
-
-    if ($this->db->affected_rows() > 0) {
-        return true;
-    } else {
-        return false;
-    }
-    
-      /*
+  public function addnotify(){
         $field = array(
             
             'oh_ID'=>$this->input->post('oh_ID'),
-            'off_ID'=>$this->input->post('off_ID'),
-            'person_ID'=>$this->input->post('person_ID'),
-            'S_ID'=>$this->input->post('S_ID'),
-            'place_ID'=>$this->input->post('place_ID'),
-            'committed_date'=>$this->input->post('committed_date'),
-            'committed_time'=>$this->input->post('committed_time'),
-            'notifica_date'=>$this->input->post('notifica_date'),
-            'num_off'=>$this->input->post('num_off'),
-            'explanation'=>$this->input->post('explanation'),
-            'proof_results'=>$this->input->post('proof_results')
+			'notifica_date'=>$this->input->post('notifica_date'),
+			'committed_date'=>$this->input->post('committed_date'),
+			'committed_time'=>$this->input->post('committed_time'),
+			'place_ID'=>$this->input->post('place_ID'),
+			'explanation'=>$this->input->post('explanation'),
+			'off_ID'=>$this->input->post('txt_off'),
+			'S_ID'=>$this->input->post('std_id'),
             );
             $this->db->insert('offensehead', $field);
     if($this->db->affected_rows() > 0){
             $field2 = array(
-                'offeviden_ID'=>$this->input->post('offeviden_ID'),
                 'oh_ID'=>$this->input->post('oh_ID'),
                 'evidenre_name'=>$this->input->post('evidenre_name'),
-                'record_date'=>$this->input->post('record_date')
+                'record_date'=>$this->input->post('evidenre_date'),
+                'explanoff'=>$this->input->post('explanoff'),
                 );
             $this->db->insert('offevidence', $field2);
-        if($this->db->affected_rows() > 0){  
-
+       
 
             return true;
-        }else{
-            return false;
-        }
+        
+        
     }else{
         return false;
-    }*/
+    }
 }
-
 
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable notify
     public function editnotify(){
