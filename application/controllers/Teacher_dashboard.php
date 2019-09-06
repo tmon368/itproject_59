@@ -13,7 +13,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function index()
 	{
 	    
-	    //$this->checkAutoriry();
+	    $this->checkAutoriry();
 	    $this->template();
 
 	}
@@ -76,6 +76,6 @@ class Teacher_dashboard extends CI_Controller {
 	        
 	    }
 	    
-
         }
+        
 }
