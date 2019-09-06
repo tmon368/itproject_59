@@ -78,11 +78,18 @@ class login_model extends CI_Model {
         $this->db->from('student');
         $query2 = $this->db->get()->result();
         
+        $this->db->select('username, password');
+        $this->db->from('personnel');
+        $query3 = $this->db->get()->result();
         
-        $query3 = array_merge($query1, $query2);
+        
+        
+        
+        
+        $query4 = array_merge($query1, $query2,$query3);
         
         //var_dump($query3);
-        foreach ($query3 as $value){
+        foreach ($query4 as $value){
             if($value->username == $username  && $value->password == $password ){
                 return true;
                 
@@ -154,6 +161,23 @@ function checkusernamestudent($username)
 
 
 
+
+function checkusernameteacher($username)
+{
+    
+    $this->db->select('username');
+    $this->db->from('personnel');
+    $query1 = $this->db->get()->result();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+    
+    
+}
 
 
 
