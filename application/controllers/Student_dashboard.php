@@ -8,55 +8,12 @@ class Student_dashboard extends CI_Controller {
 		$this->load->model('student_dashboard_model', 'model');
 	}
 	
-	/*
-	public function logoutsession(){
-	    $admin = $this->session->userdata('admin');
-	    $student = $this->session->userdata('student');
-	    //echo $username;
-	    // die();
-	    $this->session->mark_as_temp('student',1800);
-	    
-	    if($admin !=""){
-	        
-	        redirect(base_url() . 'index.php/Admin_dashboard');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
-	        
-	        
-	    }
-	    if($student ==""){
-	        
-	        redirect(base_url() . 'index.php/Loginuser');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
-	        
-	        
-	    }
-	}*/
 	
 	
 	public function index()
 	{
 	    
 	    $this->checkAutoriry();
-	   // $this->logoutsession();
-	    
-	    /*
-	    $username = $this->session->userdata('username');
-	    //echo $username;
-	    // die();
-	    $this->session->mark_as_temp('username',600);
-	    if($username == ""){
-	        
-	        redirect(base_url() . 'index.php/Loginuser');
-	        //redirect(base_url() .'index.php/Loginuser');
-	        
-	        
-	        
-	    }*/
-	    //$username = $this->session->userdata('username');
-	    //$this->selectstudent();
-		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->template();
 
 	}
