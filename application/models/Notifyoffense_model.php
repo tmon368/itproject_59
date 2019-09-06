@@ -338,6 +338,24 @@ class Notifyoffense_model extends CI_Model {
 	        return false;
 	    }
     }
+
+    //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
+    function spc_showoffh(){
+        $id = $this->input->get('id');
+        
+        $this->db->select('*');
+            $this->db->from('offensehead o');
+            $this->db->where('o.oh_ID', $id);
+            $query = $this->db->get();
+            //var_dump($query->result());
+            //die();
+            if($query->result() > 0){
+                
+                return $query->result();
+            }else{
+                return false;
+            }
+        }
        
     
 }

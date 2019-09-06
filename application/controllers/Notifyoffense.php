@@ -83,14 +83,16 @@ class Notifyoffense extends Student_dashboard {
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
 	public function deletenotify(){
-	    $result = $this->Notifyoffense_model->deletenotify();
+		$result = $this->Notifyoffense_model->deletenotify();
+		/*
 		if($result){
 		    $msg['success'] = true;     
 		}else{
 		    $msg['success'] = false;
 		    redirect(base_url() . 'index.php/notify_page/index');
-		}
-		echo json_encode($msg);
+		}*/
+		//echo json_encode();
+		echo "";
 	}
 	function selectstudent(){
 	    $result =  $this->Notifyoffense_model->selectstudent();
@@ -133,6 +135,11 @@ class Notifyoffense extends Student_dashboard {
 	    
 	    $result = $this->Notifyoffense_model->selectOffenseoffevidence();
 		//print_r($result);
+		echo json_encode($result);
+	}
+
+	function spc_showoffhead(){
+		$result = $this->Notifyoffense_model->spc_showoffh();
 		echo json_encode($result);
 	}
 }
