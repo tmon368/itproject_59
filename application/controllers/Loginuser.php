@@ -155,9 +155,7 @@ class Loginuser extends CI_Controller
         print_r($id);
         $this->load->model('login_model');
         $data['user_data'] = $this->login_model->fetch_single_data($id);
-        //Check data from fetch_single_data model
-        //var_dump($data['user_data']);
-        //$data["fetch_data"] = $this->login_model->fetch_data();
+
         $this->load->view('login/deldata',$data);
     }
     
