@@ -109,6 +109,7 @@ class Loginuser extends CI_Controller
     {
         $this->session->unset_userdata('admin');
         $this->session->unset_userdata('student');
+        $this->session->unset_userdata('teacher');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('login');
         $this->session->unset_userdata('autority');
