@@ -159,8 +159,8 @@
         <div class="page-breadcrumb" id="nav_sty">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">จัดการข้อมูลพื้นฐาน</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">สถานที่</li>
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หน้าแรก</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">แจ้งเหตุการกระทำความผิด</li>
                 </ol>
             </nav>
         </div>
@@ -180,7 +180,7 @@
                     &nbsp;
                 </div>
 
-
+                <!--Modal add notification -->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
                         <div class="modal-content">
@@ -300,7 +300,7 @@
                                         </div>
                                     </div>
 
-                                <input type="hidden" name="evidenre_date" id="evidenre_date">
+                                    <input type="hidden" name="evidenre_date" id="evidenre_date">
 
 
 
@@ -324,6 +324,49 @@
 
                     </div>
                 </div>
+
+
+                <!--Modal del  -->
+
+                <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--ส่วนฟอร์มลบข้อมูล-->
+                            <form action="" id="formdelete" method="post" class="needs-validation">
+                                <div class="modal-body" id="showdel">
+
+                                    <!--ข้อความยืนยันการลบข้อมูล-->
+                                    <center>
+                                        <div id="showddel"></div>
+                                        <input type="hidden" name="delID">
+                                    </center>
+                                    <!------------------>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                    <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -406,6 +449,7 @@
 
                 //alert("Start Show_all function");
                 html = '';
+                i = 0;
 
                 $.ajax({
 
@@ -418,14 +462,14 @@
 
                         $.each(data, function(key, value) {
 
-
+                            i++;
                             html += '<tr>';
-                            html += '<td>' + value.oh_ID + '</td>';
+                            html += '<td>' + i + '</td>'; /*value.oh_ID*/
                             html += '<td>' + value.notifica_date + '</td>';
-                            html += '<td>' + value.off_ID + '</td>';
-                            html += '<td>' + value.place_ID + '</td>';
-                            html += '<td>' + value.explanation +'</td>';
-                            html += '<td><a href="#"><i class="fas fa-edit" style="color:#47307b;"></i></a> <a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a></td>';
+                            html += '<td>' + value.off_desc + '</td>';
+                            html += '<td>' + value.place_name + '</td>';
+                            html += '<td>' + value.explanation + '</td>';
+                            html += '<td><a href="#"><i class="fas fa-edit" style="color:#47307b;"></i></a> <a href="javascript:;" data=' + value.oh_ID + ' class="del_data"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a></td>';
                             html += '</tr>';
                             /*
                                     
@@ -497,6 +541,73 @@
 
             }
         }); //End Ready function
+
+
+
+        $('#showdata').on('click', '.del_data', function() {
+            //alert ("Show modal");
+            var id = $(this).attr('data');
+            //console.log(id);
+            $('#del_file').modal('show');
+            $('#formdelete').attr('action', '<?php echo site_url('Notifyoffense/deletenotify') ?>'); //Keep value 
+
+            //select show del data
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                url: '<?php echo site_url('Notifyoffense/spc_showoffhead') ?>',
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    //console.log(data);
+                    $('#showddel').html('ต้องการลบการแจ้งเหตุ   "' + data[0].oh_ID + '"');
+                    $('input[name=delID]').val(data[0].oh_ID);
+
+
+                },
+                error: function() {
+                    alert('ไม่สามารถลบข้อมูล');
+                }
+            });
+
+
+
+        });
+
+        $('#btndel').click(function() {
+            //alert("ลบ");
+            var url = $('#formdelete').attr('action');
+            var data = $('#formdelete').serialize();
+            //console.log(url);
+            //console.log(data);
+
+
+            $.ajax({
+                type: 'ajax',
+                method: 'post',
+                url: url,
+                data: data,
+                async: false,
+                //dataType: 'json',
+                success: function(response) {
+                    //alert(response);
+                    $('#del_file').modal('hide');
+                    location.reload("<?php echo site_url('Notifyoffense') ?>"); //Reload page
+                }
+            });
+
+
+        });
+
+
+
+
+
+
+
 
 
 
