@@ -64,16 +64,9 @@ class Loginuser extends CI_Controller
             );
             
             $this->session->set_userdata($session_admin);
-            //$this->load->model('login_model');
-            //$data['records'] = $this->login_model->getdata();
-            //if($this->session->userdata('username')== employee.UName){
-            
+     
             redirect(base_url() . 'index.php/Admin_dashboard',$session_admin);
-       
-            
-            //}
-            //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';  Admin_dashboard
-            // echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';
+    
         }
         if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamestudent($username))
         {
@@ -86,16 +79,26 @@ class Loginuser extends CI_Controller
             );
             
             $this->session->set_userdata($session_student);
-            //$this->load->model('login_model');
-            //$data['records'] = $this->login_model->getdata();
-            //if($this->session->userdata('username')== employee.UName){
             
             redirect(base_url() . 'index.php/Student_dashboard');
+   
+        }
+        
+        
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameteacher($username))
+        {
             
+            $teacher=$this->session->userdata('username');
+            $session_teacher = array(
+                'teacher'     =>     $teacher,
+                'autority' => 'teacher'
+                
+            );
             
-            //}
-            //echo '<h2>Welcome - '.$this->session->userdata('username').'</h2>';  Admin_dashboard
-            // echo '<label><a href="'.base_url().'index.php/loginuser/logout">Logout</a></label>';
+            $this->session->set_userdata($session_teacher);
+            
+            redirect(base_url() . 'index.php/Teacher_dashboard');
+
         }
         else
         {
