@@ -55,23 +55,25 @@
 
 
         //clear value on text
-        function clear_value() {
-            $('#std_name').val("");
-            $('#std_lname').val("");
-            $('#dept_name').val("");
-            $('#cur_name').val("");
-            $('#regis_num').val("");
-            $('#province_bic').val("");
-            $('#regis_car').val("");
-            $('#provin_car').val("");
+        function clear_value(valueid) {
+            $('#std_name'+valueid+'').val("");
+            $('#std_lname'+valueid+'').val("");
+            $('#dept_name'+valueid+'').val("");
+            $('#cur_name'+valueid+'').val("");
+            $('#regis_num'+valueid+'').val("");
+            $('#province_bic'+valueid+'').val("");
+            $('#regis_car'+valueid+'').val("");
+            $('#provin_car'+valueid+'').val("");
         }
 
         //Search student data in form
-        function Search_data(id) {
+        function Search_data(id,value_t) {
 
             var idstd = id.value;
+            console.log(idstd);
+            //console.log(b);
             alert("กำลังค้นหา");
-            clear_value(); //clear value on textbox
+            clear_value(value_t); //clear value on textbox
             //alert(idstd);
 
 
@@ -92,10 +94,10 @@
 
                             if (key == 0) {
                                 //alert("Array student");
-                                $('#std_name').val(value.std_fname);
-                                $('#std_lname').val(value.std_lname);
-                                $('#dept_name').val(value.dept_name);
-                                $('#cur_name').val(value.cur_name);
+                                $('#std_name'+value_t+'').val(value.std_fname);
+                                $('#std_lname'+value_t+'').val(value.std_lname);
+                                $('#dept_name'+value_t+'').val(value.dept_name);
+                                $('#cur_name'+value_t+'').val(value.cur_name);
 
 
                                 //alert(key);
@@ -111,12 +113,12 @@
                                     //check type vehicle
                                     if (value.vetype_ID == 1) {
                                         //alert ("Motorcycles TYPE");
-                                        $('#regis_num').val(value.regist_num);
-                                        $('#province_bic').val(value.province);
+                                        $('#regis_num'+value_t+'').val(value.regist_num);
+                                        $('#province_bic'+value_t+'').val(value.province);
                                     } else if (value.vetype_ID == 2) {
                                         //alert("CAR TYPE");
-                                        $('#regis_car').val(value.regist_num);
-                                        $('#provin_car').val(value.province);
+                                        $('#regis_car'+value_t+'').val(value.regist_num);
+                                        $('#provin_car'+value_t+'').val(value.province);
 
                                     } else {
 
@@ -758,28 +760,28 @@
             html += '<div id="student' + off_per + '">';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="std_id" id="std_id"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" disabled>   </div>';
-            html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" disabled>  </div>';
+            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="std_id'+ off_per +'" id="std_id'+ off_per +'"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name'+ off_per +'" disabled>   </div>';
+            html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname'+ off_per +'" disabled>  </div>';
             html += '</div>';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name" disabled>   </div>';
+            html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name'+ off_per +'" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name'+ off_per +'" disabled>   </div>';
             html += '</div>';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic" disabled>   </div>';
+            html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num'+ off_per +'" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic'+ off_per +'" disabled>   </div>';
             html += '</div>';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car" disabled>   </div>';
+            html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car'+ off_per +'" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car'+ off_per +'" disabled>   </div>';
             html += '</div>';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(std_id)"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(std_id'+ off_per +',temp='+off_per+')"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
             html += '</div>';
 
             //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
