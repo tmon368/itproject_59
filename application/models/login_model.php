@@ -80,6 +80,7 @@ class login_model extends CI_Model {
         
         $this->db->select('username, password');
         $this->db->from('personnel');
+        $this->db->where('position','อาจารย์');
         $query3 = $this->db->get()->result();
         
         
