@@ -164,5 +164,19 @@ class VolunteerAc_model extends CI_Model {
             return false;
         }
     }
+
+
+    function selectapersennel()
+	{
+	    $this->db->order_by('person_ID','ASC');
+	    $query = $this->db->get('personnel');
+	    
+        if($query->result() > 0){
+                
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
     
 }
