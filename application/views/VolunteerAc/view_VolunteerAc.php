@@ -84,7 +84,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url("Notifyoffense/selectstudent") ?>',
+                    url: '<?php echo site_url("VolunteerAC/selectapersennel") ?>',
                     data: 'S_ID=' + idstd,
                     dataType: 'json',
                     success: function(data) {
@@ -97,11 +97,11 @@
                             if (key == 0) {
                                 //alert("Array student");
                                 $('#person_fname').val(value.person_fname);
-                                $('#person_lname').val(person_lname);
+                                $('#person_lname').val(value.person_lname);
                                
 
 
-                                //alert(key);
+                              
 
                             } else if (key == "verhicles") {
                                 //alert("SEE verhicles");
@@ -139,7 +139,7 @@
 
                 });
             } else {
-                alert("Not see");
+                alert("ไม่มีข้อมูล");
             }
 
 
@@ -346,8 +346,8 @@
                         html += '<td>' + value.service_ID + '</td>';
                         html += '<td>' + value.service_name +'</td>';
                         html += '<td>' + value.service_date + '</td>';
-                        html += '<td>' + value.person_ID+ '</td>';
-                        html += '<td>'+ value.person_ID+ '</td>';
+                        html += '<td>' + '</td>';
+                        html += '<td>'+ '</td>';
                         html += '<td align="center"><i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw edit_data"></i></td></td>';
                         html += '</tr>';
                        
@@ -537,13 +537,13 @@
 
         html += '<div class="row">';
         
-        html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" >   </div>';
-        html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" >  </div>';
+        html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="person_fname" id="person_fname" >   </div>';
+        html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="	person_lname" id="person_lname" >  </div>';
         html += '</div>';
 
         
         html += '<div class="row">';
-        html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(std_id)"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+        html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(person_fname)"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
         html += '</div>';
         //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
 
