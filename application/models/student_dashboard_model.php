@@ -7,6 +7,28 @@ class student_dashboard_model extends CI_Model {
         
     }
     
+    public function selectstudentstatus(){
+        $student = $this->session->userdata('student');
+        $this->db->select('*');
+        $this->db->from('offensestd os');
+        $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
+        $this->db->join('offense o', 'oh.off_ID=o.off_ID');     
+        $this->db->where('os.S_ID',$student);
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+     
+        //var_dump($student);
+        
+        
+        
+        if($student > 0){
+            return $student;
+        }else{
+            return false;
+        }
+    }
+    
     public function selectstudentfirstpage(){
         $student = $this->session->userdata('student');
         $this->db->select('*');
@@ -18,14 +40,14 @@ class student_dashboard_model extends CI_Model {
         
         $this->db->where('S_ID',$student);
         $query = $this->db->get();
-        var_dump($query->result());
+        //var_dump($query->result());
         
-        /*
+        
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
-        }*/
+        }
     }
     
     

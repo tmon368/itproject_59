@@ -30,6 +30,12 @@ class Student_dashboard extends CI_Controller {
 	   
 	}
 	
+	function selectstudentstatus(){
+	    //  $username = $this->session->userdata('username');
+	    
+	    $result = $this->model->selectstudentstatus();
+	    echo json_encode($result);
+	}
 	
 	
 	
@@ -37,7 +43,7 @@ class Student_dashboard extends CI_Controller {
 	    //  $username = $this->session->userdata('username');
 	    
 	    $result = $this->model->selectstudentfirstpage();
-	   // echo json_encode($result);
+	    echo json_encode($result);
 	}
 	
 	function selectdetailfirstpage(){
