@@ -11,7 +11,7 @@
 
 <head>
 
-    <title>เสนอกิจกรรมบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
+    <title>เสนอบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
     <style>
         label {
             padding: 0.4rem;
@@ -22,7 +22,7 @@
         }
 
         #oh_ID {
-            width: 50%; 
+            width: 50%;
         }
 
         .padding_b {
@@ -41,26 +41,115 @@
             $(".loader").show();
             $('#std_2').typeahead({
 
-                source: ["นายศุภกฤต", "C++"]
+                source: ["", "C++"]
                 //onkeypress="student_change(this)"
             });
 
-            
-
-        }
-
-        function test() {
-            alert("XXX");
         }
 
         function click_btnre(id) {
-            //alert("yyy"+id);
-
+            //alert(id.value);
             $('#student' + id).html('');
 
         }
-    </script>
 
+
+        //clear value on text
+        function clear_value() {
+            $('#service_ID').val("");
+            $('#service_name').val("");
+            $('#person_ID').val("");
+            $('#S_ID').val("");
+            $('#place').val("");
+            $('#service_date').val("");
+            $('#service_time').val("");
+            $('#service_hour').val("");
+            $('#status').val("");
+            $('#approval_date	').val("");
+            $('#offer_status').val("");
+       
+        }
+
+        //Search student data in form
+        function Search_data(id) {
+
+            var idstd = id.value;
+            alert("กำลังค้นหา");
+            clear_value(); //clear value on textbox
+            //alert(idstd);
+
+
+            if (idstd) {
+                //alert ("GGG");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo site_url("Notifyoffense/selectstudent") ?>',
+                    data: 'S_ID=' + idstd,
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("Having Data...");
+
+                        $.each(data, function(key, value) {
+
+                            var temp = value;
+
+                            if (key == 0) {
+                                //alert("Array student");
+                                $('#person_fname').val(value.person_fname);
+                                $('#person_lname').val(person_lname);
+                               
+
+
+                                //alert(key);
+
+                            } else if (key == "verhicles") {
+                                //alert("SEE verhicles");
+                                var verhicle = value;
+
+                                $.each(verhicle, function(key, value) {
+                                    //alert(key);
+
+
+                                    //check type vehicle
+                                    if (value.vetype_ID == 1) {
+                                        //alert ("Motorcycles TYPE");
+                                        $('#regis_num').val(value.regist_num);
+                                        $('#province_bic').val(value.province);
+                                    } else if (value.vetype_ID == 2) {
+                                        //alert("CAR TYPE");
+                                        $('#regis_car').val(value.regist_num);
+                                        $('#provin_car').val(value.province);
+
+                                    } else {
+
+                                    }
+                                    //alert(value.regist_num);
+                                });
+
+                            }
+
+                            //console.log(data.verhicles);
+
+                        });
+
+                        //console.log(data);
+
+                    }
+
+                });
+            } else {
+                alert("Not see");
+            }
+
+
+
+
+
+
+
+        }
+    </script>
 
 </head>
 
@@ -113,7 +202,7 @@
                                     <div class="row">
                                         <div class="col-sm-6"> </div>
                                         <div class="col-sm-6 padding_b">
-                                            <div class="form-inline"><label for="">รหัสกิจกรรม:</label><input type="text" name="service_ID" id="service_ID" class="form-control style_input" disabled></div>
+                                            <div class="form-inline"><label for="">รหัสกิจกรรม:</label><input type="text" name="service_ID" id="service_ID" class="form-control style_input" ></div>
                                         </div>
                                     </div>
                                     
@@ -155,7 +244,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">จำนวนผู้เข้าร่วม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;
-                                          &nbsp;&nbsp;  <input type="text" name="..." id="..." class=" style_input"  >
+                                          &nbsp;&nbsp;  <input type="text" name="service_hour" id="service_hour" class=" style_input"  >
                                             </div>
                                         </div>
                                     </div>
@@ -236,51 +325,9 @@
 
         check_id();
         show_all();
-        load_json_data('txt_oc');
-
-
-
-
-
-
-        function load_json_data(id, parent_id) {
-            var html_code = '';
-
-            $.getJSON('<?php echo site_url('Notifyoffense/selectoffensecate') ?>', function(data) {
-
-                //alert(data[0].oc_ID + data[0].oc_desc);
-
-                html_code += '<option value=""> เลือกหมวดความผิด </option>';
-                $.each(data, function(key, value) {
-
-
-                    html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
-                    /*
-                        if (id == 'txt_oc') {
-                            //alert(value.oc_ID);
-                            if (value.parent_id == '0') {
-                                html_code += '<option value="' + value.id + '">' + value.name + '</option>';
-                            }
-                    } else {
-                            if (value.parent_id == parent_id) {
-                                html_code += '<option value="' + value.id + '">' + value.name + '</option>';
-                            }
-                        }*/
-
-
-
-                });
-                $('#' + id).html(html_code);
-            });
-
-        } //End function load_json_data
-
-
-
-
+       
         function show_all() {
 
-            //alert("Start Show_all function");
             html = '';
 
             $.ajax({
@@ -299,13 +346,11 @@
                         html += '<td>' + value.service_ID + '</td>';
                         html += '<td>' + value.service_name +'</td>';
                         html += '<td>' + value.service_date + '</td>';
-                        html += '<td>' + '</td>';
-                        html += '<td> </td>';
-                        html += '<td></td>';
+                        html += '<td>' + value.person_ID+ '</td>';
+                        html += '<td>'+ value.person_ID+ '</td>';
+                        html += '<td align="center"><i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw edit_data"></i></td></td>';
                         html += '</tr>';
-                        /*
-                                
-                            </tr>*/
+                       
                         $('#showdata').html(html); 
 
 
@@ -354,7 +399,7 @@
             $.ajax({
 
                 type: 'POST',
-                url: '<?php echo site_url("Notifyoffense/showAll") ?>',
+                url: '<?php echo site_url("VolunteerAC/showAll") ?>',
                 //data: 'S_ID=' + idstd,
                 dataType: 'json',
                 success: function(data) {
@@ -443,50 +488,45 @@
 
 
 
-
-
-
-
-    $('#add_place').typeahead({
-
-        //source: ["นายศุภกฤต", "C++"]
-        //onkeypress="student_change(this)"
-
-        source: function(query, result) {
-            $.ajax({
-                url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
-                method: "POST",
-                data: {
-                    query: query
-                },
-                dataType: "json",
-                success: function(data) {
-                    //alert(data[0].place_ID+data[0].description);
-                    result($.map(data, function(item) {
-                        return item.place_name; //return value place_name
-                    }));
-                }
-            })
-        }
-
-
-    });
-
-
-
     $('#btnAdd').click(function() {
         var date = new Date();
-        date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+        //date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+        date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         $('#exampleModalCenter').modal('show');
-        $('#test').val(date_off); //set of date in form
+        $('#notifica_date').val(date_off); //set of date in form
+        $('#evidenre_date').val(date_off); //set of date in form
+
     });
 
 
 
     $('#btnSave').click(function() {
-        alert("กด Save");
-    });
 
+        var form_data = $('#formadd').serialize();
+        //alert(form_data);
+        console.log(form_data);
+
+        //console.log(typeof form_data);
+
+        //var data = $('#formdata').serialize();
+        //var id = $(this).attr('data');
+
+        $.ajax({
+            type: 'ajax',
+            method: 'post',
+            url: '<?php echo site_url("VolunteerAC/addVolunteerAc") ?>',
+            data: form_data,
+            async: false,
+            /*dataType: 'json',*/
+            success: function(data) {
+                alert(data);
+                //alert("Sucess updata !!")
+                location.reload();
+            }
+
+        });
+
+    });
 
 
 
@@ -497,15 +537,14 @@
 
         html += '<div class="row">';
         
-        html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" disabled>   </div>';
-        html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" disabled>  </div>';
+        html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name" >   </div>';
+        html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname" >  </div>';
         html += '</div>';
 
         
         html += '<div class="row">';
         html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(std_id)"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
         html += '</div>';
-
         //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
 
         html += '</div>';
