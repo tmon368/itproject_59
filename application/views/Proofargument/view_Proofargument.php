@@ -21,8 +21,8 @@
   <div class="page-breadcrumb" id="nav_sty">
           <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                        <li class="breadcrumb-item">รายงานกระทำความผิด</li>
-                      
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">รายงานกระทำความผิด</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">รายการอุทธรณ์ความผิด</li>
                   </ol>
           </nav>
 </div>
@@ -35,7 +35,7 @@
         <div class="card-body " id="card_1">
         
         <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-                  <i class="fas fa-plus"></i>aaa
+                  <i class="fas fa-plus"></i>bbbb
         </button>
         &nbsp;
 
@@ -189,7 +189,13 @@
        
       <!------------------>
  </div>
-
+     
+   
+      <div class="modal-footer">
+      <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+      <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
+       
+      </div>
  </form>
                                                         </div>
                                                       </div>
@@ -205,11 +211,11 @@
                                                 <tr>
 
                                                     <th>ลำดับที่</th>
-                                                    <th>วันที่กระทำความผิด</th>
+                                                    <th>วันที่บันทึกหลักฐาน</th>
                                                     <th>ฐานความผิด</th>
-                                                    <th>รายละเอียด</th>
-                                                      <th>ยืนยันการกระทำผิด</th>
-                                                        <th>ส่งหลักฐานแย้ง</th>
+                                                    <th>สถานะการแย้ง</th>
+                                                      <th>รายละเอียด</th>
+                                                        <th>หมายเหตุ</th>
                                                        
                                                   
 
@@ -576,9 +582,10 @@ $('#btnAdd').click(function() {
                   '<td>'+(i+1)+'</td>'+
                   '<td>'+ data[i].committed_date +'</td>'+
                   '<td>'+ data[i].off_desc +'</td>'+
+                  '<td > <a data=' + data[i].oh_ID  + '></a></td>' +
                   '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].oh_ID  + '></i></td>' +
-                  '<td align="center"><input type="checkbox"  name="logo1" class="largerCheckbox" ></td>'+
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-archive btn-fw del_data" data=' + data[i].oh_ID  + '></i></td>' +
+                  '<td align="center"><a href="#"><i class="fas fa-edit  btn-fw edit_data" style="color:#47307b;" data='+ data[i].oh_ID +'></i></a>&nbsp;<a href="#"><i class="fas fa-trash-alt btn-fw del_data" style="color:rgba(235,99,102,1.00)" data='+ data[i].oh_ID +'></i></a></td>'
+                  + 
                   '</tr>';
           }
           $('#showdata').html(html);

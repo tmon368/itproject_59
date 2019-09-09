@@ -141,6 +141,12 @@
           <span class="menu-title">รายงานตัวกระทำความผิด</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">
+          <i class="menu-arrow"></i>
+          <span class="menu-title">รายการอุทธรณ์ความผิด</span>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url("VolunteerAc")?>">

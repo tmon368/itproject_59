@@ -2,10 +2,10 @@
 require_once('Student_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class OffenseHead extends Student_dashboard {
+class Proofargument extends Student_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('OffenseHead_model', 'OffenseHead_model');
+        $this->load->model('Proofargument_model', 'Proofargument_model');
     }
     public function index()
     {
@@ -20,7 +20,7 @@ class OffenseHead extends Student_dashboard {
         $this->load->view('template/template1');
         $this->load->view('template/template2');
         $this->load->view('menu/student/menu_student'); //ส่วนเมนู
-        $this->load->view('OffenseHead/view_OffenseHead');//ส่วนเนื้อหา
+        $this->load->view('Proofargument/view_Proofargument');//ส่วนเนื้อหา
         //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -30,7 +30,7 @@ class OffenseHead extends Student_dashboard {
     }
     
     
-    function selectstudentoffensehead(){
+   /* function selectstudentoffensehead(){
         //  $username = $this->session->userdata('username');
         
         $result = $this->OffenseHead_model->selectstudentoffensehead();
@@ -38,14 +38,14 @@ class OffenseHead extends Student_dashboard {
     }
     
     
-   /* function selectoffenseorder(){
-        //  $username = $this->session->userdata('username');
-        
-        $result = $this->OffenseHead_model->selectoffenseorder();
-        echo json_encode($result);
-    }*/
+    /* function selectoffenseorder(){
+     //  $username = $this->session->userdata('username');
+     
+     $result = $this->OffenseHead_model->selectoffenseorder();
+     echo json_encode($result);
+     }*/
     
     
-   
+    
     
 }
