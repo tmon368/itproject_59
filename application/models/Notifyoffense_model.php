@@ -178,21 +178,15 @@ class Notifyoffense_model extends CI_Model {
             $this->db->delete('offensehead');
         //$this->db->update('notify', $field);
         if($this->db->affected_rows() > 0){
-            return true;
                 $this->db->where('oh_ID', $id);
                 $this->db->delete('offevidence');
-            if($this->db->affected_rows() > 0){  
                 return true;
+        
+        
             }else{
                 return false;
             }
-        }else{
-            return false;
         }
-        
-        
-    }
-
     
    
     function selectplace()
