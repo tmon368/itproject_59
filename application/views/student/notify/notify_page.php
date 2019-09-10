@@ -760,7 +760,7 @@
             html += '<div id="student' + off_per + '">';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="std_id'+ off_per +'" id="std_id'+ off_per +'"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="std_id[]" id="std_id'+ off_per +'"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
             html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name'+ off_per +'" disabled>   </div>';
             html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname'+ off_per +'" disabled>  </div>';
             html += '</div>';
