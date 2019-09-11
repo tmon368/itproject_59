@@ -30,20 +30,38 @@ class OffenseHead_model extends CI_Model {
          }
     }
     
-   public function selectoffenseorder(){
-        $student = $this->session->userdata('student');
+    public function selectoffenseorder(){
+        
+        //$student = $this->session->userdata('student');
+        $id = $this->input->get('id');
+        
+        /*
+        $query = $this->db->get('offensestd');
+        $this->db->where('offensestd_ID',$id);
+        if($query->num_rows() > 0){
+            return $query->row();
+        }else{
+            return false;
+        }*/
+        
         $this->db->select('*');
-        $this->db->from('offensehead oh');
-        $this->db->join('offense o', 'oh.off_ID=o.off_ID');
-        $this->db->where('oh.S_ID',$student);
+        $this->db->from('offensestd ostd');
+        $this->db->join('student s', 'ostd.S_ID=s.S_ID');
+        $this->db->join('offensehead oh', 'ostd.oh_ID=oh.oh_ID');
+        
+        $this->db->where('ostd.offensestd_ID',$id);
+       
+        
+       
         $query = $this->db->get();
+        /*
         $student = array();
         $student = $query->result_array();
         
-
+*/
         
-        if($student > 0){
-            return $student;
+        if($query->num_rows() > 0){
+            return $query->row();
         }else{
             return false;
         }

@@ -38,12 +38,12 @@ class OffenseHead extends Student_dashboard {
     }
     
     
-   /* function selectoffenseorder(){
+    function selectoffenseorder(){
         //  $username = $this->session->userdata('username');
         
         $result = $this->OffenseHead_model->selectoffenseorder();
         echo json_encode($result);
-    }*/
+    }
     
     
    
