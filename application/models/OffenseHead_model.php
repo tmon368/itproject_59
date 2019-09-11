@@ -11,6 +11,7 @@ class OffenseHead_model extends CI_Model {
         $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('offensestd ostd');
+        $this->db->join('student s', 'ostd.S_ID=s.S_ID');
         $this->db->join('offensehead oh', 'ostd.oh_ID=oh.oh_ID');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID'); 
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
