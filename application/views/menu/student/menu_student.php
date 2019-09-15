@@ -178,7 +178,7 @@
 
       
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo site_url("Volunteer_regis")?>">
           <i class="menu-icon fas fa-handshake"></i>
           <span class="menu-title">การบำเพ็ญประโยชน์</span>
         </a>
