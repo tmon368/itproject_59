@@ -43,6 +43,9 @@
             background-color: #eee;
             border-color: #ddd;
         }
+        .txt_position{
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -79,8 +82,8 @@
 
 
                     <!-- แสดงกิจกรรมบำเพ็ญประโยชน์-->
-                    <div class="container">
-
+                    <div class="container show_data">
+                        <!--
                         <div class="row">
                             <div class="col-sm-6">
 
@@ -105,7 +108,7 @@
                             </div>
 
 
-                        </div>
+                        </div>-->
 
 
                     </div>
@@ -153,18 +156,67 @@
 
 
     <script>
+        $(document).ready(function() {
+
+            show_all();
+
+            function show_all() {
+
+                //alert("Start Show_all function");
+                html = '';
+
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("Having Data...");
+
+                        $.each(data, function(key, value) {
+
+                            html += '<div class="row">';
+                            html += '<div class="col-sm-6">';
+                            html += '<p><a href=""> <strong> กิจกรรม: '+ value.service_name +'</strong> </a></p>';
+                            html += '<p>วันที่จัดกิจกรรมวันที่  '+ value.service_date +'</p>';
+                            html += '<p> เวลาเริ่ม 8.00 ถึง 16.00 น. จำนวนชั่วโมงกิจกรรม '+ value.service_hour +' ชั่วโมง</p>';
+                            html += '<p> ผู้รับรองกิจกรรม '+ value.person_fname +" "+ value.person_lname +'</p>';
+                            html += '</div>';
+                            html += '<div class="col-sm-6">';
+                            html += '<p> <div class="txt_position"> <span id="count_person">0</span>/25</div> </p>';
+                            html += '<p class="txt_position"><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit">ลงทะเบียน</button></p>';
+                            html += '</div>';
+                            html += '</div>';
+                                                    
+                            $('.show_data').html(html);
+                          
+
+                        });
+
+                    }
+
+
+                });
+            }
+
+
+
+
+
+
+
+        });
+
+
         $('.btn_submit').click(function() {
             //count=0;
-            
-            sum=sum+1;
+
+            sum = sum + 1;
 
             //alert('ลงทะเบียนสำเร็จ');
 
             $("#count_person").text(sum);
-
-
-
-
 
         });
     </script>
