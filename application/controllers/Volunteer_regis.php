@@ -1,14 +1,21 @@
 <?php
+require_once('Student_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Volunteer_regis extends CI_Controller {
+class Volunteer_regis extends Student_dashboard {
 
-	public function index()
-	{
-	    
-	    $this->template();
-
-	}
+	function __construct(){
+        parent:: __construct();
+        $this->load->model('Volunteer_regis_model', 'Volunteer_regis_model');
+    }
+    public function index()
+    {
+        //List ข้อมูลมาแสดงในหน้าจอ
+        $this->checkAutoriry();
+        $this->template();
+        
+    }
+    
 	
 	public function template()
 	{
@@ -21,7 +28,13 @@ class Volunteer_regis extends CI_Controller {
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
+	}
+
+	public function showAll(){
+		$result = $this->Volunteer_regis_model->showAll();
+		echo json_encode($result);
     }
+
     
 
 
