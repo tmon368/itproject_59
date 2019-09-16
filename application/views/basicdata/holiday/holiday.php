@@ -372,7 +372,9 @@ $("#edit_file").modal("show");
 						}else{
 							alert('Error');
 						}
-					},
+          },
+          
+          
 					error: function(){
 						alert('id นี้ถูกใช้งานแล้ว');
 						$('#exampleModalCenter').modal('hide');
