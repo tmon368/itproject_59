@@ -82,6 +82,10 @@ class Teacher_dashboard extends CI_Controller {
 				if($this->session->userdata('autority') == "dormitory_supervisor"){
 					redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
 				}
+
+				if($this->session->userdata('autority') == "dormitory_advisor"){
+					redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
+				}
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        

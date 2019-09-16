@@ -2,10 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Dormitory_supervisor_dashboard extends CI_Controller {
+class Dormitory_advisor_dashboard extends CI_Controller {
     function __construct(){
         parent:: __construct();
-        $this->load->model('dormitory_supervisor_dashboard_model', 'dormitory_supervisor_dashboard_model');
+        $this->load->model('dormitory_advisor_dashboard_model', 'dormitory_advisor_dashboard_model');
     }
 
 
@@ -23,7 +23,7 @@ class Dormitory_supervisor_dashboard extends CI_Controller {
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('menu/student/menu_student'); //ส่วนเมนู
-	    $this->load->view('dormitory_supervisor/firstpage/firstpage');
+	    $this->load->view('dormitory_advisor/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
@@ -56,12 +56,12 @@ class Dormitory_supervisor_dashboard extends CI_Controller {
             
             if($this->session->userdata('autority') == "headofstudent_affairs"){
 	            redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
-			}
-
-			if($this->session->userdata('autority') == "dormitory_advisor"){
-	            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
-			}
-
+            }
+            
+            if($this->session->userdata('autority') == "dormitory_supervisor"){
+	            redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+            }
+            
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        
