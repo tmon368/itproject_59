@@ -69,6 +69,9 @@ class login_model extends CI_Model {
     function can_login($username, $password)
     {
         
+
+
+        
         $this->db->select('username, password');
         $this->db->from('employee');
         $query1 = $this->db->get()->result();
@@ -80,7 +83,7 @@ class login_model extends CI_Model {
         
         $this->db->select('username, password');
         $this->db->from('personnel');
-        $this->db->where('position','อาจารย์');
+        //$this->db->where('position','อาจารย์');
         $query3 = $this->db->get()->result();
         
         
@@ -167,8 +170,12 @@ function checkusernameteacher($username)
 {
     
     $this->db->select('username');
-    $this->db->from('personnel');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('usertype_name','อาจารย์ที่ปรึกษา');
     $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
     foreach ($query1 as $value){
         if($value->username == $username){
             return true;
