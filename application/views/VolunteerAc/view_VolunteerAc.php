@@ -252,7 +252,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">สถานที่จัดกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;
-                                         <input type="text" name="..." id="..." class=" style_input" style="width:300px;" >
+                                         <input type="text" name="place" id="place" class=" style_input" style="width:300px;" >
                                             </div>
                                         </div>
                                     </div>
@@ -346,8 +346,8 @@
                         html += '<td>' + value.service_ID + '</td>';
                         html += '<td>' + value.service_name +'</td>';
                         html += '<td>' + value.service_date + '</td>';
-                        html += '<td>' + '</td>';
-                        html += '<td>'+ '</td>';
+                        html += '<td>' +value.service_hour+ '</td>';
+                        html += '<td>'+value.person_fname + as + value.person_fname +  '</td>';
                         html += '<td align="center"><i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw edit_data"></i></td></td>';
                         html += '</tr>';
                        
