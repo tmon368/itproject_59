@@ -114,6 +114,23 @@ class Loginuser extends CI_Controller
             redirect(base_url() . 'index.php/Teacher_dashboard');
 
         }
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamediscipline_officer($username))
+        {
+            
+            $discipline_officer=$this->session->userdata('username');
+            $session_discipline_officer = array(
+                'discipline_officer'     =>     $discipline_officer,
+                'autority' => 'discipline_officer'
+                
+            );
+            
+            $this->session->set_userdata($session_discipline_officer);
+            
+            redirect(base_url() . 'index.php/Discipline_officer_dashboard');
+
+        }
         else
         {
             redirect(base_url() . 'index.php/loginuser/login');

@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class Admin_dashboard extends CI_Controller {
 
 	public function index()
@@ -17,7 +18,7 @@ class Admin_dashboard extends CI_Controller {
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-	    $this->load->view('template/blank');
+	    //$this->load->view('template/blank');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
@@ -40,6 +41,9 @@ class Admin_dashboard extends CI_Controller {
 	        
 	        if($this->session->userdata('autority') == "teacher"){
 	            redirect(base_url() . 'index.php/Teacher_dashboard');
+			}
+			if($this->session->userdata('autority') == "discipline_officer"){
+	            redirect(base_url() . 'index.php/Discipline_officer_dashboard');
 	        }
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');

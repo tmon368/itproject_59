@@ -75,7 +75,10 @@ class Student_dashboard extends CI_Controller {
 	            
 	            if($this->session->userdata('autority') == "teacher"){
 	                redirect(base_url() . 'index.php/Teacher_dashboard');
-	            }
+				}
+				if($this->session->userdata('autority') == "discipline_officer"){
+					redirect(base_url() . 'index.php/Discipline_officer_dashboard');
+				}
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        
