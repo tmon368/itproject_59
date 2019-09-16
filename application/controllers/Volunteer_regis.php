@@ -24,7 +24,7 @@ class Volunteer_regis extends Student_dashboard {
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('menu/student/menu_student');
-	    $this->load->view('VolunteerAc/view_regis_volunteer');
+	    $this->load->view('student/VolunteerAc/view_regis_volunteer');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    

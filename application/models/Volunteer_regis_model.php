@@ -13,7 +13,7 @@ class Volunteer_regis_model extends CI_Model {
       
          
         //$service_ID= $this->input->post('txtdelID');
-       $student=59111111;
+       //$student=59111111;
         //echo $person_ID;
     //$student = $this->session->userdata('student');
         $this->db->select('*');
