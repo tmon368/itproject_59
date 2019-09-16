@@ -131,6 +131,32 @@ class Loginuser extends CI_Controller
             redirect(base_url() . 'index.php/Discipline_officer_dashboard');
 
         }
+
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameheadofstudent_affairs($username))
+        {
+            
+            $headofstudent_affairs=$this->session->userdata('username');
+            $session_headofstudent_affairs = array(
+                'headofstudent_affairs'     =>     $headofstudent_affairs,
+                'autority' => 'headofstudent_affairs'
+                
+            );
+            
+            $this->session->set_userdata($session_headofstudent_affairs);
+            
+            redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
+
+        }
+
+
+
+
+
+
+
+        
         else
         {
             redirect(base_url() . 'index.php/loginuser/login');
@@ -140,10 +166,12 @@ class Loginuser extends CI_Controller
     
     function logout()
     {
+        $this->session->unset_userdata('username');
         $this->session->unset_userdata('admin');
         $this->session->unset_userdata('student');
-        $this->session->unset_userdata('teacher');
-        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('teacher');      
+        $this->session->unset_userdata('discipline_officer');
+        $this->session->unset_userdata('headofstudent_affairs');
         $this->session->unset_userdata('login');
         $this->session->unset_userdata('autority');
         redirect(base_url() . 'index.php/loginuser/login');
