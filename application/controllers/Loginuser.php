@@ -55,7 +55,7 @@ class Loginuser extends CI_Controller
     function enter(){
         $username=$this->session->userdata('username');
         $this->load->model('login_model');
-        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameemployee($username))
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameadmin($username))
         {
             $admin=$this->session->userdata('username');
             $session_admin = array(
@@ -68,6 +68,20 @@ class Loginuser extends CI_Controller
             redirect(base_url() . 'index.php/Admin_dashboard',$session_admin);
     
         }
+        /*
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameemployee($username))
+        {
+            $admin=$this->session->userdata('username');
+            $session_admin = array(
+                'admin'     =>     $admin,
+                'autority' => 'admin' 
+            );
+            
+            $this->session->set_userdata($session_admin);
+     
+            redirect(base_url() . 'index.php/Admin_dashboard',$session_admin);
+    
+        }*/
         if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamestudent($username))
         {
             

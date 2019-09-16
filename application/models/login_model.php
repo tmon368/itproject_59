@@ -71,11 +71,11 @@ class login_model extends CI_Model {
         
 
 
-        
+        /*
         $this->db->select('username, password');
         $this->db->from('employee');
         $query1 = $this->db->get()->result();
-        
+        */
         
         $this->db->select('username, password');
         $this->db->from('student');
@@ -83,16 +83,17 @@ class login_model extends CI_Model {
         
         $this->db->select('username, password');
         $this->db->from('personnel');
-        //$this->db->where('position','อาจารย์');
         $query3 = $this->db->get()->result();
         
         
         
         
+        $query4 = array_merge($query2,$query3);
+        //$query4 = array_merge($query1, $query2,$query3);
         
-        $query4 = array_merge($query1, $query2,$query3);
-        
-        //var_dump($query3);
+        //var_dump($query4);
+       // die();
+
         foreach ($query4 as $value){
             if($value->username == $username  && $value->password == $password ){
                 return true;
@@ -142,7 +143,25 @@ class login_model extends CI_Model {
     
 }
 
-
+function checkusernameadmin($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('usertype_name','ผู้ดูแลระบบ');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+    
+    
+}
 
 
 function checkusernamestudent($username)
@@ -166,8 +185,7 @@ function checkusernamestudent($username)
 
 
 
-function checkusernameteacher($username)
-{
+function checkusernameteacher($username){
     
     $this->db->select('username');
     $this->db->from('personnel p');
