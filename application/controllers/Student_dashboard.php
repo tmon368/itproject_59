@@ -75,7 +75,26 @@ class Student_dashboard extends CI_Controller {
 	            
 	            if($this->session->userdata('autority') == "teacher"){
 	                redirect(base_url() . 'index.php/Teacher_dashboard');
-	            }
+				}
+
+				if($this->session->userdata('autority') == "discipline_officer"){
+					redirect(base_url() . 'index.php/Discipline_officer_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "headofstudent_affairs"){
+					redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "dormitory_supervisor"){
+					redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "dormitory_advisor"){
+					redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
+				}
+
+
+				
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        

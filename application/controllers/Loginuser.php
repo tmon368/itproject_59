@@ -114,6 +114,84 @@ class Loginuser extends CI_Controller
             redirect(base_url() . 'index.php/Teacher_dashboard');
 
         }
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamediscipline_officer($username))
+        {
+            
+            $discipline_officer=$this->session->userdata('username');
+            $session_discipline_officer = array(
+                'discipline_officer'     =>     $discipline_officer,
+                'autority' => 'discipline_officer'
+                
+            );
+            
+            $this->session->set_userdata($session_discipline_officer);
+            
+            redirect(base_url() . 'index.php/Discipline_officer_dashboard');
+
+        }
+
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameheadofstudent_affairs($username))
+        {
+            
+            $headofstudent_affairs=$this->session->userdata('username');
+            $session_headofstudent_affairs = array(
+                'headofstudent_affairs'     =>     $headofstudent_affairs,
+                'autority' => 'headofstudent_affairs'
+                
+            );
+            
+            $this->session->set_userdata($session_headofstudent_affairs);
+            
+            redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
+
+        }
+
+
+
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamedormitory_supervisor($username))
+        {
+            
+            $dormitory_supervisor=$this->session->userdata('username');
+            $session_dormitory_supervisor = array(
+                'dormitory_supervisor'     =>     $dormitory_supervisor,
+                'autority' => 'dormitory_supervisor'
+                
+            );
+            
+            $this->session->set_userdata($session_dormitory_supervisor);
+            
+            redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+
+        }
+
+        
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamedormitory_advisor($username))
+        {
+            
+            $dormitory_advisor=$this->session->userdata('username');
+            $session_dormitory_advisor = array(
+                'dormitory_advisor'     =>     $dormitory_advisor,
+                'autority' => 'dormitory_advisor'
+                
+            );
+            
+            $this->session->set_userdata($session_dormitory_advisor);
+            
+            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
+
+        }
+
+
+
+        
         else
         {
             redirect(base_url() . 'index.php/loginuser/login');
@@ -123,10 +201,12 @@ class Loginuser extends CI_Controller
     
     function logout()
     {
+        $this->session->unset_userdata('username');
         $this->session->unset_userdata('admin');
         $this->session->unset_userdata('student');
-        $this->session->unset_userdata('teacher');
-        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('teacher');      
+        $this->session->unset_userdata('discipline_officer');
+        $this->session->unset_userdata('headofstudent_affairs');
         $this->session->unset_userdata('login');
         $this->session->unset_userdata('autority');
         redirect(base_url() . 'index.php/loginuser/login');

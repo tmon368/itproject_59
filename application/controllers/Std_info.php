@@ -13,8 +13,9 @@ class Std_info extends Student_dashboard {
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
-        $this->template();
         $this->checkAutoriry();
+        $this->template();
+        
         
         
     }
