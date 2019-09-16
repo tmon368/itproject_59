@@ -154,6 +154,25 @@ class Loginuser extends CI_Controller
 
 
 
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamedormitory_supervisor($username))
+        {
+            
+            $dormitory_supervisor=$this->session->userdata('username');
+            $session_dormitory_supervisor = array(
+                'dormitory_supervisor'     =>     $dormitory_supervisor,
+                'autority' => 'dormitory_supervisor'
+                
+            );
+            
+            $this->session->set_userdata($session_dormitory_supervisor);
+            
+            redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+
+        }
+
+        
+
+
 
 
         

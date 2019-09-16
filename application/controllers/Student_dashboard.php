@@ -85,6 +85,10 @@ class Student_dashboard extends CI_Controller {
 					redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
 				}
 
+				if($this->session->userdata('autority') == "dormitory_supervisor"){
+					redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+				}
+
 
 				
 	    }else{
