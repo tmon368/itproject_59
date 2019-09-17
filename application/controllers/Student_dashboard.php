@@ -7,9 +7,7 @@ class Student_dashboard extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('student_dashboard_model', 'model');
 	}
-	
-	
-	
+
 	public function index()
 	{
 	    
@@ -23,11 +21,10 @@ class Student_dashboard extends CI_Controller {
 	    $this->load->view('template/template2');
 		$this->load->view('menu/student/menu_student'); //ส่วนเมนู
 		$this->load->view('student/StudentPersonal/std_infopage');//ส่วนเนื้อหา
-	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
+	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิดของนักศึกษา
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
-	    
-	   
+ 
 	}
 	
 	function selectstudentstatus(){
@@ -92,9 +89,7 @@ class Student_dashboard extends CI_Controller {
 				if($this->session->userdata('autority') == "dormitory_advisor"){
 					redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
 				}
-
-
-				
+			
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        

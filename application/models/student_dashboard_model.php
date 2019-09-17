@@ -18,17 +18,13 @@ class student_dashboard_model extends CI_Model {
         $student = array();
         $student = $query->result_array();
      
-        //var_dump($student);
-        
-        
-        
+        //var_dump($student);        
         if($student > 0){
             return $student;
         }else{
             return false;
         }
-    }
-    
+    }  
     public function selectstudentfirstpage(){
         $student = $this->session->userdata('student');
         $this->db->select('*');
@@ -49,6 +45,7 @@ class student_dashboard_model extends CI_Model {
             return false;
         }
     }
+
     
     
     
