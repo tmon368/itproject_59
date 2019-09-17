@@ -34,7 +34,7 @@ class Volunteer_regis_model extends CI_Model {
     }
 
     function show_whereid (){
-        //ส่ง id ไปให้
+        //ส่ง id ไปให้ ชื่อตัวแปร id ส่งแบบ Get
         /*code*/    
     
 
