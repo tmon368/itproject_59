@@ -32,4 +32,11 @@ class Volunteer_regis_model extends CI_Model {
         }
         
     }
+
+    function show_whereid (){
+        //ส่ง id ไปให้
+        /*code*/    
+    
+
+    }
 }
