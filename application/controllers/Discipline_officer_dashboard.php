@@ -61,6 +61,10 @@ class Discipline_officer_dashboard extends CI_Controller {
 			if($this->session->userdata('autority') == "dormitory_advisor"){
 	            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
 			}
+
+			if($this->session->userdata('autority') == "branch_head"){
+	            redirect(base_url() . 'index.php/Branch_head_dashboard');
+			}
 			
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');

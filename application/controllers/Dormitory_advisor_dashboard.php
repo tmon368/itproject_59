@@ -38,6 +38,7 @@ class Dormitory_advisor_dashboard extends CI_Controller {
 	    
 	    $this->session->mark_as_temp('login',1800);
 	    if($this->session->userdata('login') == true){
+			
 	        if($this->session->userdata('autority') == "admin"){
 	            redirect(base_url() . 'index.php/Admin_dashboard');
 	        }
@@ -60,7 +61,11 @@ class Dormitory_advisor_dashboard extends CI_Controller {
             
             if($this->session->userdata('autority') == "dormitory_supervisor"){
 	            redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
-            }
+			}
+			
+			if($this->session->userdata('autority') == "branch_head"){
+	            redirect(base_url() . 'index.php/Branch_head_dashboard');
+			}
             
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');

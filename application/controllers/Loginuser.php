@@ -191,6 +191,25 @@ class Loginuser extends CI_Controller
 
 
 
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamebranch_head($username))
+        {
+            
+            $branch_head=$this->session->userdata('username');
+            $session_branch_head = array(
+                'branch_head'     =>     $branch_head,
+                'autority' => 'branch_head'
+                
+            );
+            
+            $this->session->set_userdata($session_branch_head);
+            
+            redirect(base_url() . 'index.php/Branch_head_dashboard');
+
+        }
+
+
+
         
         else
         {
