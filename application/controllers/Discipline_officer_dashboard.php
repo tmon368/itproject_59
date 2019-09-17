@@ -69,6 +69,10 @@ class Discipline_officer_dashboard extends CI_Controller {
 			if($this->session->userdata('autority') == "dean"){
 	            redirect(base_url() . 'index.php/Dean_dashboard');
 			}
+
+			if($this->session->userdata('autority') == "security_guard"){
+	            redirect(base_url() . 'index.php/Security_guard_dashboard');
+			}
 			
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');

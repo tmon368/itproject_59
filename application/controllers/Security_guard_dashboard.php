@@ -2,12 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Dormitory_supervisor_dashboard extends CI_Controller {
-    function __construct(){
-        parent:: __construct();
-        $this->load->model('dormitory_supervisor_dashboard_model', 'dormitory_supervisor_dashboard_model');
-    }
-
+class Security_guard_dashboard extends CI_Controller {
 
 	public function index()
 	{
@@ -22,8 +17,8 @@ class Dormitory_supervisor_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-	    $this->load->view('menu/student/menu_student'); //ส่วนเมนู
-	    $this->load->view('dormitory_supervisor/firstpage/firstpage');
+	    $this->load->view('template/template3');
+	    $this->load->view('security_guard/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
@@ -38,27 +33,29 @@ class Dormitory_supervisor_dashboard extends CI_Controller {
 	    
 	    $this->session->mark_as_temp('login',1800);
 	    if($this->session->userdata('login') == true){
-			
-	        if($this->session->userdata('autority') == "admin"){
+	        
+            if($this->session->userdata('autority') == "admin"){
 	            redirect(base_url() . 'index.php/Admin_dashboard');
-	        }
-	       
+            }
+            
 	        if($this->session->userdata('autority') == "student"){
 	            redirect(base_url() . 'index.php/Student_dashboard');
 	        }
 	        
 	        if($this->session->userdata('autority') == "teacher"){
 	            redirect(base_url() . 'index.php/Teacher_dashboard');
-            }
-            
+			}
 			if($this->session->userdata('autority') == "discipline_officer"){
 	            redirect(base_url() . 'index.php/Discipline_officer_dashboard');
-            }
-            
-            if($this->session->userdata('autority') == "headofstudent_affairs"){
+			}
+			if($this->session->userdata('autority') == "headofstudent_affairs"){
 	            redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
 			}
 
+			if($this->session->userdata('autority') == "dormitory_supervisor"){
+	            redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+			}
+			
 			if($this->session->userdata('autority') == "dormitory_advisor"){
 	            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
 			}
@@ -70,11 +67,8 @@ class Dormitory_supervisor_dashboard extends CI_Controller {
 			if($this->session->userdata('autority') == "dean"){
 	            redirect(base_url() . 'index.php/Dean_dashboard');
 			}
-
-			if($this->session->userdata('autority') == "security_guard"){
-	            redirect(base_url() . 'index.php/Security_guard_dashboard');
-			}
-
+			
+			
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        

@@ -226,10 +226,27 @@ class Loginuser extends CI_Controller
 
         }
 
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamesecurity_guard($username))
+        {
+            
+            $security_guard=$this->session->userdata('username');
+            $session_security_guard = array(
+                'security_guard'     =>     $security_guard,
+                'autority' => 'security_guard'
+                
+            );
+            
+            $this->session->set_userdata($session_security_guard);
+            
+            redirect(base_url() . 'index.php/Security_guard_dashboard');
+
+        }
+
 
         
         else
         {
+            $this->session->set_flashdata('error', '<br/>ชื่อผู้ใช้งานและรหัสผ่านไม่ถูกต้อง');
             redirect(base_url() . 'index.php/loginuser/login');
         }
     }
