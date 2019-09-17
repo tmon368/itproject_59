@@ -7,9 +7,11 @@
     <strong><div class="alert alert-danger" role="alert" style="display: none;"></div></strong>
     <strong><div class="alert alert-warning" role="alert" style="display: none;"></div></strong>
 </center>
+
 <head>
     <title></title>   
 </head>
+
 <body>
     <meta charset="UTF-8">
  
@@ -22,43 +24,22 @@
         </nav>
     </div>
     
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card shadow mb-4">
+            <div class="card-header" id="card_2">
+                <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp; หน้าแรก     </h6>
+            </div><br>
+    
 
-   <div class="container">
-<div class="row">
- <div class="col-sm-4">
+
+<div class="col-sm-12">
  <div class="card comp-card">
 <div class="card-body">
 <div class="breadcrumb">
- <div class="table-responsive">
-<table class="table table-hover m-b-0">
-<div class="breadcrumb" id="t1">สถานะการกระทำความผิด</div> 
-<br>
-						<center><a href = "#" ><font size="7"><div id="c1"> 4 </div> </font></a></center>
-					<br>
- 					<br>
- 					<br>
-						รอรายงานตัว :   <input type="text"size="8" value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รอการอบรม :   <input type="text"size="10"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รออนุมัติหลักฐานแย้ง : <input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รอการบำเพ็ญประโยชน์ :<input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รอการรับรองกิจกรรม : <input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						
-    					                    
-  </table>
-  </div>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="col-sm-8">
- <div class="card comp-card">
-<div class="card-body">
-<div class="breadcrumb">
- <div class="table-responsive">
+<!-- <div class="table-responsive">  --> 
  <table class="table table-hover m-b-0">
- <div class="breadcrumb" id="show_left">
-กราฟแสดงคะแนนความประพฤตินักศึกษา
+<div class="breadcrumb3" >  
+	<center> กราฟแสดงคะแนนความประพฤตินักศึกษา   </center>
 <br>
 <br>
 <body>
@@ -78,12 +59,15 @@
 	 		showInLegend: true,
 	 		startAngle: 90,
 	 		type: "doughnut",
+	 		
 	 		dataPoints: [
-	 			{ y: 519960, name: "New Visitors", color: "#E7823A" },
-	 			{ y: 363040, name: "Returning Visitors", color: "#546BC1" }
+	 			{ y: 60, name: "คะแนนที่หัก", color: "#FF9966" },
+	 			{ y: 40, name: "คะแนนคงเหลือ", color: "#66CC66" }
 	 		]
 	 	}],
-	 	"New Visitors": [{
+
+	 	
+	 	"คะแนนที่หัก": [{
 	 		color: "#E7823A",
 	 		name: "New Visitors",
 	 		type: "column",
@@ -91,8 +75,8 @@
 	 	
 	 		]
 	 	}],
-	 	"Returning Visitors": [{
-	 		color: "#546BC1",
+	 	"คะแนนคงเหลือ": [{
+	 		color: "#98FB98",
 	 		name: "Returning Visitors",
 	 		type: "column",
 	 		dataPoints: [
@@ -164,6 +148,161 @@
 
 	 }
 	 </script>
+	 <script>
+    $(document).ready(function() {
+    	selectstudentstatus();
+
+	 
+        //$('[data-toggle="popover"]').popover();
+   //	$("#c1").click(function (){
+        	//alert("SSS");
+     //   	$("#show_left").html("213");
+       // });
+    
+
+    
+  function selectstudentstatus() {
+              $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentstatus',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        var html = '';
+                        var n=1;
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html += '<tr>' +
+                            '<td>' + n + '</td>' +
+                            '<td>' + data[i].committed_date + '</td>' +
+                            '<td>' + data[i].off_desc +'</td>' +
+                            '<td>' + data[i].point + '</td>' +
+                            '<td>' + data[i].statusoff + '</td>' +
+                                '</tr>';
+                            n+=1;
+                        }
+                        $('#showdata').html(html);
+              //$('#dataall').html(num-1);//
+          },
+          error: function() {
+              alert('ไม่มีข้อมูล');
+          }
+              });
+  }
+      });
+
+
+
+   
+    window.onload = function () {
+
+   	 var totalVisitors = 883000;
+   	 var visitorsData = {
+   	 	"New vs Returning Visitors": [{
+   	 		click: visitorsChartDrilldownHandler,
+   	 		cursor: "pointer",
+   	 		explodeOnClick: false,
+   	 		innerRadius: "75%",
+   	 		legendMarkerType: "square",
+   	 		name: "New vs Returning Visitors",
+   	 		radius: "100%",
+   	 		showInLegend: true,
+   	 		startAngle: 90,
+   	 		type: "doughnut",
+   	 		
+   	 		dataPoints: [
+   	 			{ y: 60, name: "คะแนนที่หัก", color: "#FF9966" },
+   	 			{ y: 40, name: "คะแนนคงเหลือ", color: "#66CC66" }
+   	 		]
+   	 	}],
+
+   	 	
+   	 	"คะแนนที่หัก": [{
+   	 		color: "#E7823A",
+   	 		name: "New Visitors",
+   	 		type: "column",
+   	 		dataPoints: [
+   	 	
+   	 		]
+   	 	}],
+   	 	"คะแนนคงเหลือ": [{
+   	 		color: "#98FB98",
+   	 		name: "Returning Visitors",
+   	 		type: "column",
+   	 		dataPoints: [
+   	 
+   	 		]
+   	 	}]
+   	 };
+
+   	 var newVSReturningVisitorsOptions = {
+   	 	animationEnabled: true,
+   	 	theme: "light2",
+   	 	title: {
+   	 		text: ""
+   	 	},
+   	 	subtitles: [{
+   	 		text: "",
+   	 		backgroundColor: "#2eacd1",
+   	 		fontSize: 16,
+   	 		fontColor: "white",
+   	 		padding: 5
+   	 	}],
+   	 	legend: {
+   	 		fontFamily: "calibri",
+   	 		fontSize: 14,
+   	 		itemTextFormatter: function (e) {
+   	 			return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) + "%";  
+   	 		}
+   	 	},
+   	 	data: []
+   	 };
+
+   	 var visitorsDrilldownedChartOptions = {
+   	 	animationEnabled: true,
+   	 	theme: "light2",
+   	 	axisX: {
+   	 		labelFontColor: "#717171",
+   	 		lineColor: "#a2a2a2",
+   	 		tickColor: "#a2a2a2"
+   	 	},
+   	 	axisY: {
+   	 		gridThickness: 0,
+   	 		includeZero: false,
+   	 		labelFontColor: "#717171",
+   	 		lineColor: "#a2a2a2",
+   	 		tickColor: "#a2a2a2",
+   	 		lineThickness: 1
+   	 	},
+   	 	data: []
+   	 };
+
+   	 var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+   	 chart.options.data = visitorsData["New vs Returning Visitors"];
+   	 chart.render();
+
+   	 function visitorsChartDrilldownHandler(e) {
+   	 	chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
+   	 	chart.options.data = visitorsData[e.dataPoint.name];
+   	 	chart.options.title = { text: e.dataPoint.name }
+   	 	chart.render();
+   	 	$("#backButton").toggleClass("invisible");
+   	 }
+
+   	 $("#backButton").click(function() { 
+   	 	$(this).toggleClass("invisible");
+   	 	chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+   	 	chart.options.data = visitorsData["New vs Returning Visitors"];
+   	 	chart.render();
+   	 });
+
+   	 }
+
+
+ 	 
+</script>
+
+
 	 <style>
 	   #backButton {
 	 	border-radius: 4px;
@@ -180,60 +319,45 @@
 	   .invisible {
 	     display: none;
 	   }
+	   .breadcrumb3{
+        font-size: 20px;
+        
+        margin:0 auto;
+        width:800px;
+
+        }
+        
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        }
+        
 	 </style>
-  </script>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <button class="btn invisible" id="backButton">< Back</button>
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<!--  <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  -->
 <script  src="../re/js/canvasjs.min.js"></script>
 <script  src="../re/js/jquery.canvasjs.min.js"></script>
  </table></div>
- </body> 					
-</div>  
-</div>                      
+คะแนนของคุณอยู่ใน  ระดับ   เกณฑ์ 
+
+<div class="container" >
+  <h2>สถานะการทำผิดของนักศึกษา </h2>  
+     
+<table style="width:100%">
+  <tr>
+    <th>ลำดับ</th>
+    <th>วันที่ทำผิด</th> 
+    <th>ฐานความผิด</th>
+    <th>คะแนนที่หัก</th>
+    <th>สถานะการกระทำความผิด</th>
+  </tr>
+<tbody id="showdata">
+ </tbody>
+</table>
 </div>
-</div>
-</div>
-</div>
+</body>
 
 </body>
 </html>
-<script>
-    $(document).ready(function() {
-    	selectdetailfirstpage();
-   
-    	 
-        //$('[data-toggle="popover"]').popover();
-    	$("#c1").click(function (){
-        	//alert("SSS");
-        	$("#show_left").html("213");
-        });
-    
-
-    
-  function selectdetailfirstpage() {
-              $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Student_dashboard/selectdetailfirstpage',
-                    async: false,
-                    dataType: 'json',
-                    success: function() {
-
-                    	$("#num_off").html(data[0].num_off);
-                    	$("#status_off").html(data[0].status_off);
-                   
-                    
-
-                    	
-                    	
-                    	
-                    	$("#email1").html(data[0].email);    	
-                    },
-                    error: function() {
-                       // alert('ไม่มีข้อมูล'); 
-                    }
-                });
-                
-            }
-    });
-</script>

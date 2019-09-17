@@ -114,8 +114,139 @@ class Loginuser extends CI_Controller
             redirect(base_url() . 'index.php/Teacher_dashboard');
 
         }
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamediscipline_officer($username))
+        {
+            
+            $discipline_officer=$this->session->userdata('username');
+            $session_discipline_officer = array(
+                'discipline_officer'     =>     $discipline_officer,
+                'autority' => 'discipline_officer'
+                
+            );
+            
+            $this->session->set_userdata($session_discipline_officer);
+            
+            redirect(base_url() . 'index.php/Discipline_officer_dashboard');
+
+        }
+
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameheadofstudent_affairs($username))
+        {
+            
+            $headofstudent_affairs=$this->session->userdata('username');
+            $session_headofstudent_affairs = array(
+                'headofstudent_affairs'     =>     $headofstudent_affairs,
+                'autority' => 'headofstudent_affairs'
+                
+            );
+            
+            $this->session->set_userdata($session_headofstudent_affairs);
+            
+            redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
+
+        }
+
+
+
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamedormitory_supervisor($username))
+        {
+            
+            $dormitory_supervisor=$this->session->userdata('username');
+            $session_dormitory_supervisor = array(
+                'dormitory_supervisor'     =>     $dormitory_supervisor,
+                'autority' => 'dormitory_supervisor'
+                
+            );
+            
+            $this->session->set_userdata($session_dormitory_supervisor);
+            
+            redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+
+        }
+
+        
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamedormitory_advisor($username))
+        {
+            
+            $dormitory_advisor=$this->session->userdata('username');
+            $session_dormitory_advisor = array(
+                'dormitory_advisor'     =>     $dormitory_advisor,
+                'autority' => 'dormitory_advisor'
+                
+            );
+            
+            $this->session->set_userdata($session_dormitory_advisor);
+            
+            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
+
+        }
+
+
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamebranch_head($username))
+        {
+            
+            $branch_head=$this->session->userdata('username');
+            $session_branch_head = array(
+                'branch_head'     =>     $branch_head,
+                'autority' => 'branch_head'
+                
+            );
+            
+            $this->session->set_userdata($session_branch_head);
+            
+            redirect(base_url() . 'index.php/Branch_head_dashboard');
+
+        }
+
+
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamedean($username))
+        {
+            
+            $dean=$this->session->userdata('username');
+            $session_dean = array(
+                'dean'     =>     $dean,
+                'autority' => 'dean'
+                
+            );
+            
+            $this->session->set_userdata($session_dean);
+            
+            redirect(base_url() . 'index.php/Dean_dashboard');
+
+        }
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamesecurity_guard($username))
+        {
+            
+            $security_guard=$this->session->userdata('username');
+            $session_security_guard = array(
+                'security_guard'     =>     $security_guard,
+                'autority' => 'security_guard'
+                
+            );
+            
+            $this->session->set_userdata($session_security_guard);
+            
+            redirect(base_url() . 'index.php/Security_guard_dashboard');
+
+        }
+
+
+        
         else
         {
+            $this->session->set_flashdata('error', '<br/>ชื่อผู้ใช้งานและรหัสผ่านไม่ถูกต้อง');
             redirect(base_url() . 'index.php/loginuser/login');
         }
     }
@@ -123,10 +254,12 @@ class Loginuser extends CI_Controller
     
     function logout()
     {
+        $this->session->unset_userdata('username');
         $this->session->unset_userdata('admin');
         $this->session->unset_userdata('student');
-        $this->session->unset_userdata('teacher');
-        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('teacher');      
+        $this->session->unset_userdata('discipline_officer');
+        $this->session->unset_userdata('headofstudent_affairs');
         $this->session->unset_userdata('login');
         $this->session->unset_userdata('autority');
         redirect(base_url() . 'index.php/loginuser/login');

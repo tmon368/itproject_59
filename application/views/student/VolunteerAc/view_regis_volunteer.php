@@ -43,6 +43,14 @@
             background-color: #eee;
             border-color: #ddd;
         }
+
+        .txt_position {
+            text-align: center;
+        }
+
+        .show_data {
+            font-family: 'Sarabun', sans-serif;
+        }
     </style>
 </head>
 
@@ -79,33 +87,8 @@
 
 
                     <!-- แสดงกิจกรรมบำเพ็ญประโยชน์-->
-                    <div class="container">
+                    <div class="container show_data">
 
-                        <div class="row">
-                            <div class="col-sm-6">
-
-                                <p><a href=""> <strong> 1. กิจกรรม: ทำความสะอาดโรงอาหาร 4</strong> </a></p>
-
-                                <p>วันที่จัดกิจกรรมวันที่ 1 ส.ค. 62</p>
-
-                                <p> เวลาเริ่ม 8.00 ถึง 16.00 น. จำนวนชั่วโมงกิจกรรม 9 ชั่วโมง</p>
-
-                                <p> ผู้รับรองกิจกรรม สมัย มีรักษ์ ,สมรัก ดีใจ </p>
-
-                            </div>
-
-
-                            <div class="col-sm-6">
-
-                                <p>
-                                    <div> <span id="count_person">0</span>/25</div>
-                                </p>
-                                <p><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit">ลงทะเบียน</button></p>
-
-                            </div>
-
-
-                        </div>
 
 
                     </div>
@@ -127,7 +110,23 @@
 
                 </div>
 
-
+                <!-- Modal detail-->
+                <div class="modal fade" id="ShowDta" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>This is a small modal.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 
@@ -153,15 +152,73 @@
 
 
     <script>
+        $(document).ready(function() {
+
+            show_all();
+
+            function show_all() {
+
+                //alert("Start Show_all function");
+                html = '';
+
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
+                    dataType: 'json',
+                    success: function(data) {
+                        //alert("Having Data...");
+
+                        $.each(data, function(key, value) {
+
+                            html += '<div class="row">';
+                            html += '<div class="col-sm-6">';
+                            html += '<p><a href="javascript:;" class="sh_modal"> <strong> กิจกรรม: ' + value.service_name + '</strong> </a></p>';
+                            html += '<p>วันที่จัดกิจกรรมวันที่  ' + value.service_date + '</p>';
+                            html += '<p> เวลาเริ่ม 8.00 ถึง 16.00 น. จำนวนชั่วโมงกิจกรรม ' + value.service_hour + ' ชั่วโมง</p>';
+                            html += '<p> ผู้รับรองกิจกรรม ' + value.person_fname + " " + value.person_lname + '</p>';
+                            html += '</div>';
+                            html += '<div class="col-sm-6">';
+                            html += '<p> <div class="txt_position"> <span id="count_person">0</span>/25</div> </p>';
+                            html += '<p class="txt_position"><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit">ลงทะเบียน</button></p>';
+                            html += '</div>';
+                            html += '</div>';
+
+                            $('.show_data').html(html);
+
+
+                        });
+
+                    }
+
+
+                });
+            }
+
+
+
+
+
+
+
+        });
+
         $('.btn_submit').click(function() {
             //count=0;
-            
-            sum=sum+1;
+
+            sum = sum + 1;
 
             //alert('ลงทะเบียนสำเร็จ');
 
             $("#count_person").text(sum);
 
+        });
+
+        $('.show_data').on('click', '.sh_modal', function() {
+
+            //alert('MMMM');
+            $('#ShowDta').modal('show');
 
 
 

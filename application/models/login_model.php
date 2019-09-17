@@ -190,7 +190,7 @@ function checkusernameteacher($username){
     $this->db->select('username');
     $this->db->from('personnel p');
     $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
-    $this->db->where('usertype_name','อาจารย์ที่ปรึกษา');
+    $this->db->where('ut.usertype_name','อาจารย์ที่ปรึกษา');
     $query1 = $this->db->get()->result();
     //var_dump($query1);
     //die();
@@ -201,9 +201,150 @@ function checkusernameteacher($username){
             
         }
     }
-    
-    
+      
 }
+
+
+
+function checkusernamediscipline_officer($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','เจ้าหน้าที่วินัย');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
+
+function checkusernameheadofstudent_affairs($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','หัวหน้าส่วนกิจการนักศึกษา');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
+
+function checkusernamedormitory_supervisor($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','หัวหน้างานหอพัก');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
+
+function checkusernamedormitory_advisor($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','ที่ปรึกษาหอพัก');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
+
+function checkusernamebranch_head($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','หัวหน้างานสาขา');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
+function checkusernamedean($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','คณบดี');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
+
+
+function checkusernamesecurity_guard($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','เจ้าหน้าที่รักษาความปลอดภัย');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
 
 
 
