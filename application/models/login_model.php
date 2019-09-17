@@ -305,5 +305,24 @@ function checkusernamebranch_head($username){
       
 }
 
+function checkusernamedean($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','คณบดี');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
 
 }

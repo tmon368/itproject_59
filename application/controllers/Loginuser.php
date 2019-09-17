@@ -210,6 +210,23 @@ class Loginuser extends CI_Controller
 
 
 
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamedean($username))
+        {
+            
+            $dean=$this->session->userdata('username');
+            $session_dean = array(
+                'dean'     =>     $dean,
+                'autority' => 'dean'
+                
+            );
+            
+            $this->session->set_userdata($session_dean);
+            
+            redirect(base_url() . 'index.php/Dean_dashboard');
+
+        }
+
+
         
         else
         {

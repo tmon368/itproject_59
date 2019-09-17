@@ -90,6 +90,11 @@ class Teacher_dashboard extends CI_Controller {
 				if($this->session->userdata('autority') == "branch_head"){
 					redirect(base_url() . 'index.php/Branch_head_dashboard');
 				}
+
+				if($this->session->userdata('autority') == "dean"){
+					redirect(base_url() . 'index.php/Dean_dashboard');
+				}
+				
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        

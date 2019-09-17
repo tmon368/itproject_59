@@ -2,11 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Branch_head_dashboard extends CI_Controller {
+class Dean_dashboard extends CI_Controller {
     function __construct(){
         parent:: __construct();
-        $this->load->model('branch_head_dashboard_model', 'branch_head_dashboard_model');
+        $this->load->model('dean_dashboard_model', 'dean_dashboard_model');
     }
+
 
 	public function index()
 	{
@@ -21,8 +22,8 @@ class Branch_head_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-        $this->load->view('template/template3');
-        $this->load->view('branch_head/firstpage/firstpage');
+	    $this->load->view('template/template3');
+	    $this->load->view('dean/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
@@ -37,7 +38,10 @@ class Branch_head_dashboard extends CI_Controller {
 	    
 	    $this->session->mark_as_temp('login',1800);
 	    if($this->session->userdata('login') == true){
-	        
+            
+            if($this->session->userdata('autority') == "admin"){
+	            redirect(base_url() . 'index.php/Admin_dashboard');
+	        }
 	       
 	        if($this->session->userdata('autority') == "student"){
 	            redirect(base_url() . 'index.php/Student_dashboard');
@@ -59,14 +63,10 @@ class Branch_head_dashboard extends CI_Controller {
 			
 			if($this->session->userdata('autority') == "dormitory_advisor"){
 	            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
-            }
-            
-            if($this->session->userdata('autority') == "admin"){
-	            redirect(base_url() . 'index.php/Admin_dashboard');
 			}
 
-			if($this->session->userdata('autority') == "dean"){
-	            redirect(base_url() . 'index.php/Dean_dashboard');
+			if($this->session->userdata('autority') == "branch_head"){
+	            redirect(base_url() . 'index.php/Branch_head_dashboard');
 			}
 			
 	    }else{
