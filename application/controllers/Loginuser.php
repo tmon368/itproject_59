@@ -260,6 +260,11 @@ class Loginuser extends CI_Controller
         $this->session->unset_userdata('teacher');      
         $this->session->unset_userdata('discipline_officer');
         $this->session->unset_userdata('headofstudent_affairs');
+        $this->session->unset_userdata('dormitory_supervisor');
+        $this->session->unset_userdata('dormitory_advisor');
+        $this->session->unset_userdata('branch_head');
+        $this->session->unset_userdata('dean');
+        $this->session->unset_userdata('security_guard');
         $this->session->unset_userdata('login');
         $this->session->unset_userdata('autority');
         redirect(base_url() . 'index.php/loginuser/login');
