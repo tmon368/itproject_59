@@ -68,20 +68,8 @@ class Loginuser extends CI_Controller
             redirect(base_url() . 'index.php/Admin_dashboard',$session_admin);
     
         }
-        /*
-        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameemployee($username))
-        {
-            $admin=$this->session->userdata('username');
-            $session_admin = array(
-                'admin'     =>     $admin,
-                'autority' => 'admin' 
-            );
-            
-            $this->session->set_userdata($session_admin);
      
-            redirect(base_url() . 'index.php/Admin_dashboard',$session_admin);
-    
-        }*/
+        
         if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernamestudent($username))
         {
             
@@ -243,6 +231,24 @@ class Loginuser extends CI_Controller
         }
 
 
+
+        if($this->session->userdata('username') != ''  && $this->session->userdata('username') == $this->login_model->checkusernameemployee($username))
+        {
+            
+            $employee=$this->session->userdata('username');
+            $session_employee = array(
+                'employee'     =>     $employee,
+                'autority' => 'employee'
+                
+            );
+            
+            $this->session->set_userdata($session_employee);
+            
+            redirect(base_url() . 'index.php/Employee_dashboard');
+
+        }
+
+
         
         else
         {
@@ -265,6 +271,7 @@ class Loginuser extends CI_Controller
         $this->session->unset_userdata('branch_head');
         $this->session->unset_userdata('dean');
         $this->session->unset_userdata('security_guard');
+        $this->session->unset_userdata('employee');
         $this->session->unset_userdata('login');
         $this->session->unset_userdata('autority');
         redirect(base_url() . 'index.php/loginuser/login');
