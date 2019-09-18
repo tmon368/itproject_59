@@ -134,49 +134,25 @@
           <span class="menu-title">แจ้งเหตุกระทำความผิด</span> <!--dd-->
         </a>
       </li>
-
       
-
-
-
-
-
-      <!--
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon mdi mdi-content-copy"></i>
-          <span class="menu-title">รายงานตัวกระทำความผิด</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu">
-            
-          <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("status") ?>">รายการอุทธรณ์ความผิด</a>
-            </li>
-
-          </ul>
-
-
-      </li>
--->
-
-
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">
           <i class="menu-icon fa fa-vcard"></i>
           <span class="menu-title">รายงานตัวกระทำความผิด</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">
           <i class="menu-arrow"></i>
-          <span class="menu-title">รายการอุทธรณ์ความผิด</span>
         </a>
-      </li>
 
-
-      
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu"> 
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">รายงานตัวกระทำความผิด</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">รายการอุทธรณ์ความผิด</a>
+            </li>
+          </ul>
+        </div>
+      </li>     
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url("Volunteer_regis")?>">
           <i class="menu-icon fas fa-handshake"></i>
