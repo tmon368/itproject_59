@@ -15,6 +15,7 @@ class VolunteerAc_model extends CI_Model {
         //$service_ID= $this->input->post('txtdelID');
        // $student=59123456;
         //echo $person_ID;
+
     $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('student s');
@@ -168,8 +169,10 @@ class VolunteerAc_model extends CI_Model {
 
     function selectapersennel()
 	{
-	    $this->db->order_by('person_ID','ASC');
-	    $query = $this->db->get('personnel');
+        $this->db->select('*, CONCAT(person_fname, '  .'" "'. ', person_lname) AS fullname');
+        $this->db->from('personnel');
+        $query = $this->db->get();
+
 	    
         if($query->result() > 0){
                 
@@ -178,5 +181,6 @@ class VolunteerAc_model extends CI_Model {
             return false;
         }
     }
+  
     
 }

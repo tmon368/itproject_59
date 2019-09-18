@@ -36,7 +36,7 @@ class Volunteer_regis extends Student_dashboard {
 	}
 
 
-	function show_whereid (){
+	public function show_whereid(){
 		$result = $this->Volunteer_regis_model->show_whereid();
 		echo json_encode($result);
 	}
