@@ -68,6 +68,11 @@ class Admin_dashboard extends CI_Controller {
 			if($this->session->userdata('autority') == "security_guard"){
 	            redirect(base_url() . 'index.php/Security_guard_dashboard');
 			}
+
+			if($this->session->userdata('autority') == "employee"){
+	            redirect(base_url() . 'index.php/Employee_dashboard');
+			}
+			
 			
 			
 			

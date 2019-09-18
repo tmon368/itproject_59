@@ -126,22 +126,7 @@ class login_model extends CI_Model {
          }*/
     }
     
-    function checkusernameemployee($username)
-    {
-        
-        $this->db->select('username');
-        $this->db->from('employee');
-        $query1 = $this->db->get()->result();
-        foreach ($query1 as $value){
-            if($value->username == $username){
-                return true;
-                
-                
-            }
-    }
-    
-    
-}
+   
 
 function checkusernameadmin($username){
     
@@ -344,6 +329,27 @@ function checkusernamesecurity_guard($username){
     }
       
 }
+
+
+function checkusernameemployee($username){
+    
+    $this->db->select('username');
+    $this->db->from('personnel p');
+    $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+    $this->db->where('ut.usertype_name','พนักงาน');
+    $query1 = $this->db->get()->result();
+    //var_dump($query1);
+    //die();
+    foreach ($query1 as $value){
+        if($value->username == $username){
+            return true;
+            
+            
+        }
+    }
+      
+}
+
 
 
 
