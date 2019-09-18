@@ -36,8 +36,8 @@ class Volunteer_regis_model extends CI_Model {
     function show_whereid(){
         //ส่ง id ไปให้ ชื่อตัวแปร id ส่งแบบ Get
         /*code*/    
-        //$id = $this->input->get('id');
-        $id=1;
+        $id = $this->input->get('id');
+        //$id=1;
         $this->db->where('service_ID', $id);
         $query = $this->db->get('Service');
         //var_dump($query->result());
