@@ -73,34 +73,56 @@ class Notifyoffense_model extends CI_Model {
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
   public function addnotify(){
         $field = array(
-            
-            'oh_ID'=>$this->input->post('oh_ID'),
-			'notifica_date'=>$this->input->post('notifica_date'),
-			'committed_date'=>$this->input->post('committed_date'),
-			'committed_time'=>$this->input->post('committed_time'),
-			'place_ID'=>$this->input->post('place_ID'),
-			'explanation'=>$this->input->post('explanation'),
-			'off_ID'=>$this->input->post('txt_off'),
-			'S_ID'=>$this->input->post('std_id'),
-            );
-            $this->db->insert('offensehead', $field);
-    if($this->db->affected_rows() > 0){
-            $field2 = array(
-                'oh_ID'=>$this->input->post('oh_ID'),
-                'evidenre_name'=>$this->input->post('evidenre_name'),
-                'record_date'=>$this->input->post('evidenre_date'),
-                'explanoff'=>$this->input->post('explanoff'),
+                
+                'oh_ID'=>$this->input->get('oh_ID'),
+                'off_desc'=>$this->input->get('txt_off'),
+                'informer'=>$this->session->userdata('student'),
+                'place_ID'=>$this->input->get('place_ID'),
+                'committed_date'=>$this->input->get('committed_date'),
+                //'committed_time'=>$this->input->post('committed_time'),
+                'notifica_date'=>$this->input->get('notifica_date'),
+                'explanation'=>$this->input->get('explanation')
                 );
-            $this->db->insert('offevidence', $field2);
-       
 
-            return true;
-        
-        
-    }else{
-        return false;
-    }
-}
+                //var_dump($field);
+                //die();
+                $this->db->insert('offensehead', $field);
+                return true;
+                /*
+            if($this->db->affected_rows() > 0){
+               /* $field2 = array(
+                    'oh_ID'=>$this->input->post('oh_ID'),
+                    'evidenre_name'=>$this->input->post('evidenre_name'),
+                    'evidenre_date'=>$this->input->post('evidenre_date'),
+                    'explanoff'=>$this->input->post('explanoff'),
+                    );
+                $this->db->insert('offevidence', $field2);
+                
+                if($this->db->affected_rows() > 0){
+                    $field3 = array(
+                        'oh_ID'=>$this->input->post('oh_ID'),
+                        'S_ID'=>$this->input->post('S_ID'),
+                        'statusoff'=>'0',
+                        );
+                    $this->db->insert('offensestd', $field3);
+
+                    if($this->db->affected_rows() > 0){
+                        $field4 = array(
+                            'oc_ID'=>$this->input->post('oc_ID'),
+                            'S_ID'=>$this->input->post('S_ID'),
+                            'num_off'=>$this->input->post('num_off'),
+                            );
+                        $this->db->insert('OffCategory', $field4);
+                
+                    return true;
+                    
+                    
+                }else{
+                    return false;
+                        }
+                        */
+
+            }
 
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable notify
     public function editnotify(){
@@ -154,7 +176,7 @@ class Notifyoffense_model extends CI_Model {
             $offeviden_ID=$this->input->post('offeviden_ID');
             $oh_ID = $this->input->post('oh_ID');
             $evidenre_name=$this->input->post('evidenre_name');
-            $record_date=$this->input->post('record_date');
+            $evidenre_date=$this->input->post('record_date');
         $this->db->query("UPDATE offensehead o 
                             INNER JOIN offevidence ov ON o.oh_ID = ov.oh_ID 
                             SET o.off_ID = '".$off_ID."', o.person_ID = '".$person_ID."', o.std_ID = '".$std_ID."', o.place_ID = '".$place_ID."',

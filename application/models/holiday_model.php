@@ -26,8 +26,8 @@ class holiday_model extends CI_Model {
     
     
  public function showAll($year){
-    $this->db->select('DATE_ADD(h_date, INTERVAL 543 YEAR) AS dd, h_ID, description, h_type, active_track`');
-    $this->db->where('active_track', '0');
+    $this->db->select('DATE_ADD(h_date, INTERVAL 543 YEAR) AS dd, h_ID, description, h_type, flag`');
+    $this->db->where('flag', '0');
     $this->db->where('Year(h_date)', $year-543);
     $this->db->order_by('h_ID', 'ASC');
             $query = $this->db->get('holiday');
@@ -56,7 +56,8 @@ class holiday_model extends CI_Model {
             'h_ID'=>$this->input->post('txtID'),
             'h_date'=>$this->input->post('txtdate'),
             'description'=>$this->input->post('txtdescrip'),
-            'h_type'=>$this->input->post('addtype')
+            'h_type'=>$this->input->post('addtype'),
+            'flag'=>0,
 
             
             );
@@ -101,7 +102,7 @@ class holiday_model extends CI_Model {
          $id = $this->input->post('txtdelID');
          
         $field = array(
-        'active_track'=> '1'
+        'flag'=> '1'
 
         );
         $this->db->where('h_ID', $id);

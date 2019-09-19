@@ -298,7 +298,7 @@ $("#edit_file").modal("show");
   
     showAll();
     $("#h_ID").change(function(){
-            var active_track;
+            var flag;
             $.ajax({
                 url: "<?php echo base_url(); ?>index.php/holiday/edit/checkkey",
                 data: "h_ID=" + $("#h_ID").val(),
@@ -306,7 +306,7 @@ $("#edit_file").modal("show");
                 async:false,
                 success: function(data, status) { 
                    var result = data.split(",");
-                   active_track = result[0];
+                   flag = result[0];
                    var msg = result[1];
                   // alert(msg)
                    $("#msg1").html(msg);                                                                               
@@ -314,7 +314,7 @@ $("#edit_file").modal("show");
                 },
                 error: function(xhr, status, exception) { alert(status); }
             });
-            return active_track;
+            return flag;
         });
     //Add New
 
