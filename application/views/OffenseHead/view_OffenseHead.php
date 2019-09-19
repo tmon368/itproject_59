@@ -97,13 +97,13 @@
                            <div class="row">
                            <div class="col-sm-12">
                            <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">วันที่บันทึกหลักฐาน.  :&nbsp; </label><label id="" name=""></label></div></div>
+                                        <div class="input-group"><label for="">วันที่บันทึกหลักฐาน.  :&nbsp; </label><label id="proof_date" ></label></div></div>
                            </div></div>
                           <div class="row">
                            <div class="col-sm-12">
                            <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">คำอธิบายการอุทธรณ์ความผิด  :&nbsp; </label> 
-                                        <textarea name="txtdescription" rows="5" class="form-control" maxlength="100"></textarea></div></div>
+                                        <div class="input-group"><label for="">คำอธิบายการอุทธรณ์ความผิด  <label class="text-danger">*</label>:&nbsp; </label>
+                                        <textarea name="" rows="5" class="form-control" maxlength="100"></textarea></div></div>
                           </div></div>
                           <div class="row">
                            <div class="col-sm-10">
@@ -383,7 +383,7 @@ $('#btnAdd').click(function() {
     // แก้ไขข้อมูล
     $('#showdata').on('click', '.edit_data', function() {
         var id = $(this).attr('data');
-        //  alert(id)
+       alert(id)
        $('#edit_file').modal('show');
        //$('#formupdate').attr('action','<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead');
          $.ajax({
@@ -394,8 +394,9 @@ $('#btnAdd').click(function() {
         async: false,
         dataType: 'json',
         success: function(data){
-               // $('input[name=txteditID]').val(data.oc_ID);
-               // $('input[name=txteditname]').val(data.oc_desc);
+            
+        	   $("#proof_date").html(data.proof_date);
+             
 
             },
             error: function() {

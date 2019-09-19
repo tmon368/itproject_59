@@ -72,25 +72,32 @@ class Notifyoffense_model extends CI_Model {
 
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
   public function addnotify(){
+
+        // var_dump($this->input->post('std_id'));
+          //      die();           
+                    
         $field = array(
                 
-                'oh_ID'=>$this->input->get('oh_ID'),
-                'off_desc'=>$this->input->get('txt_off'),
+                'oh_ID'=>$this->input->post('oh_ID'),
+                'off_ID'=>$this->input->post('txt_off'),
                 'informer'=>$this->session->userdata('student'),
-                'place_ID'=>$this->input->get('place_ID'),
-                'committed_date'=>$this->input->get('committed_date'),
-                //'committed_time'=>$this->input->post('committed_time'),
-                'notifica_date'=>$this->input->get('notifica_date'),
-                'explanation'=>$this->input->get('explanation')
-                );
-
-                //var_dump($field);
-                //die();
+                'place_ID'=>$this->input->post('place_ID'),
+                'committed_date'=>$this->input->post('committed_date'),
+                'committed_time'=>$this->input->post('committed_time'),
+                'notifica_date'=>$this->input->post('notifica_date'),
+                'explanation'=>$this->input->post('explanation')
+        );
+        
+      
+               // $this->db->set($field)->get_compiled_insert('offensehead');
                 $this->db->insert('offensehead', $field);
-                return true;
-                /*
+               
+                
             if($this->db->affected_rows() > 0){
-               /* $field2 = array(
+
+            
+                $field2 = array(
+         
                     'oh_ID'=>$this->input->post('oh_ID'),
                     'evidenre_name'=>$this->input->post('evidenre_name'),
                     'evidenre_date'=>$this->input->post('evidenre_date'),
@@ -99,30 +106,51 @@ class Notifyoffense_model extends CI_Model {
                 $this->db->insert('offevidence', $field2);
                 
                 if($this->db->affected_rows() > 0){
+      
+                    for ($i=0; $i < count($this->input->post('std_id[]')) ; $i++) {
+                        $field3 = null;    
                     $field3 = array(
+                    
                         'oh_ID'=>$this->input->post('oh_ID'),
-                        'S_ID'=>$this->input->post('S_ID'),
+                        'S_ID'=>$this->input->post('std_id['.$i.']'),
                         'statusoff'=>'0',
                         );
-                    $this->db->insert('offensestd', $field3);
-
-                    if($this->db->affected_rows() > 0){
-                        $field4 = array(
-                            'oc_ID'=>$this->input->post('oc_ID'),
-                            'S_ID'=>$this->input->post('S_ID'),
-                            'num_off'=>$this->input->post('num_off'),
-                            );
-                        $this->db->insert('OffCategory', $field4);
                 
-                    return true;
-                    
+                    $this->db->insert('offensestd', $field3);
+                            
+                        }
+                //var_dump($field3);
+                //die();
+                    if($this->db->affected_rows() > 0){
+                        for ($i=0; $i < count($this->input->post('std_id[]')); $i++) { 
+                            $field4 = null;
+                           // $query = $this->db->get('offcategory');
+	                       // if ($query->num_rows() > 0) {
+                            $field4 = array(
+                                'oc_ID'=>$this->input->post('txt_oc'),
+                                'S_ID'=>$this->input->post('std_id['.$i.']'),
+                                'num_of'=>'1',
+                                );
+                                //var_dump($field4);
+                            $this->db->insert('offcategory', $field4);
+                        }
+                        
+                        if($this->db->affected_rows() > 0){
+                             return true;
+                        
+                     
                     
                 }else{
                     return false;
                         }
-                        */
-
+                       
+                    }
+                }
             }
+        }
+                
+
+            
 
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable notify
     public function editnotify(){
