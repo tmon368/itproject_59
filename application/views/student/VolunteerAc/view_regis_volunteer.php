@@ -51,6 +51,9 @@
         .show_data {
             font-family: 'Sarabun', sans-serif;
         }
+        .content{
+            font-family: 'Sarabun', sans-serif;
+        }
     </style>
 </head>
 
@@ -112,14 +115,18 @@
 
                 <!-- Modal detail-->
                 <div class="modal fade" id="ShowDta" role="dialog">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog ">
                         <div class="modal-content">
                             <div class="modal-header">
+                                <h4 class="modal-title"> </h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Modal Header</h4>
+
                             </div>
-                            <div class="modal-body">
-                                <p>This is a small modal.</p>
+                            <div class="modal-body content">
+
+                                
+
+
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -172,12 +179,14 @@
 
                         $.each(data, function(key, value) {
 
+                            $('.modal-title').text(value.service_name);
+
                             html += '<div class="row">';
                             html += '<div class="col-sm-6">';
-                            html += '<p><a href="javascript:;" class="sh_modal"> <strong> กิจกรรม: ' + value.service_name + '</strong> </a></p>';
+                            html += '<p><a href="javascript:;" class="sh_modal" data='+ value.service_ID +'> <strong> กิจกรรม: ' + value.service_name + '</strong> </a></p>';
                             html += '<p>วันที่จัดกิจกรรมวันที่  ' + value.service_date + '</p>';
                             html += '<p> เวลาเริ่ม 8.00 ถึง 16.00 น. จำนวนชั่วโมงกิจกรรม ' + value.service_hour + ' ชั่วโมง</p>';
-                            html += '<p> ผู้รับรองกิจกรรม ' + value.person_fname + " " + value.person_lname + '</p>';
+                            html += '<p> ผู้รับรองกิจกรรม: ' + value.person_fname + " " + value.person_lname + '</p>';
                             html += '</div>';
                             html += '<div class="col-sm-6">';
                             html += '<p> <div class="txt_position"> <span id="count_person">0</span>/25</div> </p>';
@@ -204,21 +213,62 @@
 
         });
 
-        $('.btn_submit').click(function() {
+        $('.show_data').on('click', '.btn_submit', function() {
             //count=0;
 
             sum = sum + 1;
 
-            //alert('ลงทะเบียนสำเร็จ');
+            alert('ลงทะเบียนสำเร็จ');
 
+            $(".btn_submit").attr("disabled", true);
+            $(".btn_submit").text('การลงทะเบียนสำเร็จ');
             $("#count_person").text(sum);
 
         });
 
         $('.show_data').on('click', '.sh_modal', function() {
 
-            //alert('MMMM');
+            var id = $(this).attr('data');
+            console.log(id);
+            html='';
+
             $('#ShowDta').modal('show');
+
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                url: '<?php echo site_url('Volunteer_regis/show_whereid') ?>',
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                   //alert('Sucess');
+                   
+                   $.each(data, function(key, value) {
+
+                        html += '<p>ผู้รับรองกิจกรรม ชื่อ: '+ value.person_fname +' นามสกุล: '+ value.person_lname +' หมายเลขโทรศัพท์ '+ value.phone1 +' </p>';
+                        html += '<p>สถานที่จัดกิจกรรม: '+ value.place +' </p>';
+                        html += '<p>วันที่กำหนด: '+ value.service_date +'  เวลา: # ชั่วโมงกิจกรรม: # ชั่วโมง</p>';
+                        html += '<p>จำนวนชั่วโมง: </p>';
+                        html += '<p>จำนวนที่รับสมัคร:</p>';
+                        html += '<p>รายละเอียดกิจกรรม: </p>';
+
+
+                        $('.content').html(html);
+
+                   });
+
+                },
+                error: function() {
+                    alert('Error');
+                }
+            });
+
+
+
+
 
 
 

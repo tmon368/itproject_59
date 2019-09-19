@@ -10381,7 +10381,7 @@ tbody.collapse.show {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color:rgb(71, 48, 123); /*สีพื้นหลัง*/
+  background-color:rgb(98, 11, 107); /*สีพื้นหลัง*/
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
   .card-header:first-child {
     border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0; }
@@ -10512,7 +10512,7 @@ tbody.collapse.show {
   padding: 0.56rem 1.13rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: transparent;
+  background-color: #ffffffbd;
   border-radius: 0.25rem; }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -13772,7 +13772,7 @@ input:focus {
       -webkit-flex-direction: column;
       flex-direction: column;
       height: auto; 
-      background: rgb(213,171,255);}
+      background: rgb(255,255,255);}
       .sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper {
         display: -webkit-flex;
         display: flex;
@@ -13878,7 +13878,7 @@ input:focus {
 /* Navbar */
 .navbar.default-layout {
   font-family: "Poppins", sans-serif;
-  background: rgb(149,78,202);
+  background: rgb(98,11,107);
   transition: background 0.25s ease;
   -webkit-transition: background 0.25s ease;
   -moz-transition: background 0.25s ease;
@@ -13888,7 +13888,7 @@ input:focus {
     -webkit-transition: width 0.25s ease, background 0.25s ease;
     -moz-transition: width 0.25s ease, background 0.25s ease;
     -ms-transition: width 0.25s ease, background 0.25s ease;
-    background: rgb(149,78,202);
+    background: rgb(98,11,107);
     width: 255px;
     height: 63px; }
     .sidebar-dark .navbar.default-layout .navbar-brand-wrapper {

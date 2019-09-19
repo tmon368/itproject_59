@@ -30,6 +30,9 @@
         #add_place {
             width: 100%;
         }
+        .impt_sym{
+            color: rgb(247, 50, 26 );
+        }
     </style>
 
     <script>
@@ -208,13 +211,13 @@
 
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ:</label> <input type="text" name="notifica_date" id="notifica_date" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ  <span class="impt_sym">*</span>  :</label> <input type="text" name="notifica_date" id="notifica_date" class="form-control style_input"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด:</label> <input type="date" name="committed_date" id="committed_date" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด   <span class="impt_sym">*</span>    :</label> <input type="date" name="committed_date" id="committed_date" class="form-control style_input"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา:</label> <input type="time" name="committed_time" id="committed_time" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span>    :</label> <input type="time" name="committed_time" id="committed_time" class="form-control style_input"></div>
                                         </div>
                                     </div>
 
@@ -223,7 +226,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-inline">
                                                 <span><i class="far fa-building"></i></span>
-                                                <label for="">สถานที่:</label>
+                                                <label for="">สถานที่<span class="impt_sym">*</span> :</label>
                                                 <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาสถานที่">
                                                 <input type="hidden" name="place_ID" id="place_ID">
 
@@ -238,7 +241,7 @@
                                         <div class="col-sm-12">
 
                                             <div class="form-group">
-                                                <label for="">คำอธิบายบริเวณที่เกิดเหตุ:</label>
+                                                <label for="">คำอธิบายบริเวณที่เกิดเหตุ<span class="impt_sym">*</span> :</label>
                                                 <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
                                             </div>
 
@@ -248,7 +251,7 @@
 
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <label for="">หมวดความผิด:</label>
+                                            <label for="">หมวดความผิด<span class="impt_sym">*</span> :</label>
                                             <select name="txt_oc" id="txt_oc" class="form-control">
                                                 <option value="">เลือกหมวดความผิด</option>
 
@@ -257,7 +260,7 @@
 
                                         </div>
                                         <div class="col-sm-6">
-                                            <label for="">ฐานความผิด:</label>
+                                            <label for="">ฐานความผิด<span class="impt_sym">*</span> :</label>
                                             <select name="txt_off" id="txt_off" class="form-control">
                                                 <option value="">เลือกฐานความผิด</option>
 
@@ -288,7 +291,7 @@
                                             <div class="form-group">
                                                 <label for="">แนบไฟล์หลักฐาน</label>
                                                 <input type="file" id="" name="img[]" class="form-control-file border" multiple>
-                                                
+
 
 
                                                 <input type="hidden" name="evidenre_name" id="evidenre_name">
@@ -386,7 +389,7 @@
                                     <th>ฐานความผิด</th>
                                     <th>สถานที่</th>
                                     <th>รายละเอียด</th>
-                                    <th>จัดการ</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody id="showdata">
@@ -409,8 +412,17 @@
 
             check_id();
             show_all();
+            disabled_sort(); //disabled sort colum
             load_json_data('txt_oc');
 
+            function disabled_sort() {
+                $('#style_table').DataTable({
+                    columnDefs: [{
+                        orderable: false,
+                        targets: 4
+                    }]
+                });
+            }
 
 
             function load_json_data(id, parent_id) {
@@ -472,7 +484,7 @@
                             html += '<td>' + value.off_desc + '</td>';
                             html += '<td>' + value.place_name + '</td>';
                             html += '<td>' + value.explanation + '</td>';
-                            html += '<td><a href="#"><i class="fas fa-edit" style="color:#47307b;"></i></a> <a href="javascript:;" data=' + value.oh_ID + ' class="del_data"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)"></i></a></td>';
+                            html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="del_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254)"></i></a></td>';
                             html += '</tr>';
                             /*
                                     
@@ -761,7 +773,7 @@
             html += '<div id="student' + off_per + '">';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา:</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '"></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
             html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name' + off_per + '" disabled>   </div>';
             html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname' + off_per + '" disabled>  </div>';
             html += '</div>';
