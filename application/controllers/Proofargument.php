@@ -30,15 +30,15 @@ class Proofargument extends Student_dashboard {
     }
     
     
-   /* function selectstudentoffensehead(){
+    function selectstudentproofargument(){
         //  $username = $this->session->userdata('username');
         
-        $result = $this->OffenseHead_model->selectstudentoffensehead();
+        $result = $this->Proofargument_model->selectstudentproofargument();
         echo json_encode($result);
     }
+    /*
     
-    
-    /* function selectoffenseorder(){
+     function selectoffenseorder(){
      //  $username = $this->session->userdata('username');
      
      $result = $this->OffenseHead_model->selectoffenseorder();
