@@ -16,6 +16,7 @@ class OffenseHead_model extends CI_Model {
         $this->db->join('offense o', 'oh.off_ID=o.off_ID'); 
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
         $this->db->join('offevidence ov', 'oh.oh_ID=ov.oh_ID');
+    
         $this->db->where('ostd.S_ID',$student);
         $query = $this->db->get();
         $student = array();
@@ -53,7 +54,7 @@ class OffenseHead_model extends CI_Model {
         $this->db->join('offevidence ovd', 'oh.oh_ID=ovd.oh_ID');
         $this->db->join('offense of', 'oh.off_ID=of.off_ID');
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
-        
+       // $this->db->join('proofargument pr', 'oh.proof_ID=pr.proof_ID');
         $this->db->where('ostd.offensestd_ID',$id);
        
         
