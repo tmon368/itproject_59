@@ -32,22 +32,16 @@
           <div class="card-header" id="card_2">
                     <h6 class="m-0 text-primary"><span  class=""></span>&nbsp;รายงานกระทำความผิด</h6>
                 </div>              
-        <div class="card-body " id="card_1">
-        
-        <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-                  <i class="fas fa-plus"></i>aaa
-        </button>
-        &nbsp;
-
-
-        </div> 
+      
            <!-- Modal เพิ่มข้อมูล -->
  
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle">เพิ่มพุทธศักราช</h2>
+        <h2 class="modal-title" id="exampleModalLongTitle"><i
+                                        class="fa fa-check-square-o"
+                                        style="color:rgba(0 205 0)"></i></span>ยืนยัน</h2></h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -64,12 +58,8 @@
   
         <div class="form-group" id="input_group_sty">
         <div class="input-group" >
-          <label  class="col-sm-4"  for="validationCustom02">พุทธศักราช</label>&nbsp;
-                    <input type="text" name="txtname"  class="form-control col-sm-7" maxlength="4" onkeyup="count_down(this);" required>
-           </div><div>
-       
-</div>
-</div>
+          <h4 class="col-sm-12" >ต้องการบันทึกการรายงานตัวกระทำความผิด</h4>       
+           </div></div>
           
       </center>
        
@@ -79,7 +69,7 @@
   
       <div class="modal-footer ">
       <button  name="insert" type="reset" class="btn btn-secondary " data-dismiss="modal">ยกเลิก</button>
-      <button name="btnSave" id="btnSave" type="button" class="btn btn-success">บันทึกข้อมูล</button>
+      <button name="btnSave" id="btnSave" type="button" class="btn btn-success">ยืนยัน</button>
             
        
       </div>
@@ -89,6 +79,52 @@
 </div>
 
 <!--------------------------------->
+   <!-- Modal ส่วน edit -->
+
+            <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered"style="max-width: 650px!important;" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i></i></span>การอุทธรณ์ความผิด</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                           <form action="" id="formupdate" method="post" class="needs-validation">  
+                           <center>
+                           <div class="row">
+                           <div class="col-sm-12">
+                           <div class="form-group" id="nav_sty">
+                                        <div class="input-group"><label for="">วันที่บันทึกหลักฐาน.  :&nbsp; </label><label id="" name=""></label></div></div>
+                           </div></div>
+                          <div class="row">
+                           <div class="col-sm-12">
+                           <div class="form-group" id="nav_sty">
+                                        <div class="input-group"><label for="">คำอธิบายการอุทธรณ์ความผิด  :&nbsp; </label> 
+                                        <textarea name="txtdescription" rows="5" class="form-control" maxlength="100"></textarea></div></div>
+                          </div></div>
+                          <div class="row">
+                           <div class="col-sm-10">
+                           <div class="form-group" id="nav_sty">
+                                        <div class="input-group"><label for="">แนบไฟล์หลักฐานการอุทธรณ์ความผิด :&nbsp; </label> 
+                                        <input type="text"  class="form-control" maxlength="100"></div></div>
+                          </div></div>
+                           
+                           
+                           </center>
+                           </form> 
+                        </div>
+         <div class="modal-footer">
+                            <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                            <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                        </div>
+
+
+                                                        </div>
+                                                      </div>
+                                                    </div>
 
 <!-- Modal ส่วน edit -->
 
@@ -111,11 +147,11 @@
                             <form action="" id="formdelete" method="post" class="needs-validation">
                                 <center>
                                 <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <div class="form-group" id="nav_sty">
                                         <div class="input-group"><label for="">ชื่อ :&nbsp; </label><label id="std_fname" name="std_fname"></label></div></div>
                                     </div>
-                                 <div class="col-sm-6">
+                                 <div class="col-sm-8">
                                  <div class="form-group" id="nav_sty">
                                         <div class="input-group"><label for="">สกุล :&nbsp;</label><label id="std_lname"></label></div></div></div>   
                                     </div>
@@ -231,16 +267,26 @@
                                         <!-- <form action="<?php echo base_url(); ?>index.php/offensecate/edit" method="post" id="editform"  class="needs-validation" >  -->
                                           <!------------------>
                                                     </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                               
 
                                                 </tr>
                                              
               
                                             </tbody>
-                                            
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                            <td></td>
+                                                      <td>
+                                     <div class="card-body " id="card_1">
+        							 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
+                  					 <i"></i>ยืนยัน </button>
+       								 </div></td>
+           
+                                                         
                                         </table>
+                                       
                                     </div>
                                 </div>
 
@@ -282,7 +328,7 @@ $("#oh_ID").change(function(){
 
 $('#btnAdd').click(function() {
         $('#exampleModalCenter').modal('show');
-        $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday1/addholiday');
+        //$('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday1/addholiday');
     });
 
     $('#btnSave').click(function(){
@@ -290,23 +336,15 @@ $('#btnAdd').click(function() {
   var data = $('#formadd').serialize();
   //validate form
   var id = $('input[name=txtid]');
-  var name = $('input[name=txtname]');
   var result = '';
   
   if(id.val()==''){
-    id.parent().parent().addClass('has-error');
+	  id.parent().parent().addClass('has-error');
   }else{
-    id.parent().parent().removeClass('has-error');
+	  id.parent().parent().removeClass('has-error');
     result +='1';
   }
-  if(name.val()==''){
-    name.parent().parent().addClass('has-error');
-  }else{
-    name.parent().parent().removeClass('has-error');
-    result +='2';
-  }
-
-  if(result=='12'){
+  if(result=='1'){
     $.ajax({
       type: 'ajax',
       method: 'post',
@@ -332,8 +370,8 @@ $('#btnAdd').click(function() {
         alert('id นี้ถูกใช้งานแล้ว');
         $('#exampleModalCenter').modal('hide');
         $('#formadd')[0].reset();
-        //$('#nav_sty')[0].reset();   
-        $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+        $('#nav_sty')[0].reset();   
+       // $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
         $('#msg1').empty();
         showAll();
       }
@@ -345,21 +383,19 @@ $('#btnAdd').click(function() {
     // แก้ไขข้อมูล
     $('#showdata').on('click', '.edit_data', function() {
         var id = $(this).attr('data');
-        var popup = document.getElementById("editimage");
-        $('#edit_file').modal('show');
-     //  $('#formupdate').attr('action','<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead');
-        $.ajax({
-            type: 'ajax',
-            method: 'get',
-          //  url: '<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead',
-            data: {
-                id: id
-            },
-            async: false,
-            dataType: 'json',
-            success: function(data) {
-                $('input[name=txteditID]').val(data.oc_ID);
-                $('input[name=txteditname]').val(data.oc_desc);
+        //  alert(id)
+       $('#edit_file').modal('show');
+       //$('#formupdate').attr('action','<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead');
+         $.ajax({
+        type: 'ajax',
+        method: 'get',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
+        data: {id: id},
+        async: false,
+        dataType: 'json',
+        success: function(data){
+               // $('input[name=txteditID]').val(data.oc_ID);
+               // $('input[name=txteditname]').val(data.oc_desc);
 
             },
             error: function() {
@@ -426,7 +462,7 @@ $('#btnAdd').click(function() {
     //delete- 
     $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
-      alert(id)
+    //  alert(id)
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
        //$('#formdelete').attr('action', '<?php echo base_url() ?>index.php/holiday1/deleteholiday');
@@ -595,7 +631,7 @@ $('#btnAdd').click(function() {
                   '<td>'+ data[i].off_desc +'</td>'+
                   '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
                   '<td align="center"><input type="checkbox"  name="logo1" class="largerCheckbox" ></td>'+
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-archive btn-fw aaa_data" data=' + data[i].offensestd_ID  + '></i></td>' +
+                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-archive btn-fw edit_data" data=' + data[i].offensestd_ID  + '></i></td>' +
                   '</tr>';
           }
           $('#showdata').html(html);
