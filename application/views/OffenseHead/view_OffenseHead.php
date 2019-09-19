@@ -113,7 +113,7 @@
                                 <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">ชื่อ :&nbsp; </label><label id="std_fname"></label></div></div>
+                                        <div class="input-group"><label for="">ชื่อ :&nbsp; </label><label id="std_fname" name="std_fname"></label></div></div>
                                     </div>
                                  <div class="col-sm-6">
                                  <div class="form-group" id="nav_sty">
@@ -146,7 +146,7 @@
                                     <div class="col-sm-12">
                                      <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">คำอธิบายบริเวณที่เกิดเหต:&nbsp;</label>
+                                            <label for="">คำอธิบายบริเวณที่เกิดเหตุ:&nbsp;</label>
                                             <label id="explanation"></label>
                                       </div>
                                         </div>
@@ -426,19 +426,32 @@ $('#btnAdd').click(function() {
     //delete- 
     $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
+      alert(id)
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
-       $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/holiday1/deleteholiday');
+       //$('#formdelete').attr('action', '<?php echo base_url() ?>index.php/holiday1/deleteholiday');
         $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/holiday1/editholiday',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
         data: {id: id},
         async: false,
         dataType: 'json',
         success: function(data){
-           // $('#showddel').html('"'+data.oh_year+'"');  
-            $('input[name=txtdelID]').val(data.hh_ID);
+            //console.log(data);
+           // $('#showddel').html('"'+data.oh_year+'"'););
+          // $("#std_fname").html("Hello");
+           $("#std_fname").html(data.std_fname);
+           $("#std_lname").html(data.std_lname);
+           $('#committed_date').html(data.committed_date);
+           $('#committed_time').html(data.committed_time);
+           $('#explanation').html(data.explanation);
+           $('#off_desc').html(data.off_desc);
+           $('#place_name').html(data.place_name);
+           $('#evidenre_name').html(data.evidenre_name);
+         
+           //$("#std_fname").html(data.oh_ID); 
+           // $('input[name=txtdelID]').val(data.hh_ID);
             
         },
           error: function(){
@@ -447,6 +460,7 @@ $('#btnAdd').click(function() {
         });
       });
 
+    
       $('#btndel').click(function(){
       var url = $('#formdelete').attr('action');
       var data = $('#formdelete').serialize();
@@ -489,15 +503,18 @@ $('#btnAdd').click(function() {
         });
       }
     });
-
+/*
  	    $.ajax({
           type: 'ajax',
           url: '<?php echo site_url("OffenseHead/selectstudentoffensehead") ?>',
+          method: 'get',
+          data: {id: id},
+          async: false,
           dataType: 'json',
           success: function(data) {
               //alert(data[0].oc_ID);
               for (i = 0; i < data.length; i++) {
-                  //alert(data[i].oc_ID+data[i].oc_desc);
+                  alert(data[i].oc_ID+data[i].oc_desc);
                   $('#std_fname').append('<label value="' + data[i].std_fname + '">' + data[i].std_fname + '</label>');
                   $('#std_lname').append('<labelvalue="' + data[i].std_lname + '">' + data[i].std_lname + '</label>');
                   $('#committed_time').append('<label value="' + data[i].committed_time + '">' + data[i].committed_time + '</label>');
@@ -510,9 +527,9 @@ $('#btnAdd').click(function() {
                  
               }
           }
-      });
+      });*/
 
-
+/*
       function selectstudentoffensehead() {
           $.ajax({
               type: 'ajax',
@@ -535,8 +552,8 @@ $('#btnAdd').click(function() {
                   alert('ไม่มีข้อมูล');
               }
           });
-      }
-
+      }*/
+/*
       function selectoffenseorder() {
           $.ajax({
               type: 'ajax',
@@ -560,7 +577,7 @@ $('#btnAdd').click(function() {
                   alert('ไม่มีข้อมูล');
               }
           });
-      }
+      }*/
      //function
     function showAll(){
       $.ajax({
@@ -576,9 +593,9 @@ $('#btnAdd').click(function() {
                   '<td>'+(i+1)+'</td>'+
                   '<td>'+ data[i].committed_date +'</td>'+
                   '<td>'+ data[i].off_desc +'</td>'+
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].oh_ID  + '></i></td>' +
+                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
                   '<td align="center"><input type="checkbox"  name="logo1" class="largerCheckbox" ></td>'+
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-archive btn-fw del_data" data=' + data[i].oh_ID  + '></i></td>' +
+                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-archive btn-fw aaa_data" data=' + data[i].offensestd_ID  + '></i></td>' +
                   '</tr>';
           }
           $('#showdata').html(html);
