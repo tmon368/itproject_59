@@ -33,11 +33,7 @@
                     <h6 class="m-0 text-primary"><span  class=""></span>&nbsp;รายงานกระทำความผิด</h6>
                 </div>              
         <div class="card-body " id="card_1">
-        
-        <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
-                  <i class="fas fa-plus"></i>bbbb
-        </button>
-        &nbsp;
+    
 
 
         </div> 
@@ -172,9 +168,37 @@
                                         </div>
                                          </div>  
                                     </div>
-                                   
+                                    <div class="row">
+                                    <div class="col-sm-12">
+                                    <div class="form-group" id="nav_sty">
+                                    <div class="input-group">
+                                    	<label>วันที่บันทึกหลักฐาน :&nbsp;</label>
+                                    	<label id="proof_date"></label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-sm-12">
+                                    <div class="form-group" id="nav_sty">
+                                    <div class="input-group">
+                                    	<label>คำอธิบายการอุทธรณ์ความผิด :&nbsp;</label>
+                                    	<label id="explanation"></label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-sm-12">
+                                    <div class="form-group" id="nav_sty">
+                                    <div class="input-group">
+                                    	<label>ไฟล์หลักฐานการอุทธรณ์ความผิด :&nbsp;</label>
+                                    	<label id="proof_name"></label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div> 
                                 </center>
-                                <!------------------>
                         </div>
       
 
@@ -191,11 +215,7 @@
  </div>
      
    
-      <div class="modal-footer">
-      <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
-       
-      </div>
+      
  </form>
                                                         </div>
                                                       </div>
@@ -265,11 +285,11 @@ $("#edit_file").modal("show");
 
   
 showAll();
-$("#oh_ID").change(function(){
+$("#proof_ID").change(function(){
         var active_track;
         $.ajax({
-            url: "<?php echo base_url(); ?>index.php/OffenseHead/selectstudentoffensehead'",
-            data: "oh_ID=" + $("#oh_ID").val(),
+            url: "<?php echo base_url(); ?>index.php/Proofargument/selectstudentproofargument'",
+            data: "proof_ID=" + $("#proof_ID").val(),
             type: "POST",
             async:false,
             success: function(data, status) { 
@@ -429,22 +449,38 @@ $('#btnAdd').click(function() {
 
   
 
-    //delete- 
+  //delete- 
     $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
+    //  alert(id)
       $('#del_file').modal('show');
       //prevent previous handler - unbind()
-       $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/holiday1/deleteholiday');
+       //$('#formdelete').attr('action', '<?php echo base_url() ?>index.php/holiday1/deleteholiday');
         $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/holiday1/editholiday',
+        url: '<?php echo base_url() ?>index.php/Proofargument/selectoffenseorder',
         data: {id: id},
         async: false,
         dataType: 'json',
         success: function(data){
-           // $('#showddel').html('"'+data.oh_year+'"');  
-            $('input[name=txtdelID]').val(data.hh_ID);
+            //console.log(data);
+           // $('#showddel').html('"'+data.oh_year+'"'););
+          // $("#std_fname").html("Hello");
+           $("#std_fname").html(data.std_fname);
+           $("#std_lname").html(data.std_lname);
+           $('#committed_date').html(data.committed_date);
+           $('#committed_time').html(data.committed_time);
+           $('#explanation').html(data.explanation);
+           $('#off_desc').html(data.off_desc);
+           $('#place_name').html(data.place_name);
+           $('#evidenre_name').html(data.evidenre_name);
+           $('#proof_date').html(data.proof_date);
+           $('#proof_name').html(data.proof_name);
+           $('#explanation').html(data.explanation);
+         
+           //$("#std_fname").html(data.oh_ID); 
+           // $('input[name=txtdelID]').val(data.hh_ID);
             
         },
           error: function(){
@@ -495,7 +531,7 @@ $('#btnAdd').click(function() {
         });
       }
     });
-
+/*
  	    $.ajax({
           type: 'ajax',
           url: '<?php echo site_url("OffenseHead/selectstudentoffensehead") ?>',
@@ -517,8 +553,8 @@ $('#btnAdd').click(function() {
               }
           }
       });
-
-
+*/
+/*
       function selectstudentoffensehead() {
           $.ajax({
               type: 'ajax',
@@ -542,7 +578,8 @@ $('#btnAdd').click(function() {
               }
           });
       }
-
+      */
+/*
       function selectoffenseorder() {
           $.ajax({
               type: 'ajax',
@@ -567,11 +604,12 @@ $('#btnAdd').click(function() {
               }
           });
       }
+      */
      //function
     function showAll(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead',
+        url: '<?php echo base_url() ?>index.php/Proofargument/selectstudentproofargument',
         async: false,
         dataType: 'json',
         success: function(data){
@@ -580,11 +618,11 @@ $('#btnAdd').click(function() {
           for(i=0; i<data.length; i++){
             html +='<tr>'+
                   '<td>'+(i+1)+'</td>'+
-                  '<td>'+ data[i].committed_date +'</td>'+
+                  '<td>'+ data[i].proof_date +'</td>'+
                   '<td>'+ data[i].off_desc +'</td>'+
-                  '<td > <a data=' + data[i].oh_ID  + '></a></td>' +
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].oh_ID  + '></i></td>' +
-                  '<td align="center"><a href="#"><i class="fas fa-edit  btn-fw edit_data" style="color:#47307b;" data='+ data[i].oh_ID +'></i></a>&nbsp;<a href="#"><i class="fas fa-trash-alt btn-fw del_data" style="color:rgba(235,99,102,1.00)" data='+ data[i].oh_ID +'></i></a></td>'
+                  '<td align="center">'+ data[i].results +'</td>'+
+                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].proof_ID + '></i></td>' +
+                  '<td align="center"><a href="#"><i class="fas fa-edit  btn-fw edit_data" style="color:#47307b;" data='+ data[i].proof_ID +'></i></a>&nbsp;<a href="#"><i class="fas fa-trash-alt btn-fw del_data" style="color:rgba(235,99,102,1.00)" data='+ data[i].oh_ID +'></i></a></td>'
                   + 
                   '</tr>';
           }

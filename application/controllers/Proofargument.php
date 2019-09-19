@@ -36,14 +36,12 @@ class Proofargument extends Student_dashboard {
         $result = $this->Proofargument_model->selectstudentproofargument();
         echo json_encode($result);
     }
-    /*
-    
-     function selectoffenseorder(){
-     //  $username = $this->session->userdata('username');
-     
-     $result = $this->OffenseHead_model->selectoffenseorder();
-     echo json_encode($result);
-     }*/
+    function selectoffenseorder(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->Proofargument_model->selectoffenseorder();
+        echo json_encode($result);
+    }
     
     
     
