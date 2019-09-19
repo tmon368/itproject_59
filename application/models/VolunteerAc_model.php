@@ -16,7 +16,7 @@ class VolunteerAc_model extends CI_Model {
        // $student=59123456;
         //echo $person_ID;
 
-    $student = $this->session->userdata('student');
+   // $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('student s');
         $this->db->join('service sv', 's.S_ID=sv.S_ID');
