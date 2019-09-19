@@ -482,7 +482,8 @@
                         html += '<tr>' +
                             '<td>' + data[i].oc_ID + '</td>' +
                             '<td>' + data[i].oc_desc + '</td>' +
-                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data=' + data[i].oc_ID  + '>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].oc_ID  + '>ลบข้อมูล</button></td>' +
+                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].oc_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].oc_ID +'>ลบข้อมูล</button></td>'
+                            + 
                             '</tr>';
                     }
                     $('#showdata').html(html);
