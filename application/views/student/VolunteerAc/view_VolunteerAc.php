@@ -140,7 +140,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         <input type="text" name="add_persennel" id="add_persennel" class=" style_input" style="width:200px;" >
+                                         <input type="text" name="add_persennel" id="add_persennel" class=" style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม
                                           <input type="hidden" name="fullname" id="fullname">
                                             </div>
                                         </div>
