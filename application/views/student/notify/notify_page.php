@@ -197,7 +197,7 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <form action="<?php echo site_url("Notifyoffense/addnotify") ?>" id="formadd" name="formadd" method="post">
+                                <form action="" id="formadd" name="formadd" method="post">
                                     <div class="row">
                                         <div class="col-sm-6"> </div>
                                         <div class="col-sm-6 padding_b">
@@ -306,7 +306,7 @@
 
 
 
-                               
+                                </form>
 
 
 
@@ -321,7 +321,7 @@
                                 <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                                 <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
                             </div>
-                            </form>
+
                         </div>
 
                     </div>
@@ -713,7 +713,7 @@
             //alert('The file "' + fileName +  '" has been selected.');
         });
 
-/*
+
 
         $('#btnSave').click(function() {
 
@@ -732,7 +732,7 @@
                 url: '<?php echo site_url("Notifyoffense/addnotify") ?>',
                 data: form_data,
                 async: false,
-                /*dataType: 'json',
+                /*dataType: 'json',*/
                 success: function(data) {
                     alert(data);
                     //alert("Sucess updata !!")
@@ -750,7 +750,7 @@
 
 
         });
-*/
+
 
 
 
