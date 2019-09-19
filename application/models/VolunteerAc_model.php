@@ -18,10 +18,10 @@ class VolunteerAc_model extends CI_Model {
 
    // $student = $this->session->userdata('student');
         $this->db->select('*');
-        $this->db->from('student s');
-        $this->db->join('service sv', 's.S_ID=sv.S_ID');
+        $this->db->from('service sv');
+
         $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
-        $this->db->where('s.S_ID', $student);
+        //$this->db->where('s.S_ID', $student);
         $query = $this->db->get();
         //var_dump($query->result());
        
