@@ -14,17 +14,33 @@ class student_dashboard_model extends CI_Model {
         $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');     
         $this->db->where('os.S_ID',$student);
+        
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
-     
-        //var_dump($student);        
+        foreach($student as $value){
+            $data = $value['statusoff'];
+            $status = $this->utilstatus($data);
+
+        }
+        $student[0]["statusoff"] = $status;
+        //var_dump($student);   
+       // die();     
         if($student > 0){
             return $student;
         }else{
             return false;
         }
     }  
+    public function utilstatus($statusID){
+
+        $data = array("รอรายงานตัว","รอการอนุมัติหลักฐาน","หมดเขตการรายงานตัวกรุณาติดต่อเจ้าหน้าที่",
+        "เกินระยะเวลาการรายงานตัวกรุณาติดต่อเจ้าหน้าที่","รอการอบรม","รอการบำเพ็ญประโยชน","รอการรับรองกิจกรรม",
+        "รอรับรองกิจกรรม","เกินระยะเวลาการบำเพ็ญประโยชน์กรุณาติดต่อ");
+        return $data[$statusID];
+    }  
+
+
     public function selectstudentfirstpage(){
         $student = $this->session->userdata('student');
         $this->db->select('*');
