@@ -43,115 +43,16 @@
 <br>
 <br>
 <body>
- <script >
- window.onload = function () {
 
-	 var totalVisitors = 883000;
-	 var visitorsData = {
-	 	"New vs Returning Visitors": [{
-	 		click: visitorsChartDrilldownHandler,
-	 		cursor: "pointer",
-	 		explodeOnClick: false,
-	 		innerRadius: "75%",
-	 		legendMarkerType: "square",
-	 		name: "New vs Returning Visitors",
-	 		radius: "100%",
-	 		showInLegend: true,
-	 		startAngle: 90,
-	 		type: "doughnut",
-	 		
-	 		dataPoints: [
-	 			{ y: 60, name: "คะแนนที่หัก", color: "#FF9966" },
-	 			{ y: 40, name: "คะแนนคงเหลือ", color: "#66CC66" }
-	 		]
-	 	}],
-
-	 	
-	 	"คะแนนที่หัก": [{
-	 		color: "#E7823A",
-	 		name: "New Visitors",
-	 		type: "column",
-	 		dataPoints: [
-	 	
-	 		]
-	 	}],
-	 	"คะแนนคงเหลือ": [{
-	 		color: "#98FB98",
-	 		name: "Returning Visitors",
-	 		type: "column",
-	 		dataPoints: [
-	 
-	 		]
-	 	}]
-	 };
-
-	 var newVSReturningVisitorsOptions = {
-	 	animationEnabled: true,
-	 	theme: "light2",
-	 	title: {
-	 		text: ""
-	 	},
-	 	subtitles: [{
-	 		text: "",
-	 		backgroundColor: "#2eacd1",
-	 		fontSize: 16,
-	 		fontColor: "white",
-	 		padding: 5
-	 	}],
-	 	legend: {
-	 		fontFamily: "calibri",
-	 		fontSize: 14,
-	 		itemTextFormatter: function (e) {
-	 			return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) + "%";  
-	 		}
-	 	},
-	 	data: []
-	 };
-
-	 var visitorsDrilldownedChartOptions = {
-	 	animationEnabled: true,
-	 	theme: "light2",
-	 	axisX: {
-	 		labelFontColor: "#717171",
-	 		lineColor: "#a2a2a2",
-	 		tickColor: "#a2a2a2"
-	 	},
-	 	axisY: {
-	 		gridThickness: 0,
-	 		includeZero: false,
-	 		labelFontColor: "#717171",
-	 		lineColor: "#a2a2a2",
-	 		tickColor: "#a2a2a2",
-	 		lineThickness: 1
-	 	},
-	 	data: []
-	 };
-
-	 var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
-	 chart.options.data = visitorsData["New vs Returning Visitors"];
-	 chart.render();
-
-	 function visitorsChartDrilldownHandler(e) {
-	 	chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
-	 	chart.options.data = visitorsData[e.dataPoint.name];
-	 	chart.options.title = { text: e.dataPoint.name }
-	 	chart.render();
-	 	$("#backButton").toggleClass("invisible");
-	 }
-
-	 $("#backButton").click(function() { 
-	 	$(this).toggleClass("invisible");
-	 	chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
-	 	chart.options.data = visitorsData["New vs Returning Visitors"];
-	 	chart.render();
-	 });
-
-	 }
-	 </script>
 	 <script>
     $(document).ready(function() {
     	selectstudentstatus();
-
+    	 var data = [
+ 			{ y: 40, name: "คะแนนที่หัก", color: "#FF9966" },
+ 	 			{ y: 60, name: "คะแนนคงเหลือ", color: "#66CC66" }
+ 	 		];
+	 		
+    	renderGra(data);
 	 
         //$('[data-toggle="popover"]').popover();
    //	$("#c1").click(function (){
@@ -192,11 +93,11 @@
       });
 
 
-
    
-    window.onload = function () {
+   
+    var renderGra = function (dataDB) {
 
-   	 var totalVisitors = 883000;
+   	 var totalVisitors = 100;
    	 var visitorsData = {
    	 	"New vs Returning Visitors": [{
    	 		click: visitorsChartDrilldownHandler,
@@ -210,10 +111,7 @@
    	 		startAngle: 90,
    	 		type: "doughnut",
    	 		
-   	 		dataPoints: [
-   	 			{ y: 60, name: "คะแนนที่หัก", color: "#FF9966" },
-   	 			{ y: 40, name: "คะแนนคงเหลือ", color: "#66CC66" }
-   	 		]
+   	 		dataPoints: dataDB
    	 	}],
 
    	 	
@@ -252,7 +150,7 @@
    	 		fontFamily: "calibri",
    	 		fontSize: 14,
    	 		itemTextFormatter: function (e) {
-   	 			return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) + "%";  
+   	 			return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) ;  
    	 		}
    	 	},
    	 	data: []
@@ -340,10 +238,12 @@
 <script  src="../re/js/canvasjs.min.js"></script>
 <script  src="../re/js/jquery.canvasjs.min.js"></script>
  </table></div>
-คะแนนของคุณอยู่ใน  ระดับ   เกณฑ์ 
+<center>   คะแนนของคุณอยู่ใน<b>ระดับ</b>เกณฑ์ : <font color="FFD732"> เสนอคณะกรรมการเพื่อพิจารณา  </font></center> 
+<br>
+<br>
 
 <div class="container" >
-  <h2>สถานะการทำผิดของนักศึกษา </h2>  
+  <center>  <h4>   สถานะการทำผิดของนักศึกษา </h4> </center> 
      
 <table style="width:100%">
   <tr>
