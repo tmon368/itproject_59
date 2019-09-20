@@ -22,6 +22,7 @@ class Notifyoffense_model extends CI_Model {
             $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
             $this->db->join('Offense os', 'o.off_ID=os.off_ID');
             $this->db->join('vehicles v', 'ov.S_ID=v.S_ID');
+            $this->db->join('offensecate oc', 'os.oc_ID=oc.oc_ID');
             $this->db->where('o.oh_ID' ,$id);
           $query = $this->db->get();
           $showall = array();
