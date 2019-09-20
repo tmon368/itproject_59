@@ -53,21 +53,23 @@ class VolunteerAc_model extends CI_Model {
     
     $field = array(
             
-        'service_ID'=>$this->input->post('service_ID'),
-        'service_name'=>$this->input->post('service_name'),
+       // 'service_ID'=>$this->input->post('service_ID'),
+       // 'service_name'=>$this->input->post('service_name'),
         'person_ID'=>$this->input->post('person_ID'),
-        'S_ID'=>$this->input->post('S_ID'),
-        'place'=>$this->input->post('place'),
-        'service_date'=>$this->input->post('service_date'),
-        'service_time'=>$this->input->post('service_time'),
-        'service_hour'=>$this->input->post('service_hour'),
-        'status'=>$this->input->post('status'),
-        'approval_date'=>$this->input->post('approval_date'),
-        'offer_status	'=>$this->input->post('offer_status	'),
-        'document_file'=>$this->input->post('document_file'),
-        'explanation '=>$this->input->post('explanation ')
+        //'S_ID'=>$this->input->post('S_ID'),
+        //'place'=>$this->input->post('place'),
+      //  'service_date'=>$this->input->post('service_date'),
+       // 'service_time'=>$this->input->post('service_time'),
+      //  'service_hour'=>$this->input->post('service_hour'),
+      //  'status'=>$this->input->post('status'),
+      //  'approval_date'=>$this->input->post('approval_date'),
+       // 'offer_status	'=>$this->input->post('offer_status	'),
+      //  'document_file'=>$this->input->post('document_file'),
+     //   'explanation '=>$this->input->post('explanation ')
 
     );
+        var_dump($field);
+        die();
         $this->db->insert('Service', $field);
 
     if($this->db->affected_rows() > 0){  
@@ -97,9 +99,9 @@ class VolunteerAc_model extends CI_Model {
     public function updateVolunteerAc(){
         $id = $this->input->post('txteditID');
         $field = array(
-            'service_name'=>$this->input->post('service_name'),
+            //'service_name'=>$this->input->post('service_name'),
             'person_ID'=>$this->input->post('person_ID'),
-            'S_ID'=>$this->input->post('S_ID'),
+            /*'S_ID'=>$this->input->post('S_ID'),
             'place'=>$this->input->post('place'),
             'service_date'=>$this->input->post('service_date'),
             'service_time'=>$this->input->post('service_time'),
@@ -108,7 +110,7 @@ class VolunteerAc_model extends CI_Model {
             'approval_date'=>$this->input->post('approval_date'),
             'offer_status	'=>$this->input->post('offer_status	'),
             'document_file'=>$this->input->post('document_file'),
-            'explanation '=>$this->input->post('explanation ')
+            'explanation '=>$this->input->post('explanation ')*/
             
             
         );
@@ -157,6 +159,22 @@ class VolunteerAc_model extends CI_Model {
 	{
 	    $this->db->order_by('service_ID','ASC');
 	    $query = $this->db->get('Service');
+	    
+        if($query->result() > 0){
+                
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+
+    function selectperson()
+	{
+        $keyword = $_POST["query"];
+        $this->db->like('person_fname', $keyword, 'both'); 
+        $this->db->order_by('person_ID','ASC');
+        
+	    $query = $this->db->get('personnel');
 	    
         if($query->result() > 0){
                 

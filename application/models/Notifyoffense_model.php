@@ -151,7 +151,7 @@ class Notifyoffense_model extends CI_Model {
                                                         WHERE S_ID = '.$n2.'
                                                         AND  oc_ID = '.$n1.'
                                                         ');
-                            var_dump($query->num_rows());
+                           // var_dump($query->num_rows());
                             if($query->num_rows() > 0){
                                 foreach ($query->result() as $row) {
                                     $r = $row->num_of+1;
@@ -194,13 +194,14 @@ class Notifyoffense_model extends CI_Model {
 
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable notify
     public function editnotify(){
-        $id = $this->input->get('id');
+       $id = $this->input->get('id');
         $this->db->select('*');
         $this->db->from('offensehead o');
         $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
+        $this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
         $query = $this->db->get();
-        var_dump($query->result());
-        die();
+        //var_dump($query->result());
+        //die();
         if($query->num_rows() > 0){
             
             return $query->row();
@@ -270,6 +271,14 @@ class Notifyoffense_model extends CI_Model {
         if($this->db->affected_rows() > 0){
                 $this->db->where('oh_ID', $id);
                 $this->db->delete('offevidence');
+               
+                if($this->db->affected_rows() > 0){
+                    $this->db->where('oh_ID', $id);
+                    $this->db->delete('offensestd');
+                   
+                   
+               
+               
                 return true;
         
         
@@ -277,20 +286,26 @@ class Notifyoffense_model extends CI_Model {
                 return false;
             }
         }
+    }
     
    
     function selectplace()
 	{
-	    $this->db->order_by('place_ID','ASC');
+	 
+
+        $keyword = $_POST["query"];
+        $this->db->like('place_name', $keyword, 'both'); 
+        $this->db->order_by('place_ID','ASC');
+        
 	    $query = $this->db->get('place');
 	    
-	    if ($query->num_rows() > 0) {
-	        return $query->result();
-	    } else {
-	        return false;
-	    }
+        if($query->result() > 0){
+                
+            return $query->result();
+        }else{
+            return false;
+        }
     }
-
 
 
   
