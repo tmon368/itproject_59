@@ -139,7 +139,7 @@ class Notifyoffense extends Student_dashboard {
 	}
 
 	function spc_showoffhead(){
-		$result = $this->Notifyoffense_model->spc_showoffh();
+		$result = $this->Notifyoffense_model->spc_showoffhead();
 		echo json_encode($result);
 	}
 }

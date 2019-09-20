@@ -7,11 +7,11 @@ class VolunteerAc_model extends CI_Model {
         
     }
     
-   
+    
  
     function showAll(){
       
-         
+         $i=0;
         //$service_ID= $this->input->post('txtdelID');
        // $student=59123456;
         //echo $person_ID;
@@ -22,16 +22,37 @@ class VolunteerAc_model extends CI_Model {
 
         $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
         //$this->db->where('s.S_ID', $student);
-        $query = $this->db->get();
         //var_dump($query->result());
        
-        if($query->result() > 0){
-            return $query->result();
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+        foreach($student as $value){
+            $data = $value['status'];
+            $start_time = date_format(date_create($value['start_time']),"H:i");
+            $end_time = date_format(date_create($value['end_time']),"H:i");
+            $status = $this->utilstatus($data);
+
+        
+        $student[$i]["statusname"] = $status;
+        $student[$i]["start_time"] = $start_time;
+        $student[$i]["end_time"] = $end_time;
+        $i++;
+    }
+        //var_dump($student);   
+       // die();     
+        if($student > 0){
+            return $student;
         }else{
             return false;
         }
-        
-    }
+    }  
+    public function utilstatus($statusID){
+
+        $data = array("รอผลการเสนอ","อนุมัติ");
+        return $data[$statusID];
+    }  
+
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
     public function checkkey(){
         $service_ID = $this->input->post('service_ID');
