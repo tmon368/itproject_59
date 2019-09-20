@@ -11,29 +11,33 @@ class Notifyoffense_model extends CI_Model {
     
     
     
-    /*
-   
-    function selectstudent(){
-        //$id = $this->input->post('txtdelID');
-        //$username = $thisata('username')->session->userd;
-       
-        $query = $this->db->get('student');
-        $S_ID= $this->input->post('S_ID');
-            $this->db->query("SELECT s.S_ID, s.std_fname ,s.std_lname, s.phone, v.regist_num
-                              FROM student s   LEFT JOIN vehicles  v ON v.S_ID = s.S_ID 
-                              WHERE s.S_ID = '".$S_ID."'  ORDER BY s.S_ID ASC");
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
-    */
-     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
-     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
+  
+    //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
+    function spc_showoffhead(){
+            $id = $this->input->get('id');
+            //$id='L62101';
+            $this->db->select('*');
+            $this->db->from('offensehead o');
+            $this->db->join('place p', 'o.place_ID=p.place_ID');
+            $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
+            $this->db->join('Offense os', 'o.off_ID=os.off_ID');
+            $this->db->join('vehicles v', 'ov.S_ID=v.S_ID');
+            $this->db->where('o.oh_ID' ,$id);
+          $query = $this->db->get();
+          $showall = array();
+          $showall = $query->result_array();
+          //var_dump($query->result());
+          //die();
+    
+      if($showall > 0){
+          return $showall;
+      }else{
+          return false;
+      }
+  }
      public function showAll(){
-           // $student = $this->session->userdata('student');
-           $student=59111111;
+            $student = $this->session->userdata('student');
+          // $student=59111111;
             $this->db->select('*');
             $this->db->from('place p');
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
@@ -43,11 +47,9 @@ class Notifyoffense_model extends CI_Model {
             $query = $this->db->get();
             $showall = array();
             $showall = $query->result_array();
-           // $this->db->where('off_ID', $student);
-           // $query = $this->db->get("offense");
-            //$showall['offense'] = $query->result_array();
             //var_dump($query->result());
             //die();
+            
         if($showall > 0){
             return $showall;
         }else{
@@ -439,24 +441,6 @@ class Notifyoffense_model extends CI_Model {
 	    }
     }
 
-    //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
-    function spc_showoffhead(){
-          $id = $this->input->get('id');
-        //$id='L62101';
-            $this->db->select('*');
-            $this->db->from('offensehead o');
-            $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
-            $this->db->where('o.oh_ID' ,$id);
-            $query = $this->db->get();
-           // var_dump($query->result());
-            //die();
-            if($query->result() > 0){
-                
-                return $query->result();
-            }else{
-                return false;
-            }
-        }
        
     
 }
