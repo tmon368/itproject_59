@@ -446,7 +446,7 @@ class Notifyoffense_model extends CI_Model {
             $this->db->select('*');
             $this->db->from('offensehead o');
             $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
-            //$this->db->where('o.oh_ID');
+            $this->db->where('o.oh_ID' ,$id);
             $query = $this->db->get();
            // var_dump($query->result());
             //die();
