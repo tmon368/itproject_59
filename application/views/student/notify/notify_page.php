@@ -13,7 +13,12 @@
     <style>
         label {
             padding: 0.4rem;
+            font-family: 'Sarabun', sans-serif;
         }
+        label.label_txt {
+            padding: inherit;
+        }
+
 
         .style_input {
             font-size: 0.8rem;
@@ -30,8 +35,23 @@
         #add_place {
             width: 100%;
         }
-        .impt_sym{
-            color: rgb(247, 50, 26 );
+
+        .impt_sym {
+            color: rgb(247, 50, 26);
+        }
+
+        .text_position {
+            padding-left: 0.9rem;
+            font-size: 0.9rem;
+        }
+
+        .text_head {
+            font-size: 0.9rem;
+            font-weight: 900;
+        }
+        .content {
+            font-family: 'Sarabun', sans-serif;
+            
         }
     </style>
 
@@ -211,13 +231,13 @@
 
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ  <span class="impt_sym">*</span>  :</label> <input type="text" name="notifica_date" id="notifica_date" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ <span class="impt_sym">*</span> :</label> <input type="text" name="notifica_date" id="notifica_date" class="form-control style_input"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด   <span class="impt_sym">*</span>    :</label> <input type="date" name="committed_date" id="committed_date" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด <span class="impt_sym">*</span> :</label> <input type="date" name="committed_date" id="committed_date" class="form-control style_input"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span>    :</label> <input type="time" name="committed_time" id="committed_time" class="form-control style_input"></div>
+                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="committed_time" id="committed_time" class="form-control style_input"></div>
                                         </div>
                                     </div>
 
@@ -370,6 +390,30 @@
 
 
 
+                <!-- Modal detail-->
+                <div class="modal fade" id="ShowDta" role="dialog">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">รายละเอียดการแจ้งเหตุ</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            </div>
+                            <div class="modal-body content">
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
 
 
 
@@ -389,7 +433,7 @@
                                     <th>ฐานความผิด</th>
                                     <th>สถานที่</th>
                                     <th>รายละเอียด</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tbody id="showdata">
@@ -484,7 +528,7 @@
                             html += '<td>' + value.off_desc + '</td>';
                             html += '<td>' + value.place_name + '</td>';
                             html += '<td>' + value.explanation + '</td>';
-                            html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="del_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254)"></i></a></td>';
+                            html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                             html += '</tr>';
                             /*
                                     
@@ -558,15 +602,16 @@
         }); //End Ready function
 
 
+        //show more detail notify
+        $('#showdata').on('click', '.show_data', function() {
 
-        $('#showdata').on('click', '.del_data', function() {
-            //alert ("Show modal");
             var id = $(this).attr('data');
             //console.log(id);
-            $('#del_file').modal('show');
-            $('#formdelete').attr('action', '<?php echo site_url('Notifyoffense/deletenotify') ?>'); //Keep value 
+            $('#ShowDta').modal('show');
+            html = '';
+            i = 0;
 
-            //select show del data
+            //select show data
             $.ajax({
                 type: 'ajax',
                 method: 'get',
@@ -578,10 +623,26 @@
                 dataType: 'json',
                 success: function(data) {
                     //console.log(data);
-                    $('#showddel').html('ต้องการลบการแจ้งเหตุ   "' + data[0].oh_ID + '"');
-                    $('input[name=delID]').val(data[0].oh_ID);
+                    //alert ('Having data');
 
+                    $.each(data, function(key, value) {
+                        i++;
+                        if (i == 1) {
+                            html += '<p class="text_head">การกระทำความผิด</p>';
+                            html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
+                            html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place_name + ' </p>';
+                            html += '<p class="text_position"> <label for="" class="label_txt">อธิบายบริเวณที่เกิดเหตุ: </label> ' + value.description + ' </p>';
+                            html += '<p class="text_position"> <label for="" class="label_txt">หมวดความผิด:</label>  '+value.oc_desc+' <label for="" class="label_txt"> ฐานความผิด:</label>  ' + value.off_desc + '</p>';
+                            html += '<p class="text_head">ผู้กระทำความผิด</p>';
+                        }
+                        
+                            html += '<p class="text_position">รหัสนักศึกษา: '+ value.S_ID +' ชื่อ: นามสกุล: </p>';
+                            html += '<p class="text_position">สำนักวิชา:  หลักสูตร: </p>';
+                            html += '<p class="text_position">เลขทะเบียนรถจักรยานยนต์:  จังหวัด:  </p>';
+                            html += '<p class="text_position">เลขทะเบียนรถยนต์:  จังหวัด:  </p>';
 
+                        $('.content').html(html);
+                    });
                 },
                 error: function() {
                     alert('ไม่สามารถลบข้อมูล');
