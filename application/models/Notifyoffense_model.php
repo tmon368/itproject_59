@@ -23,6 +23,9 @@ class Notifyoffense_model extends CI_Model {
             $this->db->join('Offense os', 'o.off_ID=os.off_ID');
             $this->db->join('vehicles v', 'ov.S_ID=v.S_ID');
             $this->db->join('offensecate oc', 'os.oc_ID=oc.oc_ID');
+            $this->db->join('student s', 'ov.S_ID=s.S_ID');
+            $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+            $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
             $this->db->where('o.oh_ID' ,$id);
           $query = $this->db->get();
           $showall = array();
@@ -39,6 +42,11 @@ class Notifyoffense_model extends CI_Model {
      public function showAll(){
             $student = $this->session->userdata('student');
           // $student=59111111;
+          $this->db->join('student s', 'o.S_ID=s.S_ID');
+          $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+          $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+
+
             $this->db->select('*');
             $this->db->from('place p');
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
