@@ -8,6 +8,7 @@ class student_dashboard_model extends CI_Model {
     }
     
     public function selectstudentstatus(){
+        $i=0;
         $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('offensestd os');
@@ -19,11 +20,14 @@ class student_dashboard_model extends CI_Model {
         $student = array();
         $student = $query->result_array();
         foreach($student as $value){
+            
             $data = $value['statusoff'];
             $status = $this->utilstatus($data);
+            $student[$i]["statusoff"] = $status;
+            $i+=1;
 
         }
-        $student[0]["statusoff"] = $status;
+        
         //var_dump($student);   
        // die();     
         if($student > 0){
