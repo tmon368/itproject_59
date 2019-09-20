@@ -94,7 +94,6 @@
 
 
    
-   
     var renderGra = function (dataDB) {
 
    	 var totalVisitors = 100;
