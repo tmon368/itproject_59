@@ -32,22 +32,28 @@ class Notifyoffense_model extends CI_Model {
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable student โดยเรียงลำดับจาก student_ID
      public function showAll(){
-        $student = $this->session->userdata('student');
-        $this->db->select('*');
+            $student = $this->session->userdata('student');
+            $this->db->select('*');
             $this->db->from('place p');
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
-            $this->db->join('Offense ov', 'o.off_ID=ov.off_ID');
-            $this->db->where('o.S_ID', $student);
+            $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
+            $this->db->join('Offense os', 'o.off_ID=os.off_ID');
+            $this->db->where('S_ID', $student);
             $query = $this->db->get();
+            $showall = array();
+            $showall = $query->result_array();
+           // $this->db->where('off_ID', $student);
+           // $query = $this->db->get("offense");
+            //$showall['offense'] = $query->result_array();
             //var_dump($query->result());
             //die();
-            if($query->result() > 0){
-                
-                return $query->result();
-            }else{
-                return false;
-            }
+        if($showall > 0){
+            return $showall;
+        }else{
+            return false;
         }
+    }
+
           
     /*
 //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
@@ -76,7 +82,7 @@ class Notifyoffense_model extends CI_Model {
         // var_dump($this->input->post('std_id'));
           //      die();           
                     
-        $field = array(
+       $field = array(
                 
                 'oh_ID'=>$this->input->post('oh_ID'),
                 'off_ID'=>$this->input->post('txt_off'),
@@ -92,63 +98,97 @@ class Notifyoffense_model extends CI_Model {
                // $this->db->set($field)->get_compiled_insert('offensehead');
                 $this->db->insert('offensehead', $field);
                
-                
-            if($this->db->affected_rows() > 0){
+               // var_dump("1");
+        if($this->db->affected_rows() > 0){
 
             
-                $field2 = array(
-         
-                    'oh_ID'=>$this->input->post('oh_ID'),
-                    'evidenre_name'=>$this->input->post('evidenre_name'),
-                    'evidenre_date'=>$this->input->post('evidenre_date'),
-                    'explanoff'=>$this->input->post('explanoff'),
-                    );
-                $this->db->insert('offevidence', $field2);
-                
+            $field2 = array(
+                'oh_ID'=>$this->input->post('oh_ID'),
+                'evidenre_name'=>$this->input->post('evidenre_name'),
+                'evidenre_date'=>$this->input->post('evidenre_date'),
+                'explanoff'=>$this->input->post('explanoff'),
+                );
+            $this->db->insert('offevidence', $field2);
+            //var_dump("2");
+
                 if($this->db->affected_rows() > 0){
       
                     for ($i=0; $i < count($this->input->post('std_id[]')) ; $i++) {
                         $field3 = null;    
-                    $field3 = array(
-                    
+                        $field3 = array(
                         'oh_ID'=>$this->input->post('oh_ID'),
                         'S_ID'=>$this->input->post('std_id['.$i.']'),
                         'statusoff'=>'0',
                         );
                 
-                    $this->db->insert('offensestd', $field3);
+                        $this->db->insert('offensestd', $field3);
                             
-                        }
-                //var_dump($field3);
-                //die();
+                    }
+                    //var_dump("3");
+                    //die();
                     if($this->db->affected_rows() > 0){
                         for ($i=0; $i < count($this->input->post('std_id[]')); $i++) { 
                             $field4 = null;
-                           // $query = $this->db->get('offcategory');
-	                       // if ($query->num_rows() > 0) {
-                            $field4 = array(
-                                'oc_ID'=>$this->input->post('txt_oc'),
-                                'S_ID'=>$this->input->post('std_id['.$i.']'),
-                                'num_of'=>'1',
-                                );
-                                //var_dump($field4);
-                            $this->db->insert('offcategory', $field4);
+                           //$query = $this->db->get('offcategory');
+                           /*$field4 = array(
+                            'oc_ID'=>$this->input->post('txt_oc'),
+                            'S_ID'=>$this->input->post('std_id['.$i.']'),
+                            'num_of'=>'1',
+                            );
+                            //var_dump($field4);
+                        $this->db->insert('offcategory', $field4);*/
+                           /*$this->db->select('*');
+                            $this->db->from('offcategory');
+                            $this->db->where('S_ID', $this->input->post('std_id['.$i.']'));
+                            $this->db->where('oc_ID', $this->input->post('oc_ID'));
+                            $query = $this->db->get();*/
+                            
+                            $n1 = $this->input->post("txt_oc");
+                            $n2 = $this->input->post('std_id['.$i.']');
+                            
+                            $query = $this->db->query('SELECT * 
+                                                        FROM offcategory 
+                                                        WHERE S_ID = '.$n2.'
+                                                        AND  oc_ID = '.$n1.'
+                                                        ');
+                            var_dump($query->num_rows());
+                            if($query->num_rows() > 0){
+                                foreach ($query->result() as $row) {
+                                    $r = $row->num_of+1;
+                                        $query = $this->db->query('UPDATE offcategory 
+                                                                    SET num_of = '.$r.'
+                                                                    WHERE oc_ID = '.$n1.' 
+                                                                    AND S_ID = '.$n2.' ');
+                                        //var_dump($field4);
+                                        //die();
+                                        //$this->db->where('S_ID', $this->input->post('std_id['.$i.']'));
+                                        //$this->db->where('oc_ID', $this->input->post('oc_ID'));
+                                        //$this->db->update('offcategory', $field4);
+                                    //$this->db->insert('offcategory', $field4);
+                                }
+                                }else{
+                                    $field4 = array(
+                                        'oc_ID'=>$this->input->post('txt_oc'),
+                                        'S_ID'=>$this->input->post('std_id['.$i.']'),
+                                        'num_of'=>'1',
+                                        );
+                                        //var_dump($field4);
+                                    $this->db->insert('offcategory', $field4);
+                                } //
+	                       
                         }
                         
                         if($this->db->affected_rows() > 0){
                              return true;
-                        
-                     
-                    
-                }else{
-                    return false;
+                        }else{
+                            return false;
                         }
                        
                     }
                 }
             }
         }
-                
+                   
 
             
 

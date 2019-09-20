@@ -28,29 +28,43 @@ class Proofargument_model extends CI_Model {
             return false;
         }
     }
-    /*
+  
     public function selectoffenseorder(){
-        $student = $this->session->userdata('student');
+        
+        //$student = $this->session->userdata('student');
+        $id = $this->input->get('id');
+        
+   
+        
+        
         $this->db->select('*');
-        $this->db->from('offensehead oh');
+        $this->db->from('proofargument pfm');
+        $this->db->join('student s', 'pfm.S_ID=s.S_ID');
+        $this->db->join('report r', 'pfm.report_ID=r.report_ID');
+        $this->db->join('offensestd os', 'r.offensestd_ID=os.offensestd_ID');
+        $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');
-        $this->db->where('oh.S_ID',$student);
+        $this->db->join('place p', 'oh.place_ID=p.place_ID');
+        $this->db->join('offevidence ovd', 'oh.oh_ID=ovd.oh_ID');
+        $this->db->where('pfm.proof_ID',$id);
+        
+        
+        
         $query = $this->db->get();
-        $student = array();
-        $student = $query->result_array();
+        /*
+         $student = array();
+         $student = $query->result_array();
+         
+         */
         
-        
-        
-        if($student > 0){
-            return $student;
+        if($query->num_rows() > 0){
+            return $query->row();
         }else{
             return false;
         }
-    }*/
     
     
     
-    
-    
+    }
     
 }

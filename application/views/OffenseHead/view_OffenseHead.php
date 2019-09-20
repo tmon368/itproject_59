@@ -486,6 +486,7 @@ $('#btnAdd').click(function() {
            $('#off_desc').html(data.off_desc);
            $('#place_name').html(data.place_name);
            $('#evidenre_name').html(data.evidenre_name);
+    
          
            //$("#std_fname").html(data.oh_ID); 
            // $('input[name=txtdelID]').val(data.hh_ID);

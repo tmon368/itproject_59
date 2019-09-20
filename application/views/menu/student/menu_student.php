@@ -105,9 +105,9 @@
               <img src="<?php echo base_url('re/images/faces/face1.jpg'); ?>" alt="profile image">
             </div>
             <div class="text-wrapper">
-              <p class="profile-name">Richard V.Welsh</p>
+              <p class="profile-name">ทศวรรษ มานะเวทย์</p>
               <div>
-                <small class="designation text-muted">Manager</small>
+                <small class="designation text-muted">นักศึกษา</small>
                 <span class="status-indicator online"></span>
               </div>
             </div>

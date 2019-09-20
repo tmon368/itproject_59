@@ -50,11 +50,11 @@ class OffenseHead_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('offensestd ostd');
         $this->db->join('student s', 'ostd.S_ID=s.S_ID');
+       // $this->db->join('proofargument pr', 's.proof_ID=pr.proof_ID');
         $this->db->join('offensehead oh', 'ostd.oh_ID=oh.oh_ID');
         $this->db->join('offevidence ovd', 'oh.oh_ID=ovd.oh_ID');
         $this->db->join('offense of', 'oh.off_ID=of.off_ID');
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
-       // $this->db->join('proofargument pr', 'oh.proof_ID=pr.proof_ID');
         $this->db->where('ostd.offensestd_ID',$id);
        
         

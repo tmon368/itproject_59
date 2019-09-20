@@ -1,6 +1,6 @@
 <body>
   <div class="container-scroller">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
@@ -8,7 +8,7 @@
           <img src="<?php echo base_url('re/images/logo_sys.png'); ?>" alt="logo" width="80" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
-          <img src="<?php echo base_url('re/images/logo_sys.png'); ?>" alt="logo" />
+          <img src="<?php echo base_url('re/images/logo_sys_mini.png'); ?>" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -140,13 +140,54 @@
             -->
             </div>
           </li>
+          <!--
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link" id="logoutsession" href="#"  data-toggle="dropdown" aria-expanded="false" >
+            <a class="nav-link" id="logoutsession" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-sign-out-alt"></i>
-            
+
             </a>
           </li>
-          
+          -->
+          <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+
+              <!--
+              <a class="dropdown-item p-0">
+                <div class="d-flex border-bottom">
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                    <i class="mdi mdi-account-outline mr-0 text-gray"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+                  </div>
+                </div>
+              </a>
+              -->
+
+              <a class="dropdown-item mt-2">
+                คู่มือการใช้งาน
+              </a>
+              <a class="dropdown-item">
+                ระเบียบมหาวิทยาลัย
+              </a>
+              <a href="javascript:;"  class="dropdown-item" id="logoutsession" data-toggle="dropdown" aria-expanded="false">
+                <span id="logout"><i class="fas fa-sign-out-alt"></i>ออกจากระบบ</span>
+              </a>
+            </div>
+          </li>
+
+
+
+
+
+
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="mdi mdi-menu"></span>
@@ -156,18 +197,16 @@
     <!--2-->
     <!-- partial -->
     <script>
+      $('#logoutsession').on('click', '#logout', function() {
+        $(location).attr('href', '<?php echo base_url() ?>index.php/Loginuser/logout');
 
-      $('#logoutsession').on('click', '.fa-sign-out-alt', function() {
-    	  $(location).attr('href','<?php echo base_url() ?>index.php/Loginuser/logout');
-    	 
       });
 
-      
-                /*
+
+      /*
                 function test(){
                   //alert("XXXX");
                   $(location).attr('href','<?php echo base_url() ?>index.php/Loginuser');
                
                 }*/
-              
     </script>
