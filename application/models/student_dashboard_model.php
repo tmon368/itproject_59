@@ -23,7 +23,7 @@ class student_dashboard_model extends CI_Model {
             
             $data = $value['statusoff'];
             $status = $this->utilstatus($data);
-            $student[$i]["statusoff"] = $status;
+            $student[$i]["statusoffname"] = $status;
             $i+=1;
 
         }
