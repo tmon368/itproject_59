@@ -106,15 +106,6 @@
                             <!--ส่วนฟอร์มแก้ไขข้อมูล-->
                             <form action="" id="formdelete" method="post" class="needs-validation">
                                 <center>
-                                <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">ชื่อ :&nbsp; </label><label id="std_fname"></label></div></div>
-                                    </div>
-                                 <div class="col-sm-6">
-                                 <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">สกุล :&nbsp;</label><label id="std_lname"></label></div></div></div>   
-                                    </div>
                                     <div class="row">
                                     <div class="col-sm-4">
                                      <div class="form-group" id="nav_sty">
@@ -183,7 +174,7 @@
                                     <div class="form-group" id="nav_sty">
                                     <div class="input-group">
                                     	<label>คำอธิบายการอุทธรณ์ความผิด :&nbsp;</label>
-                                    	<label id="explanation"></label>
+                                    	<label id="Explanation"></label>
                                     </div>
                                     </div>
                                     </div>
@@ -477,7 +468,7 @@ $('#btnAdd').click(function() {
            $('#evidenre_name').html(data.evidenre_name);
            $('#proof_date').html(data.proof_date);
            $('#proof_name').html(data.proof_name);
-           $('#explanation').html(data.explanation);
+           $('#Explanation').html(data.Explanation);
          
            //$("#std_fname").html(data.oh_ID); 
            // $('input[name=txtdelID]').val(data.hh_ID);

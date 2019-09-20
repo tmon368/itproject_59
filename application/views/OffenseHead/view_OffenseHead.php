@@ -146,15 +146,6 @@
                             <!--ส่วนฟอร์มแก้ไขข้อมูล-->
                             <form action="" id="formdelete" method="post" class="needs-validation">
                                 <center>
-                                <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">ชื่อ :&nbsp; </label><label id="std_fname" name="std_fname"></label></div></div>
-                                    </div>
-                                 <div class="col-sm-8">
-                                 <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">สกุล :&nbsp;</label><label id="std_lname"></label></div></div></div>   
-                                    </div>
                                     <div class="row">
                                     <div class="col-sm-4">
                                      <div class="form-group" id="nav_sty">
@@ -383,7 +374,7 @@ $('#btnAdd').click(function() {
     // แก้ไขข้อมูล
     $('#showdata').on('click', '.edit_data', function() {
         var id = $(this).attr('data');
-       alert(id)
+      // alert(id)
        $('#edit_file').modal('show');
        //$('#formupdate').attr('action','<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead');
          $.ajax({
