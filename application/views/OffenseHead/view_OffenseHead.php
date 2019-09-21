@@ -236,7 +236,7 @@
                                                     <th>ฐานความผิด</th>
                                                     <th>รายละเอียด</th>
                                                       <th>ยืนยันการกระทำผิด</th>
-                                                        <th>ส่งหลักฐานแย้ง</th>
+                                                        <th>ส่งหลักฐานอุทธรณ์</th>
                                                        
                                                   
 
@@ -271,7 +271,7 @@
                                             <td></td>
                                                       <td>
                                      <div class="card-body " id="card_1">
-        							 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal" >
+        							 <button type="button" id="text1" style="display:none" class="btn btn-success btn-fw" data-toggle="modal" >
                   					 <i"></i>ยืนยัน </button>
        								 </div></td>
            
@@ -623,8 +623,8 @@ $('#btnAdd').click(function() {
                   '<td>'+ data[i].committed_date +'</td>'+
                   '<td>'+ data[i].off_desc +'</td>'+
                   '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
-                  '<td align="center"><input type="checkbox"  name="logo1" class="largerCheckbox" ></td>'+
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-archive btn-fw edit_data" data=' + data[i].offensestd_ID  + '></i></td>' +
+                  '<td align="center"><input type="checkbox"  id="checkbox1" onclick="show_text(this);check_click();"  class="largerCheckbox" ></td>'+
+                  '<td align="center"> <i  style="font-size:25px;color:blue" id="button1" value="button"disabled="disabled" class="far fa-file-archive btn-fw edit_data" data=' + data[i].offensestd_ID  + '></i></td>' +
                   '</tr>';
           }
           $('#showdata').html(html);
@@ -635,6 +635,32 @@ $('#btnAdd').click(function() {
       });
     }
   });
+
+  function show_text(obj)
+  {
+
+  if(obj.checked)
+  {
+  document.getElementById("text1").style.display="";
+  }
+  else
+  {
+  document.getElementById("text1").style.display="none";
+  }
+
+  }
+
+  function check_click()
+  {
+  if(document.getElementById('checkbox1').checked==true)
+  {
+  document.getElementById('button1').disabled = true;
+  }
+  else
+  {
+  document.getElementById('button1').disabled = false;
+  }
+  }
   
 </script>
 

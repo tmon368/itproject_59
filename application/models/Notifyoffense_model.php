@@ -15,7 +15,7 @@ class Notifyoffense_model extends CI_Model {
     //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
     function spc_showoffhead(){
             $id = $this->input->get('id');
-            $id='L62101';
+           // $id='L62101';
             $this->db->select('*');
             $this->db->from('offensehead o');
             $this->db->join('place p', 'o.place_ID=p.place_ID');
