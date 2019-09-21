@@ -15,7 +15,7 @@ class Notifyoffense_model extends CI_Model {
     //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
     function spc_showoffhead(){
             $id = $this->input->get('id');
-            //$id='L62101';
+            $id='L62101';
             $this->db->select('*');
             $this->db->from('offensehead o');
             $this->db->join('place p', 'o.place_ID=p.place_ID');
@@ -41,11 +41,7 @@ class Notifyoffense_model extends CI_Model {
   }
      public function showAll(){
             $student = $this->session->userdata('student');
-          // $student=59111111;
-          $this->db->join('student s', 'o.S_ID=s.S_ID');
-          $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
-          $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
-
+      
 
             $this->db->select('*');
             $this->db->from('place p');
