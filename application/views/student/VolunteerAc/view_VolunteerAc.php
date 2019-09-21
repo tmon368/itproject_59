@@ -218,7 +218,7 @@
                         html += '<td>' +value.start_time+ "-"+value.end_time+'</td>';
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td align="center"><i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw edit_data"></i></td></td>';
-                        html += '<td>' +value.status+ '</td>';
+                        html += '<td>' +value.statusname+ '</td>';
                         html += '</tr>';
                        
                         $('#showdata').html(html); 
