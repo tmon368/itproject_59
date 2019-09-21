@@ -93,6 +93,8 @@ class VolunteerAc_model extends CI_Model {
     );
     
  
+var_dump($field);
+die();
         $this->db->insert('service', $field);
 
     if($this->db->affected_rows() > 0){  
@@ -194,6 +196,9 @@ class VolunteerAc_model extends CI_Model {
     function selectperson()
 	{
         $keyword = $_POST["query"];
+       // $this->db->like('person_fname'('person_lname', $keyword, 'both')); 
+
+       // $this->db->set('person_fname', 'person_lname', $keyword, 'both'); 
         $this->db->like('person_fname', $keyword, 'both'); 
         $this->db->order_by('person_ID','ASC');
         
