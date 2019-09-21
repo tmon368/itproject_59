@@ -352,11 +352,11 @@
                     i++;
                     if (i == 1) {
                         html += '<p class="text_head">รายละเอียด</p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อ:</label> ' + value. fullname+ ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อ:</label> ' + value. person_fname+ ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+value.start_time+' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมงกิจกรรม: </label> ' + value.start_time + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมงกิจกรรม: </label> ' + value.start_time + "-"+ value.end_time +' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.start_time + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.start_time + ' </p>';
                          
