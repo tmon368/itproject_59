@@ -41,8 +41,6 @@ class Notifyoffense_model extends CI_Model {
   }
      public function showAll(){
             $student = $this->session->userdata('student');
-      
-
             $this->db->select('*');
             $this->db->from('place p');
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
