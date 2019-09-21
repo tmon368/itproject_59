@@ -87,38 +87,28 @@
                                   
                                     
                                     <div class="row">
-                                        <div class="col-sm-8">
-                                            <div class="col-sm-6 padding_b">
+                                            <div class="col-sm-12 padding_b">
                                                 <label for="">ชื่อกิจกรรม</label> <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                            <input type="text" name="service_name" id="service_name" class=" style_input"  maxlength="25"  >
                                             </div>
                                         </div>     
-                                    </div>
+                                 
                                     
                                  <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-5">
                                             <div class="form-inline"><label for="">วันที่จัดกิจกรรม<label> 
                                             <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <input type="date" name="service_date" id="service_date" class="style_input">
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-inline"><label for="">เวลาเริ่ม<label> 
-                                            <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <select name="" id="" class="">
-                                                <option value="">11.30</option>  <option value="">12.00</option> <option value="">12.30</option>
-                                                <option value="">13.00</option>  <option value="">13.30</option> <option value="">14.00</option>
-                                                <option value="">14.30</option>  <option value="">15.00</option> <option value="">15.30</option>
-                                                  <option value="">16.00</option>  <option value="">16.30</option> <option value="">17.00</option>
-                                           </select> &nbsp;&nbsp;ถึง
-                                           <select name="" id="" class="">
-                                                  <option value="">12.00</option> <option value="">12.30</option>
-                                                <option value="">13.00</option>  <option value="">13.30</option> <option value="">14.00</option>
-                                                <option value="">14.30</option>  <option value="">15.00</option> <option value="">15.30</option>
-                                                  <option value="">16.00</option>  <option value="">16.30</option> <option value="">17.00</option>
-                                           </select> 
-                                            </div>   
-                                        </div>   
+                                        <div class="col-sm-3">
+                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="start_time" id="start_time" class="form-control style_input"></div>
+                                             </div>
+                                             
+                                             <div class="col-sm=4">
+                                             <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">ถึง<span class="impt_sym">*</span> :</label> <input type="time" name="end_time" id="end_time" class="form-control style_input"></div>
+                                             </div>
+                                        
                                  </div>
                                  <div class="row">
                                         <div class="col-sm-8"> </div>
@@ -141,7 +131,7 @@
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                          <input type="text" name="add_persennel" id="add_persennel" class=" style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม
-                                          <input type="hidden" name="fullname" id="fullname">
+                                          <input type="hidden" name="person_ID" id="person_ID">
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +215,7 @@
                         html += '<td>' + value.service_ID + '</td>';
                         html += '<td>' + value.service_name +'</td>';
                         html += '<td>' + value.service_date + '</td>';
-                        html += '<td>' +value.service_hour+ '</td>';
+                        html += '<td>' +value.start_time+ "-"+value.end_time+'</td>';
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td align="center"><i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw edit_data"></i></td></td>';
                         html += '<td>' +value.status+ '</td>';
@@ -375,7 +365,7 @@
                     
                     result($.map(data, function(item) {
                     
-                        $('#fullname').val(item.fullname);
+                        $('#fullname').val(item.person_ID);
                         return item.fullname; 
                     }));
                 }
