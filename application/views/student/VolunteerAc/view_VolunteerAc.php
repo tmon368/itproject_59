@@ -159,7 +159,27 @@
                     </div>
                 </div>
 
+                     <!-- Modal detail-->
+                <div class="modal fade" id="ShowDta" role="dialog">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">รายละเอียดกิจกรรม</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
+                            </div>
+                            <div class="modal-body content">
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
@@ -217,7 +237,7 @@
                         html += '<td>' + value.service_date + '</td>';
                         html += '<td>' +value.start_time+ "-"+value.end_time+'</td>';
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
-                        html += '<td align="center"><i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw edit_data"></i></td></td>';
+                        html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
                         html += '</tr>';
                        
@@ -251,19 +271,7 @@
         //check id and create id
         function check_id() {
 
-            title = 'L';
-            var date = new Date();
-            date_t = date.getFullYear();
-            B_E=date_t+543; //แปลง ค.ศ. => พ.ศ.
-            convert_be=B_E.toString(); //convert to string
-            BE=convert_be.substring(2);
-                           
-            console.log(BE);
-            console.log(typeof convert_be);
-            //console.log(typeof B_E);
-
-            i=1;
-            Runnning_num = 0000;
+           
             //console.log(typeof Runnning_num); //check type
 
             $.ajax({
@@ -288,66 +296,9 @@
                     alert('No Data');
                 }
 
-
             });
-
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
     }); //End Ready function
-
-
-
-
- 
-    $('#txt_oc').on('change', function() {
-        //alert("mmmm");
-        var html_code = '';
-        var ocID = $(this).val();
-        //alert(oc_ID);
-
-        if (ocID) {
-
-            //alert("mmmm");
-
-            $.ajax({
-                type: 'GET',
-                url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
-                data: 'oc_ID=' + ocID,
-                dataType: 'json',
-                success: function(data) {
-
-                    //alert(data[1].off_ID);
-
-                    for (i = 0; i < data.length; i++) {
-
-                        html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
-
-                    }
-                    $('#txt_off').html(html_code);
-
-                }
-
-            });
-
-
-
-
-        }
-        
-
-    });
 
 
 
@@ -375,17 +326,61 @@
 
     });
 
+    $('#showdata').on('click', '.show_data', function() {
+
+        var id = $(this).attr('data');
+        //console.log(id);
+        $('#ShowDta').modal('show');
+        html = '';
+        i = 0;
+
+        //select show data
+        $.ajax({
+            type: 'ajax',
+            method: 'get',
+            url: '<?php echo site_url('VolunteerAc/showAll') ?>',
+            data: {
+                id: id
+            },
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+                //console.log(data);
+                //alert ('Having data');
+
+                $.each(data, function(key, value) {
+                    i++;
+                    if (i == 1) {
+                        html += '<p class="text_head">รายละเอียด</p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อ:</label> ' + value. fullname+ ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+value.start_time+' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมงกิจกรรม: </label> ' + value.start_time + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.start_time + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.start_time + ' </p>';
+                         
+                    }
+                    
+                      
+
+                    $('.content').html(html);
+                });
+            },
+            error: function() {
+                alert('ไม่สามารถลบข้อมูล');
+            }
+        });
 
 
 
+    });
 
-    $('#btnAdd').click(function() {
-     
-        
+
+
+    $('#btnAdd').click(function() {    
+        $('#exampleModalCenter').modal('show');
        
-   $('#exampleModalCenter').modal('show');
-       
-
     });
 
 
@@ -393,14 +388,8 @@
     $('#btnSave').click(function() {
 
         var form_data = $('#formadd').serialize();
-        //alert(form_data);
         console.log(form_data);
-
-        //console.log(typeof form_data);
-
-        //var data = $('#formdata').serialize();
-        //var id = $(this).attr('data');
-
+       
         $.ajax({
             type: 'ajax',
             method: 'post',
