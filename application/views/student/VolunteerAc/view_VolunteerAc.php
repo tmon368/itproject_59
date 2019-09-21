@@ -348,7 +348,7 @@
                 //console.log(data);
                 //alert ('Having data');
 
-                $.each(data, function(key, value) {
+                $.each(data, function(key, value) { 
                     i++;
                     if (i == 1) {
                         html += '<p class="text_head">รายละเอียด</p>';
