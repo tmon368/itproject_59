@@ -29,7 +29,7 @@
             padding-bottom: 0.9rem;
         }
 
-        #add_persennel {
+        #add_place {
             width: 100%;
         }
     </style>
@@ -83,7 +83,7 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <form action="" id="formadd" name="formadd" method="post">
+                                <form action="">
                                   
                                     
                                     <div class="row">
@@ -130,7 +130,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         <input type="text" name="add_persennel" id="add_persennel" class=" style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
+                                         <input type="text" name="add_persennel" id="add_persennel" class=" style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม
                                           <input type="hidden" name="person_ID" id="person_ID">
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="">รายละเอียดกิจกรม:</label>
-                                                <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
+                                                <textarea class="form-control" rows="5" id=""></textarea>
                                             </div>
 
                                         </div> 
@@ -306,7 +306,7 @@
 
         source: function(query, result) {
             $.ajax({
-                url: "<?php echo site_url('VolunteerAC/selectperson') ?>",
+                url: "<?php echo site_url('VolunteerAC/selectapersennel') ?>",
                 method: "POST",
                 data: {
                     query: query
@@ -316,8 +316,8 @@
                     
                     result($.map(data, function(item) {
                     
-                        $('#person_ID').val(item.person_ID);
-                        return item.person_fname+" "+item.person_lname; 
+                        $('#fullname').val(item.person_ID);
+                        return item.fullname; 
                     }));
                 }
             })
@@ -348,7 +348,7 @@
                 //console.log(data);
                 //alert ('Having data');
 
-                $.each(data, function(key, value) { 
+                $.each(data, function(key, value) {
                     i++;
                     if (i == 1) {
                         html += '<p class="text_head">รายละเอียด</p>';
@@ -396,7 +396,7 @@
             url: '<?php echo site_url("VolunteerAC/addVolunteerAc") ?>',
             data: form_data,
             async: false,
-            /*dataType: 'json',
+            /*dataType: 'json',*/
             success: function(data) {
                 alert(data);
                 //alert("Sucess updata !!")
