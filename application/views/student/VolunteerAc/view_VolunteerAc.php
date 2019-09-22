@@ -219,7 +219,7 @@
         function show_all() {
 
             html = '';
-
+            i = 0;
             $.ajax({
 
                 type: 'POST',
@@ -231,9 +231,9 @@
 
                     $.each(data, function(key, value) {
 
-
+                    	i++;
                         html += '<tr>';
-                        html += '<td>' + value.service_ID + '</td>';
+                        html += '<td>' + i + '</td>';
                         html += '<td>' + value.service_name +'</td>';
                         html += '<td>' + value.service_date + '</td>';
                         html += '<td>' +value.start_time+ "-"+value.end_time+'</td>';
@@ -336,7 +336,7 @@
         $.ajax({
             type: 'ajax',
             method: 'get',
-            url: '<?php echo site_url('VolunteerAc/showAll') ?>',
+            url: '<?php echo site_url('VolunteerAc/spc_showshow') ?>',
             data: {
                 id: id
             },
@@ -355,8 +355,8 @@
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมงกิจกรรม: </label> ' + value.start_time + "-"+ value.end_time +' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.start_time + ' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.start_time + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.receved + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
                          
                     }
                      
@@ -416,10 +416,6 @@
 
 </html>
     
-</script>
 
 
 
-</body>
-
-</html>
