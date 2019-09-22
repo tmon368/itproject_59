@@ -359,7 +359,7 @@
                         html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.start_time + ' </p>';
                          
                     }
-                    
+                     
                       
 
                     $('.content').html(html);
