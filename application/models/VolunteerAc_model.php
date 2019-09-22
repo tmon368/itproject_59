@@ -118,8 +118,8 @@ class VolunteerAc_model extends CI_Model {
     );
     
  
-var_dump($field);
-die();
+//var_dump($field);
+//die();
         $this->db->insert('service', $field);
 
     if($this->db->affected_rows() > 0){  
