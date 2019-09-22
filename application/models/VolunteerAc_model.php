@@ -7,7 +7,32 @@ class VolunteerAc_model extends CI_Model {
         
     }
     
-    
+    function spc_showshow(){
+        $id = $this->input->get('id');
+       // $id='L62101';
+        $this->db->select('*');
+        $this->db->from('offensehead o');
+        $this->db->join('place p', 'o.place_ID=p.place_ID');
+        $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
+        $this->db->join('Offense os', 'o.off_ID=os.off_ID');
+        $this->db->join('vehicles v', 'ov.S_ID=v.S_ID');
+        $this->db->join('offensecate oc', 'os.oc_ID=oc.oc_ID');
+        $this->db->join('student s', 'ov.S_ID=s.S_ID');
+        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+        $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+        $this->db->where('o.oh_ID' ,$id);
+      $query = $this->db->get();
+      $showall = array();
+      $showall = $query->result_array();
+      //var_dump($query->result());
+      //die();
+
+  if($showall > 0){
+      return $showall;
+  }else{
+      return false;
+  }
+}
  
     function showAll(){
       
@@ -74,7 +99,7 @@ class VolunteerAc_model extends CI_Model {
     
     $field = array(
             
-        'service_ID'=>$this->input->post('service_ID'),
+       // 'service_ID'=>$this->input->post('service_ID'),
         'service_name'=>$this->input->post('service_name'),
         'person_ID'=>$this->input->post('person_ID'),
         'proposer'=>$this->session->userdata('student'),
@@ -85,10 +110,10 @@ class VolunteerAc_model extends CI_Model {
         'status'=>'0',
         'received'=>$this->input->post('received'),
         'number_of'=>'50',
-       'results'=>$this->input->post('results'),
-        'annotation'=>$this->input->post('annotation'),
-        'document_file'=>$this->input->post('document_file'),
-        'explanation'=>$this->input->post('explanation')
+       //'results'=>$this->input->post('results'),
+        //'annotation'=>$this->input->post('annotation'),
+        //'document_file'=>$this->input->post('document_file'),
+      //  'explanation'=>$this->input->post('explanation')
 
     );
     
@@ -192,14 +217,12 @@ die();
             return false;
         }
     }
-
     function selectperson()
 	{
-        $keyword = $_POST["query"];
-       // $this->db->like('person_fname'('person_lname', $keyword, 'both')); 
+	 
 
-       // $this->db->set('person_fname', 'person_lname', $keyword, 'both'); 
-        $this->db->like('person_fname', $keyword, 'both'); 
+        $keyword1 = $_POST["query"];
+        $this->db->like('person_fname', $keyword1, 'both'); 
         $this->db->order_by('person_ID','ASC');
         
 	    $query = $this->db->get('personnel');
@@ -211,7 +234,7 @@ die();
             return false;
         }
     }
-
+ 
 
     function selectapersennel()
 	{

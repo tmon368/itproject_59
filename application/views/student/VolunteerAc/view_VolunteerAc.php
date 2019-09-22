@@ -29,7 +29,7 @@
             padding-bottom: 0.9rem;
         }
 
-        #add_place {
+        #add_persennel {
             width: 100%;
         }
     </style>
@@ -84,12 +84,7 @@
                                 <!--  CONTENT -->
 
                                 <form action="" id="formadd" name="formadd" method="post">
-                                    <div class="row">
-                                        <div class="col-sm-6"> </div>
-                                        <div class="col-sm-6 padding_b">
-                                            <div class="form-inline"><label for="">รหัสกิจกรรม:</label><input type="text" name="service_ID" id="service_ID" class="form-control style_input"></div>
-                                        </div>
-                                    </div>
+                                  
                                     
                                     <div class="row">
                                             <div class="col-sm-12 padding_b">
@@ -119,7 +114,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">จำนวนผู้เข้าร่วม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;
-                                          &nbsp;&nbsp;  <input type="text" name="received" id="received" class=" style_input" style="width:50px;" >
+                                          &nbsp;&nbsp;  <input type="text" name="service_hour" id="service_hour" class=" style_input" style="width:50px;" >
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +130,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                         <input type="text" name="add_persennel" id="add_persennel" class=" style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม
+                                            <input type="text" name="person_ID" id="add_persennel" class=" style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
                                           <input type="hidden" name="person_ID" id="person_ID">
                                             </div>
                                         </div>
@@ -148,7 +143,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="">รายละเอียดกิจกรม:</label>
-                                                <textarea class="form-control" rows="5" name="explanation"id="explanation"></textarea>
+                                                <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
                                             </div>
 
                                         </div> 
@@ -305,13 +300,11 @@
         }
     }); //End Ready function
 
-
-
     $('#add_persennel').typeahead({
 
         source: function(query, result) {
             $.ajax({
-                url: "<?php echo site_url('VolunteerAC/selectapersennel') ?>",
+                url: "<?php echo site_url('VolunteerAC/selectperson') ?>",
                 method: "POST",
                 data: {
                     query: query
@@ -320,9 +313,8 @@
                 success: function(data) {
                     
                     result($.map(data, function(item) {
-                    
-                        $('#fullname').val(item.person_ID);
-                        return item.fullname; 
+                        $('#person_ID').val(item.person_ID);
+     	                return item.person_fname+' '+item.person_lname; 
                     }));
                 }
             })
@@ -362,8 +354,8 @@
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมงกิจกรรม: </label> ' + value.start_time + "-"+ value.end_time +' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.start_time + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.start_time + ' </p>';
                          
                     }
                     
@@ -414,6 +406,14 @@
 
 
 
+    
+</script>
+
+
+
+</body>
+
+</html>
     
 </script>
 
