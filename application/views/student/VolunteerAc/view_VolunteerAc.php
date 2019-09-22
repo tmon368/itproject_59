@@ -24,7 +24,9 @@
         #oh_ID {
             width: 50%;
         }
-
+        #ser_ID {
+            width: 50%;
+        }
         .padding_b {
             padding-bottom: 0.9rem;
         }
@@ -159,6 +161,38 @@
                         </div>
                     </div>
                 </div>
+  <!--Modal del  -->
+
+                <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--ส่วนฟอร์มลบข้อมูล-->
+                            <form action="" id="formdelete" method="post" class="needs-validation">
+                                <div class="modal-body" id="showdel">
+
+                                    <!--ข้อความยืนยันการลบข้อมูล-->
+                                    <center>
+                                        <div id="showdel"></div>
+                                        <input type="hidden" name="delID">
+                                    </center>
+                                    <!------------------>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                    <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
                      <!-- Modal detail-->
                 <div class="modal fade" id="ShowDta" role="dialog">
@@ -240,14 +274,16 @@
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
+                        html += '<td><a href="javascript:; " data='+ value.ser_ID +' class="showdel"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" ></i></a></td>';
+                       
                         html += '</tr>';
                        
                         $('#showdata').html(html); 
 
-
-
-
-
+                        
+                       
+                 
+                        
                     });
 
 
@@ -323,6 +359,40 @@
 
 
     });
+
+  //ลบข้อมูล
+          $('#btndel').on('click', 'showdel', function() {
+            //alert("ลบ");
+            var url = $('#formdelete').attr('action');
+            var data = $('#formdelete').serialize();
+            //console.log(url);
+            //console.log(data);
+
+
+            $.ajax({
+                type: 'ajax',
+                method: 'post',
+                url: url,
+                data: data,
+                async: false,
+                //dataType: 'json',
+                success: function(response) {
+                    //alert(response);
+                    $('#del_file').modal('hide');
+                    location.reload("<?php echo site_url('') ?>"); //Reload page
+                }
+            });
+
+
+        });
+         
+
+
+
+
+
+
+    
 
     $('#showdata').on('click', '.show_data', function() {
 
