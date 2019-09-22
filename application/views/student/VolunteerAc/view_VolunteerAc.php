@@ -83,8 +83,13 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <form action="">
-                                  
+                                <form action="" id="formadd" name="formadd" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">รหัสกิจกรรม:</label><input type="text" name="service_ID" id="service_ID" class="form-control style_input"></div>
+                                        </div>
+                                    </div>
                                     
                                     <div class="row">
                                             <div class="col-sm-12 padding_b">
@@ -114,7 +119,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">จำนวนผู้เข้าร่วม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;
-                                          &nbsp;&nbsp;  <input type="text" name="service_hour" id="service_hour" class=" style_input" style="width:50px;" >
+                                          &nbsp;&nbsp;  <input type="text" name="received" id="received" class=" style_input" style="width:50px;" >
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +148,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="">รายละเอียดกิจกรม:</label>
-                                                <textarea class="form-control" rows="5" id=""></textarea>
+                                                <textarea class="form-control" rows="5" name="explanation"id="explanation"></textarea>
                                             </div>
 
                                         </div> 
@@ -357,8 +362,8 @@
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมงกิจกรรม: </label> ' + value.start_time + "-"+ value.end_time +' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.start_time + ' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.start_time + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
                          
                     }
                     
