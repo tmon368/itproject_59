@@ -85,27 +85,28 @@
 
                                 <form action="" id="formadd" name="formadd" method="post">
                                   
-                                    
-                                    <div class="row">
-                                            <div class="col-sm-12 padding_b">
-                                                <label for="">ชื่อกิจกรรม</label> <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                           <input type="text" name="service_name" id="service_name" class=" style_input"  maxlength="25"  >
+                                   <div class="row">
+                                        <div class="col-sm-8"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">ชื่อกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;
+                                         <input type="text" name="service_name" id="service_name" class=" form-control style_input" style="width:300px;" >
                                             </div>
-                                        </div>     
+                                        </div>
+                                    </div>  
                                  
                                     
                                  <div class="row">
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-4">
                                             <div class="form-inline"><label for="">วันที่จัดกิจกรรม<label> 
                                             <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="date" name="service_date" id="service_date" class="style_input">
+                                            <input type="date" name="service_date" id="service_date" class="form-control style_input">
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="start_time" id="start_time" class="form-control style_input"></div>
                                              </div>
                                              
-                                             <div class="col-sm=4">
+                                             <div class="col-sm=1">
                                              <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">ถึง<span class="impt_sym">*</span> :</label> <input type="time" name="end_time" id="end_time" class="form-control style_input"></div>
                                              </div>
                                         
@@ -114,7 +115,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">จำนวนผู้เข้าร่วม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;
-                                          &nbsp;&nbsp;  <input type="text" name="service_hour" id="service_hour" class=" style_input" style="width:50px;" >
+                                          &nbsp;&nbsp;  <input type="text" name="received" id="received" class=" form-control style_input" style="width:60px;" >
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +123,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">สถานที่จัดกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;
-                                         <input type="text" name="place" id="place" class=" style_input" style="width:300px;" >
+                                         <input type="text" name="place" id="place" class="form-control style_input" style="width:300px;" >
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +131,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="person_ID" id="add_persennel" class=" style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
+                                            <input type="text" name="person_ID" id="add_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
                                           <input type="hidden" name="person_ID" id="person_ID">
                                             </div>
                                         </div>
@@ -285,7 +286,7 @@
                     if (data == 0) {
                         //console.log("NULL");
                         
-                        $('#oh_ID').val(title + BE + Runnning_num);
+                        $('#service_ID').val(title + BE + Runnning_num);
                     }
 
 
@@ -349,7 +350,7 @@
                     i++;
                     if (i == 1) {
                         html += '<p class="text_head">รายละเอียด</p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อ:</label> ' + value. person_fname+ ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อ:</label> ' + value. person_fname+ ''+ value. person_lname+' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
