@@ -15,8 +15,10 @@
             padding: 0.4rem;
             font-family: 'Sarabun', sans-serif;
         }
+
         label.label_txt {
             padding: inherit;
+            font-weight: 900;
         }
 
 
@@ -49,9 +51,10 @@
             font-size: 0.9rem;
             font-weight: 900;
         }
+
         .content {
             font-family: 'Sarabun', sans-serif;
-            
+
         }
     </style>
 
@@ -262,7 +265,7 @@
 
                                             <div class="form-group">
                                                 <label for="">คำอธิบายบริเวณที่เกิดเหตุ<span class="impt_sym">*</span> :</label>
-                                                <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
+                                                <textarea class="form-control" rows="5" id="explanation" name="explanation" required></textarea>
                                             </div>
 
                                         </div>
@@ -333,7 +336,7 @@
 
 
 
-                                </form>
+
 
 
 
@@ -350,7 +353,7 @@
                             </div>
 
                         </div>
-
+                        </form>
                     </div>
                 </div>
 
@@ -392,7 +395,7 @@
 
                 <!-- Modal detail-->
                 <div class="modal fade" id="ShowDta" role="dialog">
-                    <div class="modal-dialog ">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">รายละเอียดการแจ้งเหตุ</h4>
@@ -611,6 +614,7 @@
             html = '';
             i = 0;
 
+
             //select show data
             $.ajax({
                 type: 'ajax',
@@ -622,24 +626,28 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    //console.log(data);
+                    console.log(data);
                     //alert ('Having data');
 
                     $.each(data, function(key, value) {
                         i++;
+
+
                         if (i == 1) {
                             html += '<p class="text_head">การกระทำความผิด</p>';
                             html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
                             html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place_name + ' </p>';
                             html += '<p class="text_position"> <label for="" class="label_txt">อธิบายบริเวณที่เกิดเหตุ: </label> ' + value.description + ' </p>';
-                            html += '<p class="text_position"> <label for="" class="label_txt">หมวดความผิด:</label>  '+value.oc_desc+' <label for="" class="label_txt"> ฐานความผิด:</label>  ' + value.off_desc + '</p>';
+                            html += '<p class="text_position"> <label for="" class="label_txt">หมวดความผิด:</label>  ' + value.oc_desc + ' <label for="" class="label_txt"> ฐานความผิด:</label>  ' + value.off_desc + '</p>';
                             html += '<p class="text_head">ผู้กระทำความผิด</p>';
                         }
-                        
-                            html += '<p class="text_position">รหัสนักศึกษา: '+ value.S_ID +' ชื่อ: นามสกุล: </p>';
-                            html += '<p class="text_position">สำนักวิชา:  หลักสูตร: </p>';
-                            html += '<p class="text_position">เลขทะเบียนรถจักรยานยนต์:  จังหวัด:  </p>';
-                            html += '<p class="text_position">เลขทะเบียนรถยนต์:  จังหวัด:  </p>';
+
+
+
+                        html += '<p class="text_position">รหัสนักศึกษา: ' + value.S_ID + ' ชื่อ: ' + value.std_fname + ' นามสกุล: ' + value.std_lname + ' </p>';
+                        html += '<p class="text_position">สำนักวิชา: ' + value.dept_name + '  หลักสูตร: ' + value.cur_name + ' </p>';
+                        html += '<p class="text_position">เลขทะเบียนรถจักรยานยนต์:  จังหวัด:  </p>';
+                        html += '<p class="text_position">เลขทะเบียนรถยนต์:  จังหวัด:  </p>';
 
                         $('.content').html(html);
                     });
@@ -788,7 +796,7 @@
         });
 
 
-
+        //submit form
         $('#btnSave').click(function() {
 
             var form_data = $('#formadd').serialize();
@@ -808,9 +816,9 @@
                 async: false,
                 /*dataType: 'json',*/
                 success: function(data) {
-                    alert(data);
+                    //alert(data);
                     //alert("Sucess updata !!")
-                    location.reload();
+                    //location.reload();
                 }
 
             });
@@ -826,7 +834,7 @@
         });
 
 
-        
+
 
 
 

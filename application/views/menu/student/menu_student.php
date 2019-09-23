@@ -131,10 +131,11 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url("Notifyoffense") ?>">
           <i class="menu-icon fa fa-exclamation-triangle"></i>
-          <span class="menu-title">แจ้งเหตุกระทำความผิด</span> <!--dd-->
+          <span class="menu-title">แจ้งเหตุกระทำความผิด</span>
+          <!--dd-->
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon fa fa-vcard"></i>
@@ -143,7 +144,7 @@
         </a>
 
         <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu"> 
+          <ul class="nav flex-column sub-menu">
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">รายงานตัวกระทำความผิด</a>
             </li>
@@ -152,19 +153,46 @@
             </li>
           </ul>
         </div>
-      </li>     
+      </li>
+
+
+
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("Volunteer_regis")?>">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon fas fa-handshake"></i>
           <span class="menu-title">การบำเพ็ญประโยชน์</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url("VolunteerAc")?>">
           <i class="menu-arrow"></i>
-          <span class="menu-title">เสนอการบำเพ็ญประโยชน์</span>
         </a>
+
+        <div class="collapse" id="ui-basic1">
+          <ul class="nav flex-column sub-menu">
+            
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("Volunteer_regis") ?>">ลงทะเบียนการบำเพ็ญประโยชน์</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("VolunteerAc") ?>">เสนอการบำเพ็ญประโยชน์</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("#") ?>">ประวัติการบำเพ็ญประโยชน์</a>
+            </li>
+         
+
+          
+          </ul>
+        </div>
       </li>
+
+
+
+
+
+
+
+
+
 
 
 

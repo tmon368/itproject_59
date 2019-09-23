@@ -6,9 +6,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
-<script>
-    sum = 0;
-</script>
+
 
 <head>
     <title> ลงทะเบียนกิจกรรมบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
@@ -189,7 +187,7 @@
                             html += '<p> ผู้รับรองกิจกรรม: ' + value.person_fname + " " + value.person_lname + '</p>';
                             html += '</div>';
                             html += '<div class="col-sm-6">';
-                            html += '<p> <div class="txt_position"> <span id="count_person">0</span>/25</div> </p>';
+                            html += '<p> <div class="txt_position"> <span id="count_person">'+ value.number_of +'</span>/'+ value.received +'</div> </p>';
                             html += '<p class="txt_position"><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit">ลงทะเบียน</button></p>';
                             html += '</div>';
                             html += '</div>';
@@ -215,14 +213,12 @@
 
         $('.show_data').on('click', '.btn_submit', function() {
             //count=0;
-
-            sum = sum + 1;
-
+            
             alert('ลงทะเบียนสำเร็จ');
 
-            $(".btn_submit").attr("disabled", true);
-            $(".btn_submit").text('การลงทะเบียนสำเร็จ');
-            $("#count_person").text(sum);
+            $(".btn_submit").attr("disabled", true); //disabled button
+            $(".btn_submit").text('การลงทะเบียนสำเร็จ'); //
+            //$("#count_person").text(sum);
 
         });
 
