@@ -36,16 +36,23 @@ class Teacher_dashboard extends CI_Controller {
 	function selectstudentfirstpage(){
 	    //  $username = $this->session->userdata('username');
 	    
-	    $result = $this->model->selectstudentfirstpage();
+	    $result = $this->teacher_dashboard_model->selectstudentfirstpage();
 	   // echo json_encode($result);
 	}
 	
-	function selectdetailfirstpage(){
+	function selectstudentall(){
 	    //  $username = $this->session->userdata('username');
 	    
-	    $result = $this->model->selectdetailfirstpage();
+	    $result = $this->teacher_dashboard_model->selectstudentall();
 	    echo json_encode($result);
 	}
+	function selectscorestudent(){
+	    //  $username = $this->session->userdata('username');
+	    
+	    $result = $this->teacher_dashboard_model->selectscorestudent();
+	    echo json_encode($result);
+	}
+
 	/*
 	function selectstudent(){
 	   // $username = $this->session->userdata('username');
