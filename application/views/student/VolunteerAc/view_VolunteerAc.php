@@ -15,7 +15,12 @@
     <style>
         label {
             padding: 0.4rem;
+            font-family: 'Sarabun', sans-serif;
         }
+        label.label_txt {
+            padding: inherit;
+        }
+
 
         .style_input {
             font-size: 0.8rem;
@@ -24,15 +29,31 @@
         #oh_ID {
             width: 50%;
         }
-        #ser_ID {
-            width: 50%;
-        }
+
         .padding_b {
             padding-bottom: 0.9rem;
         }
 
-        #add_persennel {
+        #add_place {
             width: 100%;
+        }
+
+        .impt_sym {
+            color: rgb(247, 50, 26);
+        }
+
+        .text_position {
+            padding-left: 0.9rem;
+            font-size: 0.9rem;
+        }
+
+        .text_head {
+            font-size: 0.9rem;
+            font-weight: 900;
+        }
+        .content {
+            font-family: 'Sarabun', sans-serif;
+            
         }
     </style>
 
@@ -129,27 +150,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                      <div class="row">
-                                        <div class="col-sm-8"> </div>
-                                        <div class="col-sm-6 padding_b">
-                                            <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="person_ID" id="add_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
-                                          <input type="hidden" name="person_ID" id="person_ID">
+                                      
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-inline">
+                                                <span><i class="far fa-building"></i></span>
+                                                <label for="">ผู้รับรองกิจกรรม<span class="impt_sym">*</span> :</label>
+                                                <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาผู้รับรอง">
+                                                <input type="hidden" name="person_ID" id="person_ID">
+
                                             </div>
                                         </div>
                                     </div>
+
                                     
                                  
                                  
                            
                                     <div class="row">
                                         <div class="col-sm-12">
-                                         
-                                                <label for="">รายละเอียดกิจกรม:</label><font color="red">* </font>:
+                                            <div class="form-group">
+                                                <label for="">รายละเอียดกิจกรม:</label>
                                                 <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
                                             </div>
 
-                                
+                                        </div> 
                                     </div>
                             </div>
 
@@ -161,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-  <!--Modal del  --> 
+  <!--Modal del  -->
 
                 <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -337,7 +362,7 @@
         }
     }); //End Ready function
 
-    $('#add_persennel').typeahead({
+    $('#add_place').typeahead({
 
         source: function(query, result) {
             $.ajax({
@@ -444,7 +469,7 @@
 
     });
 
-
+ 
 
     $('#btnAdd').click(function() {    
         $('#exampleModalCenter').modal('show');
@@ -452,7 +477,7 @@
     });
 
 
-
+ 
     $('#btnSave').click(function() {
 
         var form_data = $('#formadd').serialize();
