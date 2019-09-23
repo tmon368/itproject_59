@@ -27,7 +27,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
-                <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp; หน้าแรก     </h6>
+                <h6 class="m-0 text-primary"><span><i class="fa fa-home"></i></span>&nbsp; หน้าแรก     </h6>
             </div><br>
     
 
