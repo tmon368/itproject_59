@@ -144,12 +144,12 @@
                            
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label for="">รายละเอียดกิจกรม:</label>
+                                         
+                                                <label for="">รายละเอียดกิจกรม:</label><font color="red">* </font>:
                                                 <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
                                             </div>
 
-                                        </div> 
+                                
                                     </div>
                             </div>
 
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                 </div>
-  <!--Modal del  -->
+  <!--Modal del  --> 
 
                 <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
