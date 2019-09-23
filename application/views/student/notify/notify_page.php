@@ -442,7 +442,6 @@
                             <tbody id="showdata">
 
 
-
                             </tbody>
                         </table>
                     </div>
@@ -521,21 +520,30 @@
                     dataType: 'json',
                     success: function(data) {
                         //alert("Having Data...");
+                        //var dataSet = data;
+                        //console.log(dataSet);
+
+
+
+
 
                         $.each(data, function(key, value) {
 
+
+
+
+
+
                             i++;
                             html += '<tr>';
-                            html += '<td>' + i + '</td>'; /*value.oh_ID*/
+                            html += '<td>' + i + '</td>';
                             html += '<td>' + value.notifica_date + '</td>';
                             html += '<td>' + value.off_desc + '</td>';
                             html += '<td>' + value.place_name + '</td>';
                             html += '<td>' + value.explanation + '</td>';
                             html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                             html += '</tr>';
-                            /*
-                                    
-                                </tr>*/
+
                             $('#showdata').html(html);
 
 
@@ -626,13 +634,16 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
+                    //console.log(data);
                     //alert ('Having data');
 
                     $.each(data, function(key, value) {
                         i++;
 
+                        var data_vehi = value.verhicles;
+                        //console.log(data_vehi);
 
+                        //print 1 ครั้ง
                         if (i == 1) {
                             html += '<p class="text_head">การกระทำความผิด</p>';
                             html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
@@ -642,12 +653,24 @@
                             html += '<p class="text_head">ผู้กระทำความผิด</p>';
                         }
 
+                        html += '<p class="text_position"> <label for="" class="label_txt">รหัสนักศึกษา: </label> ' + value.S_ID + '<label for="" class="label_txt"> ชื่อ: </label> ' + value.std_fname + '<label for="" class="label_txt"> นามสกุล:</label>  ' + value.std_lname + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">สำนักวิชา: </label>  ' + value.dept_name + '<label for="" class="label_txt"> หลักสูตร: </label>  ' + value.cur_name + ' </p>';
+
+                        //loop vehicle 
+                        $.each(data_vehi, function(key, value) {
+                            //console.log(value.regist_num);
+
+                            //check type vehicle
+                            if (value.vetype_ID == 1) {
+                                html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถจักรยานยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+                            } else if (value.vetype_ID == 2) {
+                                html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+                            }
+                        });
 
 
-                        html += '<p class="text_position">รหัสนักศึกษา: ' + value.S_ID + ' ชื่อ: ' + value.std_fname + ' นามสกุล: ' + value.std_lname + ' </p>';
-                        html += '<p class="text_position">สำนักวิชา: ' + value.dept_name + '  หลักสูตร: ' + value.cur_name + ' </p>';
-                        html += '<p class="text_position">เลขทะเบียนรถจักรยานยนต์:  จังหวัด:  </p>';
-                        html += '<p class="text_position">เลขทะเบียนรถยนต์:  จังหวัด:  </p>';
+
+
 
                         $('.content').html(html);
                     });
