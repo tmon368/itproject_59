@@ -35,7 +35,7 @@
         }
 
         #add_place {
-            width: 100%;
+            width: 40%;
         }
 
         .impt_sym {
@@ -49,7 +49,7 @@
 
         .text_head {
             font-size: 0.9rem;
-            font-weight: 900;
+            font-weight: 900; 
         }
         .content {
             font-family: 'Sarabun', sans-serif;
@@ -154,7 +154,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-inline">
-                                                <span><i class="far fa-building"></i></span>
+                                                
                                                 <label for="">ผู้รับรองกิจกรรม<span class="impt_sym">*</span> :</label>
                                                 <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาผู้รับรอง">
                                                 <input type="hidden" name="person_ID" id="person_ID">

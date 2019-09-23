@@ -76,21 +76,32 @@ class offensecate_model extends CI_Model {
 
     function deleteoffensecate(){
          $id = $this->input->post('txtdelID');
-        /*
-        $field = array(
-        'active_track'=> '1'
-
-        );*/
+         $field = array(
+             'flag'=> '0'
+             
+         );
+         $this->db->where('oc_ID', $id);
+         $this->db->delete('offense' ,$field);
+       
          
         $this->db->where('oc_ID', $id);
         $this->db->delete('offensecate');
         //$this->db->update('offensecate', $field);
         if($this->db->affected_rows() > 0){
+            
+            $field = array(
+                'flag'=> '0'
+                
+            ); 
+            $this->db->where('oc_ID', $id);
+            $this->db->update('offense' ,$field);
+            if($this->db->affected_rows() > 0){
+                
             return true;
         }else{
             return false;
         }
-    }
+        }}
     public function import_exceloffensecate(){
         $this->load->view('import_exceloffensecate');
         

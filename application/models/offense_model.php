@@ -11,6 +11,7 @@ class offense_model extends CI_Model {
     
  public function showAll(){
         $this->db->order_by('off_ID', 'ASC');
+        $this->db->where('flag', '1');
         $query = $this->db->get('offense');
         if($query->num_rows() > 0){
             return $query->result();
@@ -38,6 +39,8 @@ class offense_model extends CI_Model {
             'off_desc'=>$this->input->post('txtname'),
             'point'=>$this->input->post('txtpoint'),
             'oc_ID'=>$this->input->post('txt_oc'),
+            'flag'=>'1',
+            
            
             
             );
