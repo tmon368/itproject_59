@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <center>
 <strong><div  class="alert alert-success" role="alert" style="display: none;"></div></strong>
@@ -14,6 +15,10 @@
             width: 20px; 
             height: 20px; 
         } 
+         .content {
+            font-family: 'Sarabun', sans-serif;
+
+        }
     </style> 
 </head>
 <body>
@@ -91,13 +96,13 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body content">
                            <form action="" id="formupdate" method="post" class="needs-validation">  
                            <center>
                            <div class="row">
                            <div class="col-sm-12">
                            <div class="form-group" id="nav_sty">
-                                        <div class="input-group"><label for="">วันที่บันทึกหลักฐาน.  :&nbsp; </label><label id="proof_date" ></label></div></div>
+                                        <div class="input-group"><label class="">วันที่บันทึกหลักฐาน.  :&nbsp; </label><label><input type="text" style="background-color:transparent;border:0px;" name="date_register" value="<?php echo date('Y-m-d')?>"></label></div></div>
                            </div></div>
                           <div class="row">
                            <div class="col-sm-12">
@@ -134,27 +139,26 @@
   <div class="modal-dialog modal-dialog-centered" style="max-width: 650px!important;" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle"><span><i 
-        class="" 
-        style="color:rgba(235,99,102,1.00)"></i></span>ใบสั่งการกระทำความผิด</h2>
+        <h2 class="modal-title" id="exampleModalLongTitle"><span><i style="color:rgba(235,99,102,1.00)"></i></span>ใบสั่งการกระทำความผิด</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-         <div class="modal-body">
+         <div class="modal-body content">
 
                             <!--ส่วนฟอร์มแก้ไขข้อมูล-->
-                            <form action="" id="formdelete" method="post" class="needs-validation">
+                            <form action="" id="formdelete" method="get" class="needs-validation">
+                            
                                 <center>
                                     <div class="row">
                                     <div class="col-sm-4">
                                      <div class="form-group" id="nav_sty">
-                                     <div class="input-group"><label for="">วันที่กระทำผิด:&nbsp;</label><label id="committed_date"></label> </div> </div></div>
+                                     <div class="input-group"><p >วันที่กระทำผิด:&nbsp;</p><p  id="committed_date"></p> </div> </div></div>
                                           <div class="col-sm-8">
                                      <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">เวลา:&nbsp;</label>
-                                            <label id="committed_time"></label>
+                                            <p for="">เวลา:&nbsp;</p>
+                                            <p id="committed_time"></p>
                                       </div>
                                         </div>
                                          </div>
@@ -163,8 +167,8 @@
                                     <div class="col-sm-12">
                                      <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">สถานที่:&nbsp;</label>
-                                            <label id="place_name"></label>
+                                            <p for="">สถานที่:&nbsp;</p>
+                                            <p id="place_name"></p>
                                       </div>
                                         </div>
                                          </div>  
@@ -173,8 +177,8 @@
                                     <div class="col-sm-12">
                                      <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">คำอธิบายบริเวณที่เกิดเหตุ:&nbsp;</label>
-                                            <label id="explanation"></label>
+                                            <p for="">คำอธิบายบริเวณที่เกิดเหตุ:&nbsp;</p>
+                                            <p id="explanation"></p>
                                       </div>
                                         </div>
                                          </div>  
@@ -183,8 +187,8 @@
                                     <div class="col-sm-12">
                                      <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">ฐานความผิด:&nbsp;</label>
-                                            <label id="off_desc"></label>
+                                            <p for="">ฐานความผิด:&nbsp;</p>
+                                            <p id="off_desc"></p>
                                       </div>
                                         </div>
                                          </div>  
@@ -193,15 +197,15 @@
                                     <div class="col-sm-12">
                                      <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">ไฟล์หลักฐาน :&nbsp;</label>
-                                            <label id="evidenre_name"></label>
+                                            <p for="">ไฟล์หลักฐาน :&nbsp;</p>
+                                            <p id="evidenre_name"></p>
                                       </div>
                                         </div>
                                          </div>  
                                     </div>
                                    
                                 </center>
-                                <!------------------>
+                               </form>
                         </div>
       
 
@@ -373,7 +377,9 @@ $('#btnAdd').click(function() {
 
     // แก้ไขข้อมูล
     $('#showdata').on('click', '.edit_data', function() {
-        var id = $(this).attr('data');
+        var date = new Date();
+        date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
       // alert(id)
        $('#edit_file').modal('show');
        //$('#formupdate').attr('action','<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead');
@@ -385,8 +391,7 @@ $('#btnAdd').click(function() {
         async: false,
         dataType: 'json',
         success: function(data){
-            
-        	   $("#proof_date").html(data.proof_date);
+        	
              
 
             },
@@ -466,8 +471,8 @@ $('#btnAdd').click(function() {
         async: false,
         dataType: 'json',
         success: function(data){
-            //console.log(data);
-           // $('#showddel').html('"'+data.oh_year+'"'););
+           //console.log(data);
+           //$('#showddel').html('"'+data.offensestd_ID+'"');
           // $("#std_fname").html("Hello");
            $("#std_fname").html(data.std_fname);
            $("#std_lname").html(data.std_lname);
@@ -478,7 +483,7 @@ $('#btnAdd').click(function() {
            $('#place_name').html(data.place_name);
            $('#evidenre_name').html(data.evidenre_name);
     
-         
+           $('.content').html(html);
            //$("#std_fname").html(data.oh_ID); 
            // $('input[name=txtdelID]').val(data.hh_ID);
             
@@ -490,48 +495,7 @@ $('#btnAdd').click(function() {
       });
 
     
-      $('#btndel').click(function(){
-      var url = $('#formdelete').attr('action');
-      var data = $('#formdelete').serialize();
-      var h_ID = $('input[name=txtdelID]');
-      var result = '';
-      
-      if(h_ID.val()==''){
-        h_ID.parent().parent().addClass('has-error');
-      }else{
-        h_ID.parent().parent().removeClass('has-error');
-        result +='1';
-      }
-      if(result=='1'){
-        $.ajax({
-          type: 'ajax',
-          method: 'post',
-          url: url,
-          data: data,
-          async: false,
-          dataType: 'json',
-          success: function(response){
-            if(response.success){
-              $('#del_file').modal('hide');
-              $('#formdelete')[0].reset();    
-              $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-              //$('#formdelete').empty();
-              showAll();
-            }else{
-              alert('Error');
-            }
-          },
-          
-        error: function(){
-            //alert('id นี้ถูกใช้งานแล้ว');
-            $('#del_file').modal('hide');
-            $('#formdelete')[0].reset();    
-            $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
-            showAll();
-          }
-        });
-      }
-    });
+   
 /*
  	    $.ajax({
           type: 'ajax',
@@ -608,59 +572,59 @@ $('#btnAdd').click(function() {
           });
       }*/
      //function
-    function showAll(){
-      $.ajax({
-        type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead',
-        async: false,
-        dataType: 'json',
-        success: function(data){
-          var html = '';
-          var i;
-          for(i=0; i<data.length; i++){
-            html +='<tr>'+
-                  '<td>'+(i+1)+'</td>'+
-                  '<td>'+ data[i].committed_date +'</td>'+
-                  '<td>'+ data[i].off_desc +'</td>'+
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
-                  '<td align="center"><input type="checkbox"  id="checkbox1" onclick="show_text(this);check_click();"  class="largerCheckbox" ></td>'+
-                  '<td align="center"> <i  style="font-size:25px;color:blue" id="button1" value="button"disabled="disabled" class="far fa-file-archive btn-fw edit_data" data=' + data[i].offensestd_ID  + '></i></td>' +
-                  '</tr>';
-          }
-          $('#showdata').html(html);
-        },
-        error: function(){
-          alert('Could not get Data from Database');
+      function showAll(){
+          $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead',
+            async: false,
+            dataType: 'json',
+            success: function(data){
+              var html = '';
+              var i;
+              for(i=0; i<data.length; i++){
+                html +='<tr>'+
+                      '<td>'+(i+1)+'</td>'+
+                      '<td>'+ data[i].committed_date +'</td>'+
+                      '<td>'+ data[i].off_desc +'</td>'+
+                      '<td align="center"> <i style="color:rgba(67, 135, 254);font-size:1.5rem;" class="fa fa-file-text btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
+                       '<td align="center"><input type="checkbox"  id="checkbox1" onclick="show_text(this);check_click();"  class="largerCheckbox" ></td>'+
+                      '<td align="center"> <i  style="color:rgba(67, 135, 254);font-size:1.5rem;" id="button1" value="button"disabled="disabled" class="far fa-file-archive btn-fw edit_data" data=' + data[i].offensestd_ID  + '></i></td>' +
+                      '</tr>';
+              }
+              $('#showdata').html(html);
+            },
+            error: function(){
+              alert('Could not get Data from Database');
+            }
+          });
         }
       });
-    }
-  });
 
-  function show_text(obj)
-  {
+      function show_text(obj)
+      {
 
-  if(obj.checked)
-  {
-  document.getElementById("text1").style.display="";
-  }
-  else
-  {
-  document.getElementById("text1").style.display="none";
-  }
+      if(obj.checked)
+      {
+      document.getElementById("text1").style.display="";
+      }
+      else
+      {
+      document.getElementById("text1").style.display="none";
+      }
 
-  }
+      }
 
-  function check_click()
-  {
-  if(document.getElementById('checkbox1').checked==true)
-  {
-  document.getElementById('button1').disabled = true;
-  }
-  else
-  {
-  document.getElementById('button1').disabled = false;
-  }
-  }
+      function check_click()
+      {
+      if(document.getElementById('checkbox1').checked==true)
+      {
+      document.getElementById('button1').disabled = true;
+      }
+      else
+      {
+      document.getElementById('button1').disabled = false;
+      }
+      }
   
 </script>
 
