@@ -35,10 +35,8 @@ class teacher_dashboard_model extends CI_Model {
 
      public function selectstudentall(){
         //$student = $this->session->userdata('student');
-
         //SELECT DISTINCT offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID
-        //$query = $this->db->query('select distinct offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID');
-        //,s.std_fname,s.std_lname,s.behavior_score)
+
 
         $this->db->distinct();
         $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score');
