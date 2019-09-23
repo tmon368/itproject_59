@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <center>
     <strong><div class="alert alert-success" role="alert" style="display: none;"></div></strong>
     <strong><div class="alert alert-danger" role="alert" style="display: none;"></div></strong>
@@ -9,8 +10,19 @@
 </center>
 <head>
     <title></title>   
+
+
+
+
 </head>
+
 <body>
+
+
+
+
+
+
     <meta charset="UTF-8">
  
     <div class="page-breadcrumb" id="nav_sty">
@@ -22,42 +34,109 @@
         </nav>
     </div>
     
-
+	    
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card shadow mb-4">
+            <div class="card-header" id="card_2">
+                <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp; หน้าแรก     </h6>
+            </div><br> 
+            
    <div class="container">
+   
 <div class="row">
- <div class="col-sm-4">
- <div class="card comp-card">
-<div class="card-body">
-<div class="breadcrumb">
- <div class="table-responsive">
-<table class="table table-hover m-b-0">
-<div class="breadcrumb" id="t1">สถานะการกระทำความผิด</div> 
-<br>
-						<center><a href = "#" ><font size="7"><div id="c1"> 4 </div> </font></a></center>
-					<br>
- 					<br>
- 					<br>
-						รอรายงานตัว :   <input type="text"size="8" value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รอการอบรม :   <input type="text"size="10"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รออนุมัติหลักฐานแย้ง : <input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รอการบำเพ็ญประโยชน์ :<input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						รอการรับรองกิจกรรม : <input type="text"size="5"value=""style="border:0px; text-align:center;">ครั้ง<br><br>
-  						
-    					                    
-  </table>
-  </div>
-  </div>
-</div>
-</div>
-</div>
+	<div class="col-sm-4">
+		<div class="card comp-card">
+		<div class="card-body">  
+		<div class="breadcrumb">
+ 		<!--  <div class="table-responsive"> -->
+			<!--   <table class="table table-hover m-b-5">  -->
+			<center> จำนวนนักศึกษาที่กระทำผิด <br> <br>
+ 			 <i class="material-icons">people</i><br>
+ 			<span>222</span><br><br>
+ 			ค้นหาความผิดของนักศึกษารายบุคคล<br>
+ 			
+ 			<form autocomplete="off" action="/action_page.php">
+  				<div class="autocomplete" style="width:300px;">
+    			<input id="myInput" type="text" name="ค้นหารายชื่อ" placeholder="ค้นหารายชื่อ">
+  				</div>	
+			</form> 
+			</center><br>
+			<center>
+			นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ <br>
+			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
+			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
+			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
+			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
+			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
+			</center>
+ 			
+ 		
+		</div>
+		</div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+ 		<div class="card comp-card">
+ 		<div class="card-body">
+		<div class="breadcrumb">
+		<!--  <div class="table-responsive"> -->
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<div class="col-sm-8">
- <div class="card comp-card">
-<div class="card-body">
-<div class="breadcrumb">
- <div class="table-responsive">
- <table class="table table-hover m-b-0">
+
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title: {
+		text: "จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของอาจารย์ที่ปรึกษา"
+	},
+	axisY: {
+		title: "จำนวนคน",
+		suffix: "%",
+		includeZero: false
+	},
+	axisX: {
+		title: "หมวดความผิด"
+	},
+	data: [{
+		type: "column",
+		yValueFormatString: "#,##0.0#\"%\"",
+		dataPoints: [
+			{ label: "India", y: 7.1 },	
+			{ label: "China", y: 6.70 },	
+			{ label: "Indonesia", y: 5.00 },
+			{ label: "Australia", y: 2.50 },	
+	
+			
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+	
+		</div>
+		</div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+ 		<div class="card comp-card">
+ 		<div class="card-body">
+		<div class="breadcrumb">
+		<!--  <div class="table-responsive"> -->
+		กหอกอสวก่รื
+		</div>
+		</div>
+		</div>
+	</div>
+		
+ <!-- <table class="table table-hover m-b-0"> --!>
  <div class="breadcrumb" id="show_left">
+ <!--  
 กราฟแสดงคะแนนความประพฤตินักศึกษา
 <br>
 <br>
@@ -186,54 +265,24 @@
 <button class="btn invisible" id="backButton">< Back</button>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script  src="../re/js/canvasjs.min.js"></script>
-<script  src="../re/js/jquery.canvasjs.min.js"></script>
- </table></div>
+<script  src="../re/js/jquery.canvasjs.min.js"></script> -->
+ <!--  </table>  -->
+ 
+ <style> 
+.bggreen
+{
+ background-color: #99FF99	;
+    width: 250px;
+    padding: 8px;
+    border: 15px;
+    margin: 15px;
+}
+</style>
+
+
+ </div>
+ 
+</div> 
  </body> 					
-</div>  
-</div>                      
-</div>
-</div>
-</div>
-</div>
 
-</body>
 </html>
-<script>
-    $(document).ready(function() {
-    	selectdetailfirstpage();
-   
-    	 
-        //$('[data-toggle="popover"]').popover();
-    	$("#c1").click(function (){
-        	//alert("SSS");
-        	$("#show_left").html("213");
-        });
-    
-
-    
-  function selectdetailfirstpage() {
-              $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Student_dashboard/selectdetailfirstpage',
-                    async: false,
-                    dataType: 'json',
-                    success: function() {
-
-                    	$("#num_off").html(data[0].num_off);
-                    	$("#status_off").html(data[0].status_off);
-                   
-                    
-
-                    	
-                    	
-                    	
-                    	$("#email1").html(data[0].email);    	
-                    },
-                    error: function() {
-                       // alert('ไม่มีข้อมูล'); 
-                    }
-                });
-                
-            }
-    });
-</script>
