@@ -56,6 +56,10 @@
             font-family: 'Sarabun', sans-serif;
 
         }
+        #icon_src{
+            padding-left:0.5rem;
+            font-size: 1.5rem;
+        }
     </style>
 
     <script>
@@ -867,7 +871,7 @@
             html += '<div id="student' + off_per + '">';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" >  <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search"></span></a></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" >  <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search" id="icon_src"></span></a></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
             html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name' + off_per + '" disabled>   </div>';
             html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname' + off_per + '" disabled>  </div>';
             html += '</div>';
