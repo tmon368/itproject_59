@@ -7,9 +7,66 @@ class teacher_dashboard_model extends CI_Model {
         
     }
     
- 
     
     
+    public function selectscorestudent(){
+        //SELECT COUNT(DISTINCT S_ID) FROM offensestd
+        $this->db->select('COUNT(DISTINCT S_ID) as numberstudent');
+        $this->db->from('offensestd');
+
+
+
+    
+        
+        // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
+         //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
+         $query = $this->db->get();
+         var_dump($query->result());
+         die();
+         if($query->num_rows() > 0){
+             
+             return $query->row();
+         }else{
+             return false;
+         }
+     }
+
+
+
+     public function selectstudentall(){
+        //$student = $this->session->userdata('student');
+
+        //SELECT DISTINCT offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID
+        //$query = $this->db->query('select distinct offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID');
+        //,s.std_fname,s.std_lname,s.behavior_score)
+
+        $this->db->distinct();
+        $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score');
+        //$this->db->select('*');
+        $this->db->from('offensestd ostd');
+        $this->db->join('student s','ostd.S_ID=s.S_ID');
+
+
+
+        /*
+        $this->db->join('offensehead oh', 'ostd.oh_ID=oh.oh_ID');
+        $this->db->join('offense o', 'oh.off_ID=o.off_ID'); 
+        $this->db->join('place p', 'oh.place_ID=p.place_ID');
+        $this->db->join('offevidence ov', 'oh.oh_ID=ov.oh_ID');
+    */
+        //$this->db->where('ostd.S_ID',$student);
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+        
+
+        
+        if($student > 0){
+            return $student;
+         }else{
+         return false;
+         }
+    }
     
     
 }
