@@ -20,8 +20,6 @@
 
 
 
-
-
     <meta charset="UTF-8">
  
     <div class="page-breadcrumb" id="nav_sty">
@@ -37,7 +35,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card shadow mb-4">
             <div class="card-header" id="card_2">
-                <h6 class="m-0 text-primary"><span><i class="fa fa-home"></i></span>&nbsp; หน้าแรก     </h6>
+                <h6 class="m-0 text-primary"><span><i class="fas fa-user"></i></span>&nbsp; หน้าแรก     </h6>
             </div><br> 
             
    <div class="container">
@@ -79,7 +77,9 @@
  		<div class="card-body">
 		<div class="breadcrumb">
 		<!--  <div class="table-responsive"> -->
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		
+		
+<div id="chartContainer" style="height: 250px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
@@ -94,7 +94,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},
 	axisY: {
 		title: "จำนวนคน",
-		suffix: "%",
+		//suffix: "",
 		includeZero: false
 	},
 	axisX: {
@@ -104,14 +104,15 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "column",
 		yValueFormatString: "#,##0.0#\"%\"",
 		dataPoints: [
-			{ label: "India", y: 7.1 },	
-			{ label: "China", y: 6.70 },	
-			{ label: "Indonesia", y: 5.00 },
+			{ label: "India", y: 16 },	
+			{ label: "China", y: 14 },	
+			{ label: "Indonesia", y: 10 },
 			{ label: "Australia", y: 2.50 },	
-	
-			
+		
 		]
 	}]
+
+
 });
 chart.render();
 
@@ -266,7 +267,6 @@ chart.render();
 <script  src="../re/js/canvasjs.min.js"></script>
 <script  src="../re/js/jquery.canvasjs.min.js"></script> -->
  <!--  </table>  -->
- 
  <style> 
 .bggreen
 {
