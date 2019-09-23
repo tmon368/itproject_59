@@ -47,8 +47,7 @@ class teacher_dashboard_model extends CI_Model {
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
-        
-
+ 
         
         if($student > 0){
             return $student;
