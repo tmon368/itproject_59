@@ -67,7 +67,7 @@
                     url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentstatus',
                     async: false,
                     dataType: 'json',
-                    success: function(data) {
+                    success: function(data) { // console.log(data); 
                         var html = '';
                         var n=1;
                         var i;
@@ -77,7 +77,7 @@
                             '<td>' + data[i].committed_date + '</td>' +
                             '<td>' + data[i].off_desc +'</td>' +
                             '<td>' + data[i].point + '</td>' +
-                            '<td>' + data[i].statusoff + '</td>' +
+                            '<td>' + data[i].statusoffname + '</td>' +
                                 '</tr>';
                             n+=1;
                         }
