@@ -14,22 +14,52 @@ class Notifyoffense_model extends CI_Model {
   
     //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
     function spc_showoffhead(){
-            $id = $this->input->get('id');
-           // $id='L62101';
+        $n=0;
+            //$id = $this->input->get('id');
+            $id='L62101';
+            
             $this->db->select('*');
             $this->db->from('offensehead o');
-            $this->db->join('place p', 'o.place_ID=p.place_ID');
+            //$this->db->join('place p', 'o.place_ID=p.place_ID');
             $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
-            $this->db->join('Offense os', 'o.off_ID=os.off_ID');
-            $this->db->join('vehicles v', 'ov.S_ID=v.S_ID');
-            $this->db->join('offensecate oc', 'os.oc_ID=oc.oc_ID');
-            $this->db->join('student s', 'ov.S_ID=s.S_ID');
-            $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
-            $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+            //$this->db->join('Offense os', 'o.off_ID=os.off_ID');
+           // $this->db->join('vehicles v', 'ov.S_ID=v.S_ID');
+            //$this->db->join('offensecate oc', 'os.oc_ID=oc.oc_ID');
+            //$this->db->join('student s', 'ov.S_ID=s.S_ID');
+           // $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+            //$this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
             $this->db->where('o.oh_ID' ,$id);
           $query = $this->db->get();
           $showall = array();
           $showall = $query->result_array();
+
+
+
+
+foreach($showall as $value){
+   // echo $value['offensestd_ID'];
+  // $this->db->select('v.regist_num');
+   // $this->db->select('*');
+   // $this->db->from('verhicles');
+   // $this->db->from('offensehead oh');
+    //$this->db->join('offensestd ostd', 'oh.oh_ID=ostd.oh_ID');
+   // $this->db->join('vehicles v', 'ostd.S_ID=v.S_ID');
+   //$this->db->where('oh.oh_ID' ,$id);
+  // $this->db->where('S_ID' ,$value['S_ID']);
+   $id=  $value['S_ID'];
+
+   $this->db->where('S_ID',$id);
+   $query = $this->db->get("vehicles");
+   $showall[$n]['verhicles'] = $query->result_array();
+   //$showall[$n]['verhicles'] = $query->result_array();
+    $n+=1;
+
+
+}
+
+
+        
+        
           //var_dump($query->result());
           //die();
     
