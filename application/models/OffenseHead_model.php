@@ -9,6 +9,7 @@ class OffenseHead_model extends CI_Model {
     
     public function selectstudentoffensehead(){
         $student = $this->session->userdata('student');
+
         $this->db->select('*');
         $this->db->from('offensestd ostd');
         $this->db->join('student s', 'ostd.S_ID=s.S_ID');
