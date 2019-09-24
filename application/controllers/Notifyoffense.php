@@ -145,6 +145,8 @@ class Notifyoffense extends Student_dashboard {
 
 	function check_id (){
 		//เช็คค่า id ที่มากสุด
+		$result = $this->Notifyoffense_model->check_id();
+		echo json_encode($result);
 		//ยังไม่ได้เขียน model
 	}
 
