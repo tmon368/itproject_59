@@ -113,7 +113,7 @@ class VolunteerAc_model extends CI_Model {
        //'results'=>$this->input->post('results'),
         //'annotation'=>$this->input->post('annotation'),
         //'document_file'=>$this->input->post('document_file'),
-      //  'explanation'=>$this->input->post('explanation')
+        'explanation'=>$this->input->post('explanation')
 
     );
     
