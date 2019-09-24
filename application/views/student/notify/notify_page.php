@@ -224,26 +224,22 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <form action="" id="formadd" name="formadd" method="post" >
-                                    <div class="row">
-                                        <div class="col-sm-6"> </div>
-                                        <div class="col-sm-6 padding_b">
-                                            <div class="form-inline"><label for="">รหัสการกระทำความผิด:</label><input type="text" name="oh_ID" id="oh_ID" class="form-control style_input"></div>
-                                        </div>
-                                    </div>
+                                <form action="" id="formadd" name="formadd" method="post">
 
+
+                                    <input type="hidden" name="oh_ID" id="oh_ID" class="form-control style_input"> <!--Auto id-->
 
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ <span class="impt_sym">*</span> :</label> <input type="text" name="notifica_show" id="notifica_show" class="form-control " disabled></div>
+                                            <div class=""><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ <span class="impt_sym">*</span> :</label> <input type="text" name="notifica_show" id="notifica_show" class="form-control " disabled></div>
                                             <input type="hidden" name="notifica_date" id="notifica_date">
                                             <!-- textbox hiddent -->
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด <span class="impt_sym">*</span> :</label> <input type="date" name="committed_date" id="committed_date" class="form-control " required></div>
+                                            <div class=""><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด <span class="impt_sym">*</span> :</label> <input type="date" name="committed_date" id="committed_date" class="form-control " required></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="committed_time" id="committed_time" class="form-control " required></div>
+                                            <div class=""><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="committed_time" id="committed_time" class="form-control " required></div>
                                         </div>
                                     </div>
 
@@ -279,7 +275,7 @@
                                         <div class="col-sm-6">
                                             <label for="">หมวดความผิด<span class="impt_sym">*</span> :</label>
                                             <select name="txt_oc" id="txt_oc" class="form-control" required>
-                                                
+
                                                 <option value="">เลือกหมวดความผิด</option>
 
 
@@ -571,7 +567,7 @@
 
 
 
-            //check id and create id
+            //check id and create auto id
             function check_id() {
 
                 title = 'L';
@@ -585,33 +581,38 @@
                 //console.log(typeof convert_be);
                 //console.log(typeof B_E);
 
-                i = 1;
-                Runnning_num = 0000;
-                $('#oh_ID').val(title + BE + i);
-                //console.log(typeof Runnning_num); //check type
+                //Runnning_num = 0000;
+                var str = '';
+                var tempid_substr = '';
+                var auto_id = 0;
+                var integer = '';
 
 
-                /*$.ajax({
+
+
+                $.ajax({
 
                     type: 'POST',
-                    url: '<?php echo site_url("Notifyoffense/showAll") ?>',
-                    //data: 'S_ID=' + idstd,
+                    url: '<?php echo site_url("Notifyoffense/check_id") ?>',
                     dataType: 'json',
                     success: function(data) {
-                        //alert("Having Data...");
-                        if (data == 0) {
-                            //console.log("NULL");
-                            $('#oh_ID').val(title + BE + i);
-                        }
+                        //console.log(data);
+                        str = data[0].oh_ID;
+                        tempid_substr = str.substring(3);
+                        integer = parseInt(tempid_substr); //convert string to int
+                        auto_id = integer + 1;
 
-
+                        $('#oh_ID').val(title + BE + auto_id); // Create auto id
+                        //alert(sum);
+                        //alert (integer);
+                        //sum= tempid_substr+1;
                     },
                     error: function() {
-                        alert('No Data');
+                        alert("Can't create auto id");
                     }
 
 
-                });*/
+                });
 
             }
         }); //End Ready function
