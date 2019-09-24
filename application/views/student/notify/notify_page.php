@@ -236,10 +236,10 @@
                                             <!-- textbox hiddent -->
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class=""><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด <span class="impt_sym">*</span> :</label> <input type="date" name="committed_date" id="committed_date" class="form-control " required></div>
+                                            <div class=""><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด <span class="impt_sym">*</span> :</label> <input type="date" name="committed_date" id="committed_date" class="form-control " required oninvalid="this.setCustomValidity('โปรดระบุวันที่กระทำความผิด')" onchange="this.setCustomValidity('')"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class=""><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="committed_time" id="committed_time" class="form-control " required></div>
+                                            <div class=""><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="committed_time" id="committed_time" class="form-control " required oninvalid="this.setCustomValidity('โปรดระบุเวลาเกิดเหตุ')" onchange="this.setCustomValidity('')"></div>
                                         </div>
                                     </div>
 
@@ -249,7 +249,7 @@
                                             <div class="form-inline">
                                                 <span><i class="far fa-building"></i></span>
                                                 <label for="">สถานที่<span class="impt_sym">*</span> :</label>
-                                                <input type="text" name="add_place" id="add_place" class="form-control" placeholder="ค้นหาสถานที่" required>
+                                                <input type="text" name="add_place" id="add_place" class="form-control" placeholder="ค้นหาสถานที่" required oninvalid="this.setCustomValidity('โปรดระบุสถานที่เกิดเหตุ')" onchange="this.setCustomValidity('')">
                                                 <input type="hidden" name="place_ID" id="place_ID">
 
                                             </div>
@@ -264,7 +264,7 @@
 
                                             <div class="form-group">
                                                 <label for="">คำอธิบายบริเวณที่เกิดเหตุ<span class="impt_sym">*</span> :</label>
-                                                <textarea class="form-control" rows="5" id="explanation" name="explanation" required></textarea>
+                                                <textarea class="form-control" rows="5" id="explanation" name="explanation" required oninvalid="this.setCustomValidity('โปรดกรอกคำอธิบาย')" onchange="this.setCustomValidity('')"></textarea>
                                             </div>
 
                                         </div>
@@ -274,7 +274,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label for="">หมวดความผิด<span class="impt_sym">*</span> :</label>
-                                            <select name="txt_oc" id="txt_oc" class="form-control" required>
+                                            <select name="txt_oc" id="txt_oc" class="form-control" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')" >
 
                                                 <option value="">เลือกหมวดความผิด</option>
 
