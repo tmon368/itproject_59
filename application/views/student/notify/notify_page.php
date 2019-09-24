@@ -56,6 +56,10 @@
             font-family: 'Sarabun', sans-serif;
 
         }
+        #icon_src{
+            padding-left:0.5rem;
+            font-size: 1.5rem;
+        }
     </style>
 
     <script>
@@ -442,7 +446,6 @@
                             <tbody id="showdata">
 
 
-
                             </tbody>
                         </table>
                     </div>
@@ -521,21 +524,30 @@
                     dataType: 'json',
                     success: function(data) {
                         //alert("Having Data...");
+                        //var dataSet = data;
+                        //console.log(dataSet);
+
+
+
+
 
                         $.each(data, function(key, value) {
 
+
+
+
+
+
                             i++;
                             html += '<tr>';
-                            html += '<td>' + i + '</td>'; /*value.oh_ID*/
+                            html += '<td>' + i + '</td>';
                             html += '<td>' + value.notifica_date + '</td>';
                             html += '<td>' + value.off_desc + '</td>';
                             html += '<td>' + value.place_name + '</td>';
                             html += '<td>' + value.explanation + '</td>';
                             html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                             html += '</tr>';
-                            /*
-                                    
-                                </tr>*/
+
                             $('#showdata').html(html);
 
 
@@ -626,13 +638,16 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
+                    //console.log(data);
                     //alert ('Having data');
 
                     $.each(data, function(key, value) {
                         i++;
 
+                        var data_vehi = value.verhicles;
+                        //console.log(data_vehi);
 
+                        //print 1 ครั้ง
                         if (i == 1) {
                             html += '<p class="text_head">การกระทำความผิด</p>';
                             html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
@@ -642,12 +657,24 @@
                             html += '<p class="text_head">ผู้กระทำความผิด</p>';
                         }
 
+                        html += '<p class="text_position"> <label for="" class="label_txt">รหัสนักศึกษา: </label> ' + value.S_ID + '<label for="" class="label_txt"> ชื่อ: </label> ' + value.std_fname + '<label for="" class="label_txt"> นามสกุล:</label>  ' + value.std_lname + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">สำนักวิชา: </label>  ' + value.dept_name + '<label for="" class="label_txt"> หลักสูตร: </label>  ' + value.cur_name + ' </p>';
+
+                        //loop vehicle 
+                        $.each(data_vehi, function(key, value) {
+                            //console.log(value.regist_num);
+
+                            //check type vehicle
+                            if (value.vetype_ID == 1) {
+                                html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถจักรยานยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+                            } else if (value.vetype_ID == 2) {
+                                html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+                            }
+                        });
 
 
-                        html += '<p class="text_position">รหัสนักศึกษา: ' + value.S_ID + ' ชื่อ: ' + value.std_fname + ' นามสกุล: ' + value.std_lname + ' </p>';
-                        html += '<p class="text_position">สำนักวิชา: ' + value.dept_name + '  หลักสูตร: ' + value.cur_name + ' </p>';
-                        html += '<p class="text_position">เลขทะเบียนรถจักรยานยนต์:  จังหวัด:  </p>';
-                        html += '<p class="text_position">เลขทะเบียนรถยนต์:  จังหวัด:  </p>';
+
+
 
                         $('.content').html(html);
                     });
@@ -844,7 +871,7 @@
             html += '<div id="student' + off_per + '">';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" ></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" >  <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search" id="icon_src"></span></a></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
             html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name' + off_per + '" disabled>   </div>';
             html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname' + off_per + '" disabled>  </div>';
             html += '</div>';
@@ -865,7 +892,7 @@
             html += '</div>';
 
             html += '<div class="row">';
-            html += '<div class="col-sm-12" style="text-align: right;"> <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search"></span></a> <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+            html += '<div class="col-sm-12" style="text-align: right;">  <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
             html += '</div>';
 
             //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>

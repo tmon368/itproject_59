@@ -41,7 +41,10 @@ class Volunteer_regis extends Student_dashboard {
 		echo json_encode($result);
 	}
 	
-
+	function regisnotify(){
+		$result = $this->Volunteer_regis_model->regisnotify();
+		echo json_encode($result);
+	}
 
     
 
