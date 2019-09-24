@@ -279,6 +279,7 @@
                                         <div class="col-sm-6">
                                             <label for="">หมวดความผิด<span class="impt_sym">*</span> :</label>
                                             <select name="txt_oc" id="txt_oc" class="form-control" required>
+                                                
                                                 <option value="">เลือกหมวดความผิด</option>
 
 
