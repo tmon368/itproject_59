@@ -2,6 +2,8 @@
 <html lang="en">
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 <center>
 <strong><div  class="alert alert-success" role="alert" style="display: none;"></div></strong>
 <strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
@@ -44,7 +46,7 @@
           <div class="card-header" id="card_2">
                     <h6 class="m-0 text-primary"><span  class=""></span>&nbsp;รายงานกระทำความผิด</h6>
                 </div>              
-      
+
            <!-- Modal เพิ่มข้อมูล -->
            
            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -88,7 +90,7 @@
                         </div>
          <div class="modal-footer">
                             <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                            <button name="btnSave" id="btnSave" type="button" class="btn btn-success">บันทึกข้อมูล</button>
+                            <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
                         </div>
 						</form> 
                                                         </div>
@@ -252,7 +254,7 @@ $("#edit_file").modal("show");
 showAll();
 
 //เพิ่มข้อมูล
- $('#button1').click(function() {    
+ $('#btnbutton').click(function() {    
         $('#exampleModalCenter').modal('show');
        
     });
@@ -262,7 +264,7 @@ showAll();
 
      var form_data = $('#formadd').serialize();
      console.log(form_data);
-    
+     
      $.ajax({
          type: 'ajax',
          method: 'post',
@@ -272,6 +274,7 @@ showAll();
          /*dataType: 'json',*/
          success: function(data) {
              alert(data);
+          
              //alert("Sucess updata !!")
              location.reload();
          }
@@ -307,6 +310,7 @@ showAll();
            $('#off_desc').html(data.off_desc);
            $('#place_name').html(data.place_name);
            $('#evidenre_name').html(data.evidenre_name);
+     
     
            $('.content').html(html);
            //$("#std_fname").html(data.oh_ID); 
@@ -338,7 +342,7 @@ showAll();
                       '<td>'+ data[i].off_desc +'</td>'+
                       '<td align="center"> <i style="color:rgba(67, 135, 254);font-size:1.5rem;" class="fa fa-file-text btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
                        '<td align="center"><input type="checkbox"  id="checkbox1" onclick="show_text(this);check_click();"  class="largerCheckbox" ></td>'+
-                      '<td align="center"><i  style="color:rgba(67, 135, 254);font-size:1.5rem;" id="button1" value="button"disabled="disabled" class="far fa-file-archive btn-inverse-secondary btn-fw button1" data=' + data[i].offensestd_ID  + '></i></td>' +
+                      '<td align="center"><i  style="color:rgba(67, 135, 254);font-size:1.5rem;" id="btnbutton" value="button" disabled="disabled" class="far fa-file-archive btn-inverse-secondary btn-fw btnbutton" data=' + data[i].offensestd_ID  + '></i></td>' +
                       '</tr>';
               }
               $('#showdata').html(html);
@@ -368,11 +372,11 @@ showAll();
       {
       if(document.getElementById('checkbox1').checked==true)
       {
-      document.getElementById('button1').disabled = true;
+      document.getElementById('btnbutton').disabled = true;
       }
       else
       {
-      document.getElementById('button1').disabled = false;
+      document.getElementById('btnbutton').disabled = false;
       }
       }
   
