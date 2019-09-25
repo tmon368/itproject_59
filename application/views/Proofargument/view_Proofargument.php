@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
+<link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 <center>
 <strong><div  class="alert alert-success" role="alert" style="display: none;"></div></strong>
 <strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
@@ -13,6 +16,17 @@
         input.largerCheckbox { 
             width: 20px; 
             height: 20px; 
+        } 
+         .content {
+            font-family: 'Sarabun', sans-serif;
+        }
+        .text_position {
+            padding-left: 0.9rem;
+            font-size: 0.9rem;
+        }
+        label.label_txt {
+            padding: inherit;
+            font-weight: 900;
         } 
     </style> 
 </head>
@@ -94,9 +108,9 @@
   <div class="modal-dialog modal-dialog-centered" style="max-width: 650px!important;" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle"><span><i 
+        <h4 class="modal-title" id="exampleModalLongTitle"><span><i 
         class="" 
-        style="color:rgba(235,99,102,1.00)"></i></span>ใบสั่งการกระทำความผิด</h2>
+        style="color:rgba(235,99,102,1.00)"></i></span>ใบสั่งการกระทำความผิด</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -108,87 +122,61 @@
                                 <center>
                                     <div class="row">
                                     <div class="col-sm-4">
-                                     <div class="form-group" id="nav_sty">
-                                     <div class="input-group"><label for="">วันที่กระทำผิด:&nbsp;</label><label id="committed_date"></label> </div> </div></div>
+                                     <div class="input-group">
+                                     <label class="label_txt">วันที่กระทำผิด:&nbsp;</label>
+                                     <p class="text_position" id="committed_date"></p></div></div>
                                           <div class="col-sm-8">
-                                     <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">เวลา:&nbsp;</label>
-                                            <label id="committed_time"></label>
-                                      </div>
-                                        </div>
-                                         </div>
+                                            <label class="label_txt">เวลา:&nbsp;</label>
+                                            <p class="text_position"  id="committed_time"></p>
+                                        </div> </div>
                                     </div>
                                     <div class="row">
                                     <div class="col-sm-12">
-                                     <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">สถานที่:&nbsp;</label>
-                                            <label id="place_name"></label>
-                                      </div>
-                                        </div>
-                                         </div>  
+                                            <label class="label_txt" >สถานที่:&nbsp;</label>
+                                            <p class="text_position"  id="place_name"></p>
+                                        </div></div>  
                                     </div>
                                      <div class="row">
                                     <div class="col-sm-12">
-                                     <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">คำอธิบายบริเวณที่เกิดเหต:&nbsp;</label>
-                                            <label id="explanation"></label>
-                                      </div>
-                                        </div>
-                                         </div>  
+                                            <label class="label_txt">คำอธิบายบริเวณที่เกิดเหต:&nbsp;</label>
+                                            <p class="text_position"  id="explanation"></p>
+                                        </div></div>  
                                     </div>
                                     <div class="row">
                                     <div class="col-sm-12">
-                                     <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">ฐานความผิด:&nbsp;</label>
-                                            <label id="off_desc"></label>
-                                      </div>
-                                        </div>
-                                         </div>  
+                                            <label class="label_txt">ฐานความผิด:&nbsp;</label>
+                                            <p class="text_position"  id="off_desc"></p>
+                                        </div></div>  
                                     </div>
                                     <div class="row">
                                     <div class="col-sm-12">
-                                     <div class="form-group" id="nav_sty">
                                         <div class="input-group">
-                                            <label for="">ไฟล์หลักฐาน :&nbsp;</label>
-                                            <label id="evidenre_name"></label>
-                                      </div>
-                                        </div>
-                                         </div>  
+                                            <label class="label_txt">ไฟล์หลักฐาน :&nbsp;</label>
+                                            <p class="text_position"  id="evidenre_name"></p>
+                                        </div></div>  
                                     </div>
                                     <div class="row">
                                     <div class="col-sm-12">
-                                    <div class="form-group" id="nav_sty">
                                     <div class="input-group">
-                                    	<label>วันที่บันทึกหลักฐาน :&nbsp;</label>
-                                    	<label id="proof_date"></label>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
+                                    	<label class="label_txt" >วันที่บันทึกหลักฐาน :&nbsp;</label>
+                                    	<p class="text_position"  id="proof_date"></p>
+                                    </div></div></div>
                                     <div class="row">
                                     <div class="col-sm-12">
-                                    <div class="form-group" id="nav_sty">
                                     <div class="input-group">
-                                    	<label>คำอธิบายการอุทธรณ์ความผิด :&nbsp;</label>
-                                    	<label id="Explanation"></label>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
+                                    	<label class="label_txt">คำอธิบายการอุทธรณ์ความผิด :&nbsp;</label>
+                                    	<p class="text_position"  id="Explanation"></p>
+                                    </div></div></div>
                                     <div class="row">
                                     <div class="col-sm-12">
-                                    <div class="form-group" id="nav_sty">
                                     <div class="input-group">
-                                    	<label>ไฟล์หลักฐานการอุทธรณ์ความผิด :&nbsp;</label>
-                                    	<label id="proof_name"></label>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div> 
+                                    	<label class="label_txt">ไฟล์หลักฐานการอุทธรณ์ความผิด :&nbsp;</label>
+                                    	<p class="text_position"  id="proof_name"></p>
+                                    </div></div></div> 
                                 </center>
                         </div>
       
@@ -612,7 +600,7 @@ $('#btnAdd').click(function() {
                   '<td>'+ data[i].proof_date +'</td>'+
                   '<td>'+ data[i].off_desc +'</td>'+
                   '<td align="center">'+ data[i].results +'</td>'+
-                  '<td align="center"> <i style="font-size:25px;color:blue" class="far fa-file-alt btn-fw del_data" data=' + data[i].proof_ID + '></i></td>' +
+                  '<td align="center"> <i style="color:rgba(67, 135, 254);font-size:1.5rem;" class="fa fa-file-text btn-fw del_data" data=' + data[i].proof_ID + '></i></td>' +
                   '<td align="center"><a href="#"><i class="fas fa-edit  btn-fw edit_data" style="color:#47307b;" data='+ data[i].proof_ID +'></i></a>&nbsp;<a href="#"><i class="fas fa-trash-alt btn-fw del_data" style="color:rgba(235,99,102,1.00)" data='+ data[i].oh_ID +'></i></a></td>'
                   + 
                   '</tr>';

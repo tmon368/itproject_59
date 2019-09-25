@@ -22,10 +22,6 @@
         }
 
 
-        .style_input {
-            font-size: 0.8rem;
-        }
-
         #oh_ID {
             width: 50%;
         }
@@ -56,8 +52,9 @@
             font-family: 'Sarabun', sans-serif;
 
         }
-        #icon_src{
-            padding-left:0.5rem;
+
+        #icon_src {
+            padding-left: 0.5rem;
             font-size: 1.5rem;
         }
     </style>
@@ -228,23 +225,22 @@
                                 <!--  CONTENT -->
 
                                 <form action="" id="formadd" name="formadd" method="post">
-                                    <div class="row">
-                                        <div class="col-sm-6"> </div>
-                                        <div class="col-sm-6 padding_b">
-                                            <div class="form-inline"><label for="">รหัสการกระทำความผิด:</label><input type="text" name="oh_ID" id="oh_ID" class="form-control style_input"></div>
-                                        </div>
-                                    </div>
 
+
+                                    <input type="hidden" name="oh_ID" id="oh_ID" class="form-control style_input">
+                                    <!--Auto id-->
 
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ <span class="impt_sym">*</span> :</label> <input type="text" name="notifica_date" id="notifica_date" class="form-control style_input"></div>
+                                            <div class=""><span><i class="far fa-calendar-alt"></i></span><label for="" class="">วันที่แจ้งเหตุ <span class="impt_sym">*</span> :</label> <input type="text" name="notifica_show" id="notifica_show" class="form-control " disabled></div>
+                                            <input type="hidden" name="notifica_date" id="notifica_date">
+                                            <!-- textbox hiddent -->
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด <span class="impt_sym">*</span> :</label> <input type="date" name="committed_date" id="committed_date" class="form-control style_input"></div>
+                                            <div class=""><span><i class="far fa-calendar-alt"></i></span><label for="">วันที่กระทำความผิด <span class="impt_sym">*</span> :</label> <input type="date" name="committed_date" id="committed_date" class="form-control " required oninvalid="this.setCustomValidity('โปรดระบุวันที่กระทำความผิด')" onchange="this.setCustomValidity('')"></div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="committed_time" id="committed_time" class="form-control style_input"></div>
+                                            <div class=""><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="committed_time" id="committed_time" class="form-control " required oninvalid="this.setCustomValidity('โปรดระบุเวลาเกิดเหตุ')" onchange="this.setCustomValidity('')"></div>
                                         </div>
                                     </div>
 
@@ -254,7 +250,7 @@
                                             <div class="form-inline">
                                                 <span><i class="far fa-building"></i></span>
                                                 <label for="">สถานที่<span class="impt_sym">*</span> :</label>
-                                                <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาสถานที่">
+                                                <input type="text" name="add_place" id="add_place" class="form-control" placeholder="ค้นหาสถานที่" required oninvalid="this.setCustomValidity('โปรดระบุสถานที่เกิดเหตุ')" onchange="this.setCustomValidity('')">
                                                 <input type="hidden" name="place_ID" id="place_ID">
 
                                             </div>
@@ -269,7 +265,7 @@
 
                                             <div class="form-group">
                                                 <label for="">คำอธิบายบริเวณที่เกิดเหตุ<span class="impt_sym">*</span> :</label>
-                                                <textarea class="form-control" rows="5" id="explanation" name="explanation" required></textarea>
+                                                <textarea class="form-control" rows="5" id="explanation" name="explanation" required oninvalid="this.setCustomValidity('โปรดกรอกคำอธิบาย')" onchange="this.setCustomValidity('')"></textarea>
                                             </div>
 
                                         </div>
@@ -279,7 +275,8 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label for="">หมวดความผิด<span class="impt_sym">*</span> :</label>
-                                            <select name="txt_oc" id="txt_oc" class="form-control">
+                                            <select name="txt_oc" id="txt_oc" class="form-control" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')">
+
                                                 <option value="">เลือกหมวดความผิด</option>
 
 
@@ -444,9 +441,14 @@
                                 </tr>
                             </thead>
                             <tbody id="showdata">
+                                
+
+
 
 
                             </tbody>
+                           
+
                         </table>
                     </div>
 
@@ -571,7 +573,7 @@
 
 
 
-            //check id and create id
+            //check id and create auto id
             function check_id() {
 
                 title = 'L';
@@ -585,33 +587,38 @@
                 //console.log(typeof convert_be);
                 //console.log(typeof B_E);
 
-                i = 1;
-                Runnning_num = 0000;
-                $('#oh_ID').val(title + BE + i);
-                //console.log(typeof Runnning_num); //check type
+                //Runnning_num = 0000;
+                var str = '';
+                var tempid_substr = '';
+                var auto_id = 0;
+                var integer = '';
 
 
-                /*$.ajax({
+
+
+                $.ajax({
 
                     type: 'POST',
-                    url: '<?php echo site_url("Notifyoffense/showAll") ?>',
-                    //data: 'S_ID=' + idstd,
+                    url: '<?php echo site_url("Notifyoffense/check_id") ?>',
                     dataType: 'json',
                     success: function(data) {
-                        //alert("Having Data...");
-                        if (data == 0) {
-                            //console.log("NULL");
-                            $('#oh_ID').val(title + BE + i);
-                        }
+                        //console.log(data);
+                        str = data[0].oh_ID;
+                        tempid_substr = str.substring(3);
+                        integer = parseInt(tempid_substr); //convert string to int
+                        auto_id = integer + 1;
 
-
+                        $('#oh_ID').val(title + BE + auto_id); // Create auto id
+                        //alert(sum);
+                        //alert (integer);
+                        //sum= tempid_substr+1;
                     },
                     error: function() {
-                        alert('No Data');
+                        alert("Can't create auto id");
                     }
 
 
-                });*/
+                });
 
             }
         }); //End Ready function
@@ -804,11 +811,13 @@
 
 
         $('#btnAdd').click(function() {
+            $("#formadd")[0].reset(); //clear value on form
             var date = new Date();
             //date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
             date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
             $('#exampleModalCenter').modal('show');
-            $('#notifica_date').val(date_off); //set of date in form
+            $('#notifica_date').val(date_off); //set of date in input:hidden
+            $('#notifica_show').val(date_off); //set of date in input:disable
             $('#evidenre_date').val(date_off); //set of date in form
 
         });

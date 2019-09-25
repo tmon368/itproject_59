@@ -39,6 +39,7 @@ class teacher_dashboard_model extends CI_Model {
 
 
         $this->db->distinct();
+        $this->db->order_by('s.behavior_score', 'ASC');
         $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score');
         //$this->db->select('*');
         $this->db->from('offensestd ostd');

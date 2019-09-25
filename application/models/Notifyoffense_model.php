@@ -76,7 +76,7 @@ foreach($showall as $value){
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
             $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
             $this->db->join('Offense os', 'o.off_ID=os.off_ID');
-            $this->db->where('S_ID', $student);
+            $this->db->where('informer', $student);
             $query = $this->db->get();
             $showall = array();
             $showall = $query->result_array();
@@ -473,6 +473,21 @@ foreach($showall as $value){
 	        return false;
 	    }
     }
+
+    function check_id (){
+        
+        $query = $this->db->query('SELECT MAX(oh_ID) AS oh_ID FROM offensehead');
+        
+  
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+
+
+    }
+
 
        
     

@@ -6,7 +6,7 @@ class VolunteerAc_model extends CI_Model {
         parent::_construct();
         
     }
-    
+    /*
     function spc_showshow(){
         $id = $this->input->get('id');
        // $id='L62101';
@@ -33,6 +33,7 @@ class VolunteerAc_model extends CI_Model {
       return false;
   }
 }
+*/
  
     function showAll(){
       
@@ -113,7 +114,7 @@ class VolunteerAc_model extends CI_Model {
        //'results'=>$this->input->post('results'),
         //'annotation'=>$this->input->post('annotation'),
         //'document_file'=>$this->input->post('document_file'),
-      //  'explanation'=>$this->input->post('explanation')
+        'explanation'=>$this->input->post('explanation')
 
     );
     
@@ -149,21 +150,24 @@ class VolunteerAc_model extends CI_Model {
     public function updateVolunteerAc(){
         $id = $this->input->post('txteditID');
         $field = array(
-            //'service_name'=>$this->input->post('service_name'),
-            'person_ID'=>$this->input->post('person_ID'),
-            /*'S_ID'=>$this->input->post('S_ID'),
-            'place'=>$this->input->post('place'),
-            'service_date'=>$this->input->post('service_date'),
-            'service_time'=>$this->input->post('service_time'),
-            'service_hour'=>$this->input->post('service_hour'),
-            'status'=>$this->input->post('status'),
-            'approval_date'=>$this->input->post('approval_date'),
-            'offer_status	'=>$this->input->post('offer_status	'),
-            'document_file'=>$this->input->post('document_file'),
-            'explanation '=>$this->input->post('explanation ')*/
             
-            
-        );
+            // 'service_ID'=>$this->input->post('service_ID'),
+             'service_name'=>$this->input->post('service_name'),
+             'person_ID'=>$this->input->post('person_ID'),
+             'proposer'=>$this->session->userdata('student'),
+             'place'=>$this->input->post('place'),
+             'service_date'=>$this->input->post('service_date'),
+             'start_time'=>$this->input->post('start_time'),
+             'end_time'=>$this->input->post('end_time'),
+             'status'=>'0',
+             'received'=>$this->input->post('received'),
+             'number_of'=>'50',
+            //'results'=>$this->input->post('results'),
+             //'annotation'=>$this->input->post('annotation'),
+             //'document_file'=>$this->input->post('document_file'),
+             'explanation'=>$this->input->post('explanation')
+     
+         );
         $this->db->where('service_ID', $id);
         $this->db->update('Service', $field);
         if($this->db->affected_rows() > 0){
@@ -251,5 +255,28 @@ class VolunteerAc_model extends CI_Model {
         }
     }
   
+    function showdetail(){
+        
+        $i=1;
+        $id = $this->input->get('id');
+        $this->db->select('*');
+        $this->db->from('service sv'); 
+        $this->db->join('personnel p', 'sv.person_ID=p.person_ID'); 
+        $this->db->where('sv.service_ID', $id);
+        $query = $this->db->get();
+        $service = array();
+        $service = $query->result_array();
+        foreach($service as $i){
+          
+            $i++;
+        }
+        //var_dump($student);
+        // die();
+        if($service> 0){
+            return $service;
+        }else{
+            return false;
+        }
+    }
     
 }

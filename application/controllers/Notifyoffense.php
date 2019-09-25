@@ -142,6 +142,15 @@ class Notifyoffense extends Student_dashboard {
 		$result = $this->Notifyoffense_model->spc_showoffhead();
 		echo json_encode($result);
 	}
+
+	function check_id (){
+		//เช็คค่า id ที่มากสุด
+		$result = $this->Notifyoffense_model->check_id();
+		echo json_encode($result);
+		//ยังไม่ได้เขียน model
+	}
+
+
 }
 
   

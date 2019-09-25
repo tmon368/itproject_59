@@ -15,12 +15,7 @@
     <style>
         label {
             padding: 0.4rem;
-            font-family: 'Sarabun', sans-serif;
         }
-        label.label_txt {
-            padding: inherit;
-        }
-
 
         .style_input {
             font-size: 0.8rem;
@@ -29,31 +24,15 @@
         #oh_ID {
             width: 50%;
         }
-
+        #ser_ID {
+            width: 50%;
+        }
         .padding_b {
             padding-bottom: 0.9rem;
         }
 
-        #add_place {
-            width: 40%;
-        }
-
-        .impt_sym {
-            color: rgb(247, 50, 26);
-        }
-
-        .text_position {
-            padding-left: 0.9rem;
-            font-size: 0.9rem;
-        }
-
-        .text_head {
-            font-size: 0.9rem;
-            font-weight: 900; 
-        }
-        .content {
-            font-family: 'Sarabun', sans-serif;
-            
+        #add_persennel {
+            width: 100%;
         }
     </style>
 
@@ -150,31 +129,27 @@
                                             </div>
                                         </div>
                                     </div>
-                                      
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-inline">
-                                                
-                                                <label for="">ผู้รับรองกิจกรรม<span class="impt_sym">*</span> :</label>
-                                                <input type="text" name="add_place" id="add_place" class="form-control style_input" placeholder="ค้นหาผู้รับรอง">
-                                                <input type="hidden" name="person_ID" id="person_ID">
-
+                                      <div class="row">
+                                        <div class="col-sm-8"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="text" name="person_ID" id="add_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
+                                          <input type="hidden" name="person_ID" id="person_ID">
                                             </div>
                                         </div>
                                     </div>
-
                                     
                                  
                                  
                            
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label for="">รายละเอียดกิจกรม:</label>
+                                         
+                                                <label for="">รายละเอียดกิจกรม:</label><font color="red">* </font>:
                                                 <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
                                             </div>
 
-                                        </div> 
+                                
                                     </div>
                             </div>
 
@@ -186,7 +161,7 @@
                         </div>
                     </div>
                 </div>
-  <!--Modal del  -->
+  <!--Modal del  --> 
 
                 <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -297,12 +272,10 @@
                         html += '<td>' + value.service_date + '</td>';
                         html += '<td>' +value.start_time+ "-"+value.end_time+'</td>';
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
-                        html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+                        html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
-                        html += '<td><a href="javascript:; " data='+ value.ser_ID +' class="showdel"><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" ></i></a></td>';
-                       
+                        html += '<td><a href="javascript:clickDel(' + value.service_ID +',\''+value.service_name+'\'); " data='+ value.oh_ID +' class="showdel"><i class="fas fa-trash-alt showdel" style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
                         html += '</tr>';
-                       
                         $('#showdata').html(html); 
 
                         
@@ -323,12 +296,6 @@
 
             });
         }
-
-
-
-
-
-
 
         //check id and create id
         function check_id() {
@@ -362,7 +329,7 @@
         }
     }); //End Ready function
 
-    $('#add_place').typeahead({
+    $('#add_persennel').typeahead({
 
         source: function(query, result) {
             $.ajax({
@@ -388,6 +355,7 @@
   //ลบข้อมูล
           $('#btndel').on('click', 'showdel', function() {
             //alert("ลบ");
+            
             var url = $('#formdelete').attr('action');
             var data = $('#formdelete').serialize();
             //console.log(url);
@@ -404,7 +372,7 @@
                 success: function(response) {
                     //alert(response);
                     $('#del_file').modal('hide');
-                    location.reload("<?php echo site_url('') ?>"); //Reload page
+                    location.reload("<?php echo site_url('VolunteeAC') ?>"); //Reload page
                 }
             });
 
@@ -422,7 +390,8 @@
     $('#showdata').on('click', '.show_data', function() {
 
         var id = $(this).attr('data');
-        //console.log(id);
+    //   console.log(id);
+    
         $('#ShowDta').modal('show');
         html = '';
         i = 0;
@@ -431,33 +400,36 @@
         $.ajax({
             type: 'ajax',
             method: 'get',
-            url: '<?php echo site_url('VolunteerAc/spc_showshow') ?>',
+            url: '<?php echo site_url('VolunteerAc/showdetail') ?>',
             data: {
                 id: id
             },
             async: false,
             dataType: 'json',
-            success: function(data) {
+            success: function(data){
                 //console.log(data);
                 //alert ('Having data');
 
                 $.each(data, function(key, value) {
                     i++;
-                    if (i == 1) {
-                        html += '<p class="text_head">รายละเอียด</p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อ:</label> ' + value. person_fname+ ''+ value. person_lname+' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
+                   // if (i==1) {
+                    	
+                        html += '<p class="text_head"> <label for="" class="label_txt">ชื่อกิจกรรม: </label> ' + value.service_name+ ' </p>'
+                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อผู้ควบคุมกิจกรรม:</label> ' + value. person_fname+ '&nbsp;&nbsp;'+ value. person_lname+' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมงกิจกรรม: </label> ' + value.start_time + "-"+ value.end_time +' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.receved + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
-                         
-                    }
+
+           
+                          
+                       //  }
                      
-                      
+                   
 
                     $('.content').html(html);
+                      
                 });
             },
             error: function() {
@@ -469,7 +441,7 @@
 
     });
 
- 
+
 
     $('#btnAdd').click(function() {    
         $('#exampleModalCenter').modal('show');
@@ -477,7 +449,16 @@
     });
 
 
- 
+    function clickDel(id,name){
+    	alert(name);
+        $('#del_file').modal('show');
+    }
+
+
+    
+
+
+
     $('#btnSave').click(function() {
 
         var form_data = $('#formadd').serialize();
