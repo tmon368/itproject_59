@@ -2,10 +2,8 @@
 <html lang="en">
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
-
-
 
 
 
@@ -161,7 +159,8 @@
                         </div>
                     </div>
                 </div>
-  <!--Modal del  --> 
+  
+    <!--Modal del  -->
 
                 <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -178,7 +177,7 @@
 
                                     <!--ข้อความยืนยันการลบข้อมูล-->
                                     <center>
-                                        <div id="showdel"></div>
+                                        <div id="showddel"></div>
                                         <input type="hidden" name="delID">
                                     </center>
                                     <!------------------>
@@ -193,6 +192,7 @@
                         </div>
                     </div>
                 </div>
+   
 
                      <!-- Modal detail-->
                 <div class="modal fade" id="ShowDta" role="dialog">
@@ -274,7 +274,7 @@
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
-                        html += '<td><a href="javascript:clickDel(' + value.service_ID +',\''+value.service_name+'\'); " data='+ value.oh_ID +' class="showdel"><i class="fas fa-trash-alt showdel" style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
+                        html += '<td><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt del_data" style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
                         html += '</tr>';
                         $('#showdata').html(html); 
 
@@ -353,9 +353,79 @@
     });
 
   //ลบข้อมูล
-          $('#btndel').on('click', 'showdel', function() {
-            //alert("ลบ");
+        $('#showdata').on('click', '.del_data', function() {
+                var id = $(this).attr('data');
+                //alert(id)
+                $('#del_file').modal('show');
+                //prevent previous handler - unbind()
+                $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/Volunteer/deleteVolunteerAc');
+                $.ajax({
+                    type: 'ajax',
+                    method: 'get',
+                  url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc',
+                    data: {
+                        id: id
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#showdel').html('ต้องการลบกิจกรรม   "' + data[0].service_name + '"');
+                        $('input[name=txtdelID]').val(data[0].service_ID );
+                    },
+                    error: function() {
+                        alert('ไม่สามารถลบข้อมูล');
+                    }
+                });
+            });
+
+
+
+            $('#btndel').click(function() {
+                var url = $('#formdelete').attr('action');
+                var data = $('#formdelete').serialize();
+                varservice_ID = $('input[name=txtdelID]');
+                var result = '';
+
+                if (service_ID.val() == '') {
+                	service_ID.parent().parent().addClass('has-error');
+                } else {
+                	service_ID.parent().parent().removeClass('has-error');
+                    result += '1';
+                }
+                if (result == '1') {
+                    $.ajax({
+                        type: 'ajax',
+                        method: 'post',
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                $('#del_file').modal('hide');
+                                $('#formdelete')[0].reset();
+                                $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                //$('#formdelete').empty();
+                             
+                            } else {
+                                alert('Error');
+                            }
+                        },
+
+                        error: function() {
+                            //alert('id นี้ถูกใช้งานแล้ว');
+                            $('#del_file').modal('hide');
+                            $('#formdelete')[0].reset();
+                            $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
             
+                        }
+                    });
+                }
+            });
+       
+         
+   /* $('#btndel').click(function() {
+            //alert("ลบ");
             var url = $('#formdelete').attr('action');
             var data = $('#formdelete').serialize();
             //console.log(url);
@@ -371,14 +441,13 @@
                 //dataType: 'json',
                 success: function(response) {
                     //alert(response);
-                    $('#del_file').modal('hide');
-                    location.reload("<?php echo site_url('VolunteeAC') ?>"); //Reload page
+                    $('#del_file').modal('show');
+                    location.reload("<?php echo site_url('Notifyoffense') ?>"); //Reload page
                 }
             });
 
 
-        });
-         
+        });*/
 
 
 
@@ -449,11 +518,9 @@
     });
 
 
-    function clickDel(id,name){
-    	alert(name);
-        $('#del_file').modal('show');
-    }
-
+   
+    
+   
 
     
 
