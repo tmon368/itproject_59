@@ -185,7 +185,7 @@
 
                                 <div class="modal-footer">
                                     <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                    <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
+                                    <button name="btndel" id="btndel" type="submit" class="btn btn-danger btn-fw">ลบ</button>
 
                                 </div>
                             </form>
@@ -274,7 +274,7 @@
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
-                        html += '<td><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt del_data" style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
+                        html += '<td><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
                         html += '</tr>';
                         $('#showdata').html(html); 
 
@@ -358,7 +358,7 @@
                 //alert(id)
                 $('#del_file').modal('show');
                 //prevent previous handler - unbind()
-                $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/Volunteer/deleteVolunteerAc');
+                $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/deleteVolunteerAc');
                 $.ajax({
                     type: 'ajax',
                     method: 'get',
@@ -369,8 +369,8 @@
                     async: false,
                     dataType: 'json',
                     success: function(data) {
-                        $('#showdel').html('ต้องการลบกิจกรรม   "' + data[0].service_name + '"');
-                        $('input[name=txtdelID]').val(data[0].service_ID );
+                        $('#showddel').html('ต้องการลบกิจกรรม   "' + data[0].service_name + '"');
+                        $('input[name=delID]').val(data[0].service_ID );
                     },
                     error: function() {
                         alert('ไม่สามารถลบข้อมูล');
@@ -383,7 +383,7 @@
             $('#btndel').click(function() {
                 var url = $('#formdelete').attr('action');
                 var data = $('#formdelete').serialize();
-                varservice_ID = $('input[name=txtdelID]');
+                varservice_ID = $('input[name=delID]');
                 var result = '';
 
                 if (service_ID.val() == '') {
@@ -406,6 +406,7 @@
                                 $('#formdelete')[0].reset();
                                 $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
                                 //$('#formdelete').empty();
+                                
                              
                             } else {
                                 alert('Error');

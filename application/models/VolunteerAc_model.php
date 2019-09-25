@@ -169,7 +169,7 @@ class VolunteerAc_model extends CI_Model {
      
          );
         $this->db->where('service_ID', $id);
-        $this->db->update('Service', $field);
+        $this->db->update('service', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
@@ -180,10 +180,10 @@ class VolunteerAc_model extends CI_Model {
 
     //ฟังก์ชันลบข้อมูลในtable student
     function deleteVolunteerAc(){
-        $id = $this->input->post('txtdelID');
-        
-        $this->db->where('service_ID', $id);
-        $this->db->delete('Service');
+        $sid = $this->input->post('delID');
+
+        $this->db->where('service_ID', $sid);
+        $this->db->delete('service');
         //$this->db->update('Service', $field);
         if($this->db->affected_rows() > 0){
             return true;

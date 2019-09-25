@@ -46,11 +46,19 @@ class VolunteerAc extends Student_dashboard {
 		echo json_encode($result);
     }
 
-    
+  
+
     public function deleteVolunteerAc(){
-		$result = $this->VolunteerAc_model->deleteVolunteerAc();
-		echo json_encode($result);
-    }
+	    $result = $this->VolunteerAc_model->deleteVolunteerAc();
+		if($result){
+        $msg['success'] = true;     
+        redirect(base_url() . 'index.php/VolunteerAc');
+		}else{
+		    $msg['success'] = false;
+		    redirect(base_url() . 'index.php/VolunteerAc');
+		}
+		echo json_encode($msg);
+	}
 
 
     function selectplace(){
