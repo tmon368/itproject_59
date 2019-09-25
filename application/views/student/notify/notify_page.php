@@ -227,7 +227,8 @@
                                 <form action="" id="formadd" name="formadd" method="post">
 
 
-                                    <input type="hidden" name="oh_ID" id="oh_ID" class="form-control style_input"> <!--Auto id-->
+                                    <input type="hidden" name="oh_ID" id="oh_ID" class="form-control style_input">
+                                    <!--Auto id-->
 
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -274,7 +275,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label for="">หมวดความผิด<span class="impt_sym">*</span> :</label>
-                                            <select name="txt_oc" id="txt_oc" class="form-control" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')" >
+                                            <select name="txt_oc" id="txt_oc" class="form-control" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')">
 
                                                 <option value="">เลือกหมวดความผิด</option>
 
@@ -440,9 +441,14 @@
                                 </tr>
                             </thead>
                             <tbody id="showdata">
+                                
+
+
 
 
                             </tbody>
+                           
+
                         </table>
                     </div>
 
@@ -805,6 +811,7 @@
 
 
         $('#btnAdd').click(function() {
+            $("#formadd")[0].reset(); //clear value on form
             var date = new Date();
             //date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
             date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();

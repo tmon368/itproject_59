@@ -33,6 +33,7 @@ class offensecate_model extends CI_Model {
     
 
     public function addoffensecate(){
+        $id=$this->input->post('txtID');
         $field = array(
             'oc_ID'=>$this->input->post('txtID'),
             'oc_desc'=>$this->input->post('txtname'),
@@ -40,12 +41,23 @@ class offensecate_model extends CI_Model {
             
             );
         $this->db->insert('offensecate', $field);
-        if($this->db->affected_rows() > 0){
+        if($this->db->affected_rows() > 0){            
+            $field1 = array(
+                'flag'=>'1',
+                
+                
+            );
+            $this->db->where('oc_ID', $id);
+            $this->db->update('offense', $field1);
+            
+            if($this->db->affected_rows() > 0){
+                
             return true;
         }else{
             return false;
         }
     }
+ }
 
     public function editoffensecate(){
         $id = $this->input->get('id');
