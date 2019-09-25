@@ -36,6 +36,7 @@ class OffenseHead_model extends CI_Model {
         
         //$student = $this->session->userdata('student');
         $id = $this->input->get('id');
+        //$id = 37;
         /*
         $query = $this->db->get('offensestd');
         $this->db->where('offensestd_ID',$id);
@@ -83,14 +84,18 @@ class OffenseHead_model extends CI_Model {
         'S_ID'=>$this->input->post('S_ID'),
         'person_ID'=>$this->input->post('person_ID'),
         'proof_name'=>$this->input->post('proof_name'),
-        'proof_date'=>$this->input->post('proof_date'),
-        'explanation'=>$this->input->post('explanation'),
-        'results'=>$this->input->post('results')
+        'proof_date'=>$this->input->post('proof_ID'),
+        'Explanation'=>$this->input->post('Explanation'),
+        'results'=> '0'
         
 
         );
+        
+        //var_dump($field);
+        //die();
        // $this->db->where('place_ID', $id);
         $this->db->insert('proofargument', $field);
+        
         if($this->db->affected_rows() > 0){
             return true;
         }else{

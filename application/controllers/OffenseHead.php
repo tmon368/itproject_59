@@ -50,6 +50,15 @@ class OffenseHead extends Student_dashboard {
         //  $username = $this->session->userdata('username');
         
         $result = $this->OffenseHead_model->insertproofargument();
+       
+        if($result){
+            $msg['success'] = true;
+            
+            
+        }else{
+            $msg['success'] = false;
+            redirect(base_url() . 'index.php/OffenseHead/index');
+        }
         echo json_encode($result);
     }
     
