@@ -125,11 +125,11 @@ function wherecheck(){
 
     $query = $this->db->get();
     //var_dump($query->result());
-    if($query->num_rows() == 0){
+    if($query->num_rows() > 0){
             
-        return false;
+        return $query->result();
     }else{
-        return true;
+        return  false;
     }
 
 
