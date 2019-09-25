@@ -176,7 +176,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Voluunteer_history") ?>">ประวัติการบำเพ็ญประโยชน์</a>
+              <a class="nav-link" href="<?php echo site_url("Volunteer_history") ?>">ประวัติการบำเพ็ญประโยชน์</a>
             </li>
          
 
