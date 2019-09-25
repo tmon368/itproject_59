@@ -115,8 +115,8 @@ function wherecheck(){
     //ส่ง id ไปให้ ชื่อตัวแปร id ส่งแบบ Get
     /*code*/    
     $student = $this->session->userdata('student');
-    //$id = $this->input->get('id');
-    $id=23;
+    $id = $this->input->get('id');
+    //$id=23;
     $this->db->select('service_ID,S_ID');
     $this->db->from('participationactivities');
     //$this->db->join('personnel p', 'sv.person_ID=p.person_ID');
