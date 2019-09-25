@@ -21,8 +21,8 @@ class teacher_dashboard_model extends CI_Model {
         // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
          //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
          $query = $this->db->get();
-         var_dump($query->result());
-         die();
+         //var_dump($query->result());
+         //die();
          if($query->num_rows() > 0){
              
              return $query->row();

@@ -73,11 +73,11 @@
                         var i;
                         for (i = 0; i < data.length; i++) {
                             html += '<tr>' +
-                            '<td>' + n + '</td>' +
-                            '<td>' + data[i].committed_date + '</td>' +
-                            '<td>' + data[i].off_desc +'</td>' +
-                            '<td>' + data[i].point + '</td>' +
-                            '<td>' + data[i].statusoffname + '</td>' +
+                            '<th>' + n + '</th>' +
+                            '<th>' + data[i].committed_date + '</th>' +
+                            '<th>' + data[i].off_desc +'</th>' +
+                            '<th>' + data[i].point + '</th>' +
+                            '<th>' + data[i].statusoffname + '</th>' +
                                 '</tr>';
                             n+=1;
                         }
@@ -254,6 +254,8 @@
 <tbody id="showdata">
  </tbody>
 </table>
+
+
 </div>
 </body>
 
