@@ -392,7 +392,7 @@
                 	service_ID.parent().parent().removeClass('has-error');
                     result += '1';
                 }
-                if (result == '1') {
+                if (result == '1') { 
                     $.ajax({
                         type: 'ajax', 
                         method: 'post', 
