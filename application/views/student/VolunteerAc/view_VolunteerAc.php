@@ -395,7 +395,7 @@
                 if (result == '1') {
                     $.ajax({
                         type: 'ajax',
-                        method: 'post',
+                        method: 'post', 
                         url: url,
                         data: data,
                         async: false,
