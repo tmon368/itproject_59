@@ -272,12 +272,10 @@
                         html += '<td>' + value.service_date + '</td>';
                         html += '<td>' +value.start_time+ "-"+value.end_time+'</td>';
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
-                        html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+                        html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
-                        html += '<td><a href="javascript:clickDel(' + value.service_ID +',\''+value.service_name+'\'); " data='+ value.oh_ID +' class="showdel"><i class="fas fa-trash-alt showdel" style="color:rgba(235,99,102,1.00)"></i></a></td>';
-                       
+                        html += '<td><a href="javascript:clickDel(' + value.service_ID +',\''+value.service_name+'\'); " data='+ value.oh_ID +' class="showdel"><i class="fas fa-trash-alt showdel" style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
                         html += '</tr>';
-                       
                         $('#showdata').html(html); 
 
                         
@@ -357,6 +355,7 @@
   //ลบข้อมูล
           $('#btndel').on('click', 'showdel', function() {
             //alert("ลบ");
+            
             var url = $('#formdelete').attr('action');
             var data = $('#formdelete').serialize();
             //console.log(url);
@@ -391,7 +390,8 @@
     $('#showdata').on('click', '.show_data', function() {
 
         var id = $(this).attr('data');
-        //console.log(id);
+    //   console.log(id);
+    
         $('#ShowDta').modal('show');
         html = '';
         i = 0;
@@ -400,32 +400,36 @@
         $.ajax({
             type: 'ajax',
             method: 'get',
-            url: '<?php echo site_url('VolunteerAc/showall') ?>',
+            url: '<?php echo site_url('VolunteerAc/showdetail') ?>',
             data: {
                 id: id
             },
             async: false,
             dataType: 'json',
-            success: function(data) {
+            success: function(data){
                 //console.log(data);
                 //alert ('Having data');
 
                 $.each(data, function(key, value) {
                     i++;
-                    if (i == 1) {
+                   // if (i==1) {
+                    	
                         html += '<p class="text_head"> <label for="" class="label_txt">ชื่อกิจกรรม: </label> ' + value.service_name+ ' </p>'
-                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อ:</label> ' + value. person_fname+ '&nbsp;&nbsp;'+ value. person_lname+' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อผู้ควบคุมกิจกรรม:</label> ' + value. person_fname+ '&nbsp;&nbsp;'+ value. person_lname+' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
-                    
-                    }
+
+           
+                          
+                       //  }
                      
-                      
+                   
 
                     $('.content').html(html);
+                      
                 });
             },
             error: function() {
