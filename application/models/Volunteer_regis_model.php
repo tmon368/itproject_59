@@ -127,7 +127,7 @@ function wherecheck(){
     //var_dump($query->result());
     if($query->num_rows() > 0){
             
-        return $query->result();
+        return true;
     }else{
         return  false;
     }
