@@ -73,19 +73,14 @@ class Volunteer_regis_model extends CI_Model {
                         if($this->db->affected_rows() > 0){
                     // var_dump($row->person_fname.$row->person_lname);
                            $query= $this->db->query ('SELECT TIMEDIFF (end_time,start_time) AS time FROM service WHERE service_ID='.$id.'');
-                           //$query = $this->db->get();
-                           $showall = array();
-                           $showall = $query->result_array();
-                           $showall['service'] = $query->result_array();
-
-                            $name = $row->person_fname;
-                            $last_name = $row->person_lname;
-                            $person = $name." ".$last_name;
-                           // $timetime =$row->$timeabs;
-
-                            
                            
-
+                        $showall = array();
+                        $showall = $query->result_array();
+                        $showall['service'] = $query->result_array();
+                        $name = $row->person_fname;
+                        $last_name = $row->person_lname;
+                        $person = $name." ".$last_name;
+                           // $timetime =$row->$timeabs; 
                           // var_dump($showall);
                             //die;
                             $field = array(
@@ -112,5 +107,31 @@ class Volunteer_regis_model extends CI_Model {
 
    
 }
+}
+
+
+
+function wherecheck(){
+    //ส่ง id ไปให้ ชื่อตัวแปร id ส่งแบบ Get
+    /*code*/    
+    $student = $this->session->userdata('student');
+    //$id = $this->input->get('id');
+    $id=23;
+    $this->db->select('service_ID,S_ID');
+    $this->db->from('participationactivities');
+    //$this->db->join('personnel p', 'sv.person_ID=p.person_ID');
+    $this->db->where('S_ID', $student);
+    $this->db->where('service_ID', $id);
+
+    $query = $this->db->get();
+    //var_dump($query->result());
+    if($query->num_rows() == 0){
+            
+        return false;
+    }else{
+        return true;
+    }
+
+
 }
 }

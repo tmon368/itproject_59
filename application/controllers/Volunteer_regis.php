@@ -46,6 +46,11 @@ class Volunteer_regis extends Student_dashboard {
 		echo json_encode($result);
 	}
 
+	function wherecheck(){
+		$result = $this->Volunteer_regis_model->wherecheck();
+		echo json_encode($result);
+	}
+	
     
 
 
