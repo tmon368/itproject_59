@@ -72,8 +72,8 @@ class VolunteerAc extends Student_dashboard {
     }  
     
     
-    function spc_showshow(){
-      $result = $this->VolunteerAc_model->spc_showshow();
+    function showdetail(){
+      $result = $this->VolunteerAc_model->showdetail();
       echo json_encode($result);
     }
     
@@ -84,5 +84,7 @@ class VolunteerAc extends Student_dashboard {
       $result = $this->VolunteerAc_model->selectperson();
       echo json_encode($result);
     }
+
+
 }
 

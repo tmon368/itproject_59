@@ -6,7 +6,7 @@ class VolunteerAc_model extends CI_Model {
         parent::_construct();
         
     }
-    
+    /*
     function spc_showshow(){
         $id = $this->input->get('id');
        // $id='L62101';
@@ -33,6 +33,7 @@ class VolunteerAc_model extends CI_Model {
       return false;
   }
 }
+*/
  
     function showAll(){
       
@@ -251,5 +252,28 @@ class VolunteerAc_model extends CI_Model {
         }
     }
   
+    function showdetail(){
+        
+        $i=1;
+        $id = $this->input->get('id');
+        $this->db->select('*');
+        $this->db->from('service sv'); 
+        $this->db->join('personnel p', 'sv.person_ID=p.person_ID'); 
+        $this->db->where('sv.service_ID', $id);
+        $query = $this->db->get();
+        $service = array();
+        $service = $query->result_array();
+        foreach($service as $i){
+          
+            $i++;
+        }
+        //var_dump($student);
+        // die();
+        if($service> 0){
+            return $service;
+        }else{
+            return false;
+        }
+    }
     
 }
