@@ -192,7 +192,99 @@
                         </div>
                     </div>
                 </div>
-   
+  
+               <!-- Modal ส่วน edit -->
+            <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLongTitle">แก้ไขการเสนอการบำเพ็ญประโยชน์</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <!--  CONTENT -->
+
+                                <form action="" id="formupdate" name="formupdate" method="post">
+                                  
+                                   <div class="row">
+                                        <div class="col-sm-8"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">ชื่อกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;
+                                         <input type="text" name="service_name" id="service_name" class=" form-control style_input" style="width:300px;" >
+                                            </div>
+                                        </div>
+                                    </div>  
+                                 
+                                    
+                                 <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-inline"><label for="">วันที่จัดกิจกรรม<label> 
+                                            <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="date" name="service_date" id="service_date" class="form-control style_input">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">เวลา<span class="impt_sym">*</span> :</label> <input type="time" name="start_time" id="start_time" class="form-control style_input"></div>
+                                             </div>
+                                             
+                                             <div class="col-sm=1">
+                                             <div class="form-inline"><span><i class="fas fa-clock "></i></span><label for="">ถึง<span class="impt_sym">*</span> :</label> <input type="time" name="end_time" id="end_time" class="form-control style_input"></div>
+                                             </div>
+                                        
+                                 </div>
+                                 <div class="row">
+                                        <div class="col-sm-8"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">จำนวนผู้เข้าร่วม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;
+                                          &nbsp;&nbsp;  <input type="text" name="received" id="received" class=" form-control style_input" style="width:60px;" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <div class="row">
+                                        <div class="col-sm-8"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">สถานที่จัดกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;
+                                         <input type="text" name="place" id="place" class="form-control style_input" style="width:300px;" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                      <div class="row">
+                                        <div class="col-sm-8"> </div>
+                                        <div class="col-sm-6 padding_b">
+                                            <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="text" name="person_ID" id="add_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
+                                          <input type="hidden" name="person_ID" id="person_ID">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                         
+                                                <label for="">รายละเอียดกิจกรม:</label><font color="red">* </font>:
+                                                <textarea class="form-control" rows="5" id="explanation" name="explanation"></textarea>
+                                            </div>
+
+                                
+                                    </div>
+                                  
+                            </div>
+
+                            <div class="modal-footer">
+                                <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                <button name="btnedit" id="btnedit" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
 
                      <!-- Modal detail-->
                 <div class="modal fade" id="ShowDta" role="dialog">
@@ -274,10 +366,10 @@
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
-                        html += '<td><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
-                        html += '</tr>';
+                        html += '<td><a href="javascript:;" data='+ value.service_ID +' class="edit_data"><i class="fas fa-edit " style="color:rgba(235,99,102,1.00)"></i></a><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
+                        html += '</tr>'
                         $('#showdata').html(html); 
-
+                   
                         
                        
                  
@@ -357,7 +449,7 @@
                 var id = $(this).attr('data');
                 //alert(id)
                 $('#del_file').modal('show');
-                //prevent previous handler - unbind()
+              
                 $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/deleteVolunteerAc');
                 $.ajax({
                     type: 'ajax',
@@ -381,6 +473,7 @@
 
 
             $('#btndel').click(function() {
+              
                 var url = $('#formdelete').attr('action');
                 var data = $('#formdelete').serialize();
                 varservice_ID = $('input[name=delID]');
@@ -425,31 +518,138 @@
             });
        
          
-   /* $('#btndel').click(function() {
-            //alert("ลบ");
-            var url = $('#formdelete').attr('action');
-            var data = $('#formdelete').serialize();
-            //console.log(url);
-            //console.log(data);
-
-
-            $.ajax({
-                type: 'ajax',
-                method: 'post',
-                url: url,
-                data: data,
-                async: false,
-                //dataType: 'json',
-                success: function(response) {
-                    //alert(response);
-                    $('#del_file').modal('show');
-                    location.reload("<?php echo site_url('Notifyoffense') ?>"); //Reload page
-                }
+          //แก้ไขข้อมูล
+            $('#showdata').on('click', '.edit_data', function() {
+                var id = $(this).attr('data');
+                var popup = document.getElementById("editimage");
+                $('#edit_file').modal('show');
+                $('#formupdate').attr('action',
+                    '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
+                $.ajax({
+                    type: 'ajax',
+                    method: 'get',
+                    url: '<?php echo base_url() ?>index.php/VolunteerAc/ editVolunteerAc',
+                    data: {
+                        id: id
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        $('input[name=txteditID]').val(data.service_ID);
+                        $('input[name=service_name]').val(data.service_name);
+                        $('input[name=person_ID]').val(data.person_ID);
+                        $('input[name=place]').val(data.place);
+                        $('input[name=service_date]').val(data.service_date);
+                        $('input[name=start_time]').val(data.start_time);
+                        $('input[name=end_time]').val(data.end_time);
+                        $('input[name=received]').val(data.received);
+                        $('input[name=explanation]').val(data.explanation);
+                    },
+                    error: function() {
+                        alert('ไม่สามารถแก้ไขข้อมูล');
+                    }
+                });
             });
-
-
-        });*/
-
+      
+            $('#btnedit').click(function(){
+            	var url = $('#formupdate').attr('action');
+    			var data = $('#formupdate').serialize();
+    			//validate form
+                var service_ID = $('input[name=txteditID]');
+                var service_name = $('input[name=service_name]');
+                var person_ID = $('input[name=person_ID]');
+                var place = $('input[name=place]');
+                var service_date = $('input[name=service_date]');
+                var start_time = $('input[name=start_time]');
+                var end_time = $('input[name=end_time]');
+                var received = $('input[name=received]');
+                var explanation = $('input[name=explanation]');
+                var result = '';   
+                
+                if (service_ID.val() == '') {
+                	service_ID.parent().parent().addClass('has-error');
+                } else {
+                	service_ID.parent().parent().removeClass('has-error');
+                    result += '1';
+                }
+                if (service_name.val() == '') {
+                	service_name.parent().parent().addClass('has-error');
+                } else {
+                	service_name.parent().parent().removeClass('has-error');
+                    result += '2';
+                }
+                if ( person_ID.val() == '') {
+                	 person_ID.parent().parent().addClass('has-error');
+                } else {
+                	 person_ID.parent().parent().removeClass('has-error');
+                    result += '3';
+                }
+                if ( place.val() == '') {
+                	place.parent().parent().addClass('has-error');
+               } else {
+            	   place.parent().parent().removeClass('has-error');
+                   result += '4';
+               }
+                if ( service_date.val() == '') {
+                	service_date.parent().parent().addClass('has-error');
+               } else {
+            	   service_date.parent().parent().removeClass('has-error');
+                   result += '5';
+               }
+                if ( start_time.val() == '') {
+                	start_time.parent().parent().addClass('has-error');
+               } else {
+            	   start_time.parent().parent().removeClass('has-error');
+                   result += '6';
+               }
+                if ( end_time.val() == '') {
+                	end_time.parent().parent().addClass('has-error');
+               } else {
+            	   end_time.parent().parent().removeClass('has-error');
+                   result += '7';
+               }
+                if ( received.val() == '') {
+                	received.parent().parent().addClass('has-error');
+               } else {
+            	   received.parent().parent().removeClass('has-error');
+                   result += '8';
+               }
+                if ( explanation.val() == '') {
+                	explanation.parent().parent().addClass('has-error');
+               } else {
+            	   explanation.parent().parent().removeClass('has-error');
+                   result += '9';
+               }
+                if(result=='123456789'){
+    				$.ajax({
+    					type: 'ajax',
+    					method: 'post',
+    					url: url,
+    					data: data,
+    					async: false,
+    					dataType: 'json',
+    					success: function(response){
+    						if(response.success){
+    							$('#edit_file').modal('hide');
+    							$('#formupdate')[0].reset();		
+    							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+    					
+    						}else{
+    							alert('Error');
+    						}
+    					},
+    					
+    					
+    					error: function(){
+    						//alert('id นี้ถูกใช้งานแล้ว');
+    						$('#edit_file').modal('hide');
+    						$('#formupdate')[0].reset();		
+    						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+    						
+    					}
+    				});
+    			}
+    		});
 
 
 
