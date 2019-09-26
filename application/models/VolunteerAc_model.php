@@ -144,7 +144,7 @@ class VolunteerAc_model extends CI_Model {
             return false;
         }
     }
-    public function editVolunteerAc2(){
+    public function delete(){
         $id = $this->input->get('id');
         $this->db->where('service_ID', $id);
         $query = $this->db->get('Service');
@@ -160,22 +160,23 @@ class VolunteerAc_model extends CI_Model {
     public function updateVolunteerAc(){
         $id = $this->input->post('txteditID');
         $field = array(
+         
             
-            // 'service_ID'=>$this->input->post('service_ID'),
-             'service_name'=>$this->input->post('service_name'),
-             'person_ID'=>$this->input->post('person_ID'),
-             'proposer'=>$this->session->userdata('student'),
-             'place'=>$this->input->post('place'),
-             'service_date'=>$this->input->post('service_date'),
-             'start_time'=>$this->input->post('start_time'),
-             'end_time'=>$this->input->post('end_time'),
+             //'service_ID'=>$this->input->post('txteditID'),
+             'service_name'=>$this->input->post('editservice_name'),
+             'person_ID'=>$this->input->post('editperson_ID'),
+             
+             'place'=>$this->input->post('editplace'),
+             'service_date'=>$this->input->post('editservice_date'),
+             'start_time'=>$this->input->post('editstart_time'),
+             'end_time'=>$this->input->post('editend_time'),
              //'status'=>'0',
-             'received'=>$this->input->post('received'),
-            // 'number_of'=>'0',
+             'received'=>$this->input->post('editreceived'),
+             //'number_of'=>'0',
             //'results'=>$this->input->post('results'),
              //'annotation'=>$this->input->post('annotation'),
              //'document_file'=>$this->input->post('document_file'),
-             'explanation'=>$this->input->post('explanation')
+             'explanation'=>$this->input->post('editexplanation'),
      
          );
         $this->db->where('service_ID', $id);

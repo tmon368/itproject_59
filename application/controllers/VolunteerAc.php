@@ -45,8 +45,8 @@ class VolunteerAc extends Student_dashboard {
 		$result = $this->VolunteerAc_model->editVolunteerAc();
 		echo json_encode($result);
     }
-    public function editVolunteerAc2(){
-        $result = $this->VolunteerAc_model->editVolunteerAc2();
+    public function delete(){
+        $result = $this->VolunteerAc_model->delete();
         echo json_encode($result);
     }
   
@@ -64,11 +64,17 @@ class VolunteerAc extends Student_dashboard {
 	}
 
 
-    function selectplace(){
-	    $result = $this->VolunteerAc_model->selectplace();
-	    echo json_encode($result);
-    }
+  function updateVolunteerAc(){
+    $result = $this->VolunteerAc_model->updateVolunteerAc();
+    echo json_encode($result);
+  }
+
   
+  function selectplace(){
+    $result = $this->VolunteerAc_model->selectplace();
+    echo json_encode($result);
+  }
+
 
 
 	  function selectservice(){

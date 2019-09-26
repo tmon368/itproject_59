@@ -213,7 +213,7 @@
                                 <!--  CONTENT -->
 
                                 <form action="" id="formupdate" name="formupdate" method="post">
-                                           <input type="hidden" name="txteditID id="txteditID" class="form-control style_input">
+                                           <input type="hidden" name="txteditID" id="txteditID" class="form-control style_input">
                                     <!--Auto id-->
                                    <div class="row">
                                         <div class="col-sm-8"> </div>
@@ -451,7 +451,7 @@
                 $.ajax({
                     type: 'ajax',
                     method: 'get',
-                  url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc2',
+                    url: '<?php echo base_url() ?>index.php/VolunteerAc/delete',
                     data: {
                         id: id
                     },
