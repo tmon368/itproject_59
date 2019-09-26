@@ -239,7 +239,6 @@
 <center>   คะแนนของคุณอยู่ใน<b>ระดับ</b>เกณฑ์ : <font color="FFD732"> เสนอคณะกรรมการเพื่อพิจารณา  </font></center> 
 <br>
 <br>
-
 <div class="container" >
   <center>  <h4>   สถานะการทำผิดของนักศึกษา </h4> </center> 
      
@@ -255,6 +254,10 @@
  </tbody>
 </table>
 
+</div>
+</div>
+</div>
+</div>
 </div>
 </body>
 

@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 class Admin_dashboard extends CI_Controller {
+	function __construct(){
+		parent:: __construct();
+		$this->load->model('admin_dashboard_model', 'admin_dashboard_model');
+	}
 
 	public function index()
 	{
@@ -23,13 +27,20 @@ class Admin_dashboard extends CI_Controller {
 	    $this->load->view('template/template6');
 	    
 	}
+
+	function selectstudentname() {
+		$result = $this->admin_dashboard_model->selectstudentname();
+	    echo json_encode($result);
+
+
+	}
+
+
+
 	
 	
 	function checkAutoriry() {
-	    //$admin = $this->session->userdata('admin');
-	    // $student = $this->session->userdata('student');
-	    //echo $username;
-	    // die();
+	 
 	    
 	    $this->session->mark_as_temp('login',1800);
 	    if($this->session->userdata('login') == true){
@@ -86,23 +97,5 @@ class Admin_dashboard extends CI_Controller {
 	    
 	}
 
-	public function new()
-	{
-	    //แสดงหน้าจอ form สำหรับบันทึกข้อมูลใหม่
-	}
-
-	public function addnew()
-	{
-	    //รับข้อมูลจาก form  insert ลง DB
-	}
-
-	public function edit()
-	{
-	    //แสดงหน้าจอ form สำแก้ไขข้อมูลใหม่
-	}
-
-	public function update()
-	{
-	    //รับข้อมูลจาก form  update ลง DB
-	}
+	
 }

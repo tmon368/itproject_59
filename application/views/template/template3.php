@@ -105,7 +105,7 @@
               <img src="<?php echo base_url('re/images/faces/face1.jpg'); ?>" alt="profile image">
             </div>
             <div class="text-wrapper">
-              <p class="profile-name">NAME</p>
+              <p class="profile-name" id="fullnamestudent"></p>
               <div>
                 <small class="designation text-muted">ADMINTRATOR</small>
                 <span class="status-indicator online"></span>
@@ -284,3 +284,40 @@
             </div>
           </div>
         -->
+        <script>
+    $(document).ready(function() {
+    	selectstudentname();
+    	 v
+	 
+        //$('[data-toggle="popover"]').popover();
+   //	$("#c1").click(function (){
+        	//alert("SSS");
+     //   	$("#show_left").html("213");
+       // });
+    
+
+      
+  function selectstudentname() {
+              $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Admin_dashboard/selectstudentname',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) { // console.log(data); 
+                     // alert(data[0])
+                      $('#fullnamestudent').html(data[0].person_fname+' '+data[0].person_lname);
+                      //$('#lnamestudent').html(data[0].std_lname);
+                    
+       
+              //$('#dataall').html(num-1);//
+          },
+          error: function() {
+              alert('ไม่มีข้อมูล');
+          }
+              });
+  }
+      });
+
+
+
+      </script>
