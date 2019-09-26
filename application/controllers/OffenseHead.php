@@ -44,16 +44,23 @@ class OffenseHead extends Student_dashboard {
         $result = $this->OffenseHead_model->selectoffenseorder();
         echo json_encode($result);
     }
-
-
+    
+    
     function insertproofargument(){
-        //  $username = $this->session->userdata('username');
-        
+        //  $username = $this->session->userdata('username'); 
         $result = $this->OffenseHead_model->insertproofargument();
+        
+      /*  if($result){
+            $result['success'] = true;
+            redirect(base_url() . 'index.php/OffenseHead');
+        }else{
+            $result['success'] = false;
+            redirect(base_url() . 'index.php/OffenseHead');
+        }*/
         echo json_encode($result);
     }
     
     
-   
+    
     
 }

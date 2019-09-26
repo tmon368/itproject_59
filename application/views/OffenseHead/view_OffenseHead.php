@@ -10,15 +10,7 @@
 <strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
 </center>
 <head>
-  <strong>
-        <div class="alert alert-success" role="alert" style="display: none;"></div>
-    </strong>
-    <strong>
-        <div class="alert alert-danger" role="alert" style="display: none;"></div>
-    </strong>
-    <strong>
-        <div class="alert alert-warning" role="alert" style="display: none;"></div>
-    </strong>
+ 
  
   <title>รายงานกระทำความผิด</title>
 <style> 
@@ -76,12 +68,12 @@
                            <div class="col-sm-12">
                             <div class="input-group">
                           <label class="label_txt">วันที่บันทึกหลักฐาน.  :&nbsp; </label>
-                          <input type="text" name="proof_ID" id="proof_ID">
+                         <input type="text" style="background-color:transparent;border:0px;"  name="proof_date" id="proof_date" value="<?php echo date('Y-m-d')?>">
                             <input type="hidden" name="report_ID" > 
                               <input type="hidden" name="S_ID" > 
                                 <input type="hidden" name="person_ID" > 
-                              
                               </div>
+                                   <br>
                           <div class="row">
                            <div class="col-sm-12">
                            <div class="input-group">
@@ -91,10 +83,11 @@
                            </div></div>
                           </div><br>
                           <div class="row">
-                           <div class="col-sm-10">
+                           <div class="col-sm-12">
                            <div class="input-group">
                            <label class="label_txt">แนบไฟล์หลักฐานการอุทธรณ์ความผิด :&nbsp; </label> 
-                           <input type="file" name="proof_name" id="proof_name">
+                           <input type="file" id="" name="img[]" class="form-control-file border" multiple>
+                            <input type="hidden" name="proof_name" id="proof_name">
                          
                           </div></div>
                            
@@ -273,6 +266,7 @@ $('#showdata').on('click', '.btnbutton', function() {
    // alert(id)
     $('#exampleModalCenter').modal('show');
     $('#formadd').attr('action',  '<?php echo base_url() ?>index.php/OffenseHead/insertproofargument');
+    
     $.ajax({
         type: 'ajax',
         method: 'get',
@@ -286,6 +280,8 @@ $('#showdata').on('click', '.btnbutton', function() {
             $('input[name=report_ID]').val(data.report_ID);
             $('input[name=S_ID]').val(data.S_ID);
             $('input[name=person_ID]').val(data.person_ID);
+     
+        
         },
         error: function() {
             alert('ไม่สามารถแก้ไขข้อมูล');
@@ -309,13 +305,13 @@ $('#btnSave').click(function() {
             async: false,
             dataType: 'json',
             success: function(response) {
-                if (response.success) {
+               if (response.success) {
                     $('#exampleModalCenter').modal('hide');
                     $('#formadd')[0].reset();
                     $('.alert-success').html('ยื่นอุธรณ์เรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
                    showAll();
                 } else {
-                    alert('Error');
+                  //  alert('Error');
                 }
             },
 
@@ -355,6 +351,8 @@ $('#showdata').on('click', '.btnSave', function() {
         	  $("#report_ID").html(data.report_ID);
               $("#S_ID").html(data.S_ID);
               $('#person_ID').html(data.person_ID);
+    
+             
         },
         error: function() {
             alert('ไม่สามารถลบข้อมูล');
@@ -424,6 +422,7 @@ $('#showdata').on('click', '.btnSave', function() {
            $('#off_desc').html(data.off_desc);
            $('#place_name').html(data.place_name);
            $('#evidenre_name').html(data.evidenre_name);
+           $('#proof_date').html(data.proof_date);
      
     
            $('.content').html(html);
@@ -467,6 +466,13 @@ $('#showdata').on('click', '.btnSave', function() {
           });
         }
       });
+
+
+    $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $('#proof_name').val(fileName);
+        //alert('The file "' + fileName +  '" has been selected.');
+    });
 
    function show_text(obj)
       {
