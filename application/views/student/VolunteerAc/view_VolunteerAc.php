@@ -209,7 +209,8 @@
                                 <!--  CONTENT -->
 
                                 <form action="" id="formupdate" name="formupdate" method="post">
-                                  
+                                           <input type="hidden" name="txteditID id="txteditID" class="form-control style_input">
+                                    <!--Auto id-->
                                    <div class="row">
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
@@ -543,7 +544,7 @@
                         $('input[name=start_time]').val(data.start_time);
                         $('input[name=end_time]').val(data.end_time);
                         $('input[name=received]').val(data.received);
-                        $('input[name=explanation]').val(data.explanation);
+                        $('textarea[name=explanation]').val(data.explanation);
                     },
                     error: function() {
                         alert('ไม่สามารถแก้ไขข้อมูล');
@@ -563,7 +564,7 @@
                 var start_time = $('input[name=start_time]');
                 var end_time = $('input[name=end_time]');
                 var received = $('input[name=received]');
-                var explanation = $('input[name=explanation]');
+                var explanation = $('textarea[name=explanation]');
                 var result = '';   
                 
                 if (service_ID.val() == '') {
