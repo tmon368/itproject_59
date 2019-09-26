@@ -6,6 +6,24 @@ class student_dashboard_model extends CI_Model {
         parent::_construct();
         
     }
+
+
+
+    public function selectstudentname(){
+        $student = $this->session->userdata('student');
+        $this->db->select('*');
+        $this->db->from('student');
+        $this->db->where('S_ID',$student);
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+        if($student > 0){
+            return $student;
+        }else{
+            return false;
+        }
+
+        }
     
     public function selectstudentstatus(){
         $i=0;
