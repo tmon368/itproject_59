@@ -216,7 +216,7 @@
                                 success: function(data) {
                                     
                                     //console.log(data);
-                                    temp_result.push(data);
+                                    //temp_result.push(data);
                                     //console.log(temp_result);
                                 }
                             });
