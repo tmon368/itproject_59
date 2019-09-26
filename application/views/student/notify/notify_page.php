@@ -536,10 +536,6 @@
                         $.each(data, function(key, value) {
 
 
-
-
-
-
                             i++;
                             html += '<tr>';
                             html += '<td>' + i + '</td>';
