@@ -329,7 +329,7 @@
 
         <script>
     $(document).ready(function() {
-    	selectstudentstatus();
+    	selectstudentname();
     	 v
 	 
         //$('[data-toggle="popover"]').popover();
@@ -340,7 +340,7 @@
     
 
       
-  function selectstudentstatus() {
+  function selectstudentname() {
               $.ajax({
                     type: 'ajax',
                     url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentname',
