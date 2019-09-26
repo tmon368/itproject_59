@@ -84,8 +84,8 @@ class OffenseHead_model extends CI_Model {
         'S_ID'=>$this->input->post('S_ID'),
         'person_ID'=>$this->input->post('person_ID'),
         'proof_name'=>$this->input->post('proof_name'),
-        'proof_date'=>$this->input->post('proof_ID'),
-        'Explanation'=>$this->input->post('Explanation'),
+        'proof_date'=>$this->input->post('proof_date'),
+        'explanation'=>$this->input->post('explanation'),
         'results'=> '0'
         
 
@@ -94,7 +94,7 @@ class OffenseHead_model extends CI_Model {
         //var_dump($field);
         //die();
        // $this->db->where('place_ID', $id);
-        $this->db->insert('proofargument', $field);
+        $this->db->insert('proofargument',$field);
         
         if($this->db->affected_rows() > 0){
             return true;
