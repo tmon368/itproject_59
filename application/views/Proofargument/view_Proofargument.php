@@ -35,7 +35,7 @@
   <div class="page-breadcrumb" id="nav_sty">
           <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">รายงานกระทำความผิด</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">รายงานตัวผู้กระทำความผิด</a></li>
                         <li class="breadcrumb-item active" aria-current="page">รายการอุทธรณ์ความผิด</li>
                   </ol>
           </nav>
@@ -99,6 +99,40 @@
 </div>
 
 <!--------------------------------->
+
+<!--Modal ส่วน del  -->
+
+  <div class="modal fade" id="dellfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!--ส่วนฟอร์มลบข้อมูล-->
+                            <form action="" id="formdelete" method="post" class="needs-validation">
+                                <div class="modal-body" id="showdel">
+
+                                    <!--ข้อความยืนยันการลบข้อมูล-->
+                                    <center>
+                                        <div id="showddel"></div>
+                                        <input type="hidden" name="delID">
+                                    </center>
+                                    <!------------------>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                    <button name="btndel" id="btndel" type="submit" class="btn btn-danger btn-fw">ลบ</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+  
 
 <!-- Modal ส่วน edit -->
 
@@ -214,7 +248,7 @@
                                                     <th>ฐานความผิด</th>
                                                     <th>สถานะการแย้ง</th>
                                                       <th>รายละเอียด</th>
-                                                        <th>หมายเหตุ</th>
+                                             
                                                        
                                                   
 
@@ -238,7 +272,7 @@
                                                     </td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td></td>
+                                              
 
                                                 </tr>
                                              
@@ -283,152 +317,87 @@ $("#proof_ID").change(function(){
         });
         return active_track;
     });
-//Add New
 
-$('#btnAdd').click(function() {
-        $('#exampleModalCenter').modal('show');
-        $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday1/addholiday');
-    });
-
-    $('#btnSave').click(function(){
-  var url = $('#formadd').attr('action');
-  var data = $('#formadd').serialize();
-  //validate form
-  var id = $('input[name=txtid]');
-  var name = $('input[name=txtname]');
-  var result = '';
-  
-  if(id.val()==''){
-    id.parent().parent().addClass('has-error');
-  }else{
-    id.parent().parent().removeClass('has-error');
-    result +='1';
-  }
-  if(name.val()==''){
-    name.parent().parent().addClass('has-error');
-  }else{
-    name.parent().parent().removeClass('has-error');
-    result +='2';
-  }
-
-  if(result=='12'){
-    $.ajax({
-      type: 'ajax',
-      method: 'post',
-      url: url,
-      data: data,
-      async: false,
-      dataType: 'json',
-      success: function(response){
-        if(response.success){
-          $('#exampleModalCenter').modal('hide');
-           //$(this).find('#formadd')[0].reset();
-           
-          $('#formadd')[0].reset();   
-          $('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-        //  $('#textkey').empty();      
-          //$('#msg1').empty();
-          showAll();
-        }else{
-          alert('Error');
-        }
-      },
-      error: function(){
-        alert('id นี้ถูกใช้งานแล้ว');
-        $('#exampleModalCenter').modal('hide');
-        $('#formadd')[0].reset();
-        //$('#nav_sty')[0].reset();   
-        $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
-        $('#msg1').empty();
-        showAll();
-      }
-    });
-  }
-});
-
-
-    // แก้ไขข้อมูล
-    $('#showdata').on('click', '.edit_data', function() {
+//ลบข้อมูล
+$('#showdata').on('click', '.dellfile', function() {
         var id = $(this).attr('data');
-        var popup = document.getElementById("editimage");
-        $('#edit_file').modal('show');
-     //  $('#formupdate').attr('action','<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead');
+        //alert(id)
+        $('#dellfile').modal('show');
+        $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/deleteVolunteerAc');
         $.ajax({
             type: 'ajax',
             method: 'get',
-          //  url: '<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead',
+          url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc',
             data: {
                 id: id
             },
             async: false,
             dataType: 'json',
             success: function(data) {
-                $('input[name=txteditID]').val(data.oc_ID);
-                $('input[name=txteditname]').val(data.oc_desc);
-
+                $('#showddel').html('ต้องการลบกิจกรรม   "' + data[0].service_name + '"');
+                $('input[name=delID]').val(data[0].service_ID );
             },
             error: function() {
-                alert('ไม่สามารถแก้ไขข้อมูล');
+                alert('ไม่สามารถลบข้อมูล');
             }
         });
     });
-    
-    $('#btnedit').click(function(){
-		var url = $('#formupdate').attr('action');
-		var data = $('#formupdate').serialize();
-		//validate form
-		var oc_ID = $('input[name=txteditID]');
-		var oc_desc = $('input[name=txteditname]');
-		var result = '';
-		
-		if(oc_ID.val()==''){
-			oc_ID.parent().parent().addClass('has-error');
-		}else{
-			oc_ID.parent().parent().removeClass('has-error');
-			result +='1';
-		}
-		if(oc_desc.val()==''){
-			oc_desc.parent().parent().addClass('has-error');
-		}else{
-			oc_desc.parent().parent().removeClass('has-error');
-			result +='2';
-		}
-		
 
-		
-		if(result=='12'){
-			$.ajax({
-				type: 'ajax',
-				method: 'post',
-				url: url,
-				data: data,
-				async: false,
-				dataType: 'json',
-				success: function(response){
-					if(response.success){
-						$('#edit_file').modal('hide');
-						$('#formupdate')[0].reset();		
-						$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-						showAll();
-					}else{
-						alert('Error');
-					}
-				},
-				
-				error: function(){
-					//alert('id นี้ถูกใช้งานแล้ว');
-					$('#edit_file').modal('hide');
-					$('#formupdate')[0].reset();		
-					$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-					showAll();
-				}
-			});
-		}
-	});
+
+
+    $('#btndel').click(function() {
+      
+        var url = $('#formdelete').attr('action');
+        var data = $('#formdelete').serialize();
+        var service_ID = $('input[name=delID]');
+        var result = '';
+
+        if (service_ID.val() == '') {
+        	service_ID.parent().parent().addClass('has-error');
+        } else {
+        	service_ID.parent().parent().removeClass('has-error');
+            result += '1';
+        }  
+        if (result == '1') {  
+            $.ajax({
+                type: 'ajax', 
+                method: 'post', 
+                url: url,
+                data: data,
+                async: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        $('#del_file').modal('hide');
+                        $('#formdelete')[0].reset();
+                        $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                        $('#formdelete').empty();
+                        show_all();
+                        
+                     
+                    } else {
+                        alert('Error');
+                    }
+                },
+
+                error: function() {
+                    //alert('id นี้ถูกใช้งานแล้ว');
+                    $('#del_file').modal('hide');
+                    $('#formdelete')[0].reset();
+                    $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
+                    show_all();
+
+                }
+            });
+        }
+    });
+
+
+
 
   
 
-  //delete- 
+  //select- 
     $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
     //  alert(id)
@@ -533,58 +502,7 @@ $('#btnAdd').click(function() {
           }
       });
 */
-/*
-      function selectstudentoffensehead() {
-          $.ajax({
-              type: 'ajax',
-              url: '<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead',
-              async: false,
-              dataType: 'json',
-              success: function(data) {
-            	$("#std_fname").html(data[0].std_fname);
-              	$("#std_lname").html(data[0].std_lname);
-              	$("#committed_date").html(data[0].committed_date);
-              	$("#committed_time").html(data[0].committed_time);
-              	$("#place_name").html(data[0].place_name); 
-              	$("#explanation").html(data[0].explanation);
-              	$("#off_desc").html(data[0].off_desc);      
-              	$("#evidenre_name").html(data[0].evidenre_name);    
-              	
 
-              },
-              error: function() {
-                  alert('ไม่มีข้อมูล');
-              }
-          });
-      }
-      */
-/*
-      function selectoffenseorder() {
-          $.ajax({
-              type: 'ajax',
-              url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
-              async: false,
-              dataType: 'json',
-              success: function(data) {
-            	$("#std_fname").html(data[0].std_fname);
-            	$("#std_lname").html(data[0].std_lname);
-            	$("#committed_date").html(data[0].committed_date);
-            	$("#committed_time	").html(data[0].committed_time	);
-            	$("#place_name").html(data[0].place_name); 
-              	$("#explanation ").html(data[0].explanation);
-              	$("#off_desc").html(data[0].off_desc); 
-             	$("#evidenre_name").html(data[0].evidenre_name);     
-        
-             	
-
-              },
-              error: function() {
-                  alert('ไม่มีข้อมูล');
-              }
-          });
-      }
-      */
-     //function
     function showAll(){
       $.ajax({
         type: 'ajax',
@@ -594,16 +512,31 @@ $('#btnAdd').click(function() {
         success: function(data){
           var html = '';
           var i;
+
+          
           for(i=0; i<data.length; i++){
+              if(data[i].results ==1){
+            	  html +='<tr>'+
+                  '<td>'+(i+1)+'</td>'+
+                  '<td>'+ data[i].proof_date +'</td>'+
+                  '<td>'+ data[i].off_desc +'</td>'+
+                  '<td align="center">'+ data[i].resultsname +'</td>'+
+                  '<td align="center"> <i style="color:rgba(67, 135, 254);font-size:1.5rem;" class="fa fa-file-text btn-fw del_data" data=' + data[i].proof_ID + '></i></td>' +
+                
+                  '</tr>';
+
+
+
+              }else{
             html +='<tr>'+
                   '<td>'+(i+1)+'</td>'+
                   '<td>'+ data[i].proof_date +'</td>'+
                   '<td>'+ data[i].off_desc +'</td>'+
-                  '<td align="center">'+ data[i].results +'</td>'+
+                  '<td align="center">'+ data[i].resultsname +'</td>'+
                   '<td align="center"> <i style="color:rgba(67, 135, 254);font-size:1.5rem;" class="fa fa-file-text btn-fw del_data" data=' + data[i].proof_ID + '></i></td>' +
-                  '<td align="center"><a href="#"><i class="fas fa-edit  btn-fw edit_data" style="color:#47307b;" data='+ data[i].proof_ID +'></i></a>&nbsp;<a href="#"><i class="fas fa-trash-alt btn-fw del_data" style="color:rgba(235,99,102,1.00)" data='+ data[i].oh_ID +'></i></a></td>'
-                  + 
+                 
                   '</tr>';
+              }
           }
           $('#showdata').html(html);
         },

@@ -41,7 +41,7 @@ class Proofargument_model extends CI_Model {
 
     public function utilstatus($statusID){
 
-        $data = array("รอการอนุมัติ","อนุมัติ","ไม่อนุมัติ");
+        $data = array("อนุมัติ","ไม่อนุมัติ");
         return $data[$statusID];
     } 
 
