@@ -80,7 +80,18 @@ class VolunteerAc_model extends CI_Model {
     }  
 
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
-    
+    public function checkkey(){
+        $service_ID = $this->input->post('service_ID');
+        $this->db->where('service_ID', $service_ID);
+        $query = $this->db->get('Service');
+        if($query->num_rows($query) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
     
     
     
@@ -122,17 +133,7 @@ class VolunteerAc_model extends CI_Model {
 
 }
     
-public function editVolunteerAc2(){
-    $id = $this->input->get('id');
-    $this->db->where('service_ID', $id);
-    $query = $this->db->get('Service');
-    if($query->result() > 0){
-        
-        return $query->result();
-    }else{
-        return false;
-    }
-}
+    //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable student
     public function editVolunteerAc(){
         $id = $this->input->get('id');
         $this->db->where('service_ID', $id);
@@ -143,7 +144,18 @@ public function editVolunteerAc2(){
             return false;
         }
     }
-   
+    public function editVolunteerAc2(){
+        $id = $this->input->get('id');
+        $this->db->where('service_ID', $id);
+        $query = $this->db->get('Service');
+        if($query->result() > 0){
+            
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    
     //ฟังก์ชันอัพเดตข้อมูลในtable student
     public function updateVolunteerAc(){
         $id = $this->input->post('txteditID');

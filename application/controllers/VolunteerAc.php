@@ -45,11 +45,11 @@ class VolunteerAc extends Student_dashboard {
 		$result = $this->VolunteerAc_model->editVolunteerAc();
 		echo json_encode($result);
     }
-
     public function editVolunteerAc2(){
         $result = $this->VolunteerAc_model->editVolunteerAc2();
         echo json_encode($result);
     }
+  
 
     public function deleteVolunteerAc(){
 	    $result = $this->VolunteerAc_model->deleteVolunteerAc();
@@ -88,6 +88,12 @@ class VolunteerAc extends Student_dashboard {
       echo json_encode($result);
     }  
     
+    
+    
+    function check_id(){
+      $result = $this->VolunteerAc_model->check_id();
+      echo json_encode($result);
+    }
 
     
     function selectperson(){

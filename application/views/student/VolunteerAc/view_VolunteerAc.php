@@ -2,7 +2,6 @@
 <html lang="en">
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
@@ -213,13 +212,14 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                 <form action="" id="formupdate" method="post" class="needs-validation">
-                                        
+                                <form action="" id="formupdate" name="formupdate" method="post">
+                                           <input type="hidden" name="txteditID id="txteditID" class="form-control style_input">
+                                    <!--Auto id-->
                                    <div class="row">
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ชื่อกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;
-                                         <input type="text" name="editservice_name" id="editservice_name"class=" form-control style_input" style="width:300px;" >
+                                         <input type="text" name="editservice_name" id="editservice_name" class=" form-control style_input" style="width:300px;" >
                                             </div>
                                         </div>
                                     </div>  
@@ -344,7 +344,7 @@
     <script>
     $(document).ready(function() {
 
- 
+      
         show_all();
        
         function show_all() {
@@ -371,7 +371,7 @@
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
-                        html += '<td><a href="javascript:;" data='+ value.service_ID+  ' class="edit_data"><i class="fas fa-edit " style="color:rgba(235,99,102,1.00)"></i></a><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
+                        html += '<td><a href="javascript:;" data='+ value.service_ID +' class="edit_data"><i class="fas fa-edit " style="color:rgba(235,99,102,1.00)"></i></a><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
                         html += '</tr>'
                         $('#showdata').html(html); 
                    
@@ -395,7 +395,8 @@
         }
 
      
-    }); 
+    }); //End Ready function
+
     $('#add_persennel').typeahead({
 
         source: function(query, result) {
@@ -509,7 +510,6 @@
                             $('#formdelete')[0].reset();
                             $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
                             location.reload();
-
                         }
                     });
                 }
@@ -535,12 +535,12 @@
                     success: function(data) {
                         $('input[name=txteditID]').val(data.service_ID);
                         $('input[name=editservice_name]').val(data.service_name);
+                        $('input[name=editperson_ID]').val(data.person_ID);
+                        $('input[name=editplace]').val(data.place);
                         $('input[name=editservice_date]').val(data.service_date);
                         $('input[name=editstart_time]').val(data.start_time);
                         $('input[name=editend_time]').val(data.end_time);
                         $('input[name=editreceived]').val(data.received);
-                        $('input[name=editplace]').val(data.place);
-                        $('input[name=editperson_ID]').val(data.person_ID);
                         $('textarea[name=editexplanation]').val(data.explanation);
                     },
                     error: function() {
@@ -553,15 +553,15 @@
             	var url = $('#formupdate').attr('action');
     			var data = $('#formupdate').serialize();
     			//validate form
-                var service_ID = $('input[name=edittxteditID]');
+                var service_ID = $('input[name=txteditID]');
                 var service_name = $('input[name=editservice_name]');
+                var person_ID = $('input[name=editperson_ID]');
+                var place = $('input[name=editplace]');
                 var service_date = $('input[name=editservice_date]');
                 var start_time = $('input[name=editstart_time]');
                 var end_time = $('input[name=editend_time]');
                 var received = $('input[name=editreceived]');
-                var place = $('input[name=editplace]');  
-                var person_ID = $('input[name=editperson_ID]');
-                var explanation = $('textarea[name=editexplanation]');
+                var explanation = $('textarea[name=explanation]');
                 var result = '';   
                 
                 if (service_ID.val() == '') {
@@ -576,42 +576,42 @@
                 	service_name.parent().parent().removeClass('has-error');
                     result += '2';
                 }
+                if ( person_ID.val() == '') {
+                	 person_ID.parent().parent().addClass('has-error');
+                } else {
+                	 person_ID.parent().parent().removeClass('has-error');
+                    result += '3';
+                }
+                if ( place.val() == '') {
+                	place.parent().parent().addClass('has-error');
+               } else {
+            	   place.parent().parent().removeClass('has-error');
+                   result += '4';
+               }
                 if ( service_date.val() == '') {
                 	service_date.parent().parent().addClass('has-error');
                } else {
             	   service_date.parent().parent().removeClass('has-error');
-                   result += '3';
+                   result += '5';
                }
                 if ( start_time.val() == '') {
                 	start_time.parent().parent().addClass('has-error');
                } else {
             	   start_time.parent().parent().removeClass('has-error');
-                   result += '4';
+                   result += '6';
                }
                 if ( end_time.val() == '') {
                 	end_time.parent().parent().addClass('has-error');
                } else {
             	   end_time.parent().parent().removeClass('has-error');
-                   result += '5';
+                   result += '7';
                }
                 if ( received.val() == '') {
                 	received.parent().parent().addClass('has-error');
                } else {
             	   received.parent().parent().removeClass('has-error');
-                   result += '6';
+                   result += '8';
                }
-                if ( place.val() == '') {
-                	place.parent().parent().addClass('has-error');
-               } else {
-            	   place.parent().parent().removeClass('has-error');
-                   result += '7';
-               }
-                if ( person_ID.val() == '') {
-                	 person_ID.parent().parent().addClass('has-error');
-                } else {
-                	 person_ID.parent().parent().removeClass('has-error');
-                    result += '8';
-                }    
                 if ( explanation.val() == '') {
                 	explanation.parent().parent().addClass('has-error');
                } else {
