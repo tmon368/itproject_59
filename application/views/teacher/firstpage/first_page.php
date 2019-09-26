@@ -49,7 +49,7 @@
 			<!--   <table class="table table-hover m-b-5">  -->
 			<center> จำนวนนักศึกษาที่กระทำผิด <br>
  			 <i class="material-icons">people</i><br>
- 			<div id="showscorestudent" name="showscorestudent"></div><br><br>
+ 			<div id="showscorestudent" name="showscorestudent"></div><br>
  			<!-- ตั้ง id name  -->
  			ค้นหาความผิดของนักศึกษารายบุคคล<br>
  			
@@ -113,15 +113,28 @@ $(document).ready(function() {
                     var html = '';
                     var n=1;
                     var i;
-                    for (i = 0; i < data.length; i++) {
+                    var count='5';
+                    
+                    if (data.length < count){
                         
-                    	html += '<div class="bggreen">' + n + '.' +
-                    	data[i].std_fname  + '&nbsp;'    + data[i].std_lname + '<br>'+ 'คะแนนคงเหลือ'
-                    	  +  '&nbsp;' +
-                    	data[i].behavior_score+    '&nbsp;' +   'คะแนน'    +  '</div>';
-
-                    	 n+=1;
+                    	for (i = 0; i < data.length; i++) {                        
+                    		html += '<div class="bggreen">' + n + '.' +
+                    		data[i].std_fname  + '&nbsp;'    + data[i].std_lname + '<br>'+ 'คะแนนคงเหลือ'
+                    	 	 +  '&nbsp;' +
+                    		data[i].behavior_score+    '&nbsp;' +   'คะแนน'    +  '</div>';
+                    		 n+=1;
+                   	 }
                     }
+                    else{
+                        for (i=0; i < 5 ; i++) {
+                        	html += '<div class="bggreen">' + n + '.' +
+                    		data[i].std_fname  + '&nbsp;'    + data[i].std_lname + '<br>'+ 'คะแนนคงเหลือ'
+                    	 	 +  '&nbsp;' +
+                    		data[i].behavior_score+    '&nbsp;' +   'คะแนน'    +  '</div>';
+                    		 n+=1;  
+                     }
+                    }
+                    
                     $('#showdata').html(html);
           //$('#dataall').html(num-1);//
       },
@@ -364,3 +377,4 @@ chart.render();
  </body> 					
 
 </html>
+
