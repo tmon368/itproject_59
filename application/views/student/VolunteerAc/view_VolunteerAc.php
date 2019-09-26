@@ -5,7 +5,11 @@
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
-
+<center>
+<strong><div  class="alert alert-success" role="alert" style="display: none;"></div></strong>
+<strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
+<strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
+</center>
 
 <head>
 
@@ -477,7 +481,7 @@
               
                 var url = $('#formdelete').attr('action');
                 var data = $('#formdelete').serialize();
-                varservice_ID = $('input[name=delID]');
+                var service_ID = $('input[name=delID]');
                 var result = '';
 
                 if (service_ID.val() == '') {
@@ -499,7 +503,8 @@
                                 $('#del_file').modal('hide');
                                 $('#formdelete')[0].reset();
                                 $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-                                //$('#formdelete').empty();
+                                $('#formdelete').empty();
+                                show_all();
                                 
                              
                             } else {
@@ -512,7 +517,8 @@
                             $('#del_file').modal('hide');
                             $('#formdelete')[0].reset();
                             $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
-            
+                            show_all();
+
                         }
                     });
                 }

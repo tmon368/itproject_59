@@ -52,10 +52,10 @@ class VolunteerAc extends Student_dashboard {
 	    $result = $this->VolunteerAc_model->deleteVolunteerAc();
 		if($result){
         $msg['success'] = true;     
-        redirect(base_url() . 'index.php/VolunteerAc');
+        //redirect(base_url() . 'index.php/VolunteerAc');
 		}else{
 		    $msg['success'] = false;
-		    redirect(base_url() . 'index.php/VolunteerAc');
+		    //redirect(base_url() . 'index.php/VolunteerAc');
 		}
 		echo json_encode($msg);
 	}
@@ -83,9 +83,14 @@ class VolunteerAc extends Student_dashboard {
     function showdetail(){
       $result = $this->VolunteerAc_model->showdetail();
       echo json_encode($result);
-    }
+    }  
     
-
+    
+    
+    function check_id(){
+      $result = $this->VolunteerAc_model->check_id();
+      echo json_encode($result);
+    }
 
     
     function selectperson(){
