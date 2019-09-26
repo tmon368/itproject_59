@@ -49,6 +49,13 @@ class Student_dashboard extends CI_Controller {
 	    $result = $this->model->selectdetailfirstpage();
 	    echo json_encode($result);
 	}
+
+	function selectstudentpoint(){
+	    
+	    
+	    $result = $this->model->selectstudentpoint();
+	    echo json_encode($result);
+	}
 	/*
 	function selectstudent(){
 	   // $username = $this->session->userdata('username');

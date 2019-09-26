@@ -1,6 +1,6 @@
 <?php
 
-class Voluunteer_history_model extends CI_Model {
+class Volunteer_history_model extends CI_Model {
     public function _construct()
     {
         parent::_construct();

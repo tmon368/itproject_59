@@ -47,9 +47,10 @@
 		<div class="breadcrumb">
  		<!--  <div class="table-responsive"> -->
 			<!--   <table class="table table-hover m-b-5">  -->
-			<center> จำนวนนักศึกษาที่กระทำผิด <br> <br>
+			<center> จำนวนนักศึกษาที่กระทำผิด <br>
  			 <i class="material-icons">people</i><br>
- 			<span>222</span><br><br>
+ 			<div id="showscorestudent" name="showscorestudent"></div><br><br>
+ 			<!-- ตั้ง id name  -->
  			ค้นหาความผิดของนักศึกษารายบุคคล<br>
  			
  			<form autocomplete="off" action="/action_page.php">
@@ -60,22 +61,89 @@
 			</center><br>
 			<center>
 			นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ <br>
-			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
-			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
-			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
-			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
-			<div class="bggreen"> 1. <i class="material-icons">person</i> นางสาวปภัสรา ไวภารา <br>คะแนนที่เหลือ 70 คะแนน  </div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+				
+				
+				<div  id="showdata" > 
+			
+			
+			
+			</div>
+			</div>
+			</div>
+		
+		
 			</center>
- 			
+			 แสดงรายชื่อเพิ่มเติม  
  		
 		</div>
 		</div>
 		</div>
+<script>
+
+$(document).ready(function() {
+	selectstudentall();
+	selectscorestudent();
+
+	function selectscorestudent() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/Teacher_dashboard/selectscorestudent',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+               // alert(data)
+            	$('#showscorestudent').html(data.numberstudent);
+             
+            },
+            error: function() {
+                alert('ไม่มีข้อมูล');
+            }
+        });
+    }
+	  function selectstudentall() {
+          $.ajax({
+                type: 'ajax',
+                url: '<?php echo base_url() ?>index.php/Teacher_dashboard/selectstudentall',
+                async: false,
+                dataType: 'json',
+                success: function(data) { // console.log(data); 
+                    var html = '';
+                    var n=1;
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        
+                    	html += '<div class="bggreen">' + n + '.' +
+                    	data[i].std_fname  + '&nbsp;'    + data[i].std_lname + '<br>'+ 'คะแนนคงเหลือ'
+                    	  +  '&nbsp;' +
+                    	data[i].behavior_score+    '&nbsp;' +   'คะแนน'    +  '</div>';
+
+                    	 n+=1;
+                    }
+                    $('#showdata').html(html);
+          //$('#dataall').html(num-1);//
+      },
+      error: function() {
+          alert('ไม่มีข้อมูล');
+      }
+          });
+}
+  });
+  
+
+
+
+</script>
+	
+	
 	</div>
 	<div class="col-sm-4">
  		<div class="card comp-card">
  		<div class="card-body">
 		<div class="breadcrumb">
+		จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของอาจารย์ที่ปรึกษา
 		<!--  <div class="table-responsive"> -->
 		
 		
@@ -89,9 +157,9 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	title: {
-		text: "จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของอาจารย์ที่ปรึกษา"
-	},
+	//title: {
+		//text: "จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของอาจารย์ที่ปรึกษา"
+	//},
 	axisY: {
 		title: "จำนวนคน",
 		//suffix: "",
@@ -128,7 +196,10 @@ chart.render();
  		<div class="card-body">
 		<div class="breadcrumb">
 		<!--  <div class="table-responsive"> -->
-		กหอกอสวก่รื
+
+
+
+
 		</div>
 		</div>
 		</div>
@@ -142,6 +213,13 @@ chart.render();
 <br>
 <body>
  <script >
+ 
+ 
+ // สร้างฟังก์ชัน
+ ส่งค่าที่รับไป ยังid name ที่ตั้งไว้
+ 
+ 
+ 
  window.onload = function () {
 
 	 var totalVisitors = 883000;
@@ -268,6 +346,7 @@ chart.render();
 <script  src="../re/js/jquery.canvasjs.min.js"></script> -->
  <!--  </table>  -->
  <style> 
+ 
 .bggreen
 {
  background-color: #99FF99	;
@@ -276,8 +355,8 @@ chart.render();
     border: 15px;
     margin: 15px;
 }
-</style>
 
+</style>
 
  </div>
  

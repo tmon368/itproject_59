@@ -159,9 +159,9 @@ class VolunteerAc_model extends CI_Model {
              'service_date'=>$this->input->post('service_date'),
              'start_time'=>$this->input->post('start_time'),
              'end_time'=>$this->input->post('end_time'),
-             'status'=>'0',
+             //'status'=>'0',
              'received'=>$this->input->post('received'),
-             'number_of'=>'50',
+            // 'number_of'=>'0',
             //'results'=>$this->input->post('results'),
              //'annotation'=>$this->input->post('annotation'),
              //'document_file'=>$this->input->post('document_file'),
@@ -169,7 +169,7 @@ class VolunteerAc_model extends CI_Model {
      
          );
         $this->db->where('service_ID', $id);
-        $this->db->update('Service', $field);
+        $this->db->update('service', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
@@ -180,10 +180,10 @@ class VolunteerAc_model extends CI_Model {
 
     //ฟังก์ชันลบข้อมูลในtable student
     function deleteVolunteerAc(){
-        $id = $this->input->post('txtdelID');
-        
-        $this->db->where('service_ID', $id);
-        $this->db->delete('Service');
+        $sid = $this->input->post('delID');
+
+        $this->db->where('service_ID', $sid);
+        $this->db->delete('service');
         //$this->db->update('Service', $field);
         if($this->db->affected_rows() > 0){
             return true;
@@ -277,6 +277,22 @@ class VolunteerAc_model extends CI_Model {
         }else{
             return false;
         }
+    }
+
+
+    
+    function check_id (){
+        
+        $query = $this->db->query('SELECT MAX(service_ID) AS service_ID FROM service');
+        
+  
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+  
+  
     }
     
 }

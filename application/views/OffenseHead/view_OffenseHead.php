@@ -11,6 +11,7 @@
 </center>
 <head>
  
+ 
   <title>รายงานกระทำความผิด</title>
 <style> 
         input.largerCheckbox { 
@@ -67,8 +68,12 @@
                            <div class="col-sm-12">
                             <div class="input-group">
                           <label class="label_txt">วันที่บันทึกหลักฐาน.  :&nbsp; </label>
-                          <input type="text" name="proof_ID" id="proof_ID">
+                         <input type="text" style="background-color:transparent;border:0px;"  name="proof_date" id="proof_date" value="<?php echo date('Y-m-d')?>">
+                            <input type="hidden" name="report_ID" > 
+                              <input type="hidden" name="S_ID" > 
+                                <input type="hidden" name="person_ID" > 
                               </div>
+                                   <br>
                           <div class="row">
                            <div class="col-sm-12">
                            <div class="input-group">
@@ -78,9 +83,11 @@
                            </div></div>
                           </div><br>
                           <div class="row">
-                           <div class="col-sm-10">
+                           <div class="col-sm-12">
                            <div class="input-group">
                            <label class="label_txt">แนบไฟล์หลักฐานการอุทธรณ์ความผิด :&nbsp; </label> 
+                           <input type="file" id="" name="img[]" class="form-control-file border" multiple>
+                            <input type="hidden" name="proof_name" id="proof_name">
                          
                           </div></div>
                            
@@ -253,37 +260,142 @@ $("#edit_file").modal("show");
   
 showAll();
 
+
+$('#showdata').on('click', '.btnbutton', function() {
+    var id = $(this).attr('data');
+   // alert(id)
+    $('#exampleModalCenter').modal('show');
+    $('#formadd').attr('action',  '<?php echo base_url() ?>index.php/OffenseHead/insertproofargument');
+    
+    $.ajax({
+        type: 'ajax',
+        method: 'get',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
+        data: {
+            id: id
+        },
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+            $('input[name=report_ID]').val(data.report_ID);
+            $('input[name=S_ID]').val(data.S_ID);
+            $('input[name=person_ID]').val(data.person_ID);
+     
+        
+        },
+        error: function() {
+            alert('ไม่สามารถแก้ไขข้อมูล');
+        }
+    });
+});
+
+
+$('#btnSave').click(function() {
+    var url = $('#formadd').attr('action');
+    var data = $('#formadd').serialize();
+
+   // var result = '';
+
+
+        $.ajax({
+            type: 'ajax',
+            method: 'post',
+            url: url,
+            data: data,
+            async: false,
+            dataType: 'json',
+            success: function(response) {
+               if (response.success) {
+                    $('#exampleModalCenter').modal('hide');
+                    $('#formadd')[0].reset();
+                    $('.alert-success').html('ยื่นอุธรณ์เรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                   showAll();
+                } else {
+                  //  alert('Error');
+                }
+            },
+
+            error: function() {
+                //alert('id นี้ถูกใช้งานแล้ว');
+                $('#edit_file').modal('hide');
+                $('#formadd')[0].reset();
+                $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
+                showAll();
+            }
+        });
+    
+});
+
+
+
+
+
+
+$('#showdata').on('click', '.btnSave', function() {
+    var id = $(this).attr('data');
+    $('#exampleModalCenter').modal('show');
+    //prevent previous handler - unbind()
+    $('#formadd').attr('action',
+        '<?php echo base_url() ?>index.php/OffenseHead/insertproofargument');
+    $.ajax({
+        type: 'ajax',
+        method: 'get',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
+        data: {id: id},
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+        	 // alert(data);
+        	 console.log(data)
+           // $('#showddel').html('ต้องการลบหมวดความผิด   "' + data.oc_desc + '"');
+        	  $("#report_ID").html(data.report_ID);
+              $("#S_ID").html(data.S_ID);
+              $('#person_ID').html(data.person_ID);
+    
+             
+        },
+        error: function() {
+            alert('ไม่สามารถลบข้อมูล');
+        }
+    });
+});
+
+
+
+
+/*
 //เพิ่มข้อมูล
  $('#btnbutton').click(function() {    
         $('#exampleModalCenter').modal('show');
+        var id = $(this).attr('data');
+        alert(id)
        
     });
+*/
 
+// $('#btnSave').click(function() {
 
- $('#btnSave').click(function() {
-
-     var form_data = $('#formadd').serialize();
-     console.log(form_data);
+ //    var form_data = $('#formadd').serialize();
+ //    console.log(form_data);
      
-     $.ajax({
-         type: 'ajax',
-         method: 'post',
-         url: '<?php echo site_url("OffenseHead/insertproofargument") ?>',
-         data: form_data,
-         async: false,
+ //    $.ajax({
+  //       type: 'ajax',
+  //       method: 'post',
+   //      url: '<?php echo site_url("OffenseHead/insertproofargument") ?>',
+  //       data: form_data,
+  //       async: false,
          /*dataType: 'json',*/
-         success: function(data) {
-             alert(data);
+  //       success: function(data) {
+  //         alert(data);
           
              //alert("Sucess updata !!")
-             location.reload();
-         }
+   //          location.reload();
+ //        }
+//
+ //    });
 
-     });
-
- });
-
-    
+// });
+ 
     //delete- 
     $('#showdata').on('click', '.del_data', function(){
       var id = $(this).attr('data');
@@ -310,6 +422,7 @@ showAll();
            $('#off_desc').html(data.off_desc);
            $('#place_name').html(data.place_name);
            $('#evidenre_name').html(data.evidenre_name);
+           $('#proof_date').html(data.proof_date);
      
     
            $('.content').html(html);
@@ -354,7 +467,14 @@ showAll();
         }
       });
 
-      function show_text(obj)
+
+    $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $('#proof_name').val(fileName);
+        //alert('The file "' + fileName +  '" has been selected.');
+    });
+
+   function show_text(obj)
       {
 
       if(obj.checked)
@@ -367,8 +487,7 @@ showAll();
       }
 
       }
-
-      function check_click()
+   function check_click()
       {
       if(document.getElementById('checkbox1').checked==true)
       {
