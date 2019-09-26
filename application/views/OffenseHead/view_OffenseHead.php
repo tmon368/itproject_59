@@ -86,8 +86,8 @@
                            <div class="col-sm-12">
                            <div class="input-group">
                            <label class="label_txt">แนบไฟล์หลักฐานการอุทธรณ์ความผิด :&nbsp; </label> 
-                           <input type="file" id="" name="img[]" class="form-control-file border" multiple>
-                            <input type="hidden" name="proof_name" id="proof_name">
+                           <input type="file" name="proof_name" id="proof_name">
+                          
                          
                           </div></div>
                            
@@ -468,12 +468,7 @@ $('#showdata').on('click', '.btnSave', function() {
       });
 
 
-    $('input[type="file"]').change(function(e) {
-        var fileName = e.target.files[0].name;
-        $('#proof_name').val(fileName);
-        //alert('The file "' + fileName +  '" has been selected.');
-    });
-
+   
    function show_text(obj)
       {
 
