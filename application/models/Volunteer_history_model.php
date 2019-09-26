@@ -9,8 +9,8 @@ class Volunteer_history_model extends CI_Model {
  
     function showAll(){
         $i=0;
-       // $student = $this->session->userdata('student');
-        $student =59123456;
+       $student = $this->session->userdata('student');
+        //$student =59123456;
 
         $this->db->select('*');
         $this->db->from('service sv');
