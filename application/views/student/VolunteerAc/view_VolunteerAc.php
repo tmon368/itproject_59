@@ -640,7 +640,7 @@
     						}
     					},
     					
-    					
+    					 
     					error: function(){
     						//alert('id นี้ถูกใช้งานแล้ว');
     						$('#edit_file').modal('hide');
