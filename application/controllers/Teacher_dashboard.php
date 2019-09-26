@@ -52,6 +52,11 @@ class Teacher_dashboard extends CI_Controller {
 	    $result = $this->teacher_dashboard_model->selectscorestudent();
 	    echo json_encode($result);
 	}
+	function student_offense(){
+	    
+	    $result = $this->teacher_dashboard_model->student_offense();
+	    echo json_encode($result);
+	}
 
 	/*
 	function selectstudent(){
