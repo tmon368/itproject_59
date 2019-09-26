@@ -215,8 +215,8 @@
                                 dataType: 'json',
                                 success: function(data) {
                                     
+                                    temp_result.push(data); //เก็บค่าลง Array
                                     //console.log(data);
-                                    //temp_result.push(data);
                                     //console.log(temp_result);
                                 }
                             });
@@ -233,18 +233,14 @@
                         });
 
                         //after show data sucess
-                        // $("#btnregis1").attr("disabled", true); //disabled button
-                        //console.log(id_count);//check count id
-                        //console.log(temp_result); //check value id
-                        
-                        
-                        
+                 
                         //loop result 
-                        for(j=0; j < temp_result.length; j++){
-                            
+                        for(j=0; j < temp_result.length; j++){                            
                             //loop button id
                             for (k=0; k <= id_count; k++ ){
-                                
+
+
+                                //เช็คว่าผู้ใช้เคยลงทะเบียนกิจกรรมหรือยัง
                                 if (j == k && temp_result[j] == true){
 
                                     $('#btnregis'+ k +'').attr("disabled", true); //disabled button
@@ -283,9 +279,9 @@
             $('.show_data').on('click', '.btn_submit', function() {
 
                 var id = $(this).attr('data'); //Get Sevice id 
-
+                
                 //console.log(id);
-
+                
 
                 $.ajax({
                     type: 'ajax',
@@ -297,8 +293,9 @@
                     async: false,
                     dataType: 'json',
                     success: function(data) {
-                        $('.btn_submit').attr("disabled", true); //disabled button
-                        $('.btn_submit').text('การลงทะเบียนสำเร็จ'); //change text
+                        //$('.btn_submit').attr("disabled", true); //disabled button
+                        //$('.btn_submit').text('การลงทะเบียนสำเร็จ'); //change text
+                        alert('ลงทะเบียนสำเร็จ');
                         location.reload();
 
                     },
