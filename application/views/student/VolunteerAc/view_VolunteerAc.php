@@ -212,14 +212,14 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <form action="" id="formupdate" name="formupdate" method="post">
-                                           <input type="hidden" name="txteditID id="txteditID" class="form-control style_input">
+                                 <form action="" id="formupdate" method="post" class="needs-validation">
+                                           <input type="hidden" name="txteditID "id="txteditID" class="form-control style_input">
                                     <!--Auto id-->
                                    <div class="row">
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ชื่อกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;
-                                         <input type="text" name="service_name" id="service_name" class=" form-control style_input" style="width:300px;" >
+                                         <input type="text" name="service_name"  id="service_name"class=" form-control style_input" style="width:300px;" >
                                             </div>
                                         </div>
                                     </div>  
@@ -229,7 +229,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-inline"><label for="">วันที่จัดกิจกรรม<label> 
                                             <font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="date" name="service_date" id="service_date" class="form-control style_input">
+                                            <input type="date" name="service_date"  class="form-control style_input">
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
@@ -261,7 +261,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="person_ID" id="add_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
+                                            <input type="text" name="person_ID" id="editadd_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
                                           <input type="hidden" name="person_ID" id="person_ID">
                                             </div>
                                         </div>
@@ -344,7 +344,7 @@
     <script>
     $(document).ready(function() {
 
-        check_id();
+ 
         show_all();
        
         function show_all() {
@@ -371,7 +371,7 @@
                         html += '<td>'+value.person_fname  + "  "+ value.person_lname +'</td>';
                         html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                         html += '<td>' +value.statusname+ '</td>';
-                        html += '<td><a href="javascript:;" data='+ value.service_ID +' class="edit_data"><i class="fas fa-edit " style="color:rgba(235,99,102,1.00)"></i></a><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
+                        html += '<td><a href="javascript:;" data='+ value.service_ID+  ' class="edit_data"><i class="fas fa-edit " style="color:rgba(235,99,102,1.00)"></i></a><a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';                      
                         html += '</tr>'
                         $('#showdata').html(html); 
                    
@@ -394,38 +394,8 @@
             });
         }
 
-        //check id and create id
-        function check_id() {
-
-           
-            //console.log(typeof Runnning_num); //check type
-
-            $.ajax({
-
-                type: 'POST',
-                url: '<?php echo site_url("VolunteerAC/showAll") ?>',
-                //data: 'S_ID=' + idstd,
-                dataType: 'json',
-                success: function(data) {
-                    //alert("Having Data...");
-                    if (data == 0) {
-                        //console.log("NULL");
-                        
-                        $('#service_ID').val(title + BE + Runnning_num);
-                    }
-
-
-
-
-                },
-                error: function() {
-                    alert('No Data');
-                }
-
-            });
-        }
-    }); //End Ready function
-
+     
+    }); 
     $('#add_persennel').typeahead({
 
         source: function(query, result) {
@@ -448,7 +418,28 @@
 
 
     });
+    $('#editadd_persennel').typeahead({
 
+        source: function(query, result) {
+            $.ajax({
+                url: "<?php echo site_url('VolunteerAC/selectperson') ?>",
+                method: "POST",
+                data: {
+                    query: query
+                },
+                dataType: "json",
+                success: function(data) {
+                    
+                    result($.map(data, function(item) {
+                        $('#person_ID').val(item.person_ID);
+     	                return item.person_fname+' '+item.person_lname; 
+                    }));
+                }
+            })
+        }
+
+
+    });
   //ลบข้อมูล
         $('#showdata').on('click', '.del_data', function() {
                 var id = $(this).attr('data');
@@ -535,7 +526,7 @@
                 $.ajax({
                     type: 'ajax',
                     method: 'get',
-                    url: '<?php echo base_url() ?>index.php/VolunteerAc/ editVolunteerAc',
+                    url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc',
                     data: {
                         id: id
                     },
@@ -544,12 +535,12 @@
                     success: function(data) {
                         $('input[name=txteditID]').val(data.service_ID);
                         $('input[name=service_name]').val(data.service_name);
-                        $('input[name=person_ID]').val(data.person_ID);
-                        $('input[name=place]').val(data.place);
                         $('input[name=service_date]').val(data.service_date);
                         $('input[name=start_time]').val(data.start_time);
                         $('input[name=end_time]').val(data.end_time);
                         $('input[name=received]').val(data.received);
+                        $('input[name=place]').val(data.place);
+                        $('input[name=person_ID]').val(data.person_ID);
                         $('textarea[name=explanation]').val(data.explanation);
                     },
                     error: function() {
@@ -564,12 +555,12 @@
     			//validate form
                 var service_ID = $('input[name=txteditID]');
                 var service_name = $('input[name=service_name]');
-                var person_ID = $('input[name=person_ID]');
-                var place = $('input[name=place]');
                 var service_date = $('input[name=service_date]');
                 var start_time = $('input[name=start_time]');
                 var end_time = $('input[name=end_time]');
                 var received = $('input[name=received]');
+                var place = $('input[name=place]');  
+                var person_ID = $('input[name=person_ID]');
                 var explanation = $('textarea[name=explanation]');
                 var result = '';   
                 
@@ -585,42 +576,42 @@
                 	service_name.parent().parent().removeClass('has-error');
                     result += '2';
                 }
-                if ( person_ID.val() == '') {
-                	 person_ID.parent().parent().addClass('has-error');
-                } else {
-                	 person_ID.parent().parent().removeClass('has-error');
-                    result += '3';
-                }
-                if ( place.val() == '') {
-                	place.parent().parent().addClass('has-error');
-               } else {
-            	   place.parent().parent().removeClass('has-error');
-                   result += '4';
-               }
                 if ( service_date.val() == '') {
                 	service_date.parent().parent().addClass('has-error');
                } else {
             	   service_date.parent().parent().removeClass('has-error');
-                   result += '5';
+                   result += '3';
                }
                 if ( start_time.val() == '') {
                 	start_time.parent().parent().addClass('has-error');
                } else {
             	   start_time.parent().parent().removeClass('has-error');
-                   result += '6';
+                   result += '4';
                }
                 if ( end_time.val() == '') {
                 	end_time.parent().parent().addClass('has-error');
                } else {
             	   end_time.parent().parent().removeClass('has-error');
-                   result += '7';
+                   result += '5';
                }
                 if ( received.val() == '') {
                 	received.parent().parent().addClass('has-error');
                } else {
             	   received.parent().parent().removeClass('has-error');
-                   result += '8';
+                   result += '6';
                }
+                if ( place.val() == '') {
+                	place.parent().parent().addClass('has-error');
+               } else {
+            	   place.parent().parent().removeClass('has-error');
+                   result += '7';
+               }
+                if ( person_ID.val() == '') {
+                	 person_ID.parent().parent().addClass('has-error');
+                } else {
+                	 person_ID.parent().parent().removeClass('has-error');
+                    result += '8';
+                }    
                 if ( explanation.val() == '') {
                 	explanation.parent().parent().addClass('has-error');
                } else {
