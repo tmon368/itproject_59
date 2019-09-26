@@ -8,6 +8,7 @@ class Proofargument_model extends CI_Model {
     }
     
     public function selectstudentproofargument(){
+        $i=0;
         $student = $this->session->userdata('student');
         $this->db->select('*');
         $this->db->from('proofargument pfm');
@@ -20,6 +21,15 @@ class Proofargument_model extends CI_Model {
         $student = array();
         $student = $query->result_array();
         
+        foreach($student as $value){
+            
+            $data = $value['results'];
+            $status = $this->utilstatus($data);
+            $student[$i]["resultsname"] = $status;
+            $i+=1;
+
+        }
+        
         
         
         if($student > 0){
@@ -28,6 +38,13 @@ class Proofargument_model extends CI_Model {
             return false;
         }
     }
+
+    public function utilstatus($statusID){
+
+        $data = array("รอการอนุมัติ","อนุมัติ","ไม่อนุมัติ");
+        return $data[$statusID];
+    } 
+
   
     public function selectoffenseorder(){
         
