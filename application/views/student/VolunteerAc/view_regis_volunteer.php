@@ -49,10 +49,15 @@
         .show_data {
             font-family: 'Sarabun', sans-serif;
         }
-        .content{
+
+        .content {
             font-family: 'Sarabun', sans-serif;
         }
     </style>
+    <script>
+        var id_count = 0; //run id
+        var temp_result = [];
+    </script>
 </head>
 
 <body>
@@ -70,7 +75,7 @@
             </nav>
         </div>
 
-        <div class="col-lg-9 grid-margin stretch-card">
+        <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
                 <div class="card-header" id="card_2">
                     <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;การบำเพ็ญประโยชน์</h6>
@@ -122,7 +127,7 @@
                             </div>
                             <div class="modal-body content">
 
-                                
+
 
 
                             </div>
@@ -173,37 +178,141 @@
                     url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
                     dataType: 'json',
                     success: function(data) {
-                        //alert("Having Data...");
 
                         $.each(data, function(key, value) {
+                            
 
-                            $('.modal-title').text(value.service_name);
+
+                            $('.modal-title').text(value.service_name); //set name header
 
                             html += '<div class="row">';
                             html += '<div class="col-sm-6">';
-                            html += '<p><a href="javascript:;" class="sh_modal" data='+ value.service_ID +'> <strong> กิจกรรม: ' + value.service_name + '</strong> </a></p>';
+                            html += '<p><a href="javascript:;" class="sh_modal" data=' + value.service_ID + '> <strong> กิจกรรม: ' + value.service_name + '</strong> </a></p>';
                             html += '<p>วันที่จัดกิจกรรมวันที่  ' + value.service_date + '</p>';
                             html += '<p> เวลาเริ่ม 8.00 ถึง 16.00 น. จำนวนชั่วโมงกิจกรรม ' + value.service_hour + ' ชั่วโมง</p>';
                             html += '<p> ผู้รับรองกิจกรรม: ' + value.person_fname + " " + value.person_lname + '</p>';
                             html += '</div>';
                             html += '<div class="col-sm-6">';
-                            html += '<p> <div class="txt_position"> <span id="count_person">'+ value.number_of +'</span>/'+ value.received +'</div> </p>';
-                            html += '<p class="txt_position"><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit">ลงทะเบียน</button></p>';
+                            html += '<p> <div class="txt_position"> <span id="count_person">' + value.number_of + '</span>/' + value.received + '</div> </p>';
+                            html += '<p class="txt_position"><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit" id="btnregis' + id_count + '" data=' + value.service_ID + '>ลงทะเบียน</button></p>';
                             html += '</div>';
                             html += '</div>';
+                            
+                            id_count++; //เพิ่มค่า id
+
+                            var id = value.service_ID;
+                            //console.log(id);
+
+
+                            $.ajax({
+                                type: 'ajax',
+                                method: 'get',
+                                url: '<?php echo site_url('Volunteer_regis/wherecheck') ?>',
+                                data: {
+                                    id: id
+                                },
+                                async: false,
+                                dataType: 'json',
+                                success: function(data) {
+                                    
+                                    //console.log(data);
+                                    temp_result.push(data);
+                                    //console.log(temp_result);
+                                }
+                            });
+
+
+
+
+
+
 
                             $('.show_data').html(html);
 
 
                         });
 
+                        //after show data sucess
+                        // $("#btnregis1").attr("disabled", true); //disabled button
+                        //console.log(id_count);//check count id
+                        //console.log(temp_result); //check value id
+                        
+                        
+                        
+                        //loop result 
+                        for(j=0; j < temp_result.length; j++){
+                            
+                            //loop button id
+                            for (k=0; k <= id_count; k++ ){
+                                
+                                if (j == k && temp_result[j] == true){
+
+                                    $('#btnregis'+ k +'').attr("disabled", true); //disabled button
+                                    $('#btnregis'+ k +'').text('การลงทะเบียนสำเร็จ'); //
+                                    
+                                }
+
+
+
+                            }
+
+                            
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
                     }
 
 
                 });
+
             }
 
 
+            //Regis activity
+            $('.show_data').on('click', '.btn_submit', function() {
+
+                var id = $(this).attr('data'); //Get Sevice id 
+
+                //console.log(id);
+
+
+                $.ajax({
+                    type: 'ajax',
+                    method: 'get',
+                    url: '<?php echo site_url('Volunteer_regis/regisnotify') ?>',
+                    data: {
+                        id: id
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        $('.btn_submit').attr("disabled", true); //disabled button
+                        $('.btn_submit').text('การลงทะเบียนสำเร็จ'); //change text
+                        location.reload();
+
+                    },
+                    error: function() {
+                        alert('ไม่สามารถลงทะเบียนได้');
+                    }
+                });
+
+
+
+            });
+
+
+
 
 
 
@@ -211,22 +320,13 @@
 
         });
 
-        $('.show_data').on('click', '.btn_submit', function() {
-            //count=0;
-            
-            alert('ลงทะเบียนสำเร็จ');
 
-            $(".btn_submit").attr("disabled", true); //disabled button
-            $(".btn_submit").text('การลงทะเบียนสำเร็จ'); //
-            //$("#count_person").text(sum);
-
-        });
-
+        //show more detail
         $('.show_data').on('click', '.sh_modal', function() {
 
             var id = $(this).attr('data');
-            console.log(id);
-            html='';
+            //console.log(id);
+            html = '';
 
             $('#ShowDta').modal('show');
 
@@ -240,13 +340,13 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                   //alert('Sucess');
-                   
-                   $.each(data, function(key, value) {
+                    //alert('Sucess');
 
-                        html += '<p>ผู้รับรองกิจกรรม ชื่อ: '+ value.person_fname +' นามสกุล: '+ value.person_lname +' หมายเลขโทรศัพท์ '+ value.phone1 +' </p>';
-                        html += '<p>สถานที่จัดกิจกรรม: '+ value.place +' </p>';
-                        html += '<p>วันที่กำหนด: '+ value.service_date +'  เวลา: # ชั่วโมงกิจกรรม: # ชั่วโมง</p>';
+                    $.each(data, function(key, value) {
+
+                        html += '<p>ผู้รับรองกิจกรรม ชื่อ: ' + value.person_fname + ' นามสกุล: ' + value.person_lname + ' หมายเลขโทรศัพท์ ' + value.phone1 + ' </p>';
+                        html += '<p>สถานที่จัดกิจกรรม: ' + value.place + ' </p>';
+                        html += '<p>วันที่กำหนด: ' + value.service_date + '  เวลา: # ชั่วโมงกิจกรรม: # ชั่วโมง</p>';
                         html += '<p>จำนวนชั่วโมง: </p>';
                         html += '<p>จำนวนที่รับสมัคร:</p>';
                         html += '<p>รายละเอียดกิจกรรม: </p>';
@@ -254,7 +354,7 @@
 
                         $('.content').html(html);
 
-                   });
+                    });
 
                 },
                 error: function() {
