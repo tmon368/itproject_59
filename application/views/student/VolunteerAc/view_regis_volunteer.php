@@ -343,10 +343,9 @@
 
                         html += '<p>ผู้รับรองกิจกรรม ชื่อ: ' + value.person_fname + ' นามสกุล: ' + value.person_lname + ' หมายเลขโทรศัพท์ ' + value.phone1 + ' </p>';
                         html += '<p>สถานที่จัดกิจกรรม: ' + value.place + ' </p>';
-                        html += '<p>วันที่กำหนด: ' + value.service_date + '  เวลา: # ชั่วโมงกิจกรรม: # ชั่วโมง</p>';
-                        html += '<p>จำนวนชั่วโมง: </p>';
-                        html += '<p>จำนวนที่รับสมัคร:</p>';
-                        html += '<p>รายละเอียดกิจกรรม: </p>';
+                        html += '<p>วันที่กำหนด: ' + value.service_date + '  เวลา: '+ value.start_time + '-' + value.end_time +' ชั่วโมงกิจกรรม: # ชั่วโมง</p>';
+                        html += '<p>จำนวนที่รับสมัคร: '+ value.received  +'</p>';
+                        html += '<p>รายละเอียดกิจกรรม: '+ value.explanation +' </p>';
 
 
                         $('.content').html(html);
