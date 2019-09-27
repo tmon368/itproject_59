@@ -25,8 +25,8 @@
 <body>
     <div class="container">
     <div class="test">
-                    <center/> รายงานสถิตินักศึกษาที่กระทำความผิดแยกตามหมวดความผิด <br>
-        เดือน พฤษภาคม 2562
+                    <center/>  รายละเอียดคะแนนความประพฤติของนักศึกษา <br>
+       
     </div>
     
 </td>
@@ -81,7 +81,7 @@ $(document).ready(function(){
 function showAll() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Report_test/showAll',
+                    url: '<?php echo base_url() ?>index.php/Description_con/showAll',
                     async: false,
                     dataType: 'json',
                     success: function(data) {

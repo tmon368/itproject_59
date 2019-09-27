@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Report_test extends CI_Controller {
+class Description_con extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('report1_model', 'model');
+		$this->load->model('Description_models', 'model');
 	}
 
 	public function index()
@@ -16,7 +16,7 @@ class Report_test extends CI_Controller {
 	public function print()
 	{
 		//$this->load->view('template/template2');
-		$this->load->view('report/report_1_print');
+		//$this->load->view('report/report_1_print');
 		//$this->load->view('template/template5');
 	}
 	
@@ -25,7 +25,7 @@ class Report_test extends CI_Controller {
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-	    $this->load->view('report/report_1');
+	    $this->load->view('Description/Description_views');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    

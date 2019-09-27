@@ -25,7 +25,7 @@
 <body>
     <div class="container">
     <div class="test">
-                    <center/> รายงานสถิตินักศึกษาที่กระทำความผิดแยกตามหมวดความผิด <br>
+                    <center/>   รายชื่อนักศึกษาที่กระทำผิดทั้งหมดของหลักสูตร <br>
         เดือน พฤษภาคม 2562
     </div>
     
@@ -44,7 +44,7 @@
                 <th colspan="9" class="bg-light text-dark">601 : นำสุรา เครื่องดื่มที่มีแอลกอฮอล์ หรือของมึนเมา เข้ามาในพื้นที่มหาวิทยาลัย</th>
                 </tr>
                 <tr>
-                <th colspan="9" class="bg-light text-dark">สำนักวิชาการจัดการ</th>
+               
                 </tr>
                     <th><center>ลำดับ</center></th>
                     <th><center>รหัสนักศึกษา</center></th>
@@ -81,7 +81,7 @@ $(document).ready(function(){
 function showAll() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Report_test/showAll',
+                    url: '<?php echo base_url() ?>index.php/course_con/showAll',
                     async: false,
                     dataType: 'json',
                     success: function(data) {

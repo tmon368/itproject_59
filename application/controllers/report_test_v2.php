@@ -1,44 +1,37 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Report_test extends CI_Controller {
+class report_test_v2 extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('report1_model', 'model');
+		$this->load->model('report2_models', 'report2_models');
 	}
 
 	public function index()
 	{
 		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->template();
-	}
 
-	public function print()
-	{
-		//$this->load->view('template/template2');
-		$this->load->view('report/report_1_print');
-		//$this->load->view('template/template5');
 	}
-	
 	
 	public function template(){
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
 	    $this->load->view('template/template3');
-	    $this->load->view('report/report_1');
+	    $this->load->view('report_v2');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
 	    
 	    
 	}
-	public function showAll(){
-	    $result = $this->model->showAll();
-	   echo json_encode($result);
+	public function chart(){
+	    $result = $this->report2_models->chart();
+	    echo json_encode($result, JSON_NUMERIC_CHECK);
 	}
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง Usertype
 	public function checkkey(){
-	    $result = $this->model->checkkey();
+	    $result = $this->report2_models->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        
@@ -49,12 +42,6 @@ class Report_test extends CI_Controller {
 	    }
 	    echo json_encode($result);
 	}
-	
-	
-
-
-
-
-
 }
+
 
