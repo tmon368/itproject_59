@@ -110,7 +110,7 @@ class OffenseHead_model extends CI_Model {
     public function insertproofargument(){
         //$id = $this->input->post('txteditID');
         $field = array(
-            'report_ID'=>$query->report_ID,
+            'report_ID'=>$this->input->post('report_ID'),
             'S_ID'=>$this->input->post('S_ID'),
             'person_ID'=>$this->input->post('person_ID'),
             'proof_name'=>$this->input->post('proof_name'),
