@@ -418,16 +418,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
                 <div class="card-body">
+                <div class="bootstrap-data-table-panel">
                     <div class="table-responsive">
                         <table id="style_table" class="table table-hover">
                             <thead>
@@ -436,31 +428,31 @@
                                     <th>วันที่แจ้งเหตุ</th>
                                     <th>ฐานความผิด</th>
                                     <th>สถานที่</th>
-                                    <th>รายละเอียด</th>
-
+                                    <th>รายละเอียด</th> 
+                                    <th>จัดการ</th>
                                 </tr>
                             </thead>
                             <tbody id="showdata">
-                                
-
-
-
-
+                             
                             </tbody>
-                           
-
                         </table>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
-
     </div>
+
+
+
+
+
+
+
+
+                
     <script>
         $(document).ready(function() {
+        // vbvbvb();
 
             check_id();
             show_all();
@@ -515,24 +507,23 @@
             function show_all() {
 
                 //alert("Start Show_all function");
-                html = '';
-                i = 0;
-
+                //html = '';
+                //i = 0;
+                
                 $.ajax({
 
                     type: 'POST',
                     url: '<?php echo site_url("Notifyoffense/showAll") ?>',
-                    //data: 'S_ID=' + idstd,
+                    async: false, //ห้ามลืม
                     dataType: 'json',
                     success: function(data) {
                         //alert("Having Data...");
                         //var dataSet = data;
                         //console.log(dataSet);
 
-
-
-
-
+                        var html = '';
+                        var i=0;                        
+                       
                         $.each(data, function(key, value) {
 
 
@@ -548,25 +539,13 @@
 
                             $('#showdata').html(html);
 
-
-
-
-
                         });
-
-
-
-
-
-
-
-
+    
                     }
 
 
                 });
-            }
-
+            }           
 
 
             //check id and create auto id
