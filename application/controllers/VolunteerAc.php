@@ -66,9 +66,15 @@ class VolunteerAc extends Student_dashboard {
 
   function updateVolunteerAc(){
     $result = $this->VolunteerAc_model->updateVolunteerAc();
-    echo json_encode($result);
-  }
-
+		if($result){
+        true;     
+        //redirect(base_url() . 'index.php/VolunteerAc');
+		}else{
+		    false;
+		    //redirect(base_url() . 'index.php/VolunteerAc');
+		}
+		echo json_encode($result);
+	}
   
   function selectplace(){
     $result = $this->VolunteerAc_model->selectplace();

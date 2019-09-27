@@ -215,6 +215,33 @@ foreach($showall as $value){
                         }
                         
                         if($this->db->affected_rows() > 0){
+                            
+                            $this->db->select('max(offensestd_ID) as maxid');
+                            $this->db->from('offensestd ostd');
+                            $query = $this->db->get();
+                            $id = array();
+                            $id = $query->result_array();
+
+                            foreach($id as $value){
+                               // echo $value['maxid'];
+                                $maxid =   $value['maxid'];
+                                //echo  $offensestd_ID;
+
+                           }
+                           // var_dump($maxid);
+                           // die();
+                            
+            
+                            $field5 = array(
+                                'offensestd_ID'=>$maxid
+                                //'evidenre_name'=>$this->input->post('evidenre_name'),
+                                //'evidenre_date'=>$this->input->post('evidenre_date'),
+                                //'explanoff'=>$this->input->post('explanoff'),
+                                );
+                            $this->db->insert('report', $field5);
+
+
+                        if($this->db->affected_rows() > 0){
                              return true;
                         }else{
                             return false;
@@ -224,6 +251,7 @@ foreach($showall as $value){
                 }
             }
         }
+    }
                    
 
             
