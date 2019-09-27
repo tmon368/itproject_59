@@ -52,7 +52,7 @@ class OffenseHead_model extends CI_Model {
         
         $this->db->select('*');
         $this->db->from('offensestd ostd');
-        $this->db->join('report r', 'ostd.offensestd_ID=r.offensestd_ID');
+        //$this->db->join('report r', 'ostd.offensestd_ID=r.offensestd_ID');
         $this->db->join('student s', 'ostd.S_ID=s.S_ID');
         //$this->db->join('proofargument pr', 'r.report_ID=r.report_ID');
         $this->db->join('offensehead oh', 'ostd.oh_ID=oh.oh_ID');
@@ -82,7 +82,7 @@ class OffenseHead_model extends CI_Model {
         
         //$student = $this->session->userdata('student');
         $id = $this->input->get('id');
-       // $id = 40;
+       // $id = 37;
  
 
         $this->db->select('*');
@@ -110,7 +110,7 @@ class OffenseHead_model extends CI_Model {
     public function insertproofargument(){
         //$id = $this->input->post('txteditID');
         $field = array(
-            'report_ID'=>$this->input->post('report_ID'),
+            'report_ID'=>$query->report_ID,
             'S_ID'=>$this->input->post('S_ID'),
             'person_ID'=>$this->input->post('person_ID'),
             'proof_name'=>$this->input->post('proof_name'),

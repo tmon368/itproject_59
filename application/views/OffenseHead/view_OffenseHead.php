@@ -270,7 +270,7 @@ $('#showdata').on('click', '.btnbutton', function() {
     $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseforinsert',
         data: {
             id: id
         },
@@ -340,7 +340,7 @@ $('#showdata').on('click', '.btnSave', function() {
     $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseforinsert',
         data: {id: id},
         async: false,
         dataType: 'json',
@@ -422,7 +422,7 @@ $('#showdata').on('click', '.btnSave', function() {
            $('#off_desc').html(data.off_desc);
            $('#place_name').html(data.place_name);
            $('#evidenre_name').html(data.evidenre_name);
-           $('#proof_date').html(data.proof_date);
+        
      
     
            $('.content').html(html);
