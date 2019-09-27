@@ -215,6 +215,18 @@ foreach($showall as $value){
                         }
                         
                         if($this->db->affected_rows() > 0){
+
+            
+                            $field5 = array(
+                                'oh_ID'=>$this->input->post('oh_ID'),
+                                //'evidenre_name'=>$this->input->post('evidenre_name'),
+                                //'evidenre_date'=>$this->input->post('evidenre_date'),
+                                //'explanoff'=>$this->input->post('explanoff'),
+                                );
+                            $this->db->insert('report', $field5);
+
+
+                        if($this->db->affected_rows() > 0){
                              return true;
                         }else{
                             return false;
@@ -224,6 +236,7 @@ foreach($showall as $value){
                 }
             }
         }
+    }
                    
 
             
