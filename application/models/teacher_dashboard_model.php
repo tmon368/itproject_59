@@ -70,7 +70,7 @@ class teacher_dashboard_model extends CI_Model {
       $this->db->distinct();
       // $this->db->order_by('oc.oc_ID');
       // $this->db->group_by('COUNT(ostd.S_ID),oc.oc_ID');
-        $this->db->select('oc.oc_ID,count(ostd.S_ID) as numberstd');
+        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as y');
         $this->db->group_by('oc.oc_ID');
         
         //$this->db->select('*');

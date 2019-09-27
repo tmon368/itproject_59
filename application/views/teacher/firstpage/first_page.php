@@ -84,8 +84,10 @@
 <script>
 
 $(document).ready(function() {
+	//var data='';
 	selectstudentall();
 	selectscorestudent();
+	selectgraf();
 
 	function selectscorestudent() {
         $.ajax({
@@ -148,6 +150,75 @@ $(document).ready(function() {
 
 
 
+
+
+
+  function selectgraf() {
+	
+	
+          $.ajax({
+                type: 'ajax',
+                url: '<?php echo base_url() ?>index.php/Teacher_dashboard/student_offense',
+                async: false,
+                dataType: 'json',
+                success: function(data) { // console.log(data); 
+
+		
+					
+
+
+				
+					window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	//title: {
+		//text: "จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของอาจารย์ที่ปรึกษา"
+	//},
+	axisY: {
+		title: "จำนวนคน",
+		//suffix: "",
+		includeZero: false
+	},
+	
+	axisX: {
+		title: "หมวดความผิด",
+		//interval: 1,
+		labelAngle: 0
+	},
+	
+	data: [{
+		type: "column",
+		yValueFormatString: "#,###\"คน\"",
+		dataPoints: 
+			data
+			/*
+			{ label: "India", y: 16 },	
+			{ label: "China", y: 14 },	
+			{ label: "Indonesia", y: 10 },
+			*/
+			//{ label: "Australia", y: 2.50 },	
+			
+		
+		
+	}]
+
+
+});
+chart.render();
+
+}
+                    
+      },
+      error: function() {
+          alert('ไม่มีข้อมูล');
+      }
+          });
+}
+
+
 </script>
 	
 	
@@ -163,48 +234,6 @@ $(document).ready(function() {
 <div id="chartContainer" style="height: 250px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-
-<script>
-
-
-
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
-	//title: {
-		//text: "จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของอาจารย์ที่ปรึกษา"
-	//},
-	axisY: {
-		title: "จำนวนคน",
-		//suffix: "",
-		includeZero: false
-	},
-	axisX: {
-		title: "หมวดความผิด"
-	},
-	data: [{
-		type: "column",
-		yValueFormatString: "#,##0.0#\"%\"",
-		dataPoints: [
-			{ label: "India", y: 16 },	
-			{ label: "China", y: 14 },	
-			{ label: "Indonesia", y: 10 },
-			{ label: "Australia", y: 2.50 },	
-		
-		]
-	}]
-
-
-});
-chart.render();
-
-}
-
-
-
-</script>
 	
 		</div>
 		</div>
