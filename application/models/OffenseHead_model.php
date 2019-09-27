@@ -78,6 +78,34 @@ class OffenseHead_model extends CI_Model {
     }
     
     
+    public function selectoffenseforinsert(){
+        
+        //$student = $this->session->userdata('student');
+        $id = $this->input->get('id');
+       // $id = 40;
+ 
+
+        $this->db->select('*');
+        $this->db->from('offensestd ostd');
+        $this->db->join('report r', 'ostd.offensestd_ID=r.offensestd_ID');
+        $this->db->join('student s', 'ostd.S_ID=s.S_ID');
+        $this->db->where('ostd.offensestd_ID',$id);
+        
+        
+        
+        $query = $this->db->get();
+        /*
+         $student = array();
+         $student = $query->result_array();
+         
+         */
+        
+        if($query->num_rows() > 0){
+            return $query->row();
+        }else{
+            return false;
+        }
+    }
     
     public function insertproofargument(){
         //$id = $this->input->post('txteditID');
