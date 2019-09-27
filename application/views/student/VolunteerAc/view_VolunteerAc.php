@@ -495,8 +495,8 @@
                                 $('#del_file').modal('hide');
                                 $('#formdelete')[0].reset();
                                 $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-                                $('#formdelete').empty();
-                                location.reload();
+                                $('#formdelete').empty().fadeIn().delay(2000).fadeOut('slow');
+                                location.reload('VolunteerAc');
                                 
                              
                             } else {
@@ -631,7 +631,10 @@
     							$('#edit_file').modal('hide');
     							$('#formupdate')[0].reset();		
     							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-    					
+                                $('#formupdate').empty();
+                                location.reload('VolunteerAc');
+
+
     						}else{
     							alert('Error');
     						}
