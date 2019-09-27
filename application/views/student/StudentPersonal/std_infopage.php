@@ -46,12 +46,34 @@
 	 <script>
     $(document).ready(function() {
     	selectstudentstatus();
-    	 var data = [
- 			{ y: 40, name: "คะแนนที่หัก", color: "#FF9966" },
- 	 			{ y: 60, name: "คะแนนคงเหลือ", color: "#66CC66" }
+		selectstudentpoint();
+    	
+		function selectstudentpoint() {
+              $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentpoint',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) { // console.log(data); 
+						//alert(data[0].behavior_score)
+						var score = data[0].behavior_score
+						var deducted_points = 100-score;
+
+
+
+						var data = [
+ 			{ y: deducted_points, name: "คะแนนที่หัก", color: "#FF9966" },
+ 	 			{ y: score, name: "คะแนนคงเหลือ", color: "#66CC66" }
  	 		];
 	 		
     	renderGra(data);
+
+          },
+          error: function() {
+              alert('ไม่มีข้อมูล');
+          }
+              });
+  }
 	 
         //$('[data-toggle="popover"]').popover();
    //	$("#c1").click(function (){
@@ -92,107 +114,108 @@
       });
 
 
-   
-    var renderGra = function (dataDB) {
+		var renderGra = function (dataDB) {
 
-   	 var totalVisitors = 100;
-   	 var visitorsData = {
-   	 	"New vs Returning Visitors": [{
-   	 		click: visitorsChartDrilldownHandler,
-   	 		cursor: "pointer",
-   	 		explodeOnClick: false,
-   	 		innerRadius: "75%",
-   	 		legendMarkerType: "square",
-   	 		name: "New vs Returning Visitors",
-   	 		radius: "100%",
-   	 		showInLegend: true,
-   	 		startAngle: 90,
-   	 		type: "doughnut",
-   	 		
-   	 		dataPoints: dataDB
-   	 	}],
+var totalVisitors = 100;
+var visitorsData = {
+	"New vs Returning Visitors": [{
+		click: visitorsChartDrilldownHandler,
+		cursor: "pointer",
+		explodeOnClick: false,
+		innerRadius: "75%",
+		legendMarkerType: "square",
+		name: "New vs Returning Visitors",
+		radius: "100%",
+		showInLegend: true,
+		startAngle: 90,
+		type: "doughnut",
+		
+		dataPoints: dataDB
+	}],
 
-   	 	
-   	 	"คะแนนที่หัก": [{
-   	 		color: "#E7823A",
-   	 		name: "New Visitors",
-   	 		type: "column",
-   	 		dataPoints: [
-   	 	
-   	 		]
-   	 	}],
-   	 	"คะแนนคงเหลือ": [{
-   	 		color: "#98FB98",
-   	 		name: "Returning Visitors",
-   	 		type: "column",
-   	 		dataPoints: [
-   	 
-   	 		]
-   	 	}]
-   	 };
+	/*
+	"คะแนนที่หัก": [{
+		color: "#E7823A",
+		name: "New Visitors",
+		type: "column",
+		dataPoints: [
+	
+		]
+	}],
+	"คะแนนคงเหลือ": [{
+		color: "#98FB98",
+		name: "Returning Visitors",
+		type: "column",
+		dataPoints: [
 
-   	 var newVSReturningVisitorsOptions = {
-   	 	animationEnabled: true,
-   	 	theme: "light2",
-   	 	title: {
-   	 		text: ""
-   	 	},
-   	 	subtitles: [{
-   	 		text: "",
-   	 		backgroundColor: "#2eacd1",
-   	 		fontSize: 16,
-   	 		fontColor: "white",
-   	 		padding: 5
-   	 	}],
-   	 	legend: {
-   	 		fontFamily: "calibri",
-   	 		fontSize: 14,
-   	 		itemTextFormatter: function (e) {
-   	 			return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) ;  
-   	 		}
-   	 	},
-   	 	data: []
-   	 };
+		]
+	}]
+*/
+};
 
-   	 var visitorsDrilldownedChartOptions = {
-   	 	animationEnabled: true,
-   	 	theme: "light2",
-   	 	axisX: {
-   	 		labelFontColor: "#717171",
-   	 		lineColor: "#a2a2a2",
-   	 		tickColor: "#a2a2a2"
-   	 	},
-   	 	axisY: {
-   	 		gridThickness: 0,
-   	 		includeZero: false,
-   	 		labelFontColor: "#717171",
-   	 		lineColor: "#a2a2a2",
-   	 		tickColor: "#a2a2a2",
-   	 		lineThickness: 1
-   	 	},
-   	 	data: []
-   	 };
+var newVSReturningVisitorsOptions = {
+	animationEnabled: true,
+	theme: "light2",
+	title: {
+		text: ""
+	},
+	subtitles: [{
+		text: "",
+		backgroundColor: "#2eacd1",
+		fontSize: 16,
+		fontColor: "white",
+		padding: 5
+	}],
+	legend: {
+		fontFamily: "calibri",
+		fontSize: 14,
+		itemTextFormatter: function (e) {
+			return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100) ;  
+		}
+	},
+	data: []
+};
 
-   	 var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
-   	 chart.options.data = visitorsData["New vs Returning Visitors"];
-   	 chart.render();
+/*
+var visitorsDrilldownedChartOptions = {
+	animationEnabled: true,
+	theme: "light2",
+	axisX: {
+		labelFontColor: "#717171",
+		lineColor: "#a2a2a2",
+		tickColor: "#a2a2a2"
+	},
+	axisY: {
+		gridThickness: 0,
+		includeZero: false,
+		labelFontColor: "#717171",
+		lineColor: "#a2a2a2",
+		tickColor: "#a2a2a2",
+		lineThickness: 1
+	},
+	data: []
+};
+*/
+var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+chart.options.data = visitorsData["New vs Returning Visitors"];
+chart.render();
 
-   	 function visitorsChartDrilldownHandler(e) {
-   	 	chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
-   	 	chart.options.data = visitorsData[e.dataPoint.name];
-   	 	chart.options.title = { text: e.dataPoint.name }
-   	 	chart.render();
-   	 	$("#backButton").toggleClass("invisible");
-   	 }
-
-   	 $("#backButton").click(function() { 
-   	 	$(this).toggleClass("invisible");
-   	 	chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
-   	 	chart.options.data = visitorsData["New vs Returning Visitors"];
-   	 	chart.render();
-   	 });
-
-   	 }
+function visitorsChartDrilldownHandler(e) {
+	chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
+	chart.options.data = visitorsData[e.dataPoint.name];
+	chart.options.title = { text: e.dataPoint.name }
+	chart.render();
+	$("#backButton").toggleClass("invisible");
+}
+/*
+$("#backButton").click(function() { 
+	$(this).toggleClass("invisible");
+	chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+	chart.options.data = visitorsData["New vs Returning Visitors"];
+	chart.render();
+});
+*/
+}
 
 
  	 
