@@ -463,7 +463,7 @@
                 $('#style_table').DataTable({
                     columnDefs: [{
                         orderable: false,
-                        targets: 4
+                        targets: [4,5]
                     }]
                 });
             }
