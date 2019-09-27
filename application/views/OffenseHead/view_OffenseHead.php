@@ -270,14 +270,14 @@ $('#showdata').on('click', '.btnbutton', function() {
     $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseforinsert',
         data: {
             id: id
         },
         async: false,
         dataType: 'json',
         success: function(data) {
-            $('input[name=report_ID]').val(data.report_ID);
+          $('input[name=report_ID]').val(data.report_ID);
             $('input[name=S_ID]').val(data.S_ID);
             $('input[name=person_ID]').val(data.person_ID);
      
@@ -340,7 +340,7 @@ $('#showdata').on('click', '.btnSave', function() {
     $.ajax({
         type: 'ajax',
         method: 'get',
-        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseorder',
+        url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseforinsert',
         data: {id: id},
         async: false,
         dataType: 'json',
@@ -348,7 +348,7 @@ $('#showdata').on('click', '.btnSave', function() {
         	 // alert(data);
         	 console.log(data)
            // $('#showddel').html('ต้องการลบหมวดความผิด   "' + data.oc_desc + '"');
-        	  $("#report_ID").html(data.report_ID);
+        	 $("#report_ID").html(data.report_ID);
               $("#S_ID").html(data.S_ID);
               $('#person_ID').html(data.person_ID);
     
@@ -422,7 +422,7 @@ $('#showdata').on('click', '.btnSave', function() {
            $('#off_desc').html(data.off_desc);
            $('#place_name').html(data.place_name);
            $('#evidenre_name').html(data.evidenre_name);
-           $('#proof_date').html(data.proof_date);
+
      
     
            $('.content').html(html);
@@ -454,8 +454,8 @@ $('#showdata').on('click', '.btnSave', function() {
                       '<td>'+ data[i].committed_date +'</td>'+
                       '<td>'+ data[i].off_desc +'</td>'+
                       '<td align="center"> <i style="color:rgba(67, 135, 254);font-size:1.5rem;" class="fa fa-file-text btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
-                       '<td align="center"><input type="checkbox"  id="checkbox1" onclick="show_text(this);check_click();"  class="largerCheckbox" ></td>'+
-                      '<td align="center"><i  style="color:rgba(67, 135, 254);font-size:1.5rem;" id="btnbutton" value="button" disabled="disabled" class="far fa-file-archive btn-inverse-secondary btn-fw btnbutton" data=' + data[i].offensestd_ID  + '></i></td>' +
+                      '<td align="center"><input type="checkbox"  id="chkCon"   value="1" name="chkCon" onclick="show_text(this);check(this);"  class="largerCheckbox" data='+ data[i].offensestd_ID + '></td>'+
+                      '<td align="center"><i  style="color:rgba(67, 135, 254);font-size:1.5rem;" name="btnbutton" id="btnbutton" value="button"  class="far fa-file-archive btn-inverse-secondary btn-fw btnbutton" data=' + data[i].offensestd_ID  + '></i></td>' +
                       '</tr>';
               }
               $('#showdata').html(html);
@@ -465,35 +465,26 @@ $('#showdata').on('click', '.btnSave', function() {
             }
           });
         }
-      });
+    });
 
 
    
-   function show_text(obj)
-      {
-
-      if(obj.checked)
-      {
+   function show_text(obj){
+      if(obj.checked){
       document.getElementById("text1").style.display="";
-      }
-      else
-      {
+       }else {
       document.getElementById("text1").style.display="none";
       }
+ }
 
-      }
-   function check_click()
-      {
-      if(document.getElementById('checkbox1').checked==true)
-      {
-      document.getElementById('btnbutton').disabled = true;
-      }
-      else
-      {
-      document.getElementById('btnbutton').disabled = false;
-      }
-      }
-  
+   function check(e){
+	   if(e.checked == true) {
+	   document.getElementById('btnbutton').disabled=true;
+	   } else {
+	   document.getElementById('btnbutton').disabled=false;
+	   }
+	   }
+
 </script>
 
 </body>

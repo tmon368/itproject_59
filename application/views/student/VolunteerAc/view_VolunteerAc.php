@@ -212,7 +212,7 @@
                             <div class="modal-body">
                                 <!--  CONTENT -->
 
-                                <form action="" id="formupdate" name="formupdate" method="post">
+                                <form action="" id="formupdate" method="post" class="needs-validation">
                                            <input type="hidden" name="txteditID" id="txteditID" class="form-control style_input">
                                     <!--Auto id-->
                                    <div class="row">
@@ -357,6 +357,7 @@
                 url: '<?php echo site_url("VolunteerAC/showAll") ?>',
                 //data: 'S_ID=' + idstd,
                 dataType: 'json',
+                async: false,
                 success: function(data) {
                     //alert("Having Data...");
 
@@ -407,6 +408,7 @@
                     query: query
                 },
                 dataType: "json",
+                async: false,
                 success: function(data) {
                     
                     result($.map(data, function(item) {
@@ -519,10 +521,12 @@
           //แก้ไขข้อมูล
             $('#showdata').on('click', '.edit_data', function() {
                 var id = $(this).attr('data');
-                var popup = document.getElementById("editimage");
+              
                 $('#edit_file').modal('show');
                 $('#formupdate').attr('action',
                     '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
+               
+                
                 $.ajax({
                     type: 'ajax',
                     method: 'get',
@@ -562,6 +566,7 @@
                 var end_time = $('input[name=editend_time]');
                 var received = $('input[name=editreceived]');
                 var explanation = $('textarea[name=explanation]');
+               
                 var result = '';   
                 
                 if (service_ID.val() == '') {
