@@ -180,16 +180,28 @@
                     success: function(data) {
 
                         $.each(data, function(key, value) {
-                            
+
+                            var sum = 0;
+
+                            var temp_1 = value.start_time; //รับค่าเวลาเริ่มต้น
+                            var temp_2 = temp_1.substring(0, 5); //ตัดค่าจาก  hh:mm:ss => hh:mm
+                            var temp_3 = temp_2.replace(":", "."); //แปลง format จาก : => .
+                            var start_time = parseFloat(temp_3); //แปลง str => Float
+
+                            var temp_4 = value.end_time; //รับค่าเวลาเริ่มต้น
+                            var temp_5 = temp_4.substring(0, 5); //ตัดค่าจาก  hh:mm:ss => hh:mm
+                            var temp_6 = temp_5.replace(":", "."); //แปลง format จาก : => .
+                            var end_time = parseFloat(temp_6); //แปลง str => Float
+
+                            var sum = end_time - start_time; //คำนวณจำนวน ชม ทั้งหมด
 
 
-                            $('.modal-title').text(value.service_name); //set name header
 
                             html += '<div class="row">';
                             html += '<div class="col-sm-6">';
                             html += '<p><a href="javascript:;" class="sh_modal" data=' + value.service_ID + '> <strong> กิจกรรม: ' + value.service_name + '</strong> </a></p>';
                             html += '<p>วันที่จัดกิจกรรมวันที่  ' + value.service_date + '</p>';
-                            html += '<p> เวลาเริ่ม 8.00 ถึง 16.00 น. จำนวนชั่วโมงกิจกรรม ' + value.service_hour + ' ชั่วโมง</p>';
+                            html += '<p> เวลาเริ่ม' + value.start_time + ' ถึง ' + value.end_time + ' น. จำนวนชั่วโมงกิจกรรม ' + sum + ' ชั่วโมง</p>';
                             html += '<p> ผู้รับรองกิจกรรม: ' + value.person_fname + " " + value.person_lname + '</p>';
                             html += '</div>';
                             html += '<div class="col-sm-6">';
@@ -197,7 +209,7 @@
                             html += '<p class="txt_position"><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit" id="btnregis' + id_count + '" data=' + value.service_ID + '>ลงทะเบียน</button></p>';
                             html += '</div>';
                             html += '</div>';
-                            
+
                             id_count++; //เพิ่มค่า id
 
                             var id = value.service_ID;
@@ -214,7 +226,7 @@
                                 async: false,
                                 dataType: 'json',
                                 success: function(data) {
-                                    
+
                                     temp_result.push(data); //เก็บค่าลง Array
                                     //console.log(data);
                                     //console.log(temp_result);
@@ -233,26 +245,26 @@
                         });
 
                         //after show data sucess
-                 
+
                         //loop result 
-                        for(j=0; j < temp_result.length; j++){                            
+                        for (j = 0; j < temp_result.length; j++) {
                             //loop button id
-                            for (k=0; k <= id_count; k++ ){
+                            for (k = 0; k <= id_count; k++) {
 
 
                                 //เช็คว่าผู้ใช้เคยลงทะเบียนกิจกรรมหรือยัง
-                                if (j == k && temp_result[j] == true){
+                                if (j == k && temp_result[j] == true) {
 
-                                    $('#btnregis'+ k +'').attr("disabled", true); //disabled button
-                                    $('#btnregis'+ k +'').text('การลงทะเบียนสำเร็จ'); //
-                                    
+                                    $('#btnregis' + k + '').attr("disabled", true); //disabled button
+                                    $('#btnregis' + k + '').text('การลงทะเบียนสำเร็จ'); //
+
                                 }
 
 
 
                             }
 
-                            
+
                         }
 
 
@@ -279,9 +291,9 @@
             $('.show_data').on('click', '.btn_submit', function() {
 
                 var id = $(this).attr('data'); //Get Sevice id 
-                
+
                 //console.log(id);
-                
+
 
                 $.ajax({
                     type: 'ajax',
@@ -341,11 +353,28 @@
 
                     $.each(data, function(key, value) {
 
+
+                        var sum = 0;
+
+                        var temp_1 = value.start_time; //รับค่าเวลาเริ่มต้น
+                        var temp_2 = temp_1.substring(0, 5); //ตัดค่าจาก  hh:mm:ss => hh:mm
+                        var temp_3 = temp_2.replace(":", "."); //แปลง format จาก : => .
+                        var start_time = parseFloat(temp_3); //แปลง str => Float
+
+                        var temp_4 = value.end_time; //รับค่าเวลาเริ่มต้น
+                        var temp_5 = temp_4.substring(0, 5); //ตัดค่าจาก  hh:mm:ss => hh:mm
+                        var temp_6 = temp_5.replace(":", "."); //แปลง format จาก : => .
+                        var end_time = parseFloat(temp_6); //แปลง str => Float
+
+                        var sum = end_time - start_time; //คำนวณจำนวน ชม ทั้งหมด
+
+                        $('.modal-title').text(value.service_name); //set name header
+
                         html += '<p>ผู้รับรองกิจกรรม ชื่อ: ' + value.person_fname + ' นามสกุล: ' + value.person_lname + ' หมายเลขโทรศัพท์ ' + value.phone1 + ' </p>';
                         html += '<p>สถานที่จัดกิจกรรม: ' + value.place + ' </p>';
-                        html += '<p>วันที่กำหนด: ' + value.service_date + '  เวลา: '+ value.start_time + '-' + value.end_time +' ชั่วโมงกิจกรรม: # ชั่วโมง</p>';
-                        html += '<p>จำนวนที่รับสมัคร: '+ value.received  +'</p>';
-                        html += '<p>รายละเอียดกิจกรรม: '+ value.explanation +' </p>';
+                        html += '<p>วันที่กำหนด: ' + value.service_date + '  เวลา: ' + value.start_time + '-' + value.end_time + ' ชั่วโมงกิจกรรม: '+ sum +' ชั่วโมง</p>';
+                        html += '<p>จำนวนที่รับสมัคร: ' + value.received + '</p>';
+                        html += '<p>รายละเอียดกิจกรรม: ' + value.explanation + ' </p>';
 
 
                         $('.content').html(html);
