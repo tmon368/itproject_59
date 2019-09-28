@@ -136,8 +136,11 @@ class VolunteerAc_model extends CI_Model {
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable student
     public function editVolunteerAc(){
         $id = $this->input->get('id');
+        $this->db->select('*');
+        $this->db->from('service sv');
+        $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
         $this->db->where('service_ID', $id);
-        $query = $this->db->get('Service');
+        $query = $this->db->get();
         if($query->num_rows() > 0){
             return $query->row();
         }else{
@@ -164,7 +167,7 @@ class VolunteerAc_model extends CI_Model {
             
              //'service_ID'=>$this->input->post('txteditID'),
              'service_name'=>$this->input->post('editservice_name'),
-             'person_ID'=>$this->input->post('editperson_ID'),
+             //'person_ID'=>$this->input->post('editperson_ID'),
              
              'place'=>$this->input->post('editplace'),
              'service_date'=>$this->input->post('editservice_date'),
