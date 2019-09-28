@@ -31,7 +31,7 @@ class Volunteer_history extends Student_dashboard {
 	}
 
 	public function showAll(){
-		$result = $this->Voluunteer_history_model->showAll();
+		$result = $this->Volunteer_history_model->showAll();
 		echo json_encode($result);
 	}
 

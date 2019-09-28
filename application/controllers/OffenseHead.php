@@ -61,6 +61,10 @@ class OffenseHead extends Student_dashboard {
     }
     
     
-    
+    function selectoffenseforinsert(){
+        //  $username = $this->session->userdata('username'); 
+        $result = $this->OffenseHead_model->selectoffenseforinsert();
+        echo json_encode($result);
+    }
     
 }
