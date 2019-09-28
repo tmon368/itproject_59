@@ -261,7 +261,7 @@
                                         <div class="col-sm-8"> </div>
                                         <div class="col-sm-6 padding_b">
                                             <div class="form-inline"><label for="">ผู้รับรองกิจกรรม</label><font color="red">* </font>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="editperson_ID" id="editadd_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม">
+                                            <input type="text" name="editperson_ID" id="editadd_persennel" class=" form-control style_input" style="width:200px;" placeholder="ค้นหาผู้ควบคุมกิจกรรม"disabled>
                                           <input type="hidden" name="person_ID" id="person_ID">
                                             </div>
                                         </div>
@@ -511,7 +511,7 @@
                             $('#del_file').modal('hide');
                             $('#formdelete')[0].reset();
                             $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
-                            location.reload();
+                         
                         }
                     });
                 }
@@ -539,7 +539,7 @@
                     success: function(data) {
                         $('input[name=txteditID]').val(data.service_ID);
                         $('input[name=editservice_name]').val(data.service_name);
-                        $('input[name=editperson_ID]').val(data.person_ID);
+                        $('input[name=editperson_ID]').val(data.person_fname+' '+data.person_lname);
                         $('input[name=editplace]').val(data.place);
                         $('input[name=editservice_date]').val(data.service_date);
                         $('input[name=editstart_time]').val(data.start_time);
@@ -637,8 +637,8 @@
     							$('#formupdate')[0].reset();		
     							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
                                 $('#formupdate').empty();
-                                location.reload('VolunteerAc');
-
+                              
+                                     
 
     						}else{
     							alert('Error');
@@ -651,7 +651,7 @@
     						$('#edit_file').modal('hide');
     						$('#formupdate')[0].reset();		
     						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-    						
+    						location.reload('VolunteerAc');
     					}
     				});
     			}
