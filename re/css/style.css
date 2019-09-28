@@ -13687,7 +13687,7 @@ input:focus {
 .sidebar {
   min-height: calc(100vh - 63px);
   background: #ffffff;
-  font-family: "sarabun", sans-serif;
+  font-family: "Prompt", sans-serif;
   padding: 0;
   width: 255px;
   z-index: 11;

@@ -107,7 +107,7 @@
             <div class="text-wrapper">
               <p class="profile-name" id="fullnamestudent"></p>
               <div>
-                <small class="designation text-muted">ADMINTRATOR</small>
+                <small class="designation text-muted">ผู้ดูแลระบบ</small>
                 <span class="status-indicator online"></span>
               </div>
             </div>
