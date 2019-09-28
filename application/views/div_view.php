@@ -7,7 +7,7 @@
 <body>
 
 <div class="card-body">
-	<div id="chartContainer" style="height: 300 px; width: 100%;"></div>
+	<div id="chartContainer" style="height: 400px; width: 100%;"></div>
 </div>
 </body>
 
@@ -18,7 +18,7 @@ var html = [];
 	
 	   $.ajax({
            type: 'ajax',
-           url: '<?php echo base_url() ?>index.php/report_test_v2/chart',
+           url: '<?php echo base_url() ?>index.php/div_con/chartdiv',
            async: false,
            dataType: 'json',
            success: function(data) {
@@ -27,10 +27,9 @@ var html = [];
                var i;
                for (i = 0; i < data.length; i++) {
                    html.push({
-						
-                      	x: i, 
-                       	label: data[i].label, 
-                       	y:data[i].y
+                        x:i,
+                       label: data[i].label, 
+                       y:data[i].y
                    });
                }
             	var interval = 5;
@@ -39,20 +38,20 @@ var html = [];
                
                var chart = new CanvasJS.Chart("chartContainer", {
             		theme: "light1", // "light2", "dark1", "dark2"
-            		animationEnabled: false, // change to true	
+					animationEnabled: false, // change to true	
             		title:{
-            			text: "จำนวนนักศึกษาที่กระทำความผิดแต่ละหมวด ปีการศึกษา 2561"
+            			text: "จำนวนนักศึกษาที่กระทำผิดทุกสำนักวิชา"
             		},
             		axisY:{
-						interval:interval,
+						interval:interval
+					
                 		},
             		data: [
             		
             		{
             			// Change type to "bar", "area", "spline", "pie",etc.
-            			type: "bar",
-						
-						
+						type: "column",
+				
 
             			
             			dataPoints: html

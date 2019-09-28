@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Report_test extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('report1_model', 'model');
+		$this->load->model('report1_model', 'r1_model', true);
+		$this->load->model('curriculum_model', 'cur_model', true);
 	}
 
 	public function index()
@@ -32,10 +33,31 @@ class Report_test extends CI_Controller {
 	    
 	    
 	}
-	public function showAll(){
-	    $result = $this->model->showAll();
-	   echo json_encode($result);
+     public function showAll(){
+		$cur_ID = $this->input->post('cur_ID');
+		$off_ID =  $this->input->post('off_ID');
+		$month =  $this->input->post('month');
+		$year =  $this->input->post('year');
+		$result = $this->r1_model->showAll($cur_ID, $off_ID, $month, $year);
+		if(count($result) > 0){
+			echo json_encode($result, JSON_UNESCAPED_UNICODE);
+		}
 	}
+
+	public function getCurriculum(){
+		$result = $this->r1_model->getCurriculum();
+		if(count($result) > 0){
+			echo json_encode($result, JSON_UNESCAPED_UNICODE);
+		}
+	}
+
+	public function getOffense(){
+		$result = $this->r1_model->getOffense();
+		if(count($result) > 0){
+			echo json_encode($result, JSON_UNESCAPED_UNICODE);
+		}
+	}
+	
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง Usertype
 	public function checkkey(){
 	    $result = $this->model->checkkey();

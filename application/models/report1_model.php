@@ -10,6 +10,7 @@ class report1_model extends CI_Model {
     public function showAll($cur_ID, $off_ID, $month, $year)
     {
         $this->db->select('*');      
+        $this->db->distinct('*');
         $this->db->from('OffenseCate ofc');
         $this->db->join('Offense off', 'ofc.oc_ID = off.oc_ID', 'left');
         $this->db->join('OffenseHead ofg', 'off.off_ID = ofg.off_ID', 'left');
@@ -20,10 +21,12 @@ class report1_model extends CI_Model {
         $this->db->join('Offcategory ocg', 'ofs.S_ID=ocg.S_ID', 'left');
         $this->db->where('stu.cur_ID', $cur_ID);
         $this->db->where('ofg.off_ID', $off_ID);
-        $this->db->where('MONTH(ofg.committed_time)', $month);
-        $this->db->where('YEAR(ofg.committed_time)', $year);
+        $this->db->where('MONTH(ofg.committed_date)', $month);
+        $this->db->where('YEAR(ofg.committed_date)', $year);
         $query = $this->db->get();
         return $query->result();
+
+        
 
     }
 
@@ -37,8 +40,8 @@ class report1_model extends CI_Model {
 
      function getOffense(){
         $this->db->select('*');      
-        $this->db->from('curriculum');
-        $this->db->order_by('cur_ID', 'ASC');
+        $this->db->from('offense');
+        $this->db->order_by('off_ID', 'ASC');
         $query = $this->db->get();
         return $query->result();
      }
