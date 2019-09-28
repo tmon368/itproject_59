@@ -7,33 +7,41 @@ class report1_model extends CI_Model {
         
     }
     
-    
-    public function showAll(){
+    public function showAll($cur_ID, $off_ID, $month, $year)
+    {
+        $this->db->select('*');      
+        $this->db->from('OffenseCate ofc');
+        $this->db->join('Offense off', 'ofc.oc_ID = off.oc_ID', 'left');
+        $this->db->join('OffenseHead ofg', 'off.off_ID = ofg.off_ID', 'left');
+        $this->db->join('OffenseStd ofs', 'ofg.oh_ID = ofs.oh_ID', 'left');
+        $this->db->join('Student stu', 'ofs.S_ID = stu.S_ID', 'left');
+        $this->db->join('Curriculum ccl', 'stu.cur_ID = ccl.cur_ID', 'left');
+        $this->db->join('Dormitory dom', 'stu.dorm_ID=dom.dorm_ID', 'left');
+        $this->db->join('Offcategory ocg', 'ofs.S_ID=ocg.S_ID', 'left');
+        $this->db->where('stu.cur_ID', $cur_ID);
+        $this->db->where('ofg.off_ID', $off_ID);
+        $this->db->where('MONTH(ofg.committed_time)', $month);
+        $this->db->where('YEAR(ofg.committed_time)', $year);
+        $query = $this->db->get();
+        return $query->result();
 
-        //$this->db->select('s.S_ID,s.std_fname,s.std_lname,s.behavior_score,c.cur_name,d.dname,o.point,oh.num_off,oh.off_ID');
-          $this->db->select('*');      
-        $this->db->from('offensestd ostd');
-        $this->db->join('student s', 'ostd.S_ID=s.S_ID', 'left');
-        $this->db->join('offensehead oh', 'ostd.oh_ID=oh.oh_ID', 'left');
-        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID', 'left');
-        $this->db->join('Dormitory d', 's.dorm_ID=d.dorm_ID', 'left');
-        $this->db->join('offcategory ocg', 'ostd.S_ID=ocg.S_ID', 'left');
-        //$this->db->join('offensehead oh', 'oh.S_ID=s.S_ID', 'left');
-        $this->db->join('offense o', 'o.off_ID=oh.off_ID', 'left');
-        $this->db->where('oh.off_ID', 601);
+    }
 
-       
-     $query = $this->db->get();
-        //var_dump($query->result());
-        
-        if($query->num_rows() != 0)
-        {
-            return $query->result_array();
-        }else
-        {
-            return false;
-            }
- }
+    function getCurriculum(){
+        $this->db->select('*');      
+        $this->db->from('curriculum');
+        $this->db->order_by('cur_ID', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+     }
+
+     function getOffense(){
+        $this->db->select('*');      
+        $this->db->from('curriculum');
+        $this->db->order_by('cur_ID', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+     }
    
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
     public function checkkey(){
