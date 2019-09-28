@@ -9,14 +9,20 @@ class curriculum_model extends CI_Model {
     
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable place โดยเรียงลำดับจาก place_ID
  public function showAll(){
-       $this->db->order_by(' cur_ID', 'ASC');
-        $query = $this->db->get('curriculum');
+    
+    $this->db->select('*');
+    $this->db->from('curriculum c');
+    $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+ 
+   // $this->db->order_by('v_ID', 'ASC');
+        $query = $this->db->get();
         if($query->num_rows() > 0){
             return $query->result();
         }else{
             return false;
         }
     }
+        
 //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
     public function checkkey(){
         $cur_ID = $this->input->post(' cur_ID');

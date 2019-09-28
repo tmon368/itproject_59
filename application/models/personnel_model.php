@@ -8,15 +8,22 @@ class personnel_model extends CI_Model {
     }
     
     //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable place โดยเรียงลำดับจาก place_ID
- public function showAll(){
-       $this->db->order_by('person_ID', 'ASC');
-        $query = $this->db->get('personnel');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
+    public function showAll(){
+
+        $this->db->select('*');
+        $this->db->from('personnel p');
+        $this->db->join('usertype u', 'p.usertype_ID=u.usertype_ID');
+        $this->db->join('curriculum c', 'p.cur_ID=c.cur_ID');
+        $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+     
+       // $this->db->order_by('v_ID', 'ASC');
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+                return $query->result();
+            }else{
+                return false;
+            }
         }
-    }
 //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางplace
     public function checkkey(){
         $person_ID = $this->input->post('person_ID');

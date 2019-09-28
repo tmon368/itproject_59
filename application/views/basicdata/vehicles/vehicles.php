@@ -79,6 +79,7 @@
                         <table id="style_table" class="table table-hover">
                             <thead>
                                 <tr>
+                                    <th>รหัสนักศึกษา</th>
                                     <th>รหัสยานพาหนะ</th>
                                     <th>เลขทะเบียนยานพาหนะ</th>
                                     <th>จังหวัด</th>
@@ -87,7 +88,7 @@
                                     <th>ประเภทยานพาหนะ</th>
                                     <th>วันลงทะเบียนสติ๊กเกอร์</th>
                                     <th>วันหมดอายุสติ๊กเกอร์</th>
-                                    <th>รหัสนักศึกษา</th>
+                                    
 
                                 </tr>
                             </thead>
@@ -551,26 +552,21 @@
                     var i;
                     for (i = 0; i < data.length; i++) {
                         html += '<tr>' +
+                        '<td>' + data[i].S_ID + '</td>' +
                             '<td>' + data[i].v_ID + '</td>' +
                             '<td>' + data[i].regist_num + '</td>' +
                             '<td>' + data[i].province + '</td>' +
                             '<td>' + data[i].brand + '</td>' +
                             '<td>' + data[i].color + '</td>' +
-                            '<td>' + data[i].type + '</td>' +
+                            '<td>' + data[i].vetype_name + '</td>' +
                             '<td>' + data[i].regist_date + '</td>' +
                             '<td>' + data[i].expired_date + '</td>' +
                             //'<td>' + data[i].behavior_score + '</td>' +
-                            '<td>' + data[i].S_ID + '</td>' +
+                            // '<td>' + data[i].S_ID + '</td>' +
                             
                             
 
 
-                            '<td>' +
-                            '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +
-                            data[i].v_ID + '"></i></a>' +
-                            '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="' +
-                            data[i].v_ID + '"></i></a>' +
-                            '</td>' +
                             '</tr>';
                     }
                     $('#showdata').html(html);

@@ -329,7 +329,7 @@
                                             <thead>
                                                 <tr>
 
-                                                    <th>รหัสหมวดความผิด</th>
+                                                    <th>หมวดความผิด</th>
                                                     <th>รหัสฐานความผิด</th>
                                                     <th>ชื่อฐานความผิด</th>
                                                     <th>คะแนนที่หัก</th>
@@ -673,7 +673,7 @@ $(document).ready(function(){
           var i;
           for(i=0; i<data.length; i++){
             html +='<tr>'+
-            	  '<td>'+data[i].oc_ID+'</td>'+
+            	  '<td>'+data[i].oc_desc+'</td>'+
                   '<td>'+data[i].off_ID+'</td>'+
                   '<td>'+data[i].off_desc+'</td>'+
                   '<td>'+data[i].point+'</td>'+

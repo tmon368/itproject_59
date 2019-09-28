@@ -43,7 +43,7 @@ class offensecate_model extends CI_Model {
         $this->db->insert('offensecate', $field);
         if($this->db->affected_rows() > 0){            
             $field1 = array(
-                'flag'=>'1',
+                'flagg'=>'1',
                 
                 
             );

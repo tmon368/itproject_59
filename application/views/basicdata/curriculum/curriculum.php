@@ -79,9 +79,10 @@
                         <table id="style_table" class="table table-hover">
                             <thead>
                                 <tr>
+                                <th>หน่วยงาน</th>
                                     <th>รหัสหลักสูตร</th>
                                     <th>ชื่อหลักสูตร</th>
-                                    <th>รหัสหน่วยงานของแต่ละหลักสูตร</th>
+                                    
                                 
                                 </tr>
                             </thead>
@@ -545,16 +546,12 @@
                     var i;
                     for (i = 0; i < data.length; i++) {
                         html += '<tr>' +
+                        '<td>' + data[i].dept_name  + '</td>' +
                             '<td>' + data[i].cur_ID + '</td>' +
                             '<td>' + data[i].cur_name + '</td>' +
-                            '<td>' + data[i].dept_ID  + '</td>' +
+                            // '<td>' + data[i].dept_name  + '</td>' +
 
-                            '<td>' +
-                            '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +
-                            data[i].cur_ID + '"></i></a>' +
-                            '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="' +
-                            data[i].cur_ID + '"></i></a>' +
-                            '</td>' +
+                           
                             '</tr>';
                     }
                     $('#showdata').html(html);

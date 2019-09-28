@@ -201,7 +201,7 @@
 	 <div class="form-group" id="input_group_sty">
 				<div class="input-group" >
 				
-						<label for="validationCustom02..'">รหัสที่ปรึกษาหอพัก  </label>
+						<label for="validationCustom02..'">ปรึกษาหอพัก  </label>
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-4">
@@ -668,7 +668,7 @@ $(document).ready(function(){
             	  '<td>'+data[i].dorm_ID+'</td>'+
                   '<td>'+data[i].dname+'</td>'+
                   '<td>'+data[i].dormtype_ID+'</td>'+
-                  '<td>'+data[i].person_ID+'</td>'+
+                  '<td>'+data[i].person_fname+" "+data[i].person_lname+'</td>'+
                   
                   
 

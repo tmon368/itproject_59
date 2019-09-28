@@ -9,8 +9,11 @@ class dormitory_model extends CI_Model {
     
     
  public function showAll(){
+    $this->db->select('*');
+    $this->db->from('dormitory d');
+    $this->db->join('personnel p', 'd.person_ID=p.person_ID');
         $this->db->order_by('dorm_ID', 'ASC');
-        $query = $this->db->get('dormitory');
+        $query = $this->db->get();
         if($query->num_rows() > 0){
             return $query->result();
         }else{

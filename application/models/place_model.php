@@ -38,7 +38,7 @@ class place_model extends CI_Model {
         $field = array(
             'place_ID'=>$this->input->post('txtID'),
             'place_name'=>$this->input->post('txtname'),
-            'description'=>$this->input->post('txtdescription')
+            // 'description'=>$this->input->post('txtdescription')
             
             );
         $this->db->insert('place', $field);
@@ -66,7 +66,7 @@ class place_model extends CI_Model {
         $id = $this->input->post('txteditID');
         $field = array(
         'place_name'=>$this->input->post('txteditname'),
-        'description'=>$this->input->post('txteditdescription')
+        // 'description'=>$this->input->post('txteditdescription')
 
         );
         $this->db->where('place_ID', $id);

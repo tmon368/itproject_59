@@ -85,11 +85,7 @@
                                             <input type="text" name="txtname" class="form-control" maxlength="50" required>
                                         </div>
                                     </div>
-                                    <div class="form-group" id="input_group_sty">
-                                        <div class="input-group">
-                                            <label for="validationCustom02">คำอธิบายสถานที่</label>&nbsp;
-                                            <textarea name="txtdescription" rows="4" class="form-control" maxlength="100"></textarea>
-                                        </div>
+                                   
 
 
                                 </center>
@@ -142,11 +138,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group" id="input_group_sty">
-                                        <div class="input-group">
-                                            <label for="validationCustom02">คำอธิบายสถานที่</label>&nbsp;
-                                            <textarea name="txteditdescription" rows="4" class="form-control" maxlength="100" onkeyup="count_down_editdescription(this);" required></textarea>
-                                        </div>
+                                  
 
 
                                 </center>
@@ -207,7 +199,7 @@
                                 <tr>
                                     <th>รหัสสถานที่</th>
                                     <th>ชื่อสถานที่</th>
-                                    <th>คำอธิบายสถานที่</th>
+                                    <!-- <th>คำอธิบายสถานที่</th> -->
                                     <th>จัดการ</th>
                                 </tr>
                             </thead>
@@ -300,14 +292,8 @@
                     place_name.parent().parent().removeClass('has-error');
                     result += '2';
                 }
-                if (description.val() == '') {
-                    description.parent().parent().addClass('has-error');
-                } else {
-                    description.parent().parent().removeClass('has-error');
-                    result += '3';
-                }
-
-                if (result == '12' || result == '123') {
+             
+                if (result == '1' || result == '12') {
                     $.ajax({
                         type: 'ajax',
                         method: 'post',
@@ -362,7 +348,7 @@
                     success: function(data) {
                         $('input[name=txteditID]').val(data.place_ID);
                         $('input[name=txteditname]').val(data.place_name);
-                        $('textarea[name=txteditdescription]').val(data.description);
+                        // $('textarea[name=txteditdescription]').val(data.description);
                     },
                     error: function() {
                         alert('ไม่สามารถแก้ไขข้อมูล');
@@ -377,7 +363,7 @@
                 //validate form
                 var place_ID = $('input[name=txteditID]');
                 var place_name = $('input[name=txteditname]');
-                var description = $('textarea[name=txteditdescription]');
+                // var description = $('textarea[name=txteditdescription]');
                 var result = '';
 
                 if (place_ID.val() == '') {
@@ -392,16 +378,10 @@
                     place_name.parent().parent().removeClass('has-error');
                     result += '2';
                 }
-                if (description.val() == '') {
-                    description.parent().parent().addClass('has-error');
-                } else {
-                    description.parent().parent().removeClass('has-error');
-                    result += '3';
-                }
+            
 
 
-
-                if (result == '12' || result == '123') {
+                if (result == '1' || result == '12') {
                     $.ajax({
                         type: 'ajax',
                         method: 'post',
@@ -518,7 +498,6 @@
                             html += '<tr>' +
                                 '<td>' + data[i].place_ID + '</td>' +
                                 '<td>' + data[i].place_name + '</td>' +
-                                '<td>' + data[i].description + '</td>' +
 
                                 '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data=' + data[i].place_ID + '>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].place_ID + '>ลบข้อมูล</button></td>' +
 

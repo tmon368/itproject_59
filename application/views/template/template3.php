@@ -135,6 +135,7 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
             </li>
+            
 
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("student") ?>">นักศึกษา</a>
@@ -155,6 +156,10 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url("vehiclestype") ?>">ประเภทยานพาหนะ</a>
+            </li>
+
 
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("vehicles") ?>">ยานพาหนะ</a>

@@ -479,12 +479,7 @@
                             
                             
                             
-                            '<td>' +
-                            '<a href="javascript:;"  ><i class="fas fa-edit" style="color:#47307b;" data="' +
-                            data[i].S_ID + '"></i></a>' +
-                            '<a href="javascript:;" ><i class="fas fa-trash-alt" style="color:rgba(235,99,102,1.00)" data="' +
-                            data[i].S_ID + '"></i></a>' +
-                            '</td>' +
+                 
                             '</tr>';
                     }
                     $('#showdata').html(html);

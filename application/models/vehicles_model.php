@@ -8,15 +8,19 @@ class vehicles_model extends CI_Model {
     }
     
      //ฟังก์ชันแสดงข้อมูลทั้งหมด จากtable vehicles โดยเรียงลำดับจาก v_ID
- public function showAll(){
-       $this->db->order_by('v_ID', 'ASC');
-        $query = $this->db->get('vehicles');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
+     public function showAll(){
+
+        $this->db->select('*');
+        $this->db->from('vehiclestype v');
+        $this->db->join('vehicles vt', 'v.vetype_ID=vt.vetype_ID');
+       // $this->db->order_by('v_ID', 'ASC');
+            $query = $this->db->get();
+            if($query->num_rows() > 0){
+                return $query->result();
+            }else{
+                return false;
+            }
         }
-    }
 //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางvehicles
     public function checkkey(){
         $v_ID = $this->input->post('v_ID');
