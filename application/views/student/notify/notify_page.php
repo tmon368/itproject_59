@@ -250,7 +250,7 @@
                                             <div class="form-inline">
                                                 <span><i class="far fa-building"></i></span>
                                                 <label for="">สถานที่<span class="impt_sym">*</span> :</label>
-                                                <input type="text" name="add_place" id="add_place" class="form-control" placeholder="ค้นหาสถานที่" required oninvalid="this.setCustomValidity('โปรดระบุสถานที่เกิดเหตุ')" onchange="this.setCustomValidity('')">
+                                                <input type="text" name="add_place" id="add_place" class="form-control" autocomplete="off" placeholder="ค้นหาสถานที่" required oninvalid="this.setCustomValidity('โปรดระบุสถานที่เกิดเหตุ')" onchange="this.setCustomValidity('')">
                                                 <input type="hidden" name="place_ID" id="place_ID">
 
                                             </div>
