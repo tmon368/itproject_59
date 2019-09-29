@@ -230,7 +230,7 @@
 
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-status" aria-expanded="false" aria-controls="ui-basic">
-        <i class="menu-icon fas fa-download"></i>
+        <i class="menu-icon fas fa fa-refresh"></i>
         <span class="menu-title">อัพเดตสถานะการนำเข้าข้อมูล</span>
         <i class="menu-arrow"></i>
       </a>
