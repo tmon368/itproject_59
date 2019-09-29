@@ -171,12 +171,12 @@
               -->
 
               <a class="dropdown-item mt-2">
-                คู่มือการใช้งาน
+                <span id="logout"><i class="fas fa fa-book"></i>คู่มือการใช้งาน</span>
               </a>
               <a class="dropdown-item">
-                ระเบียบมหาวิทยาลัย
+                <span id="logout"><i class="fas fa fa-legal"></i>ระเบียบมหาวิทยาลัย</span>
               </a>
-              <a href="javascript:;"  class="dropdown-item" id="logoutsession" data-toggle="dropdown" aria-expanded="false">
+              <a href="javascript:;" class="dropdown-item" id="logoutsession" data-toggle="dropdown" aria-expanded="false">
                 <span id="logout"><i class="fas fa-sign-out-alt"></i>ออกจากระบบ</span>
               </a>
             </div>
