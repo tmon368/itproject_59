@@ -30,6 +30,19 @@ class place_model extends CI_Model {
         }
         
     }
+
+    public function checknameplace($nameplace){
+        $this->db->where('place_name',$nameplace);
+        $query = $this->db->get('place');
+        
+        if($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
     
     
     
@@ -41,12 +54,22 @@ class place_model extends CI_Model {
             // 'description'=>$this->input->post('txtdescription')
             
             );
+            //str_replace(' ', '-', trim($checkplaecname)); 
+           $checkplaecname = $this->input->post('txtname');
+           $checkplaecname = trim($checkplaecname);
+            $checkname = $this->checknameplace($checkplaecname);
+            if($checkname == true){
+                return "falsename";
+
+
+            }else{
         $this->db->insert('place', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
             return false;
         }
+    }
     }
 
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable place

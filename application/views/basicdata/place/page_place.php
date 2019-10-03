@@ -302,12 +302,22 @@
                         async: false,
                         dataType: 'json',
                         success: function(response) {
-                            if (response.success) {
+                            if (response.success == true) {
                                 $('#exampleModalCenter').modal('hide');
                                 //$(this).find('#formadd')[0].reset();
 
                                 $('#formadd')[0].reset();
                                 $('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                $('#textkey').empty();
+                                $('#msg1').empty();
+                                showAll();
+                            }
+                            else if (response.success == "falsename") {
+                                $('#exampleModalCenter').modal('hide');
+                                //$(this).find('#formadd')[0].reset();
+
+                                $('#formadd')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
                                 $('#textkey').empty();
                                 $('#msg1').empty();
                                 showAll();

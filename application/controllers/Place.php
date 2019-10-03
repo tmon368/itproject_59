@@ -57,17 +57,9 @@ class Place extends Admin_dashboard {
 	    $result = $this->place_model->addplace();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
-		
-		
-		if($result){
-		    $msg['success'] = true;
-		    
-		    
-		}else{
-		    $msg['success'] = false;
-		    redirect(base_url() . 'index.php/place/index');
-		}
-		echo json_encode($msg);
+		$results['success'] = $result;
+	
+		echo json_encode($results);
 	}
 
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
