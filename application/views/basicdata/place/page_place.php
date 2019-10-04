@@ -308,7 +308,6 @@
 
                                 $('#formadd')[0].reset();
                                 $('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-                                $('#textkey').empty();
                                 $('#msg1').empty();
                                 showAll();
                             }
@@ -318,7 +317,6 @@
 
                                 $('#formadd')[0].reset();
                                 $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
-                                $('#textkey').empty();
                                 $('#msg1').empty();
                                 showAll();
                             } else {
@@ -400,11 +398,19 @@
                         async: false,
                         dataType: 'json',
                         success: function(response) {
-                            if (response.success) {
+                            if (response.success == true) {
                                 $('#edit_file').modal('hide');
                                 $('#formupdate')[0].reset();
                                 $('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
                                 showAll();
+
+                            }  else if(response.success == "falsename") {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                                
                             } else {
                                 alert('Error');
                             }

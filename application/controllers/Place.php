@@ -71,16 +71,10 @@ class Place extends Admin_dashboard {
 	
 	//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
 	public function updateplace(){
-	    $result = $this->place_model->updateplace();
-		$msg['success'] = false;
-		$msg['type'] = 'update';
-		if($result){
-		    $msg['success'] = true;
-		}else{
-		    $msg['success'] = false;
-		    redirect(base_url() . 'index.php/place/index');
-		}
-		echo json_encode($msg);
+		$result = $this->place_model->updateplace();
+		$results['success'] = $result;
+		
+		echo json_encode($results);
 	}
     
 	//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย

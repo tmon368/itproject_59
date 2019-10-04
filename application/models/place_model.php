@@ -88,8 +88,16 @@ class place_model extends CI_Model {
     //ฟังก์ชันอัพเดตข้อมูลในtable place
     public function updateplace(){
         $id = $this->input->post('txteditID');
+        $editplacename = $this->input->post('txteditname');
+           $editplacename = trim($editplacename);
+            $checkname = $this->checknameplace($editplacename);
+            if($checkname == true){
+                return "falsename";
+
+
+            }else{
         $field = array(
-        'place_name'=>$this->input->post('txteditname'),
+        'place_name'=>$editplacename
         // 'description'=>$this->input->post('txteditdescription')
 
         );
@@ -100,6 +108,7 @@ class place_model extends CI_Model {
         }else{
             return false;
         }
+    }
     }
     //ฟังก์ชันลบข้อมูลในtable place
     function deleteplace(){
