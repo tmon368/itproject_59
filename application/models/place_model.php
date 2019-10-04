@@ -48,21 +48,22 @@ class place_model extends CI_Model {
     
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable place
     public function addplace(){
-        $field = array(
-            'place_ID'=>$this->input->post('txtID'),
-            'place_name'=>$this->input->post('txtname'),
-            // 'description'=>$this->input->post('txtdescription')
-            
-            );
-            //str_replace(' ', '-', trim($checkplaecname)); 
-           $checkplaecname = $this->input->post('txtname');
-           $checkplaecname = trim($checkplaecname);
-            $checkname = $this->checknameplace($checkplaecname);
+        
+            //str_replace(' ', '-', trim($placename)); 
+           $placename = $this->input->post('txtname');
+           $placename = trim($placename);
+            $checkname = $this->checknameplace($placename);
             if($checkname == true){
                 return "falsename";
 
 
             }else{
+                $field = array(
+                    'place_ID'=>$this->input->post('txtID'),
+                    'place_name'=>$placename
+                    // 'description'=>$this->input->post('txtdescription')
+                    
+                    );
         $this->db->insert('place', $field);
         if($this->db->affected_rows() > 0){
             return true;
