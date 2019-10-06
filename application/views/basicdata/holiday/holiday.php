@@ -493,16 +493,25 @@ $("#edit_file").modal("show");
           data: data,
           async: false,
           dataType: 'json',
-					success: function(response){
-						if(response.success){
-							$('#edit_file').modal('hide');
-							$('#formupdate')[0].reset();		
-							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-							showAll();
-						}else{
-							alert('Error');
-						}
-					},
+          success: function(response) {
+                            if (response.success == true) {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                showAll();
+
+                            }  else if(response.success == "falsename") {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                                
+                            } else {
+                                alert('Error');
+                            }
+                        },
+
           error: function(){
 						//alert('id นี้ถูกใช้งานแล้ว');
 						$('#edit_file').modal('hide');

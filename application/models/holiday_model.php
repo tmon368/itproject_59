@@ -101,6 +101,14 @@ class holiday_model extends CI_Model {
 
     public function updateholiday(){
         $id = $this->input->post('txteditID');
+        $namedesc = $this->input->post('txteditname');
+        $namedesc = trim($namedesc);
+         $checkname = $this->checkname($namedesc);
+         if($checkname == true){
+             return "falsename";
+
+
+         }else{
         $field = array(
         
         'h_date'=>$this->input->post('txtdate'),
@@ -133,4 +141,5 @@ class holiday_model extends CI_Model {
         }
     }
     
+}
 }
