@@ -15,6 +15,7 @@ class Dormtype extends Admin_dashboard {
         $this->template();
         //++
     }
+    
 
     public function template(){
         $this->load->view('template/template1');
@@ -56,19 +57,11 @@ class Dormtype extends Admin_dashboard {
         $result = $this->dormtype_model->adddormtype();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
+        $results['success'] = $result;
         
-        
-        if($result){
-            $msg['success'] = true;
-            
-            
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/dromtype/index');
-        }
-        echo json_encode($msg);
+        echo json_encode($results);
     }
-    
+       
     //ฟังก์ชันแสดงการแก้ไขข้อมูล
     public function editdormtype(){
         
@@ -79,18 +72,12 @@ class Dormtype extends Admin_dashboard {
     //ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
     public function updatedormtype(){
         $result = $this->dormtype_model->updatedormtype();
-        $msg['success'] = false;
-        $msg['type'] = 'update';
-        if($result){
-            $msg['success'] = true;
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/dromtype/index');
-        }
-        echo json_encode($msg);
+        $results['success'] = $result;
+        
+        echo json_encode($results);
     }
-    
-    //ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
+
+    //ฟังก์ชั่นการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
     public function deletedormtype(){
         $result = $this->dormtype_model->deletedormtype();
         if($result){
