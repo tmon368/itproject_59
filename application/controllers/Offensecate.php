@@ -50,17 +50,14 @@ class Offensecate extends Admin_dashboard {
         }
         echo json_encode($result);
     }
+   
     public function addoffensecate(){
         $result = $this->offensecate_model->addoffensecate();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
-        if($result){
-            $msg['success'] = true;
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/offensecate/index');
-        }
-        echo json_encode($msg);
+        $results['success'] = $result;
+        
+        echo json_encode($results);
     }
     
     public function editoffensecate(){
@@ -69,18 +66,14 @@ class Offensecate extends Admin_dashboard {
         echo json_encode($result);
     }
     
+   
     public function updateoffensecate(){
         $result = $this->offensecate_model->updateoffensecate();
-        $msg['success'] = false;
-        $msg['type'] = 'update';
-        if($result){
-            $msg['success'] = true;
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/offensecate/index');
-        }
-        echo json_encode($msg);
+        $results['success'] = $result;
+        
+        echo json_encode($results);
     }
+    
     
     public function deleteoffensecate(){
         $result = $this->offensecate_model->deleteoffensecate();
