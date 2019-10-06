@@ -41,19 +41,14 @@ class Usertype extends Admin_dashboard {
 	}
 	
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
+
 	public function addusertype(){
 	    $result = $this->usertype_model->addusertype();
-	    //$msg['success'] = false;
-	    //$msg['type'] = 'add';
-	    if($result){
-	        $msg['success'] = true;
-	        
-	    }else {
-	        $msg['success'] = false;
-	        redirect(base_url() . 'index.php/usertype/index');
-  
-	    } 
-	    echo json_encode($msg);
+		//$msg['success'] = false;
+		//$msg['type'] = 'add';
+		$results['success'] = $result;
+	
+		echo json_encode($results);
 	}
 	
 	public function editusertype(){

@@ -53,21 +53,16 @@ class Holiday extends Admin_dashboard {
 	}
     
 
+
 	public function addholiday(){
 	    $result = $this->holiday_model->addholiday();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
-		
-		if($result){
-		    $msg['success'] = true;
-		    
-		    
-		}else{
-		    $msg['success'] = false;
-		    redirect(base_url() . 'index.php/holiday/index');
-		}
-		echo json_encode($msg);
+		$results['success'] = $result;
+	
+		echo json_encode($results);
 	}
+
 
 	public function editholiday(){
 	

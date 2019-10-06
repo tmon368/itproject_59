@@ -32,12 +32,33 @@ class usertype_model extends CI_Model {
         
     }
         
- 
+    public function checknameplace($nameplace){
+        $this->db->where('usertype_name',$nameplace);
+        $query = $this->db->get('usertype');
+        
+        if($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
 
     public function addusertype(){
+
+        $placename = $this->input->post('username');
+        $placename = trim($placename);
+         $checkname = $this->checknameplace($placename);
+         if($checkname == true){
+             return "falsename";
+
+
+         }else{
         $field = array(
             'usertype_ID'=>$this->input->post('userID'),
-            'usertype_name'=>$this->input->post('username')  
+            'usertype_name'=>$placename  
             );
         $this->db->insert('usertype', $field);
         if($this->db->affected_rows() > 0){
@@ -47,7 +68,7 @@ class usertype_model extends CI_Model {
         }
     }
 
-    public function editusertype(){
+     function editusertype(){
         $id = $this->input->get('id');
         $this->db->where('usertype_ID', $id);
         $query = $this->db->get('usertype');
@@ -58,7 +79,7 @@ class usertype_model extends CI_Model {
         }
     }
 
-    public function updateusertype(){
+     function updateusertype(){
         $id = $this->input->post('typeeditID');
         $field = array(
         'usertype_name	'=>$this->input->post('typeeditname'),
@@ -89,11 +110,10 @@ class usertype_model extends CI_Model {
                 return false;
             }
         }
-        public function import_excelusertype(){
+         function import_excelusertype(){
             $this->load->view('import_excelusertype');
                  
             
         }
         
-    
-}
+    }}

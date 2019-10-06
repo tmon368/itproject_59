@@ -38,29 +38,48 @@ class holiday_model extends CI_Model {
         }
     }
 
-    public function checkkey(){
-        $place_ID = $this->input->post('h_ID');
-        $this->db->where('h_ID', $h_ID);
+    public function checkname($name){
+        $this->db->where('description',$name);
         $query = $this->db->get('holiday');
-        if($query->num_rows($query) == 0){
-            echo "true,<span style='color:green'>สามารถใช้งานได้</span>,";
+        
+        if($query->num_rows() > 0){
+            return true;
         }
         else{
-            echo "false,<span style='color:red'>ไม่สามารถใช้งานได้</span>,";
+            return false;
         }
         
     }
 
     public function addholiday(){
+           //str_replace(' ', '-', trim($placename)); 
+           $namedesc = $this->input->post('txtdescrip');
+           $namedesc = trim($namedesc);
+            $checkname = $this->checkname($namedesc);
+            if($checkname == true){
+                return "falsename";
+
+
+            }else{
         $field = array(
-            'h_ID'=>$this->input->post('txtID'),
+            //'h_ID'=>$this->input->post('txtID'),
             'h_date'=>$this->input->post('txtdate'),
-            'description'=>$this->input->post('txtdescrip'),
+            'description'=>$namedesc,
             'h_type'=>$this->input->post('addtype'),
             'flag'=>0,
 
             
             );
+
+           
+        $this->db->insert('holiday', $field);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    } 
+
         $this->db->insert('holiday', $field);
         if($this->db->affected_rows() > 0){
             return true;

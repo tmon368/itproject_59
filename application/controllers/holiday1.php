@@ -47,21 +47,13 @@ class Holiday1 extends Admin_dashboard {
     }
     
     public function addholiday(){
-        $result = $this->holiday_model1->addholiday();
-        //$msg['success'] = false;
-        //$msg['type'] = 'add';
-        
-        if($result){
-            $msg['success'] = true;
-            
-            
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/holiday1/edit');
-            
-        }
-        echo json_encode($msg);
-    }
+	    $result = $this->holiday_model1->addholiday();
+		//$msg['success'] = false;
+		//$msg['type'] = 'add';
+		$results['success'] = $result;
+	
+		echo json_encode($results);
+	}
     
     public function editholiday(){
         
