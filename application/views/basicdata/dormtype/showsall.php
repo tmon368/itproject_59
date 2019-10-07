@@ -39,7 +39,7 @@
            
             <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-plus" id="btnAdd></i></span>เพิ่มประเภทหอพัก
+                    <span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มประเภทหอพัก
                 </button>
                 &nbsp;
             </div>
