@@ -65,7 +65,7 @@
                                         <div class="input-group">
 <!--  ไม่เหมือนกับสถานที่  -->
                                             <label for="validationCustom01">รหัสประเภทหอพัก </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>&nbsp;&nbsp;&nbsp;
+                                            <p class="text-danger">&nbsp;&nbsp;*</p>
                                             <div class="col-lg-3" >
 										<select name="txtID"class="form-control"  required >
 											<option value ="F"> F </option>
@@ -125,7 +125,7 @@
                                         <div class="input-group">
 
                                             <label for="validationCustom01">รหัสประเภทหอพัก </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
+                                            <p class="text-danger">*&nbsp;</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
                                             	<input type="text" readonly name="txteditID" class="form-control"  maxlength="1" onkeyup="count_down_editid(this);" required>
