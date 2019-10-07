@@ -6,6 +6,7 @@ class dormtype_model extends CI_Model {
         parent::_construct();
         
     }
+    
     //ฟังก์ชันแสดงข้อมูลทั้งหมด จาก table dormtype โดยเรียงลำดับจาก dormtype_ID
  public function showAll(){
        $this->db->order_by('dormtype_ID', 'ASC');
@@ -30,22 +31,46 @@ class dormtype_model extends CI_Model {
         
     }
     
+    public function checknamedormtype($namedormtype){
+        $this->db->where('type_name',$namedormtype);
+        $query = $this->db->get('place');
+        
+        if($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+    
     
     
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable dromtype
     public function adddormtype(){
-        $field = array(
+       
            
-            'dormtype_ID'=>$this->input->post('txtID'),
-            'type_name'=>$this->input->post('txtname')
+        $dormtypename = $this->input->post('txtname');
+        $dormtypename = trim($dormtypename);
+        $checkname = $this->checknamedormtype($dormtypename);
+        if($checkname == true){
+            return "falsename";
             
-            );
-        $this->db->insert('dormtype', $field);
+            
+        }else{
+            $field = array(
+                'dormtype_ID'=>$this->input->post('txtID'),
+                'type_name'=>$dormtypename
+                // 'description'=>$this->input->post('txtdescription')
+                
+                  );
+       $this->db->insert('dormtype', $field);
         if($this->db->affected_rows() > 0){
             return true;
         }else{
             return false;
         }
+    }
     }
 
     //ฟังก์ชันแสดงข้อมูลการแก้ไข จากtable dormtype
@@ -63,17 +88,26 @@ class dormtype_model extends CI_Model {
     //ฟังก์ชันอัพเดตข้อมูลในtable dormtype
     public function updatedormtype(){
         $id = $this->input->post('txteditID');
-        $field = array(
-        'type_name'=>$this->input->post('txteditname'),
-    
-
-        );
-        $this->db->where('dormtype_ID', $id);
-        $this->db->update('dormtype', $field);
-        if($this->db->affected_rows() > 0){
-            return true;
+        $editdormtypename = $this->input->post('txteditname');
+        $editdormtypename = trim($editdormtypename);
+        $checkname = $this->checknamedormtype($editdormtypename);
+        if($checkname == true){
+            return "falsename";
+            
+            
         }else{
-            return false;
+            $field = array(
+                'type_name'=>$editdormtypename
+                // 'description'=>$this->input->post('txteditdescription')
+                
+            );
+            $this->db->where('dormtype_ID', $id);
+            $this->db->update('dormtype', $field);
+            if($this->db->affected_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
     //ฟังก์ชันลบข้อมูลในtable dormtype
@@ -90,25 +124,16 @@ class dormtype_model extends CI_Model {
         }
     }
     
-    function selectoffensecate()
-    {
-        $this->db->order_by('oc_ID','ASC');
-        $query = $this->db->get('offensecate');
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return false;
-        }
-    }
-    public function import_exceldormtype(){
-        $this->load->view('import_exceldormtype');
+   
         
-        
-        
-        
-    }
+    
     
    
        
+   
+}
+    
+    
+    
     
 }
