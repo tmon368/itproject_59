@@ -6,6 +6,13 @@
 <strong><div  class="alert alert-danger" role="alert" style="display: none;"></div></strong>
 <strong><div  class="alert alert-warning" role="alert" style="display: none;"></div></strong>
 </center>
+
+
+
+
+
+
+
 <head>
 
     <title>ประเภทหอพัก</title>
@@ -14,7 +21,6 @@
 
 <body>
     <meta charset="UTF-8">
-    
     <div class="page-breadcrumb" id="nav_sty">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -33,14 +39,14 @@
            
             <div class="card-body" id="card_1">
                 <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
-                    <span><i class="fas fa-plus"></i></span>เพิ่มประเภทหอพัก
+                    <span><i class="fas fa-plus" id="btnAdd></i></span>เพิ่มประเภทหอพัก
                 </button>
                 &nbsp;
             </div>
-            <div id="myModal"  > </div>
+            <div id="myModal"> </div>
+            
             <!-- Modal การเพิ่มข้อมูล -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -52,13 +58,12 @@
                         
                         <div class="modal-body">
 
-
                             <!--ส่วนฟอร์มเพิ่มข้อมูล-->
                             <form action="" id="formadd" method="post" class="needs-validation">
                                 <center>
                                     <div class="form-group" id="input_group_sty">
                                         <div class="input-group">
-
+<!--  ไม่เหมือนกับสถานที่  -->
                                             <label for="validationCustom01">รหัสประเภทหอพัก </label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>&nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3" >
@@ -82,44 +87,16 @@
                                             <label for="validationCustom02">ประเภทหอพัก </label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <div class="col-lg-6">
-                                            <input type="text" name="txtname" class="form-control" maxlength="20"
-                                                required>                                   
+	 <!--   <div class="col-lg-6"> -->      <input type="text" name="txtname" class="form-control" maxlength="20" required>                                   
                                         </div>
                                     </div>
-                                    <!-- 
-                                        <div class="form-group sty_a" id="textkey">
-                                            <span id="count5">0</span>
-                                            <span>/</span>
-                                            <span id="count6" style="color:#6699ff;">100</span>
-                                        </div>
-
-                                        <!-- Alert for the number of characters
-                                        
-                                        <script>
-                                        function count_downdescription(obj) {
-                                            document.getElementById('count5').innerHTML = obj.value.length;
-                                            var element = document.getElementById('count6');
-
-                                            element.innerHTML = 100 - obj.value.length;
-                                            if (100 - obj.value.length == 0) {
-                                                element.style.color = 'red';
-
-                                            } else {
-                                                element.style.color = '#6699ff';
-                                            }
-                                        }
-                                        </script>
-                                        
-                                    </div>
-                                    -->
+                                   
                                 </center>
-
                                 <!------------------>
                         </div>
+                        
                         <div class="modal-footer">
-                            <button name="insert" type="reset" class="btn btn-secondary"
-                                data-dismiss="modal">ยกเลิก</button>
+                            <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                             <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
                         </div>
                         </form>
@@ -130,13 +107,11 @@
             <!--------------------------------->
             <!-- Modal ส่วน edit -->
 
-            <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true">
+            <div class="modal fade" id="edit_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit"
-                                        style="color:#47307b;"></i></span>แก้ไขข้อมูล</h2>
+                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fas fa-edit" style="color:#47307b;"></i></span>แก้ไขข้อมูล</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -153,10 +128,8 @@
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                            <input type="text" readonly name="txteditID"  class="form-control"  maxlength="1" onkeyup="count_down_editid(this);" required>
-									
-                                                
-                                            </div>
+                                            	<input type="text" readonly name="txteditID" class="form-control"  maxlength="1" onkeyup="count_down_editid(this);" required>
+											</div>
                                         </div>
                                     </div>
 
@@ -165,44 +138,16 @@
                                             <label for="validationCustom02">ชื่อประเภทหอพัก</label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="txteditname" class="form-control" maxlength="30"
-                                                required>
+                                            <input type="text" name="txteditname" class="form-control" maxlength="30" required>
                                         </div>
                                     </div>  
-                                    
-                                     <!--  
-                                        <div class="form-group sty_a">
-                                            <span id="count11">0</span>
-                                            <span>/</span>
-                                            <span id="count12" style="color:#6699ff;">100</span>
-                                        </div>
-
-                                        <!-- Alert for the number of characters
-                                        <script>
-                                        function count_down_editdescription(obj) {
-
-                                            document.getElementById('count11').innerHTML = obj.value.length;
-                                            var element = document.getElementById('count12');
-
-                                            element.innerHTML = 100 - obj.value.length;
-                                            if (100 - obj.value.length == 0) {
-                                                element.style.color = 'red';
-
-                                            } else {
-                                                element.style.color = '#6699ff';
-                                            }
-                                        }
-                                        </script>
-                                    </div>
-                                    -->
+                                   
                                 </center>
-
                                 <!------------------>
                         </div>
 
                         <div class="modal-footer">
-                            <button name="insert" type="reset" class="btn btn-secondary"
-                                data-dismiss="modal">ยกเลิก</button>
+                            <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                             <button name="btnedit" type="submit" id="btnedit" class="btn btn-success">บันทึกข้อมูล</button>
                         </div>
                         </form>
@@ -213,14 +158,11 @@
             <!--------------------------------->
             <!-- Modal ส่วน del -->
 
-            <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true">
+            <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i
-                                        class="fa fa-exclamation-triangle"
-                                        style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -238,8 +180,7 @@
                             </div>
                             
                             <div class="modal-footer">
-                                <button name="insert" type="reset" class="btn btn-secondary"
-                                    data-dismiss="modal">ยกเลิก</button>
+                                <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                                 <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
                                 
                             </div>
@@ -346,8 +287,9 @@
 			}else{
 				type_name.parent().parent().removeClass('has-error');
 				result +='2';
-			}			
-            if(result=='12'){
+			}	
+					
+			if (result == '1' || result == '12') {
                 $.ajax({
                     type: 'ajax',
                     method: 'post',
@@ -356,32 +298,40 @@
                     async: false,
                     dataType: 'json',
                     success: function(response){
-                        if(response.success){
+                        if(response.success == true){
                         	$('#exampleModalCenter').modal('hide');
 							 //$(this).find('#formadd')[0].reset();
 							 
 							$('#formadd')[0].reset();		
-							$('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-							$('#textkey').empty();			
+							$('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');			
 							$('#msg1').empty();
 							showAll();
-						}else{
-							alert('Error');
-						}
-					},               
-					error: function(){
-						alert('id นี้ถูกใช้งานแล้ว');
-						$('#exampleModalCenter').modal('hide');
-						$('#formadd')[0].reset();
-						//$('#nav_sty')[0].reset();		
-						$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
-						$('#msg1').empty();
-						showAll();
-					}
+                        }
+                        else if (response.success == "falsename") {
+                            $('#exampleModalCenter').modal('hide');
+                            //$(this).find('#formadd')[0].reset();
+
+                            $('#formadd')[0].reset();
+                            $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                            $('#msg1').empty();
+                            showAll();
+                        } else {
+                            alert('Error');
+                        }
+                    },
+
+                    error: function() {
+                        alert('id นี้ถูกใช้งานแล้ว');
+                        $('#exampleModalCenter').modal('hide');
+                        $('#formadd')[0].reset();
+                        //$('#nav_sty')[0].reset();		
+                        $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                        $('#msg1').empty();
+                        showAll();
+                    }
                 });
             }
         });
-
 
         
         //แก้ไขข้อมูล
@@ -436,7 +386,7 @@
 
 
 			
-			if(result=='12'){
+			if(result == '1' || result == '12'){
 				$.ajax({
 					type: 'ajax',
 					method: 'post',
@@ -445,26 +395,34 @@
 					async: false,
 					dataType: 'json',
 					success: function(response){
-						if(response.success){
+						if(response.success == true){
 							$('#edit_file').modal('hide');
 							$('#formupdate')[0].reset();		
 							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
 							showAll();
-						}else{
-							alert('Error');
-						}
-					},
-					
-					error: function(){
-						//alert('id นี้ถูกใช้งานแล้ว');
-						$('#edit_file').modal('hide');
-						$('#formupdate')[0].reset();		
-						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-						showAll();
-					}
-				});
-			}
-		});		
+						
+						}  else if(response.success == "falsename") {
+                            $('#edit_file').modal('hide');
+                            $('#formupdate')[0].reset();
+                            $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                            $('#msg1').empty();
+                            showAll();
+                            
+                        } else {
+                            alert('Error');
+                        }
+                    },
+
+                    error: function() {
+                        //alert('id นี้ถูกใช้งานแล้ว');
+                        $('#edit_file').modal('hide');
+                        $('#formupdate')[0].reset();
+                        $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
+                        showAll();
+                    }
+                });
+            }
+        });	
 		
         //ลบข้อมูล
         $('#showdata').on('click', '.del_data', function() {
@@ -539,8 +497,7 @@
         
         //การแสดงข้อมูล
         function showAll() {
-            $.ajax({
-                
+           		$.ajax({
                 type: 'ajax',
                 url: '<?php echo base_url() ?>index.php/dormtype/showAll',
                 async: false,

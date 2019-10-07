@@ -33,7 +33,7 @@ class dormtype_model extends CI_Model {
     
     public function checknamedormtype($namedormtype){
         $this->db->where('type_name',$namedormtype);
-        $query = $this->db->get('place');
+        $query = $this->db->get('dormtype');
         
         if($query->num_rows() > 0){
             return true;
@@ -135,5 +135,3 @@ class dormtype_model extends CI_Model {
     
     
     
-    
-}
