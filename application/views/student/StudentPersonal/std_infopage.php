@@ -263,7 +263,7 @@ $("#backButton").click(function() {
 <br>
 <br>
 <div class="container" >
-  <center>  <h4>   สถานะการทำผิดของนักศึกษา </h4> </center> 
+  <center>  <h4> <b> รายละเอียดคะแนนความประพฤติของนักศึกษา </h4></b> </center> 
      
 <table style="width:100%">
   <tr>
