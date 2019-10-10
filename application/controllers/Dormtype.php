@@ -52,14 +52,19 @@ class Dormtype extends Admin_dashboard {
         echo json_encode($result);
     }
     
-    //ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
+    //ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย 
     public function adddormtype(){
         $result = $this->dormtype_model->adddormtype();
         //$msg['success'] = false;
         //$msg['type'] = 'add';
-        $results['success'] = $result;
-        
-        echo json_encode($results);
+        if($result){
+            $msg['success'] = true;
+            
+        }else{
+            $msg['success'] = false;
+            redirect(base_url() . 'index.php/dormtype/index');
+        }
+        echo json_encode($msg);
     }
        
     //ฟังก์ชันแสดงการแก้ไขข้อมูล
@@ -71,12 +76,17 @@ class Dormtype extends Admin_dashboard {
     
     //ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
     public function updatedormtype(){
-        $result = $this->dormtype_model->updatedormtype();
-        $results['success'] = $result;
-        
-        echo json_encode($results);
+        $result = $this->dormtype_model->adddormtype();
+        $msg['success'] = false;
+        $msg['type'] = 'update';
+        if($result){
+            $msg['success'] = true;
+        }else{
+            $msg['success'] = false;
+            redirect(base_url() . 'index.php/dormtype/index');
+        }
+        echo json_encode($msg);
     }
-
     //ฟังก์ชั่นการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
     public function deletedormtype(){
         $result = $this->dormtype_model->deletedormtype();
@@ -87,5 +97,9 @@ class Dormtype extends Admin_dashboard {
             redirect(base_url() . 'index.php/dromtype/index');
         }
         echo json_encode($msg);
+    }
+    function selectoffensecate(){
+        $result = $this->offense_model->selectoffensecate();
+        echo json_encode($result);
     }
 }
