@@ -69,7 +69,9 @@ class dormtype_model extends CI_Model {
         }else{
             $field = array(
                 'dormtype_ID'=>$this->input->post('txtID'),
-                'type_name'=>$dormtypename
+                'type_name'=>$dormtypename,
+                'flag'=>'1'
+                
                 // 'description'=>$this->input->post('txtdescription')
                 
                   );
@@ -123,8 +125,13 @@ class dormtype_model extends CI_Model {
     function deletedormtype(){
          $id = $this->input->post('txtdelID');
          
-        $this->db->where('dormtype_ID', $id);
-        $this->db->delete('dormtype');
+         $field = array(
+             'flag'=>'0'
+             // 'description'=>$this->input->post('txteditdescription')
+             
+         );
+         $this->db->where('dormtype_ID', $id);
+         $this->db->update('dormtype', $field);
         
         if($this->db->affected_rows() > 0){
             return true;
