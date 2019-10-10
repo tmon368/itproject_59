@@ -9,14 +9,24 @@ class dormtype_model extends CI_Model {
     
     //ฟังก์ชันแสดงข้อมูลทั้งหมด จาก table dormtype โดยเรียงลำดับจาก dormtype_ID
  public function showAll(){
-       $this->db->order_by('dormtype_ID', 'ASC');
-        $query = $this->db->get('dormtype');
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
+     $flag=1;
+     
+     $this->db->select('*');
+     $this->db->from('Dormitory c'); // หมวดความผิด // หอพัก
+     $this->db->join('DormType d', 'c.dormtype_ID=d.dormtype_ID'); // ฐานความผิด  // ประเภทหอพัก
+     //$this->db->order_by('off_ID', 'ASC');
+     $this->db->where('flagg', $flag);
+     $query = $this->db->get();
+     if($query->num_rows() > 0){
+         return $query->result();
+     }else{
+         return false;
+     }
+ }
+    
+
+    
+
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง dromtype
     public function checkkey(){
         $dormtype_ID = $this->input->post('dormtype_ID');
@@ -49,7 +59,7 @@ class dormtype_model extends CI_Model {
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable dromtype
     public function adddormtype(){
        
-           
+           // ไม่เหมือน offense เช็คใหม่
         $dormtypename = $this->input->post('txtname');
         $dormtypename = trim($dormtypename);
         $checkname = $this->checknamedormtype($dormtypename);
