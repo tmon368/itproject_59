@@ -23,10 +23,9 @@ class dormtype_model extends CI_Model {
          return false;
      }
  }
-    
+   
 
     
-
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง dromtype
     public function checkkey(){
         $dormtype_ID = $this->input->post('dormtype_ID');
