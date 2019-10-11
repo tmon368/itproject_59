@@ -56,13 +56,13 @@
                     dataType: 'json',
                     success: function(data) { // console.log(data); 
 						//alert(data[0].behavior_score)
-						var score = data[0].behavior_score
+						var score = data[0].behavior_score ;
 						var deducted_points = 100-score;
-
+						var deducted_pointss = deducted_points; // คะแนนที่หัก
 
 
 						var data = [
- 			{ y: deducted_points, name: "คะแนนที่หัก", color: "#FF9966" },
+ 			{ y: deducted_pointss, name: "คะแนนที่หัก", color: "#FF9966" },
  	 			{ y: score, name: "คะแนนคงเหลือ", color: "#66CC66" }
  	 		];
 	 		
@@ -259,7 +259,26 @@ $("#backButton").click(function() {
 <script  src="../re/js/canvasjs.min.js"></script>
 <script  src="../re/js/jquery.canvasjs.min.js"></script>
  </table></div>
-<center>   คะแนนของคุณอยู่ใน<b>ระดับ</b>เกณฑ์ : <font color="FFD732"> เสนอคณะกรรมการเพื่อพิจารณา  </font></center> 
+
+
+
+<?php
+// ดึงคำมาแสดงเกณฑ์คะแนนที่โดนหัก
+$scorestd = '70';
+echo "<center > คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :" ; 
+if( $scorestd >= "70" ){
+     echo " ระดับเกณฑ์ ปกติ</center>";
+}else if( $scorestd > "40" ){
+     echo " เสนอคณะกรรมการเพื่อพิจารณา </center>";
+}else if( $scorestd > "1" ){
+     echo " ไม่ออกหนังสือรับรองความประพฤติ </center>";
+}else{ 
+     echo " พ้นสภาพนักศึกษา </center>";
+}
+
+?>
+
+
 <br>
 <br>
 <div class="container" >
