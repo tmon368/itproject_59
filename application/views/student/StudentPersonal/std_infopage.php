@@ -99,7 +99,16 @@
                             '<th>' + data[i].committed_date + '</th>' +
                             '<th>' + data[i].off_desc +'</th>' +
                             '<th>' + data[i].point + '</th>' +
-                            '<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
+							'<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
+							
+							
+						//	if ($statusoffname == 3 ) {
+    					//		<a href="javascript:;" data=' + data[i].train_ID + ' class="show_data">
+						//	}
+						//	html += '<td> <a href="javascript:;">
+						//	data=' + value.oh_ID + ' class="show_data">
+						//	<i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+
                                 '</tr>';
                             n+=1;
                         }
@@ -217,7 +226,79 @@ $("#backButton").click(function() {
 */
 }
 
+///////เพิ่ม///////// ไม่ได้ตรวจ 
+/*
+$('#showdata').on('click', '.show_data', function() {
 
+var id = $(this).attr('data');
+//console.log(id);
+$('#ShowDta').modal('show');
+html = '';
+i = 0;
+
+
+//select show data
+$.ajax({
+	type: 'ajax',
+	method: 'get',
+	url: '<?php echo site_url('Notifyoffense/spc_showoffhead') ?>',
+	data: {
+		id: id
+	},
+	async: false,
+	dataType: 'json',
+	success: function(data) {
+		//console.log(data);
+		//alert ('Having data');
+
+		$.each(data, function(key, value) {
+			i++;
+
+			var data_vehi = value.verhicles;
+			//console.log(data_vehi);
+
+			//print 1 ครั้ง
+			if (i == 1) {
+				html += '<p class="text_head">การกระทำความผิด</p>';
+				html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place_name + ' </p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">อธิบายบริเวณที่เกิดเหตุ: </label> ' + value.description + ' </p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">หมวดความผิด:</label>  ' + value.oc_desc + ' <label for="" class="label_txt"> ฐานความผิด:</label>  ' + value.off_desc + '</p>';
+				html += '<p class="text_head">ผู้กระทำความผิด</p>';
+			}
+
+			html += '<p class="text_position"> <label for="" class="label_txt">รหัสนักศึกษา: </label> ' + value.S_ID + '<label for="" class="label_txt"> ชื่อ: </label> ' + value.std_fname + '<label for="" class="label_txt"> นามสกุล:</label>  ' + value.std_lname + ' </p>';
+			html += '<p class="text_position"> <label for="" class="label_txt">สำนักวิชา: </label>  ' + value.dept_name + '<label for="" class="label_txt"> หลักสูตร: </label>  ' + value.cur_name + ' </p>';
+
+			//loop vehicle 
+			$.each(data_vehi, function(key, value) {
+				//console.log(value.regist_num);
+
+				//check type vehicle
+				if (value.vetype_ID == 1) {
+					html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถจักรยานยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+				} else if (value.vetype_ID == 2) {
+					html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+				}
+			});
+
+
+
+
+
+			$('.content').html(html);
+		});
+	},
+	error: function() {
+		alert('ไม่สามารถลบข้อมูล');
+	}
+});
+
+
+
+});
+*/
+///////////// เพิ่ม//////////////// ไม่ได้ตรวจ 
  	 
 </script>
 
