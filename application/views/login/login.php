@@ -2,16 +2,18 @@
 <html lang="en">
 
 <head>
+<!--
 <link href="<?php echo base_url(); ?>re/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>re/css/freelancer.min.css" rel="stylesheet">
 <link href="<?php echo base_url(); ?>re/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-  <!-- Required meta tags -->
+   Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
+  
   <link rel="stylesheet" href="<?php echo base_url(); ?>re/css/css_login/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>re/node_modules/font-awesome/css/font-awesome.min.css">
+  <!--<link rel="stylesheet" href="<?php echo base_url(); ?>re/node_modules/font-awesome/css/font-awesome.min.css">-->
   <link rel="stylesheet" href="<?php echo base_url(); ?>re/css/css_login/custom.css" /> <!-- CSS File -->
   
   <!-- Font -->
@@ -90,24 +92,24 @@
 
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS
     <script src="<?php echo base_url(); ?>re/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>re/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>re/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-     <!-- Bootstrap core JavaScript -->
+      Bootstrap core JavaScript 
   <script src="<?php echo base_url(); ?>re/vendor/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>re/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Plugin JavaScript -->
+-->
+  <!-- Plugin JavaScript
   <script src="<?php echo base_url(); ?>re/vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="<?php echo base_url(); ?>re/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-  <!-- Contact Form JavaScript -->
+ -->
+  <!-- Contact Form JavaScript 
   <script src="<?php echo base_url(); ?>re/js/jqBootstrapValidation.js"></script>
-  <script src="<?php echo base_url(); ?>re/js/contact_me.js"></script>
+  <script src="<?php echo base_url(); ?>re/js/contact_me.js"></script>-->
 
-  <!-- Custom scripts for this template -->
-  <script src="<?php echo base_url(); ?>re/js/freelancer.min.js"></script>
+  <!-- Custom scripts for this template 
+  <script src="<?php echo base_url(); ?>re/js/freelancer.min.js"></script>-->
 
 </body>
 
