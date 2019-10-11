@@ -99,7 +99,7 @@
                             '<th>' + data[i].committed_date + '</th>' +
                             '<th>' + data[i].off_desc +'</th>' +
                             '<th>' + data[i].point + '</th>' +
-                            '<th>' + data[i].statusoffname + '</th>' +
+                            '<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
                                 '</tr>';
                             n+=1;
                         }
@@ -263,14 +263,16 @@ $("#backButton").click(function() {
 
 
 <?php
+
+
 // ดึงคำมาแสดงเกณฑ์คะแนนที่โดนหัก
 $scorestd = '70';
 echo "<center > คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :" ; 
 if( $scorestd >= "70" ){
      echo " ระดับเกณฑ์ ปกติ</center>";
-}else if( $scorestd > "40" ){
+}else if( $scorestd >= "40" ){
      echo " เสนอคณะกรรมการเพื่อพิจารณา </center>";
-}else if( $scorestd > "1" ){
+}else if( $scorestd >= "1" ){
      echo " ไม่ออกหนังสือรับรองความประพฤติ </center>";
 }else{ 
      echo " พ้นสภาพนักศึกษา </center>";
