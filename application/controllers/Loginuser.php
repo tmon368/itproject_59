@@ -274,7 +274,7 @@ class Loginuser extends CI_Controller
         $this->session->unset_userdata('employee');
         $this->session->unset_userdata('login');
         $this->session->unset_userdata('autority');
-        redirect(base_url() . 'index.php/loginuser/login');
+        redirect(base_url() . 'index.php/loginuser');
     }
     
     

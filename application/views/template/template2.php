@@ -1,7 +1,7 @@
 <body>
   <div class="container-scroller">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- partial:partials/_navbar.html -->
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="<?php echo site_url("Admin_dashboard") ?>">
@@ -43,7 +43,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="<?php echo base_url('re/images/faces/face4.jpg'); ?>" alt="image" class="profile-pic">
+                 <!-- <img src="<?php echo base_url('re/images/faces/face4.jpg'); ?>" alt="image" class="profile-pic">-->
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium text-dark">David Grey
@@ -57,7 +57,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="<?php echo base_url('re/images/faces/face2.jpg'); ?>" alt="image" class="profile-pic">
+                  <!--<img src="<?php echo base_url('re/images/faces/face2.jpg'); ?>" alt="image" class="profile-pic">-->
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium text-dark">Tim Cook
@@ -71,7 +71,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
+                  <!--<img src="images/faces/face3.jpg" alt="image" class="profile-pic">-->
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium text-dark"> Johnson

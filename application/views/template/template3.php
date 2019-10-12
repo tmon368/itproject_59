@@ -102,7 +102,7 @@
         <div class="nav-link">
           <div class="user-wrapper">
             <div class="profile-image">
-              <img src="<?php echo base_url('re/images/faces/face1.jpg'); ?>" alt="profile image">
+              <!--<img src="<?php echo base_url('re/images/faces/face1.jpg'); ?>" alt="profile image">-->
             </div>
             <div class="text-wrapper">
               <p class="profile-name" id="fullnamestudent"></p>
@@ -292,7 +292,7 @@
         <script>
     $(document).ready(function() {
     	selectstudentname();
-    	 v
+    	 
 	 
         //$('[data-toggle="popover"]').popover();
    //	$("#c1").click(function (){
