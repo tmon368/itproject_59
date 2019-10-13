@@ -351,7 +351,20 @@ foreach($showall as $value){
             }
         }
     }
-    
+    function selectplaceall()
+	{
+        $this->db->order_by('place_ID','ASC');
+	    $query = $this->db->get('place');
+
+        if($query->result() > 0){
+                
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+
+
    
     function selectplace()
 	{

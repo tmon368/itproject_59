@@ -150,6 +150,13 @@ class Notifyoffense extends Student_dashboard {
 		//ยังไม่ได้เขียน model
 	}
 
+	
+	function selectplaceall (){
+		//เช็คค่า id ที่มากสุด
+		$result = $this->Notifyoffense_model->selectplaceall();
+		echo json_encode($result);
+		//ยังไม่ได้เขียน model
+	}
 
 }
 
