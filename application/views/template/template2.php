@@ -1,7 +1,6 @@
 <body>
   <div class="container-scroller">
-    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-     partial:partials/_navbar.html -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="<?php echo site_url("Admin_dashboard") ?>">
