@@ -2,7 +2,6 @@
 <html lang="en">
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
 
@@ -57,20 +56,34 @@
             padding-left: 0.5rem;
             font-size: 1.5rem;
         }
+
+        .select2-dropdown {
+            top: 22px !important;
+            left: 8px !important;
+
+        }
+
+        .selectplace {
+            width: 60rem;
+        }
+
+        .select2-container--default .select2-selection--single {
+            background-color: #fff;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            height: 2.2rem;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: 2;
+        }
     </style>
 
     <script>
         var off_per = 1;
 
         function student_change(id) {
-
-            //$(".loader").show();
-            /*
-            $('#std_2').typeahead({
-
-                source: ["นายศุภกฤต", "C++"]
-                //onkeypress="student_change(this)"
-            });*/
 
         }
 
@@ -183,7 +196,10 @@
 <body>
     <meta charset="UTF-8">
 
+
     <div class="container-fluid">
+
+
 
         <div class="page-breadcrumb" id="nav_sty">
             <nav aria-label="breadcrumb">
@@ -210,7 +226,7 @@
                 </div>
 
                 <!--Modal add notification -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
                         <div class="modal-content">
 
@@ -250,8 +266,15 @@
                                             <div class="form-inline">
                                                 <span><i class="far fa-building"></i></span>
                                                 <label for="">สถานที่<span class="impt_sym">*</span> :</label>
-                                                <input type="text" name="add_place" id="add_place" class="form-control" autocomplete="off" placeholder="ค้นหาสถานที่" required oninvalid="this.setCustomValidity('โปรดระบุสถานที่เกิดเหตุ')" onchange="this.setCustomValidity('')">
-                                                <input type="hidden" name="place_ID" id="place_ID">
+                                                <!-- <input type="text" name="add_place" id="add_place" class="form-control" autocomplete="off" placeholder="ค้นหาสถานที่" required oninvalid="this.setCustomValidity('โปรดระบุสถานที่เกิดเหตุ')" onchange="this.setCustomValidity('')">
+                                                <input type="hidden" name="place_ID" id="place_ID"> -->
+
+                                                <select class="selectplace" name="place_ID" id="place_ID">
+                                                    
+                                                    
+
+                                                </select>
+
 
                                             </div>
                                         </div>
@@ -336,16 +359,6 @@
                                     <input type="hidden" name="evidenre_date" id="evidenre_date">
 
 
-
-
-
-
-
-
-
-
-
-
                             </div>
 
                             <div class="modal-footer">
@@ -419,28 +432,28 @@
 
 
                 <div class="card-body">
-                <div class="bootstrap-data-table-panel">
-                    <div class="table-responsive">
-                        <table id="style_table" class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>ลำดับ</th>
-                                    <th>วันที่แจ้งเหตุ</th>
-                                    <th>ฐานความผิด</th>
-                                    <th>สถานที่</th>
-                                    <th>รายละเอียด</th> 
-                                    <th>จัดการ</th>
-                                </tr>
-                            </thead>
-                            <tbody id="showdata">
-                             
-                            </tbody>
-                        </table>
+                    <div class="bootstrap-data-table-panel">
+                        <div class="table-responsive">
+                            <table id="style_table" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ลำดับ</th>
+                                        <th>วันที่แจ้งเหตุ</th>
+                                        <th>ฐานความผิด</th>
+                                        <th>สถานที่</th>
+                                        <th>รายละเอียด</th>
+                                        <th>จัดการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="showdata">
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
@@ -449,251 +462,279 @@
 
 
 
-                
-    <script>
-        $(document).ready(function() {
-        // vbvbvb();
 
-            check_id();
-            show_all();
-            disabled_sort(); //disabled sort colum
-            load_json_data('txt_oc');
 
-            function disabled_sort() {
-                $('#style_table').DataTable({
-                    columnDefs: [{
-                        orderable: false,
-                        targets: [4,5]
-                    }]
+        <script>
+            $(document).ready(function() {
+
+                check_id();
+                show_all();
+                disabled_sort(); //disabled sort colum
+                load_json_data('txt_oc');
+                selectplace();
+
+
+                $("#place_ID").select2({
+                    placeholder: "เลือกสถานที่",
+                    allowClear: true,
                 });
-            }
 
 
-            function load_json_data(id, parent_id) {
-                var html_code = '';
+                //select all place
+                function selectplace() {
 
-                $.getJSON('<?php echo site_url('Notifyoffense/selectoffensecate') ?>', function(data) {
+                    $.ajax({
 
-                    //alert(data[0].oc_ID + data[0].oc_desc);
+                        type: 'POST',
+                        url: '<?php echo site_url("Notifyoffense/selectplaceall") ?>',
+                        async: false, //ห้ามลืม
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data);
+                            // //alert("Having Data...");
+                            var html = '';
+                            $.each(data, function(key, value) {
 
-                    html_code += '<option value=""> เลือกหมวดความผิด </option>';
-                    $.each(data, function(key, value) {
 
+                                html += '<option value="' + value.place_ID + '">' + value.place_name + '</option>';
+                                $('#place_ID').html(html);
 
-                        html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
-                        /*
-                            if (id == 'txt_oc') {
-                                //alert(value.oc_ID);
-                                if (value.parent_id == '0') {
-                                    html_code += '<option value="' + value.id + '">' + value.name + '</option>';
-                                }
-                        } else {
-                                if (value.parent_id == parent_id) {
-                                    html_code += '<option value="' + value.id + '">' + value.name + '</option>';
-                                }
-                            }*/
+                            });
 
+                        }
 
 
                     });
-                    $('#' + id).html(html_code);
-                });
-
-            } //End function load_json_data
 
 
 
 
-            function show_all() {
 
-                //alert("Start Show_all function");
-                //html = '';
-                //i = 0;
-                
-                $.ajax({
 
-                    type: 'POST',
-                    url: '<?php echo site_url("Notifyoffense/showAll") ?>',
-                    async: false, //ห้ามลืม
-                    dataType: 'json',
-                    success: function(data) {
-                        //alert("Having Data...");
-                        //var dataSet = data;
-                        //console.log(dataSet);
+                }
 
-                        var html = '';
-                        var i=0;                        
-                       
+                function disabled_sort() {
+                    $('#style_table').DataTable({
+                        columnDefs: [{
+                            orderable: false,
+                            targets: [4, 5]
+                        }]
+                    });
+                }
+
+
+                function load_json_data(id, parent_id) {
+                    var html_code = '';
+
+                    $.getJSON('<?php echo site_url('Notifyoffense/selectoffensecate') ?>', function(data) {
+
+
+
+                        html_code += '<option value=""> เลือกหมวดความผิด </option>';
                         $.each(data, function(key, value) {
 
 
-                            i++;
-                            html += '<tr>';
-                            html += '<td>' + i + '</td>';
-                            html += '<td>' + value.notifica_date + '</td>';
-                            html += '<td>' + value.off_desc + '</td>';
-                            html += '<td>' + value.place_name + '</td>';
-                            html += '<td>' + value.explanation + '</td>';
-                            html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
-                            html += '</tr>';
+                            html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
 
-                            $('#showdata').html(html);
 
                         });
-    
-                    }
+                        $('#' + id).html(html_code);
+                    });
 
-
-                });
-            }           
-
-
-            //check id and create auto id
-            function check_id() {
-
-                title = 'L';
-                var date = new Date();
-                date_t = date.getFullYear();
-                B_E = date_t + 543; //แปลง ค.ศ. => พ.ศ.
-                convert_be = B_E.toString(); //convert to string
-                BE = convert_be.substring(2);
-
-                //console.log(BE);
-                //console.log(typeof convert_be);
-                //console.log(typeof B_E);
-
-                //Runnning_num = 0000;
-                var str = '';
-                var tempid_substr = '';
-                var auto_id = 0;
-                var integer = '';
+                } //End function load_json_data
 
 
 
 
+                function show_all() {
+
+                    $.ajax({
+
+                        type: 'POST',
+                        url: '<?php echo site_url("Notifyoffense/showAll") ?>',
+                        async: false, //ห้ามลืม
+                        dataType: 'json',
+                        success: function(data) {
+                            //alert("Having Data...");
+                            //var dataSet = data;
+                            //console.log(dataSet);
+
+                            var html = '';
+                            var i = 0;
+
+                            $.each(data, function(key, value) {
+
+
+                                i++;
+                                html += '<tr>';
+                                html += '<td>' + i + '</td>';
+                                html += '<td>' + value.notifica_date + '</td>';
+                                html += '<td>' + value.off_desc + '</td>';
+                                html += '<td>' + value.place_name + '</td>';
+                                html += '<td>' + value.explanation + '</td>';
+                                html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+                                html += '</tr>';
+
+                                $('#showdata').html(html);
+
+                            });
+
+                        }
+
+
+                    });
+                }
+
+
+                //check id and create auto id
+                function check_id() {
+
+                    title = 'L';
+                    var date = new Date();
+                    date_t = date.getFullYear();
+                    B_E = date_t + 543; //แปลง ค.ศ. => พ.ศ.
+                    convert_be = B_E.toString(); //convert to string
+                    BE = convert_be.substring(2);
+
+                    //console.log(BE);
+                    //console.log(typeof convert_be);
+                    //console.log(typeof B_E);
+
+                    //Runnning_num = 0000;
+                    var str = '';
+                    var tempid_substr = '';
+                    var auto_id = 0;
+                    var integer = '';
+
+
+
+
+                    $.ajax({
+
+                        type: 'POST',
+                        url: '<?php echo site_url("Notifyoffense/check_id") ?>',
+                        dataType: 'json',
+                        success: function(data) {
+                            //console.log(data);
+                            str = data[0].oh_ID;
+                            tempid_substr = str.substring(3);
+                            integer = parseInt(tempid_substr); //convert string to int
+                            auto_id = integer + 1;
+
+                            $('#oh_ID').val(title + BE + auto_id); // Create auto id
+                            //alert(sum);
+                            //alert (integer);
+                            //sum= tempid_substr+1;
+                        },
+                        error: function() {
+                            alert("Can't create auto id");
+                        }
+
+
+                    });
+
+                }
+            }); //End Ready function
+
+
+            //show more detail notify
+            $('#showdata').on('click', '.show_data', function() {
+
+                var id = $(this).attr('data');
+                //console.log(id);
+                $('#ShowDta').modal('show');
+                html = '';
+                i = 0;
+
+
+                //select show data
                 $.ajax({
-
-                    type: 'POST',
-                    url: '<?php echo site_url("Notifyoffense/check_id") ?>',
+                    type: 'ajax',
+                    method: 'get',
+                    url: '<?php echo site_url('Notifyoffense/spc_showoffhead') ?>',
+                    data: {
+                        id: id
+                    },
+                    async: false,
                     dataType: 'json',
                     success: function(data) {
                         //console.log(data);
-                        str = data[0].oh_ID;
-                        tempid_substr = str.substring(3);
-                        integer = parseInt(tempid_substr); //convert string to int
-                        auto_id = integer + 1;
+                        //alert ('Having data');
 
-                        $('#oh_ID').val(title + BE + auto_id); // Create auto id
-                        //alert(sum);
-                        //alert (integer);
-                        //sum= tempid_substr+1;
+                        $.each(data, function(key, value) {
+                            i++;
+
+                            var data_vehi = value.verhicles;
+                            //console.log(data_vehi);
+
+                            //print 1 ครั้ง
+                            if (i == 1) {
+                                html += '<p class="text_head">การกระทำความผิด</p>';
+                                html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
+                                html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place_name + ' </p>';
+                                html += '<p class="text_position"> <label for="" class="label_txt">อธิบายบริเวณที่เกิดเหตุ: </label> ' + value.description + ' </p>';
+                                html += '<p class="text_position"> <label for="" class="label_txt">หมวดความผิด:</label>  ' + value.oc_desc + ' <label for="" class="label_txt"> ฐานความผิด:</label>  ' + value.off_desc + '</p>';
+                                html += '<p class="text_head">ผู้กระทำความผิด</p>';
+                            }
+
+                            html += '<p class="text_position"> <label for="" class="label_txt">รหัสนักศึกษา: </label> ' + value.S_ID + '<label for="" class="label_txt"> ชื่อ: </label> ' + value.std_fname + '<label for="" class="label_txt"> นามสกุล:</label>  ' + value.std_lname + ' </p>';
+                            html += '<p class="text_position"> <label for="" class="label_txt">สำนักวิชา: </label>  ' + value.dept_name + '<label for="" class="label_txt"> หลักสูตร: </label>  ' + value.cur_name + ' </p>';
+
+                            //loop vehicle 
+                            $.each(data_vehi, function(key, value) {
+                                //console.log(value.regist_num);
+
+                                //check type vehicle
+                                if (value.vetype_ID == 1) {
+                                    html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถจักรยานยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+                                } else if (value.vetype_ID == 2) {
+                                    html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
+                                }
+                            });
+
+
+
+
+
+                            $('.content').html(html);
+                        });
                     },
                     error: function() {
-                        alert("Can't create auto id");
+                        alert('ไม่สามารถลบข้อมูล');
                     }
-
-
                 });
 
-            }
-        }); //End Ready function
 
 
-        //show more detail notify
-        $('#showdata').on('click', '.show_data', function() {
+            });
 
-            var id = $(this).attr('data');
-            //console.log(id);
-            $('#ShowDta').modal('show');
-            html = '';
-            i = 0;
-
-
-            //select show data
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                url: '<?php echo site_url('Notifyoffense/spc_showoffhead') ?>',
-                data: {
-                    id: id
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    //console.log(data);
-                    //alert ('Having data');
-
-                    $.each(data, function(key, value) {
-                        i++;
-
-                        var data_vehi = value.verhicles;
-                        //console.log(data_vehi);
-
-                        //print 1 ครั้ง
-                        if (i == 1) {
-                            html += '<p class="text_head">การกระทำความผิด</p>';
-                            html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
-                            html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place_name + ' </p>';
-                            html += '<p class="text_position"> <label for="" class="label_txt">อธิบายบริเวณที่เกิดเหตุ: </label> ' + value.description + ' </p>';
-                            html += '<p class="text_position"> <label for="" class="label_txt">หมวดความผิด:</label>  ' + value.oc_desc + ' <label for="" class="label_txt"> ฐานความผิด:</label>  ' + value.off_desc + '</p>';
-                            html += '<p class="text_head">ผู้กระทำความผิด</p>';
-                        }
-
-                        html += '<p class="text_position"> <label for="" class="label_txt">รหัสนักศึกษา: </label> ' + value.S_ID + '<label for="" class="label_txt"> ชื่อ: </label> ' + value.std_fname + '<label for="" class="label_txt"> นามสกุล:</label>  ' + value.std_lname + ' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">สำนักวิชา: </label>  ' + value.dept_name + '<label for="" class="label_txt"> หลักสูตร: </label>  ' + value.cur_name + ' </p>';
-
-                        //loop vehicle 
-                        $.each(data_vehi, function(key, value) {
-                            //console.log(value.regist_num);
-
-                            //check type vehicle
-                            if (value.vetype_ID == 1) {
-                                html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถจักรยานยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
-                            } else if (value.vetype_ID == 2) {
-                                html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
-                            }
-                        });
+            $('#btndel').click(function() {
+                //alert("ลบ");
+                var url = $('#formdelete').attr('action');
+                var data = $('#formdelete').serialize();
+                //console.log(url);
+                //console.log(data);
 
 
+                $.ajax({
+                    type: 'ajax',
+                    method: 'post',
+                    url: url,
+                    data: data,
+                    async: false,
+                    //dataType: 'json',
+                    success: function(response) {
+                        //alert(response);
+                        $('#del_file').modal('hide');
+                        location.reload("<?php echo site_url('Notifyoffense') ?>"); //Reload page
+                    }
+                });
 
 
-
-                        $('.content').html(html);
-                    });
-                },
-                error: function() {
-                    alert('ไม่สามารถลบข้อมูล');
-                }
             });
 
 
 
-        });
-
-        $('#btndel').click(function() {
-            //alert("ลบ");
-            var url = $('#formdelete').attr('action');
-            var data = $('#formdelete').serialize();
-            //console.log(url);
-            //console.log(data);
-
-
-            $.ajax({
-                type: 'ajax',
-                method: 'post',
-                url: url,
-                data: data,
-                async: false,
-                //dataType: 'json',
-                success: function(response) {
-                    //alert(response);
-                    $('#del_file').modal('hide');
-                    location.reload("<?php echo site_url('Notifyoffense') ?>"); //Reload page
-                }
-            });
-
-
-        });
 
 
 
@@ -702,35 +743,116 @@
 
 
 
-
-
-
-        $('#txt_oc').on('change', function() {
-            //alert("mmmm");
-            var html_code = '';
-            var ocID = $(this).val();
-            //alert(oc_ID);
-
-            if (ocID) {
-
+            $('#txt_oc').on('change', function() {
                 //alert("mmmm");
+                var html_code = '';
+                var ocID = $(this).val();
+                //alert(oc_ID);
 
-                $.ajax({
-                    type: 'GET',
-                    url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
-                    data: 'oc_ID=' + ocID,
-                    dataType: 'json',
-                    success: function(data) {
+                if (ocID) {
 
-                        //alert(data[1].off_ID);
+                    //alert("mmmm");
 
-                        for (i = 0; i < data.length; i++) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
+                        data: 'oc_ID=' + ocID,
+                        dataType: 'json',
+                        success: function(data) {
 
-                            html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
+                            //alert(data[1].off_ID);
+
+                            for (i = 0; i < data.length; i++) {
+
+                                html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
+
+                            }
+                            $('#txt_off').html(html_code);
 
                         }
-                        $('#txt_off').html(html_code);
 
+                    });
+
+
+
+
+                }
+                /* else {
+                                    $('#state').html('<option value="">Select country first</option>');
+                                    $('#city').html('<option value="">Select state first</option>');*/
+
+            });
+
+
+
+            $('#add_place').typeahead({
+
+                //source: ["นายศุภกฤต", "C++"]
+                //onkeypress="student_change(this)"
+
+                source: function(query, result) {
+                    $.ajax({
+                        url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
+                        method: "POST",
+                        data: {
+                            query: query
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            //alert(data[0].place_ID+data[0].description);
+                            result($.map(data, function(item) {
+                                //alert(item.place_ID);
+                                $('#place_ID').val(item.place_ID);
+                                return item.place_name; //return value place_name
+                            }));
+                        }
+                    })
+                }
+
+
+            });
+
+
+
+            $('#btnAdd').click(function() {
+                $("#formadd")[0].reset(); //clear value on form
+                var date = new Date();
+                //date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+                date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                $('#exampleModalCenter').modal('show');
+                $('#notifica_date').val(date_off); //set of date in input:hidden
+                $('#notifica_show').val(date_off); //set of date in input:disable
+                $('#evidenre_date').val(date_off); //set of date in form
+
+            });
+
+
+
+            //get file name
+            $('input[type="file"]').change(function(e) {
+                var fileName = e.target.files[0].name;
+                $('#evidenre_name').val(fileName);
+                //alert('The file "' + fileName +  '" has been selected.');
+            });
+
+
+            //submit form
+            $('#btnSave').click(function() {
+
+                var form_data = $('#formadd').serialize();
+                console.log(form_data);
+
+                $.ajax({
+                    type: 'ajax',
+                    method: 'post',
+                    url: '<?php echo site_url("Notifyoffense/addnotify") ?>',
+                    data: form_data,
+                    async: false,
+                    /*dataType: 'json',*/
+                    success: function(data) {
+                        //alert(data);
+                        //alert("Sucess updata !!")
+                        //location.reload();
                     }
 
                 });
@@ -738,99 +860,10 @@
 
 
 
-            }
-            /* else {
-                                $('#state').html('<option value="">Select country first</option>');
-                                $('#city').html('<option value="">Select state first</option>');*/
-
-        });
-
-
-
-        //});
 
 
 
 
-
-
-
-
-        $('#add_place').typeahead({
-
-            //source: ["นายศุภกฤต", "C++"]
-            //onkeypress="student_change(this)"
-
-            source: function(query, result) {
-                $.ajax({
-                    url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
-                    method: "POST",
-                    data: {
-                        query: query
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        //alert(data[0].place_ID+data[0].description);
-                        result($.map(data, function(item) {
-                            //alert(item.place_ID);
-                            $('#place_ID').val(item.place_ID);
-                            return item.place_name; //return value place_name
-                        }));
-                    }
-                })
-            }
-
-
-        });
-
-
-
-        $('#btnAdd').click(function() {
-            $("#formadd")[0].reset(); //clear value on form
-            var date = new Date();
-            //date_off = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-            date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-            $('#exampleModalCenter').modal('show');
-            $('#notifica_date').val(date_off); //set of date in input:hidden
-            $('#notifica_show').val(date_off); //set of date in input:disable
-            $('#evidenre_date').val(date_off); //set of date in form
-
-        });
-
-
-
-        //get file name
-        $('input[type="file"]').change(function(e) {
-            var fileName = e.target.files[0].name;
-            $('#evidenre_name').val(fileName);
-            //alert('The file "' + fileName +  '" has been selected.');
-        });
-
-
-        //submit form
-        $('#btnSave').click(function() {
-
-            var form_data = $('#formadd').serialize();
-            //alert(form_data);
-            console.log(form_data);
-
-            //console.log(typeof form_data);
-
-            //var data = $('#formdata').serialize();
-            //var id = $(this).attr('data');
-
-            $.ajax({
-                type: 'ajax',
-                method: 'post',
-                url: '<?php echo site_url("Notifyoffense/addnotify") ?>',
-                data: form_data,
-                async: false,
-                /*dataType: 'json',*/
-                success: function(data) {
-                    //alert(data);
-                    //alert("Sucess updata !!")
-                    //location.reload();
-                }
 
             });
 
@@ -839,55 +872,45 @@
 
 
 
+            $('#add').click(function() {
+                var html = '';
+
+                html += '<div id="student' + off_per + '">';
+
+                html += '<div class="row">';
+                html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" >  <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search" id="icon_src"></span></a></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+                html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name' + off_per + '" disabled>   </div>';
+                html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname' + off_per + '" disabled>  </div>';
+                html += '</div>';
+
+                html += '<div class="row">';
+                html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name' + off_per + '" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+                html += '<div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name' + off_per + '" disabled>   </div>';
+                html += '</div>';
+
+                html += '<div class="row">';
+                html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num' + off_per + '" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+                html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic' + off_per + '" disabled>   </div>';
+                html += '</div>';
+
+                html += '<div class="row">';
+                html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car' + off_per + '" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+                html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car' + off_per + '" disabled>   </div>';
+                html += '</div>';
+
+                html += '<div class="row">';
+                html += '<div class="col-sm-12" style="text-align: right;">  <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
+                html += '</div>';
+
+                //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
+
+                html += '</div>';
 
 
-
-        });
-
-
-
-
-
-
-        $('#add').click(function() {
-            var html = '';
-
-            html += '<div id="student' + off_per + '">';
-
-            html += '<div class="row">';
-            html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" >  <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search" id="icon_src"></span></a></div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name' + off_per + '" disabled>   </div>';
-            html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname' + off_per + '" disabled>  </div>';
-            html += '</div>';
-
-            html += '<div class="row">';
-            html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name' + off_per + '" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name' + off_per + '" disabled>   </div>';
-            html += '</div>';
-
-            html += '<div class="row">';
-            html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num' + off_per + '" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic' + off_per + '" disabled>   </div>';
-            html += '</div>';
-
-            html += '<div class="row">';
-            html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car' + off_per + '" disabled>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car' + off_per + '" disabled>   </div>';
-            html += '</div>';
-
-            html += '<div class="row">';
-            html += '<div class="col-sm-12" style="text-align: right;">  <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; //<a href="javascript:;" id="Seachdata"><span class="fa fa-search"></span></a>
-            html += '</div>';
-
-            //<button type="button" name="remove" id="' + off_per + '" class="btn btn-danger btn_remove" onclick="click_btnre(' + off_per + ')">X</button>
-
-            html += '</div>';
-
-
-            off_per++;
-            $('.add_person').append(html);
-        });
-    </script>
+                off_per++;
+                $('.add_person').append(html);
+            });
+        </script>
 
 
 

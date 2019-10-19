@@ -367,11 +367,7 @@ foreach($showall as $value){
 
    
     function selectplace()
-	{
-     
-        
-
-        
+	{       
 
         $keyword = $_POST["query"];
         $this->db->like('place_name', $keyword, 'both'); 
