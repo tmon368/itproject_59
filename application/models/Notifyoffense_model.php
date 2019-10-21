@@ -529,6 +529,30 @@ foreach($showall as $value){
     }
 
 
+    function selectregist_num(){
+        //$id='กขค123';
+                $id= $this->input->post('registnumber');
+
+
+         $this->db->select('*');
+         $this->db->from('vehicles v');
+         $this->db->join('vehiclestype vt', 'v.vetype_ID=vt.vetype_ID');
+         $this->db->join('student s', 'v.S_ID=s.S_ID');
+         $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+         $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
+         $this->db->where('regist_num', $id);
+         $query = $this->db->get();
+       // var_dump($query->result());
+        
+       
+        if($query->num_rows() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+       
+    }
+    
        
     
 }

@@ -157,7 +157,10 @@ class Notifyoffense extends Student_dashboard {
 		echo json_encode($result);
 		//ยังไม่ได้เขียน model
 	}
-
+	function selectregist_num (){
+		$result = $this->Notifyoffense_model->selectregist_num();
+		echo json_encode($result);
+	}
 }
 
   
