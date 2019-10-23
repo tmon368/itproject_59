@@ -53,30 +53,32 @@ class holiday_model extends CI_Model {
 
     public function addholiday(){
            //str_replace(' ', '-', trim($placename)); 
-           $namedesc = $this->input->post('txtdescrip');
-           $namedesc = trim($namedesc);
+            $year = $this ->input->get("year");
+            $namedesc = $this->input->post('txtdescrip');
+            $namedesc = trim($namedesc);
             $checkname = $this->checkname($namedesc);
+            $datatime = $this->input->post('txtdate');
             if($checkname == true){
                 return "falsename";
-
-
             }else{
-        $field = array(
-            //'h_ID'=>$this->input->post('txtID'),
-            'h_date'=>$this->input->post('txtdate'),
-            'description'=>$namedesc,
-            'h_type'=>$this->input->post('addtype'),
-            'flag'=>0,
-
-            
-            );
-
-           
+                
+                $datetime_arr = explode("-",$datatime);
+                var_dump($datetime_arr[0]);
+                var_dump($year);
+                if($year == $datetime_arr[0]+543) {              
+                    $field = array(
+                        //'h_ID'=>$this->input->post('txtID'),
+                        'h_date'=> $datatime,
+                        'description'=>$namedesc,
+                        'h_type'=>$this->input->post('addtype'),
+                        'flag'=>0,
+                    ); 
+                } 
         $this->db->insert('holiday', $field);
         if($this->db->affected_rows() > 0){
-            return true;
+            return  "name";
         }else{
-            return false;
+            return "year";
         }
     } 
 
@@ -141,5 +143,5 @@ class holiday_model extends CI_Model {
         }
     }
     
-}
-}
+
+    }}

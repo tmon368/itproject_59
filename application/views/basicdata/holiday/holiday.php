@@ -320,7 +320,7 @@ $("#edit_file").modal("show");
 
     $('#btnAdd').click(function() {
             $('#exampleModalCenter').modal('show');
-            $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday/addholiday');
+            $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday/addholiday?year=<?php echo $year; ?>');
         });
 
         $('#btnSave').click(function(){
@@ -360,7 +360,7 @@ $("#edit_file").modal("show");
 					async: false,
 					dataType: 'json',
 					success: function(response){
-            if (response.success == true) {
+            if (response.success == "name" ) {
                                 $('#exampleModalCenter').modal('hide');
                                 //$(this).find('#formadd')[0].reset();
 
@@ -382,22 +382,14 @@ $("#edit_file").modal("show");
                                 //$(this).find('#formadd')[0].reset();
 
                                 $('#formadd')[0].reset();
-                                $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('.alert-success').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
                                 $('#msg1').empty();
                                 showAll();
                                // alert('Error');
                             }
                         },
           
-					error: function(){
-						alert('id นี้ถูกใช้งานแล้ว');
-						$('#exampleModalCenter').modal('hide');
-						$('#formadd')[0].reset();
-						//$('#nav_sty')[0].reset();		
-						$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
-						$('#msg1').empty();
-						showAll();
-					}
+			
 				});
 			}
 		});
