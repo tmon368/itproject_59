@@ -232,10 +232,18 @@
             showAll();
 
             $("#place_ID").blur(function() {
+                var data = "place_ID=" + $("#place_ID").val();
+                //alert(data)
                 var flag;
+                data = data.trim(data);
+                if(data == "place_ID="){
+                    $("#msg1").html('<div style="color:red">ไม่สามารถใช้งานได้</div>');
+                            $("#place_ID").focus();
+                }
+                else{
                 $.ajax({
                     url: "<?php echo base_url(); ?>index.php/place/checkkey",
-                    data: "place_ID=" + $("#place_ID").val(),
+                    data: data,
                     type: 'ajax',
                     method: 'post',
                     async: false,
@@ -256,6 +264,7 @@
                     }
                 });
                 return flag;
+                }
             });
 
 
