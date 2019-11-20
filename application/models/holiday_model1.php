@@ -59,8 +59,9 @@ class holiday_model1 extends CI_Model {
             return false;
         }
     }
+}
     
-     function editholiday(){
+    public function editholiday(){
         $id = $this->input->get('id');
         $this->db->where('hh_ID', $id);
         $query = $this->db->get('holiday1');
@@ -104,4 +105,4 @@ class holiday_model1 extends CI_Model {
         }
     }
 }
-}
+

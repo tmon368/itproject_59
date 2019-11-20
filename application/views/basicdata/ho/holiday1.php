@@ -92,45 +92,40 @@ echo '<center><label class="text-danger">'.$this->session->flashdata
 <!--------------------------------->
 
 <!-- Modal ส่วน edit -->
-
-<!--------------------------------->
-
 <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLongTitle"><span><i 
-        class="fa fa-exclamation-triangle" 
-        style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!--ส่วนฟอร์มลบข้อมูล-->
+                        <form action="" id="formdelete" method="post" class="needs-validation">
+                            <div class="modal-body" id="showdel">
 
-      <!--ข้อความยืนยันการลบข้อมูล-->
-      <form action="" id="formdelete" method="post"  class="needs-validation" >
-        <div class="modal-body" id="showdel">
-        <center >
-          <label id="showddel"></label>
-        <input type="hidden" name="txtdelID" > 
-        
-      </center>
-       
-      <!------------------>
- </div>
+                                <!--ข้อความยืนยันการลบข้อมูล-->
+                                <center>
+                                    <div id="showddel"></div>
+                                    <input type="hidden" name="txtdelID">
+                                </center>
+                                <!------------------>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
      
    
-      <div class="modal-footer">
-      <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
-       
-      </div>
- </form>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                               
+      
  <!-- Modal ส่วน select -->
 
         <div class="card-body">
@@ -307,28 +302,30 @@ $('#btnAdd').click(function() {
                 });
                   
 
-    //delete- 
-    $('#showdata').on('click', '.del_data', function(){
-      var id = $(this).attr('data');
-      $('#del_file').modal('show');
-      //prevent previous handler - unbind()
-       $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/holiday1/deleteholiday');
-        $.ajax({
-        type: 'ajax',
-        method: 'get',
-        url: '<?php echo base_url() ?>index.php/holiday1/editholiday',
-        data: {id: id},
-        async: false,
-        dataType: 'json',
-        success: function(data){
-            $('#showddel').html('ต้องการลบวัน   "'+data.h_year+'"');  
-            $('input[name=txtdelID]').val(data.hh_ID);
-        },
-          error: function(){
-            alert('ไม่สามารถลบข้อมูล');
-          }
-        });
-      });
+           //ลบข้อมูล
+           $('#showdata').on('click', '.del_data', function() {
+                var id = $(this).attr('data');
+                $('#del_file').modal('show');
+                //prevent previous handler - unbind()
+                $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/holiday1/deleteholiday');
+                $.ajax({
+                    type: 'ajax',
+                    method: 'get',
+                    url: '<?php echo base_url() ?>index.php/holiday1/editholiday',
+                    data: {
+                        id: id
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#showddel').html('ต้องการลบ พ.ศ.   "' + data.h_year + '"');
+                        $('input[name=txtdelID]').val(data.hh_ID);
+                    },
+                    error: function() {
+                        alert('ไม่สามารถลบข้อมูล');
+                    }
+                });
+            });
 
       $('#btndel').click(function(){
       var url = $('#formdelete').attr('action');
@@ -386,11 +383,8 @@ $('#btnAdd').click(function() {
           for(i=0; i<data.length; i++){
             html +='<tr>'+
                   '<td>'+(i+1)+'</td>'+
-                  '<td>'
-                  +'<a href="<?php echo base_url() ?>index.php/holiday1/findHolidayByYear?year='+data[i].h_year+'">'
-                  +data[i].h_year+'</a></td>'+
-                  '<td>'+'<button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].hh_ID + '>ลบข้อมูล</button>'+'</td>'+
-                  '</tr>';
+                  '<td>'+data[i].h_year+'</td>'+
+                  '<td> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].hh_ID + '>ลบข้อมูล</button></td>' +                  '</tr>';
           }
           $('#showdata').html(html);
         },
