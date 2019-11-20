@@ -67,6 +67,7 @@ class usertype_model extends CI_Model {
             return false;
         }
     }
+}
 
      function editusertype(){
         $id = $this->input->get('id');
@@ -116,4 +117,5 @@ class usertype_model extends CI_Model {
             
         }
         
-    }}
+    
+}

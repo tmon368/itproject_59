@@ -63,8 +63,8 @@ class holiday_model extends CI_Model {
             }else{
                 
                 $datetime_arr = explode("-",$datatime);
-                var_dump($datetime_arr[0]);
-                var_dump($year);
+                // var_dump($datetime_arr[0]);
+                // var_dump($year);
                 if($year == $datetime_arr[0]+543) {              
                     $field = array(
                         //'h_ID'=>$this->input->post('txtID'),
@@ -81,14 +81,8 @@ class holiday_model extends CI_Model {
             return "year";
         }
     } 
+}
 
-        $this->db->insert('holiday', $field);
-        if($this->db->affected_rows() > 0){
-            return true;
-        }else{
-            return false;
-        }
-    } 
 
     public function editholiday(){
         $id = $this->input->get('id');
@@ -126,6 +120,7 @@ class holiday_model extends CI_Model {
             return false;
         }
     }
+}
 
     function deleteholiday(){
          $id = $this->input->post('txtdelID');
@@ -144,4 +139,4 @@ class holiday_model extends CI_Model {
     }
     
 
-    }}
+    }
