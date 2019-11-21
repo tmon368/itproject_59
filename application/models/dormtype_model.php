@@ -9,13 +9,13 @@ class dormtype_model extends CI_Model {
     
     //ฟังก์ชันแสดงข้อมูลทั้งหมด จาก table dormtype โดยเรียงลำดับจาก dormtype_ID
  public function showAll(){
-     $flag=1;
+     
      
      $this->db->select('*');
-     $this->db->from('Dormitory c'); // หมวดความผิด // หอพัก
-     $this->db->join('DormType d', 'c.dormtype_ID=d.dormtype_ID'); // ฐานความผิด  // ประเภทหอพัก
+     $this->db->from('DormType c'); // หมวดความผิด // หอพัก
+     $this->db->join('Dormitory d', 'c.dormtype_ID=d.dormtype_ID'); // ฐานความผิด  // ประเภทหอพัก
      //$this->db->order_by('off_ID', 'ASC');
-     $this->db->where('flagg', $flag);
+     $this->db->where('flag', '0');
      $query = $this->db->get();
      if($query->num_rows() > 0){
          return $query->result();
