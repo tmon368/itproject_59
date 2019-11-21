@@ -66,8 +66,6 @@ class dormitory_model extends CI_Model {
         'dormtype_ID'=>$this->input->post('dormedittype'),
         'person_ID'=>$this->input->post('dormedittxt'),
     
-            
-            
         );
         $this->db->where('dorm_ID', $id);
         $this->db->update('dormitory', $field);

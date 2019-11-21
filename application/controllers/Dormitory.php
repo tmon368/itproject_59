@@ -47,6 +47,7 @@ class Dormitory extends Admin_dashboard  {
     }
   
     public function adddormitory(){
+        
         $result = $this->dormitory_model->adddormitory();
         //$msg['success'] = false;
         //$msg['type'] = 'add';

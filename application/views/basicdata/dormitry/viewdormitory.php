@@ -475,7 +475,7 @@ $(document).ready(function(){
       }
     });
 
-    //แก้ไข
+    //แก้ไข.
   $('#showdata').on('click', '.edit_data', function() {
             var id = $(this).attr('data');
             var popup = document.getElementById("editimage");
