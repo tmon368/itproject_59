@@ -31,7 +31,6 @@ class Holiday1 extends Admin_dashboard {
     }
     
     
-    
     public function edit(){
         $this->load->view('template/template1');
         $this->load->view('template/template2');
