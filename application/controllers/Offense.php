@@ -50,36 +50,29 @@ class Offense extends Admin_dashboard {
 	
 	public function addoffense(){
 	    $result = $this->offense_model->addoffense();
-	    //$msg['success'] = false;
-	    //$msg['type'] = 'add';
-	    if($result){
-	        $msg['success'] = true;
-	        
-	    }else{
-	        $msg['success'] = false;
-	        redirect(base_url() . 'index.php/offense/index');    
-	    }
-	    echo json_encode($msg);
+		//$msg['success'] = false;
+		//$msg['type'] = 'add';
+		$results['success'] = $result;
+	
+		echo json_encode($results);
 	}
 	
 	public function editoffense(){
 	    
 	    $result = $this->offense_model->editoffense();
 	    echo json_encode($result);
-	}
+	}	
 	
 	public function updateoffense(){
 	    $result = $this->offense_model->updateoffense();
-	    $msg['success'] = false;
-	    $msg['type'] = 'update';
-	    if($result){
-	        $msg['success'] = true;
-	    }else{
-	        $msg['success'] = false;
-	        redirect(base_url() . 'index.php/offense/index');
-	    }
-	    echo json_encode($msg);
+		//$msg['success'] = false;
+		//$msg['type'] = 'add';
+		$results['success'] = $result;
+	
+		echo json_encode($results);
 	}
+	
+	
 	
 	public function deleteoffense(){
 	    $result = $this->offense_model->deleteoffense();

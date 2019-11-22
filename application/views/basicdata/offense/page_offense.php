@@ -275,42 +275,36 @@
 
 
  <!-- Modal ส่วน del -->
-                                    
-                                    <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                      <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content">
-                                                          <div class="modal-header">
-                                                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                              <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                          </div>
-                                                          <!--ส่วนฟอร์มลบข้อมูล-->
-                                                          <form action="" id="formdelete" method="post"  class="needs-validation" >
-                                                          <div class="modal-body" id="showdel">
+ <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!--ส่วนฟอร์มลบข้อมูล-->
+                        <form action="" id="formdelete" method="post" class="needs-validation">
+                            <div class="modal-body" id="showdel">
 
-                                                          <!--ข้อความยืนยันการลบข้อมูล-->
-                                                          
-      <center >
-          <div id="showddel"></div>
-        <input  type="hidden" name="txtdelID" > 
-        
-      </center>
-       
-      <!------------------>
- </div>
-     
-   
-      <div class="modal-footer">
-      <button  name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-      <button  name="btndel" type="button" id="btndel" class="btn btn-danger btn-fw">ลบ</button>
-            
-       
-      </div>
- </form>
-                                                        </div>
-                                                      </div>
-                                                    </div>
+                                <!--ข้อความยืนยันการลบข้อมูล-->
+                                <center>
+                                    <div id="showddel"></div>
+                                    <input type="hidden" name="txtdelID">
+                                </center>
+                                <!------------------>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
                                                  
                                       <!------------------>
 
@@ -423,66 +417,50 @@ $(document).ready(function(){
 		var oc_ID = $('select[name=txt_oc]');
 		var result = '';
 		
-		if(off_ID.val()==''){
-			off_ID.parent().parent().addClass('has-error');
-		}else{
-			off_ID.parent().parent().removeClass('has-error');
-			result +='1';
-		}
-		if(off_desc.val()==''){
-			off_desc.parent().parent().addClass('has-error');
-		}else{
-			off_desc.parent().parent().removeClass('has-error');
-			result +='2';
-		}
-		if(point.val()==''){
-			point.parent().parent().addClass('has-error');
-		}else{
-			point.parent().parent().removeClass('has-error');
-			result +='3';
-		}
-		if(oc_ID.val()==''){
-			oc_ID.parent().parent().addClass('has-error');
-		}else{
-			oc_ID.parent().parent().removeClass('has-error');
-			result +='4';
-		}
+	
 
-
-      if(result=='1234'){
+      if(result==''){
         $.ajax({
-          type: 'ajax',
-          method: 'post',
-          url: url,
-          data: data,
-          async: false,
-          dataType: 'json',
-          success: function(response){
-        	  if(response.success){
-					$('#exampleModalCenter').modal('hide');
-					 //$(this).find('#formadd')[0].reset();
-					 
-					$('#formadd')[0].reset();		
-					$('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-					$('#textkey').empty();			
-					$('#msg1').empty();
-					showAll();
-				}else{
-					alert('Error');
-				}
-			},
-          error: function(){
-        	  alert('id นี้ถูกใช้งานแล้ว');
-				$('#exampleModalCenter').modal('hide');
-				$('#formadd')[0].reset();
-				//$('#nav_sty')[0].reset();		
-				$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
-				$('#msg1').empty();
-				showAll();
-          }
-        });
-      }
-    });
+                        type: 'ajax',
+                        method: 'post',
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success == true) {
+                                $('#exampleModalCenter').modal('hide');
+                                //$(this).find('#formadd')[0].reset();
+
+                                $('#formadd')[0].reset();
+                                $('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                            }
+                            else if (response.success == "falsename") {
+                                $('#exampleModalCenter').modal('hide');
+                                //$(this).find('#formadd')[0].reset();
+
+                                $('#formadd')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                            } else {
+                                alert('Error');
+                            }
+                        },
+                        error: function() {
+                            alert('id นี้ถูกใช้งานแล้ว');
+                            $('#exampleModalCenter').modal('hide');
+                            $('#formadd')[0].reset();
+                            //$('#nav_sty')[0].reset();		
+                            $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                            $('#msg1').empty();
+                            showAll();
+                        }
+                    });
+                }
+            });
 
     //แก้ไขข้อมูล
  $('#showdata').on('click', '.edit_data', function(){
@@ -519,61 +497,46 @@ $(document).ready(function(){
 		var point = $('input[name=txteditpoint]');
 		var oc_ID = $('select[name=txteditoc]');
 		var result = '';
-		
-		if(off_ID.val()==''){
-			off_ID.parent().parent().addClass('has-error');
-		}else{
-			off_ID.parent().parent().removeClass('has-error');
-			result +='1';
-		}
-		if(off_desc.val()==''){
-			off_desc.parent().parent().addClass('has-error');
-		}else{
-			off_desc.parent().parent().removeClass('has-error');
-			result +='2';
-		}
-		if(point.val()==''){
-			point.parent().parent().addClass('has-error');
-		}else{
-			point.parent().parent().removeClass('has-error');
-			result +='3';
-		}
-		if(oc_ID.val()==''){
-			oc_ID.parent().parent().addClass('has-error');
-		}else{
-			oc_ID.parent().parent().removeClass('has-error');
-			result +='4';
-		}
 
 
-     if(result=='1234'){
-       $.ajax({
-         type: 'ajax',
-         method: 'post',
-         url: url,
-         data: data,
-         async: false,
-         dataType: 'json',
-         success: function(response){
-        	 if(response.success){
-					$('#edit_file').modal('hide');
-					$('#formupdate')[0].reset();		
-					$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-					showAll();
-				}else{
-					alert('Error');
-				}
-			},
-         error: function(){
-        		//alert('id นี้ถูกใช้งานแล้ว');
-				$('#edit_file').modal('hide');
-				$('#formupdate')[0].reset();		
-				$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-				showAll();
-         }
-       });
-     }
-   });
+     if(result==''){
+      $.ajax({
+                        type: 'ajax',
+                        method: 'post',
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success == true) {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                showAll();
+
+                            }  else if(response.success == "falsename") {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                                
+                            } else {
+                                alert('Error');
+                            }
+                        },
+
+                        error: function() {
+                            //alert('id นี้ถูกใช้งานแล้ว');
+                            $('#edit_file').modal('hide');
+                            $('#formupdate')[0].reset();
+                            $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
+                            showAll();
+                        }
+                    });
+                }
+            });
+
 
 
    
@@ -607,13 +570,8 @@ $(document).ready(function(){
 		var off_ID = $('input[name=txtdelID]');
 		var result = '';
 		
-		if(off_ID.val()==''){
-			off_ID.parent().parent().addClass('has-error');
-		}else{
-			off_ID.parent().parent().removeClass('has-error');
-			result +='1';
-		}
-		if(result=='1'){
+
+		if(result==''){
 			$.ajax({
 				type: 'ajax',
 				method: 'post',
