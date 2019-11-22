@@ -73,17 +73,10 @@ class Offensecate extends Admin_dashboard {
         
         echo json_encode($results);
     }
-    
-    
     public function deleteoffensecate(){
         $result = $this->offensecate_model->deleteoffensecate();
+        $results['success'] = $result;
         
-        if($result){
-            $msg['success'] = true;
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/offensecate/index');
-        }
-        echo json_encode($msg);
+        echo json_encode($results);
     }
 }

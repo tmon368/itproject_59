@@ -152,14 +152,11 @@
             <!--------------------------------->
             <!-- Modal ส่วน del -->
 
-            <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true">
+            <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i
-                                        class="fa fa-exclamation-triangle"
-                                        style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
+                            <h2 class="modal-title" id="exampleModalLongTitle"><span><i class="fa fa-exclamation-triangle" style="color:rgba(235,99,102,1.00)"></i></span>ลบข้อมูล</h2>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -175,11 +172,11 @@
                                 </center>
                                 <!------------------>
                             </div>
-                            
+
                             <div class="modal-footer">
-                                <button name="insert" type="reset" class="btn btn-secondary"
-                                    data-dismiss="modal">ยกเลิก</button>
+                                <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                                 <button name="btndel" id="btndel" type="button" class="btn btn-danger btn-fw">ลบ</button>
+
                             </div>
                         </form>
                     </div>
@@ -270,20 +267,9 @@
             var oc_ID = $('input[name=txtID]');
             var oc_desc = $('input[name=txtname]');
             var result = '';
-            if (oc_ID.val() == '') {
-                oc_ID.parent().parent().addClass('has-error');
-            } else {
-                oc_ID.parent().parent().removeClass('has-error');
-                result += '1';
-            }
-            if (oc_desc.val() == '') {
-            	oc_desc.parent().parent().addClass('has-error');
-            } else {
-            	oc_desc.parent().parent().removeClass('has-error');
-                result += '2';
-            }
+       
 
-            if (result == '12') {
+            if (result == '') {
                 $.ajax({
                     type: 'ajax',
                     method: 'post',
@@ -361,22 +347,10 @@
 			var oc_desc = $('input[name=txteditname]');
 			var result = '';
 			
-			if(oc_ID.val()==''){
-				oc_ID.parent().parent().addClass('has-error');
-			}else{
-				oc_ID.parent().parent().removeClass('has-error');
-				result +='1';
-			}
-			if(oc_desc.val()==''){
-				oc_desc.parent().parent().addClass('has-error');
-			}else{
-				oc_desc.parent().parent().removeClass('has-error');
-				result +='2';
-			}
-			
+		
 
 			
-			if(result=='12'){
+			if(result==''){
 				$.ajax({
 					type: 'ajax',
 					method: 'post',
@@ -414,75 +388,72 @@
 			}
 		});
 
-        //ลบข้อมูล
         $('#showdata').on('click', '.del_data', function() {
-            var id = $(this).attr('data');
-            $('#del_file').modal('show');
-            //prevent previous handler - unbind()
-            $('#formdelete').attr('action',
-                '<?php echo base_url() ?>index.php/offensecate/deleteoffensecate');
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                url: '<?php echo base_url() ?>index.php/offensecate/editoffensecate',
-                data: {
-                    id: id
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    $('#showddel').html('ต้องการลบหมวดความผิด   "' + data.oc_desc + '"');
-                    $('input[name=txtdelID]').val(data.oc_ID);
-                },
-                error: function() {
-                    alert('ไม่สามารถลบข้อมูล');
+                var id = $(this).attr('data');
+                $('#del_file').modal('show');
+                //prevent previous handler - unbind()
+                $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/offensecate/deleteoffensecate');
+                $.ajax({
+                    type: 'ajax',
+                    method: 'get',
+                    url: '<?php echo base_url() ?>index.php/offensecate/editoffensecate',
+                    data: {
+                        id: id
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#showddel').html('ต้องการลบสถานที่   "' + data.oc_desc + '"');
+                        $('input[name=txtdelID]').val(data.oc_ID);
+                    },
+                    error: function() {
+                        alert('ไม่สามารถลบข้อมูล');
+                    }
+                });
+            });
+
+
+
+            $('#btndel').click(function() {
+                var url = $('#formdelete').attr('action');
+                var data = $('#formdelete').serialize();
+                var place_ID = $('input[name=txtdelID]');
+                var result = '';
+
+           
+                if (result == '') {
+                    $.ajax({
+                        type: 'ajax',
+                        method: 'post',
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                $('#del_file').modal('hide');
+                                $('#formdelete')[0].reset();
+                                $('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                //$('#formdelete').empty();
+                                showAll();
+                            } else {
+                                alert('Error');
+                            }
+                        },
+
+                        error: function() {
+                            //alert('id นี้ถูกใช้งานแล้ว');
+                            $('#del_file').modal('hide');
+                            $('#formdelete')[0].reset();
+                            $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
+                            showAll();
+                        }
+                    });
                 }
             });
-        });
-        
-        $('#btndel').click(function(){
-			var url = $('#formdelete').attr('action');
-			var data = $('#formdelete').serialize();
-			var oc_ID = $('input[name=txtdelID]');
-			var result = '';
-			
-			if(oc_ID.val()==''){
-				oc_ID.parent().parent().addClass('has-error');
-			}else{
-				oc_ID.parent().parent().removeClass('has-error');
-				result +='1';
-			}
-			if(result=='1'){
-				$.ajax({
-					type: 'ajax',
-					method: 'post',
-					url: url,
-					data: data,
-					async: false,
-					dataType: 'json',
-					success: function(response){
-						if(response.success){
-							$('#del_file').modal('hide');
-							$('#formdelete')[0].reset();		
-							$('.alert-danger').html('ลบข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-							//$('#formdelete').empty();
-							showAll();
-						}else{
-							alert('Error');
-						}
-					},
-					
-					error: function(){
-						//alert('id นี้ถูกใช้งานแล้ว');
-						$('#del_file').modal('hide');
-						$('#formdelete')[0].reset();		
-						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(5000).fadeOut('slow');
-						showAll();
-					}
-				});
-			}
-		});
-        
+
+
+
 
         //แสดงข้อมูล
         function showAll() {
@@ -498,7 +469,7 @@
                         html += '<tr>' +
                             '<td>' + data[i].oc_ID + '</td>' +
                             '<td>' + data[i].oc_desc + '</td>' +
-                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data='+ data[i].oc_ID +'>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data='+ data[i].oc_ID +'>ลบข้อมูล</button></td>'
+                            '<td> <button type="button" class="btn btn-inverse-secondary btn-rounded btn-fw edit_data" data=' + data[i].oc_ID + '>แก้ไขข้อมูล</button> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].oc_ID + '>ลบข้อมูล</button></td>' +
                             + 
                             '</tr>';
                     }

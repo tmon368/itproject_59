@@ -10,7 +10,9 @@ class offensecate_model extends CI_Model {
     
  public function showAll(){
         $this->db->order_by('oc_ID', 'ASC');
+        $this->db->where('flag', '0');	
         $query = $this->db->get('offensecate');
+        
         if($query->num_rows() > 0){
             return $query->result();
         }else{
@@ -110,31 +112,32 @@ class offensecate_model extends CI_Model {
     function deleteoffensecate(){
          $id = $this->input->post('txtdelID');
          $field = array(
-             'flag'=> '0'
-             
-         );
-         $this->db->where('oc_ID', $id);
-         $this->db->delete('offense' ,$field);
-       
+            'flag'=> '1'
+            
+        );
+
+        
+       $this->db->where('oc_ID', $id);
+       $this->db->update('offensecate' ,$field);
          
-        $this->db->where('oc_ID', $id);
-        $this->db->delete('offensecate');
+        
         //$this->db->update('offensecate', $field);
         if($this->db->affected_rows() > 0){
             
-            $field = array(
-                'flag'=> '0'
+            $field1 = array(
+                'flagg'=> '0'
                 
             ); 
             $this->db->where('oc_ID', $id);
-            $this->db->update('offense' ,$field);
+            $this->db->update('offense' ,$field1);
             if($this->db->affected_rows() > 0){
                 
             return true;
         }else{
             return false;
         }
-        }}
+        }
+    }
     public function import_exceloffensecate(){
         $this->load->view('import_exceloffensecate');
         
