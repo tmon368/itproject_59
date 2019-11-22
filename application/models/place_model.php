@@ -50,8 +50,9 @@ class place_model extends CI_Model {
     public function addplace(){
         
             //str_replace(' ', '-', trim($placename)); 
-           $placename = $this->input->post('txtname');
+           $placename = $this->input->post('place_name');
            $placename = trim($placename);
+           
             $checkname = $this->checknameplace($placename);
             if($checkname == true){
                 return "falsename";
@@ -59,11 +60,13 @@ class place_model extends CI_Model {
 
             }else{
                 $field = array(
-                    'place_ID'=>$this->input->post('txtID'),
+                    'place_ID'=>$this->input->post('place_ID'),
                     'place_name'=>$placename
                     // 'description'=>$this->input->post('txtdescription')
                     
                     );
+                    //echo json_encode($field);
+                    //die();
         $this->db->insert('place', $field);
         if($this->db->affected_rows() > 0){
             return true;

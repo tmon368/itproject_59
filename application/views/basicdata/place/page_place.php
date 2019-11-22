@@ -283,6 +283,12 @@
             $('#btnSave').click(function() {
                 var url = $('#formadd').attr('action');
                 var data = $('#formadd').serialize();
+                var x = document.forms["formadd"]["txtID"].value;
+                var y = document.forms["formadd"]["txtname"].value;
+                 console.log(x)
+                 console.log(y)
+                 var dataAll = {"place_ID":x, "place_name":y.toString()};
+                 console.log(dataAll)
                 //validate form
                 var place_ID = $('input[name=txtID]');
                 var place_name = $('input[name=txtname]');
@@ -307,7 +313,7 @@
                         type: 'ajax',
                         method: 'post',
                         url: url,
-                        data: data,
+                        data: dataAll,
                         async: false,
                         dataType: 'json',
                         success: function(response) {
