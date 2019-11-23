@@ -259,7 +259,10 @@ $("#edit_file").modal("show");
 
   
 showAll();
+$('#text1').click(function() {
+  alert(cars)
 
+ });
 
 $('#showdata').on('click', '.btnbutton', function() {
     var id = $(this).attr('data');
@@ -454,7 +457,7 @@ $('#showdata').on('click', '.btnSave', function() {
                       '<td>'+ data[i].committed_date +'</td>'+
                       '<td>'+ data[i].off_desc +'</td>'+
                       '<td align="center"> <i style="color:rgba(67, 135, 254);font-size:1.5rem;" class="fa fa-file-text btn-fw del_data" data=' + data[i].offensestd_ID  + '></i></td>' +
-                      '<td align="center"><input type="checkbox"  id="chkCon"   value="1" name="chkCon" onclick="show_text(this);check(this);"  class="largerCheckbox" data='+ data[i].offensestd_ID + '></td>'+
+                      '<td align="center"><input type="checkbox"  id="chkCon"   value="'+data[i].offensestd_ID+'" name="chkCon" onclick="show_text(this);check(this);"  class="largerCheckbox" data='+ data[i].offensestd_ID + '></td>'+
                       '<td align="center"><i  style="color:rgba(67, 135, 254);font-size:1.5rem;" name="btnbutton" id="btnbutton" value="button"  class="far fa-file-archive btn-inverse-secondary btn-fw btnbutton" data=' + data[i].offensestd_ID  + '></i></td>' +
                       '</tr>';
               }
@@ -467,21 +470,43 @@ $('#showdata').on('click', '.btnSave', function() {
         }
     });
 
-
+    var countforbtn = 0;
+    var cars = [];
    
    function show_text(obj){
       if(obj.checked){
+        cars.push(obj.value);
+        countforbtn +=1;
+        if(countforbtn > 0){
       document.getElementById("text1").style.display="";
+        }
        }else {
-      document.getElementById("text1").style.display="none";
+        //cars.remove(obj.value);
+        var index = cars.indexOf(obj.value);
+      if (index > -1) {
+        cars.splice(index, 1);
       }
+        countforbtn -=1;
+        if(countforbtn == 0){
+      document.getElementById("text1").style.display="none";
+        }
+      }
+      console.log(cars)
+      console.log(countforbtn)
  }
+ 
 
    function check(e){
 	   if(e.checked == true) {
+      
+       
 	   document.getElementById('btnbutton').disabled=true;
+       
 	   } else {
+      
+     
 	   document.getElementById('btnbutton').disabled=false;
+      
 	   }
 	   }
 
