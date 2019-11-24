@@ -59,12 +59,15 @@ class offensecate_model extends CI_Model {
         }else{
             $field = array(
                 'oc_ID'=>$this->input->post('txtID'),
-                'oc_desc'=>$oc_desc
-           
+                'oc_desc'=>$oc_desc,
+                'flag'=>'0'
                 
+                                
             );
             $this->db->insert('offensecate', $field);
             if($this->db->affected_rows() > 0){
+               
+                
                 return true;
             }else{
                 return false;
@@ -109,35 +112,19 @@ class offensecate_model extends CI_Model {
         }
     }
 
-    function deleteoffensecate(){
-         $id = $this->input->post('txtdelID');
-         $field = array(
-            'flag'=> '1'
-            
-        );
-
-        
-       $this->db->where('oc_ID', $id);
-       $this->db->update('offensecate' ,$field);
-         
-        
-        //$this->db->update('offensecate', $field);
-        if($this->db->affected_rows() > 0){
-            
-            $field1 = array(
-                'flagg'=> '0'
-                
-            ); 
-            $this->db->where('oc_ID', $id);
-            $this->db->update('offense' ,$field1);
-            if($this->db->affected_rows() > 0){
-                
-            return true;
-        }else{
-            return false;
-        }
-        }
+    function deleteoffensecate(){   
+        $id = $this->input->post('txtdelID');
+    
+    $this->db->where('oc_ID', $id);
+    $this->db->delete('offensecate');
+    //$this->db->update('place', $field);
+    if($this->db->affected_rows() > 0){
+        return true;
+    }else{
+        return false;
     }
+}
+
     public function import_exceloffensecate(){
         $this->load->view('import_exceloffensecate');
         
