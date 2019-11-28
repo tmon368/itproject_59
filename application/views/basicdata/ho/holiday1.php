@@ -383,7 +383,9 @@ $('#btnAdd').click(function() {
           for(i=0; i<data.length; i++){
             html +='<tr>'+
                   '<td>'+(i+1)+'</td>'+
-                  '<td>'+data[i].h_year+'</td>'+
+                  '<td>'
+                  +'<a href="<?php echo base_url() ?>index.php/holiday1/findHolidayByYear?year='+data[i].h_year+'">'
+                  +data[i].h_year+'</td>'+
                   '<td> <button type="button" class="btn btn-danger btn-rounded btn-fw del_data" data=' + data[i].hh_ID + '>ลบข้อมูล</button></td>' +                  '</tr>';
           }
           $('#showdata').html(html);
