@@ -7,70 +7,54 @@ class Discipline_officer_dashboard_model extends CI_Model {
         
     }
     
-    public function selectstudentstatus(){
-        $student = $this->session->userdata('student');
-        $this->db->select('*');
-        $this->db->from('offensestd os');
-        $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
-        $this->db->join('offense o', 'oh.off_ID=o.off_ID');     
-        $this->db->where('os.S_ID',$student);
-        $query = $this->db->get();
-        $student = array();
-        $student = $query->result_array();
-     
-        //var_dump($student);
+    public function getDashboard(){
+        //SELECT offensecate.*,COUNT(offensestd.S_ID) as std FROM `offensecate`, `offensestd` , `offensehead` , `offense`   WHERE offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID  GROUP BY offensecate.oc_ID
+
+        //SELECT offensecate.*,COUNT(offensestd.S_ID) as std FROM `offensecate`, `offensestd` , `offensehead` , `offense`   WHERE 
+        //offensestd.oh_ID=offensehead.oh_ID 
+        //and offensehead.off_ID=offense.off_ID 
+        //and offense.oc_ID=offensecate.oc_ID  GROUP BY offensecate.oc_ID
+        $query= $this->db->query('SELECT offensecate.oc_ID,offensecate.oc_desc as label,COUNT(offensestd.S_ID) as y FROM `offensecate`, `offensestd` , `offensehead` , `offense`   WHERE offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID  GROUP BY offensecate.oc_ID');
+        // $this->db->select('offensecate.* as label,count(offensestd.S_ID) as y');
+        // $this->db->group_by('offensecate.oc_ID');
+        // $this->db->from('offensecate oc');
+        // $this->db->join('offense o','oc.oc_ID=o.oc_ID');
+        // $this->db->join('offensehead oh','o.off_ID=oh.off_ID'); 
+        // $this->db->join('offensestd ostd','น้.oh_ID =ostd.oh_ID');
+         
+        
+        //$this->db->where('p.username',$teacher);
+        // $query = $this->db->get();
+        // $student = array();
+        // $student = $query->result_array();
+        $data = array();
+        $data = $query->result_array();
+        // var_dump($data);
+        // echo "<br><br><br>";
+        $calnumstd =0;
+        foreach($data as $value){
+            $cal = intval($value['y']);
+            $calnumstd += $cal;
+
+
+        }
+       $data['numstd'] = $calnumstd;
+        // var_dump($data);
+        // die();
         
         
         
-        if($student > 0){
-            return $student;
+        if($data !=NULL){
+            return $data;
         }else{
             return false;
         }
     }
     
-    public function selectstudentfirstpage(){
-        $student = $this->session->userdata('student');
-        $this->db->select('*');
-        $this->db->from('student s');
-        $this->db->join('status st', 's.status_ID=st.status_ID');
-        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
-        $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
-        
-        
-        $this->db->where('S_ID',$student);
-        $query = $this->db->get();
-        //var_dump($query->result());
-        
-        
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
     
     
     
-    public function selectdetailfirstpage(){
-        $student = $this->session->userdata('student');
-        $this->db->select('*');
-        $this->db->from('offensehead oh');
-        $this->db->join('offense o', 'oh.off_ID=o.off_ID');
-        $this->db->join('Offensestd os', 'os.offensestd_ID=ot.offensestd_ID');
-        
-        
-        $this->db->where('S_ID',$student);
-        $query = $this->db->get();
-        //var_dump($query->result());
-        
-        
-        if($query->num_rows() > 0){
-            return $query->result();
-        }else{
-            return false;
-        }
-    }
+   
     
     
     
