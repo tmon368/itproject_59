@@ -20,6 +20,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?php echo base_url('re/css/style.css');?>">
   <link rel="stylesheet" href="<?php echo base_url('re/css/custom.css');?>">
+  <link rel="stylesheet" href="<?php echo base_url('re/css/custom3.css');?>">
   <!-- endinject -->
   <link rel="shortcut icon" href="<?php echo base_url('re/images/favicon.png'); ?>" />
 
