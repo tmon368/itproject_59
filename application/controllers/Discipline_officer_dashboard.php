@@ -39,7 +39,11 @@ class Discipline_officer_dashboard extends CI_Controller {
 	echo json_encode($result);
         
     }
-	
+	public function getGraphDataSchool(){
+		$result = $this->Discipline_officer_dashboard_model->getGraphDataSchool();
+		echo json_encode($result);
+        
+    }
 	
 	function checkAutoriry() {
 	    //$admin = $this->session->userdata('admin');
