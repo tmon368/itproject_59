@@ -52,7 +52,24 @@ class Discipline_officer_dashboard_model extends CI_Model {
     }
     
     
-    
+    public function getDashboardAll(){
+        $oc_ID = $_GET['oc_ID'];
+        echo $oc_ID;
+        //$oc_ID = 6;
+       // SELECT divisions.dept_ID, dept_name,COUNT(offensestd.S_ID) as y FROM `divisions` ,`offensestd` ,`offensehead`, `offense`,`offensecate`,`student`,`curriculum` WHERE offensecate.oc_ID='11' and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and offensestd.S_ID=student.S_ID and student.cur_ID=curriculum.cur_ID and curriculum.dept_ID=divisions.dept_ID GROUP BY divisions.dept_ID
+       $query= $this->db->query("SELECT divisions.dept_ID, dept_name as label,COUNT(offensestd.S_ID) as y FROM `divisions` ,`offensestd` ,`offensehead`, `offense`,`offensecate`,`student`,`curriculum` WHERE offensecate.oc_ID='+$oc_ID+' and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and offensestd.S_ID=student.S_ID and student.cur_ID=curriculum.cur_ID and curriculum.dept_ID=divisions.dept_ID  GROUP BY divisions.dept_ID");
+       $data = array();
+        $data = $query->result_array();
+        //var_dump( $data);
+       // die();
+       if($data !=NULL){
+        return $data;
+    }else{
+        return false;
+    }
+
+
+    }
     
    
     

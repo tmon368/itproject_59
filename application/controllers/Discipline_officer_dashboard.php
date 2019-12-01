@@ -32,6 +32,13 @@ class Discipline_officer_dashboard extends CI_Controller {
 		$result = $this->Discipline_officer_dashboard_model->getDashboard();
 		echo json_encode($result);
 	}
+
+	public function getDashboardAll(){
+
+	$result = $this->Discipline_officer_dashboard_model->getDashboardAll();
+	echo json_encode($result);
+        
+    }
 	
 	
 	function checkAutoriry() {
