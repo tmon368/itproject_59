@@ -27,7 +27,23 @@ class Discipline_officer_dashboard extends CI_Controller {
 	    $this->load->view('template/template6');
 	    
 	}
-	
+
+	function getDashboard(){
+		$result = $this->Discipline_officer_dashboard_model->getDashboard();
+		echo json_encode($result);
+	}
+
+	public function getDashboardAll(){
+
+	$result = $this->Discipline_officer_dashboard_model->getDashboardAll();
+	echo json_encode($result);
+        
+    }
+	public function getGraphDataSchool(){
+		$result = $this->Discipline_officer_dashboard_model->getGraphDataSchool();
+		echo json_encode($result);
+        
+    }
 	
 	function checkAutoriry() {
 	    //$admin = $this->session->userdata('admin');
