@@ -27,6 +27,10 @@ class Employee_dashboard extends CI_Controller {
 	    $this->load->view('template/template6');
 	    
 	}
+	function getDashboardday(){
+		$result = $this->employee_dashboard_model->getDashboardday();
+		echo json_encode($result);
+	}
 	
 	
 	function checkAutoriry() {
