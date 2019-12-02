@@ -31,6 +31,14 @@ class Employee_dashboard extends CI_Controller {
 		$result = $this->employee_dashboard_model->getDashboardday();
 		echo json_encode($result);
 	}
+	function getDashboardmonth(){
+		$result = $this->employee_dashboard_model->getDashboardmonth();
+		echo json_encode($result);
+	}
+	function getDashboardyear(){
+		$result = $this->employee_dashboard_model->getDashboardyear();
+		echo json_encode($result);
+	}
 	
 	
 	function checkAutoriry() {

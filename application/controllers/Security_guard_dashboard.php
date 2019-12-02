@@ -31,6 +31,16 @@ class Security_guard_dashboard extends CI_Controller {
 		$result = $this->Security_guard_dashboard_model->getDashboardday();
 		echo json_encode($result);
 	}
+
+	function getDashboardmonth(){
+		$result = $this->Security_guard_dashboard_model->getDashboardmonth();
+		echo json_encode($result);
+	}
+
+	function getDashboardyear(){
+		$result = $this->Security_guard_dashboard_model->getDashboardyear();
+		echo json_encode($result);
+	}
 	
 	
 	function checkAutoriry() {
