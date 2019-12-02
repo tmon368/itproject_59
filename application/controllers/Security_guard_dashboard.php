@@ -17,7 +17,7 @@ class Security_guard_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-	    $this->load->view('template/template3');
+	    $this->load->view('menu/secutity_grud/menu_security');
 	    $this->load->view('security_guard/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
