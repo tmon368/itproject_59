@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 class Security_guard_dashboard extends CI_Controller {
+	function __construct(){
+        parent:: __construct();
+        $this->load->model('Security_guard_dashboard_model', 'Security_guard_dashboard_model');
+    }
 
 	public function index()
 	{
@@ -22,6 +26,10 @@ class Security_guard_dashboard extends CI_Controller {
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
+	}
+	function getDashboardday(){
+		$result = $this->Security_guard_dashboard_model->getDashboardday();
+		echo json_encode($result);
 	}
 	
 	
