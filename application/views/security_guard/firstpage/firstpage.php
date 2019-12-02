@@ -1,3 +1,30 @@
+<head>
+    <title>xxxx</title>
+    <style>
+        #dateday {
+            width: 7rem;
+            height: 1rem;
+            font-size: 10px;
+            border-radius: 0.5em;
+            padding: 0;
+        }
+
+        .datemount {
+            width: 7rem;
+            height: 1rem;
+            font-size: 10px;
+            border-radius: 0.5em;
+            s
+        }
+    </style>
+</head>
+
+
+
+
+
+
+
 <!-- Used CSS custom3.css -->
 <div class="page-breadcrumb" id="nav_sty">
     <nav aria-label="breadcrumb">
@@ -16,86 +43,90 @@
 
         <div class="row">
             <!-- function select -->
-            <div class="col-sm-3 mainfuction">
+            <div class="col-sm-2 mainfuction">
                 <div class="row">
                     <div class="col-sm-12 header1">
                         การแจ้งเหตุ
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-12">
+                <!-- form serach -->
+                <form action="" id="serachdata">
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                        <div class="function1 grid">
-                            <label class="form-check-label"><input type="radio" name="option1" class="style_radio" id="">ประจำวัน</label>
-                            <input type="date" name="" id="">
+                            <div class="function1 grid">
+                                <label class="form-check-label"><input type="radio" name="option1" value="1" class="" id="option1day">ประจำวัน</label>
+                                <input type="date" class="form-control" name="dateday" id="dateday">
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-12">
 
-                        <div class="function2 grid">
-                            <label class="form-check-label"><input type="radio" name="option1" class="style_radio" id="">ประจำเดือน</label>
-                            <select name="" id="">
-                                <option value="" selected>เดือน</option>
-                            </select>
+                            <div class="function2 grid">
+                                <label class="form-check-label"><input type="radio" name="option1" value="2" class="" id="option2mount">ประจำเดือน</label>
+                                <select name="" id="datemount" class="datemount">
+                                    <option value="" selected>เดือน</option>
+                                </select>
 
-                            <select name="" id="">
-                                <option value="" selected>ปี พ.ศ.</option>
-                            </select>
+                                <select name="" id="dateyear" class="datemount">
+                                    <option value="" selected>ปี พ.ศ.</option>
+                                </select>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-12">
-
-                        <div class="function3 grid">
-                            <label class="form-check-label"><input type="radio" name="option1" class="style_radio" id="">ประจำปี</label>
-                            
-                            
-                            <select name="" id="">
-                                <option value="" selected>ปี พ.ศ.</option>
-                            </select>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="function3 grid">
+                                <label class="form-check-label"><input type="radio" name="option1" value="3" class="" id="option3year">ประจำปี</label>
+                                <select name="" id="dateyear2" class="datemount">
+                                    <option value="" selected>ปี พ.ศ.</option>
+                                </select>
+                            </div>
                         </div>
-
                     </div>
-                </div>
 
+
+
+                </form>
+                <button class="submit">ค้นหา</button>
 
             </div>
 
-            <div class="col-sm-8 maintable">
+            <div class="col-sm-10 maintable">
 
                 <div class="row">
                     <div class="col-sm-12 header1">
-                        ตารางการแจ้งเหตุประจำปี วันที่ 15 มกราคม 2562
+                        ตารางการแจ้งเหตุประจำปี ...
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="bootstrap-data-table-panel">
-                        <div class="table-responsive">
-                            <table id="style_table" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>ลำดับ</th>
-                                        <th>วันที่ทกระทำผิด</th>
-                                        <th>เวลาที่กระทำผิด</th>
-                                        <th>รหัสนักศึกษา</th>
-                                        <th>ชื่อ-นามสกุล นักศึกษา</th>
-                                        <th>ฐานความผิด</th>
-                                        <th>ดูรายละเอียด</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="showdata">
+                    <div class="col-sm-12">
+                        <div class="bootstrap-data-table-panel">
+                            <div class="table-responsive">
+                                <table id="style_table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ลำดับ</th>
+                                            <th>วันที่ทกระทำผิด</th>
+                                            <th>เวลาที่กระทำผิด</th>
+                                            <th>รหัสนักศึกษา</th>
+                                            <th>ชื่อ-นามสกุล นักศึกษา</th>
+                                            <th>ฐานความผิด</th>
+                                            <th>ดูรายละเอียด</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="showdata">
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,3 +137,93 @@
 
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+
+        //alert("Starting page ..");
+
+
+    });
+
+    $(".submit").click(function() {
+
+        var data = $('#serachdata').serialize();
+        var option = $("input[name='option1']:checked").val();
+
+        if (option == "1") {
+            //alert ('test1')
+
+            $.ajax({
+                type: 'get',
+                url: '<?php echo site_url("Security_guard_dashboard/getDashboardday") ?>',
+                async: false,
+                dataType: 'json',
+                data: data, //ห้ามลืม
+                success: function(data) {
+                    //console.log(data);
+                    var html = '';
+                    var i = 0;
+                    $.each(data, function(key, value) {
+
+                        i++;
+                        html += '<tr>';
+                        html += '<td>' + i + '</td>';
+                        html += '<td>' + value.committed_date + '</td>';
+                        html += '<td>' + value.committed_time + '</td>';
+                        html += '<td>' + value.S_ID + '</td>';
+                        html += '<td>' + value.std_fname + ' ' + value.std_lname + '</td>';
+                        html += '<td>' + value.off_desc + '</td>';
+                        html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+                        html += '</tr>';
+
+
+
+                    });
+                    $('#showdata').html(html);
+                }
+            });
+
+        } else if (option == "2") {
+            //startment
+        } else if (option == "3") {
+            //stament
+        } else {
+            //stament
+        }
+
+        // console.log(typeof data);
+        // console.log(data);
+        // console.log(option);
+
+    });
+
+    $("#option1day").click(function() {
+        //alert("XXXX")
+        $("#dateday").prop("disabled", false);
+        $("#datemount").prop("disabled", true);
+        $("#dateyear").prop("disabled", true);
+        $("#dateyear2").prop("disabled", true);
+    });
+
+
+    $("#option2mount").click(function() {
+        $("#datemount").prop("disabled", false);
+        $("#dateyear").prop("disabled", false);
+        $("#dateday").prop("disabled", true);
+        $("#dateyear2").prop("disabled", true);
+    });
+
+    $("#option3year").click(function() {
+        $("#dateyear2").prop("disabled", false);
+
+        $("#dateday").prop("disabled", true); //option1
+        $("#datemount").prop("disabled", true); //option2
+        $("#dateyear").prop("disabled", true); //option2   
+    });
+
+    $().click(function() {
+
+
+    });
+</script>
