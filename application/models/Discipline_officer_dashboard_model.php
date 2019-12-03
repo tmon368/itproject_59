@@ -11,6 +11,8 @@ class Discipline_officer_dashboard_model extends CI_Model {
         //SELECT offensecate.*,COUNT(offensestd.S_ID) as std FROM `offensecate`, `offensestd` , `offensehead` , `offense`   WHERE offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID  GROUP BY offensecate.oc_ID
 
         //$query= $this->db->query('SELECT offensecate.oc_ID,offensecate.oc_desc as label,COUNT(offensestd.S_ID) as y FROM `offensecate`, `offensestd` , `offensehead` , `offense`   WHERE offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID  GROUP BY offensecate.oc_ID');
+        //$this->db->distinct('oc.oc_ID');
+        //$this->db->select('oc.oc_ID,oc.oc_desc as label,count(distinct ostd.S_ID) as y');  -->  ไม่นับ นศ.ที่ทำผิดซ้ำ
         $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as y');   
         $this->db->from('offensestd ostd');
         $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
