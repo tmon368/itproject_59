@@ -76,8 +76,10 @@ class Discipline_officer_dashboard_model extends CI_Model {
     
    
     public function getGraphDataSchool(){
-        $oc_ID = 8;
-        $dept_ID = 22;
+        $oc_ID = $_GET['oc_ID'];
+        $dept_ID =$_GET['dept_ID'];
+        //$oc_ID = 8;
+        //$dept_ID = 22;
         // $field = array(
         //     'oc_ID'=>$this->input->post('oc_ID'),
         //     'dept_ID'=>$this->input->post('dept_ID')
@@ -103,7 +105,7 @@ class Discipline_officer_dashboard_model extends CI_Model {
          $data = $query->result_array();
        //var_dump( $data);
       // die();
-      
+
        if($data !=NULL){
         return $data;
     }else{
