@@ -32,9 +32,9 @@ class Branch_head_dashboard extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function getDashboardAll(){
+	public function getAllSTD(){
 
-	$result = $this->branch_head_dashboard_model->getDashboardAll();
+	$result = $this->branch_head_dashboard_model->getAllSTD();
 	echo json_encode($result);
         
     }
