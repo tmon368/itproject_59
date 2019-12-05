@@ -56,9 +56,7 @@ public function getAllSTD(){
 //SELECT DISTINCT offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID
 //  $cur_ID = $_GET['cur_ID'];
 // $cur_ID = 18;
-
-
-// $this->db->distinct();
+$this->db->distinct();
 $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score,c.cur_ID');
 //$this->db->select('*');
 $this->db->from('offensestd ostd');
@@ -69,19 +67,10 @@ $this->db->join('student s','ostd.S_ID=s.S_ID');
 // $this->db->join('personnel p','s.person_ID=p.person_ID');
 $this->db->join('curriculum c','s.cur_ID=c.cur_ID');
 $this->db->join('personnel p','c.cur_ID=p.cur_ID');
-
 // $this->db->group_by('p.cur_ID');
 // $this->db->where('p.cur_ID=p.cur_ID');
 $this->db->where('p.person_ID',$perid);
 // $this->db->where('p.cur_ID=p.cur_ID');
-
-
-
-
-
-
-
-
 $query = $this->db->get();
 $students = array();
 $student = $query->result_array();
@@ -93,32 +82,6 @@ return $student;
 return false;
 }
 }
-    
-   
-    public function getGraphDataSchool(){
-        //SELECT curriculum.cur_ID, curriculum.cur_name as label,curriculum.dept_ID, COUNT(offensestd.S_ID) as y  FROM `offensestd` ,`offensehead`, `offense`,`offensecate`,`student`,`curriculum`,`divisions` WHERE divisions.dept_ID = '22' and offensecate.oc_ID='8'  and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and offensestd.S_ID=student.S_ID and student.cur_ID=curriculum.cur_ID and curriculum.dept_ID=divisions.dept_ID   GROUP BY curriculum.cur_ID
-        $oc_ID = 8;
-        $dept_ID = 22;
-        // $field = array(
-        //     'oc_ID'=>8,
-        //     'dept_ID'=>22
-            
-        //     );
-        // $field = array(
-        //     'oc_ID'=>$this->input->post('oc_ID'),
-        //     'dept_ID'=>$this->input->post('dept_ID')
-            
-        //     );
-         $query= $this->db->query("SELECT curriculum.cur_ID, curriculum.cur_name as label,curriculum.dept_ID, COUNT(offensestd.S_ID) as y  FROM `offensestd` ,`offensehead`, `offense`,`offensecate`,`student`,`curriculum`,`divisions` WHERE divisions.dept_ID = '+$dept_ID+' and offensecate.oc_ID='+$oc_ID+'  and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and offensestd.S_ID=student.S_ID and student.cur_ID=curriculum.cur_ID and curriculum.dept_ID=divisions.dept_ID   GROUP BY curriculum.cur_ID");
-         $data = array();
-         $data = $query->result_array();
-      // var_dump( $data);
-       //die();
-       if($data !=NULL){
-        return $data;
-    }else{
-        return false;
-    }
 
 
 
@@ -132,4 +95,4 @@ return false;
     
     
     
-}
+
