@@ -323,15 +323,17 @@ $("#edit_file").modal("show");
             $('#formadd').attr('action', '<?php echo base_url(); ?>index.php/holiday/addholiday?year=<?php echo $year; ?>');
         });
 
+
         $('#btnSave').click(function(){
 			var url = $('#formadd').attr('action');
 			var data = $('#formadd').serialize();
+      var x = document.forms["formadd"]["txtdate"].value;//เช็คค่าหน้าฟ้อน
+      console.log(x)//เช็คค่าหน้าฟ้อน
 			//validate form
 			var date = $('input[name=txtdate]');
 			var descrip = $('input[name=txtdescrip]');
 			var type = $('input[name=addtype]');
 			var result = '';
-			
 			if(date.val()==''){
 				date.parent().parent().addClass('has-error');
 			}else{

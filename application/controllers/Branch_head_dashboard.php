@@ -27,6 +27,22 @@ class Branch_head_dashboard extends CI_Controller {
 	    $this->load->view('template/template6');
 	    
 	}
+	function getDashboard(){
+		$result = $this->branch_head_dashboard_model->getDashboard();
+		echo json_encode($result);
+	}
+
+	public function getAllSTD(){
+
+	$result = $this->branch_head_dashboard_model->getAllSTD();
+	echo json_encode($result);
+        
+    }
+	public function getGraphDataSchool(){
+		$result = $this->branch_head_dashboard_model->getGraphDataSchool();
+		echo json_encode($result);
+        
+    }
 	
 	
 	function checkAutoriry() {
@@ -75,6 +91,9 @@ class Branch_head_dashboard extends CI_Controller {
 
 			if($this->session->userdata('autority') == "employee"){
 	            redirect(base_url() . 'index.php/Employee_dashboard');
+			}
+			if($this->session->userdata('autority') == "Branchhead"){
+	            redirect(base_url() . 'index.php/Branch_head_dashboard');
 			}
 			
 	    }else{

@@ -15,7 +15,10 @@ class Dean_dashboard extends CI_Controller {
 	    $this->template();
 
 	}
-	
+	public function getDashboard(){
+		$result = $this->dean_dashboard_model->getDashboard();
+		echo json_encode($result);
+	}
 	public function template()
 	{
 	    
@@ -69,14 +72,12 @@ class Dean_dashboard extends CI_Controller {
 	            redirect(base_url() . 'index.php/Branch_head_dashboard');
 			}
 
+
+
 			if($this->session->userdata('autority') == "security_guard"){
 	            redirect(base_url() . 'index.php/Security_guard_dashboard');
 			}
-
-			if($this->session->userdata('autority') == "employee"){
-	            redirect(base_url() . 'index.php/Employee_dashboard');
-			}
-			
+					
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        
