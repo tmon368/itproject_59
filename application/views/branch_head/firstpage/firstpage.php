@@ -64,25 +64,27 @@
             <div class="card shadow mb-3">      	
         <div class="card-body " id="card_1">
            <font size="4"><center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร.......................</center></font>
- 
+    <br><br>
 
          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
          <script type="text/javascript">
   window.onload = function () {
     var chart = new CanvasJS.Chart("chartContainer", {
-      height:260,
+      height:350,
+      animationEnabled: true, 
+		animationDuration: 2000,   //change to 1000, 500 etc
+      axisX:{
+          title: "หมวดความผิด"
+         },
       data: [
       {
         dataPoints: [
         { x: 10, y: 50 },
         { x: 20, y: 40},
-        { x: 30, y: 30 },
+        { x: 30, y: 60 },
         { x: 40, y: 80 },
         { x: 50, y: 20 },
-        { x: 60, y: 5 },
-        { x: 70, y: 60 },
-        { x: 80, y: 75 },
-        { x: 90, y: 35}
+        { x: 60, y: 60 }
         ]
       }
       ]
@@ -91,7 +93,7 @@
     chart.render();
   }
   </script>
-
+<br><br><br><br>
          </div>      
 </div>
 
