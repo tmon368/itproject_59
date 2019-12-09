@@ -19,7 +19,10 @@ class Dormitory_advisor_dashboard extends CI_Controller {
 		$result = $this->dormitory_advisor_dashboard_model->getDashboard();
 		echo json_encode($result);
 	}
-	
+	public function getAllSTD(){
+		$result = $this->dormitory_advisor_dashboard_model->getAllSTD();
+		echo json_encode($result);
+	}	
 	public function template()
 	{
 	    
