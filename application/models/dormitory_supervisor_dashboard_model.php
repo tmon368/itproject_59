@@ -43,6 +43,38 @@ class dormitory_supervisor_dashboard_model extends CI_Model {
             return false;
         }
     }
+    public function getGraphData(){
+    // $oc_ID = $_GET['oc_ID'];
+    $oc_ID = 8;  
+    // $this->db->distinct();
+    $this->db->select('dt.type_name,dm.dname as namedorm,count(ostd.S_ID) as countstd');   
+    $this->db->from('personnel p');
+    $this->db->join('dormitory dm','p.person_ID=dm.person_ID');
+    $this->db->join('student s','dm.dorm_ID=s.dorm_ID');  
+    $this->db->join('offensestd ostd','s.S_ID=ostd.S_ID');  
+    $this->db->join('offensehead o','ostd.oh_ID=o.oh_ID');
+    $this->db->join('offense of','o.off_ID=of.off_ID');
+    $this->db->join('offensecate oc','of.oc_ID=oc.oc_ID');
+    $this->db->join('dormtype dt','dm.dormtype_ID=dt.dormtype_ID');
+    $this->db->group_by('dm.dorm_ID');
+    $this->db->where('oc.oc_ID',$oc_ID);
+
+    $query = $this->db->get();
+    $data = array();
+    $data = $query->result_array();
+    //var_dump( $data);
+    // die();
+
+      if($data !=NULL){
+       return $data;
+   }else{
+       return false;
+   }
+
+
+
+   }
+
   
     
     
