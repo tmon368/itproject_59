@@ -15,6 +15,14 @@ class Dormitory_supervisor_dashboard extends CI_Controller {
 	    $this->template();
 
 	}
+	public function getDashboard(){
+		$result = $this->dormitory_supervisor_dashboard_model->getDashboard();
+		echo json_encode($result);
+	}
+	public function getGraphData(){
+		$result = $this->dormitory_supervisor_dashboard_model->getGraphData();
+		echo json_encode($result);
+	}	
 	
 	public function template()
 	{
