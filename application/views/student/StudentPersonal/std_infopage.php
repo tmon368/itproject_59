@@ -89,8 +89,7 @@
                     url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentstatus',
                     async: false,
                     dataType: 'json',
-                    success: function(data) { 
-						 console.log(data); 
+                    success: function(data) { // console.log(data); 
                         var html = '';
                         var n=1;
                         var i;
