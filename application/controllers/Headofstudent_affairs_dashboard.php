@@ -22,7 +22,7 @@ class Headofstudent_affairs_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-	    $this->load->view('menu/student/menu_student'); //ส่วนเมนู
+	    $this->load->view('menu/training/menu_training'); //ส่วนเมนู
 	    $this->load->view('headofstudent_affairs/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
@@ -41,6 +41,22 @@ class Headofstudent_affairs_dashboard extends CI_Controller {
     }
 	public function getGraphDataSchool(){
 		$result = $this->headofstudent_affairs_dashboard_model->getGraphDataSchool();
+		echo json_encode($result);
+        
+	}
+	public function showall(){
+		$result = $this->headofstudent_affairs_dashboard_model->showall();
+		echo json_encode($result);
+        
+    }
+	
+	public function addtraining(){
+		$result = $this->headofstudent_affairs_dashboard_model->addtraining();
+		echo json_encode($result);
+        
+	}
+	public function deletetraining(){
+		$result = $this->headofstudent_affairs_dashboard_model->deletetraining();
 		echo json_encode($result);
         
     }

@@ -162,14 +162,85 @@ class headofstudent_affairs_dashboard_model extends CI_Model {
 
 
     }
+    public function showall(){
+
+        $this->db->select('train_date,train_name,oc_desc,person_fname,person_lname,train_receive,room,place_name,time,note');
+        $this->db->from('training t');
+        $this->db->join('offensecate oc','t.oc_ID=oc.oc_ID');
+        $this->db->join('personnel p','t.person_ID=p.person_ID');
+        $this->db->join('place pl','t.place_ID=pl.place_ID');
+
+        $query = $this->db->get();
+        $data = array();
+        $data = $query->result_array();
+       //var_dump( $data);
+      // die();
+
+        if($data !=NULL){
+            return $data;
+        }else{
+            return false;
+    }
+
+    }
+
+    public function addtraining(){
+
+
+        // $field=array(
+        //     'train_ID'=>$this->input->post('train_ID'),
+        //     'train_name'=>$this->input->post('train_name'),
+        //     'oc_ID'=>$this->input->post('oc_ID'),
+        //     'person_ID'=>$this->input->post('person_ID'),
+        //     'place_ID'=>$this->input->post('place_ID'),
+        //     'room'=>$this->input->post('room'),
+        //     'train_receive'=>$this->input->post('train_receive'),
+        //     'train_date'=>$this->input->post('train_date'),
+        //     'note'=>$this->input->post('note'),
+        //     'time'=>$this->input->post('time')
+        // );
+        $field=array(
+            'train_ID'=>'1',
+            'train_name'=>'bb',
+            'oc_ID'=>'8',
+            'person_ID'=>'1',
+            'place_ID'=>'1001',
+            'room'=>'112',
+            'train_receive'=>'50',
+            'train_date'=>'12/12/19',
+            'note'=>'boom',
+            'time'=>'12.00'
+        );
+        $this->db->insert('training',$field);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     
-    
-    
-    
-      
-    
-    
-    
-    
-    
+    public function edittraining(){
+
+        $id = $this->input->post('id');
+        $this->db->where('train_ID',$id);
+        $query=$this->db->get('training');
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function deletetraining(){
+        // $delid = '1';
+        $delid = $this->input->post('delid');
+        $this->db->where('train_ID',$delid);
+        $this->db->delete('training');
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
