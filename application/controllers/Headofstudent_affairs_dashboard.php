@@ -50,6 +50,11 @@ class Headofstudent_affairs_dashboard extends CI_Controller {
         
 	}	
 	
+	public function selecttraining(){
+		$result = $this->headofstudent_affairs_dashboard_model->selecttraining();
+		echo json_encode($result);
+        
+	}
 	public function selectoffensecate(){
 		$result = $this->headofstudent_affairs_dashboard_model->selectoffensecate();
 		echo json_encode($result);

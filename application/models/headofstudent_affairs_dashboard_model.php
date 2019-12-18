@@ -182,6 +182,28 @@ class headofstudent_affairs_dashboard_model extends CI_Model {
         }
 
     }
+    public function selecttraining(){
+        // $oc_ID = 8;
+        // $oc_ID = $_GET['oc_ID'];
+        // $this->db->distinct();
+        $this->db->select('*');   
+        $this->db->from('training t');
+        $this->db->join('offensecate oc','t.oc_ID=oc.oc_ID');
+
+        // $this->db->order_by('oc_ID ASC');
+        $query = $this->db->get();
+        $data = array();
+        $data = $query->result_array();
+      //var_dump( $data);
+     // die();
+
+        if($data !=NULL){
+            return $data;
+        }else{
+            return false;
+        }
+
+    }
 
 //ไม่สมบรูณ์
     public function tableprint(){
