@@ -2,10 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Headofstudent_affairs_dashboard extends CI_Controller {
+class headofstudent_training extends CI_Controller {
     function __construct(){
         parent:: __construct();
-        $this->load->model('headofstudent_affairs_dashboard_model', 'headofstudent_affairs_dashboard_model');
+        $this->load->model('headofstudent_training_model', 'headofstudent_training_model');
     }
 
 
@@ -28,23 +28,40 @@ class Headofstudent_affairs_dashboard extends CI_Controller {
 	    $this->load->view('template/template6');
 	    
 	}
-	function getDashboard(){
-		$result = $this->headofstudent_affairs_dashboard_model->getDashboard();
+	
+	public function showall(){
+		$result = $this->headofstudent_training_model->showall();
 		echo json_encode($result);
+        
+	}	
+	
+	public function selecttraining(){
+		$result = $this->headofstudent_training_model->selecttraining();
+		echo json_encode($result);
+        
 	}
-
-	public function getDashboardAll(){
-
-	$result = $this->headofstudent_affairs_dashboard_model->getDashboardAll();
-	echo json_encode($result);
+	public function selectoffensecate(){
+		$result = $this->headofstudent_training_model->selectoffensecate();
+		echo json_encode($result);
+        
+	}
+	public function tableprint(){
+		$result = $this->headofstudent_training_model->tableprint();
+		echo json_encode($result);
         
     }
-	public function getGraphDataSchool(){
-		$result = $this->headofstudent_affairs_dashboard_model->getGraphDataSchool();
+	
+	public function addtraining(){
+		$result = $this->headofstudent_training_model->addtraining();
 		echo json_encode($result);
         
 	}
-
+	public function deletetraining(){
+		$result = $this->headofstudent_training_model->deletetraining();
+		echo json_encode($result);
+        
+    }
+	
 	
 	function checkAutoriry() {
 	    //$admin = $this->session->userdata('admin');

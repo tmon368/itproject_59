@@ -142,65 +142,65 @@
               <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">รายงานตัวกระทำความผิด</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">รายการอุทธรณ์ความผิด</a>
-            </li>
+              <a class="nav-link" href="<?php echo site_url("proofargument") ?>">รายการอุทธรณ์ความผิด</a>
+              </li>
           </ul>
         </div>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon family"></i>
-          <span class="menu-title">การอบรม</span>
-          <i class="menu-arrow"></i>
-        </a>
-
-        <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">ข้อมูลการอบรม</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">การอบรมของนักศึกษา</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("training") ?>">อนุมันติการอบรมเข้าอบรมของนักศึกษ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url("report") ?>">การอบรมของนักศึกษา</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon fas fa-handshake"></i>
           <span class="menu-title">การบำเพ็ญประโยชน์</span>
           <i class="menu-arrow"></i>
         </a>
-
+        </li>
         <div class="collapse" id="ui-basic1">
           <ul class="nav flex-column sub-menu">
-            
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Volunteer_regis") ?>">ลงทะเบียนการบำเพ็ญประโยชน์</a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("VolunteerAc") ?>">เสนอการบำเพ็ญประโยชน์</a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("Volunteer_history") ?>">ประวัติการบำเพ็ญประโยชน์</a>
-            </li>
-         
-
-          
+              </li>
           </ul>
         </div>
       </li>
 
+
+
+
+
+
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+          <i class="menu-icon fa fa-sun"></i>
+          <span class="menu-title">อบรม</span>
+          <i class="menu-arrow"></i>
+        </a>
+        </li>
+         <div class="collapse" id="ui-basic2">
+          <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo site_url("headofstudent_training") ?>">ลงทะเบียนการบำเพ็ญประโยชน์</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo site_url("headofstudent_training") ?>">เสนอการบำเพ็ญประโยชน์</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo site_url("headofstudent_training") ?>">ประวัติการบำเพ็ญประโยชน์</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo site_url("headofstudent_training") ?>">การอบรมของนักศึกษา</a>
+                  </li>
+              </ul>
+              </div>
+
+        
 
 
 
