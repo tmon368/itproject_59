@@ -53,7 +53,7 @@ public function selectoffensecate(){
     public function tableprint(){
         // $oc_ID = 8;
         // $oc_ID = $_GET['oc_ID'];
-        // $this->db->distinct();
+        $this->db->distinct();
         $this->db->select('oc.oc_ID,c.cur_name,d.dept_name,std.S_ID ,std.std_fname,std.std_lname');   
         $this->db->from('offensestd ostd');
         $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
