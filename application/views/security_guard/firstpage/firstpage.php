@@ -122,9 +122,7 @@
                                             <th>ดูรายละเอียด</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="showdata">
 
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -152,38 +150,7 @@
         var option = $("input[name='option1']:checked").val();
 
         if (option == "1") {
-            //alert ('test1')
-
-            $.ajax({
-                type: 'get',
-                url: '<?php echo site_url("Security_guard_dashboard/getDashboardday") ?>',
-                async: false,
-                dataType: 'json',
-                data: data, //ห้ามลืม
-                success: function(data) {
-                    //console.log(data);
-                    var html = '';
-                    var i = 0;
-                    $.each(data, function(key, value) {
-
-                        i++;
-                        html += '<tr>';
-                        html += '<td>' + i + '</td>';
-                        html += '<td>' + value.committed_date + '</td>';
-                        html += '<td>' + value.committed_time + '</td>';
-                        html += '<td>' + value.S_ID + '</td>';
-                        html += '<td>' + value.std_fname + ' ' + value.std_lname + '</td>';
-                        html += '<td>' + value.off_desc + '</td>';
-                        html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
-                        html += '</tr>';
-
-
-
-                    });
-                    $('#showdata').html(html);
-                }
-            });
-
+            searchday(data);
         } else if (option == "2") {
             //startment
         } else if (option == "3") {
@@ -191,11 +158,6 @@
         } else {
             //stament
         }
-
-        // console.log(typeof data);
-        // console.log(data);
-        // console.log(option);
-
     });
 
     $("#option1day").click(function() {
@@ -222,8 +184,40 @@
         $("#dateyear").prop("disabled", true); //option2   
     });
 
-    $().click(function() {
+    function searchday(data) {
+        $.ajax({
+            url: '<?php echo site_url("Security_guard_dashboard/getDashboardday") ?>',
+            async: false,
+            dataType: 'json',
+            data: data, //ห้ามลืม
+            success: function(data) {
+                console.log(data);
 
+                var html = '';
+                var i = 0;
+                $.each(data, function(key, value) {
 
-    });
+                    i++;
+                    html += '<tr>';
+                    html += '<td>' + i + '</td>';
+                    html += '<td>' + value.committed_date + '</td>';
+                    html += '<td>' + value.committed_time + '</td>';
+                    html += '<td>' + value.S_ID + '</td>';
+                    html += '<td>' + value.std_fname + ' ' + value.std_lname + '</td>';
+                    html += '<td>' + value.off_desc + '</td>';
+                    html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+                    html += '</tr>';
+
+                    $('#showdata').html(html);
+
+                });
+
+            }
+        });
+
+    }
+
+    function searchmounth (data){
+        //stament
+    }
 </script>

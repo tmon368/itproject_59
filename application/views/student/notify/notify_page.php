@@ -328,10 +328,10 @@
                                         <label for="">ผู้กระทำความผิด:</label> <a href="javascript:;" id="add"><span class="badge badge-pill badge-primary"> + เพิ่มผู้กระทำผิด</span></a>
 
 
-                                        
+
                                         <input type="text" name="" id="" placeholder="กรอกรหัสนักศึกษา">
                                         <input type="text" name="" id="" placeholder="หมายเลขป้ายทะเบียนรถจักรยานยนตร์">
-                                        
+
                                     </div>
 
 
@@ -566,10 +566,6 @@
                         async: false, //ห้ามลืม
                         dataType: 'json',
                         success: function(data) {
-                            //alert("Having Data...");
-                            //var dataSet = data;
-                            //console.log(dataSet);
-
                             var html = '';
                             var i = 0;
 
@@ -788,14 +784,14 @@
 
 
                 }
-               
+
             });
 
 
 
             $('#add_place').typeahead({
 
-             
+
                 source: function(query, result) {
                     $.ajax({
                         url: "<?php echo site_url('Notifyoffense/selectplace') ?>",
@@ -884,28 +880,28 @@
                 html += '<div id="student' + off_per + '">';
 
                 html += '<div class="row">';
-                html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" >  <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search" id="icon_src"></span></a></div>'; 
+                html += '<div class="col-sm-4"> <label for="">รหัสนักศึกษา<span class="impt_sym">*</span> :</label> <input type="text"  name="std_id[]" id="std_id' + off_per + '" style="width: 8rem;" >  <a href="javascript:;" id="" onclick="Search_data(std_id' + off_per + ',temp=' + off_per + ')"><span class="fa fa-search" id="icon_src"></span></a></div>';
                 html += '<div class="col-sm-4"> <label for="">ชื่อ:</label> <input type="text" name="" id="std_name' + off_per + '" disabled>   </div>';
                 html += '<div class="col-sm-4"> <label for="">นามสกุล:</label> <input type="text" name="" id="std_lname' + off_per + '" disabled>  </div>';
                 html += '</div>';
 
                 html += '<div class="row">';
-                html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name' + off_per + '" disabled>  </div>'; 
+                html += '<div class="col-sm-6"> <label for="">สำนักวิชา:</label> <input type="text" name="" id="dept_name' + off_per + '" disabled>  </div>';
                 html += '<div class="col-sm-6"> <label for="">หลักสูตร:</label> <input type="text" name="" id="cur_name' + off_per + '" disabled>   </div>';
                 html += '</div>';
 
                 html += '<div class="row">';
-                html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num' + off_per + '" disabled>  </div>'; 
+                html += '<div class="col-sm-6"> <label for="">รถจักรยานยนตร์:</label> <input type="text" name="" id="regis_num' + off_per + '" disabled>  </div>';
                 html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="province_bic' + off_per + '" disabled>   </div>';
                 html += '</div>';
 
                 html += '<div class="row">';
-                html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car' + off_per + '" disabled>  </div>'; 
+                html += '<div class="col-sm-6"> <label for="">รถยนตร์:</label> <input type="text" name="" id="regis_car' + off_per + '" disabled>  </div>';
                 html += '<div class="col-sm-6"> <label for="">จังหวัด:</label> <input type="text" name="" id="provin_car' + off_per + '" disabled>   </div>';
                 html += '</div>';
 
                 html += '<div class="row">';
-                html += '<div class="col-sm-12" style="text-align: right;">  <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>'; 
+                html += '<div class="col-sm-12" style="text-align: right;">  <a href="javascript:;" id="" onclick="click_btnre(' + off_per + ')"><span class="fa fa-trash" style="font-size: 1.5rem;"></span>  </div>';
                 html += '</div>';
 
                 html += '</div>';
