@@ -15,7 +15,14 @@ class Dean_dashboard extends CI_Controller {
 	    $this->template();
 
 	}
-	
+	public function getDashboard(){
+		$result = $this->dean_dashboard_model->getDashboard();
+		echo json_encode($result);
+	}
+	public function getGraphData(){
+		$result = $this->dean_dashboard_model->getGraphData();
+		echo json_encode($result);
+	}
 	public function template()
 	{
 	    
@@ -69,14 +76,12 @@ class Dean_dashboard extends CI_Controller {
 	            redirect(base_url() . 'index.php/Branch_head_dashboard');
 			}
 
+
+
 			if($this->session->userdata('autority') == "security_guard"){
 	            redirect(base_url() . 'index.php/Security_guard_dashboard');
 			}
-
-			if($this->session->userdata('autority') == "employee"){
-	            redirect(base_url() . 'index.php/Employee_dashboard');
-			}
-			
+					
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        
@@ -106,4 +111,131 @@ class Dean_dashboard extends CI_Controller {
 	{
 	    //รับข้อมูลจาก form  update ลง DB
 	}
+// =====================================
+public function showAll(){
+	$result = $this->dean_dashboard_model->showAll();
+	echo json_encode($result);
 }
+
+
+//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
+public function addnotify(){
+	$result = $this->dean_dashboard_model->addnotify();
+	//$msg['success'] = false;
+	//$msg['type'] = 'add';
+	/*
+	
+	if($result){
+		$msg['success'] = true;
+		
+		
+	}else{
+		$msg['success'] = false;
+		redirect(base_url() . 'index.php/notify_page/index');
+	}*/
+	echo json_encode($result);
+}
+
+//ฟังก์ชันแสดงการแก้ไขข้อมูล
+public function editnotify(){
+
+	$result = $this->dean_dashboard_model->editnotify();
+	echo json_encode($result);
+}
+
+//ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
+public function updatenotify(){
+	$result = $this->dean_dashboard_model->updatenotify();
+	$msg['success'] = false;
+	$msg['type'] = 'update';
+	if($result){
+		$msg['success'] = true;
+	}else{
+		$msg['success'] = false;
+		redirect(base_url() . 'index.php/notify_page/index');
+	}
+	echo json_encode($msg);
+}
+
+//ฟังก์ชันการลบข้อมูล เมื่อลบข้อมูลเสร็จสิ้นจะแสดงข้อความ ลบข้อมูลเรียบร้อย
+public function deletenotify(){
+	$result = $this->dean_dashboard_model->deletenotify();
+	/*
+	if($result){
+		$msg['success'] = true;     
+	}else{
+		$msg['success'] = false;
+		redirect(base_url() . 'index.php/notify_page/index');
+	}*/
+	//echo json_encode();
+	echo "";
+}
+function selectstudent(){
+	$result =  $this->dean_dashboard_model->selectstudent();
+	echo json_encode($result);
+}
+
+function selectplace(){
+   
+	
+	$result = $this->dean_dashboard_model->selectplace();
+	echo json_encode($result);
+}
+function selectvehicles(){
+   
+	
+	$result = $this->dean_dashboard_model->selectvehicles();
+	
+	echo json_encode($result);
+	
+	
+}
+function selectoffevidence(){
+   
+	
+	$result = $this->dean_dashboard_model->selectoffevidence();
+	
+	echo json_encode($result);
+}
+function selectoffensecate(){
+   
+	
+	$result = $this->dean_dashboard_model->selectoffensecate();
+	
+	echo json_encode($result);
+}
+
+
+function selectOffenseoffevidence(){
+   
+	
+	$result = $this->dean_dashboard_model->selectOffenseoffevidence();
+	//print_r($result);
+	echo json_encode($result);
+}
+
+function spc_showoffhead(){
+	$result = $this->dean_dashboard_model->spc_showoffhead();
+	echo json_encode($result);
+}
+
+function check_id (){
+	//เช็คค่า id ที่มากสุด
+	$result = $this->dean_dashboard_model->check_id();
+	echo json_encode($result);
+	//ยังไม่ได้เขียน model
+}
+
+
+function selectplaceall (){
+	//เช็คค่า id ที่มากสุด
+	$result = $this->dean_dashboard_model->selectplaceall();
+	echo json_encode($result);
+	//ยังไม่ได้เขียน model
+}
+function selectregist_num (){
+	$result = $this->dean_dashboard_model->selectregist_num();
+	echo json_encode($result);
+}
+}
+
