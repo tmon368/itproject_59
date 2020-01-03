@@ -10379,7 +10379,7 @@ tbody.collapse.show {
   margin-left: 1.25rem; }
 
 .card-header {
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   margin-bottom: 0;
   background-color:rgb(98, 11, 107); /*สีพื้นหลัง*/
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
@@ -12369,7 +12369,7 @@ button.bg-dark:focus {
   margin-left: 3rem !important; }
 
 .p-0 {
-  padding: 0 !important; }
+  padding: 1rem !important; }
 
 .pt-0, .card-revenue-table .revenue-item:first-child,
 .py-0 {
@@ -14206,14 +14206,14 @@ html {
   padding-left: 0;
   padding-right: 0; }
   .page-body-wrapper:not(.auth-page) {
-    padding-top: 63px; }
+    padding-top: 0px; }
   .page-body-wrapper.full-page-wrapper {
     width: 100%;
     min-height: 100vh; }
 
 .main-panel {
   transition: width 0.25s ease, margin 0.25s ease;
-  width: calc(100% - 255px);
+  width: 100%;
   min-height: calc(100vh - 63px);
   display: -webkit-flex;
   display: flex;

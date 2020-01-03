@@ -1,5 +1,5 @@
 <head>
-    <title>xxxx</title>
+    <title>หน้าแรก</title>
     <style>
         #dateday {
             width: 7rem;
@@ -14,7 +14,10 @@
             height: 1rem;
             font-size: 10px;
             border-radius: 0.5em;
-            s
+            
+        }
+        #icon_home{
+            margin-right: 0.3rem;
         }
     </style>
 </head>
@@ -38,7 +41,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header" id="card_2">
-            <h6 class="m-0 text-primary"><span><i class="fa fa-home"></i></span>หน้าแรก</h6>
+            <h6 class="m-0 text-primary"><span id="icon_home"><i class="fa fa-home"></i></span>หน้าแรก</h6>
         </div>
 
         <div class="row">
@@ -50,7 +53,6 @@
                     </div>
                 </div>
 
-                <!-- form serach -->
                 <form action="" id="serachdata">
                     <div class="row">
                         <div class="col-sm-12">
@@ -139,10 +141,36 @@
 <script>
     $(document).ready(function() {
 
+        setmount();
+        setyear();
         //alert("Starting page ..");
 
 
     });
+
+    function setmount(){
+        var html = '';
+        var monthNames = [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ];
+        console.log(monthNames.length);
+        for (var i=0; i < monthNames.length; i++){
+            var num= num+1;
+            html += '<option value="'+num+'"> '+ monthNames[i] +'</option>';
+        }
+        $('#datemount').html(html);
+
+    }
+
+    function setyear(){
+        //var min = new Date().getFullYear,max = min+9;
+        html = ''
+        for (i = new Date().getFullYear(); i > 2015; i--){
+            html += '<option value="'+i+'"> '+ i +'</option>'
+        }
+        $('#dateyear').html(html);
+        $('#dateyear2').html(html);
+        
+
+    }
 
     $(".submit").click(function() {
 
@@ -219,5 +247,7 @@
 
     function searchmounth (data){
         //stament
+
+
     }
 </script>
