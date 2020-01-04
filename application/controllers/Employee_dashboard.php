@@ -21,7 +21,8 @@ class Employee_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-	    $this->load->view('template/template3');
+		$this->load->view('menu/employee/menu_user_employee');
+		$this->load->view('template/template4');
 	    $this->load->view('employee/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');

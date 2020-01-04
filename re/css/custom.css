@@ -156,5 +156,11 @@ label{ /*รูปแบบของ label ใน form*/
 .nav-link{
 	font-size: 12px;
 }
+.showmsg{
+	font-family: sans-serif;
+	text-align: center;
+    font-size: 13px;
+    padding: 2rem;
+}
 
 

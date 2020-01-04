@@ -38,11 +38,14 @@
 
                     <div class="progress_bar">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                         </div>
                     </div>
 
                 </div>
+
+                
 
             </div>
             <div class="search">
@@ -78,115 +81,118 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        setmount();
-        setyear();
-        //alert("Starting page ..");
+    setmount();
+    setyear();
+    //alert("Starting page ..");
 
 
-    });
+});
 
-    function setmount() {
-        var html = '';
-        var monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
-        console.log(monthNames.length);
-        for (var i = 0; i < monthNames.length; i++) {
-            var num = num + 1;
-            html += '<option value="' + num + '"> ' + monthNames[i] + '</option>';
-        }
-        $('#datemount').html(html);
-
+function setmount() {
+    var html = '';
+    var monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม",
+        "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+    ];
+    console.log(monthNames.length);
+    for (var i = 0; i < monthNames.length; i++) {
+        var num = num + 1;
+        html += '<option value="' + num + '"> ' + monthNames[i] + '</option>';
     }
+    $('#datemount').html(html);
 
-    function setyear() {
-        //var min = new Date().getFullYear,max = min+9;
-        html = ''
-        for (i = new Date().getFullYear(); i > 2015; i--) {
-            html += '<option value="' + i + '"> ' + i + '</option>'
-        }
-        $('#dateyear').html(html);
-        $('#dateyear2').html(html);
+}
 
-
+function setyear() {
+    //var min = new Date().getFullYear,max = min+9;
+    html = ''
+    for (i = new Date().getFullYear(); i > 2015; i--) {
+        html += '<option value="' + i + '"> ' + i + '</option>'
     }
-
-    $(".submit").click(function() {
-
-        var data = $('#serachdata').serialize();
-        var option = $("input[name='option1']:checked").val();
-
-        if (option == "1") {
-            searchday(data);
-        } else if (option == "2") {
-            //startment
-        } else if (option == "3") {
-            //stament
-        } else {
-            //stament
-        }
-    });
-
-    $("#option1day").click(function() {
-        //alert("XXXX")
-        $("#dateday").prop("disabled", false);
-        $("#datemount").prop("disabled", true);
-        $("#dateyear").prop("disabled", true);
-        $("#dateyear2").prop("disabled", true);
-    });
+    $('#dateyear').html(html);
+    $('#dateyear2').html(html);
 
 
-    $("#option2mount").click(function() {
-        $("#datemount").prop("disabled", false);
-        $("#dateyear").prop("disabled", false);
-        $("#dateday").prop("disabled", true);
-        $("#dateyear2").prop("disabled", true);
-    });
+}
 
-    $("#option3year").click(function() {
-        $("#dateyear2").prop("disabled", false);
+$(".submit").click(function() {
 
-        $("#dateday").prop("disabled", true); //option1
-        $("#datemount").prop("disabled", true); //option2
-        $("#dateyear").prop("disabled", true); //option2   
-    });
+    var data = $('#serachdata').serialize();
+    var option = $("input[name='option1']:checked").val();
 
-    function searchday(data) {
-        $.ajax({
-            url: '<?php echo site_url("Security_guard_dashboard/getDashboardday") ?>',
-            async: false,
-            dataType: 'json',
-            data: data, //ห้ามลืม
-            success: function(data) {
-                console.log(data);
-
-                var html = '';
-                var i = 0;
-                $.each(data, function(key, value) {
-
-                    i++;
-                    html += '<tr>';
-                    html += '<td>' + i + '</td>';
-                    html += '<td>' + value.committed_date + '</td>';
-                    html += '<td>' + value.committed_time + '</td>';
-                    html += '<td>' + value.S_ID + '</td>';
-                    html += '<td>' + value.std_fname + ' ' + value.std_lname + '</td>';
-                    html += '<td>' + value.off_desc + '</td>';
-                    html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
-                    html += '</tr>';
-
-                    $('#showdata').html(html);
-
-                });
-
-            }
-        });
-
-    }
-
-    function searchmounth(data) {
+    if (option == "1") {
+        searchday(data);
+    } else if (option == "2") {
+        //startment
+    } else if (option == "3") {
         //stament
-
-
+    } else {
+        //stament
     }
+});
+
+$("#option1day").click(function() {
+    //alert("XXXX")
+    $("#dateday").prop("disabled", false);
+    $("#datemount").prop("disabled", true);
+    $("#dateyear").prop("disabled", true);
+    $("#dateyear2").prop("disabled", true);
+});
+
+
+$("#option2mount").click(function() {
+    $("#datemount").prop("disabled", false);
+    $("#dateyear").prop("disabled", false);
+    $("#dateday").prop("disabled", true);
+    $("#dateyear2").prop("disabled", true);
+});
+
+$("#option3year").click(function() {
+    $("#dateyear2").prop("disabled", false);
+
+    $("#dateday").prop("disabled", true); //option1
+    $("#datemount").prop("disabled", true); //option2
+    $("#dateyear").prop("disabled", true); //option2   
+});
+
+function searchday(data) {
+    $.ajax({
+        url: '<?php echo site_url("Security_guard_dashboard/getDashboardday") ?>',
+        async: false,
+        dataType: 'json',
+        data: data, //ห้ามลืม
+        success: function(data) {
+            console.log(data);
+
+            var html = '';
+            var i = 0;
+            $.each(data, function(key, value) {
+
+                i++;
+                html += '<tr>';
+                html += '<td>' + i + '</td>';
+                html += '<td>' + value.committed_date + '</td>';
+                html += '<td>' + value.committed_time + '</td>';
+                html += '<td>' + value.S_ID + '</td>';
+                html += '<td>' + value.std_fname + ' ' + value.std_lname + '</td>';
+                html += '<td>' + value.off_desc + '</td>';
+                html += '<td> <a href="javascript:;" data=' + value.oh_ID +
+                    ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+                html += '</tr>';
+
+                $('#showdata').html(html);
+
+            });
+
+        }
+    });
+
+}
+
+function searchmounth(data) {
+    //stament
+
+
+}
 </script>

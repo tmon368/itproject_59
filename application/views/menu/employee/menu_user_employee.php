@@ -11,11 +11,11 @@
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
             <a href="#">
-                <li>แจ้งเหตุกระทำความผิด</li>
+                <li>แจ้งเหตุการกระทำความผิด</li>
             </a>
 
             <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <li>Menu1</li>
+                <li>การบำเพ็ญประโยชน์</li>
             </a>
 
             <div class="collapse" id="ui-basic">
@@ -31,5 +31,3 @@
 
         </ul>
     </div>
-
-   
