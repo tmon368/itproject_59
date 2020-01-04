@@ -43,7 +43,12 @@ class Security_guard_dashboard extends CI_Controller {
 		echo json_encode($result);
 	}
 	
-	
+	function SearchDate() {
+		$result = $this->Security_guard_dashboard_model->SearchDate();
+		echo json_encode($result);
+	}
+
+
 	function checkAutoriry() {
 	    //$admin = $this->session->userdata('admin');
 	    // $student = $this->session->userdata('student');
