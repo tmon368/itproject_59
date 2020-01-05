@@ -128,6 +128,16 @@ label {
     height: 8px;
     width: 100%;
 }
+.nodata{
+    text-align: center;
+    height: 100%;
+    padding: 12rem;
+}
+.msg{
+    color: rgb(197, 197, 197);
+    font-size: 14px;
+    font-family: 'prompt',sans-serif;
+}
 
 /* scorrbar css */
 

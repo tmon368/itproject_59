@@ -20,9 +20,10 @@ class Admin_dashboard extends CI_Controller {
 	    
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
-	    $this->load->view('ttemplate2emplate/');
-	    $this->load->view('template/template3');
-	    //$this->load->view('template/blank');
+		$this->load->view('template/template2');
+		$this->load->view('menu/admin/menu_user_admin');
+		$this->load->view('template/template4');
+		//$this->load->view('security_guard/firstpage/blank');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    

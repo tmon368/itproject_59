@@ -126,8 +126,8 @@ class Security_guard_dashboard_model extends CI_Model {
     }
 
     public function SearchDate(){
-        // $getday = "06";
-        // $getmonth ="";
+        // $getday = "19";
+        // $getmonth ="09";
         // $getyear = "2019";
 
         $getday =$_GET['getday'];

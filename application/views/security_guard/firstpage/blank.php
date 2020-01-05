@@ -28,7 +28,15 @@
 
             <div class="showdata">
 
-                <div class="persondata">
+                <div class="nodata">
+                    <div class="img">
+                        <img src="<?php echo base_url('re/images/empty.png')?>" alt="" width="50">
+                    </div>
+                    <div class="msg">
+                        ไม่มีข้อมูลผู้กระทำความผิด
+                    </div>
+                </div>
+                <!-- <div class="persondata">
                     <img src="<?php echo base_url('re/images/man.png') ?>" alt="Paris" width="40" height="40">
                     <div class="data">
                         <span id="name_student">นายสายัน สิริวิวัฒนากุล</span>
@@ -43,21 +51,20 @@
                         </div>
                     </div>
 
-                </div>
-
-                
+                </div> -->
 
             </div>
+
             <div class="search">
                 <form action="">
                     <label for="studentid">รหัสนักศึกษา</label>
                     <input type="text" class="form_input" name="" id="" placeholder="กรอกรหัสนักศึกษา">
                     <label for="date">วันที่</label>
                     <div class="date_time">
-                        <select class="date_time_input" name="" id="data">
+                        <select class="date_time_input" name="" id="date">
                             <option selected>วันที่</option>
                         </select>
-                        <select class="date_time_input" name="" id="datemount">
+                        <select class="date_time_input" name="" id="datemount2">
                             <option selected>เดือน</option>
                         </select>
                         <select class="date_time_input" name="" id="dateyear">
@@ -83,24 +90,152 @@
 <script>
 $(document).ready(function() {
 
+    setday();
     setmount();
     setyear();
+    select_data_student_today ();
     //alert("Starting page ..");
 
 
 });
 
+$(".btn_search").click(function() {
+    search();    
+});
+
+function search(){
+
+    var day = $('#date').val();
+    var mount2 = $('#datemount2').val();
+    var year = $('#dateyear').val();
+    
+    var data = {getday : day,getmonth : mount2,getyear:year};
+
+    $.ajax({
+        url: '<?php echo site_url("Security_guard_dashboard/SearchDate") ?>',
+        async: false,
+        dataType: 'json',
+        data: data, 
+        success: function(data) {
+            // console.log(data);
+
+            if (data == false){
+                 
+            }else{
+
+                htmlweb =''
+            $.each(data, function(key, value) { 
+                htmlweb += '<div class="persondata">';  
+                htmlweb += '<img src="<?php echo base_url('re/images/man.png') ?>" alt="Paris" width="40" height="40">';
+                htmlweb += '<div class="data">';
+                htmlweb += '<span id="name_student">'+ value.std_fname +" "+ value.std_lname +'</span>';
+                htmlweb += '<div> <span id="text1">รหัสนักศึกษา:</span><span id="student_id">'+ value.S_ID +'</span></div>';
+                htmlweb += '<div> <span id="text2">ฐานความผิด:</span><span id="offense_name">'+ value.off_desc +'</span></div>';
+                htmlweb += '</div>';
+                htmlweb += '<div class="progress_bar">';
+                htmlweb += '<div class="progress">';
+                htmlweb += '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>';
+                htmlweb += '</div>';
+                htmlweb += '</div>';
+                htmlweb += '</div>';
+            });
+            $('.showdata').html(htmlweb);
+
+            }
+
+
+            
+           
+
+        
+        }
+    });
+
+
+}
+
+
+function select_data_student_today (){
+
+    var dateObj = new Date();
+    var day = dateObj.getUTCDate();
+    var month = dateObj.getUTCMonth() + 1;
+    var year = dateObj.getUTCFullYear();
+
+    var data = {getday : day,getmonth : month,getyear:year};
+    //var data = {getday : 19,getmonth : 09,getyear:2019};
+
+    $.ajax({
+        url: '<?php echo site_url("Security_guard_dashboard/SearchDate") ?>',
+        async: false,
+        dataType: 'json',
+        data: data, 
+        success: function(data) {
+            // console.log(data);
+
+            if (data == false){
+                 
+            }else{
+
+                htmlweb =''
+            $.each(data, function(key, value) { 
+                htmlweb += '<div class="persondata">';  
+                htmlweb += '<img src="<?php echo base_url('re/images/man.png') ?>" alt="Paris" width="40" height="40">';
+                htmlweb += '<div class="data">';
+                htmlweb += '<span id="name_student">'+ value.std_fname +" "+ value.std_lname +'</span>';
+                htmlweb += '<div> <span id="text1">รหัสนักศึกษา:</span><span id="student_id">'+ value.S_ID +'</span></div>';
+                htmlweb += '<div> <span id="text2">ฐานความผิด:</span><span id="offense_name">'+ value.off_desc +'</span></div>';
+                htmlweb += '</div>';
+                htmlweb += '<div class="progress_bar">';
+                htmlweb += '<div class="progress">';
+                htmlweb += '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>';
+                htmlweb += '</div>';
+                htmlweb += '</div>';
+                htmlweb += '</div>';
+            });
+            $('.showdata').html(htmlweb);
+
+            }
+
+
+            
+           
+
+        
+        }
+    });
+
+    
+
+
+
+}
+
+
+
+
+function setday (){
+    var html = '';
+
+    for(var i=1;i <= 31; i++){
+        html += '<option value="' + i + '"> ' + i + '</option>';
+    }
+    $('#date').html(html);
+}
+
+
 function setmount() {
+    var num=0;
     var html = '';
     var monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม",
         "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
     ];
     console.log(monthNames.length);
     for (var i = 0; i < monthNames.length; i++) {
-        var num = num + 1;
+        var num = i + 1;
         html += '<option value="' + num + '"> ' + monthNames[i] + '</option>';
     }
-    $('#datemount').html(html);
+    $('#datemount2').html(html);
 
 }
 

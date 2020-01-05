@@ -159,8 +159,6 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("vehiclestype") ?>">ประเภทยานพาหนะ</a>
             </li>
-
-
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url("vehicles") ?>">ยานพาหนะ</a>
             </li>

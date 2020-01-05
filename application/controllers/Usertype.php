@@ -14,10 +14,9 @@ class Usertype extends Admin_dashboard {
 		//List ข้อมูลมาแสดงในหน้าจอ
 		$this->load->view('template/template1');
 		$this->load->view('template/template2');
-		$this->load->view('template/template3');
+		$this->load->view('menu/admin/menu_user_admin');
+		$this->load->view('template/template4');
 		$this->load->view('basicdata/usertype/usertype'); /*หน้าเพิ่มหมวดความผิด*/
-		/*$this->load->view('template/page_usergroup');*/ /*หน้าเพิ่มประเภทผู้ใช้*/
-		/*$this->load->view('template/page_import_data');*/
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 
