@@ -36,23 +36,7 @@
                         ไม่มีข้อมูลผู้กระทำความผิด
                     </div>
                 </div>
-                <!-- <div class="persondata">
-                    <img src="<?php echo base_url('re/images/man.png') ?>" alt="Paris" width="40" height="40">
-                    <div class="data">
-                        <span id="name_student">นายสายัน สิริวิวัฒนากุล</span>
-                        <div> <span id="text1">รหัสนักศึกษา:</span><span id="student_id">59124568</span></div>
-                        <div> <span id="text2">ฐานความผิด:</span><span id="offense_name">ไม่สวมหมวกกันน็อค</span></div>
-                    </div>
-
-                    <div class="progress_bar">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
-                        </div>
-                    </div>
-
-                </div> -->
-
+                
             </div>
 
             <div class="search">
@@ -117,7 +101,7 @@ function search(){
         dataType: 'json',
         data: data, 
         success: function(data) {
-            // console.log(data);
+            console.log(data);
 
             if (data == false){
                  
@@ -158,9 +142,11 @@ function search(){
 function select_data_student_today (){
 
     var dateObj = new Date();
-    var day = dateObj.getUTCDate();
+    var day = dateObj.getDate();
     var month = dateObj.getUTCMonth() + 1;
     var year = dateObj.getUTCFullYear();
+
+    console.log ("day"+day+"month"+month+"year"+year);
 
     var data = {getday : day,getmonth : month,getyear:year};
     //var data = {getday : 19,getmonth : 09,getyear:2019};
@@ -171,7 +157,7 @@ function select_data_student_today (){
         dataType: 'json',
         data: data, 
         success: function(data) {
-            // console.log(data);
+            console.log(data);
 
             if (data == false){
                  

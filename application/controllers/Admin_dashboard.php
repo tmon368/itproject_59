@@ -23,7 +23,7 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('template/template2');
 		$this->load->view('menu/admin/menu_user_admin');
 		$this->load->view('template/template4');
-		//$this->load->view('security_guard/firstpage/blank');
+		$this->load->view('admin/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
