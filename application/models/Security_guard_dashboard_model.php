@@ -126,22 +126,23 @@ class Security_guard_dashboard_model extends CI_Model {
     }
 
     public function SearchDate(){
+        // $Student_ID = "59111111";
         // $getday = "19";
         // $getmonth ="09";
         // $getyear = "2019";
-
+        $Student_ID =$_GET['getstdID'];
         $getday =$_GET['getday'];
         $getmonth =$_GET['getmonth'];
         $getyear =$_GET['getyear'];
 
-
+       
+         $S_ID = $Student_ID == null ? "": $this->db->where('ostd.S_ID',$Student_ID); $getday="";  $getmonth=""; $getyear="";
         $day = $getday == null ? "": $this->db->where('DAY(oh.committed_date)',$getday);
-        $month = $getmonth == null ? "": $this->db->where('MONTH(oh.committed_date)',$getmonth);
+        $month = $getmonth == null ? "": $this->db->where('MONTH(oh.committed_date)',$getmonth);       
+        $year = $getyear == null ? "": $this->db->where('YEAR(oh.committed_date)',$getyear);
         
-        $year = $getyear == null ? "": $getyear;
+        
 
-        // echo $day." ".$month."".$year;
-        // die();
         
         //$year =$_GET['getyear'];
        //SELECT offensehead.committed_date,offensehead.committed_time,offensestd.S_ID,student.std_fname , student.std_lname,offense.off_desc FROM `offensehead`,`offensestd`,`offense`,`student` WHERE  YEAR(committed_date)='2019' and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offensestd.S_ID=student.S_ID
@@ -165,9 +166,11 @@ class Security_guard_dashboard_model extends CI_Model {
        $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
        $this->db->join('offense o','oh.off_ID=o.off_ID');
        $this->db->join('student std','ostd.S_ID=std.S_ID'); 
+       $S_ID;
        $day;
        $month;
-       $this->db->where('YEAR(oh.committed_date)',$year);
+       $year;
+       //$this->db->where('YEAR(oh.committed_date)',$year);
         $this->db->order_by('oh.committed_date ASC');
 
        $query = $this->db->get();
