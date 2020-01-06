@@ -123,8 +123,7 @@
       });
 
 
-		var renderGra = function (dataDB) {
-
+var renderGra = function (dataDB) {
 var totalVisitors = 100;
 var visitorsData = {
 	"New vs Returning Visitors": [{
