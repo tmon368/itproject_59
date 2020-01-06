@@ -42,7 +42,7 @@
             <div class="search">
                 <form action="">
                     <label for="studentid">รหัสนักศึกษา</label>
-                    <input type="text" class="form_input" name="" id="" placeholder="กรอกรหัสนักศึกษา">
+                    <input type="text" class="form_input" name="" id="studentid" placeholder="กรอกรหัสนักศึกษา">
                     <label for="date">วันที่</label>
                     <div class="date_time">
                         <select class="date_time_input" name="" id="date">
@@ -89,11 +89,13 @@ $(".btn_search").click(function() {
 
 function search(){
 
+    var studentid = $('#studentid').val();
     var day = $('#date').val();
     var mount2 = $('#datemount2').val();
     var year = $('#dateyear').val();
+
     
-    var data = {getday : day,getmonth : mount2,getyear:year};
+    var data = {getstdID:studentid,getday : day,getmonth : mount2,getyear:year};
 
     $.ajax({
         url: '<?php echo site_url("Security_guard_dashboard/SearchDate") ?>',
