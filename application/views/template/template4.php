@@ -31,7 +31,7 @@
                 Change Password
             </a>
             <a class="dropdown-item">
-                Check Inbox
+                คู่มือการใช้งาน
             </a>
             <a class="dropdown-item" id="logout">
                 ออกจากระบบ
@@ -52,7 +52,7 @@
             <div class="modal-body">
 
                 <div class="showmsg">
-                    ต้องการออกจากระบบ
+                    ต้องการออกจากระบบ ?
                 </div>
                 <div>
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"
