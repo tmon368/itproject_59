@@ -5,7 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dormitory_advisor_dashboard extends CI_Controller {
     function __construct(){
         parent:: __construct();
-        $this->load->model('dormitory_advisor_dashboard_model', 'dormitory_advisor_dashboard_model');
+		$this->load->model('dormitory_advisor_dashboard_model', 'dormitory_advisor_dashboard_model');
+		$this->load->model('SettimeSession','SettimeSession');
     }
 
 
@@ -43,7 +44,9 @@ class Dormitory_advisor_dashboard extends CI_Controller {
 	    //echo $username;
 	    // die();
 	    
-	    $this->session->mark_as_temp('login',1800);
+		// $this->session->mark_as_temp('login',1800);
+		$this->SettimeSession->SetTime();
+
 	    if($this->session->userdata('login') == true){
 			
 	        if($this->session->userdata('autority') == "admin"){

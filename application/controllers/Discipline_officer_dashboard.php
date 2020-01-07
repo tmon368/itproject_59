@@ -5,7 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Discipline_officer_dashboard extends CI_Controller {
 	function __construct(){
         parent:: __construct();
-        $this->load->model('Discipline_officer_dashboard_model', 'Discipline_officer_dashboard_model');
+		$this->load->model('Discipline_officer_dashboard_model', 'Discipline_officer_dashboard_model');
+		$this->load->model('SettimeSession','SettimeSession');
     }
 
 	public function index()
@@ -51,7 +52,9 @@ class Discipline_officer_dashboard extends CI_Controller {
 	    //echo $username;
 	    // die();
 	    
-	    $this->session->mark_as_temp('login',1800);
+	   // $this->session->mark_as_temp('login',1800);
+	   $this->SettimeSession->SetTime();
+
 	    if($this->session->userdata('login') == true){
 	        
 	       
