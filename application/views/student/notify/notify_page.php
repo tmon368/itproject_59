@@ -4,8 +4,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
-
-
 <head>
 
     <title>แจ้งเหตุกระทำความผิด | ระบบวินัยนักศึกษา</title>
@@ -186,13 +184,6 @@
             } else {
                 alert("Not see");
             }
-
-
-
-
-
-
-
         }
     </script>
 
@@ -210,7 +201,7 @@
         <div class="page-breadcrumb" id="nav_sty">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">หน้าแรก</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo site_url("Student_dashboard") ?>" class="breadcrumb-link">หน้าแรก</a></li>
                     <li class="breadcrumb-item active" aria-current="page">แจ้งเหตุการกระทำความผิด</li>
                 </ol>
             </nav>
@@ -233,7 +224,7 @@
 
                 <!--Modal add notification -->
                 <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1200px!important;" role="document">
                         <div class="modal-content">
 
                             <div class="modal-header">

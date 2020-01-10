@@ -10,8 +10,7 @@ class Notifyoffense extends Student_dashboard {
 	
 
 
-	public function index()
-	{
+	public function index()	{
 		//List ข้อมูลมาแสดงในหน้าจอ
 	    $this->template();
 	    $this->checkAutoriry();
@@ -23,16 +22,14 @@ class Notifyoffense extends Student_dashboard {
 	public function template(){
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-	    $this->load->view('menu/student/menu_student');
-	    $this->load->view('student/notify/notify_page');
-	    //$this->load->view('template/page_type_punish'); /*หน้าเพิ่มหมวดความผิด*/
-	    /*$this->load->view('template/page_usergroup');*/ /*หน้าเพิ่มประเภทผู้ใช้*/
-	    /*$this->load->view('template/page_import_data');*/
+		$this->load->view('menu/student/menu_user_student');
+		$this->load->view('template/template4');
+		// $this->load->view('student/notify/notify_page');
+		//$this->load->view('student/notify/NotifyUserStudentPage');
+		$this->load->view('student/notify/blank');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
-	    
-	    
-	    
+
 	}
 
 	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table personnel และแสดงข้อมูลในview

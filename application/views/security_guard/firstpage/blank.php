@@ -106,7 +106,7 @@ function search(){
             console.log(data);
 
             if (data == false){
-                 
+                 alert ('ไม่พบข้อมูลดังกล่าว');
             }else{
 
                 htmlweb =''

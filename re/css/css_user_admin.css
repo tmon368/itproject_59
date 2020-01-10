@@ -15,7 +15,8 @@
     border-bottom: 1px solid #EAEDED;
     border-radius: 10px 10px 0px 0px;
 }
-.dashboad{
+
+.dashboad {
     display: flex;
 }
 
@@ -27,35 +28,45 @@
     margin: 0.2rem;
     font-size: 14px;
 }
-.card1{
+
+.card1 {
     margin: 0.5rem;
     padding: 0.5rem;
     border: 1px solid rgb(145, 143, 146);
     border-radius: 0.4rem 0.5rem 0.5rem 0.5rem;
 }
-.part1{
-   width: 70%;
+.mobile{
+    width: 25%;
 }
-.scorebar{
+
+.part1 {
+    width: 70%;
+}
+
+.scorebar {
     overflow-y: scroll;
 }
 
 .padding {
     padding: 2.5rem;
 }
+
 label {
-    font-family: "",sans-serif;
+    font-family: "", sans-serif;
     font-size: 12px;
 }
-.Font{
+
+.Font {
     font-size: 12px;
 }
-.Carddata:hover{
+
+.Carddata:hover {
     color: #fff;
     background-color: rgb(75, 8, 151);
     opacity: 1;
     transition: 0.3s;
 }
+
 .icon1 {
     color: #0b3f61;
     text-align: center;
@@ -84,22 +95,41 @@ label {
 /* scorrbar css */
 
 /* width */
+
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+}
 
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media screen and (max-device-width:800px){
+    
+    .ManageBasicData {
+        display: contents;
+    }
+
+    .dashboad {
+        display: contents;
+    }
+
+    .mobile{
+        width: auto;
+    }
+
+}

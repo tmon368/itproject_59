@@ -7,7 +7,7 @@
         <span></span>
 
         <ul id="menu">
-            <a href="<?php echo site_url("Admin_dashboard") ?>">
+            <a href="<?php echo site_url("Student_dashboard") ?>">
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
 
@@ -15,10 +15,11 @@
                 <li class="">ข้อมูลส่วนตัว</li>
             </a>
 
-            <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <li>แจ้งเหตุกระทำความผิด</li>
+            <a href="<?php echo site_url("Notifyoffense") ?>">
+                <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
 
+         
             <a href="<?php echo site_url("#") ?>">
                 <li class="">รายงานตัวผู้กระทำความผิด</li>
             </a>

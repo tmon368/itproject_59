@@ -105,7 +105,7 @@
 
 
 
-    <div class="card shadow mb-4" style="margin-left: 2rem;width:25%;height:35rem;">
+    <div class="card shadow mb-4 mobile" style="margin-left: 2rem;height:35rem;">
         <div class="title" style="width: 100%;text-align:center;">การอัพเดตข้อมูลนำเข้าครั้งล่าสุด</div>
         <div class="content" style="overflow-y: scroll;">
             <div class="card1 Carddata">
