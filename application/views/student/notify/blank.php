@@ -1,10 +1,24 @@
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_notify_user_student.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/step_progress.css') ?>">
 <link href="https://fonts.googleapis.com/css?family=Taviraj&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
 
 <head>
     <title>แจ้งเหตุกระทำความผิด | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
-    <style></style>
+    <style>
+        .select2-container--open .select2-dropdown--below {
+            width: 420px !important;
+        }
+        .selectplace {
+            width: 20rem;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: 2;
+            font-size: 14px;
+            font-family: 'Taviraj', serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -79,7 +93,7 @@
                         <div class="modal-body">
                             <fieldset>
                                 <div class="Tag1">
-                                    ส่วนที่ 1: ข้อมูลการแจ้งเหตุ
+                                    ขั้นตอน 1: ข้อมูลการแจ้งเหตุ
                                     <p class="msg">ส่วนข้อมูลแจ้งเหตุการกระทำความผิด กรุณากรอกรายละเอียดให้ครบถ้วน</p>
                                 </div>
                                 <div class="form-card">
@@ -89,7 +103,7 @@
                                         <div class="Content1">
 
                                             <div class="row">
-                                                <label for="Date_notify" style=""><span><i class="far fa-calendar-alt iconlabel"></i></span>วันที่แจ้งเหตุ:</label>
+                                                <label for="Date_notify"><span><i class="far fa-calendar-alt iconlabel"></i></span>วันที่แจ้งเหตุ:</label>
                                                 <input type="text" name="notifica_show" id="notifica_show" class="input" disabled>
                                                 <input type="hidden" name="notifica_date" id="notifica_date">
                                             </div>
@@ -115,14 +129,14 @@
 
                                             <div class="row">
                                                 <label for="offcate"><span><i class=" iconlabel"></i></span>หมวดความผิด:</label>
-                                                <select name="txt_oc" id="txt_oc" class="input select" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')">
+                                                <select name="txt_oc" id="txt_oc" class="select" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')">
                                                     <option value="">เลือกหมวดความผิด</option>
                                                 </select>
                                             </div>
 
                                             <div class="row">
                                                 <label for="off"><span><i class=" iconlabel"></i></span>ฐานความผิด:</label>
-                                                <select name="txt_off" id="txt_off" class="input select">
+                                                <select name="txt_off" id="txt_off" class="select">
                                                     <option value="">เลือกฐานความผิด</option>
                                                 </select>
                                             </div>
@@ -140,9 +154,9 @@
                                             </div>
 
                                             <div class="person">
-                                                <div class="data">
+                                                <!-- <div class="data">
                                                     59123456 นายวชระ ศรีมานี หลักสูตร ไทยบูรณาการศึกษา สำนักวิชา A
-                                                </div>
+                                                </div> -->
                                             </div>
 
                                         </div>
@@ -153,11 +167,23 @@
                             </fieldset>
 
                             <fieldset>
+                                <div class="Tag1">
+                                    ส่วนที่ 2: หลักฐานการแจ้งเหตุ
+                                    <p class="msg">แนบไฟล์หลักฐานการกระทำความผิด ไฟล์นามสกุล .jpg หรือ .png</p>
+                                </div>
                                 <div class="form-card">
 
-                                    aaaa
-                                    <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                </div> <input type="button" name="next" class="next action-button" value="Next" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                             </fieldset>
+
+
+
+
+
+
+
+
                         </div>
                     </form>
 
@@ -180,7 +206,8 @@
 <script>
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
-        load_json_data('txt_oc');
+        loaddata_offentype();
+        selectplace();
 
         var current_fs, next_fs, previous_fs; //fieldsets
         var opacity;
@@ -188,6 +215,11 @@
         var steps = $("fieldset").length;
 
         setProgressBar(current);
+        $("#place_ID").select2({
+            placeholder: "เลือกสถานที่",
+            allowClear: true,
+        });
+
 
         $(".next").click(function() {
 
@@ -263,22 +295,77 @@
             return false;
         })
 
-        function load_json_data(id) {
-            var html_code = '';
+    });
 
-            $.getJSON('<?php echo site_url('Notifyoffense/selectoffensecate') ?>', function(data) {
+    function selectplace() {
+        $.ajax({
 
-                html_code += '<option value=""> เลือกหมวดความผิด </option>';
+            type: 'POST',
+            url: '<?php echo site_url("Notifyoffense/selectplaceall") ?>',
+            async: false, //ห้ามลืม
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                // //alert("Having Data...");
+                var html = '';
                 
+                html += '<option selected>เลือกสถานที่</option>';
+                $.each(data, function(key, value) {
+                    html += '<option value="' + value.place_ID + '">' + value.place_name + '</option>';
+                    $('#place_ID').html(html);
+                });
+            }
+        });
+    }
+
+    function loaddata_offentype() {
+
+        var html_code = '';
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url("Notifyoffense/selectoffensecate") ?>',
+            async: false, //ห้ามลืม
+            dataType: 'json',
+            success: function(data) {
+
+                console.log(data);
+                html_code += '<option value=""> เลือกหมวดความผิด </option>';
+
                 $.each(data, function(key, value) {
                     html_code += '<option value="' + value.oc_ID + '">' + value.oc_desc + '</option>';
+                    $('#txt_oc').html(html_code);
                 });
-                $('#' + id).html(html_code);
+            }
+
+        });
+
+    }
+
+    $('#txt_oc').on('change', function() {
+
+        var html_code = '';
+        var ocID = $(this).val();
+
+        if (ocID) {
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo site_url("Notifyoffense/selectOffenseoffevidence") ?>',
+                data: 'oc_ID=' + ocID,
+                dataType: 'json',
+                success: function(data) {
+
+                    //alert(data[1].off_ID);
+
+                    for (i = 0; i < data.length; i++) {
+
+                        html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
+
+                    }
+                    $('#txt_off').html(html_code);
+
+                }
             });
-
         }
-
-
     });
 
     $('#notifyfloat').click(function() {
