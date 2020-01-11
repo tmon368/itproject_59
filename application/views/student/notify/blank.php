@@ -82,7 +82,7 @@
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>ข้อมูลการแจ้งเหตุ</strong></li>
                             <li id="personal"><strong>ผู้กระทำความผิด</strong></li>
-                            <li id="payment"><strong>Image</strong></li>
+                            <li id="payment"><strong>หลักฐาน</strong></li>
                             <li id="confirm"><strong>Finish</strong></li>
                         </ul>
                         <div class="progress">
@@ -160,15 +160,41 @@
                                         <div class="Content1">
 
                                             <div class="searchtool">
-                                                <select class="selectsearch" name="" id="">
+                                                <select class="selectsearch" name="" id="optionsearch">
                                                     <option selected>ระบุสิ่งที่ต้องการค้นหา</option>
                                                     <option value="1">รหัสนักศึกษา</option>
                                                     <option value="2">ป้ายทะเบียนรถจักรยานยนต์</option>
                                                     <option value="3">ป้ายทะเบียนรถยนต์</option>
                                                 </select>
-                                                <input type="text" name="" id="">
+                                                <input type="text" name="" id="textboxsearch">
                                                 <div class="btnsearch"><span><i class="fa fa-search"></i></span></div>
                                             </div>
+
+                                            <div class="result">
+                                                <span is="alert_message"></span>
+                                                <!-- <div class="person_resule">
+                                                    <div class="img"><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>
+                                                    <div class="dataperson">
+                                                        <div class="">
+                                                            <span id="name">นายสัญชัย สิงหาคม</span>
+                                                        </div>
+                                                        <div>
+                                                            <span id="major">สาขา เทคโนโลยีมัลติมิเดียและอนิเมัน</span>
+                                                            <span id="school">สำนักวิชา สารสนเทศาสตร์</span>
+                                                        </div>
+                                                        <div>
+                                                            <span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: กกต745</span>
+                                                        </div>
+                                                        <div>
+                                                            <span id="tag_num_car">หมายเลยทะเบียนรถยนต์: นนย4457</span>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+
+
+
+
                                         </div>
 
 
@@ -357,15 +383,90 @@
 
     }
 
-    function search_student_id (){
+    function search_student_id(dataid) {
+        var html_code='';
+        var data = {
+            S_ID: dataid
+        }
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url("Notifyoffense/selectstudent") ?>',
+            data: data,
+            dataType: 'json',
+            success: function(data) {
 
+                html_code += '<div class="person_resule">';
+                html_code += '<div class="img" data='+data+'><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
+                html_code += ' <div class="dataperson">';
+                html_code += '<div class="">';
+                html_code += '<span id="name">นายสัญชัย สิงหาคม</span>';
+                html_code += '</div>';
+                html_code += '<div>';
+                html_code += '<span id="major">สาขา เทคโนโลยีมัลติมิเดียและอนิเมัน</span>';
+                html_code += '<span id="school">สำนักวิชา สารสนเทศาสตร์</span>';
+                html_code += '</div>';
+                html_code += '<div>';
+                html_code += '<span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: กกต745</span>';
+                html_code += '</div>';
+                html_code += '<div>';
+                html_code += '<span id="tag_num_car">หมายเลยทะเบียนรถยนต์: นนย4457</span>';
+                html_code += '</div>';
+                html_code += '</div>';
+                html_code += '</div>';
 
+                $('.result').html(html_code);
+            }
 
-
-
-
-        
+        });
     }
+
+    function add_person(){
+
+    }
+
+
+
+
+    $('.result').on('click', '.img', function() {
+        
+
+    });
+
+    $('.btnsearch').on('click', function() {
+
+        var option_id = $('#optionsearch').val();
+        var text_value = $('#textboxsearch').val();
+
+        if (option_id == "1") {
+            search_student_id(text_value);
+        }
+
+    });
+
+    $('#optionsearch').on('change', function() {
+
+        var option_id = $(this).val();
+
+        if (option_id == "1") {
+            var text = "กรอกรหัสนักศึกษา";
+            $("#textboxsearch").attr("placeholder", text);
+        } else if (option_id == "2") {
+            var text = "กรอกหมายเลขรถจักรยานยนต์";
+            $("#textboxsearch").attr("placeholder", text);
+        } else if (option_id == "3") {
+            var text = "กรอกหมายเลขรถยนต์";
+            $("#textboxsearch").attr("placeholder", text);
+        } else {
+
+        }
+
+
+
+        console.log(option_id);
+
+    });
+
+
 
     $('#txt_oc').on('change', function() {
 
