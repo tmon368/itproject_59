@@ -136,6 +136,41 @@ class OffenseHead_model extends CI_Model {
         
         
     }
+
+    public function getoffenseID(){
+        $getid = $this->input->post('offensestd_ID');
+         $date = $this->input->post('report_date');
+        //$id = $this->input->post('id');
+        // $getid = [39,40];
+        // $date = "2020-01-12";
+
+        $id = $getid == null ? "" :  $getid;
+        if($id == null){
+            return false;
+        }
+        for($i=0;$i <count($id);$i++){
+        $field = array(
+            'offensestd_ID'=>$id[$i],
+            'report_date'=>$date, 
+            'report_status'=>'0',
+            'reason'=>'testinsert'
+            
+        );
+        $this->db->insert('report', $field);
+   }
+
+        //var_dump($field);
+        //die();
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+        
+        
+        
+        
+    }
     
     
 }
