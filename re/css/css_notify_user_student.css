@@ -15,7 +15,7 @@
     color: #FFF;
     font-family: 'Kanit', sans-serif;
     font-size: 18px;
-    padding: 0.8rem 0.2rem 0.2rem 0.2rem;
+    padding: 0.8rem 0.2rem 0.2rem 1.2rem;
     background: rgb(74, 35, 90);
 }
 
@@ -71,10 +71,31 @@ label {
     margin: 1% 6% 1% 1%;
     color: #423fa5;
 }
+.searchtool{
+    display: flex;
+}
+.selectsearch{
+    color: rgb(67, 16, 161);
+    width: 30%;
+    font-size: 12px;
+    padding: 0.5rem;
+    /* border: 1px solid #0e013e; */
+    border-right: 0px;
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
+    font-family: 'Taviraj', serif;  ;
+}
+
+select option  {
+    margin: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    color: rgb(67, 16, 161);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
 
 .select{
     font-size: 14px;
-    font-family: 'Taviraj', serif; ;
+    font-family: 'Taviraj', serif; 
 }
 
 .select:hover{
@@ -104,12 +125,28 @@ label {
     height: 1.8rem;
     border-radius: 8px;
 }
+.GroupPersonTool{
+    display: flex;
+}
+.add_remove_person{
+    display: initial;
+    padding: 0.5rem;
+}
+.button1{
+    width: 2rem;
+    height: 2rem;
+    margin-top: 1rem;
+}
+.textarea{
+    width: 27rem;
+    font-size: 14px;
+}
 .person{
     font-size: 14px;
     font-family: 'Taviraj', serif;
     background: #F8F9F9;
     width: 100%;
-    height: 40%;
+    height: 20rem;
     padding: 0.5rem;
     overflow-y: hidden;
     border-radius: 0.5rem;
@@ -161,4 +198,17 @@ body {
 
 .my-float {
     margin-top: 22px;
+}
+.btnsearch{
+    background-color: rgb(67, 16, 161);
+    padding: 0.6rem;
+    color: #fff;
+    width: 7%;
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+.btnsearch:hover{
+    background-color: rgb(119, 80, 192);
+    cursor: pointer;
+    transition: 0.3s;
+    opacity:4;
 }

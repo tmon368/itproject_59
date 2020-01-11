@@ -9,9 +9,11 @@
         .select2-container--open .select2-dropdown--below {
             width: 420px !important;
         }
+
         .selectplace {
             width: 20rem;
         }
+
         .select2-container--default .select2-selection--single .select2-selection__rendered {
             color: #444;
             line-height: 2;
@@ -79,7 +81,7 @@
                         <h2 class="modal-title" id="exampleModalLongTitle"></h2>
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>ข้อมูลการแจ้งเหตุ</strong></li>
-                            <li id="personal"><strong>หลักฐานการแจ้งเหตุ</strong></li>
+                            <li id="personal"><strong>ผู้กระทำความผิด</strong></li>
                             <li id="payment"><strong>Image</strong></li>
                             <li id="confirm"><strong>Finish</strong></li>
                         </ul>
@@ -122,10 +124,12 @@
 
 
                                             <div class="row">
-                                                <label for="place"><span><i class="far fa-building iconlabel"></i></span>คำอธิบายสถานที่:</label>
-                                                <textarea class="" rows="5" id="explanation" name="explanation" required oninvalid="this.setCustomValidity('โปรดกรอกคำอธิบาย')" onchange="this.setCustomValidity('')"></textarea>
+                                                <label for="place"><span><i class="fa fa-commenting-o iconlabel"></i></span>คำอธิบายสถานที่:</label>
+                                                <textarea class="textarea" rows="5" id="explanation" name="explanation" required oninvalid="this.setCustomValidity('โปรดกรอกคำอธิบาย')" onchange="this.setCustomValidity('')"></textarea>
                                             </div>
+                                        </div>
 
+                                        <div class="Content2">
 
                                             <div class="row">
                                                 <label for="offcate"><span><i class=" iconlabel"></i></span>หมวดความผิด:</label>
@@ -140,11 +144,31 @@
                                                     <option value="">เลือกฐานความผิด</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="ถัดไป" />
+                            </fieldset>
 
+                            <fieldset>
+                                <div class="Tag1">
+                                    ส่วนที่ 2: ผู้กระทำความผิด
+                                    <p class="msg">ข้อมูลผู้กระทำความผิด</p>
+                                </div>
+                                <div class="form-card">
+                                    <div class="Content">
+                                        <div class="Content1">
 
-
-
-
+                                            <div class="searchtool">
+                                                <select class="selectsearch" name="" id="">
+                                                    <option selected>ระบุสิ่งที่ต้องการค้นหา</option>
+                                                    <option value="1">รหัสนักศึกษา</option>
+                                                    <option value="2">ป้ายทะเบียนรถจักรยานยนต์</option>
+                                                    <option value="3">ป้ายทะเบียนรถยนต์</option>
+                                                </select>
+                                                <input type="text" name="" id="">
+                                                <div class="btnsearch"><span><i class="fa fa-search"></i></span></div>
+                                            </div>
                                         </div>
 
 
@@ -153,35 +177,27 @@
                                                 <label for="off"><span><i class=" iconlabel"></i></span>ผู้กระทำความผิด:</label>
                                             </div>
 
-                                            <div class="person">
-                                                <!-- <div class="data">
-                                                    59123456 นายวชระ ศรีมานี หลักสูตร ไทยบูรณาการศึกษา สำนักวิชา A
-                                                </div> -->
+                                            <div class="GroupPersonTool">
+                                                <div class="person">
+
+                                                </div>
+                                                <div class="add_remove_person">
+                                                    <button type="button" class="button1 addperson">+</button>
+                                                    <button type="button" class="button1">-</button>
+                                                </div>
                                             </div>
+
 
                                         </div>
 
                                     </div>
+
+
+
                                 </div>
                                 <input type="button" name="next" class="next action-button" value="ถัดไป" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
                             </fieldset>
-
-                            <fieldset>
-                                <div class="Tag1">
-                                    ส่วนที่ 2: หลักฐานการแจ้งเหตุ
-                                    <p class="msg">แนบไฟล์หลักฐานการกระทำความผิด ไฟล์นามสกุล .jpg หรือ .png</p>
-                                </div>
-                                <div class="form-card">
-
-                                </div> <input type="button" name="next" class="next action-button" value="Next" />
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                            </fieldset>
-
-
-
-
-
-
 
 
                         </div>
@@ -308,7 +324,7 @@
                 console.log(data);
                 // //alert("Having Data...");
                 var html = '';
-                
+
                 html += '<option selected>เลือกสถานที่</option>';
                 $.each(data, function(key, value) {
                     html += '<option value="' + value.place_ID + '">' + value.place_name + '</option>';
@@ -339,6 +355,16 @@
 
         });
 
+    }
+
+    function search_student_id (){
+
+
+
+
+
+
+        
     }
 
     $('#txt_oc').on('change', function() {
@@ -379,5 +405,10 @@
         console.log(5555);
         $('.Content').hide();
         $('.Content3').show();
+    });
+
+    $('.addperson').click(function() {
+        $('#addperson').modal('show');
+
     });
 </script>
