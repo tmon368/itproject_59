@@ -414,7 +414,7 @@ foreach($showall as $value){
        // $username = $this->session->userdata('username');
         //$username= $this->input->post('S_ID');
         $std_ID= $this->input->post('S_ID');
-       // $std_ID = 59123456;
+        // $std_ID = 59123456;
         /*
         $this->db->select('*');
         $this->db->from('vehiclestype vt');

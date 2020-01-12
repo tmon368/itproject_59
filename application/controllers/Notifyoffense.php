@@ -94,7 +94,7 @@ class Notifyoffense extends Student_dashboard {
 	function selectstudent(){
 	    $result =  $this->Notifyoffense_model->selectstudent();
         echo json_encode($result);
-    }
+	}
 
 	function selectplace(){
 	   

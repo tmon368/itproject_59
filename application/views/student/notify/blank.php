@@ -22,6 +22,12 @@
         }
     </style>
 </head>
+<script>
+    var studentid = [];
+</script>
+
+
+
 
 <body>
     <div class="container-fluid">
@@ -384,7 +390,7 @@
     }
 
     function search_student_id(dataid) {
-        var html_code='';
+        var html_code = '';
         var data = {
             S_ID: dataid
         }
@@ -395,24 +401,47 @@
             dataType: 'json',
             success: function(data) {
 
-                html_code += '<div class="person_resule">';
-                html_code += '<div class="img" data='+data+'><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
-                html_code += ' <div class="dataperson">';
-                html_code += '<div class="">';
-                html_code += '<span id="name">นายสัญชัย สิงหาคม</span>';
-                html_code += '</div>';
-                html_code += '<div>';
-                html_code += '<span id="major">สาขา เทคโนโลยีมัลติมิเดียและอนิเมัน</span>';
-                html_code += '<span id="school">สำนักวิชา สารสนเทศาสตร์</span>';
-                html_code += '</div>';
-                html_code += '<div>';
-                html_code += '<span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: กกต745</span>';
-                html_code += '</div>';
-                html_code += '<div>';
-                html_code += '<span id="tag_num_car">หมายเลยทะเบียนรถยนต์: นนย4457</span>';
-                html_code += '</div>';
-                html_code += '</div>';
-                html_code += '</div>';
+                console.log(data);
+
+                $.each(data, function(key, value) {
+
+                    var temp = value;
+
+                    if (key == 0) {
+
+                        html_code += '<div class="person_resule">';
+                        html_code += '<div class="img" data=' + value.S_ID + '><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
+                        html_code += ' <div class="dataperson">';
+                        html_code += '<div class="">';
+                        html_code += '<span id="name">' + value.std_fname + ' ' + value.std_lname + '</span>';
+                        html_code += '</div>';
+                        html_code += '<div>';
+                        html_code += '<span id="major">สาขา ' + value.dept_name + '</span>';
+                        html_code += '<span id="school">สำนักวิชา' + value.cur_name + '</span>';
+                        html_code += '</div>';
+
+                    } else if (key == "verhicles") {
+                        var verhicle = value;
+                        $.each(verhicle, function(key, value) {
+                            //check type vehicle
+                            if (value.vetype_ID == 1) {
+                                html_code += '<div>';
+                                html_code += '<span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: ' + value.regist_num + '</span>';
+                                html_code += '</div>';
+                                // value.province
+                            } else if (value.vetype_ID == 2) {
+                                html_code += '<div>';
+                                html_code += '<span id="tag_num_car">หมายเลยทะเบียนรถจักรายานยนต์: ' + value.regist_num + '</span>';
+                                html_code += '</div>';
+                            } else {
+
+                            }
+                        });
+
+                    }
+                });
+
+
 
                 $('.result').html(html_code);
             }
@@ -420,7 +449,12 @@
         });
     }
 
-    function add_person(){
+    function add_person(id) {
+
+        studentid.push(id);
+        console.log(studentid);
+
+
 
     }
 
@@ -428,7 +462,61 @@
 
 
     $('.result').on('click', '.img', function() {
-        
+        id = $(this).attr('data');
+        var data = {
+            S_ID: id
+        };
+
+        console.log(studentid);
+        console.log(studentid.length);
+
+        if (studentid.length == 0) {
+            studentid.push(id);
+        }
+
+        if (studentid.length != 0) {
+            for (var i = 0; i < studentid.length; i++) {
+                console.log(studentid[i]);
+                if (studentid[i] != id){
+                    studentid.push(id);
+                    console.log(studentid);
+                }
+            }
+
+
+        }
+
+        //console.log(studentid);
+
+        // for (var i=0; i < studentid.length; i++){
+
+        //     // if(){
+        //     //      studentid.push(id);
+        //     // }
+        // }
+
+        $.ajax({
+            type: 'post',
+            url: '<?php echo site_url("Notifyoffense/selectstudent") ?>',
+            data: data,
+            dataType: 'json',
+            success: function(data) {
+                console.log(data)
+                html = '';
+                $.each(data, function(key, value) {
+                    var temp = value;
+                    if (key == 0) {
+                        html += '<div><span id="stdid"><i class="fa fa-address-card-o"></i> ' + value.S_ID + ' นายสัญชัย สรินาวิวัฒนา สาขา A สำนัก B</span></div>';
+                        $('.person').append(html);
+                    }
+
+                });
+            },
+            error: function(data) {
+                alert();
+            }
+        });
+
 
     });
 
