@@ -23,7 +23,7 @@
     </style>
 </head>
 <script>
-    var studentid = [];
+    var studentid=[];
 </script>
 
 
@@ -257,6 +257,7 @@
         loaddata_offentype();
         selectplace();
 
+        
         var current_fs, next_fs, previous_fs; //fieldsets
         var opacity;
         var current = 1;
@@ -451,49 +452,9 @@
 
     function add_person(id) {
 
-        studentid.push(id);
-        console.log(studentid);
-
-
-
-    }
-
-
-
-
-    $('.result').on('click', '.img', function() {
-        id = $(this).attr('data');
         var data = {
             S_ID: id
         };
-
-        console.log(studentid);
-        console.log(studentid.length);
-
-        if (studentid.length == 0) {
-            studentid.push(id);
-        }
-
-        if (studentid.length != 0) {
-            for (var i = 0; i < studentid.length; i++) {
-                console.log(studentid[i]);
-                if (studentid[i] != id){
-                    studentid.push(id);
-                    console.log(studentid);
-                }
-            }
-
-
-        }
-
-        //console.log(studentid);
-
-        // for (var i=0; i < studentid.length; i++){
-
-        //     // if(){
-        //     //      studentid.push(id);
-        //     // }
-        // }
 
         $.ajax({
             type: 'post',
@@ -516,6 +477,40 @@
                 alert();
             }
         });
+
+    }
+
+
+
+
+    $('.result').on('click', '.img', function() {
+        console.log(studentid);
+        
+        var id = $(this).attr('data');
+      
+        if (studentid.length == 0) {
+            studentid.push(id);
+            add_person(id);
+            console.log(studentid);
+        }else{
+            for(var i=0;i<studentid.length;i++){
+                var check=0;
+                if(id == studentid[i]){
+                    check == 1;
+                    alert('รายชื่อดังกล่าวถูกเพิ่มไปแล้วในขณะนี้');
+                    return;
+                }
+                
+            }
+            if(check == 0){
+                studentid.push(id);
+                add_person(id);
+            }
+            
+           
+        }
+    
+        
 
 
     });
