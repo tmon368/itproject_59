@@ -11,7 +11,7 @@
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
 
-            <a href="<?php echo site_url("#") ?>">
+            <a href="<?php echo site_url("Std_info") ?>">
                 <li class="">ข้อมูลส่วนตัว</li>
             </a>
 

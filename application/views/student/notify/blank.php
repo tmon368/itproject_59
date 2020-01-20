@@ -23,7 +23,7 @@
     </style>
 </head>
 <script>
-    var studentid=[];
+    var studentid = [];
 </script>
 
 
@@ -153,7 +153,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="ถัดไป" />
+
+                                <input type="button" id="buttonnext1" name="next" class="next" value="ถัดไป" />
                             </fieldset>
 
                             <fieldset>
@@ -227,6 +228,7 @@
 
 
                                 </div>
+
                                 <input type="button" name="next" class="next action-button" value="ถัดไป" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
                             </fieldset>
@@ -256,8 +258,9 @@
         $('[data-toggle="tooltip"]').tooltip();
         loaddata_offentype();
         selectplace();
+        check_fieldset();
 
-        
+
         var current_fs, next_fs, previous_fs; //fieldsets
         var opacity;
         var current = 1;
@@ -272,33 +275,44 @@
 
         $(".next").click(function() {
 
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
 
-            //Add Class Active
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            var textarea = $("#explanation").val();
+            console.log(textarea);
 
-            //show the next fieldset
-            next_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({
-                opacity: 0
-            }, {
-                step: function(now) {
-                    // for making fielset appear animation
-                    opacity = 1 - now;
+            if (textarea == "") {
+                window.alert("Please enter your address.");
+                $("#explanation").focus();
+                return false;
+            }
 
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    next_fs.css({
-                        'opacity': opacity
-                    });
-                },
-                duration: 500
-            });
-            setProgressBar(++current);
+
+            // current_fs = $(this).parent();
+            // next_fs = $(this).parent().next();
+
+            // //Add Class Active
+            // $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            // //show the next fieldset
+            // next_fs.show();
+            // //hide the current fieldset with style
+            // current_fs.animate({
+            //     opacity: 0
+            // }, {
+            //     step: function(now) {
+            //         // for making fielset appear animation
+            //         opacity = 1 - now;
+
+            //         current_fs.css({
+            //             'display': 'none',
+            //             'position': 'relative'
+            //         });
+            //         next_fs.css({
+            //             'opacity': opacity
+            //         });
+            //     },
+            //     duration: 500
+            // });
+            // setProgressBar(++current);
         });
 
         $(".previous").click(function() {
@@ -345,6 +359,7 @@
         })
 
     });
+
 
     function selectplace() {
         $.ajax({
@@ -467,7 +482,9 @@
                 $.each(data, function(key, value) {
                     var temp = value;
                     if (key == 0) {
-                        html += '<div><span id="stdid"><i class="fa fa-address-card-o"></i> ' + value.S_ID + ' นายสัญชัย สรินาวิวัฒนา สาขา A สำนัก B</span></div>';
+                        html += '<div class="" id="div' + value.S_ID + '"><span id="stdid"><i class="fa fa-address-card-o"></i> ' + value.S_ID + ' นายสัญชัย สรินาวิวัฒนา สาขา A สำนัก B</span>';
+                        html += '<input type="hidden" name="std_id[]" value="' + value.S_ID + '">';
+                        html += '</div>';
                         $('.person').append(html);
                     }
 
@@ -481,39 +498,57 @@
     }
 
 
+    function check_fieldset() {
+
+        var textarea = $("#explanation").val();
+        console.log(textarea);
+        // if (name.value == "") {
+        //     window.alert("Please enter your name.");
+        //     name.focus();
+        //     return false;
+        // }
+    }
+
+
+    $('#buttonnext1').click(function() {
+        console.log(555);
+    });
+
+
 
 
     $('.result').on('click', '.img', function() {
         console.log(studentid);
-        
+
         var id = $(this).attr('data');
-      
+
         if (studentid.length == 0) {
             studentid.push(id);
             add_person(id);
             console.log(studentid);
-        }else{
-            for(var i=0;i<studentid.length;i++){
-                var check=0;
-                if(id == studentid[i]){
+        } else {
+            for (var i = 0; i < studentid.length; i++) {
+                var check = 0;
+                if (id == studentid[i]) {
                     check == 1;
                     alert('รายชื่อดังกล่าวถูกเพิ่มไปแล้วในขณะนี้');
                     return;
                 }
-                
+
             }
-            if(check == 0){
+            if (check == 0) {
                 studentid.push(id);
                 add_person(id);
             }
-            
-           
+
+
         }
-    
-        
+
+
 
 
     });
+
 
     $('.btnsearch').on('click', function() {
 
@@ -583,6 +618,7 @@
         var date = new Date();
         var date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         $('#notifica_show').val(date_off); //set of date in input:disable
+
     });
 
     $('#btnSave').click(function() {
