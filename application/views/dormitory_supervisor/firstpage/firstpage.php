@@ -91,7 +91,8 @@
 
 <div class="col-lg-9 ">
             <div class="card shadow mb-3">             
-        <div class="card-body " id="card_1">
+        <div class="card-body " id="card_1" style="
+    border: 1px solid ">
         <font size="4"><center>กิจกรรมเพิ่มเติม</center></font>  
         <br><br><br><br><br><br><br><br>
         </div> 
