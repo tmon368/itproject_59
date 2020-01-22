@@ -126,12 +126,14 @@
                                                 <label for="place"><span><i class="far fa-building iconlabel"></i></span>สถานที่:</label>
                                                 <select class="selectplace input" name="place_ID" id="place_ID">
                                                 </select>
+                                                <span id="error_message_place"></span>
                                             </div>
 
 
                                             <div class="row">
                                                 <label for="place"><span><i class="fa fa-commenting-o iconlabel"></i></span>คำอธิบายสถานที่:</label>
                                                 <textarea class="textarea" rows="5" id="explanation" name="explanation" required oninvalid="this.setCustomValidity('โปรดกรอกคำอธิบาย')" onchange="this.setCustomValidity('')"></textarea>
+                                                <span id="error_message_exp_place"></span>
                                             </div>
                                         </div>
 
@@ -142,6 +144,7 @@
                                                 <select name="txt_oc" id="txt_oc" class="select" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')">
                                                     <option value="">เลือกหมวดความผิด</option>
                                                 </select>
+                                                <span id="error_message_off"></span>
                                             </div>
 
                                             <div class="row">
@@ -272,18 +275,44 @@
             allowClear: true,
         });
 
-
         $(".next").click(function() {
 
 
             var textarea = $("#explanation").val();
+            var selectplace = $("#place_ID").val();
+            var offence = $("#txt_oc").val();
+            
             console.log(textarea);
 
             if (textarea == "") {
-                window.alert("Please enter your address.");
-                $("#explanation").focus();
+                $("#error_message_exp_place").show();
+                $("#explanation").focus().css("border", "#E74C3C solid 1px");
+                $("#error_message_exp_place").text('**กรอกคำอธิบายสถานที่')
                 return false;
+            } else {
+                $("#explanation").focusout().css("border", "#CACFD2 solid 1px");;
+                $("#error_message_exp_place").hide();
+
             }
+
+            if (selectplace == 'เลือกสถานที่') {
+                $(".select2-selection").focus().css("border", "#E74C3C solid 1px");
+                $("#error_message_place").text('**ระบุสถานที่เกิดเหตุ')
+            } else {
+                $(".select2-selection").focusout().css("border", "#CACFD2 solid 1px");
+                $("#error_message_place").hind();
+            }
+
+
+            if (offence == '') {
+                $("#error_message_off").text('**ระบุสถานที่เกิดเหตุ');
+            } else {
+
+            }
+
+            
+
+
 
 
             // current_fs = $(this).parent();
@@ -548,7 +577,6 @@
 
 
     });
-
 
     $('.btnsearch').on('click', function() {
 

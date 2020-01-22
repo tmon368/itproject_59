@@ -222,6 +222,29 @@ body {
     margin: 0.5rem 4.0rem 0.5rem 0.5rem;
     font-size: 12px;
 }
+#error_message_exp_place{
+    /* display: none; */
+    margin: 0.5rem;
+    color: #ff5e44;
+    font-size: 12px;
+    font-family: 'prompt',sans-serif;
+    padding-left: 9.5rem;
+}
+#error_message_place{
+    margin: 0.5rem;
+    color: #ff5e44;
+    font-size: 12px;
+    font-family: 'prompt',sans-serif;
+    padding-left: 9.5rem;
+}
+
+#error_message_off{
+    margin: 0.5rem;
+    color: #ff5e44;
+    font-size: 12px;
+    font-family: 'prompt',sans-serif;
+    padding-left: 9.5rem;
+}
 .person_resule{
     display: flex;
     border: 1px solid #423fa5;
