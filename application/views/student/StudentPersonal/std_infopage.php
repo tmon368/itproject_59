@@ -89,11 +89,31 @@
                     url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentstatus',
                     async: false,
                     dataType: 'json',
-                    success: function(data) { // console.log(data); 
+                    success: function(data) {
+						 //console.log(data); 
                         var html = '';
                         var n=1;
                         var i;
                         for (i = 0; i < data.length; i++) {
+							if(data[i].statusoff == '3'){
+								html += '<tr>' +
+                            '<th>' + n + '</th>' +
+                            '<th>' + data[i].committed_date + '</th>' +
+                            '<th>' + data[i].off_desc +'</th>' +
+                            '<th>' + data[i].point + '</th>' +
+							'<th>' +'<a href=""</a>'+data[i].statusoffname +'</th>' + // สถานะการกระทำความผิด 
+							
+							
+						//	if ($statusoffname == 3 ) {
+    					//		<a href="javascript:;" data=' + data[i].train_ID + ' class="show_data">
+						//	}
+						//	html += '<td> <a href="javascript:;">
+						//	data=' + value.oh_ID + ' class="show_data">
+						//	<i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+
+                                '</tr>';
+
+							}else{
                             html += '<tr>' +
                             '<th>' + n + '</th>' +
                             '<th>' + data[i].committed_date + '</th>' +
@@ -110,6 +130,7 @@
 						//	<i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
 
                                 '</tr>';
+							}
                             n+=1;
                         }
                         $('#showdata').html(html);
