@@ -33,44 +33,15 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("status") ?>">สถานะนักศึกษา</a>
+                        <a class="nav-link" href="<?php echo site_url("Volunteer_regis") ?>">ลงทะเบียนการบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
+                        <a class="nav-link" href="<?php echo site_url("VolunteerAc") ?>">เสนอการบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">นักศึกษา</a>
+                        <a class="nav-link" href="<?php echo site_url("Volunteer_history") ?>">ประวัติการบำเพ็ญประโยชน์</a>
                     </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">บุคลากร</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">หมวดความผิด</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">ฐานความผิด</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">ประเภทหอพัก</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">หอพัก</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">ประเภทยานพาหนะ</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">ยานพาหนะ</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">วันหยุด</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">สถานที่</a>
-                    </li>
-                    <li class="submenu">
-                        <a class="nav-link" href="#">หลักสูตร</a>
-                    </li>
+                    
                 </ul>
             </div>
 

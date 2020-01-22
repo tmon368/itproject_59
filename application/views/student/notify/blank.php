@@ -144,7 +144,7 @@
                                                 <select name="txt_oc" id="txt_oc" class="select" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')">
                                                     <option value="">เลือกหมวดความผิด</option>
                                                 </select>
-                                                <span id="error_message_off"></span>
+                                                <span id="error_message_offcat"></span>
                                             </div>
 
                                             <div class="row">
@@ -152,6 +152,7 @@
                                                 <select name="txt_off" id="txt_off" class="select">
                                                     <option value="">เลือกฐานความผิด</option>
                                                 </select>
+                                                <span id="error_message_off"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -182,24 +183,7 @@
 
                                             <div class="result">
                                                 <span is="alert_message"></span>
-                                                <!-- <div class="person_resule">
-                                                    <div class="img"><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>
-                                                    <div class="dataperson">
-                                                        <div class="">
-                                                            <span id="name">นายสัญชัย สิงหาคม</span>
-                                                        </div>
-                                                        <div>
-                                                            <span id="major">สาขา เทคโนโลยีมัลติมิเดียและอนิเมัน</span>
-                                                            <span id="school">สำนักวิชา สารสนเทศาสตร์</span>
-                                                        </div>
-                                                        <div>
-                                                            <span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: กกต745</span>
-                                                        </div>
-                                                        <div>
-                                                            <span id="tag_num_car">หมายเลยทะเบียนรถยนต์: นนย4457</span>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+
                                             </div>
 
 
@@ -280,37 +264,62 @@
 
             var textarea = $("#explanation").val();
             var selectplace = $("#place_ID").val();
-            var offence = $("#txt_oc").val();
-            
+            var offencecate = $("#txt_oc").val();
+            var offence = $("#txt_off").val();
+
             console.log(textarea);
 
-            if (textarea == "") {
-                $("#error_message_exp_place").show();
-                $("#explanation").focus().css("border", "#E74C3C solid 1px");
-                $("#error_message_exp_place").text('**กรอกคำอธิบายสถานที่')
-                return false;
-            } else {
-                $("#explanation").focusout().css("border", "#CACFD2 solid 1px");;
-                $("#error_message_exp_place").hide();
 
+            if ((textarea == '') || (selectplace == 'เลือกสถานที่') || (offencecate == '') || (offence == '')) {
+
+                if (textarea == '') {
+                    $("#error_message_exp_place").show();
+                    $("#explanation").focus().css("border", "#E74C3C solid 1px");
+                    $("#error_message_exp_place").text('**กรอกคำอธิบายสถานที่')
+                    return false;
+                } else {
+                    $("#explanation").focusout().css("border", "#CACFD2 solid 1px");;
+                    $("#error_message_exp_place").hide();
+
+                }
+
+                if (selectplace == 'เลือกสถานที่') {
+                    $("#error_message_place").show();
+                    $("#error_message_place").text('**ระบุสถานที่เกิดเหตุ');
+                    $(".select2-selection").focus().css("border", "#E74C3C solid 1px");
+                    return false;
+                } else {
+                    $(".select2-selection").focusout().css("border", "#CACFD2 solid 1px");
+                    $("#error_message_place").hide();
+                }
+
+
+                if (offencecate == '') {
+                    $("#error_message_offcat").show();
+                    $("#error_message_offcat").text('**ระบุหมวดความผิด');
+                    return false;
+                } else {
+                    $("#error_message_offcat").hide();
+                }
+
+                if (offence == '') {
+                    $("#error_message_off").show();
+                    $("#error_message_off").text('**ระบุฐานความผิด');
+                    return false;
+                } else {
+                    $("#error_message_off").hide();
+                }
+
+            }else{
+                
             }
 
-            if (selectplace == 'เลือกสถานที่') {
-                $(".select2-selection").focus().css("border", "#E74C3C solid 1px");
-                $("#error_message_place").text('**ระบุสถานที่เกิดเหตุ')
-            } else {
-                $(".select2-selection").focusout().css("border", "#CACFD2 solid 1px");
-                $("#error_message_place").hind();
-            }
+           
 
 
-            if (offence == '') {
-                $("#error_message_off").text('**ระบุสถานที่เกิดเหตุ');
-            } else {
 
-            }
 
-            
+
 
 
 
