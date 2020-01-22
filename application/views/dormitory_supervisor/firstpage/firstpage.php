@@ -89,6 +89,10 @@
 </div>
 
 
+
+
+</div>
+<br><br>
 <div class="col-lg-9 ">
             <div class="card shadow mb-3">             
         <div class="card-body " id="card_1" style="
@@ -99,9 +103,6 @@
 </div>
 </div>
 
-</div>
-
-
 
 
 </div>
@@ -111,3 +112,4 @@
 
 </body>
 </html>
+
