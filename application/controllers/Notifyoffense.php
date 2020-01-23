@@ -24,7 +24,7 @@ class Notifyoffense extends Student_dashboard {
 	    $this->load->view('template/template2');
 		$this->load->view('menu/student/menu_user_student');
 		$this->load->view('template/template4');
-		// $this->load->view('student/notify/notify_page');
+		//$this->load->view('student/notify/notify_page');
 		//$this->load->view('student/notify/NotifyUserStudentPage');
 		$this->load->view('student/notify/blank');
 	    $this->load->view('template/template5');

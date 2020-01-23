@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_notify_user_student.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/step_progress.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('re/css/inputfile.css') ?>">
+
 <link href="https://fonts.googleapis.com/css?family=Taviraj&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
 
@@ -222,21 +224,41 @@
                             </fieldset>
 
                             <fieldset>
-
+                                <div class="Tag1">
+                                    ส่วนที่ 3: หลักฐานการกระทำความผิด
+                                    <p class="msg">แนบไฟล์หลักฐาน</p>
+                                </div>
                                 <div class="form-card">
                                     <div class="Content">
-                                        <div class="Content1">
-                                            MMMM
+
+                                        <div class="Content1 filecontent">
+                                            <div style="padding-top: 3rem;padding-bottom: 1.5rem;">
+                                                <img src="<?php echo base_url('re/images/outbox.png') ?>" width="90">
+                                            </div>
+                                            <div class="message_file">
+                                                Drag and Drop file
+                                                <div>or</div>
+                                            </div>
+                                            <div>
+                                                <div class="upload-btn-wrapper">
+                                                    <button class="btn">Browse</button>
+                                                    <input type="file" name="myfile" />
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="Content2">
-                                            XXXX
+                                            <div class="showpicture">
+
+                                            </div>
                                         </div>
 
                                     </div>
-
-
-
                                 </div>
+                                <input type="button" name="next" class="next action-button" value="บันทึกข้อมูล" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
+                            </fieldset>
+                            <fieldset>
 
                             </fieldset>
 
@@ -267,6 +289,7 @@
         loaddata_offentype();
         selectplace();
         check_fieldset();
+        //IMG_preview();
 
 
         var current_fs, next_fs, previous_fs; //fieldsets
@@ -409,10 +432,6 @@
             }
 
         });
-
-
-
-
 
 
         $(".previous").click(function() {
@@ -601,16 +620,35 @@
 
     }
 
+    function IMG_preview() {
+        if (window.File && window.FileList && window.FileReader) {
+            var filesInput = document.getElementById("uploadImage");
+            filesInput.addEventListener("change", function(event) {
+                var files = event.target.files;
+                var output = document.getElementById("result");
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    if (!file.type.match('image'))
+                        continue;
+                    var picReader = new FileReader();
+                    picReader.addEventListener("load", function(event) {
+                        var picFile = event.target;
+                        var div = document.createElement("div");
+                        div.innerHTML = "<img class='thumbnail' width='120' src='" + picFile.result + "'" +
+                            "title='" + picFile.name + "'/>";
+                        output.insertBefore(div, null);
+                    });
+                    picReader.readAsDataURL(file);
+                }
+
+            });
+        }
+    }
 
     function check_fieldset() {
 
         var textarea = $("#explanation").val();
         console.log(textarea);
-        // if (name.value == "") {
-        //     window.alert("Please enter your name.");
-        //     name.focus();
-        //     return false;
-        // }
     }
 
     $('.person').on('click', '.checkid', function() {
@@ -643,26 +681,18 @@
 
     $('.remove').click(function() {
 
-        
         for (var i = 0; i < removestudenid.length; i++) {
-            
- 
-            for(i = 0; i < studentid.length; i++){
+
+            for (i = 0; i < studentid.length; i++) {
                 console.log(studentid[i])
-                if (removestudenid[i] == studentid[i]){
-
-                         studentid.splice([i], 1);
-                         $('#div' + removestudenid[i]).remove();
-                         removestudenid.splice([i], 1);
-                         
-
-
-                
-                
-                        console.log(removestudenid[i] + '=' + studentid[i])
-                 }
+                if (removestudenid[i] == studentid[i]) {
+                    studentid.splice([i], 1);
+                    $('#div' + removestudenid[i]).remove();
+                    removestudenid.splice([i], 1);
+                    console.log(removestudenid[i] + '=' + studentid[i]);
+                }
             }
-            
+
         }
 
 

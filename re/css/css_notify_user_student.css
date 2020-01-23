@@ -30,9 +30,13 @@
 .modal-content {
     background: #efefef;
 }
-p.msg{
-    color: #fff;
+
+p.msg {
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #F4F6F6;
 }
+
 .modal-body {
     padding: 0px;
 }
@@ -71,10 +75,12 @@ label {
     margin: 1% 6% 1% 1%;
     color: #423fa5;
 }
-.searchtool{
+
+.searchtool {
     display: flex;
 }
-.selectsearch{
+
+.selectsearch {
     color: rgb(67, 16, 161);
     width: 30%;
     font-size: 12px;
@@ -82,24 +88,24 @@ label {
     /* border: 1px solid #0e013e; */
     border-right: 0px;
     border-radius: 0.5rem 0rem 0rem 0.5rem;
-    font-family: 'Taviraj', serif;  ;
+    font-family: 'Taviraj', serif;
+    ;
 }
 
-select option  {
+select option {
     margin: 40px;
     background: rgba(0, 0, 0, 0.3);
     color: rgb(67, 16, 161);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
 
-
-.select{
+.select {
     font-size: 14px;
-    font-family: 'Taviraj', serif; 
+    font-family: 'Taviraj', serif;
 }
 
-.select:hover{
-   border: 1px solid rgb(67, 16, 161);
+.select:hover {
+    border: 1px solid rgb(67, 16, 161);
 }
 
 .input {
@@ -125,23 +131,28 @@ select option  {
     height: 1.8rem;
     border-radius: 8px;
 }
-.GroupPersonTool{
+
+.GroupPersonTool {
     display: flex;
 }
-.add_remove_person{
+
+.add_remove_person {
     display: initial;
     padding: 0.5rem;
 }
-.button1{
+
+.button1 {
     width: 2rem;
     height: 2rem;
     margin-top: 1rem;
 }
-.textarea{
+
+.textarea {
     width: 27rem;
     font-size: 14px;
 }
-.person{
+
+.person {
     font-size: 14px;
     font-family: 'Taviraj', serif;
     background: #F8F9F9;
@@ -152,7 +163,8 @@ select option  {
     border-radius: 0.5rem;
     border: 1px solid rgb(67, 16, 161);
 }
-.data{
+
+.data {
     padding-left: 1.2rem;
 }
 
@@ -168,6 +180,8 @@ select option  {
     padding: 1.88rem 1.81rem;
     height: 28rem;
 }
+
+.CardImporticture {}
 
 body {
     font-family: Verdana, Geneva, sans-serif;
@@ -199,72 +213,80 @@ body {
 .my-float {
     margin-top: 22px;
 }
-.btnsearch{
+
+.btnsearch {
     background-color: rgb(67, 16, 161);
     padding: 0.6rem;
     color: #fff;
     width: 7%;
     border-radius: 0rem 0.5rem 0.5rem 0rem;
 }
-.btnsearch:hover{
+
+.btnsearch:hover {
     background-color: rgb(119, 80, 192);
     cursor: pointer;
     transition: 0.3s;
-    opacity:4;
+    opacity: 4;
 }
-#textboxsearch{
+
+#textboxsearch {
     font-size: 14px;
     padding: 0.5rem;
-    font-family: 'prompt',sans-serif;
+    font-family: 'prompt', sans-serif;
 }
-.result{
+
+.result {
     color: #999;
     margin: 0.5rem 4.0rem 0.5rem 0.5rem;
     font-size: 12px;
 }
-#error_message_exp_place{
+
+#error_message_exp_place {
     display: none;
     margin: 0.5rem;
     color: #ff5e44;
     font-size: 12px;
-    font-family: 'prompt',sans-serif;
-    padding-left: 9.5rem;
-}
-#error_message_place{
-    display: none; 
-    margin: 0.5rem;
-    color: #ff5e44;
-    font-size: 12px;
-    font-family: 'prompt',sans-serif;
+    font-family: 'prompt', sans-serif;
     padding-left: 9.5rem;
 }
 
-#error_message_offcat{
-    display: none; 
+#error_message_place {
+    display: none;
     margin: 0.5rem;
     color: #ff5e44;
     font-size: 12px;
-    font-family: 'prompt',sans-serif;
+    font-family: 'prompt', sans-serif;
     padding-left: 9.5rem;
 }
 
-#error_message_off{
-    display: none; 
+#error_message_offcat {
+    display: none;
     margin: 0.5rem;
     color: #ff5e44;
     font-size: 12px;
-    font-family: 'prompt',sans-serif;
+    font-family: 'prompt', sans-serif;
     padding-left: 9.5rem;
 }
 
-.person_resule{
+#error_message_off {
+    display: none;
+    margin: 0.5rem;
+    color: #ff5e44;
+    font-size: 12px;
+    font-family: 'prompt', sans-serif;
+    padding-left: 9.5rem;
+}
+
+.person_resule {
     display: flex;
     border: 1px solid #423fa5;
     border-radius: 0.5rem;
     height: 6rem;
 }
+
 .img {
-    background-color:rgb(67, 16, 161); ;
+    background-color: rgb(67, 16, 161);
+    ;
     width: 15%;
     padding: 1.5rem;
     border-radius: 0.5rem 0rem 0rem 0.5rem;
@@ -272,21 +294,34 @@ body {
 
 .img:hover {
     cursor: pointer;
-    background-color:rgb(89, 114, 226); ;
+    background-color: rgb(89, 114, 226);
+    ;
     transition: 0.3s;
-    opacity:4;
+    opacity: 4;
 }
 
-.dataperson{
+.dataperson {
     width: 100%;
-    color:rgb(67, 16, 161) ;
+    color: rgb(67, 16, 161);
     background: #e6f2f9;
     border-radius: 0rem 0.5rem 0.5rem 0rem;
     padding: 0.5rem;
 }
-#addicn{
+
+#addicn {
     color: #FFE;
     font-size: 30px;
 }
 
+.filecontent {
+    height: 400px !important;
+    text-align: center;
+    padding: 4rem 5rem 1rem 1rem;
+}
 
+.message_file {
+    color: #c7c8c9;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Kanit', sans-serif;
+}

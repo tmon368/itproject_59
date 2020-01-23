@@ -44,6 +44,7 @@ p {
 
 #msform input,
 #msform textarea {
+    font-family: 'Taviraj', serif;;
     /* padding: 8px 15px 8px 15px;
     border: 1px solid #ccc;
     border-radius: 0px;
@@ -163,7 +164,7 @@ p {
 
 #progressbar #account:before {
     font-family: FontAwesome;
-    content: "\f13e"
+    content: "\f0ca"
 }
 
 #progressbar #personal:before {
