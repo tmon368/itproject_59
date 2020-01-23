@@ -24,6 +24,7 @@
 </head>
 <script>
     var studentid = [];
+    var removestudenid = [];
 </script>
 
 
@@ -158,7 +159,7 @@
                                     </div>
                                 </div>
 
-                                <input type="button" id="buttonnext1" name="next" class="next" value="ถัดไป" />
+                                <input type="button" id="buttonnext1" name="next" class="next1 action-button" value="ถัดไป" />
                             </fieldset>
 
                             <fieldset>
@@ -203,7 +204,7 @@
                                                 </div>
                                                 <div class="add_remove_person">
                                                     <button type="button" class="button1 addperson">+</button>
-                                                    <button type="button" class="button1">-</button>
+                                                    <button type="button" class="button1 remove">-</button>
                                                 </div>
                                             </div>
 
@@ -216,9 +217,29 @@
 
                                 </div>
 
-                                <input type="button" name="next" class="next action-button" value="ถัดไป" />
+                                <input type="button" name="next" class="next2 action-button" value="ถัดไป" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
                             </fieldset>
+
+                            <fieldset>
+
+                                <div class="form-card">
+                                    <div class="Content">
+                                        <div class="Content1">
+                                            MMMM
+                                        </div>
+                                        <div class="Content2">
+                                            XXXX
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+                            </fieldset>
+
 
 
                         </div>
@@ -259,16 +280,12 @@
             allowClear: true,
         });
 
-        $(".next").click(function() {
 
-
+        $(".next1").click(function() {
             var textarea = $("#explanation").val();
             var selectplace = $("#place_ID").val();
             var offencecate = $("#txt_oc").val();
             var offence = $("#txt_off").val();
-
-            console.log(textarea);
-
 
             if ((textarea == '') || (selectplace == 'เลือกสถานที่') || (offencecate == '') || (offence == '')) {
 
@@ -310,48 +327,93 @@
                     $("#error_message_off").hide();
                 }
 
-            }else{
-                
+            } else {
+                $("#explanation").focusout().css("border", "#CACFD2 solid 1px");;
+                $("#error_message_exp_place").hide();
+                $("#error_message_place").hide();
+                $("#error_message_offcat").hide();
+                $("#error_message_off").hide();
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
             }
 
-           
 
 
-
-
-
-
-
-
-
-            // current_fs = $(this).parent();
-            // next_fs = $(this).parent().next();
-
-            // //Add Class Active
-            // $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-            // //show the next fieldset
-            // next_fs.show();
-            // //hide the current fieldset with style
-            // current_fs.animate({
-            //     opacity: 0
-            // }, {
-            //     step: function(now) {
-            //         // for making fielset appear animation
-            //         opacity = 1 - now;
-
-            //         current_fs.css({
-            //             'display': 'none',
-            //             'position': 'relative'
-            //         });
-            //         next_fs.css({
-            //             'opacity': opacity
-            //         });
-            //     },
-            //     duration: 500
-            // });
-            // setProgressBar(++current);
         });
+
+        $('.next2').click(function() {
+
+            if (studentid.length == 0) {
+                alert('เพิ่มรายชื่อผู้กระทำความผิดขั้นต่ำ 1 คน');
+            }
+
+            if (studentid.length > 0) {
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+
+
+
+
+            } else {
+                return false;
+            }
+
+        });
+
+
+
+
+
 
         $(".previous").click(function() {
 
@@ -384,6 +446,10 @@
             });
             setProgressBar(--current);
         });
+
+        function next_page() {
+
+        }
 
         function setProgressBar(curStep) {
             var percent = parseFloat(100 / steps) * curStep;
@@ -520,7 +586,7 @@
                 $.each(data, function(key, value) {
                     var temp = value;
                     if (key == 0) {
-                        html += '<div class="" id="div' + value.S_ID + '"><span id="stdid"><i class="fa fa-address-card-o"></i> ' + value.S_ID + ' นายสัญชัย สรินาวิวัฒนา สาขา A สำนัก B</span>';
+                        html += '<div class="" id="div' + value.S_ID + '"><input type="checkbox" class="checkid" data=' + value.S_ID + '><span id="stdid"><i class="fa fa-address-card-o"></i> ' + value.S_ID + ' นายสัญชัย สรินาวิวัฒนา สาขา A สำนัก B</span>';
                         html += '<input type="hidden" name="std_id[]" value="' + value.S_ID + '">';
                         html += '</div>';
                         $('.person').append(html);
@@ -546,6 +612,61 @@
         //     return false;
         // }
     }
+
+    $('.person').on('click', '.checkid', function() {
+
+        var id = $(this).attr('data');
+
+        //console.log(removestudenid.length)
+
+
+        if (removestudenid.length == 0) {
+            removestudenid.push(id);
+            // console.log(removestudenid.length);
+        } else {
+            for (var i = 0; i < removestudenid.length; i++) {
+                var check = 0;
+                if (id == removestudenid[i]) {
+                    check == 1;
+                    removestudenid.splice([i], 1);
+                    return;
+                }
+            }
+
+            if (check == 0) {
+                removestudenid.push(id);
+            }
+
+        }
+
+    });
+
+    $('.remove').click(function() {
+
+        
+        for (var i = 0; i < removestudenid.length; i++) {
+            
+ 
+            for(i = 0; i < studentid.length; i++){
+                console.log(studentid[i])
+                if (removestudenid[i] == studentid[i]){
+
+                         studentid.splice([i], 1);
+                         $('#div' + removestudenid[i]).remove();
+                         removestudenid.splice([i], 1);
+                         
+
+
+                
+                
+                        console.log(removestudenid[i] + '=' + studentid[i])
+                 }
+            }
+            
+        }
+
+
+    });
 
 
     $('#buttonnext1').click(function() {
