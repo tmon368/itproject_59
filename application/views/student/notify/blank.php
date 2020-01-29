@@ -103,8 +103,8 @@
                         <div class="modal-body">
                             <fieldset>
                                 <div class="Tag1">
-                                    ขั้นตอน 1: ข้อมูลการแจ้งเหตุ
-                                    <p class="msg">ส่วนข้อมูลแจ้งเหตุการกระทำความผิด กรุณากรอกรายละเอียดให้ครบถ้วน</p>
+                                     ข้อมูลการแจ้งเหตุ
+                                    <p class="">ส่วนข้อมูลแจ้งเหตุการกระทำความผิด กรุณากรอกรายละเอียดให้ครบถ้วน</p>
                                 </div>
                                 <div class="form-card">
 
@@ -165,8 +165,8 @@
 
                             <fieldset>
                                 <div class="Tag1">
-                                    ส่วนที่ 2: ผู้กระทำความผิด
-                                    <p class="msg">ข้อมูลผู้กระทำความผิด</p>
+                                    ผู้กระทำความผิด
+                                    <p class="">ข้อมูลผู้กระทำความผิด</p>
                                 </div>
                                 <div class="form-card">
                                     <div class="Content">
@@ -224,8 +224,8 @@
 
                             <fieldset>
                                 <div class="Tag1">
-                                    ส่วนที่ 3: หลักฐานการกระทำความผิด
-                                    <p class="msg">แนบไฟล์หลักฐาน</p>
+                                    หลักฐานการกระทำความผิด
+                                    <p class="">แนบไฟล์หลักฐาน รองรับไฟล์ JPG,PNG</p>
                                 </div>
                                 <div class="form-card">
                                     <div class="Content">
@@ -235,12 +235,13 @@
                                                 <img src="<?php echo base_url('re/images/outbox.png') ?>" width="90">
                                             </div>
                                             <div class="message_file">
-                                                Drag and Drop file
+                                                โปรดเลือกไฟล์
                                             </div>
                                             <div>
                                                 <div class="upload-btn-wrapper">
                                                     <button class="btn">Browse</button>
                                                     <input type="file" class="file_input" id="uploadImage" name="termek_file" multiple />
+                                                    
                                                 </div>
                                             </div>
 
