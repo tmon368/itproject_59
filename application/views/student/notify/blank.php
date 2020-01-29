@@ -27,10 +27,8 @@
 <script>
     var studentid = [];
     var removestudenid = [];
-    var countFilepicture=0;
+    var countFilepicture = 0;
 </script>
-
-
 
 
 <body>
@@ -248,7 +246,7 @@
 
                                         </div>
                                         <div class="PictureContent">
-                                            
+
                                         </div>
 
                                     </div>
@@ -636,7 +634,7 @@
                     picReader.addEventListener("load", function(event) {
                         var picFile = event.target;
                         var htmlcode = '';
-                        htmlcode += '<div class="showpicture countdiv'+countFilepicture+'">';
+                        htmlcode += '<div class="showpicture countdiv' + countFilepicture + '">';
                         htmlcode += '<div class="Imgfile">';
                         htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
                         htmlcode += '</div>';
@@ -644,7 +642,7 @@
                         htmlcode += '<div>' + fileName + '</div>';
                         htmlcode += '<div class="Sizefile">ขนาดไฟล์ภาพ</div>';
                         htmlcode += '</div>';
-                        htmlcode += '<span id="delete_picture" data='+countFilepicture+'><i class="fa fa-times-circle"></i></span>';
+                        htmlcode += '<span id="delete_picture" data=' + countFilepicture + '><i class="fa fa-times-circle"></i></span>';
                         htmlcode += '</div>';
                         $('.PictureContent').append(htmlcode);
                         countFilepicture++;
