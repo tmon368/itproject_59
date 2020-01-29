@@ -237,20 +237,28 @@
                                             </div>
                                             <div class="message_file">
                                                 Drag and Drop file
-                                                <div>or</div>
                                             </div>
                                             <div>
                                                 <div class="upload-btn-wrapper">
                                                     <button class="btn">Browse</button>
-                                                    <input type="file" name="myfile" />
+                                                    <input type="file" class="file_input" id="uploadImage" name="termek_file" multiple />
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div class="Content2">
-                                            <div class="showpicture">
 
-                                            </div>
+                                            <!-- <div class="showpicture">
+                                                <div class="Imgfile">
+                                                    <img class="rounded-circle" src="<?php echo base_url('re/images/faces/face5.jpg'); ?>" alt="Profile image" width="55">
+                                                </div>
+                                                <div class="filename">
+                                                    <div class="file">Profile.jpg</div>
+                                                    <div class="sizefile">183 KB / 200 KB</div>
+                                                </div>
+                                                <div><span id="delete_picture"><i class="fa fa-times-circle"></i></span></div>
+                                            </div> -->
+
                                         </div>
 
                                     </div>
@@ -289,7 +297,7 @@
         loaddata_offentype();
         selectplace();
         check_fieldset();
-        //IMG_preview();
+        IMG_preview();
 
 
         var current_fs, next_fs, previous_fs; //fieldsets
@@ -628,16 +636,39 @@
                 var output = document.getElementById("result");
                 for (var i = 0; i < files.length; i++) {
                     var file = files[i];
+                    var fileName = files[0].name;
+
+                    console.log (file);
+
                     if (!file.type.match('image'))
                         continue;
                     var picReader = new FileReader();
                     picReader.addEventListener("load", function(event) {
                         var picFile = event.target;
-                        var div = document.createElement("div");
-                        div.innerHTML = "<img class='thumbnail' width='120' src='" + picFile.result + "'" +
-                            "title='" + picFile.name + "'/>";
-                        output.insertBefore(div, null);
+                        var htmlcode = '';
+                        
+                        htmlcode += '<div class="showpicture">';
+                        htmlcode += '<div class="Imgfile">';
+                        htmlcode +=     "<img class='thumbnail' alt='Profile image' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>";
+                        htmlcode += '</div>';
+                        htmlcode += '<div class="filename">';
+                        htmlcode +=     '<div class="file">'+ fileName +'</div>';
+                        htmlcode +=         '<div class="sizefile">ขนาดไฟล์ภาพ</div>';
+                        htmlcode +=     '</div>';
+                        htmlcode +=     '<div><span id="delete_picture"><i class="fa fa-times-circle"></i></span></div>'
+                        htmlcode += '</div>';                      
+                        $('.Content2').append(htmlcode);
+
+
+
+
+
+                        // var div = document.createElement("div");
+                        // div.innerHTML = "<img class='thumbnail' width='120' src='" + picFile.result + "'" +
+                        //     "title='" + picFile.name + "'/>";
+                        // output.insertBefore(div, null);
                     });
+
                     picReader.readAsDataURL(file);
                 }
 

@@ -325,3 +325,36 @@ body {
     font-weight: 700;
     font-family: 'Kanit', sans-serif;
 }
+
+.showpicture {
+    display: grid;
+    grid-template-columns: 80px auto 40px;
+    margin: 0.5rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    border: 1px solid #8862e0;
+}
+.thumbnail{
+    max-width:80px ;
+    max-height:50px ;
+}
+
+#delete_picture{
+    color: #AAB7B8;
+}
+
+#delete_picture:hover{
+    cursor: pointer;
+    color: #E74C3C;
+}
+
+.file{
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+.sizefile{
+    font-size: 9px;
+    color: #696a6b;
+}
