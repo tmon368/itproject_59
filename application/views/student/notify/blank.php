@@ -27,6 +27,7 @@
 <script>
     var studentid = [];
     var removestudenid = [];
+    var countFilepicture=0;
 </script>
 
 
@@ -246,19 +247,8 @@
                                             </div>
 
                                         </div>
-                                        <div class="Content2">
-
-                                            <!-- <div class="showpicture">
-                                                <div class="Imgfile">
-                                                    <img class="rounded-circle" src="<?php echo base_url('re/images/faces/face5.jpg'); ?>" alt="Profile image" width="55">
-                                                </div>
-                                                <div class="filename">
-                                                    <div class="file">Profile.jpg</div>
-                                                    <div class="sizefile">183 KB / 200 KB</div>
-                                                </div>
-                                                <div><span id="delete_picture"><i class="fa fa-times-circle"></i></span></div>
-                                            </div> -->
-
+                                        <div class="PictureContent">
+                                            
                                         </div>
 
                                     </div>
@@ -638,7 +628,7 @@
                     var file = files[i];
                     var fileName = files[0].name;
 
-                    console.log (file);
+                    console.log(file);
 
                     if (!file.type.match('image'))
                         continue;
@@ -646,27 +636,18 @@
                     picReader.addEventListener("load", function(event) {
                         var picFile = event.target;
                         var htmlcode = '';
-                        
-                        htmlcode += '<div class="showpicture">';
+                        htmlcode += '<div class="showpicture countdiv'+countFilepicture+'">';
                         htmlcode += '<div class="Imgfile">';
-                        htmlcode +=     "<img class='thumbnail' alt='Profile image' src='" + picFile.result + "'" +"title='" + picFile.name + "'/>";
+                        htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
                         htmlcode += '</div>';
                         htmlcode += '<div class="filename">';
-                        htmlcode +=     '<div class="file">'+ fileName +'</div>';
-                        htmlcode +=         '<div class="sizefile">ขนาดไฟล์ภาพ</div>';
-                        htmlcode +=     '</div>';
-                        htmlcode +=     '<div><span id="delete_picture"><i class="fa fa-times-circle"></i></span></div>'
-                        htmlcode += '</div>';                      
-                        $('.Content2').append(htmlcode);
-
-
-
-
-
-                        // var div = document.createElement("div");
-                        // div.innerHTML = "<img class='thumbnail' width='120' src='" + picFile.result + "'" +
-                        //     "title='" + picFile.name + "'/>";
-                        // output.insertBefore(div, null);
+                        htmlcode += '<div>' + fileName + '</div>';
+                        htmlcode += '<div class="Sizefile">ขนาดไฟล์ภาพ</div>';
+                        htmlcode += '</div>';
+                        htmlcode += '<span id="delete_picture" data='+countFilepicture+'><i class="fa fa-times-circle"></i></span>';
+                        htmlcode += '</div>';
+                        $('.PictureContent').append(htmlcode);
+                        countFilepicture++;
                     });
 
                     picReader.readAsDataURL(file);
@@ -728,6 +709,12 @@
 
 
     });
+
+    $('.PictureContent').on('click', '#delete_picture', function() {
+        var number = $(this).attr('data');
+        $('.countdiv' + number).remove();
+    });
+
 
 
     $('#buttonnext1').click(function() {
