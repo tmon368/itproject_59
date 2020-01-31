@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
-
+<link rel="stylesheet" href="<?php echo base_url('re/css/css_regis_activity_student.css') ?>">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -10,50 +10,6 @@
 
 <head>
     <title> ลงทะเบียนกิจกรรมบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
-    <style>
-        .shape_sty {
-            background-color: rgb(234, 237, 237);
-        }
-
-        .padding_std {
-            padding: 1rem;
-        }
-
-        .pagination>li>a,
-        .pagination>li>span {
-            position: relative;
-            float: left;
-            padding: 6px 12px;
-            margin-left: -1px;
-            line-height: 1.42857143;
-            color: #337ab7;
-            text-decoration: none;
-            background-color: #fff;
-            border: 1px solid #ddd;
-        }
-
-        .pagination>li>a:focus,
-        .pagination>li>a:hover,
-        .pagination>li>span:focus,
-        .pagination>li>span:hover {
-            z-index: 2;
-            color: #23527c;
-            background-color: #eee;
-            border-color: #ddd;
-        }
-
-        .txt_position {
-            text-align: center;
-        }
-
-        .show_data {
-            font-family: 'Sarabun', sans-serif;
-        }
-
-        .content {
-            font-family: 'Sarabun', sans-serif;
-        }
-    </style>
     <script>
         var id_count = 0; //run id
         var temp_result = [];
@@ -81,83 +37,33 @@
                     <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;การบำเพ็ญประโยชน์</h6>
                 </div>
 
-                <div class="container">
+                <div class="ShowActivity">
 
-                    <div class="row">
-
-                        <div class="col-sm-12 padding_std">
-                            ตารางกิจกรรมที่เลือก >> ประจำปีการศึกษา 2562
-                        </div>
-
-                    </div>
-
-
-                    <!-- แสดงกิจกรรมบำเพ็ญประโยชน์-->
-                    <div class="container show_data">
-
-
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            howing 1 to 10 of 869 entries
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="pagination">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                 
 
                 </div>
-
-                <!-- Modal detail-->
-                <div class="modal fade" id="ShowDta" role="dialog">
-                    <div class="modal-dialog ">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"> </h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                            </div>
-                            <div class="modal-body content">
-
-
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
             </div>
-
-
-
-
-
-
-
-
         </div>
+    </div>
 
 
+    <!-- Modal detail-->
+    <div class="modal fade" id="ShowDta" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"> </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
+                </div>
+                <div class="modal-body content">
 
-
-
-
-
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -166,125 +72,6 @@
 
             show_all();
 
-            function show_all() {
-
-                //alert("Start Show_all function");
-                html = '';
-
-
-                $.ajax({
-
-                    type: 'POST',
-                    url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
-                    dataType: 'json',
-                    success: function(data) {
-
-                        $.each(data, function(key, value) {
-
-                            var sum = 0;
-
-                            var temp_1 = value.start_time; //รับค่าเวลาเริ่มต้น
-                            var temp_2 = temp_1.substring(0, 5); //ตัดค่าจาก  hh:mm:ss => hh:mm
-                            var temp_3 = temp_2.replace(":", "."); //แปลง format จาก : => .
-                            var start_time = parseFloat(temp_3); //แปลง str => Float
-
-                            var temp_4 = value.end_time; //รับค่าเวลาเริ่มต้น
-                            var temp_5 = temp_4.substring(0, 5); //ตัดค่าจาก  hh:mm:ss => hh:mm
-                            var temp_6 = temp_5.replace(":", "."); //แปลง format จาก : => .
-                            var end_time = parseFloat(temp_6); //แปลง str => Float
-
-                            var sum = end_time - start_time; //คำนวณจำนวน ชม ทั้งหมด
-
-
-
-                            html += '<div class="row">';
-                            html += '<div class="col-sm-6">';
-                            html += '<p><a href="javascript:;" class="sh_modal" data=' + value.service_ID + '> <strong> กิจกรรม: ' + value.service_name + '</strong> </a></p>';
-                            html += '<p>วันที่จัดกิจกรรมวันที่  ' + value.service_date + '</p>';
-                            html += '<p> เวลาเริ่ม' + value.start_time + ' ถึง ' + value.end_time + ' น. จำนวนชั่วโมงกิจกรรม ' + sum + ' ชั่วโมง</p>';
-                            html += '<p> ผู้รับรองกิจกรรม: ' + value.person_fname + " " + value.person_lname + '</p>';
-                            html += '</div>';
-                            html += '<div class="col-sm-6">';
-                            html += '<p> <div class="txt_position"> <span id="count_person">' + value.number_of + '</span>/' + value.received + '</div> </p>';
-                            html += '<p class="txt_position"><button type="button" class="btn btn-inverse-success btn-rounded btn-fw btn_submit" id="btnregis' + id_count + '" data=' + value.service_ID + '>ลงทะเบียน</button></p>';
-                            html += '</div>';
-                            html += '</div>';
-
-                            id_count++; //เพิ่มค่า id
-
-                            var id = value.service_ID;
-                            //console.log(id);
-
-
-                            $.ajax({
-                                type: 'ajax',
-                                method: 'get',
-                                url: '<?php echo site_url('Volunteer_regis/wherecheck') ?>',
-                                data: {
-                                    id: id
-                                },
-                                async: false,
-                                dataType: 'json',
-                                success: function(data) {
-
-                                    temp_result.push(data); //เก็บค่าลง Array
-                                    //console.log(data);
-                                    //console.log(temp_result);
-                                }
-                            });
-
-
-
-
-
-
-
-                            $('.show_data').html(html);
-
-
-                        });
-
-                        //after show data sucess
-
-                        //loop result 
-                        for (j = 0; j < temp_result.length; j++) {
-                            //loop button id
-                            for (k = 0; k <= id_count; k++) {
-
-
-                                //เช็คว่าผู้ใช้เคยลงทะเบียนกิจกรรมหรือยัง
-                                if (j == k && temp_result[j] == true) {
-
-                                    $('#btnregis' + k + '').attr("disabled", true); //disabled button
-                                    $('#btnregis' + k + '').text('การลงทะเบียนสำเร็จ'); //
-
-                                }
-
-
-
-                            }
-
-
-                        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    }
-
-
-                });
-
-            }
 
 
             //Regis activity
@@ -305,8 +92,6 @@
                     async: false,
                     dataType: 'json',
                     success: function(data) {
-                        //$('.btn_submit').attr("disabled", true); //disabled button
-                        //$('.btn_submit').text('การลงทะเบียนสำเร็จ'); //change text
                         alert('ลงทะเบียนสำเร็จ');
                         location.reload();
 
@@ -315,19 +100,52 @@
                         alert('ไม่สามารถลงทะเบียนได้');
                     }
                 });
-
-
-
             });
-
-
-
-
-
-
-
-
         });
+
+
+        function show_all() {
+
+            html = '';
+            $.ajax({
+
+                type: 'POST',
+                url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    $.each(data, function(key, value) {
+
+                        var temp_1 = value.start_time;
+                        var temp_2 = value.end_time;
+                        var start_times = parseFloat(temp_1.substring(0, 5)); 
+                        var end_times = parseFloat(temp_2.substring(0, 5)); 
+                        var counthour = Math.abs(end_times - start_times);
+
+                        //console.log(counthour);
+
+                        html += '<div class="Data">';
+                        html += '<div class="Main1">';
+                        html +=     '<span id="title1">กิจกรรม : '+ value.service_name +'</span>';
+                        html +=     '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : '+ value.service_date +' </span>';
+                        html +=     '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม '+ start_times +' ถึง '+ end_times +' ชั่วโมงกิกรรม '+ counthour +' ชม.</span>';
+                        html +=     '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: นาย สมมุติ สมสุข</span>';
+                        html += '</div>';
+                        html += '<div class="Main2">';
+                        html +=    '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                        html +=    '<div><span id="last_count_student">'+ value.number_of +'</span>/'+ value.received +'</div>';
+                        html += '</div>';
+                        html += '<div class="Main3">';
+                        html +=    '<button type="submit" class="RegisActivity">สมัครกิจกรรม</button>';
+                        html += '</div>';
+                        html += '</div>';
+
+                        $('.ShowActivity').html(html);
+                    });
+
+                }
+            });
+        }
 
 
         //show more detail
@@ -372,13 +190,10 @@
 
                         html += '<p>ผู้รับรองกิจกรรม ชื่อ: ' + value.person_fname + ' นามสกุล: ' + value.person_lname + ' หมายเลขโทรศัพท์ ' + value.phone1 + ' </p>';
                         html += '<p>สถานที่จัดกิจกรรม: ' + value.place + ' </p>';
-                        html += '<p>วันที่กำหนด: ' + value.service_date + '  เวลา: ' + value.start_time + '-' + value.end_time + ' ชั่วโมงกิจกรรม: '+ sum +' ชั่วโมง</p>';
+                        html += '<p>วันที่กำหนด: ' + value.service_date + '  เวลา: ' + value.start_time + '-' + value.end_time + ' ชั่วโมงกิจกรรม: ' + sum + ' ชั่วโมง</p>';
                         html += '<p>จำนวนที่รับสมัคร: ' + value.received + '</p>';
                         html += '<p>รายละเอียดกิจกรรม: ' + value.explanation + ' </p>';
-
-
                         $('.content').html(html);
-
                     });
 
                 },
@@ -386,14 +201,6 @@
                     alert('Error');
                 }
             });
-
-
-
-
-
-
-
-
         });
     </script>
 

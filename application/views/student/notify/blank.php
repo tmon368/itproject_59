@@ -2,8 +2,7 @@
 <link rel="stylesheet" href="<?php echo base_url('re/css/step_progress.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/inputfile.css') ?>">
 
-<link href="https://fonts.googleapis.com/css?family=Taviraj&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+
 
 <head>
     <title>แจ้งเหตุกระทำความผิด | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
@@ -100,10 +99,11 @@
 
 
                     <form id="msform">
+                        <input type="hidden" name="oh_ID" id="oh_ID" class="form-control style_input">
                         <div class="modal-body">
                             <fieldset>
                                 <div class="Tag1">
-                                     ข้อมูลการแจ้งเหตุ
+                                    ข้อมูลการแจ้งเหตุ
                                     <p class="">ส่วนข้อมูลแจ้งเหตุการกระทำความผิด กรุณากรอกรายละเอียดให้ครบถ้วน</p>
                                 </div>
                                 <div class="form-card">
@@ -119,7 +119,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <label for="committed_date" style=""><span><i class="far fa-calendar-alt iconlabel"></i></span>วันที่กระทำความผิด: </label>
+                                                <label for="committed_date"><span><i class="far fa-calendar-alt iconlabel"></i></span>วันที่กระทำความผิด: </label>
                                                 <input type="date" name="committed_date" id="committed_date" class="input data" required oninvalid="this.setCustomValidity('โปรดระบุวันที่กระทำความผิด')" onchange="this.setCustomValidity('')">
                                                 <label for="" id="labletime">เวลา:</label> <input type="time" name="committed_time" id="committed_time" class="input time" required oninvalid="this.setCustomValidity('โปรดระบุเวลาเกิดเหตุ')" onchange="this.setCustomValidity('')">
                                             </div>
@@ -241,7 +241,7 @@
                                                 <div class="upload-btn-wrapper">
                                                     <button class="btn">Browse</button>
                                                     <input type="file" class="file_input" id="uploadImage" name="termek_file" multiple />
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -287,7 +287,7 @@
         selectplace();
         check_fieldset();
         IMG_preview();
-
+        check_id();
 
         var current_fs, next_fs, previous_fs; //fieldsets
         var opacity;
@@ -661,6 +661,61 @@
         var textarea = $("#explanation").val();
         console.log(textarea);
     }
+
+    //check id and create auto id
+    function check_id() {
+
+        title = 'L';
+        var date = new Date();
+        date_t = date.getFullYear();
+        B_E = date_t + 543; //แปลง ค.ศ. => พ.ศ.
+        convert_be = B_E.toString(); //convert to string
+        BE = convert_be.substring(2);
+
+        //console.log(BE);
+        //console.log(typeof convert_be);
+        //console.log(typeof B_E);
+
+        //Runnning_num = 0000;
+        var str = '';
+        var tempid_substr = '';
+        var auto_id = 0;
+        var integer = '';
+
+
+
+
+        $.ajax({
+
+            type: 'POST',
+            url: '<?php echo site_url("Notifyoffense/check_id") ?>',
+            dataType: 'json',
+            success: function(data) {
+                //console.log(data);
+                str = data[0].oh_ID;
+                tempid_substr = str.substring(3);
+                integer = parseInt(tempid_substr); //convert string to int
+                auto_id = integer + 1;
+
+                $('#oh_ID').val(title + BE + auto_id); // Create auto id
+                //alert(sum);
+                //alert (integer);
+                //sum= tempid_substr+1;
+            },
+            error: function() {
+                alert("Can't create auto id");
+            }
+
+
+        });
+
+    }
+
+
+
+
+
+
 
     $('.person').on('click', '.checkid', function() {
 
