@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<link rel="stylesheet" href="<?php echo base_url('re/css/css_user_security.css'); ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
@@ -10,18 +11,35 @@
 </center>
 
 <head>
-    <title></title>   
+    <title></title> 
+    
+    
+    
+    
+      
 </head>
-
+<br>
 <body>
     <meta charset="UTF-8">
+    <div class="page-breadcrumb" id="nav_sty">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <!--<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">จัดการข้อมูลพื้นฐาน</a></li>-->
+                <li class="breadcrumb-item active" aria-current="page">หน้าแรก</li>
+            </ol>
+        </nav>
+    </div>
  <div class="col-lg-12 grid-margin stretch-card">
  
   <div class="col-lg-4 grid-margin stretch-card"> 
-         
+   
 <div class="col-lg-12 ">
 
       <div class="col-lg-12 ">
+      <div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>      
             <div class="card shadow mb-3">             
         <div class="card-body " id="card_1">
         <center>จำนวนนักศึกษาที่กระทำผิด  </center>
@@ -29,29 +47,41 @@
         
         </div> 
 </div>
+</div>
 </div>    
 
 <div class="col-lg-12 ">
-            <div class="card shadow mb-3">            
+            <div class="card shadow mb-3">  
+               <div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>        
         <div class="card-body " id="card_1"> 
         <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
         <br><br>
         </div> 
+        </div>
 </div>
 </div>
 
 <div class="col-lg-12 ">
-            <div class="card shadow mb-3">                  
+            <div class="card shadow mb-3"> 
+            <div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>                  
         <div class="card-body " id="card_1">
        <font size="2"><center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ</center></font> 
         <br><br><br><br><br><br><br><br><br><br>
         </div> 
+        </div>
 </div>
 </div>
 
 
 
 </div>
+
 
 
 
@@ -60,7 +90,12 @@
 
 
 <div class="col-lg-8 grid-margin stretch-card">
+
 <div class="col-lg-12 ">
+<div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>
             <div class="card shadow mb-3">      	
         <div class="card-body " id="card_1">
            <font size="4"><center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร.......................</center></font>
@@ -94,11 +129,16 @@
   }
   </script>
 <br><br><br><br>
-         </div>      
+         </div>    
+           
 </div>
 
 
 <div class="col-lg-9 ">
+<div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>
             <div class="card shadow mb-3">             
         <div class="card-body " id="card_1">
         <font size="4"><center>กิจกรรมเพิ่มเติม</center></font>  
@@ -106,12 +146,16 @@
         </div> 
 </div>
 </div>
-
 </div>
 
 
 
 
+</div>
+
+
+
+</div>
 </div>
 
 </div>
