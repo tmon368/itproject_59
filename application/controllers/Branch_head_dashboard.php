@@ -253,4 +253,12 @@ function selectregist_num (){
 	$result = $this->branch_head_dashboard_model->selectregist_num();
 	echo json_encode($result);
 }
+
+function selectscorestudent(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->branch_head_dashboard_model->selectscorestudent();
+    echo json_encode($result);
+}
+
 }

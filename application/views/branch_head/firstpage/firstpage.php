@@ -12,7 +12,16 @@
 
 <head>
     <title></title> 
-    
+<style>
+#fasfa-users{
+    color:orange;
+    font-size: 70px;
+    text-shadow: 1px 1px 1px #000;
+}
+#showscorestudent{
+            font-size: 50px;
+}
+</style>    
     
     
     
@@ -42,7 +51,8 @@
             <div class="card shadow mb-3">             
         <div class="card-body " id="card_1">
         <center>จำนวนนักศึกษาที่กระทำผิด  </center>
-        <br><br><br><br><br>
+         <br><center><i class="fas fa-users" id="fasfa-users"></i><br>
+ 			<div id="showscorestudent" name="showscorestudent"></div><br></center>
         
         </div> 
 </div>
@@ -57,7 +67,14 @@
         </div>        
         <div class="card-body " id="card_1"> 
         <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
-        <br><br>
+        <center> <div class="topnav">
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="กรอกรหัสนักศึกษา" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div> </center>
         </div> 
         </div>
 </div>
@@ -158,7 +175,25 @@
 </div>
 
 </div>
-
+<script>
+selectscorestudent();
+function selectscorestudent() {
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscorestudent',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+           // alert(data)
+        	$('#showscorestudent').html(data.numberstudent);
+         
+        },
+        error: function() {
+            alert('ไม่มีข้อมูล');
+        }
+    });
+}
+</script>
 
 </body>
 </html>
