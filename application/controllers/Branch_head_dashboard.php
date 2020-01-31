@@ -17,8 +17,7 @@ class Branch_head_dashboard extends CI_Controller {
 	}
 	
 	public function template()
-	{
-	    
+	{	    
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');

@@ -229,6 +229,7 @@ function check_id (){
 }
 
 
+
 function selectplaceall (){
 	//เช็คค่า id ที่มากสุด
 	$result = $this->dean_dashboard_model->selectplaceall();

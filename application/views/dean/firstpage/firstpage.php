@@ -18,7 +18,6 @@
 #showscorestudent{
             font-size: 50px;
 }
-
 </style>
 <head>
     <title></title> 

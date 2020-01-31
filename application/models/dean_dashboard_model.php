@@ -631,6 +631,7 @@ foreach($showall as $value){
        
     }
     
+    
     public function selectscorestudent(){
         //SELECT COUNT(DISTINCT S_ID) FROM offensestd
         $this->db->select('COUNT(DISTINCT S_ID) as numberstudent');
