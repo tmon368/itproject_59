@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<link rel="stylesheet" href="<?php echo base_url('re/css/css_user_security.css'); ?>">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
@@ -10,48 +11,93 @@
 </center>
 
 <head>
-    <title></title>   
+    <title></title> 
+<style>
+#fasfa-users{
+    color:orange;
+    font-size: 70px;
+    text-shadow: 1px 1px 1px #000;
+}
+#showscorestudent{
+            font-size: 50px;
+}
+</style>    
+    
+    
+    
 </head>
-
+<br>
 <body>
     <meta charset="UTF-8">
+    <div class="page-breadcrumb" id="nav_sty">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <!--<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">จัดการข้อมูลพื้นฐาน</a></li>-->
+                <li class="breadcrumb-item active" aria-current="page">หน้าแรก</li>
+            </ol>
+        </nav>
+    </div>
  <div class="col-lg-12 grid-margin stretch-card">
  
   <div class="col-lg-4 grid-margin stretch-card"> 
-         
+   
 <div class="col-lg-12 ">
 
       <div class="col-lg-12 ">
+      <div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>      
             <div class="card shadow mb-3">             
         <div class="card-body " id="card_1">
         <center>จำนวนนักศึกษาที่กระทำผิด  </center>
-        <br><br><br><br><br>
+         <br><center><i class="fas fa-users" id="fasfa-users"></i><br>
+ 			<div id="showscorestudent" name="showscorestudent"></div><br></center>
         
         </div> 
+</div>
 </div>
 </div>    
 
 <div class="col-lg-12 ">
-            <div class="card shadow mb-3">            
+            <div class="card shadow mb-3">  
+               <div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>        
         <div class="card-body " id="card_1"> 
         <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
-        <br><br>
+        <center> <div class="topnav">
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="กรอกรหัสนักศึกษา" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div> </center>
         </div> 
+        </div>
 </div>
 </div>
 
 <div class="col-lg-12 ">
-            <div class="card shadow mb-3">                  
+            <div class="card shadow mb-3"> 
+            <div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>                  
         <div class="card-body " id="card_1">
        <font size="2"><center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ</center></font> 
         <br><br><br><br><br><br><br><br><br><br>
         </div> 
+        </div>
 </div>
 </div>
 
 
 
 </div>
+
 
 
 
@@ -60,7 +106,12 @@
 
 
 <div class="col-lg-8 grid-margin stretch-card">
+
 <div class="col-lg-12 ">
+<div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>
             <div class="card shadow mb-3">      	
         <div class="card-body " id="card_1">
            <font size="4"><center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร.......................</center></font>
@@ -94,11 +145,16 @@
   }
   </script>
 <br><br><br><br>
-         </div>      
+         </div>    
+           
 </div>
 
 
 <div class="col-lg-9 ">
+<div class="card shadow mb-4">
+        <div class="card-header" id="card_2">
+            <h6 class="m-0 text-primary"></h6>
+        </div>
             <div class="card shadow mb-3">             
         <div class="card-body " id="card_1">
         <font size="4"><center>กิจกรรมเพิ่มเติม</center></font>  
@@ -106,7 +162,6 @@
         </div> 
 </div>
 </div>
-
 </div>
 
 
@@ -114,8 +169,31 @@
 
 </div>
 
+
+
+</div>
 </div>
 
+</div>
+<script>
+selectscorestudent();
+function selectscorestudent() {
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscorestudent',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+           // alert(data)
+        	$('#showscorestudent').html(data.numberstudent);
+         
+        },
+        error: function() {
+            alert('ไม่มีข้อมูล');
+        }
+    });
+}
+</script>
 
 </body>
 </html>

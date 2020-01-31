@@ -626,6 +626,33 @@ foreach($showall as $value){
         }
        
     }
+    
+    
+    
+    
+    
+    public function selectscorestudent(){
+        //SELECT COUNT(DISTINCT S_ID) FROM offensestd
+        $this->db->select('COUNT(DISTINCT S_ID) as numberstudent');
+        $this->db->from('offensestd');
+        
+        
+        
+        
+        
+        // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
+        //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
+        $query = $this->db->get();
+        //var_dump($query->result());
+        //die();
+        if($query->num_rows() > 0){
+            
+            return $query->row();
+        }else{
+            return false;
+        }
+    }
+    
 }
     
     

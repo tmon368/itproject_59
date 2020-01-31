@@ -17,12 +17,11 @@ class Branch_head_dashboard extends CI_Controller {
 	}
 	
 	public function template()
-	{
-	    
+	{	    
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-        $this->load->view('menu/branch_head/menu_branch_head');
+	    $this->load->view('template/template3');
         $this->load->view('branch_head/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
@@ -254,4 +253,12 @@ function selectregist_num (){
 	$result = $this->branch_head_dashboard_model->selectregist_num();
 	echo json_encode($result);
 }
+
+function selectscorestudent(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->branch_head_dashboard_model->selectscorestudent();
+    echo json_encode($result);
+}
+
 }

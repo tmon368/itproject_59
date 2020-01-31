@@ -229,6 +229,7 @@ function check_id (){
 }
 
 
+
 function selectplaceall (){
 	//เช็คค่า id ที่มากสุด
 	$result = $this->dean_dashboard_model->selectplaceall();
@@ -238,6 +239,14 @@ function selectplaceall (){
 function selectregist_num (){
 	$result = $this->dean_dashboard_model->selectregist_num();
 	echo json_encode($result);
+}
+
+
+function selectscorestudent(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dean_dashboard_model->selectscorestudent();
+    echo json_encode($result);
 }
 }
 
