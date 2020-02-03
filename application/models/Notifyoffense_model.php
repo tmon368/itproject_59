@@ -4,6 +4,8 @@ class Notifyoffense_model extends CI_Model {
     public function _construct()
     {
         parent::_construct();
+        $this->load->helper('url', 'form');
+		$this->load->helper('directory');
          
         
     }
@@ -117,6 +119,38 @@ foreach($showall as $value){
 
         // var_dump($this->input->post('std_id'));
           //      die();           
+          //$testname = "L631";
+          $testname = $this->input->post('oh_ID');
+	  $count = count($_FILES['myFile']['name']);
+		for($i=0;$i<$count;$i++){
+		//var_dump($_FILES["myFile"]["name"][$i]);
+		$changename =explode(".",$_FILES["myFile"]["name"][$i]);
+		// var_dump($changename[0]);    ชื่อรูปที่ผู้ใช้ใส่
+		// var_dump($changename[1]);	นามสกุลไฟล์รูปที่ผู้ใช้ใส่
+		//die();
+
+		$_FILES['userfile']['name']     = $testname."_".".".$changename[1];
+      $_FILES['userfile']['type']     = $_FILES['myFile']['type'][$i];
+      $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'][$i];
+      $_FILES['userfile']['error']    = $_FILES['myFile']['error'][$i];
+      $_FILES['userfile']['size']     = $_FILES['myFile']['size'][$i];
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		 //$config['file_name'] = $_FILES['myFile']['name'][$i];
+        // $config['max_size'] = 2000;
+        // $config['max_width'] = 1500;
+        // $config['max_height'] = 1500;
+
+		$this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload()){
+			$error = array('error' => $this->upload->display_errors());
+			//$this->load->view('upload_form', $error);
+		}else{
+			$final_files_data[] = $this->upload->data();
+		}
+		
+
+	}
                     
        $field = array(
                 
