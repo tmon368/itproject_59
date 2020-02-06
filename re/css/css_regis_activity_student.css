@@ -3,8 +3,8 @@
 }
 .Data{
     display: flex;
-    margin: 0.4rem;
-    padding: 0.4rem;
+    margin: 1.4rem;
+    padding: 1.4rem;
     border-radius: 0.4rem;
     border-bottom: 1px solid #212F3D;
 }
@@ -45,6 +45,7 @@
     font-family: 'prompt',sans-serif;
 }
 .RegisActivity{
+    display: block;
     width: 100%;
     height: 100%;
     border: 0px;
@@ -58,6 +59,23 @@
     font-size: 22px;
     background: #049e49;
 }
+
+.CancelActivity{
+    display: none;
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    background: #E74C3C;
+    font-family: 'prompt',sans-serif;
+    font-size: 20px;
+    color: #fff;
+}
+.CancelActivity:hover{
+    cursor: pointer;
+    background: rgb(161, 65, 54);
+    color: #fff;
+}
+
 
 #title1{
     color: #5B2C6F;

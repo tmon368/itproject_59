@@ -26,7 +26,9 @@
 <script>
     var studentid = [];
     var removestudenid = [];
+    var filesToUpload = [];
     var countFilepicture = 0;
+    var fileIdCounter = 0;
 </script>
 
 
@@ -98,7 +100,7 @@
                     </div>
 
 
-                    <form id="msform">
+                    <form id="msform" name="msform" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="oh_ID" id="oh_ID" class="form-control style_input">
                         <div class="modal-body">
                             <fieldset>
@@ -119,9 +121,10 @@
                                             </div>
 
                                             <div class="row">
-                                                <label for="committed_date"><span><i class="far fa-calendar-alt iconlabel"></i></span>วันที่กระทำความผิด: </label>
-                                                <input type="date" name="committed_date" id="committed_date" class="input data" required oninvalid="this.setCustomValidity('โปรดระบุวันที่กระทำความผิด')" onchange="this.setCustomValidity('')">
-                                                <label for="" id="labletime">เวลา:</label> <input type="time" name="committed_time" id="committed_time" class="input time" required oninvalid="this.setCustomValidity('โปรดระบุเวลาเกิดเหตุ')" onchange="this.setCustomValidity('')">
+                                                <label for="committed_date"><span><i class="far fa-calendar-alt iconlabel"></i></span>วันที่กระทำความผิด:
+                                                </label>
+                                                <input type="date" name="committed_date" id="committed_date" class="input data">
+                                                <label for="" id="labletime">เวลา:</label> <input type="time" name="committed_time" id="committed_time" class="input time">
                                             </div>
 
                                             <div class="row">
@@ -134,7 +137,7 @@
 
                                             <div class="row">
                                                 <label for="place"><span><i class="fa fa-commenting-o iconlabel"></i></span>คำอธิบายสถานที่:</label>
-                                                <textarea class="textarea" rows="5" id="explanation" name="explanation" required oninvalid="this.setCustomValidity('โปรดกรอกคำอธิบาย')" onchange="this.setCustomValidity('')"></textarea>
+                                                <textarea class="textarea" rows="5" id="explanation" name="explanation"></textarea>
                                                 <span id="error_message_exp_place"></span>
                                             </div>
                                         </div>
@@ -143,7 +146,7 @@
 
                                             <div class="row">
                                                 <label for="offcate"><span><i class=" iconlabel"></i></span>หมวดความผิด:</label>
-                                                <select name="txt_oc" id="txt_oc" class="select" required oninvalid="this.setCustomValidity('ระบุหมวดความผิด')" onchange="this.setCustomValidity('')">
+                                                <select name="txt_oc" id="txt_oc" class="select">
                                                     <option value="">เลือกหมวดความผิด</option>
                                                 </select>
                                                 <span id="error_message_offcat"></span>
@@ -240,8 +243,8 @@
                                             <div>
                                                 <div class="upload-btn-wrapper">
                                                     <button class="btn">Browse</button>
-                                                    <input type="file" class="file_input" id="uploadImage" name="termek_file" multiple />
-
+                                                    <!-- <input type="file" class="file_input" id="uploadImage" name="termek_file" multiple /> -->
+                                                    <input type="file" class="file_input" id="myFile" name="myFile[]" multiple />
                                                 </div>
                                             </div>
 
@@ -252,17 +255,18 @@
 
                                     </div>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="บันทึกข้อมูล" />
+                                <!-- <input type="button" name="next" class="next3 action-button" value="บันทึกข้อมูล" /> -->
+                                <input type="submit" name="bt_upload" id="bt_upload" value="Submit" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
                             </fieldset>
                             <fieldset>
-
+                                BBBB
                             </fieldset>
 
 
 
                         </div>
-                    </form>
+
 
                 </div>
                 </form>
@@ -289,6 +293,9 @@
         IMG_preview();
         check_id();
 
+
+
+
         var current_fs, next_fs, previous_fs; //fieldsets
         var opacity;
         var current = 1;
@@ -307,7 +314,8 @@
             var offencecate = $("#txt_oc").val();
             var offence = $("#txt_off").val();
 
-            if ((textarea == '') || (selectplace == 'เลือกสถานที่') || (offencecate == '') || (offence == '')) {
+            if ((textarea == '') || (selectplace == 'เลือกสถานที่') || (offencecate == '') || (offence ==
+                    '')) {
 
                 if (textarea == '') {
                     $("#error_message_exp_place").show();
@@ -431,6 +439,35 @@
         });
 
 
+
+        $('#msform').on("submit",function(e){
+            // console.log('save !');
+            e.preventDefault(); 
+
+            var formData = new FormData(document.getElementById("msform"));
+            // for (var i = 0, len = filesToUpload.length; i < len; i++) {
+            //     formData.append("files", filesToUpload[i].file);
+            // }
+
+            $.ajax({
+                url: '<?php base_url("Notifyoffense/addnotify") ?>',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function(data) {
+                    console.log(data);
+
+                },
+                error: function(data) {
+                    alert("ERROR - " + data.responseText);
+                }
+            });
+
+        });
+
+
         $(".previous").click(function() {
 
             current_fs = $(this).parent();
@@ -546,10 +583,12 @@
                     if (key == 0) {
 
                         html_code += '<div class="person_resule">';
-                        html_code += '<div class="img" data=' + value.S_ID + '><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
+                        html_code += '<div class="img" data=' + value.S_ID +
+                            '><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
                         html_code += ' <div class="dataperson">';
                         html_code += '<div class="">';
-                        html_code += '<span id="name">' + value.std_fname + ' ' + value.std_lname + '</span>';
+                        html_code += '<span id="name">' + value.std_fname + ' ' + value.std_lname +
+                            '</span>';
                         html_code += '</div>';
                         html_code += '<div>';
                         html_code += '<span id="major">สาขา ' + value.dept_name + '</span>';
@@ -562,12 +601,16 @@
                             //check type vehicle
                             if (value.vetype_ID == 1) {
                                 html_code += '<div>';
-                                html_code += '<span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: ' + value.regist_num + '</span>';
+                                html_code +=
+                                    '<span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: ' +
+                                    value.regist_num + '</span>';
                                 html_code += '</div>';
                                 // value.province
                             } else if (value.vetype_ID == 2) {
                                 html_code += '<div>';
-                                html_code += '<span id="tag_num_car">หมายเลยทะเบียนรถจักรายานยนต์: ' + value.regist_num + '</span>';
+                                html_code +=
+                                    '<span id="tag_num_car">หมายเลยทะเบียนรถจักรายานยนต์: ' +
+                                    value.regist_num + '</span>';
                                 html_code += '</div>';
                             } else {
 
@@ -602,7 +645,10 @@
                 $.each(data, function(key, value) {
                     var temp = value;
                     if (key == 0) {
-                        html += '<div class="" id="div' + value.S_ID + '"><input type="checkbox" class="checkid" data=' + value.S_ID + '><span id="stdid"><i class="fa fa-address-card-o"></i> ' + value.S_ID + ' นายสัญชัย สรินาวิวัฒนา สาขา A สำนัก B</span>';
+                        html += '<div class="" id="div' + value.S_ID +
+                            '"><input type="checkbox" class="checkid" data=' + value.S_ID +
+                            '><span id="stdid"><i class="fa fa-address-card-o"></i> ' + value.S_ID +
+                            ' นายสัญชัย สรินาวิวัฒนา สาขา A สำนัก B</span>';
                         html += '<input type="hidden" name="std_id[]" value="' + value.S_ID + '">';
                         html += '</div>';
                         $('.person').append(html);
@@ -619,15 +665,22 @@
 
     function IMG_preview() {
         if (window.File && window.FileList && window.FileReader) {
-            var filesInput = document.getElementById("uploadImage");
+            var filesInput = document.getElementById("myFile");
             filesInput.addEventListener("change", function(event) {
                 var files = event.target.files;
                 var output = document.getElementById("result");
                 for (var i = 0; i < files.length; i++) {
+                    fileIdCounter++;
                     var file = files[i];
                     var fileName = files[0].name;
 
-                    console.log(file);
+                    var fileId = fileIdCounter;
+                    filesToUpload.push({
+                        id: fileIdCounter,
+                        file: file
+                    });
+
+                    console.log(filesToUpload);
 
                     if (!file.type.match('image'))
                         continue;
@@ -635,20 +688,21 @@
                     picReader.addEventListener("load", function(event) {
                         var picFile = event.target;
                         var htmlcode = '';
-                        htmlcode += '<div class="showpicture countdiv' + countFilepicture + '">';
+                        htmlcode += '<div class="showpicture countdiv' + fileIdCounter + '">';
                         htmlcode += '<div class="Imgfile">';
-                        htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
+                        htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result +
+                            "'" + "title='" + picFile.name + "'/>";
                         htmlcode += '</div>';
                         htmlcode += '<div class="filename">';
                         htmlcode += '<div>' + fileName + '</div>';
                         htmlcode += '<div class="Sizefile">ขนาดไฟล์ภาพ</div>';
                         htmlcode += '</div>';
-                        htmlcode += '<span id="delete_picture" data=' + countFilepicture + '><i class="fa fa-times-circle"></i></span>';
+                        htmlcode += '<span id="delete_picture" data=' + fileIdCounter +
+                            '><i class="fa fa-times-circle"></i></span>';
                         htmlcode += '</div>';
                         $('.PictureContent').append(htmlcode);
-                        countFilepicture++;
+                        console.log(fileIdCounter);
                     });
-
                     picReader.readAsDataURL(file);
                 }
 
@@ -765,8 +819,18 @@
     });
 
     $('.PictureContent').on('click', '#delete_picture', function() {
-        var number = $(this).attr('data');
-        $('.countdiv' + number).remove();
+        var id = $(this).attr('data');
+        console.log(id);
+
+        for (var i = 0; i < filesToUpload.length; ++i) {
+
+            if (filesToUpload[i].id == id) {
+                console.log(444)
+                $('.countdiv' + id).remove();
+                filesToUpload.splice(i, 1);
+            }
+        }
+        console.log(filesToUpload);
     });
 
 
@@ -863,7 +927,8 @@
 
                     for (i = 0; i < data.length; i++) {
 
-                        html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
+                        html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc +
+                            '</option>';
 
                     }
                     $('#txt_off').html(html_code);

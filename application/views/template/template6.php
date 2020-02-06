@@ -29,10 +29,9 @@
 
 <script>
   $(document).ready(function() {
-    $('#style_table').DataTable();
+     $('#style_table').DataTable();
   });
 </script>
-
 </body>
 
 </html>

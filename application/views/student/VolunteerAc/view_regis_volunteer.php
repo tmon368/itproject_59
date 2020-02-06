@@ -3,22 +3,14 @@
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_regis_activity_student.css') ?>">
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
-
 
 <head>
     <title> ลงทะเบียนกิจกรรมบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
-    <script>
-        var id_count = 0; //run id
-        var temp_result = [];
-    </script>
 </head>
 
 <body>
 
-    <meta charset="UTF-8">
+
 
     <div class="container-fluid">
 
@@ -31,20 +23,27 @@
             </nav>
         </div>
 
+
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
                 <div class="card-header" id="card_2">
                     <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;การบำเพ็ญประโยชน์</h6>
                 </div>
 
-                <div class="ShowActivity">
+                
+                    <div class="ShowActivity">
 
-                 
 
-                </div>
+                    </div>
+                
             </div>
         </div>
     </div>
+
+
+
+
+
 
 
     <!-- Modal detail-->
@@ -67,40 +66,9 @@
     </div>
 
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
-
             show_all();
-
-
-
-            //Regis activity
-            $('.show_data').on('click', '.btn_submit', function() {
-
-                var id = $(this).attr('data'); //Get Sevice id 
-
-                //console.log(id);
-
-
-                $.ajax({
-                    type: 'ajax',
-                    method: 'get',
-                    url: '<?php echo site_url('Volunteer_regis/regisnotify') ?>',
-                    data: {
-                        id: id
-                    },
-                    async: false,
-                    dataType: 'json',
-                    success: function(data) {
-                        alert('ลงทะเบียนสำเร็จ');
-                        location.reload();
-
-                    },
-                    error: function() {
-                        alert('ไม่สามารถลงทะเบียนได้');
-                    }
-                });
-            });
         });
 
 
@@ -108,7 +76,6 @@
 
             html = '';
             $.ajax({
-
                 type: 'POST',
                 url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
                 dataType: 'json',
@@ -118,35 +85,53 @@
 
                         var temp_1 = value.start_time;
                         var temp_2 = value.end_time;
-                        var start_times = parseFloat(temp_1.substring(0, 5)); 
-                        var end_times = parseFloat(temp_2.substring(0, 5)); 
+                        var start_times = parseFloat(temp_1.substring(0, 5));
+                        var end_times = parseFloat(temp_2.substring(0, 5));
                         var counthour = Math.abs(end_times - start_times);
 
                         //console.log(counthour);
 
                         html += '<div class="Data">';
                         html += '<div class="Main1">';
-                        html +=     '<span id="title1">กิจกรรม : '+ value.service_name +'</span>';
-                        html +=     '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : '+ value.service_date +' </span>';
-                        html +=     '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม '+ start_times +' ถึง '+ end_times +' ชั่วโมงกิกรรม '+ counthour +' ชม.</span>';
-                        html +=     '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: นาย สมมุติ สมสุข</span>';
+                        html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
+                        html += '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                        html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        html += '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
                         html += '</div>';
                         html += '<div class="Main2">';
-                        html +=    '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
-                        html +=    '<div><span id="last_count_student">'+ value.number_of +'</span>/'+ value.received +'</div>';
+                        html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                        html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
                         html += '</div>';
                         html += '<div class="Main3">';
-                        html +=    '<button type="submit" class="RegisActivity">สมัครกิจกรรม</button>';
+                        html += '<button type="submit" class="RegisActivity">สมัครกิจกรรม</button><button type="submit" class="CancelActivity">ยกเลิก</button>';
                         html += '</div>';
                         html += '</div>';
 
-                        $('.ShowActivity').html(html);
+
                     });
-
+                    $('.ShowActivity').html(html);
                 }
             });
         }
 
+
+
+        $('.ShowActivity').on('click', '.RegisActivity', function() {
+
+            if (confirm('ยืนยันการสมัครกิจกรรม')) {
+                console.log('สมัคร')
+                $('.RegisActivity').hide();
+                $('.CancelActivity').show();
+            } else {
+
+            }
+
+        });
+
+        $('.ShowActivity').on('click', '.CancelActivity', function() {
+            $('.RegisActivity').show();
+            $('.CancelActivity').hide();
+        });
 
         //show more detail
         $('.show_data').on('click', '.sh_modal', function() {
@@ -202,8 +187,45 @@
                 }
             });
         });
+
+
+
+
+        //Regis activity
+        $('.show_data').on('click', '.btn_submit', function() {
+            var id = $(this).attr('data'); //Get Sevice id 
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                url: '<?php echo site_url('Volunteer_regis/regisnotify') ?>',
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    alert('ลงทะเบียนสำเร็จ');
+                    location.reload();
+                },
+                error: function() {
+                    alert('ไม่สามารถลงทะเบียนได้');
+                }
+            });
+        });
+
+        $(function() {
+            $(".paginate").paginga({
+                // use default options
+            });
+
+            $(".paginate-page-2").paginga({
+                page: 2
+            });
+
+            $(".paginate-no-scroll").paginga({
+                scrollToTop: false
+            });
+        });
     </script>
-
-
 
 </body>
