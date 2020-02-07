@@ -261,4 +261,26 @@ function selectscorestudent(){
     echo json_encode($result);
 }
 
+
+function selectstudentall(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->branch_head_dashboard_model->selectstudentall();
+    echo json_encode($result);
+}
+
+function selectscoreservice(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->branch_head_dashboard_model->selectscoreservice();
+    echo json_encode($result);
+}
+
+
+function selectscoretraining(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->branch_head_dashboard_model->selectscoretraining();
+    echo json_encode($result);
+}
 }
