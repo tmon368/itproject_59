@@ -115,7 +115,7 @@
       axisX:{
           title: "หมวดความผิด"
          },
-      data: [
+      data: [ 
       {
         dataPoints: [
         { x: 10, y: 50 },
