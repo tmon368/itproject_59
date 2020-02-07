@@ -248,5 +248,20 @@ function selectscorestudent(){
     $result = $this->dean_dashboard_model->selectscorestudent();
     echo json_encode($result);
 }
+
+function selectscoreservice(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dean_dashboard_model->selectscoreservice();
+    echo json_encode($result);
+}
+
+
+function selectscoretraining(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dean_dashboard_model->selectscoretraining();
+    echo json_encode($result);
+}
 }
 
