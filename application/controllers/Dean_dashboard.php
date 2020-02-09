@@ -26,12 +26,11 @@ class Dean_dashboard extends CI_Controller {
 	}
 	public function template()
 	{
-	    
-	    //List ข้อมูลมาแสดงในหน้าจอ
-	    $this->load->view('template/template1');
-	    $this->load->view('template/template2');
-	    $this->load->view('template/template3');
-	    $this->load->view('dean/firstpage/firstpage');
+		$this->load->view('template/template1');
+		$this->load->view('template/template2');
+		$this->load->view('menu/Dean/menu_user_dean');
+		$this->load->view('template/template4');
+		$this->load->view('dean/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
