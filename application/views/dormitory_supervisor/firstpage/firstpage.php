@@ -20,7 +20,7 @@
 }
 #showscorestudent{
             font-size: 50px;
-}
+} 
 #showscoreservice{
             font-size: 30px;
          
