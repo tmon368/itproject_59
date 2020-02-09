@@ -255,7 +255,7 @@ selectscoretraining();
 function selectscorestudent() {
     $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscorestudent',
+        url: '<?php echo base_url() ?>index.php/dormitory_supervisor/selectscorestudent',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -269,10 +269,10 @@ function selectscorestudent() {
     });
 }
 
-function selectscoreservice() {
+function selectscoreservice() { 
     $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoreservice',
+        url: '<?php echo base_url() ?>index.php/dormitory_supervisor/selectscoreservice',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -290,7 +290,7 @@ function selectscoreservice() {
 function selectscoretraining() {
     $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoretraining',
+        url: '<?php echo base_url() ?>index.php/dormitory_supervisor/selectscoretraining',
         async: false,
         dataType: 'json',
         success: function(data) {
@@ -307,7 +307,7 @@ function selectscoretraining() {
 function selectstudentall() {
     $.ajax({
           type: 'ajax',
-          url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentall',
+          url: '<?php echo base_url() ?>index.php/dormitory_supervisor/selectstudentall',
           async: false,
           dataType: 'json',
           success: function(data) { // console.log(data); 
