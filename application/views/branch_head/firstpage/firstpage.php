@@ -21,6 +21,59 @@
 #showscorestudent{
             font-size: 50px;
 }
+#showscoreservice{
+            font-size: 30px;
+         
+}
+#showscoretraining{
+            font-size: 30px;
+         
+}
+.bggreen{
+ background-color: #99FF99	;
+    width: 250px;
+    padding: 8px;
+    border: 15px;
+    margin: 15px;
+    border-radius:45px;
+    
+}
+#fasfa-chalkboard-teacher{
+     color:black;
+    font-size: 70px;
+     text-shadow: 1px 1px 1px #000;
+}
+#farfa-calendar-check{
+    color:black;
+    font-size: 70px;
+     text-shadow: 1px 1px 1px #000;
+    
+}
+.rowl{ width: 600px }
+.rowl ul{ list-style-type: none;  margin: 0px; padding: 0px; font-family: 'Open Sans', sans-serif; font-size: 0.85em; color: rgb(0, 0, 0); }
+.rowl li { float: left; padding: 0px; padding: 0px;  text-align:center; width: 40.33%;
+background-color: #99FF99	;
+    width: 250px;
+    padding: 8px;
+    border: 15px;
+    margin: 15px;
+    border-radius:45px;}
+
+
+}
+.rowc{ width: 600px }
+.rowc ul{ list-style-type: none;  margin: 0px; padding: 0px; font-family: 'Open Sans', sans-serif; font-size: 0.85em; color: rgb(0, 0, 0); }
+.rowc li { float: left; padding: 0px; padding: 0px;  text-align:center; width: 40.33%;
+background-color: #ffbf00	;
+    width: 250px;
+    padding: 8px;
+    border: 15px;
+    margin: 15px;
+    border-radius:45px;}
+
+
+}
+}
 </style>    
     
     
@@ -88,7 +141,18 @@
         </div>                  
         <div class="card-body " id="card_1">
        <font size="2"><center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ</center></font> 
-        <br><br><br><br><br><br><br><br><br><br>
+        <br><center><div class="row">
+				<div class="col-sm-12">
+				
+				
+				<div  id="showdata" > 
+			
+			
+			
+			</div>
+			</div>
+			</div></center><br>แสดงรายชื่อเพิ่มเติม
+			
         </div> 
         </div>
 </div>
@@ -150,23 +214,33 @@
 </div>
 
 
-<div class="col-lg-9 ">
-<div class="card shadow mb-4">
-        <div class="card-header" id="card_2">
-            <h6 class="m-0 text-primary"></h6>
-        </div>
-            <div class="card shadow mb-3">             
-        <div class="card-body " id="card_1">
-        <font size="4"><center>กิจกรรมเพิ่มเติม</center></font>  
-        <br><br><br><br><br><br><br><br>
-        </div> 
+<div class="col-lg-10 "><font size="4"><div class="card-header" id="card_2">
+<h6 class="m-0 text-primary"></h6></div><br><center>กิจกรรมเพิ่มเติม</center></font>
+<div class="rowl">
+	<ul>
+		<li>
+			   <font size="4"><center>กิจกรรมบำเพ็ญประโยชน์ <center></font><br>
+				<i class="far fa-calendar-check" id="farfa-calendar-check"></i>
+				<a href="test.php"><p id="showscoreservice" name="showscoreservice"><h3>กิจกรรม</h3></p>
+				</a>
+			
+		</li>
+	</ul>
 </div>
+<div class="rowc">
+	<ul>
+		<li>
+			   <font size="4"><center>กิจกรรมการอบรม <center></font><br>
+				<i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
+				<a href="test.php"><p id="showscoretraining" name="showscoretraining"><h3>กิจกรรม</h3></p>
+				</a>
+			
+		</li>
+	</ul>
 </div>
+
+
 </div>
-
-
-
-
 </div>
 
 
@@ -176,7 +250,11 @@
 
 </div>
 <script>
+$(document).ready(function() {
 selectscorestudent();
+selectstudentall();
+selectscoreservice();
+selectscoretraining();
 function selectscorestudent() {
     $.ajax({
         type: 'ajax',
@@ -186,6 +264,24 @@ function selectscorestudent() {
         success: function(data) {
            // alert(data)
         	$('#showscorestudent').html(data.numberstudent);
+        	
+        },
+        error: function() {
+            alert('ไม่มีข้อมูล');
+        }
+    });
+}
+
+function selectscoreservice() {
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoreservice',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+           // alert(data)
+        	$('#showscoreservice').html(data.numberservice);
+        	
          
         },
         error: function() {
@@ -193,6 +289,64 @@ function selectscorestudent() {
         }
     });
 }
+
+function selectscoretraining() {
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoretraining',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+           // alert(data)
+        	$('#showscoretraining').html(data.numbertraining);
+        	
+         
+        },
+        error: function() {
+            alert('ไม่มีข้อมูล');
+        }
+    });
+}
+function selectstudentall() {
+    $.ajax({
+          type: 'ajax',
+          url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentall',
+          async: false,
+          dataType: 'json',
+          success: function(data) { // console.log(data); 
+              var html = '';
+              var n=1;
+              var i;
+              var count='5';
+              
+              if (data.length < count){
+              	for (i = 0; i < data.length; i++) {                   
+              		html += '<div class="bggreen">' + n + '.' +
+              		data[i].std_fname  + '&nbsp;'    + data[i].std_lname + '<br>'+ '<br>'+ 'คะแนนคงเหลือ'
+              	 	 +  '&nbsp;' +
+              		data[i].behavior_score+    '&nbsp;' +   'คะแนน'    +  '</div>';
+              		 n+=1;
+             	 }
+              }
+              else{
+                  for (i=0; i < 5 ; i++) {
+                  	html += '<div class="bggreen">' + n + '.' +
+              		data[i].std_fname  + '&nbsp;'    + data[i].std_lname + '<br>'+'<br>'+ 'คะแนนคงเหลือ'
+              	 	 +  '&nbsp;' +
+              		data[i].behavior_score+    '&nbsp;' +   'คะแนน'    +  '</div>';
+              		 n+=1;  
+               }
+              }
+              
+              $('#showdata').html(html);
+    //$('#dataall').html(num-1);//
+},
+error: function() {
+    alert('ไม่มีข้อมูล');
+}
+    });
+}
+});
 </script>
 
 </body>

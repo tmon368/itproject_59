@@ -26,12 +26,11 @@ class Dean_dashboard extends CI_Controller {
 	}
 	public function template()
 	{
-	    
-	    //List ข้อมูลมาแสดงในหน้าจอ
-	    $this->load->view('template/template1');
-	    $this->load->view('template/template2');
-	    $this->load->view('template/template3');
-	    $this->load->view('dean/firstpage/firstpage');
+		$this->load->view('template/template1');
+		$this->load->view('template/template2');
+		$this->load->view('menu/Dean/menu_user_dean');
+		$this->load->view('template/template4');
+		$this->load->view('dean/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
@@ -246,6 +245,21 @@ function selectscorestudent(){
     //  $username = $this->session->userdata('username');
     
     $result = $this->dean_dashboard_model->selectscorestudent();
+    echo json_encode($result);
+}
+
+function selectscoreservice(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dean_dashboard_model->selectscoreservice();
+    echo json_encode($result);
+}
+
+
+function selectscoretraining(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dean_dashboard_model->selectscoretraining();
     echo json_encode($result);
 }
 }

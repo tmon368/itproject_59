@@ -246,6 +246,37 @@ function selectregist_num (){
 	$result = $this->dormitory_advisor_dashboard_model->selectregist_num();
 	echo json_encode($result);
 }
+
+
+function selectstudentall(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dormitory_advisor_dashboard_model->selectstudentall();
+    echo json_encode($result);
+}
+
+function selectscoreservice(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dormitory_advisor_dashboard_model->selectscoreservice();
+    echo json_encode($result);
+}
+
+
+function selectscoretraining(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dormitory_advisor_dashboard_model->selectscoretraining();
+    echo json_encode($result);
+}
+
+function selectscorestudent(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dormitory_advisor_dashboard_model->selectscorestudent();
+    echo json_encode($result);
+}
+
 }
 
 

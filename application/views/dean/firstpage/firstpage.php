@@ -18,6 +18,59 @@
 #showscorestudent{
             font-size: 50px;
 }
+#showscoreservice{
+            font-size: 30px;
+         
+}
+#showscoretraining{
+            font-size: 30px;
+         
+}
+.bggreen{
+ background-color: #99FF99	;
+    width: 250px;
+    padding: 8px;
+    border: 15px;
+    margin: 15px;
+    border-radius:45px;
+    
+}
+#fasfa-chalkboard-teacher{
+     color:black;
+    font-size: 70px;
+     text-shadow: 1px 1px 1px #000;
+}
+#farfa-calendar-check{
+    color:black;
+    font-size: 70px;
+     text-shadow: 1px 1px 1px #000;
+    
+}
+.rowl{ width: 600px }
+.rowl ul{ list-style-type: none;  margin: 0px; padding: 0px; font-family: 'Open Sans', sans-serif; font-size: 0.85em; color: rgb(0, 0, 0); }
+.rowl li { float: left; padding: 0px; padding: 0px;  text-align:center; width: 40.33%;
+background-color: #99FF99	;
+    width: 250px;
+    padding: 8px;
+    border: 15px;
+    margin: 15px;
+    border-radius:45px;}
+
+
+}
+.rowc{ width: 600px }
+.rowc ul{ list-style-type: none;  margin: 0px; padding: 0px; font-family: 'Open Sans', sans-serif; font-size: 0.85em; color: rgb(0, 0, 0); }
+.rowc li { float: left; padding: 0px; padding: 0px;  text-align:center; width: 40.33%;
+background-color: #ffbf00	;
+    width: 250px;
+    padding: 8px;
+    border: 15px;
+    margin: 15px;
+    border-radius:45px;}
+
+
+}
+}
 </style>
 <head>
     <title></title> 
@@ -138,23 +191,34 @@
 </div>
 
 
-<div class="col-lg-9 ">
-<div class="card shadow mb-4">
-        <div class="card-header" id="card_2">
-            <h6 class="m-0 text-primary"></h6>
-        </div>
-            <div class="card shadow mb-3">             
-        <div class="card-body " id="card_1">
-        <font size="4"><center>กิจกรรมเพิ่มเติม</center></font>  
-        <br><br><br><br><br><br><br><br>
-        </div> 
+
+<div class="col-lg-10 "><font size="4"><div class="card-header" id="card_2">
+<h6 class="m-0 text-primary"></h6></div><br><center>กิจกรรมเพิ่มเติม</center></font>
+<div class="rowl">
+	<ul>
+		<li>
+			   <font size="4"><center>กิจกรรมบำเพ็ญประโยชน์ <center></font><br>
+				<i class="far fa-calendar-check" id="farfa-calendar-check"></i>
+				<a href="test.php"><p id="showscoreservice" name="showscoreservice"><h3>กิจกรรม</h3></p>
+				</a>
+			
+		</li>
+	</ul>
 </div>
+<div class="rowc">
+	<ul>
+		<li>
+			   <font size="4"><center>กิจกรรมการอบรม <center></font><br>
+				<i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
+				<a href="test.php"><p id="showscoretraining" name="showscoretraining"><h3>กิจกรรม</h3></p>
+				</a>
+			
+		</li>
+	</ul>
 </div>
+
+
 </div>
-
-
-
-
 </div>
 
 
@@ -165,7 +229,10 @@
 </div>
 
 <script>
+$(document).ready(function() {
 selectscorestudent();
+selectscoreservice();
+selectscoretraining();
 function selectscorestudent() {
     $.ajax({
         type: 'ajax',
@@ -182,6 +249,43 @@ function selectscorestudent() {
         }
     });
 }
+
+function selectscoreservice() {
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoreservice',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+           // alert(data)
+        	$('#showscoreservice').html(data.numberservice);
+        	
+         
+        },
+        error: function() {
+            alert('ไม่มีข้อมูล');
+        }
+    });
+}
+
+function selectscoretraining() {
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoretraining',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+           // alert(data)
+        	$('#showscoretraining').html(data.numbertraining);
+        	
+         
+        },
+        error: function() {
+            alert('ไม่มีข้อมูล');
+        }
+    });
+}
+});
 </script>
 
 </body>
