@@ -46,7 +46,7 @@ class Notifyoffense extends Student_dashboard
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addnotify()
 	{
-		// $result = $this->Notifyoffense_model->addnotify();
+		 $result = $this->Notifyoffense_model->addnotify();
 		//$msg['success'] = false;
 		//$msg['type'] = 'add';
 		/*
@@ -59,7 +59,7 @@ class Notifyoffense extends Student_dashboard
 		    $msg['success'] = false;
 		    redirect(base_url() . 'index.php/notify_page/index');
 		}*/
-		// echo json_encode($result);
+		 echo json_encode($result);
 	}
 
 	public function test()

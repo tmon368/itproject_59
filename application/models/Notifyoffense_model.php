@@ -5,7 +5,8 @@ class Notifyoffense_model extends CI_Model {
     {
         parent::_construct();
         $this->load->helper('url', 'form');
-		$this->load->helper('directory');
+        $this->load->helper('directory');
+        $this->load->helper('number');
          
         
     }
@@ -155,14 +156,18 @@ foreach($showall as $value){
        $field = array(
                 
                 'oh_ID'=>$this->input->post('oh_ID'),
-                'off_ID'=>$this->input->post('txt_off'),
+                'off_ID'=>(int)$this->input->post('txt_off'),
                 'informer'=>$this->session->userdata('student'),
-                'place_ID'=>$this->input->post('place_ID'),
+                'place_ID'=>(int)$this->input->post('place_ID'),
                 'committed_date'=>$this->input->post('committed_date'),
                 'committed_time'=>$this->input->post('committed_time'),
                 'notifica_date'=>$this->input->post('notifica_date'),
-                'explanation'=>$this->input->post('explanation')
+                'explanation'=>$this->input->post('explanation'),
+                'OffenseHead_oh_ID'=>$this->input->post('oh_ID')
         );
+
+        //var_dump($field);
+        //die();
         
       
                // $this->db->set($field)->get_compiled_insert('offensehead');

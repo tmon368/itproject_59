@@ -461,20 +461,16 @@ $(document).ready(function() {
 
     $('#msform').on("submit", function(e) {
         e.preventDefault();
-        var formData = new FormData($(this)[0]);
-        for (var i = 0; i < filesToUpload.length; i++) {
-            //console.log(filesToUpload[i].file);
-            formData.append('files',filesToUpload[i].file);
-        }
+        var formData = new FormData(document.getElementById("msform"));
+        console.log(formData);
 
         $.ajax({
-            type: 'POST',
             url: '<?php echo base_url(); ?>index.php/Notifyoffense/addnotify',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            //dataType: 'JSON',
+            cache: false,	          
+            data: formData,	           
+         processData: false,	               
+        contentType: false,	         
+            type: "POST",
             success: function(data) {
                 console.log(data);
             }
