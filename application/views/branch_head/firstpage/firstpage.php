@@ -214,7 +214,7 @@ background-color: #ffbf00	;
 </div>
 
 
-<div class="col-lg-10 "><font size="4"><div class="card-header" id="card_2">
+<div class="col-lg-8 "><font size="4"><div class="card-header" id="card_2">
 <h6 class="m-0 text-primary"></h6></div><br><center>กิจกรรมเพิ่มเติม</center></font>
 <div class="rowl">
 	<ul>

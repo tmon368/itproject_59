@@ -1,36 +1,21 @@
-<div class="container-fluid page-body-wrapper">
+<div class="bar">
 
+    <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
 
-  <!--3-->
-  <!-- partial -->
-  <div class="main-panel">
-    <div class="content-wrapper">
+        <ul id="menu">
+            <a href="<?php echo site_url("Dean_dashboard") ?>">
+                <li class="menu-icon mdi mdi-television">หน้าแรก</li>
+            </a>
 
+            <a href="<?php echo site_url("Report_user_dean") ?>">
+                <li class="">ออกรายงาน</li>
+            </a>
+          
+        </ul>
+    </div>
 
-      <script>
-        $(document).ready(function() {
-          selectstudentname();
-
-
-
-          function selectstudentname() {
-            $.ajax({
-              type: 'ajax',
-              url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentname',
-              async: false,
-              dataType: 'json',
-              success: function(data) { // console.log(data); 
-                // alert(data[0])
-                $('#fullnamestudent').html(data[0].std_fname + ' ' + data[0].std_lname);
-                //$('#lnamestudent').html(data[0].std_lname);
-
-
-                //$('#dataall').html(num-1);//
-              },
-              error: function() {
-                alert('ไม่มีข้อมูล');
-              }
-            });
-          }
-        });
-      </script>
+   

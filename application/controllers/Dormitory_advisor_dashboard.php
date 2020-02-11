@@ -30,7 +30,8 @@ class Dormitory_advisor_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-	    $this->load->view('menu/student/menu_student'); //ส่วนเมนู
+	    $this->load->view('menu/Dormitory_advisor/menu_user_dormitory_advisor');
+	    $this->load->view('template/template4');
 	    $this->load->view('dormitory_advisor/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
