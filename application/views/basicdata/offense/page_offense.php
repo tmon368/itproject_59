@@ -8,7 +8,7 @@
 </center> 
 <head>
 
-  <title>ฐานความผิด admin</title>
+  <title>ฐานความผิด | ผู้ดูแลระบบ มหาวิทยาลัยวลัยลักษณ์</title>
 
 </head>
 <body>

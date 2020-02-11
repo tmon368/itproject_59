@@ -29,7 +29,7 @@
         <div class="content">
             <div class="ManageBasicData">
 
-                <div class="CardTool padding cursor">
+                <div class="CardTool padding cursor AddUserType">
                     <div class="icon1">
                         <span><i class="fa fa-user-plus"></i></span>
                         <!-- <img src="<?php echo base_url("re/images/teamwork.png") ?>" alt="" width="80"> -->
@@ -37,7 +37,7 @@
                     เพิ่มประเภทผู้ใช้งาน
                 </div>
 
-                <div class="CardTool padding cursor">
+                <div class="CardTool padding cursor TypeOffen">
                     <div class="icon1">
                         <span><i class="fas fa-layer-group"></i></span>
                     </div>
@@ -166,4 +166,14 @@
 
 
     });
+
+    
+    $(".AddUserType").click(function() {
+        window.location.href = "<?php echo site_url('Usertype')?>";
+    });
+    $(".TypeOffen").click(function() {
+        window.location.href = "<?php echo site_url('Offensecate')?>";
+    });
+
+    
 </script>

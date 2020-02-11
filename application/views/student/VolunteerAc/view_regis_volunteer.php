@@ -120,8 +120,8 @@
 
             if (confirm('ยืนยันการสมัครกิจกรรม')) {
                 console.log('สมัคร')
-                $('.RegisActivity').hide();
-                $('.CancelActivity').show();
+                // $('.RegisActivity').hide();
+                // $('.CancelActivity').show();
             } else {
 
             }

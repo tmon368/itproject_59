@@ -274,7 +274,7 @@ var fileIdCounter = 0;
                                     </div>
                                 </div>
                                 <!-- <input type="button" name="next" class="next3 action-button" value="บันทึกข้อมูล" /> -->
-                                <input type="submit" name="bt_upload" id="bt_upload" value="Submit" />
+                                <input type="submit" name="bt_upload" class="next3 action-button" id="bt_upload" value="บันทึก" />
                                 <input type="button" name="previous" class="previous action-button-previous"
                                     value="กลับ" />
                             </fieldset>
@@ -469,7 +469,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url(); ?>index.php/Notifyoffense/test',
+            url: '<?php echo base_url(); ?>index.php/Notifyoffense/addnotify',
             data: formData,
             cache: false,
             contentType: false,
@@ -961,6 +961,7 @@ $('#notifyfloat').click(function() {
     var date = new Date();
     var date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     $('#notifica_show').val(date_off); //set of date in input:disable
+    $('#notifica_date').val(date_off); 
 
 });
 
