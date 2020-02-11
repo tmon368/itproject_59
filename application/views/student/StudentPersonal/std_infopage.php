@@ -47,7 +47,8 @@
     $(document).ready(function() {
     	selectstudentstatus();
 		selectstudentpoint();
-    	
+    	show_all();
+
 		function selectstudentpoint() {
               $.ajax({
                     type: 'ajax',
@@ -80,8 +81,15 @@
         	//alert("SSS");
      //   	$("#show_left").html("213");
        // });
-    
 
+	   //<div class="card-body" id="card_1">
+         //           <button type="button" id="btnAdd" class="btn btn-inverse-primary btn-fw" data-toggle="modal">
+           //             <span><i class="fas fa-plus" id="btnAdd"></i></span>เพิ่มการเสนอกิจกรรม
+                        
+             //       </button>
+               //     &nbsp;
+        //</div>
+		
     
   function selectstudentstatus() {
               $.ajax({
@@ -101,9 +109,13 @@
                             '<th>' + data[i].committed_date + '</th>' +
                             '<th>' + data[i].off_desc +'</th>' +
                             '<th>' + data[i].point + '</th>' +
-							'<th>' +'<a href=""</a>'+data[i].statusoffname +'</th>' + // สถานะการกระทำความผิด 
-							
-							
+							'<th>' +'<a href="javascript:;"  </a>'+ data[i].statusoffname +  '</th>' + // สถานะการกระทำความผิด 
+
+							//*html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data">*//
+							//'class="showdetil"> / javascript:;
+							//html += '<td><a href="javascript:;" +' class="edit_data"></a>
+							//<a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';
+						
 						//	if ($statusoffname == 3 ) {
     					//		<a href="javascript:;" data=' + data[i].train_ID + ' class="show_data">
 						//	}
@@ -142,6 +154,66 @@
               });
   }
       });
+
+
+
+
+$('#showdata').on('click', '.show_data', function() {
+
+var id = $(this).attr('data');
+//   console.log(id);
+
+$('#ShowDta').modal('show');
+html = '';
+i = 0;
+
+//select show data
+$.ajax({
+	type: 'ajax',
+	method: 'get',
+	url: '<?php echo site_url('VolunteerAc/showdetail') ?>',
+	data: {
+		id: id
+	},
+	async: false,
+	dataType: 'json',
+	success: function(data){
+		//console.log(data);
+		//alert ('Having data');
+
+		$.each(data, function(key, value) {
+			i++;
+		   // if (i==1) {
+				
+				html += '<p class="text_head"> <label for="" class="label_txt">ชื่อกิจกรรม: </label> ' + value.service_name+ ' </p>'
+				html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อผู้ควบคุมกิจกรรม:</label> ' + value. person_fname+ '&nbsp;&nbsp;'+ value. person_lname+' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  '+ value.start_time + "-"+ value.end_time +' </p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
+				html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
+
+   
+				  
+			   //  }
+			 
+		   
+
+			$('.content').html(html);
+			  
+		});
+	},
+	error: function() {
+		alert('ไม่สามารถลบข้อมูล');
+	}
+});
+
+
+
+});
+
+
+
 
 
 var renderGra = function (dataDB) {

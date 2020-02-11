@@ -269,7 +269,7 @@ function selectscorestudent() {
     });
 }
 
-function selectscoreservice() {
+function selectscoreservice() { 
     $.ajax({
         type: 'ajax',
         url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoreservice',
