@@ -130,7 +130,7 @@ foreach($showall as $value){
 		// var_dump($changename[1]);	นามสกุลไฟล์รูปที่ผู้ใช้ใส่
 		//die();
 
-		$_FILES['userfile']['name']     = $testname."_".".".$changename[1];
+		$_FILES['userfile']['name']     = $testname."_".($i+1).".".$changename[1];
       $_FILES['userfile']['type']     = $_FILES['myFile']['type'][$i];
       $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'][$i];
       $_FILES['userfile']['error']    = $_FILES['myFile']['error'][$i];
