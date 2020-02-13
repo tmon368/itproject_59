@@ -79,13 +79,16 @@ p.msg {
 }
 
 .fa-address-card-o{
+    color: #007bff;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
-    font-size: 20px;
+    font-size: 16px;
 }
 #number_id_student{
     font-weight: 800;
-    coo
+    color: #fff;
+    font-size: 12px;
+    background: #007bff;
 }
 .lablel{
     width: 9rem;

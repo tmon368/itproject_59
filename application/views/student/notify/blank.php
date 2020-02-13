@@ -155,7 +155,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <label for="off" class="lablel" ><span><i class=" iconlabel"></i></span>ฐานความผิด:</label>
+                                                <label for="off" class="lablel"><span><i class=" iconlabel"></i></span>ฐานความผิด:</label>
                                                 <select name="txt_off" id="txt_off" class="select">
                                                     <option value="">เลือกฐานความผิด</option>
                                                 </select>
@@ -180,8 +180,7 @@
                                             <div class="searchtool">
                                                 <select class="selectsearch" name="" id="optionsearch">
                                                     <option value="1" selected>รหัสนักศึกษา</option>
-                                                    <option value="2">ป้ายทะเบียนรถจักรยานยนต์</option>
-                                                    <option value="3">ป้ายทะเบียนรถยนต์</option>
+                                                    <option value="2">ป้ายทะเบียนรถ</option>
                                                 </select>
                                                 <input type="text" name="" id="textboxsearch">
                                                 <div class="btnsearch"><span><i class="fa fa-search"></i></span></div>
@@ -713,9 +712,9 @@
     function search_numbertag_motorcycle(data) {
 
         var html_code = '';
-        // var data = {
-        //     S_ID: dataid
-        // }
+        var data = {
+            registnumber: data
+        }
 
 
         $.ajax({
@@ -727,60 +726,46 @@
 
                 console.log(data);
 
-                // $.each(data, function(key, value) {
+                $.each(data, function(key, value) {
 
-                //     var temp = value;
+                    var temp = value;
 
-                //     if (key == 0) {
+                    if (key == 0) {
 
-                //         html_code += '<div class="person_resule">';
-                //         html_code += '<div class="img" data=' + value.S_ID +
-                //             '><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
-                //         html_code += ' <div class="dataperson">';
-                //         html_code += '<div class="">';
-                //         html_code += '<span id="name">' + value.std_fname + ' ' + value.std_lname +
-                //             '</span>';
-                //         html_code += '</div>';
-                //         html_code += '<div>';
-                //         html_code += '<span id="major">สาขา ' + value.dept_name + '</span>';
-                //         html_code += '<span id="school">สำนักวิชา' + value.cur_name + '</span>';
-                //         html_code += '</div>';
-
-                //     } else if (key == "verhicles") {
-                //         var verhicle = value;
-                //         $.each(verhicle, function(key, value) {
-                //             //check type vehicle
-                //             if (value.vetype_ID == 1) {
-                //                 html_code += '<div>';
-                //                 html_code += '<span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: ' + value.regist_num + ' จังหวัด' + value.province + '</span>';
-                //                 html_code += '</div>';
-                //                 // value.province
-                //             } else if (value.vetype_ID == 2) {
-                //                 html_code += '<div>';
-                //                 html_code +=
-                //                     '<span id="tag_num_car">หมายเลยทะเบียนรถจักรายานยนต์: ' + value.regist_num + ' จังหวัด' + value.province + '</span>';
-                //                 html_code += '</div>';
-                //             } else {
-
-                //             }
-                //         });
-
-                //     }
-                // });
+                        html_code += '<div class="person_resule">';
+                        html_code += '<div class="img" data=' + value.S_ID + '><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
+                        html_code += ' <div class="dataperson">';
+                        html_code += '<div class="">';
+                        html_code += '<span id="name">' + value.std_fname + ' ' + value.std_lname + '</span>';
+                        html_code += '</div>';
+                        html_code += '<div>';
+                        html_code += '<span id="major">สาขา ' + value.dept_name + '</span>';
+                        html_code += '<span id="school">สำนักวิชา' + value.cur_name + '</span>';
+                        html_code += '</div>';
 
 
+                        if (value.vetype_ID == 1) {
+                            html_code += '<div>';
+                            html_code += '<span id="tag_num_bic">หมายเลยทะเบียนรถจักรายานยนต์: ' + value.regist_num + ' จังหวัด' + value.province + '</span>';
+                            html_code += '</div>';
+                        }
+                        if (value.vetype_ID == 2) {
+                            html_code += '<div>';
+                            html_code += '<span id="tag_num_car">หมายเลยทะเบียนรถยนต์: ' + value.regist_num + ' จังหวัด' + value.province + '</span>';
+                            html_code += '</div>';
+                        }
 
-                $('.result').html(html_code);
+                        $('.result').html(html_code);
+                    }
+                });
             }
-
         });
 
 
 
 
-
-
     }
+
 
     function search_student_id(dataid) {
         var html_code = '';
@@ -863,8 +848,8 @@
                     var temp = value;
                     if (key == 0) {
                         html += '<div class="" id="div' + value.S_ID +
-                            '"><input type="checkbox" class="checkid" data=' + value.S_ID +'><span id="stdid"><i class="fa fa-address-card-o"></i> <span id="number_id_student">' + value.S_ID + '</span> ' + value.std_fname + ' ' + value.std_lname+
-                            ' สาขา '+ value.cur_name +' สำนักวิชา '+ value.dept_name +'</span>';
+                            '"><input type="checkbox" class="checkid" data=' + value.S_ID + '><span id="stdid"><i class="fa fa-address-card-o"></i> <span id="number_id_student">' + value.S_ID + '</span> ' + value.std_fname + ' ' + value.std_lname +
+                            ' สาขา ' + value.cur_name + ' สำนักวิชา ' + value.dept_name + '</span>';
                         html += '<input type="hidden" name="std_id[]" value="' + value.S_ID + '">';
                         html += '</div>';
                         $('.person').append(html);

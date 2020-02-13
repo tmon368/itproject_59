@@ -570,7 +570,7 @@ foreach($showall as $value){
 
     function selectregist_num(){
         //$id='กขค123';
-                $id= $this->input->post('registnumber');
+        $id= $this->input->post('registnumber');
 
 
          $this->db->select('*');
