@@ -151,13 +151,44 @@ foreach($showall as $value){
 		}
 		
 
-	}
+    }
+    $usergroup =$this->session->userdata('student') == null ? "":$this->session->userdata('student');
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('admin') == null ? "":$this->session->userdata('admin');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('teacher') == null ? "":$this->session->userdata('teacher');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('discipline_officer') == null ? "":$this->session->userdata('discipline_officer');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('headofstudent_affairs') == null ? "":$this->session->userdata('headofstudent_affairs');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('dormitory_supervisor') == null ? "":$this->session->userdata('dormitory_supervisor');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('dormitory_advisor') == null ? "":$this->session->userdata('dormitory_advisor');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('branch_head') == null ? "":$this->session->userdata('branch_head');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('dean') == null ? "":$this->session->userdata('dean');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('security_guard') == null ? "":$this->session->userdata('security_guard');
+    }
+    if($usergroup == ""){
+    $usergroup =$this->session->userdata('employee') == null ? "":$this->session->userdata('employee');
+    }
                     
        $field = array(
                 
                 'oh_ID'=>$this->input->post('oh_ID'),
                 'off_ID'=>(int)$this->input->post('txt_off'),
-                'informer'=>$this->session->userdata('student'),
+                'informer'=>$usergroup,
                 'place_ID'=>(int)$this->input->post('place_ID'),
                 'committed_date'=>$this->input->post('committed_date'),
                 'committed_time'=>$this->input->post('committed_time'),
