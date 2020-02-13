@@ -11,6 +11,10 @@
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
 
+            <a href="<?php echo site_url("Notifyoffense") ?>">
+                <li class="menu-icon mdi">การแจ้งเหตุกระทำความผิด</li>
+            </a>
+
             <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <li>การจัดการข้อมูลพื้นฐาน</li>
             </a>

@@ -23,6 +23,9 @@ p {
     margin-top: 20px
 } */
 
+.alert_meassage{
+    font-family: 'prompt',sans-serif;
+}
 #msform fieldset {
     /* background: white;
     border: 0 none;
