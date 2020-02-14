@@ -7,7 +7,7 @@
         <span></span>
 
         <ul id="menu">
-            <a href="<?php echo site_url("Dormitory_advisor_dashboard") ?>">
+            <a href="<?php echo site_url("Discipline_officer") ?>">
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
 

@@ -22,7 +22,8 @@ class Discipline_officer_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-	    $this->load->view('menu/student/menu_student');
+		$this->load->view('menu/Discipline_officer/menu_Discipline_officer');
+		$this->load->view('template/template4');
 	    $this->load->view('discipline_officer/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
