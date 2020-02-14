@@ -30,11 +30,29 @@
                     <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;การบำเพ็ญประโยชน์</h6>
                 </div>
 
+                <div class="card-body">
+                    <table id="style_table" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th id="idsort">ลำดับ</th>
+                            </tr>
+                        </thead>
 
-                <div class="ShowActivity">
+                        <tbody id="showdata">
 
+
+                        </tbody>
+
+                    </table>
 
                 </div>
+
+
+
+                <!-- <div class="ShowActivity">
+
+
+                </div> -->
 
             </div>
         </div>
@@ -69,8 +87,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             show_all();
-            $('#servicebtn2').hide();
-            $('#CancelActivity2').show();
+            //show_all_2();
         });
 
 
@@ -80,6 +97,7 @@
             $.ajax({
                 type: 'POST',
                 url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
+                async: false,
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
@@ -93,13 +111,15 @@
                             var end_times = parseFloat(temp_2.substring(0, 5));
                             var counthour = Math.abs(end_times - start_times);
 
+                            html += '<tr>';
+                            html += '<td>';
                             html += '<div class="Data">';
                             html += '<div class="Main1">';
                             html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
                             html += '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
-                            html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times  + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                            html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
                             html += '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
-                            html += '<span id="title5"> <span><i class="fas fa-torii-gate iconlabel"></i></span>สถานที่จัดกิจกรรม: '+ value.place +'</span>';
+                            html += '<span id="title5"> <span><i class="fas fa-torii-gate iconlabel"></i></span>สถานที่จัดกิจกรรม: ' + value.place + '</span>';
                             html += '</div>';
                             html += '<div class="Main2">';
                             html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
@@ -109,12 +129,18 @@
                             html += '<button type="submit" class="RegisActivity" id="servicebtn' + value.service_ID + '" data="' + value.service_ID + '">สมัครกิจกรรม</button><button type="submit" class="CancelActivity" id="CancelActivity' + value.service_ID + '">ยกเลิก</button>';
                             html += '</div>';
                             html += '</div>';
+                            html += '</td>';
+                            html += '</tr>';
+                            
+                            
                         }
                     });
-                    $('.ShowActivity').html(html);
+                    $('#showdata').html(html);
                 }
             });
         }
+
+     
 
         function check_activity_regis(id) {
 
@@ -151,7 +177,7 @@
             if (confirm('ยืนยันการสมัครกิจกรรม')) {
 
                 var temp = check_activity_regis(serviceid);
-                console.log (temp);
+                console.log(temp);
 
                 if (temp == 0) {
                     alert('ไม่สามารถทำการลงทะเบียนซ้ำได้');

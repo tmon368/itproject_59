@@ -121,6 +121,7 @@
                 async: false, //ห้ามลืม
                 dataType: 'json',
                 success: function(data) {
+                    console.log(data);
                     var htmlcode = '';
                     var i = 0;
 
@@ -150,7 +151,7 @@
                         htmlcode += '</tr>';
 
                     });
-                    $('#showdata').html(html);
+                    $('#showdata').html(htmlcode);
                 }
             });
         }
