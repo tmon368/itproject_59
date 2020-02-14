@@ -134,6 +134,14 @@ public function showAll(){
 	echo json_encode($result);
 }
 
+public function showAlll(){
+    $result = $this->branch_head_dashboard_model->showAlll();
+    echo json_encode($result);
+}
+public function showell(){
+    $result = $this->branch_head_dashboard_model->showell();
+    echo json_encode($result);
+}
 
 //ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 public function addnotify(){
