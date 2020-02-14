@@ -11,10 +11,6 @@
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
 
-            <a href="<?php echo site_url("Notifyoffense") ?>">
-                <li class="menu-icon mdi">การแจ้งเหตุกระทำความผิด</li>
-            </a>
-
             <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <li>การจัดการข้อมูลพื้นฐาน</li>
             </a>
@@ -28,37 +24,37 @@
                         <a class="nav-link" href="<?php echo site_url("Usertype") ?>">ประเภทผู้ใช้งาน</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">นักศึกษา</a>
+                        <a class="nav-link" href="<?php echo site_url("student") ?>">นักศึกษา</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">บุคลากร</a>
+                        <a class="nav-link" href="<?php echo site_url("personnel") ?>">บุคลากร</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">หมวดความผิด</a>
+                        <a class="nav-link" href="<?php echo site_url("Offensecate") ?>">หมวดความผิด</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">ฐานความผิด</a>
+                        <a class="nav-link" href="<?php echo site_url("Offense") ?>">ฐานความผิด</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">ประเภทหอพัก</a>
+                        <a class="nav-link" href="<?php echo site_url("Dormtype") ?>">ประเภทหอพัก</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">หอพัก</a>
+                        <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
                     </li>
                     <li class="submenu">
                         <a class="nav-link" href="#">ประเภทยานพาหนะ</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">ยานพาหนะ</a>
+                        <a class="nav-link" href="<?php echo site_url("vehicles") ?>">ยานพาหนะ</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">วันหยุด</a>
+                        <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">สถานที่</a>
+                        <a class="nav-link" href="<?php echo site_url("") ?>">สถานที่</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">หลักสูตร</a>
+                        <a class="nav-link" href="<?php echo site_url("curriculum") ?>">หลักสูตร</a>
                     </li>
                 </ul>
             </div>
@@ -87,7 +83,7 @@
                     <li class="submenu">
                         <a class="nav-link" href="#">หลักสูตร</a>
                     </li>
-                    
+
                 </ul>
             </div>
 
@@ -114,13 +110,16 @@
                     <li class="submenu">
                         <a class="nav-link" href="#">หลักสูตร</a>
                     </li>
-                    
+
                 </ul>
             </div>
 
-            
+
+            <a href="<?php echo site_url("Notifyoffense") ?>">
+                <li class="menu-icon mdi">การแจ้งเหตุกระทำความผิด</li>
+            </a>
+
+
 
         </ul>
     </div>
-
-   

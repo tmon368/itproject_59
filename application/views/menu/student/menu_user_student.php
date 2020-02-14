@@ -19,10 +19,21 @@
                 <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
 
-         
-            <a href="<?php echo site_url("#") ?>">
-                <li class="">รายงานตัวผู้กระทำความผิด</li>
+
+            <a class="" data-toggle="collapse" href="#reportperson" aria-expanded="false" aria-controls="ui-basic">
+                <li>รายงานตัวผู้กระทำความผิด</li>
             </a>
+
+            <div class="collapse" id="reportperson">
+                <ul class="nav flex-column sub-menu">
+                    <li class="submenu">
+                        <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">รายงานตัวกระทำความผิด</a>
+                    </li>
+                    <li class="submenu">
+                        <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">รายการอุทธรณ์ความผิด</a>
+                    </li>
+                </ul>
+            </div>
 
             <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <li>การบำเพ็ญประโยชน์</li>

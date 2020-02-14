@@ -21,7 +21,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header" id="card_2">
-            <h6 class="m-0 text-primary"><span id="icon_home"><i class="fa fa-home"></i></span>หน้าแรก</h6>
+            <h6 class="m-0 text-primary"><span id="icon_home"><i class="fas fa-exclamation-circle"></i></span>รายการการแจ้งเหตุล่าสุด</h6>
         </div>
 
         <div class="content">

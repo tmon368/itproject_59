@@ -47,7 +47,7 @@
                     หมวดความผิด
                 </div>
 
-                <div class="CardTool padding cursor">
+                <div class="CardTool padding cursor Offen">
                     <div class="icon1">
                         <span><i class="fas fa-ban"></i></span>
                     </div>
@@ -57,7 +57,7 @@
                     ฐานความผิด
                 </div>
 
-                <div class="CardTool padding cursor">
+                <div class="CardTool padding cursor TypeDorm">
                     <div class="icon1">
                         <span><i class="fas fa-building"></i></span>
                     </div>
@@ -67,7 +67,7 @@
                     ประเภทหอพัก
                 </div>
 
-                <div class="CardTool padding cursor">
+                <div class="CardTool padding cursor Dorm">
                     <div class="icon1">
                         <span><i class="fas fa-bed"></i></span>
                     </div>
@@ -77,7 +77,7 @@
                     หอพัก
                 </div>
 
-                <div class="CardTool padding cursor">
+                <div class="CardTool padding cursor Holidays">
                     <div class="icon1">
                         <span><i class="fas fa-calendar"></i></span>
                     </div>
@@ -87,7 +87,7 @@
                     วันหยุด
                 </div>
 
-                <div class="CardTool padding cursor">
+                <div class="CardTool padding cursor Place">
                     <div class="icon1">
                         <span><i class="fas fa-map-marker-alt"></i></span>
                     </div>
@@ -174,6 +174,23 @@
     $(".TypeOffen").click(function() {
         window.location.href = "<?php echo site_url('Offensecate')?>";
     });
+    $(".Offen").click(function() {
+        window.location.href = "<?php echo site_url('Offensecate')?>";
+    });
+    $(".TypeDorm").click(function() {
+        window.location.href = "<?php echo site_url("Dormtype") ?>";
+    });
+    $(".Dorm").click(function() {
+        window.location.href = "<?php echo site_url("Dormitory") ?>";
+    });
+    $(".Holidays").click(function() {
+        window.location.href = "<?php echo site_url("holiday1/edit")?>";
+    });
+    $(".Place").click(function() {
+        window.location.href = "<?php echo site_url("place") ?>";
+    });
+    
+
 
     
 </script>

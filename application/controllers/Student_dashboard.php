@@ -25,7 +25,6 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('student/StudentPersonal/std_infopage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
- 
 	}
 	
 	function selectstudentstatus(){
