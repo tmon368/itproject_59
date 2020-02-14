@@ -30,12 +30,12 @@
                     <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;การบำเพ็ญประโยชน์</h6>
                 </div>
 
-                
-                    <div class="ShowActivity">
+
+                <div class="ShowActivity">
 
 
-                    </div>
-                
+                </div>
+
             </div>
         </div>
     </div>
@@ -69,6 +69,8 @@
     <script type="text/javascript">
         $(document).ready(function() {
             show_all();
+            $('#servicebtn2').hide();
+            $('#CancelActivity2').show();
         });
 
 
@@ -82,62 +84,107 @@
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
+                        if (value.number_of < value.received) {
+                            var temp_1 = value.start_time;
+                            var temp_2 = value.end_time;
+                            var show_start_time = temp_1.substring(0, 5);
+                            var show_end_times = temp_2.substring(0, 5);
+                            var start_times = parseFloat(temp_1.substring(0, 5));
+                            var end_times = parseFloat(temp_2.substring(0, 5));
+                            var counthour = Math.abs(end_times - start_times);
 
-                        var temp_1 = value.start_time;
-                        var temp_2 = value.end_time;
-                        var start_times = parseFloat(temp_1.substring(0, 5));
-                        var end_times = parseFloat(temp_2.substring(0, 5));
-                        var counthour = Math.abs(end_times - start_times);
-
-                        //console.log(counthour);
-
-                        html += '<div class="Data">';
-                        html += '<div class="Main1">';
-                        html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
-                        html += '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
-                        html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
-                        html += '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
-                        html += '</div>';
-                        html += '<div class="Main2">';
-                        html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
-                        html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
-                        html += '</div>';
-                        html += '<div class="Main3">';
-                        html += '<button type="submit" class="RegisActivity">สมัครกิจกรรม</button><button type="submit" class="CancelActivity">ยกเลิก</button>';
-                        html += '</div>';
-                        html += '</div>';
-
-
+                            html += '<div class="Data">';
+                            html += '<div class="Main1">';
+                            html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
+                            html += '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                            html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times  + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                            html += '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
+                            html += '<span id="title5"> <span><i class="fas fa-torii-gate iconlabel"></i></span>สถานที่จัดกิจกรรม: '+ value.place +'</span>';
+                            html += '</div>';
+                            html += '<div class="Main2">';
+                            html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                            html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
+                            html += '</div>';
+                            html += '<div class="Main3">';
+                            html += '<button type="submit" class="RegisActivity" id="servicebtn' + value.service_ID + '" data="' + value.service_ID + '">สมัครกิจกรรม</button><button type="submit" class="CancelActivity" id="CancelActivity' + value.service_ID + '">ยกเลิก</button>';
+                            html += '</div>';
+                            html += '</div>';
+                        }
                     });
                     $('.ShowActivity').html(html);
                 }
             });
         }
 
+        function check_activity_regis(id) {
+
+            var booleen = 0;
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                url: '<?php echo site_url('Volunteer_regis/wherecheck') ?>',
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    if (data === false) {
+                        booleen = 1;
+                    }
+                },
+                error: function() {
+                    alert('Eror');
+                }
+            });
+            return booleen;
+        }
 
 
         $('.ShowActivity').on('click', '.RegisActivity', function() {
 
+            var serviceid = $(this).attr('data');
+            data = {
+                id: serviceid
+            }
+
             if (confirm('ยืนยันการสมัครกิจกรรม')) {
-                console.log('สมัคร')
-                // $('.RegisActivity').hide();
-                // $('.CancelActivity').show();
+
+                var temp = check_activity_regis(serviceid);
+                console.log (temp);
+
+                if (temp == 0) {
+                    alert('ไม่สามารถทำการลงทะเบียนซ้ำได้');
+                } else if (temp == 1) {
+                    $.ajax({
+                        type: 'ajax',
+                        method: 'get',
+                        url: '<?php echo site_url('Volunteer_regis/regisnotify') ?>',
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data)
+                            show_all();
+                        },
+                        error: function() {
+                            alert('Eror');
+                        }
+                    });
+                } else {
+
+                }
+
             } else {
 
             }
 
         });
 
-        $('.ShowActivity').on('click', '.CancelActivity', function() {
-            $('.RegisActivity').show();
-            $('.CancelActivity').hide();
-        });
-
         //show more detail
         $('.show_data').on('click', '.sh_modal', function() {
-
             var id = $(this).attr('data');
-            //console.log(id);
+
             html = '';
 
             $('#ShowDta').modal('show');
@@ -185,45 +232,6 @@
                 error: function() {
                     alert('Error');
                 }
-            });
-        });
-
-
-
-
-        //Regis activity
-        $('.show_data').on('click', '.btn_submit', function() {
-            var id = $(this).attr('data'); //Get Sevice id 
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                url: '<?php echo site_url('Volunteer_regis/regisnotify') ?>',
-                data: {
-                    id: id
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    alert('ลงทะเบียนสำเร็จ');
-                    location.reload();
-                },
-                error: function() {
-                    alert('ไม่สามารถลงทะเบียนได้');
-                }
-            });
-        });
-
-        $(function() {
-            $(".paginate").paginga({
-                // use default options
-            });
-
-            $(".paginate-page-2").paginga({
-                page: 2
-            });
-
-            $(".paginate-no-scroll").paginga({
-                scrollToTop: false
             });
         });
     </script>
