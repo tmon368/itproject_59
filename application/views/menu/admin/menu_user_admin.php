@@ -42,7 +42,7 @@
                         <a class="nav-link" href="<?php echo site_url("Dormitory") ?>">หอพัก</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">ประเภทยานพาหนะ</a>
+                        <a class="nav-link" href="<?php echo site_url("vehiclestype") ?>">ประเภทยานพาหนะ</a>
                     </li>
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("vehicles") ?>">ยานพาหนะ</a>
@@ -51,7 +51,7 @@
                         <a class="nav-link" href="<?php echo site_url("holiday1/edit") ?>">วันหยุด</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("") ?>">สถานที่</a>
+                        <a class="nav-link" href="<?php echo site_url("Place") ?>">สถานที่</a>
                     </li>
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("curriculum") ?>">หลักสูตร</a>
@@ -66,22 +66,22 @@
             <div class="collapse" id="ui-basic2">
                 <ul class="nav flex-column sub-menu">
                     <li class="submenu">
-                        <a class="nav-link" href="#">นักศึกษา</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/pagestudent") ?>">นักศึกษา</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">สถานะนักศึกษา</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/pagestatus") ?>">สถานะนักศึกษา</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">บุคลากร</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/pagepersonnel") ?>">บุคลากร</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">ยานพาหนะ</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/pagevehicles") ?>">ยานพาหนะ</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">หน่วยงาน</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/pagedivisions") ?>">หน่วยงาน</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">หลักสูตร</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/pagecurriculum") ?>">หลักสูตร</a>
                     </li>
 
                 </ul>
@@ -93,22 +93,22 @@
             <div class="collapse" id="ui-basic3">
                 <ul class="nav flex-column sub-menu">
                     <li class="submenu">
-                        <a class="nav-link" href="#">นักศึกษา</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstudent") ?>">นักศึกษา</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">สถานะนักศึกษา</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstatus") ?>">สถานะนักศึกษา</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">บุคลากร</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/statusimportpersonnel") ?>">บุคลากร</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">ยานพาหนะ</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/statusimportvehicles") ?>">ยานพาหนะ</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">หน่วยงาน</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/statusimportdivisions") ?>">หน่วยงาน</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="#">หลักสูตร</a>
+                        <a class="nav-link" href="<?php echo site_url("Import_data/statusimportcurriculum") ?>">หลักสูตร</a>
                     </li>
 
                 </ul>

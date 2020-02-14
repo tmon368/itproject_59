@@ -216,7 +216,7 @@ background-color: #ffbf00	;
 </div>
 
 
-<div class="col-lg-8 "><font size="4"><div class="card-header" id="card_2">
+<div class="col-lg-7 "><font size="4"><div class="card-header" id="card_2">
 <h6 class="m-0 text-primary"></h6></div><br><center>กิจกรรมเพิ่มเติม</center></font>
 <div class="btn btn-inverse-success btn-fw" id="btnAdd" data-toggle="modal">
 	<ul>
@@ -229,6 +229,7 @@ background-color: #ffbf00	;
 		</li>
 	</ul>
 </div>
+&nbsp;&nbsp;&nbsp;	
 <div class="btn btn-inverse-warning btn-fw" id="btnedd" data-toggle="modal">
 	<ul style="padding-right:50px">
 		<li>
@@ -239,8 +240,7 @@ background-color: #ffbf00	;
 			
 		</li>
 	</ul>
-</div>
-				
+</div>		
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width: 620px!important;" role="document">
     <div class="modal-content" >
