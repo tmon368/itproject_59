@@ -36,4 +36,9 @@ class Volunteer_history extends Student_dashboard {
 		echo json_encode($result);
 	}
 
+	public function cancelActivity (){
+		//stament
+	}
+
+
 }

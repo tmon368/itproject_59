@@ -34,7 +34,7 @@
                     <table id="style_table" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th id="idsort">ลำดับ</th>
+                                <th id="idsort"></th>
                             </tr>
                         </thead>
 
@@ -46,48 +46,13 @@
                     </table>
 
                 </div>
-
-
-
-                <!-- <div class="ShowActivity">
-
-
-                </div> -->
-
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-    <!-- Modal detail-->
-    <div class="modal fade" id="ShowDta" role="dialog">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"> </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                </div>
-                <div class="modal-body content">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <script type="text/javascript">
         $(document).ready(function() {
             show_all();
-            //show_all_2();
         });
 
 

@@ -48,7 +48,7 @@
                         </thead>
 
                         <tbody id="showdata">
-                            
+
 
                         </tbody>
 
@@ -107,11 +107,32 @@
                 $('#style_table').DataTable({
                     columnDefs: [{
                         orderable: false,
-                        targets: [1,2]
+                        targets: [1, 2]
                     }]
                 });
             }
         });
+
+        $('#showdata').on('click', '.cancleActivity', function() {
+
+            var serviceid = $(this).attr('data');
+            if (confirm('ต้องการยกเลิกกิจกรรมลงทะเบียน')) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo site_url("Volunteer_history/cancelActivity") ?>',
+                    async: false, //ห้ามลืม
+                    dataType: 'json',
+                    success: function(data) {
+                        //stament
+                    }
+                });
+
+            }
+
+        });
+
+
+
 
         function show_all() {
 
@@ -142,12 +163,12 @@
                         htmlcode += '<div class="DetailActivity">';
                         htmlcode += '<span id="activity_name">กิจกรรม:' + value.service_name + '</span>';
                         htmlcode += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
-                        htmlcode += '<span id="time_activity">เวลาเริ่ม '+ show_start_time +' ถึง '+show_end_times+' ชั่วโมงกิกรรม '+ counthour +' ชม.</span>';
-                        htmlcode += '<span id="place">'+value.place+'</span>';
+                        htmlcode += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        htmlcode += '<span id="place">' + value.place + '</span>';
                         htmlcode += '</div>';
                         htmlcode += '</td>';
-                        htmlcode += '<td id="person_control">'+ value.person_fname +" "+ value.person_lname +'</td>';
-                        htmlcode += '<td><button name="btndel" id="btndel" type="button" class="btn btn-danger btn-rounded btn-fw del_data">ยกเลิกกิจกรรม</button></td>';
+                        htmlcode += '<td id="person_control">' + value.person_fname + " " + value.person_lname + '</td>';
+                        htmlcode += '<td><button name="btndel" id="btndel" type="button" class="btn btn-danger btn-rounded btn-fw cancleActivity" data="' + value.service_ID + '">ยกเลิกกิจกรรม</button></td>';
                         htmlcode += '</tr>';
 
                     });
