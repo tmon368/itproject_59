@@ -16,7 +16,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/page_import_data');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -28,7 +29,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/importstudent');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -40,7 +42,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/importpersonnel');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -52,7 +55,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/importstatus');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -64,7 +68,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/importvehicles');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -76,7 +81,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/importdivisions');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -88,7 +94,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/importcurriculum');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -115,7 +122,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/statusimportstudent');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -127,7 +135,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/statusimportpersonnel');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -139,7 +148,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/statusimportstatus');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -151,7 +161,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/statusimportvehicles');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -163,7 +174,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/statusimportdivisions');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
@@ -176,7 +188,8 @@ class Import_data extends Admin_dashboard {
         //List ข้อมูลมาแสดงในหน้าจอ
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('template/template3');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
         $this->load->view('basicdata/importdata/statusimportcurriculum');
         $this->load->view('template/template5');
         $this->load->view('template/template6');
