@@ -53,6 +53,16 @@
     <script type="text/javascript">
         $(document).ready(function() {
             show_all();
+            disabled_sort();
+
+            function disabled_sort() {
+                $('#style_table').DataTable({
+                    columnDefs: [{
+                        orderable: false,
+                        targets: [1, 2]
+                    }]
+                });
+            }
         });
 
 
@@ -96,8 +106,8 @@
                             html += '</div>';
                             html += '</td>';
                             html += '</tr>';
-                            
-                            
+
+
                         }
                     });
                     $('#showdata').html(html);
@@ -105,7 +115,7 @@
             });
         }
 
-     
+
 
         function check_activity_regis(id) {
 

@@ -12,16 +12,16 @@
             </a>
 
             <a href="<?php echo site_url("Std_info") ?>">
-                <li class="">ข้อมูลส่วนตัว</li>
+                <li class="menu-icon mdi mdi-account">ข้อมูลส่วนตัว</li>
             </a>
 
             <a href="<?php echo site_url("Notifyoffense") ?>">
-                <li class="">แจ้งเหตุกระทำความผิด</li>
+                <li class="menu-icon mdi mdi-alert-circle">แจ้งเหตุกระทำความผิด</li>
             </a>
 
 
             <a class="" data-toggle="collapse" href="#reportperson" aria-expanded="false" aria-controls="ui-basic">
-                <li>รายงานตัวผู้กระทำความผิด</li>
+                <li class="menu-icon mdi mdi-format-list-checks">รายงานตัวผู้กระทำความผิด</li>
             </a>
 
             <div class="collapse" id="reportperson">
@@ -36,7 +36,7 @@
             </div>
 
             <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <li>การบำเพ็ญประโยชน์</li>
+                <li class="menu-icon mdi mdi-airballoon">การบำเพ็ญประโยชน์</li>
             </a>
 
 
