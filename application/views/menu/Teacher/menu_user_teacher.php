@@ -11,7 +11,7 @@
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
 
-            <a href="<?php echo site_url("Notifyoffense") ?>">
+            <a href="<?php echo site_url("Notifyoffense_teacher") ?>">
                 <li class="menu-icon mdi mdi-alert-circle">แจ้งเหตุกระทำความผิด</li>
             </a>
 

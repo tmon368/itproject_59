@@ -30,7 +30,7 @@ class Dean_dashboard extends CI_Controller {
 		$this->load->view('template/template2');
 		$this->load->view('menu/Dean/menu_user_dean');
 		$this->load->view('template/template4');
-		$this->load->view('dean/firstpage/firstpage');
+		$this->load->view('Dean/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
@@ -73,16 +73,17 @@ class Dean_dashboard extends CI_Controller {
 	            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
 			}
 
-			if($this->session->userdata('autority') == "branch_head"){
+			if($this->session->userdata('autority') == "Branchhead"){
 	            redirect(base_url() . 'index.php/Branch_head_dashboard');
 			}
-
+			
 
 
 			if($this->session->userdata('autority') == "security_guard"){
 	            redirect(base_url() . 'index.php/Security_guard_dashboard');
 			}
-					
+				
+			
 	    }else{
 	        redirect(base_url() . 'index.php/Loginuser');
 	        
