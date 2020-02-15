@@ -36,7 +36,7 @@
  #menuToggle a
  {
    text-decoration: none;
-   color: #fff;
+   color: rgb(255, 255, 255);
    
    transition: color 0.3s ease;
  }
@@ -154,6 +154,11 @@
    padding: 10px 0;
    font-size: 16px;
  }
+.nav-link{
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
  
  /*
   * And let's slide it in from the left
@@ -162,3 +167,11 @@
  {
    transform: none;
  }
+
+ .nav-link{
+   color: #E8DAEF   !important;
+   font-family: 'Taviraj',sans-serif;
+ }
+ .nav-link:hover{
+  color: tomato !important;
+}
