@@ -112,6 +112,27 @@ class teacher_dashboard_model extends CI_Model {
          return false;
          }
 
+    }
+    function studentinactivity(){
+        //$id = $this->input->get('id');
+        $id = 3;
+        $this->db->select('s.S_ID,s.std_fname,s.std_lname,s.email,s.phone');
+        $this->db->from('service sv');
+        $this->db->join('participationactivities p','sv.service_ID=p.service_ID');
+        $this->db->join('student s','p.S_ID=s.S_ID');
+        $this->db->where('sv.service_ID',$id);
+        $query = $this->db->get();
+        $stdacticity = array();
+        $stdacticity = $query->result_array();
+        // var_dump($stdacticity);
+        // die();
+        
+        if($stdacticity > 0){
+            return $stdacticity;
+         }else{
+         return false;
+         }
+
 	}
 
        // =======================================================================================================================
