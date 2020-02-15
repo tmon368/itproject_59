@@ -24,7 +24,8 @@ class Teacher_dashboard extends CI_Controller {
 		$this->load->view('template/template2');
 		$this->load->view('menu/Teacher/menu_user_teacher');
 		$this->load->view('template/template4');
-		$this->load->view('teacher/firstpage');
+		//$this->load->view('teacher/firstpage');
+		$this->load->view('teacher/VolunteerAc/ShowActivityVolunteer');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	}

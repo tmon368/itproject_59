@@ -1,0 +1,42 @@
+#idsort{
+    width: 5%;
+}
+#detail_activity_regis{
+    width: 60%;
+    text-align: center;
+}
+#person_control{
+    width: 20%;
+    text-align: center;
+}
+#manage{
+    width:10%;
+    text-align: center;
+}
+#person_control{
+    text-align: center;
+}
+#open_name_participants{
+    color: #5DADE2;
+    font-size: 18px;
+}
+#open_name_participants:hover{
+    cursor: pointer;
+    font-size: 22px;
+    color: #58D68D;
+    transition: 0.2s;
+    opacity: 2;
+}
+#file{
+    text-align: center;
+}
+.DetailActivity{
+    display: grid;
+}
+.TitleActivity{
+    width: 100%;
+    text-align: center;
+}
+.HeaderData{
+    display: grid;
+}

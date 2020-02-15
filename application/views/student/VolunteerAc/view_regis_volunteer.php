@@ -59,7 +59,7 @@
                 $('#style_table').DataTable({
                     columnDefs: [{
                         orderable: false,
-                        targets: [1, 2]
+                        targets: 1
                     }]
                 });
             }
@@ -142,7 +142,7 @@
         }
 
 
-        $('.ShowActivity').on('click', '.RegisActivity', function() {
+        $('#showdata').on('click', '.RegisActivity', function() {
 
             var serviceid = $(this).attr('data');
             data = {
