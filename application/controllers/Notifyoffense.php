@@ -1,13 +1,13 @@
 <?php
 require_once('Student_dashboard.php');
+require_once('Branch_head_dashboard.php');
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Notifyoffense extends Student_dashboard
-{
-	function __construct()
-	{
+class Notifyoffense extends Student_dashboard {
+	function __construct(){
 		parent::__construct();
 		$this->load->model('Notifyoffense_model', 'Notifyoffense_model');
+		$this->load->model('SettimeSession','SettimeSession');
 	}
 
 
@@ -33,6 +33,70 @@ class Notifyoffense extends Student_dashboard
 		$this->load->view('student/notify/blank');
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
+	}
+
+
+
+	function checkAutoriry() {
+	    //$admin = $this->session->userdata('admin');
+	    // $student = $this->session->userdata('student');
+	    //echo $username;
+	    // die();
+	    
+		//$this->session->mark_as_temp('login',1800);
+		$this->SettimeSession->SetTime();
+	    if($this->session->userdata('login') == true){
+	        
+	       
+	        if($this->session->userdata('autority') == "student"){
+	            redirect(base_url() . 'index.php/Student_dashboard');
+	        }
+	        
+	        if($this->session->userdata('autority') == "teacher"){
+	            redirect(base_url() . 'index.php/Teacher_dashboard');
+			}
+			if($this->session->userdata('autority') == "discipline_officer"){
+	            redirect(base_url() . 'index.php/Discipline_officer_dashboard');
+			}
+			if($this->session->userdata('autority') == "headofstudent_affairs"){
+	            redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
+			}
+
+			if($this->session->userdata('autority') == "dormitory_supervisor"){
+	            redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+			}
+			
+			if($this->session->userdata('autority') == "dormitory_advisor"){
+	            redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
+            }
+            
+            if($this->session->userdata('autority') == "admin"){
+	            redirect(base_url() . 'index.php/Admin_dashboard');
+			}
+
+			if($this->session->userdata('autority') == "dean"){
+	            redirect(base_url() . 'index.php/Dean_dashboard');
+			}
+
+			if($this->session->userdata('autority') == "security_guard"){
+	            redirect(base_url() . 'index.php/Security_guard_dashboard');
+			}
+
+			if($this->session->userdata('autority') == "employee"){
+	            redirect(base_url() . 'index.php/Employee_dashboard');
+			}
+			if($this->session->userdata('autority') == "Branchhead"){
+	            redirect(base_url() . 'index.php/Branch_head_dashboard');
+			}
+			
+	    }else{
+	        redirect(base_url() . 'index.php/Loginuser');
+	        
+	        
+	    }
+	    
+	    
+	    
 	}
 
 	//ฟังก์ชันเรียกข้อมูลทั้งหมดจาก table personnel และแสดงข้อมูลในview
