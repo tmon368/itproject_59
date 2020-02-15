@@ -95,6 +95,25 @@ class teacher_dashboard_model extends CI_Model {
          }
     }
 
+    function Allactivity(){
+        $teacher = $this->session->userdata('teacher');
+        $this->db->select('*');
+        $this->db->from('service sv');
+        //$this->db->where('p.username',$teacher);
+        $query = $this->db->get();
+        $acticity = array();
+        $acticity = $query->result_array();
+        // var_dump($acticity);
+        // die();
+        
+        if($acticity > 0){
+            return $acticity;
+         }else{
+         return false;
+         }
+
+	}
+
        // =======================================================================================================================
     //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
     function spc_showoffhead(){
