@@ -78,13 +78,47 @@
                 <div class="modal-body">
 
                     <div class="HeaderData">
-                        <span id="activity_name">กิจกรรม: ปลูกต้นไม้รักษํโลก จังหวัดเพชรบูรณ์</span>
-                        <span id="date_activity">วันที่จัดกิจกรรม 12 ธันวาคม 2563</span>
-                        <span id="time_activity">เวลาเริ่ม 13:00 ถึง 14:00 ชั่วโมงกิกรรม 1 ชม.</span>
-                        <span id="place">เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
+                        <div class="DetailData">
+                            <span id="activity_name">กิจกรรม: ปลูกต้นไม้รักษํโลก จังหวัดเพชรบูรณ์</span>
+                            <span id="date_activity">วันที่จัดกิจกรรม 12 ธันวาคม 2563</span>
+                            <span id="time_activity">เวลาเริ่ม 13:00 ถึง 14:00 ชั่วโมงกิกรรม 1 ชม.</span>
+                            <span id="place">เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
+                        </div>
                     </div>
                     <div class="ShowDataParticipants">
-                        
+
+                        <table id="style_table" class="table table-striped table-bordered nowrap" style="width:100%">
+                            <thead>
+                                <th>ลำดับ</th>
+                                <th>รหัสนักศึกษา</th>
+                                <th>รหัสนักศึกษา</th>
+                                <th>ชื่อ-นามสกุล</th>
+                                <th>E-mail</th>
+                                <th>หมายเลขโทรศัพท์</th>
+                            </thead>
+
+                            <tbody id="showdata">
+                                <tr>
+                                    <td>1</td>
+                                    <td>59123456</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>59123456</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
                     </div>
 
 
@@ -98,8 +132,10 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            //show_all();
+            show_all();
             disabled_sort();
+
+
 
             function disabled_sort() {
                 $('#style_table').DataTable({
@@ -117,16 +153,45 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("#/#") ?>',
+                url: '<?php echo site_url("Teacher_dashboard/Allactivity") ?>',
                 async: false,
                 dataType: 'json',
                 success: function(data) {
+                    var html = '';
+                    var i = 0;
 
+                    $.each(data, function(key, value) {
+
+                        var temp_1 = value.start_time;
+                        var temp_2 = value.end_time;
+                        var show_start_time = temp_1.substring(0, 5);
+                        var show_end_times = temp_2.substring(0, 5);
+                        var start_times = parseFloat(temp_1.substring(0, 5));
+                        var end_times = parseFloat(temp_2.substring(0, 5));
+                        var counthour = Math.abs(end_times - start_times);
+
+                        i++;
+                        html += '<tr>';
+                        html += '<td id="sort_number">' + i + '</td>';
+                        html += '<td id="detail_activity">';
+                        html += '<div class="DetailActivity">';
+                        html += '<span id="activity_name">กิจกรรม: ' + value.service_name + '</span>';
+                        html += '<span id="date_activity">วันที่จัดกิจกรรม ' + value.service_date + '</span>';
+                        html += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        html += '<span id="place">' + value.place + '</span>';
+                        html += '</div>';
+                        html += '</td>';
+                        html += '<td id="person_control">สมฤดี เย็นใจ</td>';
+                        html += '<td id="file"><span id="open_name_participants"><i class="fa fa-folder-open"></i></span></td>';
+                        html += '</tr>';
+
+                    });
+                    $('#showdata').html(html);
                 }
             });
         }
 
-        $('#file').click(function() {
+        $('#showdata').on('click', '#file', function() {
             console.log('5555');
             $('#show_participants').modal('show');
         });

@@ -30,13 +30,35 @@
 #file{
     text-align: center;
 }
+#title1{
+    font-size: 14px;
+}
+#iconfolder{
+    font-size: 18px;
+    color: #365372;
+}
+
 .DetailActivity{
     display: grid;
 }
 .TitleActivity{
     width: 100%;
     text-align: center;
+    font-size: 18px;
 }
 .HeaderData{
+    display: flex;
+    width: 100%;
+    text-align: right;
+}
+.Head{
+    width: 60%;
+    text-align: left;
+    padding-top: 1.5rem;
+}
+.DetailData{
+    width: 100%;
+    text-align: center;
     display: grid;
+    font-size: 14px;
 }
