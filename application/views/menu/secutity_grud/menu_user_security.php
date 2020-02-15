@@ -10,7 +10,7 @@
             <a href="<?php echo site_url("Security_guard_dashboard") ?>">
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
-            <a href="<?php echo site_url("Notifyoffense") ?>">
+            <a href="<?php echo site_url("Notifyoffense_security") ?>">
                 <li>แจ้งเหตุกระทำความผิด</li>
             </a>
 

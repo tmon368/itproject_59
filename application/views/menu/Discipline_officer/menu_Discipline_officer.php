@@ -7,11 +7,11 @@
         <span></span>
 
         <ul id="menu">
-            <a href="<?php echo site_url("Discipline_officer") ?>">
+            <a href="<?php echo site_url("Discipline_officer_dashboard") ?>">
                 <li class="menu-icon mdi mdi-television">หน้าแรก</li>
             </a>
 
-            <a href="<?php echo site_url("Notifyoffense") ?>">
+            <a href="<?php echo site_url("Notifyoffense_discipline") ?>">
                 <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
           

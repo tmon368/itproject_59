@@ -95,6 +95,46 @@ class teacher_dashboard_model extends CI_Model {
          }
     }
 
+    function Allactivity(){
+        $teacher = $this->session->userdata('teacher');
+        $this->db->select('*');
+        $this->db->from('service sv');
+        //$this->db->where('p.username',$teacher);
+        $query = $this->db->get();
+        $acticity = array();
+        $acticity = $query->result_array();
+        // var_dump($acticity);
+        // die();
+        
+        if($acticity > 0){
+            return $acticity;
+         }else{
+         return false;
+         }
+
+    }
+    function studentinactivity(){
+        //$id = $this->input->get('id');
+        $id = 3;
+        $this->db->select('s.S_ID,s.std_fname,s.std_lname,s.email,s.phone');
+        $this->db->from('service sv');
+        $this->db->join('participationactivities p','sv.service_ID=p.service_ID');
+        $this->db->join('student s','p.S_ID=s.S_ID');
+        $this->db->where('sv.service_ID',$id);
+        $query = $this->db->get();
+        $stdacticity = array();
+        $stdacticity = $query->result_array();
+        // var_dump($stdacticity);
+        // die();
+        
+        if($stdacticity > 0){
+            return $stdacticity;
+         }else{
+         return false;
+         }
+
+	}
+
        // =======================================================================================================================
     //แสดงเฉพาะรายการแจ้งเหตุที่ผู้ใช้ลบ
     function spc_showoffhead(){

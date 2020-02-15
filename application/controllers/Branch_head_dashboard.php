@@ -23,7 +23,7 @@ class Branch_head_dashboard extends CI_Controller {
 	    $this->load->view('template/template2');
 	    $this->load->view('menu/branch_head/menu_branch_head');
 	    $this->load->view('template/template4');
-        $this->load->view('branch_head/firstpage/firstpage');
+		$this->load->view('branch_head/firstpage/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    

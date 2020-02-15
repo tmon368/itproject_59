@@ -58,6 +58,17 @@ class Teacher_dashboard extends CI_Controller {
 	    echo json_encode($result,JSON_NUMERIC_CHECK);
 	}
 
+	function Allactivity(){
+		$result = $this->teacher_dashboard_model->Allactivity();
+	    echo json_encode($result);
+
+	}
+	function studentinactivity(){
+		$result = $this->teacher_dashboard_model->studentinactivity();
+	    echo json_encode($result);
+
+	}
+	
 	/*
 	function selectstudent(){
 	   // $username = $this->session->userdata('username');

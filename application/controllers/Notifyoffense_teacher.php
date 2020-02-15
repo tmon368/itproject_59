@@ -1,8 +1,8 @@
 <?php
-require_once('Student_dashboard.php');
+require_once('Teacher_dashboard.php');
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Notifyoffense extends Student_dashboard
+class Notifyoffense_teacher extends Teacher_dashboard
 {
 	function __construct()
 	{
@@ -26,7 +26,7 @@ class Notifyoffense extends Student_dashboard
 	{
 		$this->load->view('template/template1');
 		$this->load->view('template/template2');
-		$this->load->view('menu/student/menu_user_student');
+		$this->load->view('menu/Teacher/menu_user_teacher');
 		$this->load->view('template/template4');
 		//$this->load->view('student/notify/notify_page');
 		//$this->load->view('student/notify/NotifyUserStudentPage');
@@ -42,6 +42,64 @@ class Notifyoffense extends Student_dashboard
 		echo json_encode($result);
 	}
 
+
+
+
+    function checkAutoriry() {
+
+	    
+		// $this->session->mark_as_temp('login',1800);
+		$this->SettimeSession->SetTime();
+
+	    if($this->session->userdata('login') == true){
+ 
+	        if($this->session->userdata('autority') == "admin"){
+	            redirect(base_url() . 'index.php/Admin_dashboard');
+	            }
+	            
+	        if($this->session->userdata('autority') == "student"){
+	            redirect(base_url() . 'index.php/Student_dashboard');
+				}
+				
+				if($this->session->userdata('autority') == "discipline_officer"){
+					redirect(base_url() . 'index.php/Discipline_officer_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "headofstudent_affairs"){
+					redirect(base_url() . 'index.php/Headofstudent_affairs_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "dormitory_supervisor"){
+					redirect(base_url() . 'index.php/Dormitory_supervisor_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "dormitory_advisor"){
+					redirect(base_url() . 'index.php/Dormitory_advisor_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "branch_head"){
+					redirect(base_url() . 'index.php/Branch_head_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "dean"){
+					redirect(base_url() . 'index.php/Dean_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "security_guard"){
+					redirect(base_url() . 'index.php/Security_guard_dashboard');
+				}
+
+				if($this->session->userdata('autority') == "employee"){
+					redirect(base_url() . 'index.php/Employee_dashboard');
+				}
+				
+	    }else{
+	        redirect(base_url() . 'index.php/Loginuser');
+	        
+	        
+	    }
+	    
+        }
 
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addnotify()

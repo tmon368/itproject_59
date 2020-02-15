@@ -115,7 +115,7 @@
             </div>
 
 
-            <a href="<?php echo site_url("Notifyoffense") ?>">
+            <a href="<?php echo site_url("Notifyoffense_admin") ?>">
                 <li class="menu-icon mdi">การแจ้งเหตุกระทำความผิด</li>
             </a>
 
