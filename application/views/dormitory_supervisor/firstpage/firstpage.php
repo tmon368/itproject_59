@@ -229,35 +229,18 @@
 						<div class="card-body " id="card_1">
 							<font size="4"><center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพัก.</center></font>
 							<br> <br>
-
-							<div id="chartContainer" style="height: 300px; width: 100%;"></div>
-							<script type="text/javascript">
-  window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer", {
-      height:350,
-      animationEnabled: true, 
-		animationDuration: 2000,   //change to 1000, 500 etc
-      axisX:{ 	
-          title: "หมวดความผิด"
-         },
-      data: [
-      {
-        dataPoints: [
-        { x: 10, y: 50 },
-        { x: 20, y: 40},
-        { x: 30, y: 60 },
-        { x: 40, y: 80 },
-        { x: 50, y: 20 },
-        { x: 60, y: 60 }
-        ]
-      }
-      ]
-    });
-
-    chart.render();
-  }
-  </script>
-							<br> <br> <br> <br>
+<table class="table table-hover m-b-0">
+								<div class="breadcrumb3">
+									 
+									<br>
+									<br>
+									<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+									<button class="btn invisible" id="backButton">
+										< Back</button> <!-- <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js">
+											</script> -->
+											<script src="../re/js/canvasjs.min.js"></script>
+											<script src="../re/js/jquery.canvasjs.min.js"></script>
+							</table>							<br> <br> <br> <br>
 						</div>
 
 					</div>
@@ -385,15 +368,16 @@ selectscoreservice();
 selectscoretraining();
 show_all();
 show_ell();
+selectstudentpoint();
 function selectscorestudent() {
     $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/Dean_dashboard/selectscorestudent',
+        url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
         async: false,
         dataType: 'json',
         success: function(data) {
            // alert(data)
-        	$('#showscorestudent').html(data.numberstudent);
+        	$('#showscorestudent').html(data.numstd);
         	
         },
         error: function() {
@@ -536,40 +520,107 @@ function show_all() {
         }
     });
 }
-function show_ell() {
-
-    html = '';
-    $.ajax({
-        type: 'POST',
-        url: '<?php echo site_url("Branch_head_dashboard/showell") ?>',
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);
-            $.each(data, function(key, value) {
-
-                html += '<div class="Data">';
-                html += '<div class="Main1">';
-                html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-               // html += '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
-               // html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
-               // html += '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
-                html += '</div>';
-                html += '<div class="Main2">';
-                html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
-               // html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
-                html += '</div>';
-                html += '<div class="Main3">';
-                html += '</div>';
-                html += '</div>';
+function selectstudentpoint() {
+	$.ajax({
+		type: 'ajax',
+		url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
+		async: false,
+		dataType: 'json',
+		success: function(data) { // console.log(data); 
+			//alert(data[0].behavior_score)
+			var score = data[0].numstd;
+			var deducted_points = 100 - score;
+			var deducted_pointss = deducted_points; // คะแนนที่หัก
 
 
-            });
-            $('.ShowActivity2').html(html);
-        }
-    });
+			var data = [{
+					y: deducted_pointss,
+					name: "คะแนนที่หัก",
+					color: "#FF9966"
+				},
+				{
+					y: score,
+					name: "คะแนนคงเหลือ",
+					color: "#66CC66"
+				}
+			];
+
+			renderGra(data);
+
+		},
+		error: function() {
+			alert('ไม่มีข้อมูล');
+		}
+	});
 }
 
 
+var renderGra = function(dataDB) {
+	var totalVisitors = 100;
+	var visitorsData = {
+		"New vs Returning Visitors": [{
+			click: visitorsChartDrilldownHandler,
+			cursor: "pointer",
+			explodeOnClick: false,
+			innerRadius: "75%",
+			legendMarkerType: "square",
+			name: "New vs Returning Visitors",
+			radius: "100%",
+			showInLegend: true,
+			startAngle: 90,
+			type: "doughnut",
+
+			dataPoints: dataDB
+		}],
+
+
+	};
+
+	var newVSReturningVisitorsOptions = {
+		animationEnabled: true,
+		theme: "light2",
+		title: {
+			text: ""
+		},
+		subtitles: [{
+			text: "",
+			backgroundColor: "#2eacd1",
+			fontSize: 16,
+			fontColor: "white",
+			padding: 5
+		}],
+		legend: {
+			fontFamily: "calibri",
+			fontSize: 14,
+			itemTextFormatter: function(e) {
+				return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100);
+			}
+		},
+		data: []
+	};
+
+	var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+	chart.options.data = visitorsData["New vs Returning Visitors"];
+	chart.render();
+
+	function visitorsChartDrilldownHandler(e) {
+		chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
+		chart.options.data = visitorsData[e.dataPoint.name];
+		chart.options.title = {
+			text: e.dataPoint.name
+		}
+		chart.render();
+		$("#backButton").toggleClass("invisible");
+	}
+	/*
+	$("#backButton").click(function() { 
+		$(this).toggleClass("invisible");
+		chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+		chart.options.data = visitorsData["New vs Returning Visitors"];
+		chart.render();
+	});
+	*/
+}
 </script>
 
 </body>

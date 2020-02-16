@@ -44,7 +44,10 @@ class Branch_head_dashboard extends CI_Controller {
 		echo json_encode($result);
         
     }
-	
+	function searchoffensestudent(){
+		$result = $this->branch_head_dashboard_model->searchoffensestudent();
+		echo json_encode($result);
+	}
 	
 	function checkAutoriry() {
 	    //$admin = $this->session->userdata('admin');
