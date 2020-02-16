@@ -229,35 +229,18 @@
 						<div class="card-body " id="card_1">
 							<font size="4"><center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพัก.</center></font>
 							<br> <br>
-
-							<div id="chartContainer" style="height: 300px; width: 100%;"></div>
-							<script type="text/javascript">
-  window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer", {
-      height:350,
-      animationEnabled: true, 
-		animationDuration: 2000,   //change to 1000, 500 etc
-      axisX:{ 	
-          title: "หมวดความผิด"
-         },
-      data: [
-      {
-        dataPoints: [
-        { x: 10, y: 50 },
-        { x: 20, y: 40},
-        { x: 30, y: 60 },
-        { x: 40, y: 80 },
-        { x: 50, y: 20 },
-        { x: 60, y: 60 }
-        ]
-      }
-      ]
-    });
-
-    chart.render();
-  }
-  </script>
-							<br> <br> <br> <br>
+<table class="table table-hover m-b-0">
+								<div class="breadcrumb3">
+									
+									<br>
+									<br>
+									<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+									<button class="btn invisible" id="backButton">
+										< Back</button> <!-- <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js">
+											</script> -->
+											<script src="../re/js/canvasjs.min.js"></script>
+											<script src="../re/js/jquery.canvasjs.min.js"></script>
+							</table>							<br> <br> <br> <br>
 						</div>
 
 					</div>
@@ -389,12 +372,12 @@ selectstudentpoint();
 function selectscorestudent() {
     $.ajax({
         type: 'ajax',
-        url: '<?php echo base_url() ?>index.php/Dean_dashboard/selectscorestudent',
+        url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
         async: false,
         dataType: 'json',
         success: function(data) {
            // alert(data)
-        	$('#showscorestudent').html(data.numberstudent);
+        	$('#showscorestudent').html(data.numstd);
         	
         },
         error: function() {
@@ -537,58 +520,29 @@ function show_all() {
         }
     });
 }
-function show_ell() {
-
-    html = '';
-    $.ajax({
-        type: 'POST',
-        url: '<?php echo site_url("Branch_head_dashboard/showell") ?>',
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);
-            $.each(data, function(key, value) {
-
-                html += '<div class="Data">';
-                html += '<div class="Main1">';
-                html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-               // html += '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
-               // html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
-               // html += '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
-                html += '</div>';
-                html += '<div class="Main2">';
-                html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
-               // html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
-                html += '</div>';  
-                html += '<div class="Main3">';
-                html += '</div>';
-                html += '</div>';
-
-
-            });
-            $('.ShowActivity2').html(html);
-        }
-    });
-}
-
 function selectstudentpoint() {
 	$.ajax({
 		type: 'ajax',
-	url: '<?php echo base_url() ?>index.php/Dormitory_supervisor_dashboard/getDashboard',
+		url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
 		async: false,
 		dataType: 'json',
-		success: function(data) {
-			  console.log(data); 
+		success: function(data) { // console.log(data); 
 			//alert(data[0].behavior_score)
-			var oc_ID = data[0].oc_ID;
-			 // คะแนนที่หัก
+			var score = data[0].numstd;
+			var deducted_points = 100 - score;
+			var deducted_pointss = deducted_points; // คะแนนที่หัก
 
 
 			var data = [{
-				oc_ID: oc_ID,
+					y: deducted_pointss,
 					name: "คะแนนที่หัก",
 					color: "#FF9966"
 				},
-				
+				{
+					y: score,
+					name: "คะแนนคงเหลือ",
+					color: "#66CC66"
+				}
 			];
 
 			renderGra(data);
@@ -599,6 +553,7 @@ function selectstudentpoint() {
 		}
 	});
 }
+
 
 var renderGra = function(dataDB) {
 	var totalVisitors = 100;
@@ -644,26 +599,6 @@ var renderGra = function(dataDB) {
 		data: []
 	};
 
-	/*
-	var visitorsDrilldownedChartOptions = {
-		animationEnabled: true,
-		theme: "light2",
-		axisX: {
-			labelFontColor: "#717171",
-			lineColor: "#a2a2a2",
-			tickColor: "#a2a2a2"
-		},
-		axisY: {
-			gridThickness: 0,
-			includeZero: false,
-			labelFontColor: "#717171",
-			lineColor: "#a2a2a2",
-			tickColor: "#a2a2a2",
-			lineThickness: 1
-		},
-		data: []
-	};
-	*/
 	var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
 	chart.options.data = visitorsData["New vs Returning Visitors"];
 	chart.render();
