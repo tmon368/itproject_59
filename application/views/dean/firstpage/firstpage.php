@@ -617,7 +617,7 @@ $.ajax({
             html += '<span id="title7">รหัสนักศึกษา: '+ value.S_ID +"    "+'ชื่อ : '+ value.std_fname +" "+ value.std_lname +'</span>'+'</span>';
             html += '<span id="title6">วันที่กระทำผิด:  '+ value.committed_date +'</span>';
             html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
-            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoff +'</span>';
+            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
             html += '</div>';
             html += '<div class="Main2">';
             html += '<div class="CountStudent">คะแนนที่หัก</div>';
