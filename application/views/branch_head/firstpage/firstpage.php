@@ -23,15 +23,19 @@
     <style>
         #title6{
     font-size: 16px;
-    font-family: 'prompt',sans-serif;
+    
     
         }
         #title7{
             font-size: 16px;
-    font-family: 'prompt',sans-serif;
+  
     font-weight: 700;
-
         }
+        #last_count_student2{
+            color: #ff0000;
+         font-size: 35px;
+    font-weight: 700;
+}
        
         #fasfa-users {
             color: orange;
@@ -686,7 +690,7 @@ $.ajax({
             html += '</div>';
             html += '<div class="Main2">';
             html += '<div class="CountStudent">คะแนนที่หัก</div>';
-            html += '<div><span id="last_count_student">' + value.point + '</div>';
+            html += '<div><span id="last_count_student2">' + value.point + '</div>';
             html += '</div>';
             html += '<div class="Main3">';
             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
