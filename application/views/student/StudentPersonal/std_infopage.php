@@ -181,9 +181,9 @@
 
 <script>
 	$(document).ready(function() {
-		//selectstudentstatus();
-		//selectstudentpoint();
-		//show_all();
+		selectstudentstatus();
+		selectstudentpoint();
+		show_all();
 
 		$('#AlertNotifyUserModal').modal('show');
 
@@ -228,7 +228,7 @@
 				async: false,
 				dataType: 'json',
 				success: function(data) {
-					//console.log(data); 
+					console.log(data); 
 					var html = '';
 					var n = 1;
 					var i;
