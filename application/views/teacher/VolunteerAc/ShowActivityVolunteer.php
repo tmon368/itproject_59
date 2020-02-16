@@ -2,7 +2,7 @@
 <html lang="en">
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_show_activity_.css') ?>">
-
+<link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
 
 <head>
     <title> กิจกรรมบำเพ็ญประโยชน์ทั้งหมด | ระบบวินัยนักศึกษา</title>
@@ -45,7 +45,7 @@
                         </thead>
 
                         <tbody id="showdata">
-                            
+
                         </tbody>
 
                     </table>
@@ -80,17 +80,31 @@
                     <div class="ShowDataParticipants" id="data">
 
                         <table id="data_activity_participants" class="table table-striped table-bordered nowrap" style="width:100%">
-                           
+
                         </table>
 
                     </div>
 
                     <div class="PrintDataTableReport" id="data_table">
                         <div class="HeaderReport">
-                            <div>xxx</div>
-                            <div>yyy</div>
-                            <div>mmm</div>
+                            <div class="part1">
+                                <img src="<?php echo base_url('re/images/logo_sys_mini.png') ?>" alt="" class="logofile">
+                            </div>
+                            <div class="part2">
+                                <span class="title1">มหาวิทยาลัยวลัยลักษณ์ | Walailak University</span>
+                                <span class="title2">ระบบวินัยนักศึกษา | หน่วยงานวินัยนักศึกษา</span>
+                                <span class="title3">กิจกรรมบำเพ็ญประโยชน์</span>
+                            </div>
                         </div>
+                        <div class="DetailActivity">
+                            <div class="part3">
+                                <span id="title4">1.รายละเอียดกิจกรรมบำเพ็ญประโยชน์</span>
+                                
+                            </div>
+                            <div class="part4"></div>
+
+                        </div>
+
                     </div>
 
 
@@ -102,12 +116,13 @@
         </div>
     </div>
 
+
     <script type="text/javascript">
         $(document).ready(function() {
             show_all();
             disabled_sort();
 
-            
+
 
             function disabled_sort() {
                 $('#style_table').DataTable({
@@ -118,9 +133,6 @@
                 });
             }
         });
-
-
-
 
         function show_all() {
 
@@ -170,8 +182,17 @@
 
 
         $('.Print').click(function() {
-            printData();
+            $('#data_table').print()
         });
+
+        $("#PrintDataTableReport").find('.ImgPrint').on('click', function() {
+            //Print ele2 with default options
+            $("#PrintDataTableReport").print({
+                mediaPrint: true,
+                stylesheet: "https:fonts.googleapis.com/css?family=Sarabun&display=swap"
+            });
+        });
+
 
         $('#showdata').on('click', '#open_name_participants', function() {
             $('#show_participants').modal('show');
@@ -179,8 +200,8 @@
             var data = {
                 id: serviceid
             }
-            dataset=[];
-            
+            dataset = [];
+
             $.ajax({
                 type: 'GET',
                 url: '<?php echo site_url("Teacher_dashboard/studentinactivity") ?>',
@@ -230,8 +251,9 @@
 
         $(function() {
 
-            
+
         });
     </script>
+
 
 </body>
