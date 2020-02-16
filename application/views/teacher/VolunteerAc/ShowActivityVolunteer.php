@@ -42,7 +42,7 @@
                         </thead>
 
                         <tbody id="showdata">
-                            <tr>
+                            <!-- <tr>
                                 <td id="sort_number">1</td>
                                 <td id="detail_activity">
                                     <div class="DetailActivity">
@@ -54,7 +54,7 @@
                                 </td>
                                 <td id="person_control">สมฤดี เย็นใจ</td>
                                 <td id="file"><span id="open_name_participants"><i class="fa fa-folder-open"></i></span></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
 
                     </table>
@@ -71,6 +71,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="TitleActivity">กิจกรรมบำเพ็ญประโยชน์</div>
+                    <div class="Print"><img src="<?php echo base_url('re/images/print.png') ?>" alt="" class="ImgPrint"></div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -79,46 +80,38 @@
 
                     <div class="HeaderData">
                         <div class="DetailData">
-                            <span id="activity_name">กิจกรรม: ปลูกต้นไม้รักษํโลก จังหวัดเพชรบูรณ์</span>
+                            <span id="activity_name_modal">กิจกรรม: ปลูกต้นไม้รักษํโลก จังหวัดเพชรบูรณ์</span>
                             <span id="date_activity">วันที่จัดกิจกรรม 12 ธันวาคม 2563</span>
                             <span id="time_activity">เวลาเริ่ม 13:00 ถึง 14:00 ชั่วโมงกิกรรม 1 ชม.</span>
                             <span id="place">เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
                         </div>
                     </div>
-                    <div class="ShowDataParticipants">
+                    <div class="ShowDataParticipants" id="data">
 
-                        <table id="style_table" class="table table-striped table-bordered nowrap" style="width:100%">
-                            <thead>
-                                <th>ลำดับ</th>
-                                <th>รหัสนักศึกษา</th>
-                                <th>รหัสนักศึกษา</th>
-                                <th>ชื่อ-นามสกุล</th>
-                                <th>E-mail</th>
-                                <th>หมายเลขโทรศัพท์</th>
+                        <table id="data_activity_participants" class="table table-striped table-bordered nowrap" style="width:100%">
+                            <!-- <thead>
+                                <th id="sortid_student">ลำดับ</th>
+                                <th id="id_student">รหัสนักศึกษา</th>
+                                <th id="FLstudent">ชื่อ-นามสกุล</th>
+                                <th id="email">E-mail</th>
+                                <th id="tel">หมายเลขโทรศัพท์</th>
                             </thead>
 
-                            <tbody id="showdata">
-                                <tr>
-                                    <td>1</td>
-                                    <td>59123456</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>59123456</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                </tr>
+                            <tbody id="showdata_modal">
 
-                            </tbody>
+
+                            </tbody> -->
 
                         </table>
 
+                    </div>
+
+                    <div class="PrintDataTableReport" id="data_table">
+                        <div class="HeaderReport">
+                            <div>xxx</div>
+                            <div>yyy</div>
+                            <div>mmm</div>
+                        </div>
                     </div>
 
 
@@ -135,7 +128,8 @@
             show_all();
             disabled_sort();
 
-
+            
+           
 
             function disabled_sort() {
                 $('#style_table').DataTable({
@@ -146,6 +140,14 @@
                 });
             }
         });
+
+        function printData() {
+            var divToPrint = document.getElementById("data_table");
+            newWin = window.open("");
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.print();
+            newWin.close();
+        }
 
 
         function show_all() {
@@ -159,6 +161,8 @@
                 success: function(data) {
                     var html = '';
                     var i = 0;
+
+                    console.log(data);
 
                     $.each(data, function(key, value) {
 
@@ -182,7 +186,7 @@
                         html += '</div>';
                         html += '</td>';
                         html += '<td id="person_control">สมฤดี เย็นใจ</td>';
-                        html += '<td id="file"><span id="open_name_participants"><i class="fa fa-folder-open"></i></span></td>';
+                        html += '<td id="file"><span id="open_name_participants" data=' + value.service_ID + '><i class="fa fa-folder-open"></i></span></td>';
                         html += '</tr>';
 
                     });
@@ -191,9 +195,69 @@
             });
         }
 
-        $('#showdata').on('click', '#file', function() {
-            console.log('5555');
+        function show_all_Modal(data) {
+            // var datastudent = [];
+            
+          
+        }
+
+        $('.Print').click(function() {
+            printData();
+        });
+
+        $('#showdata').on('click', '#open_name_participants', function() {
             $('#show_participants').modal('show');
+            var serviceid = $(this).attr('data');
+
+            var data = {id: serviceid}
+
+            $.ajax({
+                type: 'GET',
+                url: '<?php echo site_url("Teacher_dashboard/studentinactivity") ?>',
+                async: false,
+                data: data,
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    
+                    // var i = 0;
+                    // $.each(data, function(key, value) {
+                    //     datastudent.push({
+                    //         S_ID: value.S_ID,
+                    //         std_fname: value.std_fname,
+                    //         std_lname: value.std_lname,
+                    //         email: value.email,
+                    //         phone: value.phone
+                    //     });
+                    // });
+
+                }
+            });
+            
+
+
+
+           
+
+            // $('#data_activity_participants').DataTable({
+            //     "data": dataSet,
+            //     "columns": [{
+            //             title: "Name"
+            //         },
+            //         {
+            //             title: "Name TH"
+            //         },
+            //         {
+            //             title: "Name ENG"
+            //         }
+            //     ]
+            // });
+
+
+        });
+
+        $(function() {
+            
         });
     </script>
 

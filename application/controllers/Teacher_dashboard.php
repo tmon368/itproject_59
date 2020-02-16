@@ -66,7 +66,6 @@ class Teacher_dashboard extends CI_Controller {
 	function studentinactivity(){
 		$result = $this->teacher_dashboard_model->studentinactivity();
 	    echo json_encode($result);
-
 	}
 	
 	/*

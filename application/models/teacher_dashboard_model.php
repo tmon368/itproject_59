@@ -114,8 +114,8 @@ class teacher_dashboard_model extends CI_Model {
 
     }
     function studentinactivity(){
-        //$id = $this->input->get('id');
-        $id = 3;
+        $id = $this->input->get('id');
+        //$id = 3;
         $this->db->select('s.S_ID,s.std_fname,s.std_lname,s.email,s.phone');
         $this->db->from('service sv');
         $this->db->join('participationactivities p','sv.service_ID=p.service_ID');

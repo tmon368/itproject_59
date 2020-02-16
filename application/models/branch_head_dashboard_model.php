@@ -176,7 +176,7 @@ foreach($showall as $value){
 //    $this->db->where('YEAR(oh.committed_date)',$year);
 //    $this->db->order_by('oh.committed_date ASC');
 
-   $this->db->select('oh.committed_date,oh.committed_time,ostd.S_ID,std.std_fname , std.std_lname,o.off_desc,point,behavior_score');   
+   $this->db->select('oh.committed_date,oh.committed_time,ostd.S_ID,std.std_fname , std.std_lname,o.off_desc,point,statusoff,behavior_score');   
    $this->db->from('offensestd ostd');
    $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
    $this->db->join('offense o','oh.off_ID=o.off_ID');
@@ -772,8 +772,8 @@ foreach($showall as $value){
         
         $this->db->distinct();
         $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score');
-        //$this->db->select('*');
         $this->db->from('offensestd ostd');
+        $this->db->order_by('s.behavior_score ASC');
         $this->db->join('student s','ostd.S_ID=s.S_ID');
         
         $query = $this->db->get();

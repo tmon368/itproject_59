@@ -30,6 +30,7 @@
 <script>
   $(document).ready(function() {
      $('#style_table').DataTable();
+     
   });
 </script>
 </body>
