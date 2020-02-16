@@ -91,7 +91,7 @@ class Dean_dashboard extends CI_Controller {
 	    }
 	    
 	    
-	    
+		
 	}
 
 	public function new()
@@ -114,9 +114,26 @@ class Dean_dashboard extends CI_Controller {
 	    //รับข้อมูลจาก form  update ลง DB
 	}
 // =====================================
+function searchoffensestudent(){
+	$result = $this->dean_dashboard_model->searchoffensestudent();
+	echo json_encode($result);
+}
+
+
+
+
+
 public function showAll(){
 	$result = $this->dean_dashboard_model->showAll();
 	echo json_encode($result);
+}
+public function showAlll(){
+    $result = $this->dean_dashboard_model->showAlll();
+    echo json_encode($result);
+}
+public function showell(){
+    $result = $this->dean_dashboard_model->showell();
+    echo json_encode($result);
 }
 
 

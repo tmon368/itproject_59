@@ -127,6 +127,19 @@ public function showAll(){
 	echo json_encode($result);
 }
 
+public function showAlll(){
+    $result = $this->dormitory_advisor_dashboard_model->showAlll();
+    echo json_encode($result);
+}
+public function showell(){
+    $result = $this->dormitory_advisor_dashboard_model->showell();
+    echo json_encode($result);
+}
+function searchoffensestudent(){
+	$result = $this->dormitory_advisor_dashboard_model->searchoffensestudent();
+	echo json_encode($result);
+}
+
 
 //ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 public function addnotify(){
