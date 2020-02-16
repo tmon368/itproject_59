@@ -45,19 +45,7 @@
                         </thead>
 
                         <tbody id="showdata">
-                            <!-- <tr>
-                                <td id="sort_number">1</td>
-                                <td id="detail_activity">
-                                    <div class="DetailActivity">
-                                        <span id="activity_name">กิจกรรม: ปลูกต้นไม้รักษํโลก จังหวัดเพชรบูรณ์</span>
-                                        <span id="date_activity">วันที่จัดกิจกรรม 12 ธันวาคม 2563</span>
-                                        <span id="time_activity">เวลาเริ่ม 13:00 ถึง 14:00 ชั่วโมงกิกรรม 1 ชม.</span>
-                                        <span id="place">เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
-                                    </div>
-                                </td>
-                                <td id="person_control">สมฤดี เย็นใจ</td>
-                                <td id="file"><span id="open_name_participants"><i class="fa fa-folder-open"></i></span></td>
-                            </tr> -->
+                            
                         </tbody>
 
                     </table>
@@ -92,19 +80,7 @@
                     <div class="ShowDataParticipants" id="data">
 
                         <table id="data_activity_participants" class="table table-striped table-bordered nowrap" style="width:100%">
-                            <!-- <thead>
-                                <th id="sortid_student">ลำดับ</th>
-                                <th id="id_student">รหัสนักศึกษา</th>
-                                <th id="FLstudent">ชื่อ-นามสกุล</th>
-                                <th id="email">E-mail</th>
-                                <th id="tel">หมายเลขโทรศัพท์</th>
-                            </thead>
-
-                            <tbody id="showdata_modal">
-
-
-                            </tbody> -->
-
+                           
                         </table>
 
                     </div>
