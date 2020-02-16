@@ -138,6 +138,29 @@
 		</div>
 </body>
 
+
+<div class="modal fade" id="ShowDta" role="dialog">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">รายละเอียดการอบรม</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+			</div>
+			<div class="modal-body content">
+
+
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <div class="modal fade" id="AlertNotifyUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -147,25 +170,25 @@
 			</div>
 			<div class="modal-body">
 				<div class="MessageBackground">
-						<div class="IMGMessage"><img src="<?php echo base_url('re/images/gmail.png') ?>" alt="" width="30"></div>
-						<div class="Detail">
-							<div class="HeardMessage">คุณมี 1 ข้อความสำหรับคุณ</div>
-							<div class="NotificationAlert">คุณ นราธร สมเย็นใจ ขณะนี้คุณโดนหักคะแนนความประพฤติ 10 คะแนน จากกรณีของ 
-								จอดรถในบริเวณที่ห้ามจอด ทางหน่วยงานวินัยนักศึกษา มหาวิทยาลัยวลัยลักษณ์ จึงทำการหักคะแนน
-								ความประพฤติของท่าน
-							</div>
+					<div class="IMGMessage"><img src="<?php echo base_url('re/images/gmail.png') ?>" alt="" width="30"></div>
+					<div class="Detail">
+						<div class="HeardMessage">คุณมี 1 ข้อความสำหรับคุณ</div>
+						<div class="NotificationAlert">คุณ นราธร สมเย็นใจ ขณะนี้คุณโดนหักคะแนนความประพฤติ 10 คะแนน จากกรณีของ
+							จอดรถในบริเวณที่ห้ามจอด ทางหน่วยงานวินัยนักศึกษา มหาวิทยาลัยวลัยลักษณ์ จึงทำการหักคะแนน
+							ความประพฤติของท่าน
 						</div>
+					</div>
 				</div>
 
 				<div class="MessageBackground">
-						<div class="IMGMessage"><img src="<?php echo base_url('re/images/gmail.png') ?>" alt="" width="30"></div>
-						<div class="Detail">
-							<div class="HeardMessage">คุณมี 1 ข้อความสำหรับคุณ</div>
-							<div class="NotificationAlert">คุณ นราธร สมเย็นใจ ขณะนี้คุณโดนหักคะแนนความประพฤติ 10 คะแนน จากกรณีของ 
-								จอดรถในบริเวณที่ห้ามจอด ทางหน่วยงานวินัยนักศึกษา มหาวิทยาลัยวลัยลักษณ์ จึงทำการหักคะแนน
-								ความประพฤติของท่าน
-							</div>
+					<div class="IMGMessage"><img src="<?php echo base_url('re/images/gmail.png') ?>" alt="" width="30"></div>
+					<div class="Detail">
+						<div class="HeardMessage">คุณมี 1 ข้อความสำหรับคุณ</div>
+						<div class="NotificationAlert">คุณ นราธร สมเย็นใจ ขณะนี้คุณโดนหักคะแนนความประพฤติ 10 คะแนน จากกรณีของ
+							จอดรถในบริเวณที่ห้ามจอด ทางหน่วยงานวินัยนักศึกษา มหาวิทยาลัยวลัยลักษณ์ จึงทำการหักคะแนน
+							ความประพฤติของท่าน
 						</div>
+					</div>
 				</div>
 
 			</div>
@@ -228,7 +251,7 @@
 				async: false,
 				dataType: 'json',
 				success: function(data) {
-					console.log(data); 
+					console.log(data);
 					var html = '';
 					var n = 1;
 					var i;
@@ -239,19 +262,16 @@
 								'<th>' + data[i].committed_date + '</th>' +
 								'<th>' + data[i].off_desc + '</th>' +
 								'<th>' + data[i].point + '</th>' +
-								'<th>' + '<a href="javascript:;"  </a>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
+								//data[i].statusoffname
+								'<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
+								//'<th>' + '<a href="javascript:;" data= </a>' + data[i].statusoffname + ' class="show_data"> </th>' + // สถานะการกระทำความผิด 
 
 								//*html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data">*//
 								//'class="showdetil"> / javascript:;
 								//html += '<td><a href="javascript:;" +' class="edit_data"></a>
 								//<a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';
 
-								//	if ($statusoffname == 3 ) {
-								//		<a href="javascript:;" data=' + data[i].train_ID + ' class="show_data">
-								//	}
-								//	html += '<td> <a href="javascript:;">
-								//	data=' + value.oh_ID + ' class="show_data">
-								//	<i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+
 
 								'</tr>';
 
@@ -263,13 +283,6 @@
 								'<th>' + data[i].point + '</th>' +
 								'<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
 
-
-								//	if ($statusoffname == 3 ) {
-								//		<a href="javascript:;" data=' + data[i].train_ID + ' class="show_data">
-								//	}
-								//	html += '<td> <a href="javascript:;">
-								//	data=' + value.oh_ID + ' class="show_data">
-								//	<i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
 
 								'</tr>';
 						}
@@ -286,7 +299,7 @@
 	});
 
 
-
+	/// view_volunteerAc
 
 	$('#showdata').on('click', '.show_data', function() {
 
@@ -301,7 +314,7 @@
 		$.ajax({
 			type: 'ajax',
 			method: 'get',
-			url: '<?php echo site_url('VolunteerAc/showdetail') ?>',
+			url: '<?php echo site_url('Student_dashboard/selectstudentstatus') ?>',
 			data: {
 				id: id
 			},
@@ -315,6 +328,8 @@
 					i++;
 					// if (i==1) {
 
+
+					//แก้ให้เป็นการอบรม
 					html += '<p class="text_head"> <label for="" class="label_txt">ชื่อกิจกรรม: </label> ' + value.service_name + ' </p>'
 					html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อผู้ควบคุมกิจกรรม:</label> ' + value.person_fname + '&nbsp;&nbsp;' + value.person_lname + ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
 					html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
@@ -433,79 +448,7 @@
 		*/
 	}
 
-	///////เพิ่ม///////// ไม่ได้ตรวจ 
-	/*
-	$('#showdata').on('click', '.show_data', function() {
-
-	var id = $(this).attr('data');
-	//console.log(id);
-	$('#ShowDta').modal('show');
-	html = '';
-	i = 0;
-
-
-	//select show data
-	$.ajax({
-		type: 'ajax',
-		method: 'get',
-		url: '<?php echo site_url('Notifyoffense/spc_showoffhead') ?>',
-		data: {
-			id: id
-		},
-		async: false,
-		dataType: 'json',
-		success: function(data) {
-			//console.log(data);
-			//alert ('Having data');
-
-			$.each(data, function(key, value) {
-				i++;
-
-				var data_vehi = value.verhicles;
-				//console.log(data_vehi);
-
-				//print 1 ครั้ง
-				if (i == 1) {
-					html += '<p class="text_head">การกระทำความผิด</p>';
-					html += '<p class="text_position"> <label for="" class="label_txt"> วันที่แจ้งเหตุ:</label> ' + value.notifica_date + ' <label for="" class="label_txt">วันที่กระทำความผิด:</label> ' + value.committed_date + '</p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place_name + ' </p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">อธิบายบริเวณที่เกิดเหตุ: </label> ' + value.description + ' </p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">หมวดความผิด:</label>  ' + value.oc_desc + ' <label for="" class="label_txt"> ฐานความผิด:</label>  ' + value.off_desc + '</p>';
-					html += '<p class="text_head">ผู้กระทำความผิด</p>';
-				}
-
-				html += '<p class="text_position"> <label for="" class="label_txt">รหัสนักศึกษา: </label> ' + value.S_ID + '<label for="" class="label_txt"> ชื่อ: </label> ' + value.std_fname + '<label for="" class="label_txt"> นามสกุล:</label>  ' + value.std_lname + ' </p>';
-				html += '<p class="text_position"> <label for="" class="label_txt">สำนักวิชา: </label>  ' + value.dept_name + '<label for="" class="label_txt"> หลักสูตร: </label>  ' + value.cur_name + ' </p>';
-
-				//loop vehicle 
-				$.each(data_vehi, function(key, value) {
-					//console.log(value.regist_num);
-
-					//check type vehicle
-					if (value.vetype_ID == 1) {
-						html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถจักรยานยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
-					} else if (value.vetype_ID == 2) {
-						html += '<p class="text_position"> <label for="" class="label_txt">เลขทะเบียนรถยนต์: </label>  ' + value.regist_num + '<label for="" class="label_txt">  จังหวัด: </label>  ' + value.province + '  </p>';
-					}
-				});
-
-
-
-
-
-				$('.content').html(html);
-			});
-		},
-		error: function() {
-			alert('ไม่สามารถลบข้อมูล');
-		}
-	});
-
-
-
-	});
-	*/
-	///////////// เพิ่ม//////////////// ไม่ได้ตรวจ 
+	
 </script>
 
 </html>
