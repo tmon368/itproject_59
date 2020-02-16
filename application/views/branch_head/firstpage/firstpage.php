@@ -21,6 +21,18 @@
 <head>
     <title></title>
     <style>
+        #title6{
+    font-size: 16px;
+    font-family: 'prompt',sans-serif;
+    
+        }
+        #title7{
+            font-size: 16px;
+    font-family: 'prompt',sans-serif;
+    font-weight: 700;
+
+        }
+       
         #fasfa-users {
             color: orange;
             font-size: 70px;
@@ -667,10 +679,10 @@ $.ajax({
             //htmlweb += '<div class="persondata">';  
             html += '<div class="Data">';
             html += '<div class="Main1">';
-            html += '<span id="title2">รหัสนักศึกษา: '+ value.S_ID +"    "+'ชื่อ : '+ value.std_fname +" "+ value.std_lname +'</span>'+'</span>';
-            html += '<span id="title2">วันที่กระทำผิด:  '+ value.committed_date +'</span>';
-            html += '<span id="title2">ฐานความผิด: '+ value.off_desc +'</span>';
-            html += '<span id="title2">สถานะการกระทำความผิด:  '+ value.statusoff +'</span>';
+            html += '<span id="title7">รหัสนักศึกษา: '+ value.S_ID +"    "+'ชื่อ : '+ value.std_fname +" "+ value.std_lname +'</span>'+'</span>';
+            html += '<span id="title6">วันที่กระทำผิด:  '+ value.committed_date +'</span>';
+            html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
+            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoff +'</span>';
             html += '</div>';
             html += '<div class="Main2">';
             html += '<div class="CountStudent">คะแนนที่หัก</div>';
