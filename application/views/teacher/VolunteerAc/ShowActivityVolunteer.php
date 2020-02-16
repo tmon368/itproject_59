@@ -7,6 +7,8 @@
 <head>
     <title> กิจกรรมบำเพ็ญประโยชน์ทั้งหมด | ระบบวินัยนักศึกษา</title>
 </head>
+<script>
+</script>
 
 <body>
 
@@ -128,9 +130,6 @@
             show_all();
             disabled_sort();
 
-            
-           
-
             function disabled_sort() {
                 $('#style_table').DataTable({
                     columnDefs: [{
@@ -141,13 +140,7 @@
             }
         });
 
-        function printData() {
-            var divToPrint = document.getElementById("data_table");
-            newWin = window.open("");
-            newWin.document.write(divToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
-        }
+        
 
 
         function show_all() {
@@ -197,8 +190,8 @@
 
         function show_all_Modal(data) {
             // var datastudent = [];
-            
-          
+
+
         }
 
         $('.Print').click(function() {
@@ -208,9 +201,11 @@
         $('#showdata').on('click', '#open_name_participants', function() {
             $('#show_participants').modal('show');
             var serviceid = $(this).attr('data');
-
-            var data = {id: serviceid}
-
+            var data = {
+                id: serviceid
+            }
+            var dataset = [];
+            
             $.ajax({
                 type: 'GET',
                 url: '<?php echo site_url("Teacher_dashboard/studentinactivity") ?>',
@@ -219,45 +214,46 @@
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
-                    
-                    // var i = 0;
-                    // $.each(data, function(key, value) {
-                    //     datastudent.push({
-                    //         S_ID: value.S_ID,
-                    //         std_fname: value.std_fname,
-                    //         std_lname: value.std_lname,
-                    //         email: value.email,
-                    //         phone: value.phone
-                    //     });
-                    // });
+                    var i = 0;
+                    $.each(data, function(key, value) {
+                        i++;
+                        var name= value.std_fname+" "+value.std_lname;
+                        dataset.push(new Array(i, value.S_ID, name , value.email, value.phone));
+                        console.log(dataset);
+                    });
 
                 }
             });
-            
 
-
-
-           
-
-            // $('#data_activity_participants').DataTable({
-            //     "data": dataSet,
-            //     "columns": [{
-            //             title: "Name"
-            //         },
-            //         {
-            //             title: "Name TH"
-            //         },
-            //         {
-            //             title: "Name ENG"
-            //         }
-            //     ]
-            // });
+            $('#data_activity_participants').DataTable({
+                "data": dataset,
+                "columns": [{
+                        title: "ลำดับ"
+                    },
+                    {
+                        title: "รหัสนักศึกษา"
+                    },
+                    {
+                        title: "ชื่อ-นามสกุล"
+                    },
+                    {
+                        title: "email"
+                    },
+                    {
+                        title: "หมายเลขโทรศัพท์"
+                    }
+                ],
+                columnDefs: [{
+                        orderable: false,
+                        targets: [2,3,4]
+                    }]
+            });
 
 
         });
 
         $(function() {
-            
+
         });
     </script>
 
