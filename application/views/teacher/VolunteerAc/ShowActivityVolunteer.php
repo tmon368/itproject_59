@@ -8,6 +8,7 @@
     <title> กิจกรรมบำเพ็ญประโยชน์ทั้งหมด | ระบบวินัยนักศึกษา</title>
 </head>
 <script>
+    var dataset = [];
 </script>
 
 <body>
@@ -130,6 +131,8 @@
             show_all();
             disabled_sort();
 
+            
+
             function disabled_sort() {
                 $('#style_table').DataTable({
                     columnDefs: [{
@@ -140,7 +143,7 @@
             }
         });
 
-        
+
 
 
         function show_all() {
@@ -188,11 +191,7 @@
             });
         }
 
-        function show_all_Modal(data) {
-            // var datastudent = [];
 
-
-        }
 
         $('.Print').click(function() {
             printData();
@@ -204,7 +203,7 @@
             var data = {
                 id: serviceid
             }
-            var dataset = [];
+            dataset=[];
             
             $.ajax({
                 type: 'GET',
@@ -217,15 +216,15 @@
                     var i = 0;
                     $.each(data, function(key, value) {
                         i++;
-                        var name= value.std_fname+" "+value.std_lname;
-                        dataset.push(new Array(i, value.S_ID, name , value.email, value.phone));
-                        console.log(dataset);
+                        var name = value.std_fname + " " + value.std_lname;
+                        dataset.push(new Array(i, value.S_ID, name, value.email, value.phone));
                     });
 
                 }
             });
 
             $('#data_activity_participants').DataTable({
+                "bDestroy": true,
                 "data": dataset,
                 "columns": [{
                         title: "ลำดับ"
@@ -244,16 +243,18 @@
                     }
                 ],
                 columnDefs: [{
-                        orderable: false,
-                        targets: [2,3,4]
-                    }]
+                    orderable: false,
+                    targets: [2, 3, 4]
+                }]
             });
+
 
 
         });
 
         $(function() {
 
+            
         });
     </script>
 
