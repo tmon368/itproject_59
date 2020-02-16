@@ -40,7 +40,25 @@
             font-size: 30px;
 
         }
+        .btnsearch {
+        color: #fff;
+        font-size: 15px;
+        padding: 8px;
+        margin-top: 5%;
+        background-color: #F2603E;
+        text-align: center;
+}
+.{
+    font-size: 80px;
 
+}
+        .form_input{
+         width: 250px;
+        padding: 8px;
+        border-radius: 45px;
+        margin: 15px;
+        background-color: #e6f9ff;
+        }
         .bggreen {
             background-color: #99FF99;
             width: 250px;
@@ -169,14 +187,14 @@
                             <div class="card-body " id="card_1">
                                 <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
                                 <center>
-                                    <div class="topnav">
+                                    
                                         <div class="search-container">
-                                            <form action="/action_page.php">
-                                                <input type="text" placeholder="กรอกรหัสนักศึกษา" name="search">
-                                                <button type="submit"><i class="fa fa-search"></i></button>
+                                            <form action="" id="formakk">
+                                                <input type="text" class="form_input"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
+                                                <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
                                             </form>
                                         </div>
-                                    </div>
+                                    
                                 </center>
                             </div>
                         </div>
@@ -293,7 +311,7 @@
                             </div><br>
                             <center>กิจกรรมเพิ่มเติม</center>
                         </font><br>
-                        <div class="btn btn-inverse-success btn-fw" id="btnAdd" data-toggle="modal">
+                        <div class="btn btn-inverse-success btn-fw " id="btnAdd" data-toggle="modal">
                             <ul>
                                 <li>
                                     <font size="4">
@@ -324,6 +342,8 @@
                                 </li>
                             </ul>
                         </div>
+                       
+
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" style="max-width: 620px!important;" role="document">
                                 <div class="modal-content">
@@ -390,19 +410,30 @@
 
 
 
+    <div class="modal fade" id="Showoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 1200px!important;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">รายละเอียดการกระทำผิดของนักศึกษา</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
 
+                <div class="modal-body offenstudent">
+                <form action="" id="formakk" method="post" class="needs-validation">
+                                            
 
+                <div class="modal-body showoffense">
+                </div>
 
-
-
-
-
-
-
-
-
-
-
+                                                </div>
+                                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -522,6 +553,14 @@
             show_ell();
 
         });
+        $('#offense_card').click(function() {
+            $('#Showoffen').modal('show');
+            search();
+
+        });
+        $(".btnsearch").click(function() {
+            search();    
+        });
 
 
         function show_all() {
@@ -534,7 +573,7 @@
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
-
+                        
                         var temp_1 = value.start_time;
                         var temp_2 = value.end_time;
                         var start_times = parseFloat(temp_1.substring(0, 5));
@@ -557,7 +596,7 @@
                         html += '<div class="Main3">';
                         html += '</div>';
                         html += '</div>';
-
+                       
 
                     });
                     $('.ShowActivity').html(html);
@@ -579,23 +618,90 @@
                         html += '<div class="Data">';
                         html += '<div class="Main1">';
                         html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-                        html += ' <span id="title2"> หมวดการอบรม : ' + value.oc_desc + ' </span>';
-                        html += '<span id="title3"> ผู้ควบคุมการอบรม ชื่อ: ' + value.person_fname + " " + value.person_lname + ' </span>';
-                        html += '<span id="title4">วันที่อบรม: ' + value.train_date + " จำนวนผู้อบรม:" + value.train_receive + '</span>';
-                        html += '<span id="title4">สถานที่: ' + value.place_name + " ห้องที่จัดอบรม:" + value.room + '</span>';
-                        html += ' <span id="title2"> จำนวนชั่วโมง : ' + value.time + ' </span>';
-                        html += ' <span id="title2"> หมายเหตุ : ' + value.note + ' </span>';
+                        html += '<span id="title2"><i class="fas fa-users iconlabel"></i> หมวดการอบรม : ' + value.oc_desc + ' </span>';
+                        html += '<span id="title3"><i class="fas fa-user iconlabel"></i> ผู้ควบคุมการอบรม ชื่อ: ' + value.person_fname + " " + value.person_lname + ' </span>';
+                        html += '<span id="title4"><i class="far fa-calendar-alt iconlabel"></i>วันที่อบรม: ' + value.train_date + " จำนวนผู้อบรม :" + value.train_receive + '</span>';
+                        html += '<span id="title4"><i class="fas fa-building iconlabel"></i>สถานที่: ' + value.place_name + " ห้องที่จัดอบรม :" + value.room + '</span>';
+                        html += '<span id="title2"><i class="fas fa-hourglass-half iconlabel"></i> จำนวนชั่วโมง : ' + value.time + ' </span>';
+                        html += '<span id="title2"><span><i class="fas fa-clock iconlabel"></i> หมายเหตุ : ' + value.note + ' </span>';
+                        html += '</div>';
+                        html += '<div class="Main2">';
                         html += '</div>';
                         html += '<div class="Main3">';
                         html += '</div>';
                         html += '</div>';
-
+                        
 
                     });
                     $('.BodyTrain').html(html);
                 }
             });
         }
+
+
+
+function search(){
+
+var studentid = $('#studentid').val();
+//var day = $('#date').val();
+//var mount2 = $('#datemount2').val();
+//var year = $('#dateyear').val();
+
+
+var data = {getstdID:studentid};
+
+$.ajax({
+    url: '<?php echo site_url("Branch_head_dashboard/searchoffensestudent") ?>',
+    async: false,
+    dataType: 'json',
+    data: data, 
+    success: function(data) {
+        console.log(data);
+
+        if (data == false){
+             alert ('ไม่พบข้อมูลดังกล่าว');
+        }else{
+
+           html = ' ';
+        $.each(data, function(key, value) { 
+            //htmlweb += '<div class="persondata">';  
+            html += '<div class="Data">';
+            html += '<div class="Main1">';
+            html += '<span id="title2">รหัสนักศึกษา: '+ value.S_ID +"    "+'ชื่อ : '+ value.std_fname +" "+ value.std_lname +'</span>'+'</span>';
+            html += '<span id="title2">วันที่กระทำผิด:  '+ value.committed_date +'</span>';
+            html += '<span id="title2">ฐานความผิด: '+ value.off_desc +'</span>';
+            html += '<span id="title2">สถานะการกระทำความผิด:  '+ value.statusoff +'</span>';
+            html += '</div>';
+            html += '<div class="Main2">';
+            html += '<div class="CountStudent">คะแนนที่หัก</div>';
+            html += '<div><span id="last_count_student">' + value.point + '</div>';
+            html += '</div>';
+            html += '<div class="Main3">';
+            html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+            html += '<div><span id="last_count_student">' + value.behavior_score  + '</div>';
+            html += '</div>';
+            html += '</div>';
+           // htmlweb += '<div class="progress_bar">';
+          //  htmlweb += '<div class="progress">';
+          //  htmlweb += '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>';
+          //  htmlweb += '</div>';
+           // htmlweb += '</div>';
+           // htmlweb += '</div>';
+        });
+        $('.showoffense').html(html);
+
+        }
+       
+
+        
+       
+
+    
+    }
+});
+
+
+}
     </script>
 
 </body>
