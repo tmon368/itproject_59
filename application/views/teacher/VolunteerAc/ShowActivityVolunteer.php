@@ -124,15 +124,8 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td id="">1</td>
-                                            <td id="">59123456</td>
-                                            <td>นายธงชัย สิริรานา</td>
-                                            <td>Tongchai@mail.ac.th</td>
-                                            <td>085-473-0853</td>
-                                        </tr>
-
+                                    <tbody id="show_data_table">
+                                       
                                     </tbody>
 
                                 </table>
@@ -236,6 +229,18 @@
                 id: serviceid
             }
             dataset = [];
+            
+            var html ='';
+            for(var i=0; i<100;i++){
+                html += '<tr>';
+                        html += '<td>'+i+'</td>';
+                        html += '<td id="">59123456</td>';
+                        html += '<td>นายธงชัย สิริรานา</td>';
+                        html += '<td>Tongchai@mail.ac.th</td>'
+                        html += '<td>085-473-0853</td>';
+                        html += '</tr>';
+            }
+            $('#show_data_table').html(html);
 
             $.ajax({
                 type: 'GET',
