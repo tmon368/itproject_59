@@ -361,7 +361,7 @@
                        
 
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" style="max-width: 620px!important;" role="document">
+                            <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h2 class="modal-title" id="exampleModalLongTitle">กิจกรรมบำเพ็ญประโยชน์</h2>
@@ -404,7 +404,7 @@
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 620px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLongTitle">กิจกรรมการอบรม</h2>
@@ -601,9 +601,9 @@
                         html += '<div class="Data">';
                         html += '<div class="Main1">';
                         html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
-                        html += '<span id="title2"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
-                        html += '<span id="title3"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
-                        html += '<span id="title4"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
+                        html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                        html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
                         html += '</div>';
                         html += '<div class="Main2">';
                         html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
@@ -634,12 +634,12 @@
                         html += '<div class="Data">';
                         html += '<div class="Main1">';
                         html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-                        html += '<span id="title2"><i class="fas fa-users iconlabel"></i> หมวดการอบรม : ' + value.oc_desc + ' </span>';
-                        html += '<span id="title3"><i class="fas fa-user iconlabel"></i> ผู้ควบคุมการอบรม ชื่อ: ' + value.person_fname + " " + value.person_lname + ' </span>';
-                        html += '<span id="title4"><i class="far fa-calendar-alt iconlabel"></i>วันที่อบรม: ' + value.train_date + " จำนวนผู้อบรม :" + value.train_receive + '</span>';
-                        html += '<span id="title4"><i class="fas fa-building iconlabel"></i>สถานที่: ' + value.place_name + " ห้องที่จัดอบรม :" + value.room + '</span>';
-                        html += '<span id="title2"><i class="fas fa-hourglass-half iconlabel"></i> จำนวนชั่วโมง : ' + value.time + ' </span>';
-                        html += '<span id="title2"><span><i class="fas fa-clock iconlabel"></i> หมายเหตุ : ' + value.note + ' </span>';
+                        html += '<span id="title6"><i class="fas fa-users iconlabel"></i> หมวดการอบรม : ' + value.oc_desc + ' </span>';
+                        html += '<span id="title6"><i class="fas fa-user iconlabel"></i> ผู้ควบคุมการอบรม ชื่อ : ' + value.person_fname + " " + value.person_lname + ' </span>';
+                        html += '<span id="title6"><i class="far fa-calendar-alt iconlabel"></i> วันที่อบรม : ' + value.train_date + " จำนวนผู้อบรม :" + value.train_receive + '</span>';
+                        html += '<span id="title6"><i class="fas fa-building iconlabel"></i> สถานที่ : ' + value.place_name + " ห้องที่จัดอบรม :" + value.room + '</span>';
+                        html += '<span id="title6"><i class="fas fa-hourglass-half iconlabel"></i> จำนวนชั่วโมง : ' + value.time + ' </span>';
+                        html += '<span id="title6"><span><i class="fas fa-clock iconlabel"></i> หมายเหตุ : ' + value.note + ' </span>';
                         html += '</div>';
                         html += '<div class="Main2">';
                         html += '</div>';

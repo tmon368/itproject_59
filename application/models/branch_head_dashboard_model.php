@@ -772,8 +772,8 @@ foreach($showall as $value){
         
         $this->db->distinct();
         $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score');
-        //$this->db->select('*');
         $this->db->from('offensestd ostd');
+        $this->db->order_by('s.behavior_score ASC');
         $this->db->join('student s','ostd.S_ID=s.S_ID');
         
         $query = $this->db->get();
