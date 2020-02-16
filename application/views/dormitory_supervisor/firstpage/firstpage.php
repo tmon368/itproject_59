@@ -385,6 +385,7 @@ selectscoreservice();
 selectscoretraining();
 show_all();
 show_ell();
+selectstudentpoint();
 function selectscorestudent() {
     $.ajax({
         type: 'ajax',
@@ -557,7 +558,7 @@ function show_ell() {
                 html += '<div class="Main2">';
                 html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
                // html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
-                html += '</div>';
+                html += '</div>';  
                 html += '<div class="Main3">';
                 html += '</div>';
                 html += '</div>';
@@ -569,7 +570,122 @@ function show_ell() {
     });
 }
 
+function selectstudentpoint() {
+	$.ajax({
+		type: 'ajax',
+	url: '<?php echo base_url() ?>index.php/Dormitory_supervisor_dashboard/getDashboard',
+		async: false,
+		dataType: 'json',
+		success: function(data) {
+			  console.log(data); 
+			//alert(data[0].behavior_score)
+			var oc_ID = data[0].oc_ID;
+			 // คะแนนที่หัก
 
+
+			var data = [{
+				oc_ID: oc_ID,
+					name: "คะแนนที่หัก",
+					color: "#FF9966"
+				},
+				
+			];
+
+			renderGra(data);
+
+		},
+		error: function() {
+			alert('ไม่มีข้อมูล');
+		}
+	});
+}
+
+var renderGra = function(dataDB) {
+	var totalVisitors = 100;
+	var visitorsData = {
+		"New vs Returning Visitors": [{
+			click: visitorsChartDrilldownHandler,
+			cursor: "pointer",
+			explodeOnClick: false,
+			innerRadius: "75%",
+			legendMarkerType: "square",
+			name: "New vs Returning Visitors",
+			radius: "100%",
+			showInLegend: true,
+			startAngle: 90,
+			type: "doughnut",
+
+			dataPoints: dataDB
+		}],
+
+
+	};
+
+	var newVSReturningVisitorsOptions = {
+		animationEnabled: true,
+		theme: "light2",
+		title: {
+			text: ""
+		},
+		subtitles: [{
+			text: "",
+			backgroundColor: "#2eacd1",
+			fontSize: 16,
+			fontColor: "white",
+			padding: 5
+		}],
+		legend: {
+			fontFamily: "calibri",
+			fontSize: 14,
+			itemTextFormatter: function(e) {
+				return e.dataPoint.name + ": " + Math.round(e.dataPoint.y / totalVisitors * 100);
+			}
+		},
+		data: []
+	};
+
+	/*
+	var visitorsDrilldownedChartOptions = {
+		animationEnabled: true,
+		theme: "light2",
+		axisX: {
+			labelFontColor: "#717171",
+			lineColor: "#a2a2a2",
+			tickColor: "#a2a2a2"
+		},
+		axisY: {
+			gridThickness: 0,
+			includeZero: false,
+			labelFontColor: "#717171",
+			lineColor: "#a2a2a2",
+			tickColor: "#a2a2a2",
+			lineThickness: 1
+		},
+		data: []
+	};
+	*/
+	var chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+	chart.options.data = visitorsData["New vs Returning Visitors"];
+	chart.render();
+
+	function visitorsChartDrilldownHandler(e) {
+		chart = new CanvasJS.Chart("chartContainer", visitorsDrilldownedChartOptions);
+		chart.options.data = visitorsData[e.dataPoint.name];
+		chart.options.title = {
+			text: e.dataPoint.name
+		}
+		chart.render();
+		$("#backButton").toggleClass("invisible");
+	}
+	/*
+	$("#backButton").click(function() { 
+		$(this).toggleClass("invisible");
+		chart = new CanvasJS.Chart("chartContainer", newVSReturningVisitorsOptions);
+		chart.options.data = visitorsData["New vs Returning Visitors"];
+		chart.render();
+	});
+	*/
+}
 </script>
 
 </body>
