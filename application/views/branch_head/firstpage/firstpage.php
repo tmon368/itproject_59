@@ -19,7 +19,6 @@
 </center>
 
 <head>
-    <title></title>
     <style>
         #title6{
     font-size: 16px;
@@ -63,10 +62,6 @@
         margin-top: 5%;
         background-color: #F2603E;
         text-align: center;
-}
-.{
-    font-size: 80px;
-
 }
         .form_input{
          width: 250px;
