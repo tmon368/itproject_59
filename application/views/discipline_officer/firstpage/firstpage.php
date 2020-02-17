@@ -684,7 +684,7 @@ $.ajax({
             html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
             html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoff +'</span>';
             html += '</div>';
-            html += '<div class="Main2">';
+            html += '<div class="Main2">'; 
             html += '<div class="CountStudent">คะแนนที่หัก</div>';
             html += '<div><span id="last_count_student2">' + value.point + '</div>';
             html += '</div>';
