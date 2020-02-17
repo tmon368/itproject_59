@@ -83,7 +83,7 @@
 
                                         <div class="form-inline">
                                             <label for="Activitylabel" class="lable">ชื่อกิจกรรม:</label>
-                                            <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off">
+                                            <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off" required>
                                             <label for="count_paticipant" class="lable">จำนวนที่รับสมัคร: </label>
                                             <input type="text" name="received" id="received" class="form-control" placeholder="จำนวนผู้เข้ามร่วมกิจกรรม" autocomplete="off">
                                         </div>
@@ -115,7 +115,7 @@
 
                             <div class="modal-footer">
                                 <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                <button name="btnSave" id="btnSave" type="button" class="btn btn-success">บันทึกข้อมูล</button>
+                                <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
                             </div>
                             </form>
                         </div>
