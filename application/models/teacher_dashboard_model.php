@@ -59,7 +59,7 @@ class teacher_dashboard_model extends CI_Model {
 
 
 
-    public function student_offense(){
+    public function student_offense(){ 
         $teacher = $this->session->userdata('teacher');
         //SELECT DISTINCT offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID
         //,s.std_fname,s.std_lname,s.behavior_score
@@ -96,21 +96,23 @@ class teacher_dashboard_model extends CI_Model {
     }
 
     function Allactivity(){
-        $teacher = $this->session->userdata('teacher');
+        //$service_ID= $this->input->post('txtdelID');
+        //$student=59111111;
+        //echo $person_ID;
+        //$student = $this->session->userdata('student');
         $this->db->select('*');
-        $this->db->from('service sv');
-        //$this->db->where('p.username',$teacher);
+        $this->db->from('Service sv');
+        $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
+        //$this->db->where('s.S_ID', $student);
         $query = $this->db->get();
-        $acticity = array();
-        $acticity = $query->result_array();
-        // var_dump($acticity);
-        // die();
+        //var_dump($query->result());
+        //die;
         
-        if($acticity > 0){
-            return $acticity;
-         }else{
-         return false;
-         }
+        if($query->result() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
 
     }
     function studentinactivity(){
@@ -235,9 +237,52 @@ foreach($showall as $value){
     
             
 
+    public function selectscoreservice(){
+     //SELECT COUNT(DISTINCT S_ID) FROM offensestd
+        $this->db->select('COUNT(DISTINCT Service_ID) as numberservice');
+        $this->db->from('service');
 
+
+
+            // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
+            //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
+        $query = $this->db->get();
+            //var_dump($query->result());
+            //die();
+        if($query->num_rows() > 0){
+                
+            return $query->row();
+        }else{
+            return false;
+        }
+    }
+
+    public function selectscoretraining(){
+        //SELECT COUNT(DISTINCT S_ID) FROM offensestd
+        $this->db->select('COUNT(DISTINCT train_ID) as numbertraining');
+        $this->db->from('training');
+        
+        
+        
+        
+        
+        // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
+        //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
+        $query = $this->db->get();
+        //var_dump($query->result());
+        //die();
+        if($query->num_rows() > 0){
+            
+            return $query->row();
+        }else{
+            return false;
+        }
+    }
+        
 
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
+
+
   public function addnotify(){
 
         // var_dump($this->input->post('std_id'));

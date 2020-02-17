@@ -453,7 +453,7 @@
         $(document).ready(function() {
             selectscorestudent();
             selectstudentall();
-            selectscoreservice();
+            selectscoreservice(); // จำนวนกิจกรรมบำเพ็ญประโยชน์
             selectscoretraining();
             
             function selectscorestudent() {
@@ -475,10 +475,10 @@
 
 
             
-            function selectscoreservice() {
+            function selectscoreservice() { // บำเพ็ญประโยชน์ + จำนวนกิจกรรม
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoreservice',
+                    url: '<?php echo base_url() ?>index.php/Teacher_dashboard/selectscoreservice',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
