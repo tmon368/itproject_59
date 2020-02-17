@@ -9,8 +9,7 @@ class Teacher_dashboard extends CI_Controller {
 		$this->load->model('SettimeSession','SettimeSession');
 	}
 	
-	
-	
+		
 	public function index()
 	{
 	    

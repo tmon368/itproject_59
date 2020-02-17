@@ -66,7 +66,6 @@
 }
 /* {
     font-size: 80px;
-
 } */
         .form_input{
          width: 250px;
