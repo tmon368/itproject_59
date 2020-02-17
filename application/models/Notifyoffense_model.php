@@ -117,12 +117,12 @@ foreach($showall as $value){
 
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
   public function addnotify(){
-
         // var_dump($this->input->post('std_id'));
           //      die();           
           //$testname = "L631";
           $testname = $this->input->post('oh_ID');
-	  $count = count($_FILES['myFile']['name']);
+      $count = count($_FILES['myFile']['name']);
+      $getfilename =[];
 		for($i=0;$i<$count;$i++){
 		//var_dump($_FILES["myFile"]["name"][$i]);
 		$changename =explode(".",$_FILES["myFile"]["name"][$i]);
@@ -130,7 +130,8 @@ foreach($showall as $value){
 		// var_dump($changename[1]);	นามสกุลไฟล์รูปที่ผู้ใช้ใส่
 		//die();
 
-		$_FILES['userfile']['name']     = $testname."_".($i+1).".".$changename[1];
+        $_FILES['userfile']['name']     = $testname."_".($i+1).".".$changename[1];
+        $getfilename[$i] =  $_FILES['userfile']['name'] ;
       $_FILES['userfile']['type']     = $_FILES['myFile']['type'][$i];
       $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'][$i];
       $_FILES['userfile']['error']    = $_FILES['myFile']['error'][$i];
@@ -142,15 +143,15 @@ foreach($showall as $value){
         // $config['max_width'] = 1500;
         // $config['max_height'] = 1500;
 
-		$this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 		if ( ! $this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
 			//$this->load->view('upload_form', $error);
 		}else{
 			$final_files_data[] = $this->upload->data();
 		}
-		
-
+        
+	
     }
     $usergroup =$this->session->userdata('student') == null ? "":$this->session->userdata('student');
     if($usergroup == ""){
@@ -205,17 +206,27 @@ foreach($showall as $value){
                 $this->db->insert('offensehead', $field);
                
                // var_dump("1");
-        if($this->db->affected_rows() > 0){
+               if($this->db->affected_rows() > 0){
+                   
 
-            
-            $field2 = array(
+                foreach ($getfilename as $row) {
+                    echo $row;
+                       $field2 = array(
                 'oh_ID'=>$this->input->post('oh_ID'),
-                'evidenre_name'=>$this->input->post('evidenre_name'),
-                'evidenre_date'=>$this->input->post('evidenre_date'),
-                'explanoff'=>$this->input->post('explanoff'),
+                'evidenre_name'=>$row,
+                'evidenre_date'=>$this->input->post('committed_date')
                 );
             $this->db->insert('offevidence', $field2);
-            //var_dump("2");
+                }
+            //    $field2 = array(
+            //     'oh_ID'=>$this->input->post('oh_ID'),
+            //     'evidenre_name'=>$getfilename,
+            //     'evidenre_date'=>$this->input->post('committed_date')
+            //     );
+            //     var_dump($field2);
+            // $this->db->insert('offevidence', $field2);
+            
+            
 
                 if($this->db->affected_rows() > 0){
       
@@ -235,20 +246,7 @@ foreach($showall as $value){
                     if($this->db->affected_rows() > 0){
                         for ($i=0; $i < count($this->input->post('std_id[]')); $i++) { 
                             $field4 = null;
-                           //$query = $this->db->get('offcategory');
-                           /*$field4 = array(
-                            'oc_ID'=>$this->input->post('txt_oc'),
-                            'S_ID'=>$this->input->post('std_id['.$i.']'),
-                            'num_of'=>'1',
-                            );
-                            //var_dump($field4);
-                        $this->db->insert('offcategory', $field4);*/
-                           /*$this->db->select('*');
-                            $this->db->from('offcategory');
-                            $this->db->where('S_ID', $this->input->post('std_id['.$i.']'));
-                            $this->db->where('oc_ID', $this->input->post('oc_ID'));
-                            $query = $this->db->get();*/
-                            
+                       
                             $n1 = $this->input->post("txt_oc");
                             $n2 = $this->input->post('std_id['.$i.']');
                             
@@ -311,18 +309,89 @@ foreach($showall as $value){
                             $this->db->insert('report', $field5);
 
 
+                            if($this->db->affected_rows() > 0){
+                                for ($i=0; $i < count($this->input->post('std_id[]')); $i++) { 
+
+                                    $std = $this->input->post('std_id['.$i.']');
+                                $this->db->select('*');
+                                $this->db->from('student');
+                                $this->db->where('S_ID',$std);
+
+                                    // $query = $this->db->query("SELECT behavior_score FROM student WHERE S_ID = '.$std.'");
+                                $query = $this->db->get();
+                                var_dump($query->result());
+                                $sumpoint = 0;
+                                        foreach ($query->result() as $row) {
+                                            $sumpoint = $row->behavior_score-5;
+                                       
+                                        }
+                                        echo "foreach";
+                                        var_dump($sumpoint);
+                                        // for ($i=0; $i < count($this->input->post('std_id[]')); $i++) { 
+                                            // $field6 = null;
+                                            // $std = $this->input->post('std_id['.$i.']');
+                                        $field6 = array(
+                                            'behavior_score'=>$sumpoint,
+                                           
+                                            );
+                                            echo "field6";
+                                            var_dump($field6);
+                            
+                                        $this->db->where('S_ID',$std);
+                                        $this->db->update('student',$field6);
+                                      
+                                        }     
+                                       
+                           
                         if($this->db->affected_rows() > 0){
                              return true;
                         }else{
                             return false;
                         }
-                       
+                    }  
                     }
                 }
             }
         }
     }
+    
+    
+
+
+
                    
+//test
+// public function testt(){
+//     $id=59123456;
+//     // $query = $this->db->query("SELECT behavior_score FROM student where S_ID='59123456'");
+//     $this->db->select('behavior_score');
+//     $this->db->from('student');
+//     $this->db->where('S_ID',$id);
+
+//     // $query = $this->db->get();
+   
+//             foreach ($query->result() as $row) {
+//                 $sumpoint = $row->behavior_score-5;
+           
+//             }
+//             $field6 = array(
+//                 'behavior_score'=>$sumpoint,
+               
+//                 );
+
+//             $this->db->where('S_ID',$id);
+//             $this->db->update('student',$field6);
+          
+//     if($query->num_rows() > 0){
+
+//         return $query->row();
+//     }else{
+//         return false;
+//     }
+
+//         }
+    
+    
 
             
 

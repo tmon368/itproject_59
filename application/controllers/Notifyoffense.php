@@ -42,6 +42,12 @@ class Notifyoffense extends Student_dashboard
 		echo json_encode($result);
 	}
 
+	public function testt()
+	{
+		$result = $this->Notifyoffense_model->testt();
+		echo json_encode($result);
+	}
+
 
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 	public function addnotify()
