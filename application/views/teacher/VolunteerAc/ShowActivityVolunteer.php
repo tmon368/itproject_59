@@ -120,6 +120,7 @@
                                             <th id="th1">ลำดับ</th>
                                             <th id="th2">รหัสนักศึกษา</th>
                                             <th id="th3">ชื่อ-นามสกุล</th>
+                                            <th id="th6">หอพัก</th>
                                             <th id="th4">Email</th>
                                             <th id="th5">หมายเลขโทรศัพท์</th>
                                         </tr>
@@ -190,12 +191,7 @@
                         dataservices.push({
                             service_id: value.service_ID,
                             service_name: value.service_name,
-                            date: value.service_date,
-                            // time:[
-                            //     start_times:show_start_time,
-                            //     end_times:show_end_times,
-                            //     hour:counthour
-                            // ],      
+                            date: value.service_date,     
                             time:[show_start_time,show_end_times,counthour],       
                             place:value.place
                         });
@@ -250,20 +246,19 @@
             $.each(dataservices, function(key, value) {
                 if (serviceid == value.service_id){
                     $('#activity_name_modal').text('กิจกรรม:'+value.service_name);
+                    $('#title5').text('กิจกรรม:'+value.service_name);
                     $('#date_activity_modal').text('วันที่จัดกิจกรรม: '+value.date);
+                    $('#title6').text('วันที่จัดกิจกรรม: '+value.date);
                     if (value.time){
                         var temp = value.time;
                         console.log(temp[0]);
                         $('#date_activity_modal').text('เวลาเริ่ม '+ temp[0] +' ถึง '+ temp[1] +' ชั่วโมงกิกรรม '+temp[2]+' ชม.');
+                        $('#title7').text('เวลาจัดกิจกรรม'+ temp[0] +' ถึง '+ temp[1] +' ชั่วโมงกิกรรม '+temp[2]+' ชม.');
                     }
                     $('#place_modal').text(value.place);
+                    $('#title8').text('สถานที่จัดกิจกรรม: '+value.place);
                 }
             });
-
-                            // <span id="date_activity">วันที่จัดกิจกรรม 12 ธันวาคม 2563</span>
-                            // <span id="time_activity">เวลาเริ่ม 13:00 ถึง 14:00 ชั่วโมงกิกรรม 1 ชม.</span>
-                            // <span id="place">เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
-
 
             $.ajax({
                 type: 'GET',
@@ -272,14 +267,22 @@
                 data: data,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
+                    var htmlcode='';
                     var i = 0;
                     $.each(data, function(key, value) {
                         i++;
+                        htmlcode += '<tr>';
+                            htmlcode += '<td>'+i+'</td>';
+                            htmlcode += '<td>'+ value.S_ID+'</td>';
+                            htmlcode += '<td>'+ value.std_fname +" "+ value.std_lname+'</td>';
+                            htmlcode += '<td>'+ value.dname +'</td>';
+                            htmlcode += '<td>'+ value.email+'</td>';
+                            htmlcode += '<td>' + value.phone +'</td>';
+                        htmlcode += '</tr>';  
                         var name = value.std_fname + " " + value.std_lname;
                         dataset.push(new Array(i, value.S_ID, name, value.email, value.phone));
                     });
-
+                    $('#show_data_table').html(htmlcode);
                 }
             });
 
