@@ -64,10 +64,10 @@
         background-color: #F2603E;
         text-align: center;
 }
-.{
+/* {
     font-size: 80px;
 
-}
+} */
         .form_input{
          width: 250px;
         padding: 8px;
@@ -272,6 +272,20 @@
                             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                             <script type="text/javascript">
                                 window.onload = function() {
+                                    $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Teacher_dashboard/student_offense',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+
+
+                 
+                     
+
+
+                   
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         height: 350,
                                         animationEnabled: true,
@@ -280,36 +294,17 @@
                                             title: "หมวดความผิด"
                                         },
                                         data: [{
-                                            dataPoints: [{
-                                                    x: 10,
-                                                    y: 50
-                                                },
-                                                {
-                                                    x: 20,
-                                                    y: 40
-                                                },
-                                                {
-                                                    x: 30,
-                                                    y: 60
-                                                 },
-                                                {
-                                                    x: 40,
-                                                    y: 80
-                                                }
-                                                //,
-                                                // {
-                                                //     x: 50,
-                                                //     y: 20
-                                                // },
-                                                // {
-                                                //     x: 60,
-                                                //     y: 60
-                                                // }
-                                            ]
+                                            dataPoints: data
                                         }]
                                     });
-
+                                
+                
                                     chart.render();
+                                },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
                                 }
                             </script>
                             <br><br><br><br>
@@ -464,7 +459,7 @@
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscorestudent',
+                    url: '<?php echo base_url() ?>index.php/Teacher_dashboard/selectscorestudent',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
