@@ -272,9 +272,24 @@
                             </font>
                             <br><br>
 
+                          
                             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                             <script type="text/javascript">
                                 window.onload = function() {
+                                    $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Discipline_officer_dashboard/getDashboard',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+
+
+                 
+                     
+
+
+                   
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         height: 350,
                                         animationEnabled: true,
@@ -283,35 +298,17 @@
                                             title: "หมวดความผิด"
                                         },
                                         data: [{
-                                            dataPoints: [{
-                                                    x: 10,
-                                                    y: 50
-                                                },
-                                                {
-                                                    x: 20,
-                                                    y: 40
-                                                },
-                                                {
-                                                    x: 30,
-                                                    y: 60
-                                                },
-                                                {
-                                                    x: 40,
-                                                    y: 80
-                                                },
-                                                {
-                                                    x: 50,
-                                                    y: 20
-                                                },
-                                                {
-                                                    x: 60,
-                                                    y: 60
-                                                }
-                                            ]
+                                            dataPoints: data
                                         }]
                                     });
-
+                                
+                
                                     chart.render();
+                                },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
                                 }
                             </script>
                             <br><br><br><br>

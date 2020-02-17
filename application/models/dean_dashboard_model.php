@@ -49,6 +49,7 @@ class dean_dashboard_model extends CI_Model {
     public function getGraphData(){
         // $oc_ID = $_GET['oc_ID'];
         // $dept_ID =$_GET['dept_ID'];
+        $dean = $this->session->userdata('dean');
         $oc_ID = 8;
         $dept_ID = 22;
         // $dean=$this->session->userdata('username');
@@ -82,9 +83,6 @@ class dean_dashboard_model extends CI_Model {
     }else{
         return false;
     }
-
-
-
     }
     
     
