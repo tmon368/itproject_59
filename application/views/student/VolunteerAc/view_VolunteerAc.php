@@ -109,7 +109,7 @@
                                         </div>
 
                                         <label for="place" class="lable">สถานที่จัดกิจกรรม: </label>
-                                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                        <textarea class="form-control" name="place" id="place" cols="30" rows="10"></textarea>
                                         <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: </label>
                                         <!-- <input type="text" name="person_ID" id="add_persennel" class=" form-control" placeholder="ค้นหาผู้ควบคุมกิจกรรม" autocomplete="off"> -->
                                         <div class="margin-top:0.5rem;">
@@ -626,8 +626,8 @@
         });
 
         $('#btnAdd').click(function() {
+            $('#formadd')[0].reset();
             $('#exampleModalCenter').modal('show');
-
         });
 
 
@@ -642,7 +642,15 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    alert(data);
+                    
+                    if (data == true){
+                        alert ('ดำเนินการเสร็จสิ้นรอผลการอนุมัติกิจกรรม');
+                        show_all();
+                        $('#exampleModalCenter').modal('hide');
+                    }
+                    else if (data == false){
+                        alert ('ไม่สามารถทำรายการได้กรุณาตรวจสอบข้อมูล');
+                    }
                     //location.reload();
                 }
             });
