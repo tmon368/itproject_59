@@ -5,17 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_add_activity.css') ?>">
 
-<center>
-    <strong>
-        <div class="alert alert-success" role="alert" style="display: none;"></div>
-    </strong>
-    <strong>
-        <div class="alert alert-danger" role="alert" style="display: none;"></div>
-    </strong>
-    <strong>
-        <div class="alert alert-warning" role="alert" style="display: none;"></div>
-    </strong>
-</center>
+<title>เสนอกิจกรรมบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
 
 <head>
 
@@ -181,7 +171,7 @@
 
                                 <form action="" id="formupdate" name="formadd" method="post">
                                     <div class="FormDataAddActivity">
-
+                                        <input type="hidden" name="txteditID" id="txteditID" class="form-control style_input">
                                         <div class="form-inline">
                                             <label for="Activitylabel" class="lable">ชื่อกิจกรรม:</label>
                                             <input type="text" name="editservice_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off">
@@ -255,14 +245,12 @@
                         <table id="style_table" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>ลำดับ</th>
-                                    <th>ชื่อกิจกรรม</th>
-                                    <th>วันที่</th>
-                                    <th>ระยะเวลากิจกรรม</th>
-                                    <th>ผู้ควบคุม</th>
-                                    <th>รายละเอียดกิจกรรม</th>
-                                    <th>สถานะการเสนอกิจกรรม</th>
-                                    <th>จัดการ</th>
+                                    <th id="sort">ลำดับ</th>
+                                    <th id="activity_name">ชื่อกิจกรรม</th>
+                                    <th id="date">วันที่</th>
+                                    <th id="detail_activity">รายละเอียด</th>
+                                    <th id="status">สถานะการเสนอกิจกรรม</th>
+                                    <th id="manage">จัดการ</th>
                                 </tr>
                             </thead>
                             <tbody id="showdata">
@@ -306,17 +294,24 @@
                 success: function(data) {
 
                     $.each(data, function(key, value) {
-
+                        //class show_data edit_data del_data
                         i++;
                         html += '<tr>';
                         html += '<td>' + i + '</td>';
                         html += '<td>' + value.service_name + '</td>';
                         html += '<td>' + value.service_date + '</td>';
-                        html += '<td>' + value.start_time + "-" + value.end_time + '</td>';
-                        html += '<td>' + value.person_fname + "  " + value.person_lname + '</td>';
-                        html += '<td> <a href="javascript:;" data=' + value.service_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
-                        html += '<td>' + value.statusname + '</td>';
-                        html += '<td><a href="javascript:;" data=' + value.service_ID + ' class="edit_data"><i class="fas fa-edit " style="color:rgba(235,99,102,1.00)"></i></a><a href="javascript:;" data=' + value.service_ID + ' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';
+                        // html += '<td>' + value.start_time + "-" + value.end_time + '</td>';
+                        // html += '<td>' + value.person_fname + "  " + value.person_lname + '</td>';
+                        html += '<td class="detailzoom"><span class="fileicon show_data" data="' + value.service_ID + '"><i class="fas fa-file-alt"></i></span></td>';
+
+                        if (value.statusname == "รอผลการเสนอ") {
+                            html += '<td class="StatusActivity"><span id="wait_offer">รอผลการเสนอ</span></td>';
+                        } else if (value.statusname == "อนุมัติ") {
+                            html += '<td class="StatusActivity"><span id="sucess">อนุมัติ</span></td>';
+                        } else {
+
+                        }
+                        html += '<td><span class="editicon edit_data" data="' + value.service_ID + '"><i class="fas fa-edit"></i></span><span class="delicon del_data" data="' + value.service_ID + '"><i class="fas fa-trash-alt"></i></span></td>'
                         html += '</tr>'
                         $('#showdata').html(html);
                     });
@@ -445,8 +440,7 @@
             var id = $(this).attr('data');
 
             $('#edit_file').modal('show');
-            $('#formupdate').attr('action',
-                '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
+            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
 
 
             $.ajax({
@@ -475,109 +469,42 @@
             });
         });
 
-        // $('#btnedit').click(function() {
-        //     var url = $('#formupdate').attr('action');
-        //     var data = $('#formupdate').serialize();
-        //     //validate form
-        //     var service_ID = $('input[name=txteditID]');
-        //     var service_name = $('input[name=editservice_name]');
-        //     var person_ID = $('input[name=editperson_ID]');
-        //     var place = $('input[name=editplace]');
-        //     var service_date = $('input[name=editservice_date]');
-        //     var start_time = $('input[name=editstart_time]');
-        //     var end_time = $('input[name=editend_time]');
-        //     var received = $('input[name=editreceived]');
-        //     var explanation = $('textarea[name=explanation]');
+        $('#btnedit').click(function() {
+            var url = $('#formupdate').attr('action');
+            var data = $('#formupdate').serialize();
+            console.log(data);
 
-        //     var result = '';
+            $.ajax({
+                type: 'ajax',
+                method: 'post',
+                url: url,
+                data: data,
+                async: false,
+                dataType: 'json',
+                success: function(response) {
+                    location.reload('VolunteerAc');
+                    console.log(response);
+                    if (response.success) {
+                        $('#edit_file').modal('hide');
+                        $('#formupdate')[0].reset();
+                        $('#formupdate').empty();
+                        location.reload('VolunteerAc');
+                        // show_all();
+                        // alert ('อัพเดตข้อมูลเรียบร้อย');
+                    } else {
+                        alert('Error');
+                    }
+                },
+                error: function() {
+                    //alert('id นี้ถูกใช้งานแล้ว');
+                    $('#edit_file').modal('hide');
+                    $('#formupdate')[0].reset();
+                    $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                    location.reload('VolunteerAc');
+                }
 
-        //     if (service_ID.val() == '') {
-        //         service_ID.parent().parent().addClass('has-error');
-        //     } else {
-        //         service_ID.parent().parent().removeClass('has-error');
-        //         result += '1';
-        //     }
-        //     if (service_name.val() == '') {
-        //         service_name.parent().parent().addClass('has-error');
-        //     } else {
-        //         service_name.parent().parent().removeClass('has-error');
-        //         result += '2';
-        //     }
-        //     if (person_ID.val() == '') {
-        //         person_ID.parent().parent().addClass('has-error');
-        //     } else {
-        //         person_ID.parent().parent().removeClass('has-error');
-        //         result += '3';
-        //     }
-        //     if (place.val() == '') {
-        //         place.parent().parent().addClass('has-error');
-        //     } else {
-        //         place.parent().parent().removeClass('has-error');
-        //         result += '4';
-        //     }
-        //     if (service_date.val() == '') {
-        //         service_date.parent().parent().addClass('has-error');
-        //     } else {
-        //         service_date.parent().parent().removeClass('has-error');
-        //         result += '5';
-        //     }
-        //     if (start_time.val() == '') {
-        //         start_time.parent().parent().addClass('has-error');
-        //     } else {
-        //         start_time.parent().parent().removeClass('has-error');
-        //         result += '6';
-        //     }
-        //     if (end_time.val() == '') {
-        //         end_time.parent().parent().addClass('has-error');
-        //     } else {
-        //         end_time.parent().parent().removeClass('has-error');
-        //         result += '7';
-        //     }
-        //     if (received.val() == '') {
-        //         received.parent().parent().addClass('has-error');
-        //     } else {
-        //         received.parent().parent().removeClass('has-error');
-        //         result += '8';
-        //     }
-        //     if (explanation.val() == '') {
-        //         explanation.parent().parent().addClass('has-error');
-        //     } else {
-        //         explanation.parent().parent().removeClass('has-error');
-        //         result += '9';
-        //     }
-        //     if (result == '123456789') {
-        //         $.ajax({
-        //             type: 'ajax',
-        //             method: 'post',
-        //             url: url,
-        //             data: data,
-        //             async: false,
-        //             dataType: 'json',
-        //             success: function(response) {
-        //                 if (response.success) {
-        //                     $('#edit_file').modal('hide');
-        //                     $('#formupdate')[0].reset();
-        //                     $('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-        //                     $('#formupdate').empty();
-
-
-
-        //                 } else {
-        //                     alert('Error');
-        //                 }
-        //             },
-
-
-        //             error: function() {
-        //                 //alert('id นี้ถูกใช้งานแล้ว');
-        //                 $('#edit_file').modal('hide');
-        //                 $('#formupdate')[0].reset();
-        //                 $('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-        //                 location.reload('VolunteerAc');
-        //             }
-        //         });
-        //     }
-        // });
+            });
+        });
 
         $('#showdata').on('click', '.show_data', function() {
 
@@ -642,14 +569,13 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    
-                    if (data == true){
-                        alert ('ดำเนินการเสร็จสิ้นรอผลการอนุมัติกิจกรรม');
+
+                    if (data == true) {
+                        alert('ดำเนินการเสร็จสิ้นรอผลการอนุมัติกิจกรรม');
                         show_all();
                         $('#exampleModalCenter').modal('hide');
-                    }
-                    else if (data == false){
-                        alert ('ไม่สามารถทำรายการได้กรุณาตรวจสอบข้อมูล');
+                    } else if (data == false) {
+                        alert('ไม่สามารถทำรายการได้กรุณาตรวจสอบข้อมูล');
                     }
                     //location.reload();
                 }

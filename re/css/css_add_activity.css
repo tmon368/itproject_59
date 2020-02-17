@@ -7,6 +7,52 @@
     font-family: 'Taviraj',sans-serif;
     font-size: 15px;
 }
+.detailzoom{
+    text-align: center;
+}
+.StatusActivity{
+    text-align: center;
+}
+.fileicon{
+    font-size: 18px;
+    color: #D5DBDB;
+}
+.fileicon:hover{
+    cursor: pointer;
+    color: #5DADE2;
+    opacity: 1;
+    transition: 0.3s;
+}
+.editicon{
+    color:#34495E;
+    font-size: 16px;
+    margin: 0.2rem;
+}
+.editicon:hover{
+    cursor: pointer;
+    color:#1ABC9C ;
+    font-size: 16px;
+    margin: 0.2rem;
+}
+.delicon{
+    color: #F5B7B1;
+    font-size: 16px;
+    margin: 0.2rem;
+}
+.delicon:hover{
+    color:#E74C3C  ;
+    cursor: pointer;
+}
+#wait_offer{
+    font-size: 14px;
+    font-family: sans-serif;
+    color: rgb(243, 57, 0);
+}
+#sucess{
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #58D68D;
+}
 #service_name{
     width: 50%;
     font-family: 'Taviraj',sans-serif;
@@ -25,4 +71,16 @@
 }
 #received{
     font-family: 'Taviraj',sans-serif;
+}
+#sort{
+    width: 5% !important;
+}
+#activity_name{
+    width: 60% !important;
+}
+#date{
+    width: 5% !important;
+}
+#detail_activity_2{
+    width: 1% !important;
 }
