@@ -4,6 +4,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_add_activity.css') ?>">
+
 <center>
     <strong>
         <div class="alert alert-success" role="alert" style="display: none;"></div>
@@ -73,8 +74,8 @@
                     &nbsp;
                 </div>
 
-
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <!--Modal add Activity-->
+                <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
                         <div class="modal-content">
 
@@ -94,7 +95,7 @@
                                             <label for="Activitylabel" class="lable">ชื่อกิจกรรม:</label>
                                             <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off">
                                             <label for="count_paticipant" class="lable">จำนวนที่รับสมัคร: </label>
-                                            <input type="number" name="received" id="received" class="form-control" placeholder="จำนวนผู้เข้ามร่วมกิจกรรม" autocomplete="off">
+                                            <input type="text" name="received" id="received" class="form-control" placeholder="จำนวนผู้เข้ามร่วมกิจกรรม" autocomplete="off">
                                         </div>
 
                                         <div class="form-inline" style="margin-top: 0.5rem;">
@@ -112,11 +113,11 @@
                                         <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: </label>
                                         <!-- <input type="text" name="person_ID" id="add_persennel" class=" form-control" placeholder="ค้นหาผู้ควบคุมกิจกรรม" autocomplete="off"> -->
                                         <div class="margin-top:0.5rem;">
-                                            <select class="selectplace" name="person_ID" id="add_persennel"></select>
+                                            <select class="selectplace input" name="person_ID" id="add_persennel"></select>
                                         </div>
 
                                         <label for="detailactivity" class="lable">รายละเอียดกิจกรรม: </label>
-                                        <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="10"></textarea>
                                     </div>
 
 
@@ -124,7 +125,7 @@
 
                             <div class="modal-footer">
                                 <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                                <button name="btnSave" id="btnSave" type="button" class="btn btn-success">บันทึกข้อมูล</button>
                             </div>
                             </form>
                         </div>
@@ -331,12 +332,12 @@
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
-                    // var html = '';
-                    // html += '<option selected>เลือกผู้รับรอง</option>';
-                    // $.each(data, function(key, value) {
-                    //     html += '<option value="' + value.place_ID + '">' + value.place_name + '</option>';
-                    //     $('#add_persennel').html(html);
-                    // });
+                    var html = '';
+                    html += '<option selected>เลือกผู้รับรอง</option>';
+                    $.each(data, function(key, value) {
+                        html += '<option value="' + value.person_ID + '">' + value.person_fname + " " + value.person_lname + '</option>';
+                        $('#add_persennel').html(html);
+                    });
                 }
             });
         }
@@ -603,8 +604,6 @@
 
                     $.each(data, function(key, value) {
                         i++;
-                        // if (i==1) {
-
                         html += '<p class="text_head"> <label for="" class="label_txt">ชื่อกิจกรรม: </label> ' + value.service_name + ' </p>'
                         html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อผู้ควบคุมกิจกรรม:</label> ' + value.person_fname + '&nbsp;&nbsp;' + value.person_lname + ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
@@ -612,12 +611,6 @@
                         html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  ' + value.start_time + "-" + value.end_time + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
-
-
-
-                        //  }
-
-
 
                         $('.content').html(html);
 
@@ -632,8 +625,6 @@
 
         });
 
-
-
         $('#btnAdd').click(function() {
             $('#exampleModalCenter').modal('show');
 
@@ -641,10 +632,8 @@
 
 
         $('#btnSave').click(function() {
-
             var form_data = $('#formadd').serialize();
             console.log(form_data);
-
             $.ajax({
                 type: 'ajax',
                 method: 'post',
@@ -653,8 +642,8 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-                    //alert(data);
-                    location.reload();
+                    alert(data);
+                    //location.reload();
                 }
             });
         });
