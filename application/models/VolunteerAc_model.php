@@ -239,11 +239,13 @@ class VolunteerAc_model extends CI_Model {
 	{
 	 
 
-        $keyword1 = $_POST["query"];
-        $this->db->like('person_fname', $keyword1, 'both'); 
-        $this->db->order_by('person_ID','ASC');
+        // $keyword1 = $_POST["query"];
+        // $this->db->like('person_fname', $keyword1, 'both'); 
+        // $this->db->order_by('person_ID','ASC');
+        $this->db->select('*');
+        $this->db->from('personnel');
         
-	    $query = $this->db->get('personnel');
+	    $query = $this->db->get();
 	    
         if($query->result() > 0){
                 
