@@ -9,6 +9,7 @@
 </head>
 <script>
     var dataset = [];
+    var dataservices = [];
 </script>
 
 <body>
@@ -71,10 +72,10 @@
 
                     <div class="HeaderData">
                         <div class="DetailData">
-                            <span id="activity_name_modal">กิจกรรม: ปลูกต้นไม้รักษํโลก จังหวัดเพชรบูรณ์</span>
-                            <span id="date_activity">วันที่จัดกิจกรรม 12 ธันวาคม 2563</span>
-                            <span id="time_activity">เวลาเริ่ม 13:00 ถึง 14:00 ชั่วโมงกิกรรม 1 ชม.</span>
-                            <span id="place">เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
+                            <span id="activity_name_modal"></span>
+                            <span id="date_activity_modal"></span>
+                            <span id="time_activity_modal"></span>
+                            <span id="place_modal"></span>
                         </div>
                     </div>
                     <div class="ShowDataParticipants" id="data">
@@ -125,7 +126,7 @@
                                     </thead>
 
                                     <tbody id="show_data_table">
-                                       
+
                                     </tbody>
 
                                 </table>
@@ -186,6 +187,19 @@
                         var end_times = parseFloat(temp_2.substring(0, 5));
                         var counthour = Math.abs(end_times - start_times);
 
+                        dataservices.push({
+                            service_id: value.service_ID,
+                            service_name: value.service_name,
+                            date: value.service_date,
+                            // time:[
+                            //     start_times:show_start_time,
+                            //     end_times:show_end_times,
+                            //     hour:counthour
+                            // ],      
+                            time:[show_start_time,show_end_times,counthour],       
+                            place:value.place
+                        });
+
                         i++;
                         html += '<tr>';
                         html += '<td id="sort_number">' + i + '</td>';
@@ -228,19 +242,28 @@
             var data = {
                 id: serviceid
             }
-            dataset = [];
+            var html = '';
+            var dataset = [];
             
-            var html ='';
-            for(var i=0; i<100;i++){
-                html += '<tr>';
-                        html += '<td>'+i+'</td>';
-                        html += '<td id="">59123456</td>';
-                        html += '<td>นายธงชัย สิริรานา</td>';
-                        html += '<td>Tongchai@mail.ac.th</td>'
-                        html += '<td>085-473-0853</td>';
-                        html += '</tr>';
-            }
-            $('#show_data_table').html(html);
+            console.log(dataservices);
+            
+            $.each(dataservices, function(key, value) {
+                if (serviceid == value.service_id){
+                    $('#activity_name_modal').text('กิจกรรม:'+value.service_name);
+                    $('#date_activity_modal').text('วันที่จัดกิจกรรม: '+value.date);
+                    if (value.time){
+                        var temp = value.time;
+                        console.log(temp[0]);
+                        $('#date_activity_modal').text('เวลาเริ่ม '+ temp[0] +' ถึง '+ temp[1] +' ชั่วโมงกิกรรม '+temp[2]+' ชม.');
+                    }
+                    $('#place_modal').text(value.place);
+                }
+            });
+
+                            // <span id="date_activity">วันที่จัดกิจกรรม 12 ธันวาคม 2563</span>
+                            // <span id="time_activity">เวลาเริ่ม 13:00 ถึง 14:00 ชั่วโมงกิกรรม 1 ชม.</span>
+                            // <span id="place">เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
+
 
             $.ajax({
                 type: 'GET',
