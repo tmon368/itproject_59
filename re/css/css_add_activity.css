@@ -1,0 +1,28 @@
+.modal-title{
+    font-family: 'prompt',sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+}
+.lable{
+    font-family: 'Taviraj',sans-serif;
+    font-size: 15px;
+}
+#service_name{
+    width: 50%;
+    font-family: 'Taviraj',sans-serif;
+}
+#service_date{
+    width: 20%;
+    font-family: 'Taviraj',sans-serif;
+}
+#start_time{
+    width: 15%;
+    font-family: 'Taviraj',sans-serif;
+}
+#end_time{
+    width: 15%;
+    font-family: 'Taviraj',sans-serif;
+}
+#received{
+    font-family: 'Taviraj',sans-serif;
+}
