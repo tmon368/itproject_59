@@ -30,7 +30,7 @@ class Branch_head_dashboard extends CI_Controller {
 	}
 	function getDashboard(){
 		$result = $this->branch_head_dashboard_model->getDashboard();
-		echo json_encode($$result,JSON_NUMERIC_CHECK);
+		echo json_encode($result,JSON_NUMERIC_CHECK);
 	}
 
 	public function getAllSTD(){

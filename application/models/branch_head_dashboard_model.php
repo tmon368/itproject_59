@@ -10,9 +10,9 @@ class branch_head_dashboard_model extends CI_Model {
     
     public function getDashboard(){
          $branchhead=$this->session->userdata('username');
-        //  $branchhead = 7054545;
+         // $branchhead = 7054545;
 
-         $query= $this->db->query("SELECT offensecate.oc_ID,offensecate.oc_desc as label,COUNT(offensestd.S_ID) as countstd 
+         $query= $this->db->query("SELECT offensecate.oc_ID,offensecate.oc_desc as label,COUNT(offensestd.S_ID) as y 
          FROM `offensecate`, `offensestd` , `offensehead` , `offense` , `student` , `curriculum` , `personnel` , `divisions` 
          WHERE personnel.person_ID='".$branchhead."' and personnel.dept_ID=divisions.dept_ID and offensestd.oh_ID=offensehead.oh_ID 
          and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and student.cur_ID=curriculum.cur_ID and
@@ -26,16 +26,17 @@ class branch_head_dashboard_model extends CI_Model {
         // die;
         $data = array();
         $data = $query->result_array();
-        // var_dump($data);
+        //  var_dump($data);
+        //  die();
         // echo "<br><br><br>";
-        $calnumstd =0;
-        foreach($data as $value){
-            $cal = intval($value['countstd']);
-            $calnumstd += $cal;
+    //     $calnumstd =0;
+    //     foreach($data as $value){
+    //         $cal = intval($value['countstd']);
+    //         $calnumstd += $cal;
 
 
-        }
-       $data['numstd'] = $calnumstd;
+    //     }
+    //    $data['numstd'] = $calnumstd;
       
         
         
