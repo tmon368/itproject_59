@@ -761,7 +761,7 @@ foreach($showall as $value){
 
     public function searchoffensestudent(){
         // $Student_ID = "59111111";
-        // $getday = "19";
+        $i= 0;
         // $getmonth ="09";
         // $getyear = "2019";
         $Student_ID =$_GET['getstdID'];
@@ -796,24 +796,36 @@ foreach($showall as $value){
        $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
        $this->db->join('offense o','oh.off_ID=o.off_ID');
        $this->db->join('student std','ostd.S_ID=std.S_ID'); 
-       $S_ID;
+       
        //$day;
        //$month;
       // $year;
        //$this->db->where('YEAR(oh.committed_date)',$year);
         //$this->db->order_by('oh.committed_date ASC');
-    
-       $query = $this->db->get();
-      $data = array();
-      $data = $query->result_array();
-    //    var_dump( $data);
-    //    die();
-    
-       if($data !=NULL){
-        return $data;
-    }else{
-        return false;
-    }
-    }
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+        foreach($student as $value){
+            
+            $data = $value['statusoff'];
+            $status = $this->utilstatus($data);
+            $student[$i]["statusoffname"] = $status;
+            $i+=1;
+
+        }
+        
+        //var_dump($student);   
+       // die();     
+        if($student > 0){
+            return $student;
+        }else{
+            return false;
+        }
+    }  
+    public function utilstatus($statusID){
+
+        $data = array("รอรายงานตัว","รอการอนุมัติหลักฐาน","หมดเขตการรายงานตัวกรุณาติดต่อเจ้าหน้าที่"  ,"รอการอบรม","รอการบำเพ็ญประโยชน์","รอการรับรองกิจกรรม","เกินระยะเวลาการบำเพ็ญประโยชน์กรุณาติดต่อเจ้าหน้าที่","คืนคะแนนความประพฤติ"  );
+        return $data[$statusID];
+    }  
     
 }

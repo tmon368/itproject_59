@@ -266,10 +266,23 @@
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร.......................</center>
                             </font>
                             <br><br>
-
                             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                             <script type="text/javascript">
                                 window.onload = function() {
+                                    $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/branch_head_dashboard/getDashboard',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+
+
+                 
+                     
+
+
+                   
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         height: 350,
                                         animationEnabled: true,
@@ -278,37 +291,21 @@
                                             title: "หมวดความผิด"
                                         },
                                         data: [{
-                                            dataPoints: [{
-                                                    x: 10,
-                                                    y: 50
-                                                },
-                                                {
-                                                    x: 20,
-                                                    y: 40
-                                                },
-                                                {
-                                                    x: 30,
-                                                    y: 60
-                                                },
-                                                {
-                                                    x: 40,
-                                                    y: 80
-                                                },
-                                                {
-                                                    x: 50,
-                                                    y: 20
-                                                },
-                                                {
-                                                    x: 60,
-                                                    y: 60
-                                                }
-                                            ]
+                                            dataPoints: data
                                         }]
                                     });
-
+                                
+                
                                     chart.render();
+                                },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
                                 }
                             </script>
+                        
+
                             <br><br><br><br>
                         </div>
 
@@ -681,7 +678,7 @@ $.ajax({
             html += '<span id="title7">รหัสนักศึกษา: '+ value.S_ID +"    "+'ชื่อ : '+ value.std_fname +" "+ value.std_lname +'</span>'+'</span>';
             html += '<span id="title6">วันที่กระทำผิด:  '+ value.committed_date +'</span>';
             html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
-            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoff +'</span>';
+            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
             html += '</div>';
             html += '<div class="Main2">';
             html += '<div class="CountStudent">คะแนนที่หัก</div>';
