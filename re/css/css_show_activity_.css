@@ -10,9 +10,18 @@
     .part2 {
         display: grid;
     }
+    .part3{
+        display:grid;
+    }
     .logofile {
         max-width: 150px;
         max-height: 150px;
+    }
+    .part4{
+        margin-top: 1%;
+    }
+    .part5{
+        margin-top: 1%;
     }
     .title1 {
         font-size: 35px;
@@ -29,7 +38,7 @@
         padding: 0%;
     }
     .title3 {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: 300;
         font-family: 'TH SarabunPSK', sans-serif;
         margin: 0%;
@@ -39,8 +48,62 @@
         margin-top: 2%;
     }
     #title4{
-        font-size: 20px;
+        font-size: 25px;
+        font-weight: 800;
         font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #title5{
+        font-size: 25px;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #title6{
+        font-size: 25px;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #title7{
+        font-size: 25px;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #title8{
+        font-size: 25px;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #title9{
+        font-size: 25px;
+        font-weight: 800;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #title10{
+        font-size: 25px;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #th1{
+        font-size: 25px;
+        font-weight: 800;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #th2{
+        font-size: 25px;
+        font-weight: 800;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #th3{
+        font-size: 25px;
+        font-weight: 800;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #th4{
+        font-size: 25px;
+        font-weight: 800;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #th5{
+        font-size: 25px;
+        font-weight: 800;
+        font-family: 'TH SarabunPSK', sans-serif;
+    }
+    #tr1{
+        margin-top: 5%;
     }
 }
 

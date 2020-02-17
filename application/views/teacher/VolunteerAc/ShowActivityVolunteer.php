@@ -98,10 +98,38 @@
                         </div>
                         <div class="DetailActivity">
                             <div class="part3">
-                                <span id="title4">1.รายละเอียดกิจกรรมบำเพ็ญประโยชน์</span>
-                                
+                                <span id="title4">1.ข้อมูลกิจกรรมบำเพ็ญประโยชน์</span>
+                                <div style="display:grid;margin-left: 2%;">
+                                    <span id="title5">ชื่อกิจกรรม: แจกถุงยังชีพสำหรับผู้ประสบภัยน้ำท่วม</span>
+                                    <span id="title6">วันที่จัดกิจกรรม: 12 ธันวาคม 2563</span>
+                                    <span id="title7">เวลาจัดกิจกรรม 13:00 ถึง 14:00 ชั่วโมงกิจกรรม 1 ชม.</span>
+                                    <span id="title8">สถานที่จัดกิจกรรม: เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
+                                </div>
                             </div>
-                            <div class="part4"></div>
+                            <div class="part4">
+                                <span id="title9">2.รายชื่อผู้เข้าร่วมกิจกรรมบำเพ็ญประโยชน์</span>
+                                <div style="display:grid;margin-left: 5%;">
+                                    <span id="title10">ผู้สมัครเข้าร่วมกิจกรรมทั้งหมด 100 คน</span>
+                                </div>
+                            </div>
+                            <div class="part5">
+                                <table id="" class="display" style="width:100%;margin-left:8%;font-family: 'TH SarabunPSK', sans-serif;font-size:22px;">
+                                    <thead>
+                                        <tr>
+                                            <th id="th1">ลำดับ</th>
+                                            <th id="th2">รหัสนักศึกษา</th>
+                                            <th id="th3">ชื่อ-นามสกุล</th>
+                                            <th id="th4">Email</th>
+                                            <th id="th5">หมายเลขโทรศัพท์</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="show_data_table">
+                                       
+                                    </tbody>
+
+                                </table>
+                            </div>
 
                         </div>
 
@@ -201,6 +229,18 @@
                 id: serviceid
             }
             dataset = [];
+            
+            var html ='';
+            for(var i=0; i<100;i++){
+                html += '<tr>';
+                        html += '<td>'+i+'</td>';
+                        html += '<td id="">59123456</td>';
+                        html += '<td>นายธงชัย สิริรานา</td>';
+                        html += '<td>Tongchai@mail.ac.th</td>'
+                        html += '<td>085-473-0853</td>';
+                        html += '</tr>';
+            }
+            $('#show_data_table').html(html);
 
             $.ajax({
                 type: 'GET',
