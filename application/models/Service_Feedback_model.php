@@ -41,7 +41,7 @@ class Service_Feedback_model extends CI_Model {
     $usergroup =$this->session->userdata('employee') == null ? "":$this->session->userdata('employee');
     }
         //$usergroup = "jsomsri";
-        echo $usergroup;
+        // echo $usergroup;
         //die();
 
 
@@ -51,8 +51,8 @@ class Service_Feedback_model extends CI_Model {
         $this->db->join('personnel p', 's.person_ID=p.person_ID');
         $this->db->where('p.username', $usergroup);
         $query = $this->db->get();
-       var_dump($query->result());
-       die();
+    //    var_dump($query->result());
+    //    die();
       
        if($query->num_rows() > 0){
            return $query->result();
