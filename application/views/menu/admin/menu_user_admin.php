@@ -97,7 +97,7 @@
                     </li>
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("Import_data/statusimportstatus") ?>">สถานะนักศึกษา</a>
-                    </li>
+                    </li> 
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("Import_data/statusimportpersonnel") ?>">บุคลากร</a>
                     </li>

@@ -2,7 +2,7 @@
 require_once('Admin_dashboard.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class VolunteerAc_admin extends Admin_dashboard
+class VolunteerAc_admin extends Admin_dashboard 
 {
     function __construct()
     {
