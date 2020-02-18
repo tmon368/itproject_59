@@ -29,6 +29,9 @@
     font-size: 14px;
     font-family: 'Taviraj', sans-serif;
 }
+#reson_not_accept{
+    height: 5rem;
+}
 
 .modal-title {
     font-family: 'prompt', sans-serif;
@@ -57,15 +60,15 @@
 
 .ResonNotAccept {
     display: none;
-    -webkit-animation: fadein 2s;
+    -webkit-animation: fadein 1s;
     /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 2s;
+    -moz-animation: fadein 1s;
     /* Firefox < 16 */
-    -ms-animation: fadein 2s;
+    -ms-animation: fadein 1s;
     /* Internet Explorer */
-    -o-animation: fadein 2s;
+    -o-animation: fadein 1s;
     /* Opera < 12.1 */
-    animation: fadein 2s;
+    animation: fadein 1s;
 }
 
 @keyframes fadein {

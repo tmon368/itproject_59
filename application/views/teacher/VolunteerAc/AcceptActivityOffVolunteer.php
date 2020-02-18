@@ -98,8 +98,8 @@
                                 <div class="ChoiceAccept">
                                     <span class="title acceptperson">ตอบรับการเป็นผู้รับรองกิจกรรม</span>
                                     <div>
-                                        <label class="radio-inline label"><input type="radio" name="accept_activity" class="accept_radio_activity" value="1" checked>รับรอง</label>
-                                        <label class="radio-inline label"><input type="radio" name="accept_activity" class="accept_radio_activity" value="0">ไม่รับรอง</label>
+                                        <label class="radio-inline label"><input type="radio" name="acceptactivity" class="AcceptActivity" value="1" checked>รับรอง</label>
+                                        <label class="radio-inline label"><input type="radio" name="acceptactivity" class="UnAcceptActivity" value="0">ไม่รับรอง</label>
                                     </div>
                                 </div>
                                 <div class="ResonNotAccept">
@@ -136,20 +136,12 @@
         $('#accept_activity_modal').modal('show');
     });
 
-    $('.accept_radio_activity').click(function() {
-        var choice = $('.accept_radio_activity').val();
-        console.log (choice);
-        if (choice == 1) {
-            //stament
-            $('.ResonNotAccept').show();
-
-        } else if (choice == 0) {
-            //stament
-            
-
-        } else {
-            //stament
-        }
-
+    $('.UnAcceptActivity').click(function() {
+        $('.ResonNotAccept').show();
     });
+
+    $('.AcceptActivity').click(function() {
+        $('.ResonNotAccept').hide();
+    });
+
 </script>
