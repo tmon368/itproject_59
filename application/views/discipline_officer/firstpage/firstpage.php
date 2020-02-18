@@ -268,7 +268,7 @@
                     <div class="card shadow mb-3">
                         <div class="card-body " id="card_1">
                             <font size="4">
-                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพัก.......................</center>
+                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของมหาวิทยาลัยทั้งหมด</center>
                             </font>
                             <br><br>
 
@@ -395,11 +395,6 @@
         </div>
     </div>
     </div>
-
-
-
-
-
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
             <div class="modal-content">
@@ -496,7 +491,7 @@
             function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_advisor_dashboard/selectscoretraining',
+                    url: '<?php echo base_url() ?>index.php/Discipline_officer_dashboard/getDashboard',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
