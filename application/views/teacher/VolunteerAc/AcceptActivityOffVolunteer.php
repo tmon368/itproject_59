@@ -145,28 +145,31 @@
                 async: false,
                 success: function(data) {
                     console.log (data);
-                    // $.each(data, function(key, value) {
-                    //     //class show_data edit_data del_data
-                    //     i++;
-                    //     html += '<tr>';
-                    //     html += '<td>' + i + '</td>';
-                    //     html += '<td>' + value.service_name + '</td>';
-                    //     html += '<td>' + value.service_date + '</td>';
-                    //     // html += '<td>' + value.start_time + "-" + value.end_time + '</td>';
-                    //     // html += '<td>' + value.person_fname + "  " + value.person_lname + '</td>';
-                    //     html += '<td class="detailzoom"><span class="fileicon show_data" data="' + value.service_ID + '"><i class="fas fa-file-alt"></i></span></td>';
+                    $.each(data, function(key, value) {
+                        var temp_1 = value.start_time;
+                        var temp_2 = value.end_time;
+                        var show_start_time = temp_1.substring(0, 5);
+                        var show_end_times = temp_2.substring(0, 5);
+                        var start_times = parseFloat(temp_1.substring(0, 5));
+                        var end_times = parseFloat(temp_2.substring(0, 5));
+                        var counthour = Math.abs(end_times - start_times);
 
-                    //     if (value.statusname == "รอผลการเสนอ") {
-                    //         html += '<td class="StatusActivity"><span id="wait_offer">รอผลการเสนอ</span></td>';
-                    //     } else if (value.statusname == "อนุมัติ") {
-                    //         html += '<td class="StatusActivity"><span id="sucess">อนุมัติ</span></td>';
-                    //     } else {
-
-                    //     }
-                    //     html += '<td><span class="editicon edit_data" data="' + value.service_ID + '"><i class="fas fa-edit"></i></span><span class="delicon del_data" data="' + value.service_ID + '"><i class="fas fa-trash-alt"></i></span></td>'
-                    //     html += '</tr>'
-                    //     $('#showdata').html(html);
-                    // });
+                        i++;
+                        htmlcode += '<tr>';
+                        htmlcode += '<td>' + i + '</td>'
+                        htmlcode += '<td>';
+                        htmlcode += '<div class="DetailActivity">';
+                        htmlcode += '<span id="activity_name">กิจกรรม:' + value.service_name + '</span>';
+                        htmlcode += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
+                        htmlcode += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        htmlcode += '<span id="place">' + value.place + '</span>';
+                        htmlcode += '</div>';
+                        htmlcode += '</td>';
+                        htmlcode += '<td id="person_control">xxx</td>';
+                        htmlcode += '<td id="btn_accept_td"> <span class="accept_activity">อนุมัติกิจกรรม</span> </td>';
+                        htmlcode += '</tr>';
+                        $('#showdata').html(html);
+                    });
                 }
             });
     }
