@@ -130,7 +130,46 @@
 <script type="text/javascript">
     $(document).ready(function() {
         console.log('Ready Webpage');
+        show_all();
     });
+
+    function show_all(){
+
+        alert (5555);
+        html = '';
+        i = 0;
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url("Teacher_dashboard/selectservice") ?>',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    console.log (data);
+                    // $.each(data, function(key, value) {
+                    //     //class show_data edit_data del_data
+                    //     i++;
+                    //     html += '<tr>';
+                    //     html += '<td>' + i + '</td>';
+                    //     html += '<td>' + value.service_name + '</td>';
+                    //     html += '<td>' + value.service_date + '</td>';
+                    //     // html += '<td>' + value.start_time + "-" + value.end_time + '</td>';
+                    //     // html += '<td>' + value.person_fname + "  " + value.person_lname + '</td>';
+                    //     html += '<td class="detailzoom"><span class="fileicon show_data" data="' + value.service_ID + '"><i class="fas fa-file-alt"></i></span></td>';
+
+                    //     if (value.statusname == "รอผลการเสนอ") {
+                    //         html += '<td class="StatusActivity"><span id="wait_offer">รอผลการเสนอ</span></td>';
+                    //     } else if (value.statusname == "อนุมัติ") {
+                    //         html += '<td class="StatusActivity"><span id="sucess">อนุมัติ</span></td>';
+                    //     } else {
+
+                    //     }
+                    //     html += '<td><span class="editicon edit_data" data="' + value.service_ID + '"><i class="fas fa-edit"></i></span><span class="delicon del_data" data="' + value.service_ID + '"><i class="fas fa-trash-alt"></i></span></td>'
+                    //     html += '</tr>'
+                    //     $('#showdata').html(html);
+                    // });
+                }
+            });
+    }
 
     $('.accept_activity').click(function() {
         $('#accept_activity_modal').modal('show');
