@@ -5,6 +5,10 @@
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_regis_activity_student.css') ?>">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <center>
     <strong>
         <div class="alert alert-success" role="alert" style="display: none;"></div>
@@ -18,26 +22,23 @@
 </center>
 
 <head>
-    <title></title>
     <style>
-        #title6 {
-            font-size: 16px;
-
-
+        #title6{
+    font-size: 16px;
+    
+    
         }
-
-        #title7 {
+        #title7{
             font-size: 16px;
-
-            font-weight: 700;
+  
+    font-weight: 700;
         }
-
-        #last_count_student2 {
+        #last_count_student2{
             color: #ff0000;
-            font-size: 35px;
-            font-weight: 700;
-        }
-
+         font-size: 35px;
+    font-weight: 700;
+}
+       
         #fasfa-users {
             color: orange;
             font-size: 70px;
@@ -57,24 +58,21 @@
             font-size: 30px;
 
         }
-
         .btnsearch {
-            color: #fff;
-            font-size: 15px;
-            padding: 8px;
-            margin-top: 5%;
-            background-color: #F2603E;
-            text-align: center;
+        color: #fff;
+        font-size: 15px;
+        padding: 8px;
+        margin-top: 5%;
+        background-color: #F2603E;
+        text-align: center;
+}
+        .form_input{
+         width: 250px;
+        padding: 8px;
+        border-radius: 45px;
+        margin: 15px;
+        background-color: #e6f9ff;
         }
-
-        .form_input {
-            width: 250px;
-            padding: 8px;
-            border-radius: 45px;
-            margin: 15px;
-            background-color: #e6f9ff;
-        }
-
         .bggreen {
             background-color: #99FF99;
             width: 250px;
@@ -204,7 +202,7 @@
                                 <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
                                 <center>
                                     
-                                <div class="search-container">
+                                        <div class="search-container">
                                             <form action="" id="formakk">
                                                 <input type="text" class="form_input"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
                                                 <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
@@ -225,7 +223,7 @@
                             </div>
                             <div class="card-body " id="card_1">
                                 <font size="2">
-                                    <center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 10 ลำดับ</center>
+                                    <center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ</center>
                                 </font>
                                 <br>
                                 <center>
@@ -268,65 +266,85 @@
                     <div class="card shadow mb-3">
                         <div class="card-body " id="card_1">
                             <font size="4">
-                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพัก.......................</center>
+                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร.......................</center>
                             </font>
                             <br><br>
-
-                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                                           <div id="chart_area" style="width: 1000px; height: 620px;"></div>
+                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                             <script type="text/javascript">
-                                window.onload = function() {
-                                    var chart = new CanvasJS.Chart("chartContainer", {
-                                        height: 350,
-                                        animationEnabled: true,
-                                        animationDuration: 2000, //change to 1000, 500 etc
-                                        axisX: {
-                                            title: "หมวดความผิด"
-                                        },
-                                        data: [{
-                                            dataPoints: [{
-                                                    x: 10,
-                                                    y: 50
-                                                },
-                                                {
-                                                    x: 20,
-                                                    y: 40
-                                                },
-                                                {
-                                                    x: 30,
-                                                    y: 60
-                                                },
-                                                {
-                                                    x: 40,
-                                                    y: 80
-                                                },
-                                                {
-                                                    x: 50,
-                                                    y: 20
-                                                },
-                                                {
-                                                    x: 60,
-                                                    y: 60
-                                                }
-                                            ]
-                                        }]
-                                    });
+                            google.charts.load('current', {packages:['corechart', 'bar']});
+                            google.charts.setOnLoadCallback();
+                                                        
+                            function load_monthwise_data()
+                            {
+                                $.ajax({
+                                    url:"<?php echo base_url(); ?>index.php/dormitory_advisor_dashboard/getDashboard",
+                                    method:"POST",
+                                    dataType:"JSON",
+                                    
+                                    success:function(data)
+                                    {
+                                        drawMonthwiseChart(data, temp_title);
+                                    }
+                                })
+                            }
 
-                                    chart.render();
+                            function drawMonthwiseChart(chart_data, chart_main_title)
+                            {
+                                var jsonData = chart_data; 
+                                var data = new google.visualization.DataTable();
+                                data.addColumn('number', 'numstd');
+                                console.log(data);
+                                $.each(jsonData, function(i, jsonData){
+                                    var month = jsonData.month;
+                                    var profit = parseFloat($.trim(jsonData.profit));
+                                    data.addRows([[month, profit]]);
+                                });
+
+                                var options = {
+                                    title:chart_main_title,
+                                   
+                                    vAxis: {
+                                        title: 'numstd'
+                                    },
+                                    chartArea:{width:'80%',height:'85%'}
                                 }
+
+                                var chart = new google.visualization.ColumnChart(document.getElementById('chart_area'));
+
+                                chart.draw(data, options);
+                            }
+
                             </script>
+
+                            <script>
+                                
+                            $(document).ready(function(){
+                                $('#year').change(function(){
+                                    var year = $(this).val();
+                                    if(year != '')
+                                    {
+                                        load_monthwise_data(year, 'Month Wise Profit Data For');
+                                    }
+                                });
+                            });
+
+                            </script>
+                        
+
                             <br><br><br><br>
                         </div>
 
                     </div>
 
 
-                    <div class="col-lg-8 ">
+                    <div class="col-lg-7 ">
                         <font size="4">
                             <div class="card-header" id="card_2">
                                 <h6 class="m-0 text-primary"></h6>
                             </div><br>
                             <center>กิจกรรมเพิ่มเติม</center>
-                            </font><br>
+                        </font><br>
                         <div class="btn btn-inverse-success btn-fw " id="btnAdd" data-toggle="modal">
                             <ul>
                                 <li>
@@ -454,13 +472,15 @@
 
 
 
+
+    </div>
     <script>
         $(document).ready(function() {
             selectscorestudent();
             selectstudentall();
             selectscoreservice();
             selectscoretraining();
-             
+            
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
@@ -481,7 +501,7 @@
             function selectscoreservice() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_advisor_dashboard/selectscoreservice',
+                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoreservice',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -499,7 +519,7 @@
             function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_advisor_dashboard/selectscoretraining',
+                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoretraining',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -517,14 +537,14 @@
             function selectstudentall() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_advisor_dashboard/selectstudentall',
+                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentall',
                     async: false,
                     dataType: 'json',
                     success: function(data) { // console.log(data); 
                         var html = '';
                         var n = 1;
                         var i;
-                        var count = '10';
+                        var count = '5';
 
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
@@ -535,7 +555,7 @@
                                 n += 1;
                             }
                         } else {
-                            for (i = 0; i < 10; i++) {
+                            for (i = 0; i < 5; i++) {
                                 html += '<div class="bggreen">' + n + '.' +
                                     data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
@@ -552,10 +572,12 @@
                     }
                 });
             }
+        });
 
- //โชว์กิจกรรมข้อมูล
 
- $('#btnAdd').click(function() {
+        //โชว์กิจกรรมข้อมูล
+
+        $('#btnAdd').click(function() {
             $('#exampleModalCenter').modal('show');
              show_all();
         });
@@ -580,7 +602,7 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("dormitory_advisor_dashboard/showAlll") ?>',
+                url: '<?php echo site_url("Branch_head_dashboard/showAlll") ?>',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
@@ -621,7 +643,7 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("dormitory_advisor_dashboard/showell") ?>',
+                url: '<?php echo site_url("Branch_head_dashboard/showell") ?>',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
@@ -663,7 +685,7 @@ var studentid = $('#studentid').val();
 var data = {getstdID:studentid};
 
 $.ajax({
-    url: '<?php echo site_url("dormitory_advisor_dashboard/searchoffensestudent") ?>',
+    url: '<?php echo site_url("Branch_head_dashboard/searchoffensestudent") ?>',
     async: false,
     dataType: 'json',
     data: data, 
@@ -682,7 +704,7 @@ $.ajax({
             html += '<span id="title7">รหัสนักศึกษา: '+ value.S_ID +"    "+'ชื่อ : '+ value.std_fname +" "+ value.std_lname +'</span>'+'</span>';
             html += '<span id="title6">วันที่กระทำผิด:  '+ value.committed_date +'</span>';
             html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
-            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoff +'</span>';
+            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
             html += '</div>';
             html += '<div class="Main2">';
             html += '<div class="CountStudent">คะแนนที่หัก</div>';
@@ -702,13 +724,18 @@ $.ajax({
         });
         $('.showoffense').html(html);
 
-        } 
+        }
+       
+
+        
+       
+
+    
     }
 });
 
 
 }
-        });
     </script>
 
 </body>
