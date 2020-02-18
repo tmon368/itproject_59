@@ -21,8 +21,8 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="submenu">
-                        <a class="nav-link" href="#">submenu1</a>
-                    </li>
+                        <a class="nav-link" href="<?php echo site_url("Notifyoffense_security") ?>">เสนอบำเพ็ญประโยชน์
+</a>                    </li>
                     <li class="submenu">
                         <a class="nav-link" href="#">submenu2</a>
                     </li>
