@@ -173,6 +173,7 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
+                    console.log(data);
                     var html = '';
                     var i = 0;
 
