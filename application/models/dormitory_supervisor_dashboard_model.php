@@ -12,7 +12,7 @@ class dormitory_supervisor_dashboard_model extends CI_Model {
         // $headdorm=$this->session->userdata('username');
         //  $dean=5060156;
         $this->db->distinct();
-        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as countstd');   
+        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as y');   
         $this->db->from('personnel p');
         $this->db->join('dormitory dm','p.person_ID=dm.person_ID');
         $this->db->join('student s','dm.dorm_ID=s.dorm_ID');  
@@ -29,14 +29,8 @@ class dormitory_supervisor_dashboard_model extends CI_Model {
         $query = $this->db->get();
         $data = array();
         $data = $query->result_array();
-        $calnumstd =0;
-        foreach($data as $value){
-            $cal = intval($value['countstd']);
-            $calnumstd += $cal;
-        }
-       $data['numstd'] = $calnumstd;
-         //var_dump($data);
-         //die();
+
+      
         if($data !=NULL){
             return $data;
         }else{
@@ -47,7 +41,7 @@ class dormitory_supervisor_dashboard_model extends CI_Model {
     $oc_ID = $_GET['oc_ID'];
     // $oc_ID = 8;  
     // $this->db->distinct();
-    $this->db->select('dt.type_name,dm.dname as namedorm,count(ostd.S_ID) as countstd');   
+    $this->db->select('dt.type_name,dm.dname as namedorm,count(ostd.S_ID) as y');   
     $this->db->from('personnel p');
     $this->db->join('dormitory dm','p.person_ID=dm.person_ID');
     $this->db->join('student s','dm.dorm_ID=s.dorm_ID');  
