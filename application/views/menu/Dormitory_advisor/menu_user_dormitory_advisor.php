@@ -4,7 +4,7 @@
         <input type="checkbox" />
         <span></span>
         <span></span>
-        <span></span>
+        <span></span> 
 
         <ul id="menu">
             <a href="<?php echo site_url("Dormitory_advisor_dashboard") ?>">

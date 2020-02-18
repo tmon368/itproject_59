@@ -6,7 +6,7 @@ class VolunteerAc_Dormitoryadvisor extends Dormitory_advisor_dashboard
 {
     function __construct()
     {
-        parent:: __construct(); 
+        parent:: __construct();  
         $this->load->model('VolunteerAc_model', 'VolunteerAc_model');
     }
     public function index()
