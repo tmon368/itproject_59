@@ -5,10 +5,6 @@
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_regis_activity_student.css') ?>">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 <center>
     <strong>
         <div class="alert alert-success" role="alert" style="display: none;"></div>
@@ -20,138 +16,144 @@
         <div class="alert alert-warning" role="alert" style="display: none;"></div>
     </strong>
 </center>
+<style>
+    #title6 {
+        font-size: 16px;
 
-<head>
-    <style>
-        #title6{
-    font-size: 16px;
-    
-    
-        }
-        #title7{
-            font-size: 16px;
-  
-    font-weight: 700;
-        }
-        #last_count_student2{
-            color: #ff0000;
-         font-size: 35px;
-    font-weight: 700;
-}
-       
-        #fasfa-users {
-            color: orange;
-            font-size: 70px;
-            text-shadow: 1px 1px 1px #000;
-        }
 
-        #showscorestudent {
-            font-size: 50px;
-        }
+    }
 
-        #showscoreservice {
-            font-size: 30px;
+    #title7 {
+        font-size: 16px;
 
-        }
+        font-weight: 700;
+    }
 
-        #showscoretraining {
-            font-size: 30px;
+    #last_count_student2 {
+        color: #ff0000;
+        font-size: 35px;
+        font-weight: 700;
+    }
 
-        }
-        .btnsearch {
+    #fasfa-users {
+        color: orange;
+        font-size: 70px;
+        text-shadow: 1px 1px 1px #000;
+    }
+
+    #showscorestudent {
+        font-size: 50px;
+    }
+
+    #showscoreservice {
+        font-size: 30px;
+
+    }
+
+    #showscoretraining {
+        font-size: 30px;
+
+    }
+
+    .btnsearch {
         color: #fff;
         font-size: 15px;
         padding: 8px;
         margin-top: 5%;
         background-color: #F2603E;
         text-align: center;
-}
-        .form_input{
-         width: 250px;
+    }
+
+    .form_input {
+        width: 250px;
         padding: 8px;
         border-radius: 45px;
         margin: 15px;
         background-color: #e6f9ff;
-        }
-        .bggreen {
-            background-color: #99FF99;
-            width: 250px;
-            padding: 8px;
-            border: 15px;
-            margin: 15px;
-            border-radius: 45px;
+    }
 
-        }
+    .bggreen {
+        background-color: #99FF99;
+        width: 250px;
+        padding: 8px;
+        border: 15px;
+        margin: 15px;
+        border-radius: 45px;
 
-        #fasfa-chalkboard-teacher {
-            color: black;
-            font-size: 70px;
-            text-shadow: 1px 1px 1px #000;
-        }
+    }
 
-        #farfa-calendar-check {
-            color: black;
-            font-size: 70px;
-            text-shadow: 1px 1px 1px #000;
+    #fasfa-chalkboard-teacher {
+        color: black;
+        font-size: 70px;
+        text-shadow: 1px 1px 1px #000;
+    }
 
-        }
+    #farfa-calendar-check {
+        color: black;
+        font-size: 70px;
+        text-shadow: 1px 1px 1px #000;
 
-        .btnbtn-inverse-primarybtn-fw {
-            width: 600px
-        }
+    }
 
-        .btnbtn-inverse-primarybtn-fw ul {
-            list-style-type: none;
-            margin: 0px;
-            padding: 10px;
-            font-family: '', sans-serif;
-            font-size: 0.85em;
-            color: rgb(0, 0, 0);
-        }
+    .btnbtn-inverse-primarybtn-fw {
+        width: 600px
+    }
 
-        .btnbtn-inverse-primarybtn-fw li {
-            float: left;
-            padding: 0px;
-            padding: 0px;
-            text-align: center;
-            width: 40.33%;
-            background-color: #40ff00;
-            width: 250px;
-            padding: 8px;
-            border: 15px;
-            margin: 15px;
-            border-radius: 45px;
-        }
+    .btnbtn-inverse-primarybtn-fw ul {
+        list-style-type: none;
+        margin: 0px;
+        padding: 10px;
+        font-family: '', sans-serif;
+        font-size: 0.85em;
+        color: rgb(0, 0, 0);
+    }
+
+    .btnbtn-inverse-primarybtn-fw li {
+        float: left;
+        padding: 0px;
+        padding: 0px;
+        text-align: center;
+        width: 40.33%;
+        background-color: #40ff00;
+        width: 250px;
+        padding: 8px;
+        border: 15px;
+        margin: 15px;
+        border-radius: 45px;
+    }
+
+    .btnbtn-inverse-warningbtn-fw {
+        width: 600px
+    }
+
+    .btnbtn-inverse-warningbtn-fw ul {
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85em;
+        color: rgb(0, 0, 0);
+    }
+
+    .btnbtn-inverse-warningbtn-fw li {
+        float: left;
+        padding: 0px;
+        padding: 0px;
+        text-align: center;
+        width: 40.33%;
+        background-color: #ffbf00;
+        width: 250px;
+        padding: 8px;
+        border: 15px;
+        margin: 15px;
+        border-radius: 45px;
+    }
+</style>
+
+<head>
+    <title></title>
 
 
-
-        .btnbtn-inverse-warningbtn-fw {
-            width: 600px
-        }
-
-        .btnbtn-inverse-warningbtn-fw ul {
-            list-style-type: none;
-            margin: 0px;
-            padding: 0px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.85em;
-            color: rgb(0, 0, 0);
-        }
-
-        .btnbtn-inverse-warningbtn-fw li {
-            float: left;
-            padding: 0px;
-            padding: 0px;
-            text-align: center;
-            width: 40.33%;
-            background-color: #ffbf00;
-            width: 250px;
-            padding: 8px;
-            border: 15px;
-            margin: 15px;
-            border-radius: 45px;
-        }
-    </style>
 
 
 
@@ -186,34 +188,12 @@
                                 <center><i class="fas fa-users" id="fasfa-users"></i><br>
                                     <div id="showscorestudent" name="showscorestudent"></div><br>
                                 </center>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-12 ">
-                    <div class="card shadow mb-3">
-                        <div class="card shadow mb-4">
-                            <div class="card-header" id="card_2">
-                                <h6 class="m-0 text-primary"></h6>
-                            </div>
-                            <div class="card-body " id="card_1">
-                                <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
-                                <center>
-                                    
-                                        <div class="search-container">
-                                            <form action="" id="formakk">
-                                                <input type="text" class="form_input"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
-                                                <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
-                                            </form>
-                                        </div>
-                                    
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="col-lg-12 ">
                     <div class="card shadow mb-3">
@@ -223,24 +203,21 @@
                             </div>
                             <div class="card-body " id="card_1">
                                 <font size="2">
-                                    <center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ</center>
+                                    <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
                                 </font>
-                                <br>
                                 <center>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-
-
-                                            <div id="showdata">
-
-
-
-                                            </div>
-                                        </div>
+                                    <div class="search-container">
+                                        <form action="" id="formakk">
+                                            <input type="text" class="form_input" id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
+                                            <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
+                                        </form>
                                     </div>
-                                </center><br>แสดงรายชื่อเพิ่มเติม
+
+
+                                </center>
 
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -266,76 +243,49 @@
                     <div class="card shadow mb-3">
                         <div class="card-body " id="card_1">
                             <font size="4">
-                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร.......................</center>
+                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพักทั้งหมด<center>
                             </font>
                             <br><br>
-                                           <div id="chart_area" style="width: 1000px; height: 620px;"></div>
-                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+                            
+                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                             <script type="text/javascript">
-                            google.charts.load('current', {packages:['corechart', 'bar']});
-                            google.charts.setOnLoadCallback();
-                                                        
-                            function load_monthwise_data()
-                            {
-                                $.ajax({
-                                    url:"<?php echo base_url(); ?>index.php/dormitory_advisor_dashboard/getDashboard",
-                                    method:"POST",
-                                    dataType:"JSON",
-                                    
-                                    success:function(data)
-                                    {
-                                        drawMonthwiseChart(data, temp_title);
-                                    }
-                                })
-                            }
+                                window.onload = function() {
+                                    $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboardAll',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
 
-                            function drawMonthwiseChart(chart_data, chart_main_title)
-                            {
-                                var jsonData = chart_data; 
-                                var data = new google.visualization.DataTable();
-                                data.addColumn('number', 'numstd');
-                                console.log(data);
-                                $.each(jsonData, function(i, jsonData){
-                                    var month = jsonData.month;
-                                    var profit = parseFloat($.trim(jsonData.profit));
-                                    data.addRows([[month, profit]]);
-                                });
-
-                                var options = {
-                                    title:chart_main_title,
-                                   
-                                    vAxis: {
-                                        title: 'numstd'
-                                    },
-                                    chartArea:{width:'80%',height:'85%'}
-                                }
-
-                                var chart = new google.visualization.ColumnChart(document.getElementById('chart_area'));
-
-                                chart.draw(data, options);
-                            }
-
-                            </script>
-
-                            <script>
+                                    var chart = new CanvasJS.Chart("chartContainer", {
+                                        height: 350,
+                                        animationEnabled: true,
+                                        animationDuration: 2000, //change to 1000, 500 etc
+                                        axisX: {
+                                            title: "หมวดความผิด"
+                                        },
+                                        data: [{
+                                            dataPoints: data
+                                            
+                                        }]
+                                    });
                                 
-                            $(document).ready(function(){
-                                $('#year').change(function(){
-                                    var year = $(this).val();
-                                    if(year != '')
-                                    {
-                                        load_monthwise_data(year, 'Month Wise Profit Data For');
-                                    }
-                                });
-                            });
-
+                
+                                    chart.render();
+                                },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+                                }
                             </script>
-                        
-
                             <br><br><br><br>
                         </div>
 
                     </div>
+
 
 
                     <div class="col-lg-7 ">
@@ -470,21 +420,16 @@
     </div>
 
 
-
-
-
-    </div>
     <script>
         $(document).ready(function() {
             selectscorestudent();
-            selectstudentall();
             selectscoreservice();
             selectscoretraining();
-            
+
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboard',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -501,7 +446,7 @@
             function selectscoreservice() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoreservice',
+                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoreservice',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -519,7 +464,7 @@
             function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoretraining',
+                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoretraining',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -534,50 +479,10 @@
                 });
             }
 
-            function selectstudentall() {
-                $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentall',
-                    async: false,
-                    dataType: 'json',
-                    success: function(data) { // console.log(data); 
-                        var html = '';
-                        var n = 1;
-                        var i;
-                        var count = '5';
 
-                        if (data.length < count) {
-                            for (i = 0; i < data.length; i++) {
-                                html += '<div class="bggreen">' + n + '.' +
-                                    data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
-                                    '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-                                n += 1;
-                            }
-                        } else {
-                            for (i = 0; i < 5; i++) {
-                                html += '<div class="bggreen">' + n + '.' +
-                                    data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
-                                    '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-                                n += 1;
-                            }
-                        }
+   //โชว์กิจกรรมข้อมูล
 
-                        $('#showdata').html(html);
-                        //$('#dataall').html(num-1);//
-                    },
-                    error: function() {
-                        alert('ไม่มีข้อมูล');
-                    }
-                });
-            }
-        });
-
-
-        //โชว์กิจกรรมข้อมูล
-
-        $('#btnAdd').click(function() {
+   $('#btnAdd').click(function() {
             $('#exampleModalCenter').modal('show');
              show_all();
         });
@@ -602,7 +507,7 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Branch_head_dashboard/showAlll") ?>',
+                url: '<?php echo site_url("dean_dashboard/showAlll") ?>',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
@@ -643,7 +548,7 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Branch_head_dashboard/showell") ?>',
+                url: '<?php echo site_url("dean_dashboard/showell") ?>',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
@@ -685,7 +590,7 @@ var studentid = $('#studentid').val();
 var data = {getstdID:studentid};
 
 $.ajax({
-    url: '<?php echo site_url("Branch_head_dashboard/searchoffensestudent") ?>',
+    url: '<?php echo site_url("dean_dashboard/searchoffensestudent") ?>',
     async: false,
     dataType: 'json',
     data: data, 
@@ -736,6 +641,11 @@ $.ajax({
 
 
 }
+
+
+
+
+        });
     </script>
 
 </body>
