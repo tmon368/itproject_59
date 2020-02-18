@@ -8,10 +8,10 @@ class dormitory_advisor_dashboard_model extends CI_Model {
     }
     public function getDashboard(){
 
-        $dean=$this->session->userdata('username');
-        //  $dean=5060156;
+        $dorm=$this->session->userdata('username');
+        //  $dorm=5060156;
         $this->db->distinct();
-        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as countstd');   
+        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as y');   
         $this->db->from('personnel p');
         $this->db->join('dormitory dm','p.person_ID=dm.person_ID');
         $this->db->join('student s','dm.dorm_ID=s.dorm_ID');  
@@ -20,7 +20,7 @@ class dormitory_advisor_dashboard_model extends CI_Model {
         $this->db->join('offense of','o.off_ID=of.off_ID');
         $this->db->join('offensecate oc','of.oc_ID=oc.oc_ID');
         $this->db->group_by('oc.oc_ID');
-        $this->db->where('p.person_ID',$dean);
+        $this->db->where('p.username',$dorm);
         // $this->db->where('p.dept_ID=d.dept_ID');
 
 
@@ -28,14 +28,7 @@ class dormitory_advisor_dashboard_model extends CI_Model {
         $query = $this->db->get();
         $data = array();
         $data = $query->result_array();
-        $calnumstd =0;
-        foreach($data as $value){
-            $cal = intval($value['countstd']);
-            $calnumstd += $cal;
-        }
-       $data['numstd'] = $calnumstd;
-         //var_dump($data);
-         //die();
+
         if($data !=NULL){
             return $data;
         }else{
@@ -63,7 +56,7 @@ class dormitory_advisor_dashboard_model extends CI_Model {
     $this->db->join('offensecate oc','of.oc_ID=oc.oc_ID');
     $this->db->join('offcategory og','s.S_ID=og.S_ID');
     $this->db->group_by('S_ID');
-    $this->db->where('p.person_ID',$dorm);
+    $this->db->where('p.username',$dorm);
     // $this->db->where('p.cur_ID=p.cur_ID');
     $query = $this->db->get();
     $students = array();

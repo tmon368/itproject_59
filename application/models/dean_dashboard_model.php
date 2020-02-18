@@ -10,7 +10,7 @@ class dean_dashboard_model extends CI_Model {
     public function getDashboard(){
          $dean=$this->session->userdata('username');
         //  $dean=8050518;
-        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as countstd');   
+        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as y');   
         $this->db->from('personnel p , curriculum c');
         
         $this->db->join('divisions d','p.dept_ID=d.dept_ID');
@@ -24,7 +24,7 @@ class dean_dashboard_model extends CI_Model {
 
         
         $this->db->group_by('oc.oc_ID');
-        $this->db->where('p.person_ID',$dean);
+        $this->db->where('p.username',$dean);
         // $this->db->where('p.dept_ID=d.dept_ID');
 
 
@@ -32,12 +32,7 @@ class dean_dashboard_model extends CI_Model {
         $query = $this->db->get();
         $data = array();
         $data = $query->result_array();
-        $calnumstd =0;
-        foreach($data as $value){
-            $cal = intval($value['countstd']);
-            $calnumstd += $cal;
-        }
-       $data['numstd'] = $calnumstd;
+  
          //var_dump($data);
          //die();
         if($data !=NULL){
@@ -49,13 +44,14 @@ class dean_dashboard_model extends CI_Model {
     public function getGraphData(){
         // $oc_ID = $_GET['oc_ID'];
         // $dept_ID =$_GET['dept_ID'];
-        $dean = $this->session->userdata('dean');
-        $oc_ID = 8;
-        $dept_ID = 22;
+        $dean = $this->session->userdata('username');
+        $oc_ID = $_GET['oc_ID'];
+        $dept_ID =$_GET['dept_ID'];
+        // $oc_ID = 8;
+        // $dept_ID = 22;
         // $dean=$this->session->userdata('username');
-        $dean=8050518;
-        // $oc_ID = $_GET['oc_ID'];
-        // $dept_ID =$_GET['dept_ID'];
+        // $dean=8050518;
+       
 
 
         $this->db->select('c.cur_ID, c.cur_name as label,c.dept_ID, COUNT(ostd.S_ID) as y');   
@@ -68,7 +64,7 @@ class dean_dashboard_model extends CI_Model {
         $this->db->join('divisions d','c.dept_ID=d.dept_ID'); 
         // $this->db->join('personnel p','d.dept_ID=p.dept_ID'); 
         $this->db->group_by('c.cur_ID');
-        $this->db->where('p.person_ID',$dean);
+        $this->db->where('p.username',$dean);
         // $this->db->where('p.dept_ID',$dept_ID);
         // $this->db->where('oc.oc_ID',$oc_ID);
 

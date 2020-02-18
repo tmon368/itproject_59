@@ -18,7 +18,7 @@ class Dean_dashboard extends CI_Controller {
 	}
 	public function getDashboard(){
 		$result = $this->dean_dashboard_model->getDashboard();
-		echo json_encode($result);
+		echo json_encode($result,JSON_NUMERIC_CHECK);
 	}
 	public function getGraphData(){
 		$result = $this->dean_dashboard_model->getGraphData();
