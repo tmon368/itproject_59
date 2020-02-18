@@ -14,6 +14,9 @@
             <a href="<?php echo site_url("Notifyoffense_discipline") ?>">
                 <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
+             <a href="<?php echo site_url("VolunteerAc_discipline") ?>">
+                <li class="">เสนอบำเพ็ญประโยชน์</li>
+            </a>
           
         </ul>
     </div>
