@@ -6,6 +6,7 @@ class Teacher_dashboard extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
 		$this->load->model('teacher_dashboard_model', 'teacher_dashboard_model');
+		$this->load->model('Service_Feedback_model', 'Service_Feedback_model');
 		$this->load->model('SettimeSession','SettimeSession');
 	}
 	
@@ -73,6 +74,11 @@ class Teacher_dashboard extends CI_Controller {
 		
 		$result = $this->branch_head_dashboard_model->selectscoretraining();
 		echo json_encode($result);
+	}
+	function selectservice(){
+		$result = $this->Service_Feedback_model->selectservice();
+	    echo json_encode($result);
+
 	}
 	
 	/*
