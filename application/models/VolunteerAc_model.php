@@ -42,12 +42,12 @@ class VolunteerAc_model extends CI_Model {
        // $student=59123456;
         //echo $person_ID;
 
-   // $student = $this->session->userdata('student');
+        $username = $this->session->userdata('username');
         $this->db->select('*');
         $this->db->from('service sv');
 
         $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
-        //$this->db->where('s.S_ID', $student);
+        $this->db->where('sv.proposer', $username);
         //var_dump($query->result());
        
         $query = $this->db->get();
@@ -65,7 +65,7 @@ class VolunteerAc_model extends CI_Model {
         $student[$i]["end_time"] = $end_time;
         $i++;
     }
-        //var_dump($student);   
+        // var_dump($username);   
        // die();     
         if($student > 0){
             return $student;
@@ -97,13 +97,45 @@ class VolunteerAc_model extends CI_Model {
     
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable student
     public function addVolunteerAc(){
+        $usergroup =$this->session->userdata('student') == null ? "":$this->session->userdata('student');
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('admin') == null ? "":$this->session->userdata('admin');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('teacher') == null ? "":$this->session->userdata('teacher');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('discipline_officer') == null ? "":$this->session->userdata('discipline_officer');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('headofstudent_affairs') == null ? "":$this->session->userdata('headofstudent_affairs');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('dormitory_supervisor') == null ? "":$this->session->userdata('dormitory_supervisor');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('dormitory_advisor') == null ? "":$this->session->userdata('dormitory_advisor');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('branch_head') == null ? "":$this->session->userdata('branch_head');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('dean') == null ? "":$this->session->userdata('dean');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('security_guard') == null ? "":$this->session->userdata('security_guard');
+        }
+        if($usergroup == ""){
+        $usergroup =$this->session->userdata('employee') == null ? "":$this->session->userdata('employee');
+        }
+              
     
     $field = array(
             
        // 'service_ID'=>$this->input->post('service_ID'),
         'service_name'=>$this->input->post('service_name'),
         'person_ID'=>$this->input->post('person_ID'),
-        'proposer'=>$this->session->userdata('student'),
+        'proposer'=>$usergroup,
         'place'=>$this->input->post('place'),
         'service_date'=>$this->input->post('service_date'),
         'start_time'=>$this->input->post('start_time'),
