@@ -130,7 +130,49 @@
 <script type="text/javascript">
     $(document).ready(function() {
         console.log('Ready Webpage');
+        show_all();
     });
+
+    function show_all(){
+
+        alert (5555);
+        html = '';
+        i = 0;
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url("Teacher_dashboard/selectservice") ?>',
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                    console.log (data);
+                    $.each(data, function(key, value) {
+                        var temp_1 = value.start_time;
+                        var temp_2 = value.end_time;
+                        var show_start_time = temp_1.substring(0, 5);
+                        var show_end_times = temp_2.substring(0, 5);
+                        var start_times = parseFloat(temp_1.substring(0, 5));
+                        var end_times = parseFloat(temp_2.substring(0, 5));
+                        var counthour = Math.abs(end_times - start_times);
+
+                        i++;
+                        htmlcode += '<tr>';
+                        htmlcode += '<td>' + i + '</td>'
+                        htmlcode += '<td>';
+                        htmlcode += '<div class="DetailActivity">';
+                        htmlcode += '<span id="activity_name">กิจกรรม:' + value.service_name + '</span>';
+                        htmlcode += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
+                        htmlcode += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        htmlcode += '<span id="place">' + value.place + '</span>';
+                        htmlcode += '</div>';
+                        htmlcode += '</td>';
+                        htmlcode += '<td id="person_control">xxx</td>';
+                        htmlcode += '<td id="btn_accept_td"> <span class="accept_activity">อนุมัติกิจกรรม</span> </td>';
+                        htmlcode += '</tr>';
+                        $('#showdata').html(html);
+                    });
+                }
+            });
+    }
 
     $('.accept_activity').click(function() {
         $('#accept_activity_modal').modal('show');
