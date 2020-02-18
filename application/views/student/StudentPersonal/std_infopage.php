@@ -139,8 +139,8 @@
 </body>
 
 
-<div class="modal fade" id="ShowDta" role="dialog">
-	<div class="modal-dialog ">
+<!-- <div class="modal fade" id="ShowDta" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" style="max-width: 1000px!important;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">รายละเอียดการอบรม</h4>
@@ -158,7 +158,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 <div class="modal fade" id="AlertNotifyUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -263,7 +263,8 @@
 								'<th>' + data[i].off_desc + '</th>' +
 								'<th>' + data[i].point + '</th>' +
 								//data[i].statusoffname
-								'<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
+								'<th> ' + data[i].statusoffname +  ' </a> </th>'+
+								// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
 								//'<th>' + '<a href="javascript:;" data= </a>' + data[i].statusoffname + ' class="show_data"> </th>' + // สถานะการกระทำความผิด 
 
 								//*html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data">*//
@@ -301,61 +302,61 @@
 
 	/// view_volunteerAc
 
-	$('#showdata').on('click', '.show_data', function() {
+	// $('#showdata').on('click', '.show_data', function() {
 
-		var id = $(this).attr('data');
-		//   console.log(id);
+	// 	var id = $(this).attr('data');
+	// 	//   console.log(id);
 
-		$('#ShowDta').modal('show');
-		html = '';
-		i = 0;
+	// 	$('#ShowDta').modal('show');
+	// 	html = '';
+	// 	i = 0;
 
-		//select show data
-		$.ajax({
-			type: 'ajax',
-			method: 'get',
-			url: '<?php echo site_url('Student_dashboard/selectstudentstatus') ?>',
-			data: {
-				id: id
-			},
-			async: false,
-			dataType: 'json',
-			success: function(data) {
-				//console.log(data);
-				//alert ('Having data');
+	// 	//select show data
+	// 	$.ajax({
+	// 		type: 'ajax',
+	// 		method: 'get',
+	// 		url: '<?php echo site_url('Student_dashboard/selectstudentstatus') ?>', // เช็ค select
+	// 		data: {
+	// 			id: id
+	// 		},
+	// 		async: false,
+	// 		dataType: 'json',
+	// 		success: function(data) {
+	// 			//console.log(data);
+	// 			//alert ('Having data');
 
-				$.each(data, function(key, value) {
-					i++;
-					// if (i==1) {
-
-
-					//แก้ให้เป็นการอบรม
-					html += '<p class="text_head"> <label for="" class="label_txt">ชื่อกิจกรรม: </label> ' + value.service_name + ' </p>'
-					html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อผู้ควบคุมกิจกรรม:</label> ' + value.person_fname + '&nbsp;&nbsp;' + value.person_lname + ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  ' + value.start_time + "-" + value.end_time + ' </p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
-					html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
+	// 			$.each(data, function(key, value) {
+	// 				i++;
+	// 				// if (i==1) {
 
 
+	// 				//แก้ให้เป็นการอบรม
+	// 				html += '<p class="text_head"> <label for="" class="label_txt">ชื่อการอบรม: </label> ' + value.train_name + ' </p>'
+	// 				html += '<p class="text_position"> <label for="" class="label_txt"> หมวดการอบรม:</label> ' + value.person_fname + '&nbsp;&nbsp;' + value.person_lname + ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
+	// 				html += '<p class="text_position"> <label for="" class="label_txt">ผู้ควบคุมการอบรม ชื่อ: </label> ' + value.place + ' </p>';
+	// 				html += '<p class="text_position"> <label for="" class="label_txt">วันที่อบรม: </label> ' + value.service_date + '&nbsp;&nbsp;' + value.person_lname + ' <label for="" class="label_txt">จำนวนผู้อบรม:</label> ' + value.phone1 + '</p>';
+	// 				html += '<p class="text_position"> <label for="" class="label_txt">สถานที่:</label>  ' + value.start_time + "-" + value.end_time + ' </p>';
+	// 				html += '<p class="text_position"> <label for="" class="label_txt">จำนวนชั่วโมง: </label> ' + value.received + ' </p>';
+	// 				html += '<p class="text_position"> <label for="" class="label_txt">หมายเหตุ: </label> ' + value.explanation + ' </p>';
+					
 
-					//  }
 
-
-
-					$('.content').html(html);
-
-				});
-			},
-			error: function() {
-				alert('ไม่สามารถลบข้อมูล');
-			}
-		});
+	// 				//  }
 
 
 
-	});
+	// 				$('.content').html(html);
+
+	// 			});
+	// 		},
+	// 		error: function() {
+	// 			alert('ไม่สามารถลบข้อมูล');
+	// 		}
+	// 	});
+
+
+
+	// });
 
 
 
