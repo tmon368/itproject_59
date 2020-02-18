@@ -297,6 +297,9 @@
                                         axisX: {
                                             title: "หมวดความผิด"
                                         },
+                                        axisY: {
+                                            title: "จำนวน(คน)"
+                                        },
                                         data: [{
                                             dataPoints: data
                                         }]
