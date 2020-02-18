@@ -175,7 +175,7 @@
         window.location.href = "<?php echo site_url('Offensecate')?>";
     });
     $(".Offen").click(function() {
-        window.location.href = "<?php echo site_url('Offensecate')?>";
+        window.location.href = "<?php echo site_url('Offense')?>";
     });
     $(".TypeDorm").click(function() {
         window.location.href = "<?php echo site_url("Dormtype") ?>";
