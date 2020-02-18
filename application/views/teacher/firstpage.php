@@ -280,10 +280,6 @@
                         console.log(data);
 
 
-                 
-                     
-
-
                    
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         height: 350,
@@ -291,6 +287,9 @@
                                         animationDuration: 2000, //change to 1000, 500 etc
                                         axisX: {
                                             title: "หมวดความผิด"
+                                        },
+                                        axisY: {
+                                            title: "จำนวน(คน)"
                                         },
                                         data: [{
                                             dataPoints: data
