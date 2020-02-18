@@ -14,7 +14,7 @@ class branch_head_dashboard_model extends CI_Model {
 
          $query= $this->db->query("SELECT offensecate.oc_ID,offensecate.oc_desc as label,COUNT(offensestd.S_ID) as y 
          FROM `offensecate`, `offensestd` , `offensehead` , `offense` , `student` , `curriculum` , `personnel` , `divisions` 
-         WHERE personnel.person_ID='".$branchhead."' and personnel.dept_ID=divisions.dept_ID and offensestd.oh_ID=offensehead.oh_ID 
+         WHERE personnel.username='".$branchhead."' and personnel.dept_ID=divisions.dept_ID and offensestd.oh_ID=offensehead.oh_ID 
          and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and student.cur_ID=curriculum.cur_ID and
           curriculum.dept_ID = divisions.dept_ID and offensestd.S_ID=student.S_ID GROUP BY offensecate.oc_ID");
       
@@ -70,7 +70,7 @@ $this->db->join('curriculum c','s.cur_ID=c.cur_ID');
 $this->db->join('personnel p','c.cur_ID=p.cur_ID');
 // $this->db->group_by('p.cur_ID');
 // $this->db->where('p.cur_ID=p.cur_ID');
-$this->db->where('p.person_ID',$perid);
+$this->db->where('p.username',$perid);
 // $this->db->where('p.cur_ID=p.cur_ID');
 $query = $this->db->get();
 $students = array();

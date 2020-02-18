@@ -36,12 +36,12 @@ class Branch_head_dashboard extends CI_Controller {
 	public function getAllSTD(){
 
 	$result = $this->branch_head_dashboard_model->getAllSTD();
-	echo json_encode($result);
+	echo json_encode($result,JSON_NUMERIC_CHECK);
         
     }
 	public function getGraphDataSchool(){
 		$result = $this->branch_head_dashboard_model->getGraphDataSchool();
-		echo json_encode($result);
+		echo json_encode($result,JSON_NUMERIC_CHECK);
         
     }
 	function searchoffensestudent(){
