@@ -253,7 +253,7 @@
                                 window.onload = function() {
                                     $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboard',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
