@@ -118,8 +118,16 @@
             <a href="<?php echo site_url("Notifyoffense_admin") ?>">
                 <li class="menu-icon mdi">การแจ้งเหตุกระทำความผิด</li>
             </a>
+              <a href="<?php echo site_url("VolunteerAc_admin") ?>">
+                <li class="menu-icon mdi">เสนอบำเพ็ญประโยชน์</li>
+             </a>
 
 
 
         </ul>
     </div>
+    
+    
+    
+    
+    
