@@ -32,18 +32,18 @@ class Headofstudent_affairs_dashboard extends CI_Controller {
 	}
 	function getDashboard(){
 		$result = $this->headofstudent_affairs_dashboard_model->getDashboard();
-		echo json_encode($result);
+		echo json_encode($result,JSON_NUMERIC_CHECK);
 	}
 
 	public function getDashboardAll(){
 
 	$result = $this->headofstudent_affairs_dashboard_model->getDashboardAll();
-	echo json_encode($result);
+	echo json_encode($result,JSON_NUMERIC_CHECK);
         
     }
 	public function getGraphDataSchool(){
 		$result = $this->headofstudent_affairs_dashboard_model->getGraphDataSchool();
-		echo json_encode($result);
+		echo json_encode($result,JSON_NUMERIC_CHECK);
         
 	}
 

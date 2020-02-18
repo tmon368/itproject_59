@@ -36,14 +36,14 @@ class headofstudent_affairs_dashboard_model extends CI_Model {
         $data = array();
         $data = $query->result_array();
         // echo "<br><br><br>";
-        $calnumstd =0;
-        foreach($data as $value){
-            $cal = intval($value['y']);
-            $calnumstd += $cal;
+    //     $calnumstd =0;
+    //     foreach($data as $value){
+    //         $cal = intval($value['y']);
+    //         $calnumstd += $cal;
 
 
-        }
-       $data['numstd'] = $calnumstd;
+    //     }
+    //    $data['numstd'] = $calnumstd;
          //var_dump($data);
          //die();
         
