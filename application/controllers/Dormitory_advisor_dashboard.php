@@ -22,7 +22,7 @@ class Dormitory_advisor_dashboard extends CI_Controller {
 	}
 	public function getAllSTD(){
 		$result = $this->dormitory_advisor_dashboard_model->getAllSTD();
-		echo json_encode($result);
+		echo json_encode($result,JSON_NUMERIC_CHECK);
 	}	
 	public function template()
 	{
