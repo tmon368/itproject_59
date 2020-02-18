@@ -12,7 +12,7 @@ class VolunteerAc_employee extends Employee_dashboard
     public function index()
     {
         //List ข้อมูลมาแสดงในหน้าจอ
-        $this->checkAutoriry();
+        $this->checkAutoriry(); 
         $this->template();
         
     }
