@@ -14,6 +14,9 @@
             <a href="<?php echo site_url("Notifyoffense_affairs") ?>">
                 <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
+             <a href="<?php echo site_url("VolunteerAc_affairs") ?>">
+                <li class="menu-icon mdi">เสนอบำเพ็ญประโยชน์</li>
+             </a>
           
         </ul>
     </div>
