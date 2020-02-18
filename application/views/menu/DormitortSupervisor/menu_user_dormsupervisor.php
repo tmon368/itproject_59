@@ -14,6 +14,9 @@
             <a href="<?php echo site_url("Notifyoffense_DormitorySupervisor") ?>">
                 <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
+             <a href="<?php echo site_url("VolunteerAc_DormitorySupervisor") ?>">
+                <li class="">เสนอกิจกรรมบำเพ็ญประโยชน์</li>
+            </a>
           
         </ul>
     </div>
