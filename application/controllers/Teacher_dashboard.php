@@ -81,6 +81,16 @@ class Teacher_dashboard extends CI_Controller {
 	    echo json_encode($result);
 
 	}
+	function Updateactivityforperson(){
+		$result = $this->Service_Feedback_model->Updateactivityforperson();
+	    echo json_encode($result);
+
+	}
+	function Updateactivityfordiscipline_officer(){
+		$result = $this->Service_Feedback_model->Updateactivityfordiscipline_officer();
+	    echo json_encode($result);
+
+	}
 	
 	/*
 	function selectstudent(){

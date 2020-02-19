@@ -709,4 +709,34 @@ foreach($showall as $value){
         }
        
     }
+    function selectActivity(){
+       
+    $discipline_officer = $this->session->userdata('discipline_officer');
+    
+        //$discipline_officer = "jsomsri";
+        //echo $discipline_officer;
+        //die();
+        $status =1;
+
+
+        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score');
+        $this->db->from('service s');
+        $this->db->join('student std', 's.proposer=std.S_ID');
+        $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        //$this->db->where('p.username', $discipline_officer);
+        $this->db->where('s.status',$status);
+        $query = $this->db->get();
+    //    var_dump($query->result());
+    //    die();
+      
+       if($query->num_rows() > 0){
+           return $query->result();
+       }else{
+           return false;
+       }
+
+    }
+
+
+    
 }
