@@ -71,14 +71,15 @@ class Service_Feedback_model extends CI_Model {
     //รออนุมัติการเสนอกิจกรรมบำเพ็ญประโยชน์ สำหรับบุคลากร
     function Updateactivityforperson(){
         $service_ID = $this->input->get('service_ID');
-        $status = $this->input->get('status');
+        $getstatus = $this->input->get('status');
         $getannotation = $this->input->get('annotation');
         // $getexplanation = "อิอิ";
         // $service_ID =2;
         // $status = 1;
 
         // 2 =อนุมัติ 3=ไม่อนุมัติ
-        $annotation =$status == 1?  "": 3; 
+        $status = $getstatus == 1? $getstatus: 3;
+        $annotation =$status == 1?  "":  $getannotation; 
         
         $field = array(
                 
