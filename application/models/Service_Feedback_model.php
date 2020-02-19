@@ -47,7 +47,7 @@ class Service_Feedback_model extends CI_Model {
         $status =0;
 
 
-        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation');
+        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation,p.person_fname,p.person_lname,p.position');
         $this->db->from('service s');
         $this->db->join('student std', 's.proposer=std.S_ID');
         $this->db->join('personnel p', 's.person_ID=p.person_ID');
@@ -77,7 +77,8 @@ class Service_Feedback_model extends CI_Model {
         // $service_ID =2;
         // $status = 1;
 
-        $annotation =$status == 1?  "": $getannotation; 
+        // 2 =อนุมัติ 3=ไม่อนุมัติ
+        $annotation =$status == 1?  "": 3; 
         
         $field = array(
                 
