@@ -848,12 +848,14 @@ public function utilstatus($statusID){
         
         
         $this->db->distinct();
-        $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score,x.prefix_name');
+        $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score,x.prefix_name,cr.cur_name,ps.person_fname,ps.person_lname,dr.dname,dr.room_number,s.phone,s.email');
         $this->db->from('offensestd ostd');
         $this->db->order_by('s.behavior_score ASC');
         $this->db->join('student s','ostd.S_ID=s.S_ID');
         $this->db->join('prefix x','s.prefixID=x.prefixID');
-        
+        $this->db->join('curriculum cr','s.cur_ID=cr.cur_ID');
+        $this->db->join('personnel ps','s.person_ID=ps.person_ID');
+        $this->db->join('dormitory dr','s.dorm_ID=dr.dorm_ID');
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();

@@ -284,7 +284,7 @@
                                         </div>
                                     </div>
                                 </center>
-                                <div id="score_card">แสดงรายละเอียดเพิ่มเติม</div>
+                                <div id="score_card"><u>แสดงรายละเอียดเพิ่มเติม</u></div>
 
                             </div>
                         </div>
@@ -498,7 +498,7 @@
 
 
     <div class="modal fade" id="scoreoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 600px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 720px!important;" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLongTitle">รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 5 อันดับ</h4>
@@ -506,7 +506,6 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <button class="volun" id="tell_card">เกณฑ์การให้คะแนน</button>
                 <div class="showscoredata"></div>
 
             </div>
@@ -517,66 +516,8 @@
     </div>
     </div>
 
-    </div>
-
-    <div class="modal fade" id="telloffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 500px!important;" role="document">
-            <div class="modal-content">
-                <div class="modal-header1">
-                    <center>
-                        <h3 class="modal-title" id="exampleModalLongTitle">รายละเอียดการกระทำผิดของนักศึกษา</h3>
-                    </center>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-
-                <table>
-                    <tr>
-                        <th>คะแนนความประพฤติ<br>(เต็ม 100 คะแนน)</th>
-                        <th>บทลงโทษนักศึกษา</th>
-                    </tr>
-                    <tr>
-                        <td>10 คะแนน</td>
-                        <td>ตักเตือนเป็นลายลักษณ์อักษรมแจ้งผู้ปกครองทราบ</td>
-                    </tr>
-                    <tr>
-                        <td>11-30</td>
-                        <td>ภาคทัณฑ์ 1 ภาคการศึกษา</td>
-                    </tr>
-                    <tr>
-                        <td>31-50</td>
-                        <td>ภาคทัณฑ์ 2 ภาคการศึกษา</td>
-                    </tr>
-                    <tr>
-                        <td>51-70</td>
-                        <td>ภาคทัณฑ์ 3 ภาคการศึกษา</td>
-                    </tr>
-                    <tr>
-                        <td>71-80</td>
-                        <td>พักการศึกษา 1 ภาคการศึกษา</td>
-                    </tr>
-                    <tr>
-                        <td>81-90</td>
-                        <td>พักการศึกษา 2 ภาคการศึกษา</td>
-                    </tr>
-                    <tr>
-                        <td>91-99</td>
-                        <td>พักการศึกษา 3 ภาคการศึกษา</td>
-                    </tr>
-                    <tr>
-                        <td>100</td>
-                        <td>พ้นสภาพการเป็นนักศึกษา</td>
-                    </tr>
-                </table>
-
-
-            </div>
-        </div>
-
-    </div>
-    </div>
-    </div>
-    </div>
+  
+    
 
     <script>
         $(document).ready(function() {
@@ -699,12 +640,6 @@
         $('#score_card').click(function() {
             $('#scoreoffen').modal('show');
             show_cll();
-
-        });
-        $('#tell_card').click(function() {
-            $('#telloffen').modal('show');
-            // show_cll();
-
         });
         $(".btnsearch").click(function() {
             search();
@@ -884,6 +819,10 @@
                             html += '<div class="Main1">';
                             html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                            html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
+                            html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
