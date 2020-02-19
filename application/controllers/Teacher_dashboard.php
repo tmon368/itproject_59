@@ -286,4 +286,15 @@ function selectregist_num (){
 	$result = $this->teacher_dashboard_model->selectregist_num();
 	echo json_encode($result);
 }
+function convert_times()
+	{
+		//stament
+		$time1 = $this->input->post('start_times');
+		$time2 = $this->input->post('end_time');
+
+		$startTime = new DateTime($time1);
+		$endTime = new DateTime($time2);
+		$duration = $startTime->diff($endTime); //$duration is a DateInterval object
+		echo $duration->format("%H:%I:%S");
+	}
 }

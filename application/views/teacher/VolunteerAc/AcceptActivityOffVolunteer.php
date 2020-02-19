@@ -95,16 +95,17 @@
                                 <span class="title PersonOfferActivity">ผู้เสนอกิจกรรม: นายเทียนพอ พอเพียง ตำแหน่ง นักศึกษา</span>
 
                                 <form action="" method="post" name="form-accept" id="form-accept">
+                                    <input type="hidden" name="service_ID" id="service_ID">
                                     <div class="ChoiceAccept">
                                         <span class="title acceptperson">ตอบรับการเป็นผู้รับรองกิจกรรม</span>
                                         <div>
-                                            <label class="radio-inline label"><input type="radio" name="acceptactivity" class="AcceptActivity" value="1" checked>รับรอง</label>
-                                            <label class="radio-inline label"><input type="radio" name="acceptactivity" class="UnAcceptActivity" value="0">ไม่รับรอง</label>
+                                            <label class="radio-inline label"><input type="radio" name="status" class="AcceptActivity" value="1" checked>รับรอง</label>
+                                            <label class="radio-inline label"><input type="radio" name="status" class="UnAcceptActivity" value="0">ไม่รับรอง</label>
                                         </div>
                                     </div>
                                     <div class="ResonNotAccept">
                                         <span class="title">หมายเหตุ: </span>
-                                        <textarea class="form-control" name="reson_not_accept" id="reson_not_accept" cols="30" rows="10" placeholder="เหตุผลที่ไม่อนุมัติกิจกรรม"></textarea>
+                                        <textarea class="form-control" name="explanation" id="reson_not_accept" cols="30" rows="10" placeholder="เหตุผลที่ไม่อนุมัติกิจกรรม"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -182,7 +183,7 @@
                         service_name: value.service_name,
                         date: value.service_date,
                         place: value.place,
-                        getperson: 60,
+                        getperson: value.received,
                         detailactivity: 'xxxx',
                         personoff: value.std_fname + " " + value.std_lname,
                         acceptperson: 'นายสุขใจ สมสุข หมายเลขโทรศัพท์ 085-4396778',
@@ -231,6 +232,7 @@
         $.each(dataservices, function(key, value) {
             //console.log(value.service_id);
             if (value.service_id == serviceid) {
+                $('#service_ID').val(value.service_id);
                 $('.ActivityName').text("ชื่อกิจกรรม: " + value.service_name);
                 $('.DateActivity').text("วันที่จัดกิจกรรม: " + value.date);
                 $('.PaticipantCount').text("จำนวนรับสมัคร: " + value.getperson);
@@ -241,9 +243,29 @@
             }
         });
     });
+
     $('#btnSave').click(function() {
+        console.log(555);
         var data = $('#form-accept').serialize();
-        //stament
+        console.log(data);
+        $.ajax({
+            type: 'GET',
+            url: '<?php echo site_url("Teacher_dashboard/Updateactivityforperson") ?>',
+            data:data,
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                console.log(data)
+                if (data == true) {
+                    alert ('ดำเนินการส่งกิจกรรมให้เจ้าหน้าวินัยทำการอนุมัติเรียบร้อย !');
+                    $('#accept_activity_modal').modal('hide');
+                    location.reload();
+                }
+
+            },error: function(data) {
+                alert(data);
+            }
+        });
     });
 
     $('.UnAcceptActivity').click(function() {
