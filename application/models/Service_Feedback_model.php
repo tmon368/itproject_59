@@ -47,10 +47,12 @@ class Service_Feedback_model extends CI_Model {
         $status =0;
 
 
-        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score');
+        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation');
         $this->db->from('service s');
         $this->db->join('student std', 's.proposer=std.S_ID');
         $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
+        
         $this->db->where('p.username', $usergroup);
         $this->db->where('s.status',$status);
         $query = $this->db->get();
@@ -70,17 +72,17 @@ class Service_Feedback_model extends CI_Model {
     function Updateactivityforperson(){
         $service_ID = $this->input->get('service_ID');
         $status = $this->input->get('status');
-        $getexplanation = $this->input->get('explanation');
+        $getannotation = $this->input->get('annotation');
         // $getexplanation = "อิอิ";
         // $service_ID =2;
         // $status = 1;
 
-        $explanation =$status == 1?  "": $getexplanation; 
+        $annotation =$status == 1?  "": $getannotation; 
         
         $field = array(
                 
             'status'=>$status,
-            'explanation'=>$explanation 
+            'annotation'=>$annotation 
     );
     $this->db->where('service_ID',$service_ID);
     $this->db->update('service', $field);
@@ -100,12 +102,12 @@ class Service_Feedback_model extends CI_Model {
     function Updateactivityfordiscipline_officer(){
         $service_ID = $this->input->get('service_ID');
         $getstatus = $this->input->get('status');
-        $getexplanation = $this->input->get('explanation');
+        $getannotation = $this->input->get('annotation');
         //  $getexplanation = "อิอิ";
         //  $service_ID =3;
         //  $getstatus = 0;
 
-         $explanation =$getstatus == 1?  "": $getexplanation; 
+         $annotation =$getstatus == 1?  "": $getannotation; 
          // 2 =อนุมัติ 3=ไม่อนุมัติ
          $status = $getstatus == 1? 2: 3;
         
@@ -113,7 +115,7 @@ class Service_Feedback_model extends CI_Model {
         $field = array(
                 
             'status'=>$status,
-            'explanation'=>$explanation 
+            'annotation'=>$annotation 
     );
     $this->db->where('service_ID',$service_ID);
     $this->db->update('service', $field);
