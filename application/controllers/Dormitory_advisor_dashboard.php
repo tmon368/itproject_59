@@ -290,6 +290,12 @@ function selectscorestudent(){
     $result = $this->dormitory_advisor_dashboard_model->selectscorestudent();
     echo json_encode($result);
 }
+function selectstudentscore(){
+    //  $username = $this->session->userdata('username');
+    
+    $result = $this->dormitory_advisor_dashboard_model->selectstudentscore();
+    echo json_encode($result);
+}
 
 }
 

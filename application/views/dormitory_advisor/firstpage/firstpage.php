@@ -240,7 +240,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </center><br>แสดงรายชื่อเพิ่มเติม
+                                </center>
+                                <div id="score_card"><u>แสดงรายละเอียดเพิ่มเติม</u></div>
 
                             </div>
                         </div>
@@ -446,7 +447,24 @@
             </div>
         </div>
     </div>
+<div class="modal fade" id="scoreoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 720px!important;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 5 อันดับ</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="showscoredata"></div>
 
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
 
@@ -565,6 +583,10 @@
             $('#Showoffen').modal('show');
             search();
 
+        });
+        $('#score_card').click(function() {
+            $('#scoreoffen').modal('show');
+            show_cll();
         });
         $(".btnsearch").click(function() {
             search();    
@@ -703,6 +725,69 @@ $.ajax({
 });
 
 
+}
+
+function show_cll() {
+    $.ajax({
+        type: 'ajax',
+        url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentscore',
+        async: false,
+        dataType: 'json',
+        success: function(data) { // console.log(data); 
+            var html = '';
+            var n = 1;
+            var i;
+            var count = '10';
+
+            if (data.length < count) {
+                for (i = 0; i < data.length; i++) {
+                	 html += '<div class="Data">';
+                     html += '<div class="Main1">';
+                     html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
+                     html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                     html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
+                     html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
+                     html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
+                     html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                     // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
+                     // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
+                     html += '</div>';
+                     html += '<div class="Main2">';
+                     html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+                     html += '<div><span id="last_count_student">' + data[i].behavior_score + '</div>';
+                     html += '</div>';
+                     html += '</div>';
+                    n += 1;
+                }
+            } else {
+                for (i = 0; i < 10; i++) {
+                    html += '<div class="Data">';
+                    html += '<div class="Main1">';
+                    html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
+                    html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                    html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
+                    html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
+                    html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
+                    html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                    // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
+                    // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
+                    html += '</div>';
+                    html += '<div class="Main2">';
+                    html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+                    html += '<div><span id="last_count_student">' + data[i].behavior_score + '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    n += 1;
+                }
+            }
+
+            $('.showscoredata').html(html);
+            //$('#dataall').html(num-1);//
+        },
+        error: function() {
+            alert('ไม่มีข้อมูล');
+        }
+    });
 }
         });
     </script>

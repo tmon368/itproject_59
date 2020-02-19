@@ -253,7 +253,7 @@
                                 window.onload = function() {
                                     $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Dean_dashboard/getGraphData',
+                    url: '<?php echo base_url() ?>index.php/Dean_dashboard/getDashboard',
                     async: false,
                     dataType: 'json',
                     success: function(data) {

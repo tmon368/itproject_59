@@ -800,9 +800,14 @@
 
                     if (data.length < count) {
                         for (i = 0; i < data.length; i++) {
+                        	html += '<div class="Data">';
                             html += '<div class="Main1">';
                             html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                            html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
+                            html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
