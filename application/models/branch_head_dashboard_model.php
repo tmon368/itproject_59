@@ -859,8 +859,7 @@ public function utilstatus($statusID){
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
-        
-        
+         
         if($student > 0){
             return $student;
         }else{
