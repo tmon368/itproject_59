@@ -20,22 +20,67 @@
 
 <head>
     <style>
-        #title6{
-    font-size: 16px;
-    
-    
+        table,
+        td,
+        th {
+            font-size: 14px;
+            border: 1px solid #ddd;
+            text-align: center;
         }
-        #title7{
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: center;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .modal-header1 {
+            color: white;
+            background-color: #5B2C6F;
+
+            height: 35px;
+        }
+        }
+
+        .volun:hover {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        #title6 {
             font-size: 16px;
-  
-    font-weight: 700;
         }
-        #last_count_student2{
+
+        #title7 {
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+        #last_count_student2 {
             color: #ff0000;
-         font-size: 35px;
-    font-weight: 700;
-}
-       
+            font-size: 35px;
+            font-weight: 700;
+        }
+
         #fasfa-users {
             color: orange;
             font-size: 70px;
@@ -55,21 +100,24 @@
             font-size: 30px;
 
         }
+
         .btnsearch {
-        color: #fff;
-        font-size: 15px;
-        padding: 8px;
-        margin-top: 5%;
-        background-color: #F2603E;
-        text-align: center;
-}
-        .form_input{
-         width: 250px;
-        padding: 8px;
-        border-radius: 45px;
-        margin: 15px;
-        background-color: #e6f9ff;
+            color: #fff;
+            font-size: 15px;
+            padding: 8px;
+            margin-top: 5%;
+            background-color: #F2603E;
+            text-align: center;
         }
+
+        .form_input {
+            width: 250px;
+            padding: 8px;
+            border-radius: 45px;
+            margin: 15px;
+            background-color: #e6f9ff;
+        }
+
         .bggreen {
             background-color: #99FF99;
             width: 250px;
@@ -198,14 +246,14 @@
                             <div class="card-body " id="card_1">
                                 <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
                                 <center>
-                                    
-                                        <div class="search-container">
-                                            <form action="" id="formakk">
-                                                <input type="text" class="form_input"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
-                                                <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
-                                            </form>
-                                        </div>
-                                    
+
+                                    <div class="search-container">
+                                        <form action="" id="formakk">
+                                            <input type="text" class="form_input" id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
+                                            <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
+                                        </form>
+                                    </div>
+
                                 </center>
                             </div>
                         </div>
@@ -235,7 +283,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </center><br>แสดงรายชื่อเพิ่มเติม
+                                </center>
+                                <div id="score_card">แสดงรายละเอียดเพิ่มเติม</div>
 
                             </div>
                         </div>
@@ -270,41 +319,41 @@
                             <script type="text/javascript">
                                 window.onload = function() {
                                     $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/branch_head_dashboard/getDashboard',
-                    async: false,
-                    dataType: 'json',
-                    success: function(data) {
-                        console.log(data);
+                                        type: 'ajax',
+                                        url: '<?php echo base_url() ?>index.php/branch_head_dashboard/getDashboard',
+                                        async: false,
+                                        dataType: 'json',
+                                        success: function(data) {
+                                            console.log(data);
 
 
-                 
-                     
 
 
-                   
-                                    var chart = new CanvasJS.Chart("chartContainer", {
-                                        height: 350,
-                                        animationEnabled: true,
-                                        animationDuration: 2000, //change to 1000, 500 etc
-                                        axisX: {
-                                            title: "หมวดความผิด"
+
+
+
+                                            var chart = new CanvasJS.Chart("chartContainer", {
+                                                height: 350,
+                                                animationEnabled: true,
+                                                animationDuration: 2000, //change to 1000, 500 etc
+                                                axisX: {
+                                                    title: "หมวดความผิด"
+                                                },
+                                                data: [{
+                                                    dataPoints: data
+                                                }]
+                                            });
+
+
+                                            chart.render();
                                         },
-                                        data: [{
-                                            dataPoints: data
-                                        }]
+                                        error: function() {
+                                            alert('ไม่มีข้อมูล');
+                                        }
                                     });
-                                
-                
-                                    chart.render();
-                                },
-                    error: function() {
-                        alert('ไม่มีข้อมูล');
-                    }
-                });
                                 }
                             </script>
-                        
+
 
                             <br><br><br><br>
                         </div>
@@ -337,7 +386,7 @@
                         &nbsp;&nbsp;&nbsp;
                         <div class="btn btn-inverse-warning btn-fw" id="training_card" data-toggle="modal">
                             <ul style="padding-right:50px">
-                                <li >
+                                <li>
                                     <font size="4">
                                         <center>กิจกรรมการอบรม</center>
                                     </font><br>
@@ -350,7 +399,9 @@
                                 </li>
                             </ul>
                         </div>
-                       
+
+
+
 
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
@@ -406,7 +457,7 @@
                 </div>
 
                 <div class="modal-body BodyTrain">
-                   
+
                 </div>
             </div>
         </div>
@@ -429,32 +480,111 @@
                 </div>
 
                 <div class="modal-body offenstudent">
-                <form action="" id="formakk" method="post" class="needs-validation">
-                                            
+                    <form action="" id="formakk" method="post" class="needs-validation">
 
-                <div class="modal-body showoffense">
-                </div>
 
-                                                </div>
-                                            </div>
-                    </form>
+                        <div class="modal-body showoffense">
+                        </div>
+
                 </div>
             </div>
+            </form>
         </div>
     </div>
+    </div>
+    </div>
 
 
 
 
+    <div class="modal fade" id="scoreoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 600px!important;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 5 อันดับ</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <button class="volun" id="tell_card">เกณฑ์การให้คะแนน</button>
+                <div class="showscoredata"></div>
+
+            </div>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
 
     </div>
+
+    <div class="modal fade" id="telloffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 500px!important;" role="document">
+            <div class="modal-content">
+                <div class="modal-header1">
+                    <center>
+                        <h3 class="modal-title" id="exampleModalLongTitle">รายละเอียดการกระทำผิดของนักศึกษา</h3>
+                    </center>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>คะแนนความประพฤติ<br>(เต็ม 100 คะแนน)</th>
+                        <th>บทลงโทษนักศึกษา</th>
+                    </tr>
+                    <tr>
+                        <td>10 คะแนน</td>
+                        <td>ตักเตือนเป็นลายลักษณ์อักษรมแจ้งผู้ปกครองทราบ</td>
+                    </tr>
+                    <tr>
+                        <td>11-30</td>
+                        <td>ภาคทัณฑ์ 1 ภาคการศึกษา</td>
+                    </tr>
+                    <tr>
+                        <td>31-50</td>
+                        <td>ภาคทัณฑ์ 2 ภาคการศึกษา</td>
+                    </tr>
+                    <tr>
+                        <td>51-70</td>
+                        <td>ภาคทัณฑ์ 3 ภาคการศึกษา</td>
+                    </tr>
+                    <tr>
+                        <td>71-80</td>
+                        <td>พักการศึกษา 1 ภาคการศึกษา</td>
+                    </tr>
+                    <tr>
+                        <td>81-90</td>
+                        <td>พักการศึกษา 2 ภาคการศึกษา</td>
+                    </tr>
+                    <tr>
+                        <td>91-99</td>
+                        <td>พักการศึกษา 3 ภาคการศึกษา</td>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                        <td>พ้นสภาพการเป็นนักศึกษา</td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
     <script>
         $(document).ready(function() {
             selectscorestudent();
             selectstudentall();
             selectscoreservice();
             selectscoretraining();
-            
+
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
@@ -553,7 +683,7 @@
 
         $('#btnAdd').click(function() {
             $('#exampleModalCenter').modal('show');
-             show_all();
+            show_all();
         });
 
         $('#training_card').click(function() {
@@ -566,8 +696,18 @@
             search();
 
         });
+        $('#score_card').click(function() {
+            $('#scoreoffen').modal('show');
+            show_cll();
+
+        });
+        $('#tell_card').click(function() {
+            $('#telloffen').modal('show');
+            // show_cll();
+
+        });
         $(".btnsearch").click(function() {
-            search();    
+            search();
         });
 
 
@@ -581,7 +721,7 @@
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
-                        
+
                         var temp_1 = value.start_time;
                         var temp_2 = value.end_time;
                         var start_times = parseFloat(temp_1.substring(0, 5));
@@ -604,7 +744,7 @@
                         html += '<div class="Main3">';
                         html += '</div>';
                         html += '</div>';
-                       
+
 
                     });
                     $('.ShowActivity').html(html);
@@ -638,7 +778,7 @@
                         html += '<div class="Main3">';
                         html += '</div>';
                         html += '</div>';
-                        
+
 
                     });
                     $('.BodyTrain').html(html);
@@ -648,68 +788,122 @@
 
 
 
-function search(){
+        function search() {
 
-var studentid = $('#studentid').val();
-//var day = $('#date').val();
-//var mount2 = $('#datemount2').val();
-//var year = $('#dateyear').val();
+            var studentid = $('#studentid').val();
+            //var day = $('#date').val();
+            //var mount2 = $('#datemount2').val();
+            //var year = $('#dateyear').val();
 
 
-var data = {getstdID:studentid};
+            var data = {
+                getstdID: studentid
+            };
 
-$.ajax({
-    url: '<?php echo site_url("Branch_head_dashboard/searchoffensestudent") ?>',
-    async: false,
-    dataType: 'json',
-    data: data, 
-    success: function(data) {
-        console.log(data);
+            $.ajax({
+                url: '<?php echo site_url("Branch_head_dashboard/searchoffensestudent") ?>',
+                async: false,
+                dataType: 'json',
+                data: data,
+                success: function(data) {
+                    console.log(data);
 
-        if (data == false){
-             alert ('ไม่พบข้อมูลดังกล่าว');
-        }else{
+                    if (data == false) {
+                        alert('ไม่พบข้อมูลดังกล่าว');
+                    } else {
 
-           html = ' ';
-        $.each(data, function(key, value) { 
-            //htmlweb += '<div class="persondata">';  
-            html += '<div class="Data">';
-            html += '<div class="Main1">';
-            html += '<span id="title7">รหัสนักศึกษา: '+ value.S_ID +"    "+'ชื่อ : '+ value.std_fname +" "+ value.std_lname +'</span>'+'</span>';
-            html += '<span id="title6">วันที่กระทำผิด:  '+ value.committed_date +'</span>';
-            html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
-            html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
-            html += '</div>';
-            html += '<div class="Main2">';
-            html += '<div class="CountStudent">คะแนนที่หัก</div>';
-            html += '<div><span id="last_count_student2">' + value.point + '</div>';
-            html += '</div>';
-            html += '<div class="Main3">';
-            html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-            html += '<div><span id="last_count_student">' + value.behavior_score  + '</div>';
-            html += '</div>';
-            html += '</div>';
-           // htmlweb += '<div class="progress_bar">';
-          //  htmlweb += '<div class="progress">';
-          //  htmlweb += '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>';
-          //  htmlweb += '</div>';
-           // htmlweb += '</div>';
-           // htmlweb += '</div>';
-        });
-        $('.showoffense').html(html);
+                        html = ' ';
+                        $.each(data, function(key, value) {
+                            //htmlweb += '<div class="persondata">';  
+                            html += '<div class="Data">';
+                            html += '<div class="Main1">';
+                            html += '<span id="title7">รหัสนักศึกษา: ' + value.S_ID + "    " + 'ชื่อ : ' + value.std_fname + " " + value.std_lname + '</span>' + '</span>';
+                            html += '<span id="title6">วันที่กระทำผิด:  ' + value.committed_date + '</span>';
+                            html += '<span id="title6">ฐานความผิด: ' + value.off_desc + '</span>';
+                            html += '<span id="title6">สถานะการกระทำความผิด:  ' + value.statusoffname + '</span>';
+                            html += '</div>';
+                            html += '<div class="Main2">';
+                            html += '<div class="CountStudent">คะแนนที่หัก</div>';
+                            html += '<div><span id="last_count_student2">' + value.point + '</div>';
+                            html += '</div>';
+                            html += '<div class="Main3">';
+                            html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+                            html += '<div><span id="last_count_student">' + value.behavior_score + '</div>';
+                            html += '</div>';
+                            html += '</div>';
+                            // htmlweb += '<div class="progress_bar">';
+                            //  htmlweb += '<div class="progress">';
+                            //  htmlweb += '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>';
+                            //  htmlweb += '</div>';
+                            // htmlweb += '</div>';
+                            // htmlweb += '</div>';
+                        });
+                        $('.showoffense').html(html);
+
+                    }
+
+
+
+                }
+            });
+
 
         }
-       
-
-        
-       
-
-    
-    }
-});
 
 
-}
+        function show_cll() {
+            $.ajax({
+                type: 'ajax',
+                url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentscore',
+                async: false,
+                dataType: 'json',
+                success: function(data) { // console.log(data); 
+                    var html = '';
+                    var n = 1;
+                    var i;
+                    var count = '5';
+
+                    if (data.length < count) {
+                        for (i = 0; i < data.length; i++) {
+                            html += '<div class="Main1">';
+                            html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
+                            html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                            // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
+                            // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
+                            html += '</div>';
+                            html += '<div class="Main2">';
+                            html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+                            html += '<div><span id="last_count_student">' + data[i].behavior_score + '</div>';
+                            html += '</div>';
+                            html += '</div>';
+                            n += 1;
+                        }
+                    } else {
+                        for (i = 0; i < 5; i++) {
+                            html += '<div class="Data">';
+                            html += '<div class="Main1">';
+                            html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
+                            html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                            // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
+                            // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
+                            html += '</div>';
+                            html += '<div class="Main2">';
+                            html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+                            html += '<div><span id="last_count_student">' + data[i].behavior_score + '</div>';
+                            html += '</div>';
+                            html += '</div>';
+                            n += 1;
+                        }
+                    }
+
+                    $('.showscoredata').html(html);
+                    //$('#dataall').html(num-1);//
+                },
+                error: function() {
+                    alert('ไม่มีข้อมูล');
+                }
+            });
+        }
     </script>
 
 </body>

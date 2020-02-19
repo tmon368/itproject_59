@@ -41,7 +41,7 @@
                         </thead>
 
                         <tbody id="showdata">
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>
                                     <div class="DetailActivity">
@@ -54,9 +54,7 @@
                                 <td id="person_control"> สินทัน ชูทอง </td>
                                 <td id="btn_accept_td"> <span class="accept_activity">อนุมัติกิจกรรม</span> </td>
                             </tr>
-                            </td>
-                            </tr>
-
+                             -->
                         </tbody>
 
                     </table>
@@ -82,30 +80,33 @@
                         <div class="part1">
                             <span class="title">ข้อมูลกิจกรรม</span>
                             <div class="Data">
-                                <span class="title">ชื่อกิจกรรม: ปลูกต้นไม้ลดโลกร้อน</span>
-                                <span class="title">วันที่จัดกิจกรรม: 12 ธันวาคม 2563</span>
-                                <span class="title">จำนวนรับสมัคร: 60 คน</span>
-                                <span class="title">ผู้รับรองกิจกรรม: นายสุขใจ สมสุข หมายเลขโทรศัพท์ 085-4396778</span>
+                                <span class="title ActivityName"></span>
+                                <span class="title DateActivity"></span>
+                                <span class="title PaticipantCount"></span>
+                                <span class="title PersonAccept"></span>
                                 <span class="title">สถานที่จัดกิจกรรม:</span>
-                                <div class="DivData">
-                                    สถานีขนส่งกรุงเทพ (สายใต่ใหม่) ถนนบรมราชชนนี ... ที่อยู่ อาคารลานค้าชุมชน ถ.เลียบเนิน ต.วัดใหม่ อ.เมือง จ.จันทบุรี 22000
+                                <div class="DivData Place">
+
                                 </div>
                                 <span class="title">รายละเอียดกิจกรรม:</span>
-                                <div class="DivData">
-                                    ปลูกต้นไม้ลดโลกร้อน นำนักศึกษาบำเพ็ญประโยชน์ปลูกป่าชายเลน
+                                <div class="DivData DetailActivity_modal_1">
+
                                 </div>
-                                <span class="title">ผู้เสนอกิจกรรม: นายเทียนพอ พอเพียง ตำแหน่ง นักศึกษา</span>
-                                <div class="ChoiceAccept">
-                                    <span class="title acceptperson">ตอบรับการเป็นผู้รับรองกิจกรรม</span>
-                                    <div>
-                                        <label class="radio-inline label"><input type="radio" name="acceptactivity" class="AcceptActivity" value="1" checked>รับรอง</label>
-                                        <label class="radio-inline label"><input type="radio" name="acceptactivity" class="UnAcceptActivity" value="0">ไม่รับรอง</label>
+                                <span class="title PersonOfferActivity">ผู้เสนอกิจกรรม: นายเทียนพอ พอเพียง ตำแหน่ง นักศึกษา</span>
+
+                                <form action="" method="post" name="form-accept" id="form-accept">
+                                    <div class="ChoiceAccept">
+                                        <span class="title acceptperson">ตอบรับการเป็นผู้รับรองกิจกรรม</span>
+                                        <div>
+                                            <label class="radio-inline label"><input type="radio" name="acceptactivity" class="AcceptActivity" value="1" checked>รับรอง</label>
+                                            <label class="radio-inline label"><input type="radio" name="acceptactivity" class="UnAcceptActivity" value="0">ไม่รับรอง</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="ResonNotAccept">
-                                    <span class="title">หมายเหตุ: </span>
-                                    <textarea class="form-control" name="reson_not_accept" id="reson_not_accept" cols="30" rows="10" placeholder="เหตุผลที่ไม่อนุมัติกิจกรรม"></textarea>
-                                </div>
+                                    <div class="ResonNotAccept">
+                                        <span class="title">หมายเหตุ: </span>
+                                        <textarea class="form-control" name="reson_not_accept" id="reson_not_accept" cols="30" rows="10" placeholder="เหตุผลที่ไม่อนุมัติกิจกรรม"></textarea>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="part2">
@@ -118,7 +119,7 @@
                     <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                     <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
                 </div>
-                </form>
+
             </div>
         </div>
     </div>
@@ -133,49 +134,116 @@
         show_all();
     });
 
-    function show_all(){
+    function show_all() {
 
-        alert (5555);
         html = '';
         i = 0;
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo site_url("Teacher_dashboard/selectservice") ?>',
-                dataType: 'json',
-                async: false,
-                success: function(data) {
-                    console.log (data);
-                    $.each(data, function(key, value) {
-                        var temp_1 = value.start_time;
-                        var temp_2 = value.end_time;
-                        var show_start_time = temp_1.substring(0, 5);
-                        var show_end_times = temp_2.substring(0, 5);
-                        var start_times = parseFloat(temp_1.substring(0, 5));
-                        var end_times = parseFloat(temp_2.substring(0, 5));
-                        var counthour = Math.abs(end_times - start_times);
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url("Teacher_dashboard/selectservice") ?>',
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                console.log(data);
+                $.each(data, function(key, value) {
 
-                        i++;
-                        htmlcode += '<tr>';
-                        htmlcode += '<td>' + i + '</td>'
-                        htmlcode += '<td>';
-                        htmlcode += '<div class="DetailActivity">';
-                        htmlcode += '<span id="activity_name">กิจกรรม:' + value.service_name + '</span>';
-                        htmlcode += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
-                        htmlcode += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
-                        htmlcode += '<span id="place">' + value.place + '</span>';
-                        htmlcode += '</div>';
-                        htmlcode += '</td>';
-                        htmlcode += '<td id="person_control">xxx</td>';
-                        htmlcode += '<td id="btn_accept_td"> <span class="accept_activity">อนุมัติกิจกรรม</span> </td>';
-                        htmlcode += '</tr>';
-                        $('#showdata').html(html);
+                    var spendtimes_temp = convert_time_(value.start_time, value.end_time);
+                    var spendtimes = spendtimes_temp.substring(0, 5);
+
+                    if (spendtimes.substring(0, 2) == "00") {
+                        //console.log ('xxxx');
+                        var string_times = 'นาที';
+                    } else {
+                        var string_times = 'ชั่วโมง';
+                    }
+                    var temp_1 = value.start_time;
+                    var temp_2 = value.end_time;
+                    var show_start_time = temp_1.substring(0, 5);
+                    var show_end_times = temp_2.substring(0, 5);
+
+                    i++;
+                    html += '<tr>';
+                    html += '<td>' + i + '</td>';
+                    html += '<td>';
+                    html += '<div class="DetailActivity">';
+                    html += '<span id="activity_name">กิจกรรม: ' + value.service_name + '</span>';
+                    html += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
+                    html += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + 'ถึง ' + show_end_times + 'ชั่วโมงกิกรรม ' + spendtimes + " " + string_times + '</span>';
+                    html += '<span id="place">สถานที่: ' + value.place + '</span>';
+                    html += '</div>';
+                    html += '</td>';
+                    html += '<td id="person_control"> ' + value.std_fname + " " + value.std_lname + ' </td>';
+                    html += '<td id="btn_accept_td"> <span class="accept_activity" data="' + value.service_ID + '">อนุมัติกิจกรรม</span> </td>';
+                    html += '</tr>';
+
+                    
+                    dataservices.push({
+                        service_id: value.service_ID,
+                        service_name: value.service_name,
+                        date: value.service_date,
+                        place: value.place,
+                        getperson: 60,
+                        detailactivity: 'xxxx',
+                        personoff: value.std_fname + " " + value.std_lname,
+                        acceptperson: 'นายสุขใจ สมสุข หมายเลขโทรศัพท์ 085-4396778',
+                        position: 'A',
+                        start_time: show_start_time,
+                        end_time: show_end_times,
+                        spendtimes: spendtimes,
+                        unittimes: string_times
                     });
-                }
-            });
+
+                    $('#showdata').html(html);
+                });
+            }
+        });
     }
 
-    $('.accept_activity').click(function() {
+    function convert_time_(start_times, end_times) {
+        var spendtimes;
+        data = {
+            start_times: start_times,
+            end_time: end_times
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url("Teacher_dashboard/convert_times") ?>',
+            data: data,
+            async: false,
+            success: function(data) {
+                spendtimes = data;
+                //console.log(spendtimes);
+            },
+            error: function(data) {
+                alert(data);
+            }
+        });
+        return spendtimes;
+    }
+
+
+
+    $('#showdata').on('click', '.accept_activity', function() {
         $('#accept_activity_modal').modal('show');
+        var serviceid = $(this).attr('data');
+
+        $.each(dataservices, function(key, value) {
+            //console.log(value.service_id);
+            if (value.service_id == serviceid) {
+                $('.ActivityName').text("ชื่อกิจกรรม: " + value.service_name);
+                $('.DateActivity').text("วันที่จัดกิจกรรม: " + value.date);
+                $('.PaticipantCount').text("จำนวนรับสมัคร: " + value.getperson);
+                $('.PersonAccept').text("ผู้รับรองกิจกรรม:" + value.acceptperson);
+                $('.Place').text(value.place);
+                $('.DetailActivity_modal_1').text(value.detailactivity);
+                $('.PersonOfferActivity').text('ผู้เสนอกิจกรรม: ' + value.personoff + ' ตำแหน่ง ' + value.position + '');
+            }
+        });
+    });
+    $('#btnSave').click(function() {
+        var data = $('#form-accept').serialize();
+        //stament
     });
 
     $('.UnAcceptActivity').click(function() {
@@ -185,5 +253,4 @@
     $('.AcceptActivity').click(function() {
         $('.ResonNotAccept').hide();
     });
-
 </script>
