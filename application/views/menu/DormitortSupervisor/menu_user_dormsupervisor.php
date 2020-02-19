@@ -14,7 +14,7 @@
             <a href="<?php echo site_url("Notifyoffense_DormitorySupervisor") ?>">
                 <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
-<a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <li class="menu-icon mdi mdi-airballoon">การบำเพ็ญประโยชน์</li>
             </a>
 
