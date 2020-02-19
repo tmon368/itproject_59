@@ -139,28 +139,6 @@
 </body>
 
 
-<!-- <div class="modal fade" id="ShowDta" role="dialog">
-	<div class="modal-dialog modal-dialog-centered" style="max-width: 1000px!important;">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">รายละเอียดการอบรม</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-			</div>
-			<div class="modal-body content">
-
-
-
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div> -->
-
-
 <div class="modal fade" id="AlertNotifyUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">

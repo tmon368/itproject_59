@@ -41,7 +41,7 @@
                         </thead>
 
                         <tbody id="showdata">
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>
                                     <div class="DetailActivity">
@@ -54,9 +54,7 @@
                                 <td id="person_control"> สินทัน ชูทอง </td>
                                 <td id="btn_accept_td"> <span class="accept_activity">อนุมัติกิจกรรม</span> </td>
                             </tr>
-                            </td>
-                            </tr>
-
+                             -->
                         </tbody>
 
                     </table>
@@ -133,48 +131,79 @@
         show_all();
     });
 
-    function show_all(){
+    function show_all() {
 
-        alert (5555);
         html = '';
         i = 0;
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo site_url("Teacher_dashboard/selectservice") ?>',
-                dataType: 'json',
-                async: false,
-                success: function(data) {
-                    console.log (data);
-                    $.each(data, function(key, value) {
-                        var temp_1 = value.start_time;
-                        var temp_2 = value.end_time;
-                        var show_start_time = temp_1.substring(0, 5);
-                        var show_end_times = temp_2.substring(0, 5);
-                        var start_times = parseFloat(temp_1.substring(0, 5));
-                        var end_times = parseFloat(temp_2.substring(0, 5));
-                        var counthour = Math.abs(end_times - start_times);
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url("Teacher_dashboard/selectservice") ?>',
+            dataType: 'json',
+            async: false,
+            success: function(data) {
+                console.log(data);
+                $.each(data, function(key, value) {
 
-                        i++;
-                        htmlcode += '<tr>';
-                        htmlcode += '<td>' + i + '</td>'
-                        htmlcode += '<td>';
-                        htmlcode += '<div class="DetailActivity">';
-                        htmlcode += '<span id="activity_name">กิจกรรม:' + value.service_name + '</span>';
-                        htmlcode += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
-                        htmlcode += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
-                        htmlcode += '<span id="place">' + value.place + '</span>';
-                        htmlcode += '</div>';
-                        htmlcode += '</td>';
-                        htmlcode += '<td id="person_control">xxx</td>';
-                        htmlcode += '<td id="btn_accept_td"> <span class="accept_activity">อนุมัติกิจกรรม</span> </td>';
-                        htmlcode += '</tr>';
-                        $('#showdata').html(html);
-                    });
-                }
-            });
+                    var spendtimes_temp = convert_time_ (value.start_time,value.end_time); 
+                    var spendtimes = spendtimes_temp.substring(0, 5);
+
+                    if ( spendtimes.substring(0,2) == "00"){
+                        var string_times = 'นาที';
+                    }
+                    var string_times = 'ชั่วโมง';
+                    var temp_1 = value.start_time;
+                    var temp_2 = value.end_time;
+                    var show_start_time = temp_1.substring(0, 5);
+                    var show_end_times = temp_2.substring(0, 5);
+ 
+                    i++;
+                    html += '<tr>';
+                    html += '<td>' + i + '</td>';
+                    html += '<td>';
+                    html += '<div class="DetailActivity">';
+                    html += '<span id="activity_name">กิจกรรม: ' + value.service_name + '</span>';
+                    html += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
+                    html += '<span id="time_activity">เวลาเริ่ม '+ show_start_time +'ถึง '+ show_end_times+'ชั่วโมงกิกรรม '+ spendtimes +" "+ string_times +'</span>';
+                    html += '<span id="place">สถานที่: ' + value.place + '</span>';
+                    html += '</div>';
+                    html += '</td>';
+                    html += '<td id="person_control"> ' + value.std_fname + " " + value.std_lname + ' </td>';
+                    html += '<td id="btn_accept_td"> <span class="accept_activity" data="' + value.service_ID + '">อนุมัติกิจกรรม</span> </td>';
+                    html += '</tr>';
+
+                    $('#showdata').html(html);
+                });
+            }
+        });
     }
 
-    $('.accept_activity').click(function() {
+    function convert_time_(start_times,end_times){
+        var spendtimes;
+        data ={
+            start_times:start_times,
+            end_time:end_times
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url("Teacher_dashboard/convert_times") ?>',
+            data:data,
+            async: false,
+            success: function(data) {
+                spendtimes = data;
+                console.log (spendtimes);
+                
+            },
+            error: function(data) {
+                alert(data);
+            }
+        });
+        return spendtimes;
+    }
+
+
+
+    $('#showdata').on('click', '.accept_activity', function() {
         $('#accept_activity_modal').modal('show');
     });
 
@@ -185,5 +214,4 @@
     $('.AcceptActivity').click(function() {
         $('.ResonNotAccept').hide();
     });
-
 </script>
