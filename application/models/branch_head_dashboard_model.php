@@ -842,6 +842,35 @@ public function utilstatus($statusID){
         }
     }
 
+    public function selectstudentscore(){
+        //$student = $this->session->userdata('student');
+        //SELECT DISTINCT offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID
+        
+        
+        $this->db->distinct();
+        $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score,x.prefix_name');
+        $this->db->from('offensestd ostd');
+        $this->db->order_by('s.behavior_score ASC');
+        $this->db->join('student s','ostd.S_ID=s.S_ID');
+        $this->db->join('prefix x','s.prefixID=x.prefixID');
+        
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+        
+        
+        if($student > 0){
+            return $student;
+        }else{
+            return false;
+        }
+    }
+    
+
+
+
+
+
 
 
     
