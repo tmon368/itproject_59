@@ -1,0 +1,37 @@
+.modal-title{
+    font-family: 'prompt',sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+.tdfile{
+    text-align: center;
+}
+.tddetail{
+    text-align: center;
+}
+.fileicon{
+    font-size: 18px;
+    color: #D5DBDB;
+}
+.fileicon:hover{
+    cursor: pointer;
+    color: #5DADE2;
+    opacity: 1;
+    transition: 0.3s;
+}
+.iconfile {
+    background: #F5B7B1 ;
+    padding: 0.1rem;
+    font-family: 'Taviraj', sans-serif;
+    color: #CB4335 ;
+    font-weight: 100;
+    border-radius: 0.5rem;
+    font-size: 12px;
+    border: 1px solid #04753d;
+}
+
+.iconfile:hover {
+    cursor: pointer;
+    color: #212F3C;
+    background: #2ECC71;
+}
