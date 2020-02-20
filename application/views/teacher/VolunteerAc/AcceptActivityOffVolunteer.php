@@ -169,7 +169,7 @@
                     html += '<div class="DetailActivity">';
                     html += '<span id="activity_name">กิจกรรม: ' + value.service_name + '</span>';
                     html += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
-                    html += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + 'ถึง ' + show_end_times + 'ชั่วโมงกิกรรม ' + spendtimes + " " + string_times + '</span>';
+                    html += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + spendtimes + " " + string_times + '</span>';
                     html += '<span id="place">สถานที่: ' + value.place + '</span>';
                     html += '</div>';
                     html += '</td>';
