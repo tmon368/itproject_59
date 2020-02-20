@@ -9,7 +9,7 @@
 
 <head>
 
-    <title>เสนอบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
+    <title>เสนอบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา มหาวิทยาลัยวลัยลักษณ์</title>
     <style>
         .select2-container--open .select2-dropdown--below {
             width: 420px !important;
@@ -230,8 +230,6 @@
                             <div class="modal-body content">
 
 
-
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -282,13 +280,12 @@
             html = '';
             i = 0;
             $.ajax({
-
                 type: 'POST',
                 url: '<?php echo site_url("VolunteerAC/showAll") ?>',
                 dataType: 'json',
                 async: false,
                 success: function(data) {
-                    console.log (data);
+                    console.log(data);
 
                     $.each(data, function(key, value) {
                         //class show_data edit_data del_data
@@ -301,13 +298,22 @@
                         // html += '<td>' + value.person_fname + "  " + value.person_lname + '</td>';
                         html += '<td class="detailzoom"><span class="fileicon show_data" data="' + value.service_ID + '"><i class="fas fa-file-alt"></i></span></td>';
 
-                        if (value.statusname == "รอผลการเสนอ") {
-                            html += '<td class="StatusActivity"><span id="wait_offer">รอผลการเสนอ</span></td>';
-                        } else if (value.statusname == "อนุมัติ") {
-                            html += '<td class="StatusActivity"><span id="sucess">อนุมัติ</span></td>';
+                        if (value.status == 0) {
+                            html += '<td class="StatusActivity"><span class="badge badge-primary status">รอบุคลากรอนุมัติ</span></td>';
+                        } else if (value.status == 1) {
+                            console.log(555);
+                            html += '<td class="StatusActivity"><span class="badge badge-secondary status">รอเจ้าหน้าที่วินัยอนุมัติ</span></td>';
+                        } else if (value.status == 2) {
+                            html += '<td class="StatusActivity"><span class="badge badge-success status">อนุมัติกิจกรรม</span></td>';
+                        } else if (value.status == 3) {
+                            html += '<td class="StatusActivity"><span class="badge badge-danger status">บุคลากรไม่อนุมัติกิจกรรม</span></td>';
+                        } else if (value.status == 4) {
+                            html += '<td class="StatusActivity"><span class="badge badge-danger status">เจ้าหน้าที่วินัยไม่อนุมัติกิจกรรม</span></td>';
                         } else {
-
+                            //stament
                         }
+
+
                         html += '<td><span class="editicon edit_data" data="' + value.service_ID + '"><i class="fas fa-edit"></i></span><span class="delicon del_data" data="' + value.service_ID + '"><i class="fas fa-trash-alt"></i></span></td>'
                         html += '</tr>'
                         $('#showdata').html(html);
@@ -527,17 +533,22 @@
                     //alert ('Having data');
 
                     $.each(data, function(key, value) {
+
+                        var temp_1 = value.start_time;
+                        var temp_2 = value.end_time;
+                        var show_start_time = temp_1.substring(0, 5);
+                        var show_end_times = temp_2.substring(0, 5);
+
                         i++;
                         html += '<p class="text_head"> <label for="" class="label_txt">ชื่อกิจกรรม: </label> ' + value.service_name + ' </p>'
                         html += '<p class="text_position"> <label for="" class="label_txt"> ชื่อผู้ควบคุมกิจกรรม:</label> ' + value.person_fname + '&nbsp;&nbsp;' + value.person_lname + ' <label for="" class="label_txt">หมายเลขโทรศัพท์:</label> ' + value.phone1 + '</p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">สถานที่: </label> ' + value.place + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">วันที่กำหนด: </label> ' + value.service_date + ' </p>';
-                        html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  ' + value.start_time + "-" + value.end_time + ' </p>';
+                        html += '<p class="text_position"> <label for="" class="label_txt">เวลาจัดกิจกรรม:</label>  ' + show_start_time + " - " + show_end_times + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">จำนวนที่รับสมัคร: </label> ' + value.received + ' </p>';
                         html += '<p class="text_position"> <label for="" class="label_txt">รายละเอียด: </label> ' + value.explanation + ' </p>';
 
                         $('.content').html(html);
-
                     });
                 },
                 error: function() {
