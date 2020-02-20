@@ -274,10 +274,6 @@
                 placeholder: "ค้นหาผู้รับรองกิจกรรม",
                 allowClear: true,
             });
-
-
-
-
         });
 
 
@@ -292,6 +288,7 @@
                 dataType: 'json',
                 async: false,
                 success: function(data) {
+                    console.log (data);
 
                     $.each(data, function(key, value) {
                         //class show_data edit_data del_data

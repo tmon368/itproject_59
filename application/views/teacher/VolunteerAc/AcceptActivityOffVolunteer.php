@@ -177,7 +177,7 @@
                     html += '<td id="btn_accept_td"> <span class="accept_activity" data="' + value.service_ID + '">อนุมัติกิจกรรม</span> </td>';
                     html += '</tr>';
 
-                    
+
                     dataservices.push({
                         service_id: value.service_ID,
                         service_name: value.service_name,
@@ -251,19 +251,16 @@
         $.ajax({
             type: 'GET',
             url: '<?php echo site_url("Teacher_dashboard/Updateactivityforperson") ?>',
-            data:data,
+            data: data,
             dataType: 'json',
             async: false,
             success: function(data) {
                 console.log(data)
                 if (data == true) {
-                    alert ('ดำเนินการส่งกิจกรรมให้เจ้าหน้าวินัยทำการอนุมัติเรียบร้อย !');
+                    alert('ดำเนินการส่งกิจกรรมให้เจ้าหน้าวินัยทำการอนุมัติเรียบร้อย !');
                     $('#accept_activity_modal').modal('hide');
                     location.reload();
                 }
-
-            },error: function(data) {
-                alert(data);
             }
         });
     });

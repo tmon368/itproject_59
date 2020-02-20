@@ -43,6 +43,7 @@ class VolunteerAc_model extends CI_Model {
         //echo $person_ID;
 
         $username = $this->session->userdata('username');
+        echo $username;
         $this->db->select('*');
         $this->db->from('service sv');
 
@@ -53,14 +54,15 @@ class VolunteerAc_model extends CI_Model {
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
+        var_dump($student);
         foreach($student as $value){
             $data = $value['status'];
             $start_time = date_format(date_create($value['start_time']),"H:i");
             $end_time = date_format(date_create($value['end_time']),"H:i");
-            $status = $this->utilstatus($data);
+            //$status = $this->utilstatus($data);
 
         
-        $student[$i]["statusname"] = $status;
+        //$student[$i]["statusname"] = $status;
         $student[$i]["start_time"] = $start_time;
         $student[$i]["end_time"] = $end_time;
         $i++;
@@ -73,11 +75,13 @@ class VolunteerAc_model extends CI_Model {
             return false;
         }
     }  
-    public function utilstatus($statusID){
+     public function utilstatus($statusID){
+
 
         $data = array('รอบุคลากรอนุมัติ','รอเจ้าหน้าที่วินัยอนุมัติ','อนุมัติเรียบร้อย','บุคลากรไม่อนุมัติ','เจ้าหน้าที่วินัยไม่อนุมัติ','');
         return $data[$statusID];
     }  
+
 
     //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
     public function checkkey(){
