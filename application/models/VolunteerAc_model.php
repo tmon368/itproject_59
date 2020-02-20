@@ -65,8 +65,8 @@ class VolunteerAc_model extends CI_Model {
         $student[$i]["end_time"] = $end_time;
         $i++;
     }
-        // var_dump($username);   
-       // die();     
+    //     var_dump($student);   
+    //    die();     
         if($student > 0){
             return $student;
         }else{
@@ -75,7 +75,7 @@ class VolunteerAc_model extends CI_Model {
     }  
     public function utilstatus($statusID){
 
-        $data = array("รอผลการเสนอ","อนุมัติ");
+        $data = array('รอบุคลากรอนุมัติ','รอเจ้าหน้าที่วินัยอนุมัติ','อนุมัติเรียบร้อย','บุคลากรไม่อนุมัติ','เจ้าหน้าที่วินัยไม่อนุมัติ','');
         return $data[$statusID];
     }  
 

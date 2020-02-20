@@ -717,6 +717,7 @@ foreach($showall as $value){
         //echo $discipline_officer;
         //die();
         $status =1;
+        $i=0;
 
 
         $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation,p.person_fname,p.person_lname,p.position');
@@ -727,14 +728,28 @@ foreach($showall as $value){
         //$this->db->where('p.username', $discipline_officer);
         $this->db->where('s.status',$status);
         $query = $this->db->get();
-    //    var_dump($query->result());
-    //    die();
+        $showall = array();
+        $showall = $query->result_array();
+        foreach($showall as $row){
+            $statusname = $this->statusservice($row['status']);
+            $showall[$i]['statusname'] = $statusname;
+            $i+=1;
+        }
+       var_dump($showall);
+       die();
       
        if($query->num_rows() > 0){
-           return $query->result();
+           return $showall;
        }else{
            return false;
        }
+
+    }
+
+    function statusservice($getstatus){
+        $status = ['รอบุคลากรอนุมัติ','รอเจ้าหน้าที่วินัยอนุมัติ','อนุมัติเรียบร้อย','บุคลากรไม่อนุมัติ','เจ้าหน้าที่วินัยไม่อนุมัติ',''];
+         return $status[$getstatus];
+
 
     }
 
