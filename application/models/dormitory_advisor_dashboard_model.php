@@ -35,6 +35,7 @@ class dormitory_advisor_dashboard_model extends CI_Model {
             return false;
         }
     }
+    
 
     public function getAllSTD(){
     $dorm=$this->session->userdata('username');
@@ -59,7 +60,7 @@ class dormitory_advisor_dashboard_model extends CI_Model {
     $this->db->where('p.username',$dorm);
     // $this->db->where('p.cur_ID=p.cur_ID');
     $query = $this->db->get();
-    $students = array();
+    $student = array();
     $student = $query->result_array();
     
     

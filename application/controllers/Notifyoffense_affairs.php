@@ -30,7 +30,7 @@ class Notifyoffense_affairs extends Headofstudent_affairs_dashboard
 		$this->load->view('template/template4');
 		//$this->load->view('student/notify/notify_page');
 		//$this->load->view('student/notify/NotifyUserStudentPage');
-		$this->load->view('student/notify/blank');
+		$this->load->view('Notifyoffenaffairs/notifyoffen_affairs');
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 	}
