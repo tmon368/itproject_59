@@ -228,17 +228,17 @@
         $("#formaccept").on("submit", function(e) {
             e.preventDefault();
             var formData = new FormData(document.getElementById("formaccept"));
-            console.log(formData);
+            //console.log(formData);
 
             $.ajax({
-                url: '<?php echo base_url(); ?>index.php/Teacher_dashboard/test',
+                url: '<?php echo base_url(); ?>index.php/Teacher_dashboard/Updatestatusparticipationactivities',
                 cache: false,
                 data: formData,
                 processData: false,
                 contentType: false,
                 type: "POST",
                 success: function(data) {
-                    console.log(data);
+                    alert(data);
                 }
             });
 
@@ -259,10 +259,6 @@
             });
         });
 
-        // $('#data_activity_participants').on('click', '.AcceptStudent', function() {
-        //     var studentid = $(this).attr('data');
-        //     alert(studentid);
-        // });
 
 
         $('#showdata').on('click', '#open_name_participants', function() {
@@ -278,7 +274,7 @@
 
             $.each(dataservices, function(key, value) {
                 if (serviceid == value.service_id) {
-                    $('#service_ID').val(value.service_id);
+                    $('#service_ID').val(value.service_id); //service_ID
                     $('#activity_name_modal').text('กิจกรรม:' + value.service_name);
                     $('#title5').text('กิจกรรม:' + value.service_name);
                     $('#date_activity_modal').text('วันที่จัดกิจกรรม: ' + value.date);
@@ -301,6 +297,7 @@
                 data: data,
                 dataType: 'json',
                 success: function(data) {
+                    console.log (data);
                     var htmlcode = '';
                     var i = 0;
                     $.each(data, function(key, value) {
@@ -319,7 +316,7 @@
                             //stament
                         }
 
-                        dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์การเข้าร่วมกิจกรรม</a>', '<input type="checkbox" class="AcceptStudent" name="studentid[]" value="'+ value.S_ID +'">'));
+                        dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์การเข้าร่วมกิจกรรม</a>', '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="'+ value.S_ID +'">'));
                     });
                     $('#show_data_table').html(htmlcode);
                 }
