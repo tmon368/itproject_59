@@ -5,7 +5,7 @@
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_regis_activity_student.css') ?>">
-
+<link rel="stylesheet" href="<?php echo base_url('re/css/css_dean_sctivity.css') ?>">
 <center>
     <strong>
         <div class="alert alert-success" role="alert" style="display: none;"></div>
@@ -19,187 +19,6 @@
 </center>
 
 <head>
-    <style>
-        table,
-        td,
-        th {
-            font-size: 14px;
-            border: 1px solid #ddd;
-            text-align: center;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            text-align: center;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .modal-header1 {
-            color: white;
-            background-color: #5B2C6F;
-
-            height: 35px;
-        }
-        }
-
-        .volun:hover {
-            background-color: #f44336;
-            color: white;
-            padding: 14px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        #title6 {
-            font-size: 16px;
-        }
-
-        #title7 {
-            font-size: 16px;
-
-            font-weight: 700;
-        }
-
-        #last_count_student2 {
-            color: #ff0000;
-            font-size: 35px;
-            font-weight: 700;
-        }
-
-        #fasfa-users {
-            color: orange;
-            font-size: 70px;
-            text-shadow: 1px 1px 1px #000;
-        }
-
-        #showscorestudent {
-            font-size: 50px;
-        }
-
-        #showscoreservice {
-            font-size: 30px;
-
-        }
-
-        #showscoretraining {
-            font-size: 30px;
-
-        }
-
-        .btnsearch {
-            color: #fff;
-            font-size: 15px;
-            padding: 8px;
-            margin-top: 5%;
-            background-color: #F2603E;
-            text-align: center;
-        }
-
-        .form_input {
-            width: 250px;
-            padding: 8px;
-            border-radius: 45px;
-            margin: 15px;
-            background-color: #e6f9ff;
-        }
-
-        .bggreen {
-            background-color: #99FF99;
-            width: 250px;
-            padding: 8px;
-            border: 15px;
-            margin: 15px;
-            border-radius: 45px;
-
-        }
-
-        #fasfa-chalkboard-teacher {
-            color: black;
-            font-size: 70px;
-            text-shadow: 1px 1px 1px #000;
-        }
-
-        #farfa-calendar-check {
-            color: black;
-            font-size: 70px;
-            text-shadow: 1px 1px 1px #000;
-
-        }
-
-        .btnbtn-inverse-primarybtn-fw {
-            width: 600px
-        }
-
-        .btnbtn-inverse-primarybtn-fw ul {
-            list-style-type: none;
-            margin: 0px;
-            padding: 10px;
-            font-family: '', sans-serif;
-            font-size: 0.85em;
-            color: rgb(0, 0, 0);
-        }
-
-        .btnbtn-inverse-primarybtn-fw li {
-            float: left;
-            padding: 0px;
-            padding: 0px;
-            text-align: center;
-            width: 40.33%;
-            background-color: #40ff00;
-            width: 250px;
-            padding: 8px;
-            border: 15px;
-            margin: 15px;
-            border-radius: 45px;
-        }
-
-
-
-        .btnbtn-inverse-warningbtn-fw {
-            width: 600px
-        }
-
-        .btnbtn-inverse-warningbtn-fw ul {
-            list-style-type: none;
-            margin: 0px;
-            padding: 0px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.85em;
-            color: rgb(0, 0, 0);
-        }
-
-        .btnbtn-inverse-warningbtn-fw li {
-            float: left;
-            padding: 0px;
-            padding: 0px;
-            text-align: center;
-            width: 40.33%;
-            background-color: #ffbf00;
-            width: 250px;
-            padding: 8px;
-            border: 15px;
-            margin: 15px;
-            border-radius: 45px;
-        }
-    </style>
-
-
-
 </head>
 <br>
 
@@ -229,9 +48,14 @@
                                 <center>จำนวนนักศึกษาที่กระทำผิด </center>
                                 <br>
                                 <center><i class="fas fa-users" id="fasfa-users"></i><br>
-                                    <div id="showscorestudent" name="showscorestudent"></div><br>
+                                  <table> 
+                                      <tr>
+                                        <td><div id="showscorestudent" name="showscorestudent"></div><br></td>
+                                        <td></td>
+                                        <td><h3>คน</h3></td>
+                                      </tr> 
+                                    </table>
                                 </center>
-
                             </div>
                         </div>
                     </div>
@@ -244,17 +68,20 @@
                                 <h6 class="m-0 text-primary"></h6>
                             </div>
                             <div class="card-body " id="card_1">
-                                <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
+                                <font size="2">
+                                    <center><h5>ค้นหาความผิดของนักศึกษารายบุคคล</h5></center>
+                                </font><br>
                                 <center>
-
-                                    <div class="search-container">
-                                        <form action="" id="formakk">
-                                            <input type="text" class="form_input" id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
-                                            <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
+                                    
+                                        <form  id="formakk" class="example" style="margin:auto;max-width:300px">                                                                                         
+                                                   <input type="text"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
+                                                   <button type="button"  id="offense_card"><i class="fa fa-search"></i></button>                                 
                                         </form>
-                                    </div>
+                                   
+
 
                                 </center>
+
                             </div>
                         </div>
                     </div>
@@ -284,7 +111,7 @@
                                         </div>
                                     </div>
                                 </center>
-                                <div id="score_card"><u>แสดงรายละเอียดเพิ่มเติม</u></div>
+                                <div class="btn" id="score_card"><u>แสดงรายละเอียดเพิ่มเติม</u></div>
 
                             </div>
                         </div>
@@ -359,51 +186,53 @@
                         </div>
 
                     </div>
+                    </div>
 
-
-                    <div class="col-lg-7 ">
+                    <div class="col-lg-8 ">
+                    <div class="card shadow mb-3">
                         <font size="4">
                             <div class="card-header" id="card_2">
                                 <h6 class="m-0 text-primary"></h6>
                             </div><br>
                             <center>กิจกรรมเพิ่มเติม</center>
                         </font><br>
-                        <div class="btn btn-inverse-success btn-fw " id="btnAdd" data-toggle="modal">
-                            <ul>
-                                <li>
-                                    <font size="4">
-                                        <center>กิจกรรมบำเพ็ญประโยชน์ </center>
-                                    </font><br>
-                                    <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
-                                    <p id="showscoreservice" name="showscoreservice">
-                                        <h3>กิจกรรม</h3>
-                                    </p>
-
-
-                                </li>
-                            </ul>
-                        </div>
-                        &nbsp;&nbsp;&nbsp;
-                        <div class="btn btn-inverse-warning btn-fw" id="training_card" data-toggle="modal">
-                            <ul style="padding-right:50px">
-                                <li>
+                        <table align="left" border="0" hight="70" style="width:360px;">
+                            <tr>
+                                <td><button type="button" class="lobo btn" id="btnAdd" >
+                           
+                           <font size="4">
+                               <center>กิจกรรมบำเพ็ญประโยชน์ </center>
+                           </font><br>
+                           <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
+                           <br><br><br>
+                           <p id="showscoreservice" name="showscoreservice">
+                               <h3>กิจกรรม</h3>
+                           </p> 
+                   </button></td>
+                                <td></td>
+                                <td><button class="lobo2 btn " id="training_card" >
                                     <font size="4">
                                         <center>กิจกรรมการอบรม</center>
                                     </font><br>
                                     <i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
+                                    <br><br><br>
                                     <p id="showscoretraining" name="showscoretraining">
                                         <h3>กิจกรรม</h3>
-                                    </p>
+                                    </p>   
+                        </button></td>
+                            </tr>    
+                            </table>           
+                        </div> 
+                    </div>
+
+               
+            </div>
+        </div>
+    </div>
+    </div>
 
 
-                                </li>
-                            </ul>
-                        </div>
-
-
-
-
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -427,23 +256,11 @@
 
                                                 </div>
                                             </div>
-
-
-
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-
-
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

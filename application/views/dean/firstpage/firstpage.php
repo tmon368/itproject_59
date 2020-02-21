@@ -48,7 +48,13 @@
                                 <center>จำนวนนักศึกษาที่กระทำผิด </center>
                                 <br>
                                 <center><i class="fas fa-users" id="fasfa-users"></i><br>
-                                    <div id="showscorestudent" name="showscorestudent"></div><br>
+                                  <table> 
+                                      <tr>
+                                        <td><div id="showscorestudent" name="showscorestudent"></div><br></td>
+                                        <td></td>
+                                        <td><h3>คน</h3></td>
+                                      </tr> 
+                                    </table>
                                 </center>
                             </div>
                         </div>
@@ -65,15 +71,15 @@
                             </div>
                             <div class="card-body " id="card_1">
                                 <font size="2">
-                                    <center>ค้นหาความผิดของนักศึกษารายบุคคล</center>
-                                </font>
+                                    <center><h5>ค้นหาความผิดของนักศึกษารายบุคคล</h5></center>
+                                </font><br>
                                 <center>
-                                    <div class="search-container">
-                                        <form action="" id="formakk">
-                                            <input type="text" class="form_input" id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
-                                            <button type="button" class="btnsearch" id="offense_card">ค้นหา</button>
+                                    
+                                        <form  id="formakk" class="example" style="margin:auto;max-width:300px">                                                                                         
+                                                   <input type="text"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
+                                                   <button type="button"  id="offense_card"><i class="fa fa-search"></i></button>                                 
                                         </form>
-                                    </div>
+                                   
 
 
                                 </center>
@@ -107,7 +113,7 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของสำนักวิชา.......................</center>
                             </font>
-                            <a href="http://localhost/itproject_59/index.php/Dean_dashboard" class="lobo" >ย้อนกลับ</a>
+                            <a href="http://localhost/itproject_59/index.php/Dean_dashboard" class="btn btn-outline-primary btn-sm" >ย้อนกลับ</a>
                             <br>
 
                             
@@ -205,45 +211,51 @@
 
 
 
-                    <div class="col-lg-7 ">
+                    
+
+                </div>
+                
+                <div class="col-lg-8 ">
+                <div class="card shadow mb-3">
                         <font size="4">
                             <div class="card-header" id="card_2">
                                 <h6 class="m-0 text-primary"></h6>
                             </div><br>
                             <center>กิจกรรมเพิ่มเติม</center>
                         </font><br>
-                        <div class="btn btn-inverse-success btn-fw " id="btnAdd" data-toggle="modal">
-                            <ul>
-                                <li>
-                                    <font size="4">
-                                        <center>กิจกรรมบำเพ็ญประโยชน์ </center>
-                                    </font><br>
-                                    <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
-                                    <p id="showscoreservice" name="showscoreservice">
-                                        <h3>กิจกรรม</h3>
-                                    </p>
-
-
-                                </li>
-                            </ul>
-                        </div>
-                        &nbsp;&nbsp;&nbsp;
-                        <div class="btn btn-inverse-warning btn-fw" id="training_card" data-toggle="modal">
-                            <ul style="padding-right:50px">
-                                <li >
+                        <table align="left" border="0" hight="70" style="width:360px;">
+                            <tr>
+                                <td><button type="button" class="lobo btn" id="btnAdd" >
+                           
+                           <font size="4">
+                               <center>กิจกรรมบำเพ็ญประโยชน์ </center>
+                           </font><br>
+                           <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
+                           <br><br><br>
+                           <p id="showscoreservice" name="showscoreservice">
+                               <h3>กิจกรรม</h3>
+                           </p> 
+                   </button></td>
+                                <td></td>
+                                <td><button class="lobo2 btn " id="training_card" >
                                     <font size="4">
                                         <center>กิจกรรมการอบรม</center>
                                     </font><br>
                                     <i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
+                                    <br><br><br>
                                     <p id="showscoretraining" name="showscoretraining">
                                         <h3>กิจกรรม</h3>
-                                    </p>
+                                    </p>   
+                        </button></td>
+                            </tr>    
+                            </table>           
+                        </div> 
+                    </div>
+                </div>
 
-
-                                </li>
-                            </ul>
-                        </div>
-                       
+        </div>
+    </div>
+    </div>
 
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
@@ -277,13 +289,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
 
 
 
@@ -414,9 +419,9 @@
             search();
 
         });
-        $(".btnsearch").click(function() {
-            search();    
-        });
+      //  $(".searchko").click(function() {
+      //      search();    
+      //  });
 
 
         function show_all() {

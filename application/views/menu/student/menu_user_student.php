@@ -47,7 +47,7 @@
                         <a class="nav-link" href="<?php echo site_url("Volunteer_regis") ?>">ลงทะเบียนการบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("#") ?>">ส่งหลักฐานการบำเพ็ญประโยชน์</a>
+                        <a class="nav-link" href="<?php echo site_url("FileActivityStudent") ?>">ส่งหลักฐานการบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("VolunteerAc") ?>">เสนอการบำเพ็ญประโยชน์</a>
