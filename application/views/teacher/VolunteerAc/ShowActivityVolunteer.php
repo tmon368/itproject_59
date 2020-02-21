@@ -62,7 +62,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="TitleActivity">กิจกรรมบำเพ็ญประโยชน์</div>
+                    <div class="TitleActivity">รับรองกิจกรรมบำเพ็ญประโยชน์</div>
                     <div class="Print"><img src="<?php echo base_url('re/images/print.png') ?>" alt="" class="ImgPrint"></div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -80,70 +80,77 @@
                     </div>
                     <div class="ShowDataParticipants" id="data">
 
-                        <table id="data_activity_participants" class="table table-striped table-bordered nowrap" style="width:100%">
-
-                        </table>
-
-                    </div>
-
-                    <div class="PrintDataTableReport" id="data_table">
-                        <div class="HeaderReport">
-                            <div class="part1">
-                                <img src="<?php echo base_url('re/images/logo_sys_mini.png') ?>" alt="" class="logofile">
-                            </div>
-                            <div class="part2">
-                                <span class="title1">มหาวิทยาลัยวลัยลักษณ์ | Walailak University</span>
-                                <span class="title2">ระบบวินัยนักศึกษา | หน่วยงานวินัยนักศึกษา</span>
-                                <span class="title3">กิจกรรมบำเพ็ญประโยชน์</span>
-                            </div>
-                        </div>
-                        <div class="DetailActivity">
-                            <div class="part3">
-                                <span id="title4">1.ข้อมูลกิจกรรมบำเพ็ญประโยชน์</span>
-                                <div style="display:grid;margin-left: 2%;">
-                                    <span id="title5">ชื่อกิจกรรม: แจกถุงยังชีพสำหรับผู้ประสบภัยน้ำท่วม</span>
-                                    <span id="title6">วันที่จัดกิจกรรม: 12 ธันวาคม 2563</span>
-                                    <span id="title7">เวลาจัดกิจกรรม 13:00 ถึง 14:00 ชั่วโมงกิจกรรม 1 ชม.</span>
-                                    <span id="title8">สถานที่จัดกิจกรรม: เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
-                                </div>
-                            </div>
-                            <div class="part4">
-                                <span id="title9">2.รายชื่อผู้เข้าร่วมกิจกรรมบำเพ็ญประโยชน์</span>
-                                <div style="display:grid;margin-left: 5%;">
-                                    <span id="title10">ผู้สมัครเข้าร่วมกิจกรรมทั้งหมด 100 คน</span>
-                                </div>
-                            </div>
-                            <div class="part5">
-                                <table id="" class="display" style="width:100%;margin-left:8%;font-family: 'TH SarabunPSK', sans-serif;font-size:22px;">
-                                    <thead>
-                                        <tr>
-                                            <th id="th1">ลำดับ</th>
-                                            <th id="th2">รหัสนักศึกษา</th>
-                                            <th id="th3">ชื่อ-นามสกุล</th>
-                                            <th id="th6">หอพัก</th>
-                                            <th id="th4">Email</th>
-                                            <th id="th5">หมายเลขโทรศัพท์</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody id="show_data_table">
-
-                                    </tbody>
-
-                                </table>
-                            </div>
-
-                        </div>
+                        <form action="#" id="formaccept" name="formaccept" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="service_ID" id="service_ID" value="">
+                            <table id="data_activity_participants" class="table table-striped table-bordered nowrap" style="width:100%">
+                            </table>
 
                     </div>
 
 
+
+                    <div class="modal-footer">
+                        <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                        <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                    </div>
+                        </form>
                 </div>
 
 
 
             </div>
         </div>
+    </div>
+
+    <div class="PrintDataTableReport" id="data_table">
+        <div class="HeaderReport">
+            <div class="part1">
+                <img src="<?php echo base_url('re/images/logo_sys_mini.png') ?>" alt="" class="logofile">
+            </div>
+            <div class="part2">
+                <span class="title1">มหาวิทยาลัยวลัยลักษณ์ | Walailak University</span>
+                <span class="title2">ระบบวินัยนักศึกษา | หน่วยงานวินัยนักศึกษา</span>
+                <span class="title3">กิจกรรมบำเพ็ญประโยชน์</span>
+            </div>
+        </div>
+        <div class="DetailActivity">
+            <div class="part3">
+                <span id="title4">1.ข้อมูลกิจกรรมบำเพ็ญประโยชน์</span>
+                <div style="display:grid;margin-left: 2%;">
+                    <span id="title5">ชื่อกิจกรรม: แจกถุงยังชีพสำหรับผู้ประสบภัยน้ำท่วม</span>
+                    <span id="title6">วันที่จัดกิจกรรม: 12 ธันวาคม 2563</span>
+                    <span id="title7">เวลาจัดกิจกรรม 13:00 ถึง 14:00 ชั่วโมงกิจกรรม 1 ชม.</span>
+                    <span id="title8">สถานที่จัดกิจกรรม: เทศบาลตำบลสถาน ต.สถาน อ.เชียงของ จ.เขียงราย โทร. 053-791607</span>
+                </div>
+            </div>
+            <div class="part4">
+                <span id="title9">2.รายชื่อผู้เข้าร่วมกิจกรรมบำเพ็ญประโยชน์</span>
+                <div style="display:grid;margin-left: 5%;">
+                    <span id="title10">ผู้สมัครเข้าร่วมกิจกรรมทั้งหมด 100 คน</span>
+                </div>
+            </div>
+            <div class="part5">
+                <table id="" class="display" style="width:100%;margin-left:8%;font-family: 'TH SarabunPSK', sans-serif;font-size:22px;">
+                    <thead>
+                        <tr>
+                            <th id="th1">ลำดับ</th>
+                            <th id="th2">รหัสนักศึกษา</th>
+                            <th id="th3">ชื่อ-นามสกุล</th>
+                            <th id="th6">หอพัก</th>
+                            <th id="th4">Email</th>
+                            <th id="th5">หมายเลขโทรศัพท์</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="show_data_table">
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
     </div>
 
 
@@ -169,7 +176,7 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Teacher_dashboard/Allactivity") ?>',
+                url: '<?php echo site_url("Teacher_dashboard/selectservice") ?>',
                 async: false,
                 dataType: 'json',
                 success: function(data) {
@@ -192,9 +199,9 @@
                         dataservices.push({
                             service_id: value.service_ID,
                             service_name: value.service_name,
-                            date: value.service_date,     
-                            time:[show_start_time,show_end_times,counthour],       
-                            place:value.place
+                            date: value.service_date,
+                            time: [show_start_time, show_end_times, counthour],
+                            place: value.place
                         });
 
                         i++;
@@ -218,6 +225,26 @@
             });
         }
 
+        $("#formaccept").on("submit", function(e) {
+            e.preventDefault();
+            var formData = new FormData(document.getElementById("formaccept"));
+            console.log(formData);
+
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/Teacher_dashboard/test',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+
+
+        });
+
 
 
         $('.Print').click(function() {
@@ -232,6 +259,11 @@
             });
         });
 
+        // $('#data_activity_participants').on('click', '.AcceptStudent', function() {
+        //     var studentid = $(this).attr('data');
+        //     alert(studentid);
+        // });
+
 
         $('#showdata').on('click', '#open_name_participants', function() {
             $('#show_participants').modal('show');
@@ -241,23 +273,24 @@
             }
             var html = '';
             var dataset = [];
-            
+
             console.log(dataservices);
-            
+
             $.each(dataservices, function(key, value) {
-                if (serviceid == value.service_id){
-                    $('#activity_name_modal').text('กิจกรรม:'+value.service_name);
-                    $('#title5').text('กิจกรรม:'+value.service_name);
-                    $('#date_activity_modal').text('วันที่จัดกิจกรรม: '+value.date);
-                    $('#title6').text('วันที่จัดกิจกรรม: '+value.date);
-                    if (value.time){
+                if (serviceid == value.service_id) {
+                    $('#service_ID').val(value.service_id);
+                    $('#activity_name_modal').text('กิจกรรม:' + value.service_name);
+                    $('#title5').text('กิจกรรม:' + value.service_name);
+                    $('#date_activity_modal').text('วันที่จัดกิจกรรม: ' + value.date);
+                    $('#title6').text('วันที่จัดกิจกรรม: ' + value.date);
+                    if (value.time) {
                         var temp = value.time;
                         console.log(temp[0]);
-                        $('#date_activity_modal').text('เวลาเริ่ม '+ temp[0] +' ถึง '+ temp[1] +' ชั่วโมงกิกรรม '+temp[2]+' ชม.');
-                        $('#title7').text('เวลาจัดกิจกรรม'+ temp[0] +' ถึง '+ temp[1] +' ชั่วโมงกิกรรม '+temp[2]+' ชม.');
+                        $('#date_activity_modal').text('เวลาเริ่ม ' + temp[0] + ' ถึง ' + temp[1] + ' ชั่วโมงกิกรรม ' + temp[2] + ' ชม.');
+                        $('#title7').text('เวลาจัดกิจกรรม' + temp[0] + ' ถึง ' + temp[1] + ' ชั่วโมงกิกรรม ' + temp[2] + ' ชม.');
                     }
                     $('#place_modal').text(value.place);
-                    $('#title8').text('สถานที่จัดกิจกรรม: '+value.place);
+                    $('#title8').text('สถานที่จัดกิจกรรม: ' + value.place);
                 }
             });
 
@@ -268,20 +301,25 @@
                 data: data,
                 dataType: 'json',
                 success: function(data) {
-                    var htmlcode='';
+                    var htmlcode = '';
                     var i = 0;
                     $.each(data, function(key, value) {
                         i++;
                         htmlcode += '<tr>';
-                            htmlcode += '<td>'+i+'</td>';
-                            htmlcode += '<td>'+ value.S_ID+'</td>';
-                            htmlcode += '<td>'+ value.std_fname +" "+ value.std_lname+'</td>';
-                            htmlcode += '<td>'+ value.dname +'</td>';
-                            htmlcode += '<td>'+ value.email+'</td>';
-                            htmlcode += '<td>' + value.phone +'</td>';
-                        htmlcode += '</tr>';  
+                        htmlcode += '<td>' + i + '</td>';
+                        htmlcode += '<td>' + value.S_ID + '</td>';
+                        htmlcode += '<td>' + value.std_fname + " " + value.std_lname + '</td>';
+                        htmlcode += '<td>' + value.dname + '</td>';
+                        htmlcode += '<td>' + value.email + '</td>';
+                        htmlcode += '<td>' + value.phone + '</td>';
+                        htmlcode += '</tr>';
                         var name = value.std_fname + " " + value.std_lname;
-                        dataset.push(new Array(i, value.S_ID, name, value.email, value.phone));
+
+                        if(value.result){
+                            //stament
+                        }
+
+                        dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์การเข้าร่วมกิจกรรม</a>', '<input type="checkbox" class="AcceptStudent" name="studentid[]" value="'+ value.S_ID +'">'));
                     });
                     $('#show_data_table').html(htmlcode);
                 }
@@ -304,6 +342,12 @@
                     },
                     {
                         title: "หมายเลขโทรศัพท์"
+                    },
+                    {
+                        title: "ไฟล์เอกสารร่วมกิจกรรม"
+                    },
+                    {
+                        title: "รับรองกิจกรรม"
                     }
                 ],
                 columnDefs: [{

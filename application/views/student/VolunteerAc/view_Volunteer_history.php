@@ -42,6 +42,7 @@
                             <tr>
                                 <th id="idsort">ลำดับ</th>
                                 <th id="detail_activity_regis">ข้อมูลกิจกรรม</th>
+                                <th id="status_activity">สถานะกิจกรรม</th>
                                 <th id="person_control">ผู้ควบคุม</th>
                                 <th id="manage">จัดการกิจกรรม</th>
                             </tr>
@@ -167,6 +168,7 @@
                         htmlcode += '<span id="place">' + value.place + '</span>';
                         htmlcode += '</div>';
                         htmlcode += '</td>';
+                        htmlcode += '<td><span class="badge badge-success">ผ่านการเข้าร่วม</span></td>'
                         htmlcode += '<td id="person_control">' + value.person_fname + " " + value.person_lname + '</td>';
                         htmlcode += '<td><button name="btndel" id="btndel" type="button" class="btn btn-danger btn-rounded btn-fw cancleActivity" data="' + value.service_ID + '">ยกเลิกกิจกรรม</button></td>';
                         htmlcode += '</tr>';

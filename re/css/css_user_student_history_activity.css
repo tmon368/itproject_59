@@ -1,21 +1,31 @@
-#idsort{
+#idsort {
     width: 5%;
 }
-#detail_activity_regis{
+
+#detail_activity_regis {
     width: 60%;
     text-align: center;
 }
-#person_control{
+
+#person_control {
     width: 20%;
     text-align: center;
 }
-#manage{
-    width:10%;
+
+#manage {
+    width: 10%;
     text-align: center;
 }
-#person_control{
+
+#person_control {
     text-align: center;
 }
-.DetailActivity{
+
+.DetailActivity {
     display: grid;
+}
+
+.badge-success {
+    background-color: #58D68D;
+    border: 1px solid #0B5345;
 }
