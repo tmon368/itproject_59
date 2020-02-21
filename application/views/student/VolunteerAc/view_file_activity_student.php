@@ -47,7 +47,7 @@
 
                         <tbody id="showdata">
 
-                        
+
                         </tbody>
 
                     </table>
@@ -64,15 +64,15 @@
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body content">
-
-                                <form action="#" id="form_file_activity" name="form_file_activity" method="post" enctype="multipart/form-data">
-                                    <input type="file" name="" id="">
-                                </form>
-
-
+                                    <span class="title1"><i class="fas fa-exclamation-circle"></i>คำแนะนำ:รองรับไฟล์ pdf เท่านั้น</span>
+                                    <form action="#" id="form_file_activity" name="form_file_activity" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="service_ID" id="service_ID">
+                                        <input type="file" name="filestudent" id="filestudent">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                    <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -102,6 +102,19 @@
             show_all();
             disabled_sort();
 
+            var file = document.getElementById('filestudent');
+
+            file.onchange = function(e) {
+                var ext = this.value.match(/\.([^\.]+)$/)[1];
+                switch (ext) {
+                    case 'pdf':
+                        break;
+                    default:
+                        alert('ระบบรองรับเฉพาะไฟล์ประเภท pdf ไฟล์เท่านั้น');
+                        this.value = '';
+                }
+            };
+
             function disabled_sort() {
                 $('#style_table').DataTable({
                     columnDefs: [{
@@ -116,7 +129,7 @@
         function show_all() {
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Volunteer_history/showAll") ?>',
+                url: '<?php echo site_url("FileActivityStudent/selectparticipationactivities") ?>',
                 async: false,
                 dataType: 'json',
                 success: function(data) {
@@ -145,7 +158,7 @@
                         htmlcode += '</div>';
                         htmlcode += '</td>';
                         htmlcode += '<td id="person_control">' + value.person_fname + " " + value.person_lname + '</td>';
-                        htmlcode += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png')?>" alt="" class="ImgFolder"></td>'
+                        htmlcode += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder"></td>'
                         htmlcode += '</tr>';
                     });
                     $('#showdata').html(htmlcode);
@@ -155,8 +168,10 @@
 
         //ImgFolder
         $('#showdata').on('click', '.ImgFolder', function() {
+            
             $('#file_activity_student').modal('show');
         });
     </script>
 </body>
+
 </html>

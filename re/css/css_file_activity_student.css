@@ -4,6 +4,14 @@
     font-weight: 600;
     font-size: 16px;
 }
+.fa-exclamation-circle{
+    margin-right: 0.2rem;
+}
+.title1{
+    color:#5D6D7E;
+    font-size: 12px;
+    font-family: sans-serif;
+}
 
 .filetd{
     text-align: center;
