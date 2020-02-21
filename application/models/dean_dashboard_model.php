@@ -46,7 +46,7 @@ class dean_dashboard_model extends CI_Model {
         // $dept_ID =$_GET['dept_ID'];
         $dean = $this->session->userdata('username');
         $oc_ID = $_GET['oc_ID'];
-        $dept_ID =$_GET['dept_ID'];
+        // $dept_ID =$_GET['dept_ID'];
         // $oc_ID = 8;
         // $dept_ID = 22;
         // $dean=$this->session->userdata('username');
@@ -66,7 +66,7 @@ class dean_dashboard_model extends CI_Model {
         $this->db->group_by('c.cur_ID');
         $this->db->where('p.username',$dean);
         // $this->db->where('p.dept_ID',$dept_ID);
-        // $this->db->where('oc.oc_ID',$oc_ID);
+        $this->db->where('oc.oc_ID',$oc_ID);
 
         $query = $this->db->get();
         $data = array();
