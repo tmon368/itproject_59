@@ -330,7 +330,7 @@
                                     var id = e.dataPoint.oc_ID
                                     var ide = e.dataPoint.dept_ID
                                  alert(id);
-                                 var data = {"oc_ID":id};
+                                 var data = {"oc_ID":id}; 
                                  var data2 = {"dept_ID":ide};
                                  console.log("1."+data,data2);
  
