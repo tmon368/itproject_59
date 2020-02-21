@@ -280,7 +280,9 @@
                     error: function() {
                         alert('ไม่มีข้อมูล');
                     }
-                });   }
+                });  
+
+                      }
 
 
                                 function onClickgraph(e){
@@ -309,7 +311,7 @@
                                         data: [{
                                             type: "column",
                                             dataPoints: data,
-                                            click:onClickgraph,
+                                            click:onClickgraphvel3,
                                         }]
                                     });
                                 
@@ -323,7 +325,49 @@
                 });
 
                                 }
-                                 
+
+                                function onClickgraphvel3(e){
+                                    var id = e.dataPoint.oc_ID
+                                    var ide = e.dataPoint.dept_ID
+                                 alert(id);
+                                 var data = {"oc_ID":id};
+                                 var data2 = {"dept_ID":ide};
+                                 console.log("1."+data,data2);
+ 
+                                 $.ajax({
+                                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getGraphDataSchool',
+                    data:data,  
+                    method: 'get',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data,data2) {
+                        console.log("2."+data,data2);
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                                        height: 350,
+                                        animationEnabled: true,
+                                        animationDuration: 2000, //change to 1000, 500 etc
+                                        axisX: {
+                                            title: "หมวดความผิด"
+                                        },
+                                        
+                                        data: [{
+                                            type: "column",
+                                            dataPoints: data,
+                                            dataPoints: data2
+                                        }]
+                                    });
+                                
+                
+                                    chart.render();
+
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+
+                                }
                             </script>
                             <br><br><br><br>
                         </div>
