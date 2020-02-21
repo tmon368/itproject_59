@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
 
 <head>
-    <title> กิจกรรมบำเพ็ญประโยชน์ทั้งหมด | ระบบวินัยนักศึกษา</title>
+    <title> รับรองกิจกรรมบำเพ็ญประโยชน์ | ระบบวินัยนักศึกษา</title>
 </head>
 <script>
     var dataset = [];
@@ -22,7 +22,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo site_url('Teacher_dashboard') ?>" class="breadcrumb-link">หน้าแรก</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">กิจกรรมบำเพ็ญประโยชน์ทั้งหมด</li>
+                    <li class="breadcrumb-item active" aria-current="page">รับรองกิจกรรมบำเพ็ญประโยชน์</li>
                 </ol>
             </nav>
         </div>
@@ -31,7 +31,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card shadow mb-4">
                 <div class="card-header" id="card_2">
-                    <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;การบำเพ็ญประโยชน์</h6>
+                    <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;รับรองกิจกรรมบำเพ็ญประโยชน์</h6>
                 </div>
 
                 <div class="card-body">
@@ -325,7 +325,7 @@
                             htmlcode += '<td>' + value.phone + '</td>';
                             htmlcode += '</tr>';
                             var name = value.std_fname + " " + value.std_lname;
-                            dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์การเข้าร่วมกิจกรรม</a>', '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="' + value.S_ID + '">'));
+                            dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์</a>', '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="' + value.S_ID + '">'));
                         }
 
 

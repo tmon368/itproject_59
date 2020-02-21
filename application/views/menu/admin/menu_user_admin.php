@@ -116,7 +116,7 @@
 
 
             <a href="<?php echo site_url("Notifyoffense_admin") ?>">
-                <li class="menu-icon mdi">การแจ้งเหตุกระทำความผิด</li>
+                <li class="menu-icon menu-icon mdi mdi-alert-circle">การแจ้งเหตุกระทำความผิด</li>
             </a>
                  <a class="" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
                 <li class="menu-icon mdi mdi-airballoon">การบำเพ็ญประโยชน์</li>
