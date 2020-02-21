@@ -37,6 +37,14 @@ class FileActivityStudent extends Student_dashboard {
     public function Updatefileparticipationactivities(){
 		$result = $this->FileActivityStudent_model->Updatefileparticipationactivities();
 		echo json_encode($result);
+    }
+    
+    public function test()
+	{
+		echo "<pre>";
+		print_r($_POST);
+		echo "</pre>";
+		die;
 	}
 
 

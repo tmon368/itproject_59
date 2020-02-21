@@ -66,8 +66,8 @@
                                 <div class="modal-body content">
                                     <span class="title1"><i class="fas fa-exclamation-circle"></i>คำแนะนำ:รองรับไฟล์ pdf เท่านั้น</span>
                                     <form action="#" id="form_file_activity" name="form_file_activity" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="service_ID" id="service_ID">
-                                        <input type="file" name="filestudent" id="filestudent">
+                                        <input type="hidden" name="par_ID" id="par_ID">
+                                        <input type="file" name="myFile" id="myFile">
                                 </div>
                                 <div class="modal-footer">
                                     <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -102,7 +102,7 @@
             show_all();
             disabled_sort();
 
-            var file = document.getElementById('filestudent');
+            var file = document.getElementById('myFile');
 
             file.onchange = function(e) {
                 var ext = this.value.match(/\.([^\.]+)$/)[1];
@@ -158,7 +158,7 @@
                         htmlcode += '</div>';
                         htmlcode += '</td>';
                         htmlcode += '<td id="person_control">' + value.person_fname + " " + value.person_lname + '</td>';
-                        htmlcode += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder"></td>'
+                        htmlcode += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder" data="' + value.par_ID + '"></td>'
                         htmlcode += '</tr>';
                     });
                     $('#showdata').html(htmlcode);
@@ -168,8 +168,40 @@
 
         //ImgFolder
         $('#showdata').on('click', '.ImgFolder', function() {
-            
             $('#file_activity_student').modal('show');
+            var par_ID = $(this).attr('data');
+            $('#par_ID').val(par_ID);
+            $('#form_file_activity')[0].reset();
+        });
+
+
+        $("#form_file_activity").on("submit", function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(document.getElementById("form_file_activity"));
+
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/FileActivityStudent/Updatefileparticipationactivities',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function(data) {
+                    if (data == 'true'){
+                        alert ('อัพโหลดไฟล์หลักฐานกิจกรรมเรียบร้อย');
+                    }else if (data == 'flase'){
+                        alert ('การอัพโหลดไฟล์หลักฐานล้มเหลว');
+                    }else{
+                        //stament
+                    }
+                }
+            });
+
+
+
+
+
         });
     </script>
 </body>
