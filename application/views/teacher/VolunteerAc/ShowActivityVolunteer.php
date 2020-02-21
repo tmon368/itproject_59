@@ -93,7 +93,7 @@
                         <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                         <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
                     </div>
-                        </form>
+                    </form>
                 </div>
 
 
@@ -238,7 +238,17 @@
                 contentType: false,
                 type: "POST",
                 success: function(data) {
-                    alert(data);
+                    console.log(data);
+                    if (data == 'true') {
+                        alert('ดำเนินการรับรองกิจกรรมบำเพ็ญประโยชน์เรียบร้อย !')
+                        location.reload();
+                    } else if (data == 'false') {
+                        alert ('ไม่สามารถรับรองกิจกรรมบำเพ็ญประโยชน์ได้');
+                        location.reload();
+                    } else {
+                        //stament
+                    }
+
                 }
             });
 
@@ -297,26 +307,28 @@
                 data: data,
                 dataType: 'json',
                 success: function(data) {
-                    console.log (data);
+                    console.log(data);
                     var htmlcode = '';
                     var i = 0;
                     $.each(data, function(key, value) {
-                        i++;
-                        htmlcode += '<tr>';
-                        htmlcode += '<td>' + i + '</td>';
-                        htmlcode += '<td>' + value.S_ID + '</td>';
-                        htmlcode += '<td>' + value.std_fname + " " + value.std_lname + '</td>';
-                        htmlcode += '<td>' + value.dname + '</td>';
-                        htmlcode += '<td>' + value.email + '</td>';
-                        htmlcode += '<td>' + value.phone + '</td>';
-                        htmlcode += '</tr>';
-                        var name = value.std_fname + " " + value.std_lname;
 
-                        if(value.result){
+
+                        if (value.results == 1) {
                             //stament
+                            i++;
+                            htmlcode += '<tr>';
+                            htmlcode += '<td>' + i + '</td>';
+                            htmlcode += '<td>' + value.S_ID + '</td>';
+                            htmlcode += '<td>' + value.std_fname + " " + value.std_lname + '</td>';
+                            htmlcode += '<td>' + value.dname + '</td>';
+                            htmlcode += '<td>' + value.email + '</td>';
+                            htmlcode += '<td>' + value.phone + '</td>';
+                            htmlcode += '</tr>';
+                            var name = value.std_fname + " " + value.std_lname;
+                            dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์การเข้าร่วมกิจกรรม</a>', '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="' + value.S_ID + '">'));
                         }
 
-                        dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์การเข้าร่วมกิจกรรม</a>', '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="'+ value.S_ID +'">'));
+
                     });
                     $('#show_data_table').html(htmlcode);
                 }
