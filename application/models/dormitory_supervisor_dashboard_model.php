@@ -38,7 +38,9 @@ class dormitory_supervisor_dashboard_model extends CI_Model {
         }
     }
     public function getGraphData(){
-    $oc_ID = $_GET['oc_ID'];
+    // $oc_ID = $_GET['oc_ID'];
+    $oc_ID = $this->input->get('oc_ID');
+
     // $oc_ID = 8;  
     // $this->db->distinct();
     $this->db->select('dt.type_name,dm.dname as namedorm,count(ostd.S_ID) as y');   
