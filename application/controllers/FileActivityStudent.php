@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class FileActivityStudent extends Student_dashboard {
     function __construct(){
         parent:: __construct();
-        $this->load->model('VolunteerAc_model', 'VolunteerAc_model');
+        $this->load->model('FileActivityStudent_model', 'FileActivityStudent_model');
     }
     public function index()
     {
@@ -28,5 +28,12 @@ class FileActivityStudent extends Student_dashboard {
         
         
     }
+
+    public function selectparticipationactivities(){
+		$result = $this->FileActivityStudent_model->selectparticipationactivities();
+		echo json_encode($result);
+	}
+
+
 }
 
