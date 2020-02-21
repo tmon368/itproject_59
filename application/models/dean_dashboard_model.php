@@ -47,7 +47,7 @@ class dean_dashboard_model extends CI_Model {
         $dean = $this->session->userdata('username');
         // $oc_ID = $_GET['oc_ID'];
         $oc_ID = $this->input->get('oc_ID');
-
+        
         // $dept_ID =$_GET['dept_ID'];
         // $oc_ID = 8;
         // $dept_ID = 22;

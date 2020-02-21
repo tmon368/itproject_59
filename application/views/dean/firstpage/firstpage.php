@@ -272,8 +272,11 @@
                                         axisX: {
                                             title: "หมวดความผิด"
                                         },
+                                        
                                         data: [{
-                                            dataPoints: data
+                                            type: "column",
+                                            dataPoints: data,
+                                            click:onClickgraph,
                                         }]
                                     });
                                 
@@ -285,6 +288,52 @@
                     }
                 });
                                 }
+
+
+                                function onClickgraph(e){
+                                    var id = e.dataPoint.oc_ID
+                                 alert(id);
+                                 var data = {"oc_ID":id};
+                                 console.log(data);
+
+                                 $.ajax({
+                                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Dean_dashboard/getGraphData',
+                    data:data,  
+                    method: 'get',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                                        height: 350,
+                                        animationEnabled: true,
+                                        animationDuration: 2000, //change to 1000, 500 etc
+                                        axisX: {
+                                            title: "หมวดความผิด"
+                                        },
+                                        
+                                        data: [{
+                                            type: "column",
+                                            dataPoints: data,
+                                            click:onClickgraph,
+                                        }]
+                                    });
+                                
+                
+                                    chart.render();
+
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+
+                                }
+                                 
+                                 
+                              
+
                             </script>
                             <br><br><br><br>
                         </div>
