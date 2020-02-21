@@ -189,6 +189,10 @@
     font-family: 'prompt', sans-serif;
 }
 
+.table.table-bordered th {
+    font-family: 'prompt',sans-serif !important;
+}
+
 .PrintDataTableReport {
     display: none;
     width: 100%;
@@ -216,11 +220,13 @@
 }
 
 .TitleActivity {
-    color: #BFC9CA;
+    color: rgb(0, 0, 0);
     width: 100%;
     text-align: left;
     font-family: 'prompt', sans-serif;
     font-size: 18px;
+    font-weight: 600;
+    
 }
 
 .HeaderData {
@@ -241,7 +247,10 @@
     display: grid;
     font-size: 14px;
 }
-
+input[type="checkbox"]{
+    width: 20px; /*Desired width*/
+    height: 20px; /*Desired height*/
+  }
 @media print {
     .PrintDataTableReport {
         display: block;
