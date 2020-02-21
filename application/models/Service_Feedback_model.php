@@ -174,10 +174,11 @@ class Service_Feedback_model extends CI_Model {
 
     function Updatestatusparticipationactivities(){
         $setstatusrs = 0;
-        //$service_ID= $this->input->post('service_ID');
-        $service_ID= 3;
-       // $S_ID= $this->input->post('S_ID');
-        $S_ID=['59123456'];
+       // $S_ID=['59123456'];
+       //$service_ID= 3;
+        $service_ID= $this->input->post('service_ID');
+         $S_ID= $this->input->post('S_ID');
+        
         foreach($S_ID as $value){
         $field = array(
             'results'=>$setstatusrs
