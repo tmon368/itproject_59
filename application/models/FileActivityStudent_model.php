@@ -23,8 +23,8 @@ class FileActivityStudent_model extends CI_Model {
         $query = $this->db->get();
         $showall = array();
         $showall = $query->result_array();
-        var_dump($showall);
-        die();
+        // var_dump($showall);
+        // die();
         
     if($showall > 0){
         return $showall;
