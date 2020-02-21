@@ -434,7 +434,7 @@
                     dataType: 'json',
                     success: function(data) {
                         // alert(data)
-                        $('#showscorestudent').html(data.numstd);
+                        $('#showscorestudent').html(data.y);
 
                     },
                     error: function() {
