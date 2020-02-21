@@ -35,18 +35,39 @@ class FileActivityStudent_model extends CI_Model {
 }
 
 public function Updatefileparticipationactivities(){
-    $student = $this->session->userdata('student');
-    $status = 1;
-    $this->db->where('s.username', $student);
-    $this->db->where('p.results', $status);
-    $query = $this->db->get();
-    $showall = array();
-    $showall = $query->result_array();
-    // var_dump($showall);
-    // die();
+    $par_ID = $this->input->post('par_ID');
+      //$count = count($_FILES['myFile']['name']);
+		$changename =explode(".",$_FILES["myFile"]["name"]);
+		// var_dump($changename[0]);    ชื่อรูปที่ผู้ใช้ใส่
+		// var_dump($changename[1]);	นามสกุลไฟล์รูปที่ผู้ใช้ใส่
+		//die();
+
+        $_FILES['userfile']['name']     = $par_ID.".".$changename[1];
+      $_FILES['userfile']['type']     = $_FILES['myFile']['type'];
+      $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'];
+      $_FILES['userfile']['error']    = $_FILES['myFile']['error'];
+      $_FILES['userfile']['size']     = $_FILES['myFile']['size'];
+		$config['upload_path'] = './uploads_pdffile/';
+		$config['allowed_types'] = 'pdf';
+
+        $this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload()){
+			$error = array('error' => $this->upload->display_errors());
+			//$this->load->view('upload_form', $error);
+		}else{
+			$final_files_data[] = $this->upload->data();
+        }
+
+
+           $field = array(
+    'document_file'=>$_FILES['userfile']['name']
+    );
+    $this->db->where('par_ID',$par_ID);
+    $this->db->update('participationactivities', $field);
+   
     
-if($showall > 0){
-    return $showall;
+if($this->db->affected_rows() > 0){
+    return true;
 }else{
     return false;
 }
