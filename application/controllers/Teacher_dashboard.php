@@ -96,6 +96,15 @@ class Teacher_dashboard extends CI_Controller {
 	    echo json_encode($result);
 
 	}
+
+	function Updatestatusparticipationactivities(){
+		$result = $this->Service_Feedback_model->Updatestatusparticipationactivities();
+	    echo json_encode($result);
+
+	}
+
+
+	
 	
 	
 	/*

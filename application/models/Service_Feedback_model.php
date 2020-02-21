@@ -109,6 +109,7 @@ class Service_Feedback_model extends CI_Model {
 
     }
 
+    //รออนุมัติการเสนอกิจกรรมบำเพ็ญประโยชน์ สำหรับเจ้าหน้าที่วินัย
     function Updateactivityfordiscipline_officer(){
         $service_ID = $this->input->get('service_ID');
         $getstatus = $this->input->get('status');
@@ -145,6 +146,56 @@ class Service_Feedback_model extends CI_Model {
     function statusservice($getstatus){
         $status = ['รอบุคลากรอนุมัติ','รอเจ้าหน้าที่วินัยอนุมัติ','อนุมัติเรียบร้อย','บุคลากรไม่อนุมัติ','เจ้าหน้าที่วินัยไม่อนุมัติ',''];
          return $status[$getstatus];
+
+
+    }
+
+    //selectข้อมูลเสนอกิจกรรมให้กับบุคากรผู้รับรอง
+    function Allactivity(){
+        //$service_ID= $this->input->post('txtdelID');
+        //$student=59111111;
+        //echo $person_ID;
+        //$student = $this->session->userdata('student');
+        $this->db->select('*');
+        $this->db->from('Service sv');
+        $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
+        //$this->db->where('s.S_ID', $student);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        //die;
+        
+        if($query->result() > 0){
+            return $query->result();
+        }else{
+            return false;
+        }
+
+    }
+
+    function Updatestatusparticipationactivities(){
+        $setstatusrs = 0;
+        //$service_ID= $this->input->post('service_ID');
+        $service_ID= 3;
+       // $S_ID= $this->input->post('S_ID');
+        $S_ID=['59123456'];
+        foreach($S_ID as $value){
+        $field = array(
+            'results'=>$setstatusrs
+            
+    );
+    $this->db->where('S_ID',$value);
+    $this->db->where('service_ID',$service_ID);
+    $this->db->update('participationactivities', $field);
+        }
+        //$query = $this->db->get();
+    //    var_dump($query->result());
+        //die();
+      
+       if($this->db->affected_rows() > 0){
+           return true;
+       }else{
+           return false;
+       }
 
 
     }
