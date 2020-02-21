@@ -210,7 +210,7 @@ foreach($showall as $value){
                    
 
                 foreach ($getfilename as $row) {
-                    echo $row;
+                    //echo $row;
                        $field2 = array(
                 'oh_ID'=>$this->input->post('oh_ID'),
                 'evidenre_name'=>$row,
@@ -319,14 +319,14 @@ foreach($showall as $value){
 
                                     // $query = $this->db->query("SELECT behavior_score FROM student WHERE S_ID = '.$std.'");
                                 $query = $this->db->get();
-                                var_dump($query->result());
+                               // var_dump($query->result());
                                 $sumpoint = 0;
                                         foreach ($query->result() as $row) {
                                             $sumpoint = $row->behavior_score-5;
                                        
                                         }
-                                        echo "foreach";
-                                        var_dump($sumpoint);
+                                        //echo "foreach";
+                                        //var_dump($sumpoint);
                                         // for ($i=0; $i < count($this->input->post('std_id[]')); $i++) { 
                                             // $field6 = null;
                                             // $std = $this->input->post('std_id['.$i.']');
@@ -334,8 +334,8 @@ foreach($showall as $value){
                                             'behavior_score'=>$sumpoint,
                                            
                                             );
-                                            echo "field6";
-                                            var_dump($field6);
+                                            //echo "field6";
+                                            //var_dump($field6);
                             
                                         $this->db->where('S_ID',$std);
                                         $this->db->update('student',$field6);
