@@ -5,6 +5,7 @@
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('re/css/css_regis_activity_student.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('re/css/css_dean_sctivity.css') ?>">
 <center>
     <strong>
         <div class="alert alert-success" role="alert" style="display: none;"></div>
@@ -16,147 +17,8 @@
         <div class="alert alert-warning" role="alert" style="display: none;"></div>
     </strong>
 </center>
-<style>
-    #title6 {
-        font-size: 16px;
-
-
-    }
-
-    #title7 {
-        font-size: 16px;
-
-        font-weight: 700;
-    }
-
-    #last_count_student2 {
-        color: #ff0000;
-        font-size: 35px;
-        font-weight: 700;
-    }
-
-    #fasfa-users {
-        color: orange;
-        font-size: 70px;
-        text-shadow: 1px 1px 1px #000;
-    }
-
-    #showscorestudent {
-        font-size: 50px;
-    }
-
-    #showscoreservice {
-        font-size: 30px;
-
-    }
-
-    #showscoretraining {
-        font-size: 30px;
-
-    }
-
-    .btnsearch {
-        color: #fff;
-        font-size: 15px;
-        padding: 8px;
-        margin-top: 5%;
-        background-color: #F2603E;
-        text-align: center;
-    }
-
-    .form_input {
-        width: 250px;
-        padding: 8px;
-        border-radius: 45px;
-        margin: 15px;
-        background-color: #e6f9ff;
-    }
-
-    .bggreen {
-        background-color: #99FF99;
-        width: 250px;
-        padding: 8px;
-        border: 15px;
-        margin: 15px;
-        border-radius: 45px;
-
-    }
-
-    #fasfa-chalkboard-teacher {
-        color: black;
-        font-size: 70px;
-        text-shadow: 1px 1px 1px #000;
-    }
-
-    #farfa-calendar-check {
-        color: black;
-        font-size: 70px;
-        text-shadow: 1px 1px 1px #000;
-
-    }
-
-    .btnbtn-inverse-primarybtn-fw {
-        width: 600px
-    }
-
-    .btnbtn-inverse-primarybtn-fw ul {
-        list-style-type: none;
-        margin: 0px;
-        padding: 10px;
-        font-family: '', sans-serif;
-        font-size: 0.85em;
-        color: rgb(0, 0, 0);
-    }
-
-    .btnbtn-inverse-primarybtn-fw li {
-        float: left;
-        padding: 0px;
-        padding: 0px;
-        text-align: center;
-        width: 40.33%;
-        background-color: #40ff00;
-        width: 250px;
-        padding: 8px;
-        border: 15px;
-        margin: 15px;
-        border-radius: 45px;
-    }
-
-    .btnbtn-inverse-warningbtn-fw {
-        width: 600px
-    }
-
-    .btnbtn-inverse-warningbtn-fw ul {
-        list-style-type: none;
-        margin: 0px;
-        padding: 0px;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 0.85em;
-        color: rgb(0, 0, 0);
-    }
-
-    .btnbtn-inverse-warningbtn-fw li {
-        float: left;
-        padding: 0px;
-        padding: 0px;
-        text-align: center;
-        width: 40.33%;
-        background-color: #ffbf00;
-        width: 250px;
-        padding: 8px;
-        border: 15px;
-        margin: 15px;
-        border-radius: 45px;
-    }
-</style>
-
 <head>
     <title></title>
-
-
-
-
-
 </head>
 <br>
 
@@ -245,7 +107,8 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของสำนักวิชา.......................</center>
                             </font>
-                            <br><br>
+                            <a href="http://localhost/itproject_59/index.php/Dean_dashboard" class="lobo" >ย้อนกลับ</a>
+                            <br>
 
                             
                             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
@@ -292,7 +155,7 @@
 
                                 function onClickgraph(e){
                                     var id = e.dataPoint.oc_ID
-                                 alert(id);
+                                 //alert(id);
                                  var data = {"oc_ID":id};
                                  console.log(data);
 

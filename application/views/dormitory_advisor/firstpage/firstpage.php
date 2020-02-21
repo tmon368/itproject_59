@@ -451,7 +451,7 @@
         <div class="modal-dialog modal-dialog-centered" style="max-width: 720px!important;" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLongTitle">รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 5 อันดับ</h4>
+                    <h4 class="modal-title" id="exampleModalLongTitle">รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 10 อันดับ</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
