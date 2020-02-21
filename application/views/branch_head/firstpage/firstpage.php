@@ -94,14 +94,15 @@
                                 <h6 class="m-0 text-primary"></h6>
                             </div>
                             <div class="card-body " id="card_1">
-                                <font size="2">
+                                <font size="3">
                                     <center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 5 ลำดับ</center>
                                 </font>
                                 <br>
                                 <center>
+                           
                                     <div class="row">
                                         <div class="col-sm-12">
-
+                                        
 
                                             <div id="showdata">
 
@@ -410,7 +411,7 @@
 
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
-                                html += '<div class="bggreen">' + n + '.' +
+                                html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
                                     data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
                                     data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
@@ -418,7 +419,7 @@
                             }
                         } else {
                             for (i = 0; i < 5; i++) {
-                                html += '<div class="bggreen">' + n + '.' +
+                                html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
                                     data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
                                     data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
