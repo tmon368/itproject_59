@@ -2,7 +2,7 @@
 require_once('Teacher_dashboard.php');
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class showVolunteer extends Teacher_dashboard
+class AcceptParticipants extends Teacher_dashboard
 {
 	function __construct()
 	{
@@ -27,7 +27,7 @@ class showVolunteer extends Teacher_dashboard
 		$this->load->view('menu/Teacher/menu_user_teacher');
 		$this->load->view('template/template4');
 		//$this->load->view('teacher/firstpage');
-		$this->load->view('teacher/VolunteerAc/ShowActivityVolunteer');
+		$this->load->view('teacher/VolunteerAc/AcceptActivityParticipants');
 		//$this->load->view('teacher/VolunteerAc/test');
 		//$this->load->view('teacher/VolunteerAc/AcceptActivityOffVolunteer');
 		$this->load->view('template/template5');
