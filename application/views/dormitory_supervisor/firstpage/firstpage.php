@@ -257,9 +257,10 @@
                     async: false,
                     dataType: 'json',
                     success: function(data) {
-                        console.log(data);
+                       
 
                                     var chart = new CanvasJS.Chart("chartContainer", {
+                                        
                                         height: 350,
                                         animationEnabled: true,
                                         animationDuration: 2000, //change to 1000, 500 etc
@@ -267,6 +268,8 @@
                                             title: "หมวดความผิด"
                                         },
                                         data: [{
+                                    		type: "column",
+                                			click: onClick,
                                             dataPoints: data
                                             
                                         }]
@@ -279,11 +282,61 @@
                         alert('ไม่มีข้อมูล');
                     }
                 });
+
+
+
+                                    
+                                    
                                 }
+
+                                function onClick(e){
+                                    var id = e.dataPoint.oc_ID
+                               
+                                 var data = {"oc_ID":id};
+                                 
+
+                                 $.ajax({
+                                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getGraphData',
+                    data:data,  
+                    method: 'get',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                                        height: 350,
+                                        animationEnabled: true,
+                                        animationDuration: 2000, //change to 1000, 500 etc
+                                        axisX: {
+                                            title: "หอหญิง/หอชาย"
+                                        },
+                                        
+                                        data: [{
+                                            type: "column",
+                                            dataPoints: data,
+                                            
+                                        }]
+                                    });
+                                
+                
+                                    chart.render();
+
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+
+                                }
+                                 
+                                 
+                              
+                                
                             </script>
                             <br><br><br><br>
                         </div>
-
+  <a style=   " width: 81px;margin-left: 58rem"href="http://localhost/itproject_59/index.php/dormitory_supervisor_dashboard" class="btn btn-outline-primary btn-sm" >ย้อนกลับ</a>
                     </div>
 
 
@@ -434,7 +487,7 @@
                     dataType: 'json',
                     success: function(data) {
                         // alert(data)
-                        $('#showscorestudent').html(data.y);
+                        $('#showscorestudent').html(data.oc_ID);
 
                     },
                     error: function() {
