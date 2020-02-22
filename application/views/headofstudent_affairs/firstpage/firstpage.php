@@ -245,10 +245,8 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพักทั้งหมด<center>
                             </font>
-                            
-                            <br><br>
                          <a href="http://localhost/itproject_59/index.php/headofstudent_affairs_dashboard" class="btn btn-outline-primary btn-sm" >ย้อนกลับ</a>
-                            
+                            <br>
                             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                             <script type="text/javascript">
                                 window.onload = function() {
@@ -258,7 +256,7 @@
                     async: false,
                     dataType: 'json',
                     success: function(data) {
-                        console.log(data);
+                       
 
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         height: 350,
@@ -288,9 +286,9 @@
 
                                 function onClickgraph(e){
                                     var id = e.dataPoint.oc_ID
-                                 alert(id);
+                                
                                  var data = {"oc_ID":id};
-                                 console.log(data);
+                                 
 
                                  $.ajax({
                                     type: 'ajax',
@@ -329,12 +327,12 @@
 
                                 function onClickgraphvel3(e){
                                     var id = e.dataPoint.oc_ID
-                                    var ide = e.dataPoint.dept_ID
+                                    var ide = e.dataPoint.dept_ID 
 
-                                 alert(id);
-                                 var data = {"oc_ID":id}; 
-                                 var data2 = {"dept_ID":id}; 
-                                 console.log(data,data2);
+                               
+                                 var data = {"oc_ID":id,"dept_ID":ide}; 
+                                 
+                            
                                  
  
                                  $.ajax({
@@ -365,8 +363,8 @@
                                     chart.render();
 
                     },
-                    error: function() {
-                        alert('ไม่มีข้อมูล');
+                         alert('ไม่มีข้อมูล');
+                   error: function() {
                     }
                 });
 
