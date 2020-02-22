@@ -188,6 +188,10 @@
     font-size: 14px;
     font-family: 'prompt', sans-serif;
 }
+#no_file{
+    color: rgb(141, 141, 141);
+    font-size: 12px;
+}
 
 .table.table-bordered th {
     font-family: 'prompt',sans-serif !important;
