@@ -36,6 +36,7 @@ class FileActivityStudent_model extends CI_Model {
 
 public function Updatefileparticipationactivities(){
     $par_ID = $this->input->post('par_ID');
+    
       //$count = count($_FILES['myFile']['name']);
 		$changename =explode(".",$_FILES["myFile"]["name"]);
 		// var_dump($changename[0]);    ชื่อรูปที่ผู้ใช้ใส่
@@ -49,6 +50,10 @@ public function Updatefileparticipationactivities(){
       $_FILES['userfile']['size']     = $_FILES['myFile']['size'];
 		$config['upload_path'] = './uploads_pdffile/';
 		$config['allowed_types'] = 'pdf';
+        $data = $this->checkdocument_file($par_ID);
+        if($data == true){
+            unlink(FCPATH . 'uploads_pdffile/'.$_FILES['userfile']['name']);
+        }
 
         $this->load->library('upload', $config);
 		if ( ! $this->upload->do_upload()){
@@ -71,6 +76,22 @@ if($this->db->affected_rows() > 0){
 }else{
     return false;
 }
+}
+
+function checkdocument_file($par_ID){
+   // $par_ID = 3;
+    $this->db->select('p.document_file');
+    $this->db->from('participationactivities p');
+    $this->db->where('p.par_ID', $par_ID);
+    $query = $this->db->get();
+    $showall = array();
+    $showall = $query->result_array();
+    if($showall[0]["document_file"] != ""){
+        return true;
+    }else{
+        return false;
+    }
+    
 }
 
 
