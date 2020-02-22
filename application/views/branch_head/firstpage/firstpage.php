@@ -411,7 +411,7 @@
 
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
-                                html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+                                html += '<Image src="011.jpg">' +'<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
                                     data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
                                     data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
@@ -419,7 +419,7 @@
                             }
                         } else {
                             for (i = 0; i < 5; i++) {
-                                html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+                                html += '<Image src="011.jpg">' +'<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
                                     data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
                                     data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
@@ -651,7 +651,7 @@
                             html += '</div>';
                             html += '<div class="Main2">';
                             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                            html += '<div><span id="last_count_student">' + data[i].behavior_score + '</div>';
+                            html += '<div><span id="last_count_student">'  + data[i].behavior_score + '</div>';
                             html += '</div>';
                             html += '</div>';
                             n += 1;
