@@ -381,7 +381,7 @@
                     <div class="col-lg-7 ">
                         <font size="4">
                             <div class="card-header" id="card_2">
-                                <h6 class="m-0 text-primary"></h6>
+                                <h6 class="m-0 text-primary"></h6> 
                             </div><br>
                             <center>กิจกรรมเพิ่มเติม</center>
                         </font><br>
