@@ -3,7 +3,33 @@
     font-size: 18px;
     font-weight: 600;
 }
-.tdfile{
+.label{
+    font-size: 14px;
+    font-family: 'Taviraj', sans-serif;
+}
+.InputFile{
+    margin-top: 0.2rem;
+}
+.datasubmit{
+    font-size: 14px;
+}
+.fixdata{
+    color: tomato;
+    font-size: 18px;
+    font-weight: 600;
+}
+.title1{
+    text-align: right;
+}
+.title2{
+    color: #AEB6BF;
+    font-size: 12px;
+    font-family: 'Taviraj', sans-serif;
+}
+.fa-exclamation-circle{
+ margin-right: 0.2rem;
+}
+.filetd{
     text-align: center;
 }
 .tddetail{
@@ -19,19 +45,13 @@
     opacity: 1;
     transition: 0.3s;
 }
-.iconfile {
-    background: #F5B7B1 ;
-    padding: 0.1rem;
-    font-family: 'Taviraj', sans-serif;
-    color: #CB4335 ;
-    font-weight: 100;
-    border-radius: 0.5rem;
-    font-size: 12px;
-    border: 1px solid #04753d;
-}
-
-.iconfile:hover {
+.ImgFolder{
     cursor: pointer;
-    color: #212F3C;
-    background: #2ECC71;
+    max-width: 20px;
+    max-height: 20px;
+    border-radius: 0% !important;
+}
+.ImgFolder:hover{
+    max-width: 22px;
+    max-height: 22px;
 }
