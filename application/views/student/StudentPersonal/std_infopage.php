@@ -234,7 +234,7 @@
 					var n = 1;
 					var i;
 					for (i = 0; i < data.length; i++) {
-						if (data[i].statusoff == '3') {
+						// if (data[i].statusoff == '3') {
 							html += '<tr>' +
 								'<th>' + n + '</th>' +
 								'<th>' + data[i].committed_date + '</th>' +
@@ -254,17 +254,17 @@
 
 								'</tr>';
 
-						} else {
-							html += '<tr>' +
-								'<th>' + n + '</th>' +
-								'<th>' + data[i].committed_date + '</th>' +
-								'<th>' + data[i].off_desc + '</th>' +
-								'<th>' + data[i].point + '</th>' +
-								'<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
+						// } else {
+						// 	html += '<tr>' +
+						// 		'<th>' + n + '</th>' +
+						// 		'<th>' + data[i].committed_date + '</th>' +
+						// 		'<th>' + data[i].off_desc + '</th>' +
+						// 		'<th>' + data[i].point + '</th>' +
+						// 		'<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
 
 
-								'</tr>';
-						}
+						// 		'</tr>';
+						// }
 						n += 1;
 					}
 					$('#showdata').html(html);
