@@ -245,7 +245,7 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพักทั้งหมด<center>
                             </font>
-                         <a href="http://localhost/itproject_59/index.php/headofstudent_affairs_dashboard" class="btn btn-outline-primary btn-sm" >ย้อนกลับ</a>
+                      
                             <br>
                             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                             <script type="text/javascript">
@@ -370,9 +370,10 @@
 
                                 }
                             </script>
+                            
                             <br><br><br><br>
                         </div>
-
+   <a style=   " width: 81px;margin-left: 58rem"href="http://localhost/itproject_59/index.php/headofstudent_affairs_dashboard" class="btn btn-outline-primary btn-sm" >ย้อนกลับ</a>
                     </div>
 
 
