@@ -325,7 +325,7 @@
                             htmlcode += '<td>' + value.phone + '</td>';
                             htmlcode += '</tr>';
                             var name = value.std_fname + " " + value.std_lname;
-                            dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="#">ไฟล์</a>', '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="' + value.S_ID + '">'));
+                            dataset.push(new Array(i, value.S_ID, name, value.email, value.phone, '<a href="<?php echo base_url('uploads_pdffile/3.pdf') ?>">ไฟล์</a>', '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="' + value.S_ID + '">'));
                         }
 
 
