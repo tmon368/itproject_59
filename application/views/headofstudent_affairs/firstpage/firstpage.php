@@ -245,8 +245,9 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพักทั้งหมด<center>
                             </font>
+                            
                             <br><br>
-
+                         <a href="http://localhost/itproject_59/index.php/headofstudent_affairs_dashboard" class="btn btn-outline-primary btn-sm" >ย้อนกลับ</a>
                             
                             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                             <script type="text/javascript">
@@ -329,10 +330,12 @@
                                 function onClickgraphvel3(e){
                                     var id = e.dataPoint.oc_ID
                                     var ide = e.dataPoint.dept_ID
+
                                  alert(id);
                                  var data = {"oc_ID":id}; 
-                                 var data2 = {"dept_ID":ide};
-                                 console.log("1."+data,data2);
+                                 var data2 = {"dept_ID":id}; 
+                                 console.log(data,data2);
+                                 
  
                                  $.ajax({
                                     type: 'ajax',
@@ -341,8 +344,8 @@
                     method: 'get',
                     async: false,
                     dataType: 'json',
-                    success: function(data,data2) {
-                        console.log("2."+data,data2);
+                    success: function(data) {
+                        console.log("2."+data);
                         var chart = new CanvasJS.Chart("chartContainer", {
                                         height: 350,
                                         animationEnabled: true,
@@ -354,7 +357,7 @@
                                         data: [{
                                             type: "column",
                                             dataPoints: data,
-                                            dataPoints: data2
+                                         
                                         }]
                                     });
                                 
