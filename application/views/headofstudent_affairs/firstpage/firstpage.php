@@ -363,8 +363,8 @@
                                     chart.render();
 
                     },
-                         alert('ไม่มีข้อมูล');
-                   error: function() {
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
                     }
                 });
 
