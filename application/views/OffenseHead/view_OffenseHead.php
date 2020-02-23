@@ -263,7 +263,7 @@
       e.preventDefault();
       var formData = new FormData(document.getElementById("form-file"));
       $.ajax({
-        url: '<?php echo base_url(); ?>index.php/OffenseHead/test',
+        url: '<?php echo base_url(); ?>index.php/OffenseHead/insertproofargument',
         cache: false,
         data: formData,
         processData: false,
