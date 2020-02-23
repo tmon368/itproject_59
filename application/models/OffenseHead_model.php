@@ -121,7 +121,7 @@ class OffenseHead_model extends CI_Model {
     $proof_ID =" ";
 
 
-    $_FILES['userfile']['name']     = .".".$changename[1];
+    $_FILES['userfile']['name']     = $id.".".$changename[1];
   $_FILES['userfile']['type']     = $_FILES['myFile']['type'];
   $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'];
   $_FILES['userfile']['error']    = $_FILES['myFile']['error'];
