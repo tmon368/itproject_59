@@ -112,4 +112,28 @@
 	font-size: 70px;
 	text-shadow: 1px 1px 1px #000;
 }
+.Main4{
+    width: 50%;
+}
+.card-header1{
+    color: #FFF;
+	background: rgb(74, 35, 90);
+	border-radius: 3px;
+	height: 100px;
+}
+.modal-header2{
+	color: #FFF;
+    font-family: 'Kanit', sans-serif;
+    font-size: 22px;
+    padding: 0.8rem 0.2rem 0.2rem 1.2rem;
+	background: rgb(74, 35, 90);
+	border-radius: 4px;
+	height: 100px;
+}
+.close{
+	color: #FFF;
+	padding: 0.8rem 0.2rem 0.2rem 1.2rem;
+size: 500px;
+}
+
 
