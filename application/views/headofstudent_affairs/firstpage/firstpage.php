@@ -355,6 +355,50 @@
                                         data: [{
                                             type: "column",
                                             dataPoints: data,
+                                            click:onClickgraphvel4,
+                                        }]
+                                    });
+                                
+                
+                                    chart.render();
+
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+
+                                }
+                                function onClickgraphvel4(e){
+                                    var id = e.dataPoint.oc_ID
+                                    var ide = e.dataPoint.dept_ID 
+                                    var idee = e.dataPoint.dorm_ID 
+                               
+                                 var data = {"oc_ID":id,"dept_ID":ide,"dorm_ID":idee}; 
+                                 
+                            
+                                 
+ 
+                                 $.ajax({
+                                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getGraphDatadorm',
+                    data:data,  
+                    method: 'get',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log("2."+data);
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                                        height: 350,
+                                        animationEnabled: true,
+                                        animationDuration: 2000, //change to 1000, 500 etc
+                                        axisX: {
+                                            title: "หมวดความผิด"
+                                        },
+                                        
+                                        data: [{
+                                            type: "column",
+                                            dataPoints: data,
                                          
                                         }]
                                     });
@@ -369,6 +413,7 @@
                 });
 
                                 }
+                                
                             </script>
                              
                             <br><br><br><br>
