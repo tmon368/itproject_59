@@ -21,7 +21,8 @@ class OffenseHead extends Student_dashboard {
 	    $this->load->view('template/template2');
 		$this->load->view('menu/student/menu_user_student');
 		$this->load->view('template/template4');
-		$this->load->view('OffenseHead/view_OffenseHead');
+        $this->load->view('OffenseHead/view_OffenseHead');
+        //$this->load->view('OffenseHead/view_OffenseHead_1');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
     }
@@ -68,5 +69,15 @@ class OffenseHead extends Student_dashboard {
         $result = $this->OffenseHead_model->getoffenseID();
         echo json_encode($result);
     }
+
+    public function test()
+	{
+			echo "<pre>";
+			print_r($_POST);
+			print_r($_FILES);   
+			echo "</pre>";  
+		die;
+
+	}
     
 }

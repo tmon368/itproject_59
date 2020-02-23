@@ -14,7 +14,7 @@
   
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css?family=Prompt|Sarabun&display=swap" rel="stylesheet">
-
+  <link rel="shortcut icon" href="<?php echo base_url('re/images/iconweb_3.png'); ?>" />
   <title>Student discipline system | Walailak University</title>
 
 

@@ -152,8 +152,11 @@
         </div>
 
         <form action="#" id="form-file" name="form-file" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="report_ID" id="report_ID">  
+            <input type="hidden" name="S_ID" id="S_ID"> 
+            <input type="hidden" name="person_ID" id="person_ID"> 
+             <input type="hidden" name="proof_date" id="proof_date">
           <div class="modal-body ">
-
             <div class="row">
               <div class="col-sm-12">
                 <label for="datasubmit" class="label">วันที่บันทึกหลักฐาน:</label><span class="datasubmit"></span>
@@ -194,9 +197,7 @@
   <script>
     $(document).ready(function() {
       showAll();
-      test();
       var file = document.getElementById('myFile');
-
       file.onchange = function(e) {
         var ext = this.value.match(/\.([^\.]+)$/)[1];
         switch (ext) {
@@ -209,18 +210,21 @@
       };
     });
 
-    function test() {
+    function check_data_offenstd(data) {
       $.ajax({
         type: 'ajax',
         method: 'get',
         url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseforinsert',
         data: {
-          id: 37
+          id: data
         },
         async: false,
         dataType: 'json',
         success: function(data) {
-          console.log (data);
+          console.log(data);
+          $('#report_ID').val(data.report_ID);
+          $('#S_ID').val(data.S_ID);
+          $('#person_ID').val(data.person_ID);
         }
       });
     }
@@ -244,10 +248,9 @@
             html += '<td>' + value.committed_date + '</td>';
             html += '<td>' + value.off_desc + '</td>';
             html += '<td class="tddetail"><span class="fileicon " data="' + value.offensestd_ID + '"><i class="fas fa-file-alt"></i></span></td>';
-            html += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder" data="'+value.offensestd_ID+'"></td>';
+            html += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder" data="' + value.offensestd_ID + '"></td>';
             html += '</tr>';
           });
-
           $('#showdata').html(html);
         },
         error: function() {
@@ -258,11 +261,9 @@
 
     $("#form-file").on("submit", function(e) {
       e.preventDefault();
-
       var formData = new FormData(document.getElementById("form-file"));
-
       $.ajax({
-        url: '<?php echo base_url(); ?>index.php/OffenseHead/insertproofargument',
+        url: '<?php echo base_url(); ?>index.php/OffenseHead/test',
         cache: false,
         data: formData,
         processData: false,
@@ -281,10 +282,12 @@
 
 
     $('#showdata').on('click', '.ImgFolder', function() {
+      var offstd = $(this).attr('data');
       $('#file_offhead').modal('show');
       var date = new Date();
       var data_submit_file = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
       $('.datasubmit').text(" " + data_submit_file);
-      //var id = $(this).attr('data');
+      $('#proof_date').val(date);
+      check_data_offenstd(offstd);
     });
   </script>
