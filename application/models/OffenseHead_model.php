@@ -118,10 +118,10 @@ class OffenseHead_model extends CI_Model {
     // var_dump($changename[0]);    ชื่อรูปที่ผู้ใช้ใส่
     // var_dump($changename[1]);	นามสกุลไฟล์รูปที่ผู้ใช้ใส่
     //die();
-    $proof_ID =$this->input->post('proof_ID');
+    $proof_ID =" ";
 
 
-    $_FILES['userfile']['name']     = $s.".".$changename[1];
+    $_FILES['userfile']['name']     = .".".$changename[1];
   $_FILES['userfile']['type']     = $_FILES['myFile']['type'];
   $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'];
   $_FILES['userfile']['error']    = $_FILES['myFile']['error'];
