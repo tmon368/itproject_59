@@ -114,7 +114,7 @@ class OffenseHead_model extends CI_Model {
     public function insertproofargument(){
         // $id = $this->input->get('id');
         $student = $this->session->userdata('student');
-        $report_ID = $this->input->get('report_ID');
+        $report_ID = $this->input->post('report_ID');
         // $report_ID = 35;
         
         $this->db->select('*');
