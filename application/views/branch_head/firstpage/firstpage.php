@@ -302,7 +302,8 @@
                 </div>
                 <div class="modal-body offenstudent">
                     <form action="" id="formakk" method="post" class="needs-validation">
-
+                    <div id="showddel"></div>
+                <input type="hidden" name="txtdelID">
 
                         <div class="modal-body showoffense">
                         </div>
@@ -466,10 +467,7 @@
             $('#scoreoffen').modal('show');
             show_cll();
         });
-        $(".btnsearch").click(function() {
-            search();
-        });
-
+        
 
         function show_all() {
 
@@ -546,7 +544,7 @@
             });
         }
 
-
+       
 
         function search() {
 
@@ -572,7 +570,7 @@
                         alert('ไม่พบข้อมูลดังกล่าว');
                     } else {
 
-                        html = ' ';
+                            html =  data[0].S_ID  ;
                         $.each(data, function(key, value) {
                             //htmlweb += '<div class="persondata">';  
                             html += '<div class="Data">';
