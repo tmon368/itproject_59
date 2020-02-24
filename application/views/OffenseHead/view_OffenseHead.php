@@ -262,7 +262,7 @@
               place_name:value.place_name,
               description:value.description,
               off_desc:value.off_desc,
-              file:'xxxx'
+              file:value.evidenre_name
             });
 
           });
@@ -319,7 +319,7 @@
             //stament
           }
           $("#off_desc").text(value.off_desc);
-          var file = '<a href="http://"><span><i class="fas fa-image"></i></span></a>'
+          var file = '<a href="http://localhost/itproject_59/uploads/'+ value.file+'jpg"><span><i class="fas fa-image"></i></span></a>'
 
           $("#evidenre_name").html(file);
         }

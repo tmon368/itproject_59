@@ -27,10 +27,10 @@
             <div class="collapse" id="reportperson">
                 <ul class="nav flex-column sub-menu">
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">รายงานตัวกระทำความผิด</a>
+                        <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">ยื่นอุทธรณ์ความผิด</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">รายการอุทธรณ์ความผิด</a>
+                        <a class="nav-link" href="<?php echo site_url("Proofargument") ?>">ติดตามผลการอุทธรณ์ความผิด</a>
                     </li>
                 </ul>
             </div>
