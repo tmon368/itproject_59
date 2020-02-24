@@ -30,6 +30,9 @@
     }
   </style>
 </head>
+<script>
+  var dataoff = [];
+</script>
 
 <body>
   <meta charset="UTF-8">
@@ -89,13 +92,13 @@
             <div class="col-sm-4">
               <div class="input-group">
                 <label class="label_txt">วันที่กระทำผิด:&nbsp;</label>
-                <p class="text_position" id="committed_date"></p>
+                <span class="text_position" id="committed_date"></span>
               </div>
             </div>
             <div class="col-sm-8">
               <div class="input-group">
                 <label class="label_txt">เวลา:&nbsp;</label>
-                <p class="text_position" id="committed_time"></p>
+                <span class="text_position" id="committed_time"></span>
               </div>
             </div>
           </div>
@@ -103,7 +106,7 @@
             <div class="col-sm-12">
               <div class="input-group">
                 <label class="label_txt">สถานที่:&nbsp;</label>
-                <p class="text_position" id="place_name"></p>
+                <span class="text_position" id="place_name"></span>
               </div>
             </div>
           </div>
@@ -111,7 +114,7 @@
             <div class="col-sm-12">
               <div class="input-group">
                 <label class="label_txt">คำอธิบายบริเวณที่เกิดเหตุ:&nbsp;</label>
-                <p class="text_position" id="explanation"></p>
+                <span class="text_position" id="explanation"></span>
               </div>
             </div>
           </div>
@@ -119,7 +122,7 @@
             <div class="col-sm-12">
               <div class="input-group">
                 <label class="label_txt">ฐานความผิด:&nbsp;</label>
-                <p class="text_position" id="off_desc"></p>
+                <span class="text_position" id="off_desc"></span>
               </div>
             </div>
           </div>
@@ -127,7 +130,7 @@
             <div class="col-sm-12">
               <div class="input-group">
                 <label class="label_txt">ไฟล์หลักฐาน :&nbsp;</label>
-                <p class="text_position" id="evidenre_name"></p>
+                <span class="text_position" id="evidenre_name"></span>
               </div>
             </div>
           </div>
@@ -152,11 +155,11 @@
         </div>
 
         <form action="#" id="form-file" name="form-file" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="report_ID" id="report_ID">  
-            <!-- <input type="hidden" name="S_ID" id="S_ID"> 
+          <input type="hidden" name="report_ID" id="report_ID">
+          <!-- <input type="hidden" name="S_ID" id="S_ID"> 
             <input type="hidden" name="person_ID" id="person_ID">  
-            <input type="hidden" name="offensestd_ID" id="offensestd_ID"> --> 
-            <input type="hidden" name="proof_date" id="proof_date">
+            <input type="hidden" name="offensestd_ID" id="offensestd_ID"> -->
+          <input type="hidden" name="proof_date" id="proof_date">
           <div class="modal-body ">
             <div class="row">
               <div class="col-sm-12">
@@ -230,8 +233,6 @@
       });
     }
 
-
-
     function showAll() {
       $.ajax({
         type: 'ajax',
@@ -251,6 +252,19 @@
             html += '<td class="tddetail"><span class="fileicon " data="' + value.offensestd_ID + '"><i class="fas fa-file-alt"></i></span></td>';
             html += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder" data="' + value.offensestd_ID + '"></td>';
             html += '</tr>';
+
+            var time_committed = value.committed_time.substring(0, 5);
+
+            dataoff.push({
+              offensestd_ID:value.offensestd_ID,
+              committed_date:value.committed_date,
+              committed_time:time_committed,
+              place_name:value.place_name,
+              description:value.description,
+              off_desc:value.off_desc,
+              file:'xxxx'
+            });
+
           });
           $('#showdata').html(html);
         },
@@ -271,21 +285,45 @@
         contentType: false,
         type: "POST",
         success: function(data) {
-              if (data == 'true'){
-                alert ('ดำเนินการยื่นเรื่องการอุทธรณ์เสร็จสิ้น โปรดติดตามผลการอุทธรณ์');
-                window.location.href = "<?php echo site_url("Proofargument") ?>";
-              }else if (data == 'false'){
-                alert ('ไม่สามารถดำเนินการยื่นอุทธรณ์โปรดตรวจสอบความถูกต้องของข้อมูล !');
-              }else{
-                //stament
-              }
+          if (data == 'true') {
+            alert('ดำเนินการยื่นเรื่องการอุทธรณ์เสร็จสิ้น โปรดติดตามผลการอุทธรณ์');
+            window.location.href = "<?php echo site_url("Proofargument") ?>";
+          } else if (data == 'false') {
+            alert('ไม่สามารถดำเนินการยื่นอุทธรณ์โปรดตรวจสอบความถูกต้องของข้อมูล !');
+          } else {
+            //stament
+          }
         }
       });
     });
 
     $('#showdata').on('click', '.fileicon', function() {
       $('#show_detail_file').modal('show');
+      var id = $(this).attr('data');
 
+      console.log(dataoff);
+
+      $.each(dataoff, function(key, value) {
+
+        if (id == value.offensestd_ID){
+          //stament committed_time place_name explanation value.description off_desc  evidenre_name
+          $("#committed_date").text(value.committed_date);
+          $("#committed_time").text(value.committed_time);
+          $("#place_name").text(value.place_name);
+
+          if (value.description == ""){
+            $("#explanation").text('ไม่มีคำอธิบาย');
+          }else if (value.description != ""){
+            $("#explanation").text(value.description);
+          }else{
+            //stament
+          }
+          $("#off_desc").text(value.off_desc);
+          var file = '<a href="http://"><span><i class="fas fa-image"></i></span></a>'
+
+          $("#evidenre_name").html(file);
+        }
+      });
     });
 
 
@@ -293,7 +331,6 @@
       var offstd = $(this).attr('data');
       $('#file_offhead').modal('show');
       var date = new Date();
-
       var data_submit_file = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
       var date_sumit = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       $('.datasubmit').text(" " + data_submit_file);
