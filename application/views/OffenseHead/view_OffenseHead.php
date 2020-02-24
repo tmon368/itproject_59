@@ -293,6 +293,7 @@
       var offstd = $(this).attr('data');
       $('#file_offhead').modal('show');
       var date = new Date();
+
       var data_submit_file = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
       var date_sumit = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       $('.datasubmit').text(" " + data_submit_file);
