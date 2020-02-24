@@ -9,7 +9,7 @@ class Proofargument_model extends CI_Model {
     
     public function selectstudentproofargument(){
         $i=0;
-        $results = 0;
+        //$results = 0;
         $student = $this->session->userdata('student');
         //$student = "59111111";
         $this->db->select('*');
@@ -18,7 +18,7 @@ class Proofargument_model extends CI_Model {
         // $this->db->join('offensestd os', 'r.offensestd_ID=os.offensestd_ID');
         // $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
         // $this->db->join('offense o', 'oh.off_ID=o.off_ID');
-        $this->db->where('pfm.results',$results);
+        //$this->db->where('pfm.results',$results);
         $this->db->where('pfm.S_ID',$student);
         $query = $this->db->get();
         $student = array();
