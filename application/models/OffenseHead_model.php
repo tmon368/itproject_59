@@ -113,7 +113,31 @@ class OffenseHead_model extends CI_Model {
     
     public function insertproofargument(){
         // $id = $this->input->get('id');
-         
+        $student = $this->session->userdata('student');
+        $report_ID = $this->input->get('report_ID');
+        // $report_ID = 35;
+        
+        $this->db->select('*');
+        $this->db->from('offensestd ostd');
+        $this->db->join('student s', 'ostd.S_ID=s.S_ID');
+        $this->db->join('offensehead oh', 'ostd.oh_ID=oh.oh_ID');
+        $this->db->join('offense o', 'oh.off_ID=o.off_ID');
+        $this->db->join('report rp', 'ostd.offensestd_ID=rp.offensestd_ID');
+       // $this->db->join('proofargument pr', 's.S_ID=ostd.S_ID');
+        $this->db->join('place p', 'oh.place_ID=p.place_ID');
+        $this->db->join('offevidence ov', 'oh.oh_ID=ov.oh_ID');
+     
+        
+        $this->db->where('ostd.S_ID',$student);
+        $this->db->where('rp.report_ID',$report_ID);
+
+        $query = $this->db->get();
+        // var_dump($query->result());
+        foreach ($query->result() as $row) {
+            $report_ID = $row->report_ID;
+            $S_ID = $row->S_ID;
+            $person_ID = $row->person_ID;
+        }
 
         $changename =explode(".",$_FILES["myFile"]["name"]);
     // var_dump($changename[0]);    ชื่อรูปที่ผู้ใช้ใส่
@@ -122,13 +146,24 @@ class OffenseHead_model extends CI_Model {
     // $proof_ID =" ";
 
 
-    $_FILES['userfile']['name']     =  $_FILES['myFile']['name'];
-  $_FILES['userfile']['type']     = $_FILES['myFile']['type'];
+    $_FILES['userfile']['name']     = $report_ID.".".$changename[1];
+    $filename =  $_FILES['userfile']['name'];
+    $data = $this->checkfilename($filename);
+    if($data == true){
+        unlink(FCPATH . 'upload_proofargument/'.$filename);
+        $this->db->where('proofargument.proof_name', $filename);
+        $this->db->delete('proofargument');
+
+    }
+
+    $_FILES['userfile']['type']     = $_FILES['myFile']['type'];
   $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'];
   $_FILES['userfile']['error']    = $_FILES['myFile']['error'];
   $_FILES['userfile']['size']     = $_FILES['myFile']['size'];
     $config['upload_path'] = './upload_proofargument/';
     $config['allowed_types'] = 'pdf';
+    $config['max_size']= 2000;
+
 
     $this->load->library('upload', $config);
     if ( ! $this->upload->do_upload()){
@@ -137,26 +172,7 @@ class OffenseHead_model extends CI_Model {
     }else{
         $final_files_data[] = $this->upload->data();
     }
-    // if($this->db->affected_rows() > 0){
 
-    
-    $id = $this->input->get('offensestd_ID');
-
-    $id = 50;    
-    $this->db->select('*');
-    $this->db->from('offensestd ostd');
-    $this->db->join('report r', 'ostd.offensestd_ID=r.offensestd_ID');
-    $this->db->join('student s', 'ostd.S_ID=s.S_ID');
-    $this->db->where('ostd.offensestd_ID',$id);
-    $query = $this->db->get();
-    // var_dump($query->result());
-    foreach ($query->result() as $row) {
-        $report_ID = $row->report_ID;
-        $S_ID = $row->S_ID;
-        $person_ID = $row->person_ID;
-    }
-
-    // $report_ID = $row->report_ID;
         //$id = $this->input->post('txteditID');
         // var_dump($report_ID);
         // var_dump($person_ID);
@@ -173,10 +189,7 @@ class OffenseHead_model extends CI_Model {
             
             
         );
-        
-        //var_dump($field);
-        //die();
-        // $this->db->where('place_ID', $id);
+
         $this->db->insert('proofargument', $field);
 
     if($this->db->affected_rows() > 0){
@@ -224,6 +237,21 @@ class OffenseHead_model extends CI_Model {
         
         
     }
+
+    function checkfilename($filename){
+   // $par_ID = 3;
+    $this->db->select('p.proof_name');
+    $this->db->from('proofargument p');
+    $this->db->where('p.proof_name', $filename);
+    $query = $this->db->get();
+    $showall = array();
+    $showall = $query->result_array();
+    if($showall[0]["proof_name"] != null){
+        return true;
+    }else{
+        return false;
+    }
     
+}
     
 }
