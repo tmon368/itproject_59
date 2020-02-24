@@ -10,8 +10,8 @@ class Proofargument_model extends CI_Model {
     public function selectstudentproofargument(){
         $i=0;
         //$results = 0;
-        //$student = $this->session->userdata('student');
-        $student = "59111111";
+        $student = $this->session->userdata('student');
+        //$student = "59111111";
         $this->db->select('*');
         $this->db->from('proofargument pfm');
         $this->db->join('report r', 'pfm.report_ID=r.report_ID');
