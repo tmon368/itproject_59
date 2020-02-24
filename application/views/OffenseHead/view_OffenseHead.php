@@ -153,9 +153,10 @@
 
         <form action="#" id="form-file" name="form-file" method="post" enctype="multipart/form-data">
             <input type="hidden" name="report_ID" id="report_ID">  
-            <input type="hidden" name="S_ID" id="S_ID"> 
-            <input type="hidden" name="person_ID" id="person_ID"> 
-             <input type="hidden" name="proof_date" id="proof_date">
+            <!-- <input type="hidden" name="S_ID" id="S_ID"> 
+            <input type="hidden" name="person_ID" id="person_ID">  
+            <input type="hidden" name="offensestd_ID" id="offensestd_ID"> --> 
+            <input type="hidden" name="proof_date" id="proof_date">
           <div class="modal-body ">
             <div class="row">
               <div class="col-sm-12">
@@ -223,8 +224,8 @@
         success: function(data) {
           console.log(data);
           $('#report_ID').val(data.report_ID);
-          $('#S_ID').val(data.S_ID);
-          $('#person_ID').val(data.person_ID);
+          // $('#S_ID').val(data.S_ID);
+          // $('#person_ID').val(data.person_ID);
         }
       });
     }
@@ -270,7 +271,14 @@
         contentType: false,
         type: "POST",
         success: function(data) {
-          console.log(data);
+              if (data == 'true'){
+                alert ('ดำเนินการยื่นเรื่องการอุทธรณ์เสร็จสิ้น โปรดติดตามผลการอุทธรณ์');
+                window.location.href = "<?php echo site_url("Proofargument") ?>";
+              }else if (data == 'false'){
+                alert ('ไม่สามารถดำเนินการยื่นอุทธรณ์โปรดตรวจสอบความถูกต้องของข้อมูล !');
+              }else{
+                //stament
+              }
         }
       });
     });
@@ -285,9 +293,12 @@
       var offstd = $(this).attr('data');
       $('#file_offhead').modal('show');
       var date = new Date();
-      var data_submit_file = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
+      var data_submit_file = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+      var date_sumit = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       $('.datasubmit').text(" " + data_submit_file);
-      $('#proof_date').val(data_submit_file);
+      $('#proof_date').val(date_sumit);
+      $('#offensestd_ID').val(offstd);
       check_data_offenstd(offstd);
     });
   </script>
