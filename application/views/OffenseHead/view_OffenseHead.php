@@ -166,7 +166,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <label for="explanfile" class="label">คำอธิบายการอุทธรณ์ความผิด:<span class="fixdata">*</span></label>
-                <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="5" required></textarea>
+                <textarea class="form-control" name="Explanation" id="Explanation" cols="30" rows="5" required></textarea>
               </div>
             </div>
 
@@ -285,9 +285,9 @@
       var offstd = $(this).attr('data');
       $('#file_offhead').modal('show');
       var date = new Date();
-      var data_submit_file = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+      var data_submit_file = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       $('.datasubmit').text(" " + data_submit_file);
-      $('#proof_date').val(date);
+      $('#proof_date').val(data_submit_file);
       check_data_offenstd(offstd);
     });
   </script>
