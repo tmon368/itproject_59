@@ -73,13 +73,13 @@ foreach($showall as $value){
       }
   }
      public function showAll(){
-            $student = $this->session->userdata('student');
+            $student = $this->session->userdata('username');
             $this->db->select('*');
             $this->db->from('place p');
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
             $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
             $this->db->join('Offense os', 'o.off_ID=os.off_ID');
-            $this->db->where('informer', $student);
+            $this->db->where('o.informer', $student);
             $query = $this->db->get();
             $showall = array();
             $showall = $query->result_array();
@@ -301,9 +301,8 @@ foreach($showall as $value){
                             
             
                             $field5 = array(
-                                'offensestd_ID'=>$maxid
-                                //'evidenre_name'=>$this->input->post('evidenre_name'),
-                                //'evidenre_date'=>$this->input->post('evidenre_date'),
+                                'offensestd_ID'=>$maxid,
+                                'report_date'=>$this->input->post('notifica_date')
                                 //'explanoff'=>$this->input->post('explanoff'),
                                 );
                             $this->db->insert('report', $field5);

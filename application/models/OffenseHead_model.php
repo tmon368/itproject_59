@@ -141,7 +141,7 @@ class OffenseHead_model extends CI_Model {
     
     $id = $this->input->get('offensestd_ID');
 
-    // $id = 50;    
+    $id = 50;    
     $this->db->select('*');
     $this->db->from('offensestd ostd');
     $this->db->join('report r', 'ostd.offensestd_ID=r.offensestd_ID');
