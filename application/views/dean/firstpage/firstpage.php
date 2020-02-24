@@ -260,12 +260,14 @@
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h2 class="modal-title" id="exampleModalLongTitle">กิจกรรมบำเพ็ญประโยชน์</h2>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
+                                <div class="card-header1" id="card_2" >
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">×</span>
+                    </button>
+                    <br>
+                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;กิจกรรมบำเพ็ญประโยชน์</font></h2>
                                     </div>
+
 
                                     <div class="modal-body">
                                         <!--ส่วนฟอร์มกิจกรรมบำเพ็ญ-->
@@ -296,11 +298,12 @@
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLongTitle">กิจกรรมการอบรม</h2>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+            <div class="card-header1" id="card_2" >
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">×</span>
                     </button>
+                    <br>
+                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;กิจกรรมอบรม</font></h2>
                 </div>
 
                 <div class="modal-body BodyTrain">
@@ -319,11 +322,13 @@
     <div class="modal fade" id="Showoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 1200px!important;" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLongTitle">รายละเอียดการกระทำผิดของนักศึกษา</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+            <div class="card-header1" id="card_2" >
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">×</span>
                     </button>
+                    <br>
+                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;รายละเอียดการกระทำความผิดของนักศึกษา</font></h2>
+                    
                 </div>
 
                 <div class="modal-body offenstudent">
