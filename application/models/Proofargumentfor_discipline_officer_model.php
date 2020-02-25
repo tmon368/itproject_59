@@ -13,6 +13,9 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
        // $discipline_officer = $this->session->userdata('discipline_officer');
         $this->db->select('*');
         $this->db->from('proofargument pfm');
+        $this->db->join('student s', 'pfm.S_ID=s.S_ID');
+        $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
+        $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
         // $this->db->join('report r', 'pfm.report_ID=r.report_ID');
         // $this->db->join('offensestd os', 'r.offensestd_ID=os.offensestd_ID');
         // $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
