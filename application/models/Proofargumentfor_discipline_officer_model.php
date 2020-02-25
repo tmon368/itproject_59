@@ -11,7 +11,7 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
         $i=0;
         $results = 0;
        // $discipline_officer = $this->session->userdata('discipline_officer');
-        $this->db->select('pfm.*,c.*,d.*,r.*,os.*,oh.*,o.*,s.S_ID,s.prefixID,s.std_fname,s.std_lname,s.sex,s.email,s.image,s.behavior_score');
+        $this->db->select('pfm.*,c.*,d.*,r.*,os.*,oh.*,o.*,p.*,s.S_ID,s.prefixID,s.std_fname,s.std_lname,s.sex,s.email,s.image,s.behavior_score');
         $this->db->from('proofargument pfm');
         $this->db->join('student s', 'pfm.S_ID=s.S_ID');
         $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
@@ -19,6 +19,7 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
         $this->db->join('report r', 'pfm.report_ID=r.report_ID');
         $this->db->join('offensestd os', 'r.offensestd_ID=os.offensestd_ID');
         $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
+        $this->db->join('place p', 'oh.place_ID=p.place_ID');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');
         $this->db->where('pfm.results',$results);
         
@@ -29,11 +30,16 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
         foreach($showall as $value){
             
             $data = $value['results'];
+            $oh_ID = $value['oh_ID'];
             $status = $this->utilstatus($data);
             $showall[$i]["resultsname"] = $status;
+
+           $image = $this->selectimage($oh_ID);
+           $showall[$i]["image"] = $image;
             $i+=1;
 
         }
+
         
         
         
@@ -103,6 +109,16 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
         return false;
     }
 
+}
+function selectimage($oh_ID){
+
+        $this->db->select('o.evidenre_name');
+        $this->db->from('offevidence o');
+        $this->db->where('o.oh_ID',$oh_ID);
+        $query = $this->db->get();
+        $showall = array();
+        $showall = $query->result_array();
+        return  $showall;
 }
 
   
