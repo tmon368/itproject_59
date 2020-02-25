@@ -319,7 +319,7 @@
 
 
     <div class="modal fade" id="scoreoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 720px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 750px!important;" role="document">
             <div class="modal-content">
             <div class="card-header1" id="card_2" >
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -489,13 +489,13 @@
                         //console.log(counthour);
 
                         html += '<div class="Data">';
-                        html += '<div class="Main1">';
+                        html += '<div class="Main4">';
                         html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
                         html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
                         html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
                         html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
                         html += '</div>';
-                        html += '<div class="Main2">';
+                        html += '<div class="Main5">';
                         html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
                         html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
                         html += '</div>';
@@ -579,17 +579,15 @@
                             $.each(data, function(key, value) {
                             //htmlweb += '<div class="persondata">';  
                             html += '<div class="Data">';
-                            html += '<div class="Main1">';
+                            html += '<div class="Main4">';
                            // html += '<span id="title7">รหัสนักศึกษา: ' + value.S_ID + "    " + 'ชื่อ : ' + value.std_fname + " " + value.std_lname + '</span>' + '</span>';
                             html += '<span id="title6">วันที่กระทำผิด:  ' + value.committed_date + '</span>';
                             html += '<span id="title6">ฐานความผิด: ' + value.off_desc + '</span>';
                             html += '<span id="title6">สถานะการกระทำความผิด:  ' + value.statusoffname + '</span>';
                             html += '</div>';
-                            html += '<div class="Main2">';
+                            html += '<div class="Main5">';
                             html += '<div class="CountStudent">คะแนนที่หัก</div>';
-                            html += '<div><span id="last_count_student2">' + value.point + '</div>';
-                            html += '</div>';
-                            html += '<div class="Main3">';
+                            html += '<div><span id="last_count_student2">' + '&ensp;' + value.point + '</div>';
                             html += '</div>';
                             html += '</div>';
                             // htmlweb += '<div class="progress_bar">';
@@ -638,9 +636,9 @@
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
-                            html += '<div class="Main2">';
+                            html += '<div class="Main5">';
                             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                            html += '<div><span id="last_count_student">' + data[i].behavior_score + '</div>';
+                            html += '<div><span id="last_count_student">' +'&ensp;' + data[i].behavior_score + '</div>';
                             html += '</div>';
                             html += '</div>';
                             n += 1;
@@ -658,9 +656,9 @@
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
-                            html += '<div class="Main2">';
+                            html += '<div class="Main5">';
                             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                            html += '<div><span id="last_count_student">'  + data[i].behavior_score + '</div>';
+                            html += '<div><span id="last_count_student">'  + '&ensp;' + data[i].behavior_score + '</div>';
                             html += '</div>';
                             html += '</div>';
                             n += 1;

@@ -120,7 +120,14 @@
 	text-shadow: 1px 1px 1px #000;
 }
 .Main4{
-    width: 50%;
+    display: grid;
+    font-family: 'Taviraj', serif;
+    font-size: 14px;
+    color: #212F3D;
+    width: 80%;
+}
+.Main5{
+    width: 20%;
 }
 .card-header1{
     color: #FFF;
