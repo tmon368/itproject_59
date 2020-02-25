@@ -35,6 +35,12 @@ class Proofargumentfor_discipline_officer extends Student_dashboard {
         $result = $this->Proofargumentfor_discipline_officer_model->selectproofargument();
         echo json_encode($result);
     }
+
+    function showdetailproofargument(){
+        $result = $this->Proofargumentfor_discipline_officer_model->showdetailproofargument();
+        echo json_encode($result);
+
+    }
    
     
     
