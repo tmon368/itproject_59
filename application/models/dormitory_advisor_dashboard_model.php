@@ -813,12 +813,12 @@ foreach($showall as $value){
     //    $this->db->where('YEAR(oh.committed_date)',$year);
     //    $this->db->order_by('oh.committed_date ASC');
     
-       $this->db->select('oh.committed_date,oh.committed_time,ostd.S_ID,std.std_fname , std.std_lname,o.off_desc,point,statusoff,behavior_score');   
+       $this->db->select('oh.committed_date,oh.committed_time,ostd.S_ID,std.std_fname , std.std_lname,o.off_desc,point,statusoff,behavior_score,prefix_name');   
        $this->db->from('offensestd ostd');
        $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
        $this->db->join('offense o','oh.off_ID=o.off_ID');
        $this->db->join('student std','ostd.S_ID=std.S_ID'); 
-       
+       $this->db->join('prefix x','std.prefixID=x.prefixID'); 
        //$day;
        //$month;
       // $year;
