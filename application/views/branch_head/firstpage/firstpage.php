@@ -74,8 +74,8 @@
                                 <center>
                                     
                                         <form  id="formakk" class="example" style="margin:auto;max-width:300px">                                                                                         
-                                                   <input type="text"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
-                                                   <button type="button"  id="offense_card"><i class="fa fa-search"></i></button>                                 
+                                                   <input type="text"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search" >
+                                                   <button type="button"  id="offense_card" ><i class="fa fa-search"></i></button>                                 
                                         </form>
                                    
 
@@ -302,8 +302,7 @@
                 </div>
                 <div class="modal-body offenstudent">
                     <form action="" id="formakk" method="post" class="needs-validation">
-                    <div id="showddel"></div>
-                <input type="hidden" name="txtdelID">
+                 
 
                         <div class="modal-body showoffense">
                         </div>
@@ -348,8 +347,9 @@
             selectscorestudent();
             selectstudentall();
             selectscoreservice();
-            selectscoretraining();
+         //   selectscoretraining();
          
+ 
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
@@ -386,7 +386,7 @@
             }
 
             
-            function selectscoretraining() {
+           function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
                     url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoretraining',
@@ -459,15 +459,15 @@
 
         });
         $('#offense_card').click(function() {
-            $('#Showoffen').modal('show');
-            search();
+           $('#Showoffen').modal('show');
+           search();
 
         });
         $('#score_card').click(function() {
             $('#scoreoffen').modal('show');
             show_cll();
         });
-        
+      
 
         function show_all() {
 
@@ -539,8 +539,8 @@
 
 
                     });
-                    $('.BodyTrain').html(html);
-                }
+                   $('.BodyTrain').html(html);
+               }
             });
         }
 
@@ -569,13 +569,18 @@
                     if (data == false) {
                         alert('ไม่พบข้อมูลดังกล่าว');
                     } else {
-
-                            html =  data[0].S_ID  ;
-                        $.each(data, function(key, value) {
+                            
+                           // html = '<h4>รหัสนักศึกษา: ' + " " + data[0].S_ID  + " " +'ชื่อ : '+ data[0].prefix_name + data[0].std_fname + " " + data[0].std_lname +'</h4>';
+                            html = '<h4>รหัสนักศึกษา: ' + " &ensp;" + data[0].S_ID  + " &ensp;" +'ชื่อ : '+ data[0].prefix_name + data[0].std_fname + " " + data[0].std_lname 
+                             + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; " + " "  + 'คะแนนคงเหลือ : <span id="last_count_student">' + "&ensp;" + data[0].behavior_score 
+                             +'</h4>'+'<hr width=100% size=5 color="#5B2C6F">';
+                            
+                           
+                            $.each(data, function(key, value) {
                             //htmlweb += '<div class="persondata">';  
                             html += '<div class="Data">';
                             html += '<div class="Main1">';
-                            html += '<span id="title7">รหัสนักศึกษา: ' + value.S_ID + "    " + 'ชื่อ : ' + value.std_fname + " " + value.std_lname + '</span>' + '</span>';
+                           // html += '<span id="title7">รหัสนักศึกษา: ' + value.S_ID + "    " + 'ชื่อ : ' + value.std_fname + " " + value.std_lname + '</span>' + '</span>';
                             html += '<span id="title6">วันที่กระทำผิด:  ' + value.committed_date + '</span>';
                             html += '<span id="title6">ฐานความผิด: ' + value.off_desc + '</span>';
                             html += '<span id="title6">สถานะการกระทำความผิด:  ' + value.statusoffname + '</span>';
@@ -594,13 +599,14 @@
                             // htmlweb += '</div>';
                             // htmlweb += '</div>';
                         });
+                      
                         $('.showoffense').html(html);
-
-                    }
-
-
+                    }  
+                  
+                     
 
                 }
+             
             });
 
 
@@ -669,6 +675,7 @@
                 }
             });
         }
+       
     </script>
 
 </body>

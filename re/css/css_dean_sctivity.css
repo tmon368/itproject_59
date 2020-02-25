@@ -38,10 +38,17 @@
 #title6 {
 	font-size: 16px;
 }
-
 #title7 {
 	font-size: 16px;
 	font-weight: 700;
+}
+
+#title8 {
+	display: grid;
+    font-family: 'Taviraj', serif;
+    font-size: 14px;
+    color: #212F3D;
+    width: 70%;
 }
 
 #last_count_student2 {
@@ -135,5 +142,4 @@
 	padding: 0.8rem 0.2rem 0.2rem 1.2rem;
 size: 500px;
 }
-
 
