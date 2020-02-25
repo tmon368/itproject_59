@@ -11,15 +11,15 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
         $i=0;
         $results = 0;
        // $discipline_officer = $this->session->userdata('discipline_officer');
-        $this->db->select('*');
+        $this->db->select('pfm.*,c.*,d.*,r.*,os.*,oh.*,o.*,s.S_ID,s.prefixID,s.std_fname,s.std_lname,s.sex,s.email,s.image,s.behavior_score');
         $this->db->from('proofargument pfm');
         $this->db->join('student s', 'pfm.S_ID=s.S_ID');
         $this->db->join('curriculum c', 's.cur_ID=c.cur_ID');
         $this->db->join('divisions d', 'c.dept_ID=d.dept_ID');
-        // $this->db->join('report r', 'pfm.report_ID=r.report_ID');
-        // $this->db->join('offensestd os', 'r.offensestd_ID=os.offensestd_ID');
-        // $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
-        // $this->db->join('offense o', 'oh.off_ID=o.off_ID');
+        $this->db->join('report r', 'pfm.report_ID=r.report_ID');
+        $this->db->join('offensestd os', 'r.offensestd_ID=os.offensestd_ID');
+        $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
+        $this->db->join('offense o', 'oh.off_ID=o.off_ID');
         $this->db->where('pfm.results',$results);
         
         $query = $this->db->get();
