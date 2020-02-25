@@ -8,7 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
 <head>
-  <title>รายงานกระทำความผิด | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
+  <title>ยื่นหลักฐานอุทธรณ์การกระทำความผิด | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
   <style>
     input.largerCheckbox {
       width: 20px;
@@ -39,8 +39,8 @@
   <div class="page-breadcrumb" id="nav_sty">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">รายงานกระทำความผิด</li>
-
+        <li class="breadcrumb-item"><a href="<?php echo site_url("Student_dashboard") ?>" class="breadcrumb-link">หน้าแรก</a></li>
+        <li class="breadcrumb-item active" aria-current="page">ยื่นหลักฐานอุทธรณ์ความผิด</li>
       </ol>
     </nav>
   </div>
@@ -48,7 +48,7 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card shadow mb-4">
       <div class="card-header" id="card_2">
-        <h6 class="m-0 text-primary"><span class=""></span>&nbsp;รายงานกระทำความผิด</h6>
+        <h6 class="m-0 text-primary"><span class=""></span>&nbsp;ยื่นหลักฐานอุทธรณ์ความผิด</h6>
       </div>
 
       <div class="card-body">
@@ -256,13 +256,13 @@
             var time_committed = value.committed_time.substring(0, 5);
 
             dataoff.push({
-              offensestd_ID:value.offensestd_ID,
-              committed_date:value.committed_date,
-              committed_time:time_committed,
-              place_name:value.place_name,
-              description:value.description,
-              off_desc:value.off_desc,
-              file:value.evidenre_name
+              offensestd_ID: value.offensestd_ID,
+              committed_date: value.committed_date,
+              committed_time: time_committed,
+              place_name: value.place_name,
+              description: value.description,
+              off_desc: value.off_desc,
+              file: value.evidenre_name
             });
 
           });
@@ -305,21 +305,21 @@
 
       $.each(dataoff, function(key, value) {
 
-        if (id == value.offensestd_ID){
+        if (id == value.offensestd_ID) {
           //stament committed_time place_name explanation value.description off_desc  evidenre_name
           $("#committed_date").text(value.committed_date);
           $("#committed_time").text(value.committed_time);
           $("#place_name").text(value.place_name);
 
-          if (value.description == ""){
+          if (value.description == "") {
             $("#explanation").text('ไม่มีคำอธิบาย');
-          }else if (value.description != ""){
+          } else if (value.description != "") {
             $("#explanation").text(value.description);
-          }else{
+          } else {
             //stament
           }
           $("#off_desc").text(value.off_desc);
-          var file = '<a href="http://localhost/itproject_59/uploads/'+ value.file+'jpg"><span><i class="fas fa-image"></i></span></a>'
+          var file = '<a href="http://localhost/itproject_59/uploads/' + value.file + 'jpg"><span><i class="fas fa-image"></i></span></a>'
 
           $("#evidenre_name").html(file);
         }
