@@ -41,6 +41,12 @@ class Proofargumentfor_discipline_officer extends Student_dashboard {
         echo json_encode($result);
 
     }
+
+    function Updatestatusproofargument(){
+        $result = $this->Proofargumentfor_discipline_officer_model->Updatestatusproofargument();
+        echo json_encode($result);
+
+    }
    
     
     
