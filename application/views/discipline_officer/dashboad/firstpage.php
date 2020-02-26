@@ -216,39 +216,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-12 ">
-                    <div class="card shadow mb-3">
-                        <div class="card shadow mb-4">
-                            <div class="card-header" id="card_2">
-                                <h6 class="m-0 text-primary"></h6>
-                            </div>
-                            <div class="card-body " id="card_1">
-                                <font size="2">
-                                    <center>นักศึกษาที่มีคะแนนคงเหลือน้อยที่สุด 10 ลำดับ</center>
-                                </font>
-                                <br>
-                                <center>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-
-
-                                            <div id="showdata">
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </center><br>แสดงรายชื่อเพิ่มเติม
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
             </div>
 
 
@@ -284,11 +251,6 @@
                     success: function(data) {
                         console.log(data);
 
-
-                 
-                     
-
-
                    
                                     var chart = new CanvasJS.Chart("chartContainer", {
                                         height: 350,
@@ -301,7 +263,10 @@
                                             title: "จำนวน(คน)"
                                         },
                                         data: [{
-                                            dataPoints: data
+                                            dataPoints: data,
+                                            type: "column",
+                                          
+                                            click:onClickgraph,                                         
                                         }]
                                     });
                                 
@@ -312,7 +277,55 @@
                         alert('ไม่มีข้อมูล');
                     }
                 });
+
+
+                                    
                                 }
+
+
+                                function onClickgraph(e){
+                                	var id = e.dataPoint.oc_ID
+                                    var ide = e.dataPoint.dept_ID 
+
+                               
+                                 var data = {"oc_ID":id,"dept_ID":ide}; 
+                                 
+
+                                 $.ajax({
+                                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Discipline_officer_dashboard/getDashboardAll',
+                    data:data,  
+                    method: 'get',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                                        height: 350,
+                                        animationEnabled: true,
+                                        animationDuration: 2000, //change to 1000, 500 etc
+                                        axisX: {
+                                            title: "หมวดความผิด"
+                                        },
+                                        
+                                        data: [{
+                                            type: "column",
+                                            dataPoints: data,
+                                          
+                                        }]
+                                    });
+                                
+                
+                                    chart.render();
+
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+
+                                }
+                                
                             </script>
                             <br><br><br><br>
                         </div>
@@ -459,7 +472,7 @@
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_advisor_dashboard/selectscorestudent',
+                    url: '<?php echo base_url() ?>index.php/Discipline_officer_dashboard/getDashboard',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
