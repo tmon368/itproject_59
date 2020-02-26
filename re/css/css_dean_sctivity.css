@@ -82,7 +82,7 @@
 
 .bggreen {
 	background-color: #99FF99;
-	width: 250px;
+	width: 300px;
 	padding: 8px;
 	border: 15px;
 	margin: 15px;
@@ -128,6 +128,26 @@
 }
 .Main5{
     width: 20%;
+}
+.Main6{
+	width: 80px;
+	text-align: center;
+	font-size: 28px;
+}
+.Main7{
+	
+    width: -100px;
+}
+
+.Data1{
+    display: flex;
+    margin: 0.1rem;
+    padding: 0.1rem;
+}
+.Main8{
+	width: 80px;
+	text-align: center;
+	font-size: 30px;
 }
 .card-header1{
     color: #FFF;

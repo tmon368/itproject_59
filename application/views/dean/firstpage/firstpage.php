@@ -140,7 +140,6 @@
 
 
 
-
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,

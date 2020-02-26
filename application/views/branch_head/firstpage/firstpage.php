@@ -422,19 +422,27 @@
 
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
-                                html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
-                                    data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+        //                        html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+         //                           data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+         //                           '&nbsp;' +
+          //                          data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+         //                       n += 1;
+html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>'  + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-                                n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
+                                    n += 1;
                             }
                         } else {
                             for (i = 0; i < 5; i++) {
-                                html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
-                                    data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+      //                          html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+      //                              data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+       //                             '&nbsp;' +
+        //                            data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+         //                       n += 1;
+         html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-                                n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
+                                    n += 1;
                             }
                         }
 
@@ -629,6 +637,10 @@
                     if (data.length < count) {
                         for (i = 0; i < data.length; i++) {
                         	html += '<div class="Data">';
+                            html += '<div class="Main8">';
+                            html += '<br>';
+                            html += n ;
+                            html += '</div>';
                             html += '<div class="Main1">';
                             html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
@@ -649,6 +661,11 @@
                     } else {
                         for (i = 0; i < 5; i++) {
                             html += '<div class="Data">';
+                            html += '<div class="Main8">';
+                            html += '<br>';
+                            html += n ;
+                            html += '</div>';
+                            html += '<div class="Main1">';
                             html += '<div class="Main1">';
                             html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
