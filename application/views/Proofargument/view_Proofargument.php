@@ -226,7 +226,7 @@
             $("#datesubmit").text(value.proof_date);
             $("#explan_student").text(value.Explanation);
 
-            var file = '<a href="http://localhost/itproject_59/upload_proofargument/' + value.proof_name + 'jpg"><span><i class="far fa-file-alt"></i>'+ value.proof_name +'</span></a>'
+            var file = '<a href="http://localhost/itproject_59/upload_proofargument/' + value.proof_name + '"><span><i class="far fa-file-alt"></i>'+ value.proof_name +'</span></a>'
 
             $("#file_student").html(file);
 
