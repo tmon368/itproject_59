@@ -24,7 +24,7 @@ class Discipline_officer_dashboard extends CI_Controller {
 	    $this->load->view('template/template2');
 		$this->load->view('menu/Discipline_officer/menu_Discipline_officer');
 		$this->load->view('template/template4');
-	    $this->load->view('discipline_officer/firstpage/firstpage');
+	    $this->load->view('discipline_officer/dashboad/firstpage');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    

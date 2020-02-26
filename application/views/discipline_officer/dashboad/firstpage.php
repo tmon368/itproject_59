@@ -18,7 +18,7 @@
 </center>
 
 <head>
-    <title></title>
+    <title>ระบบวินัยนักศึกษา | มหาวิทยาลัยวลัยลักษณ์</title>
     <style>
         #title6 {
             font-size: 16px;

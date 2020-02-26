@@ -14,8 +14,13 @@
             <a href="<?php echo site_url("Notifyoffense_discipline") ?>">
                 <li class="">แจ้งเหตุกระทำความผิด</li>
             </a>
-              <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <li class="menu-icon mdi mdi-airballoon">การบำเพ็ญประโยชน์</li>
+            </a>
+            </a>
+
+            <a href="<?php echo site_url("Proofargumentfor_discipline_officer") ?>">
+                <li class="menu-icon mdi mdi-account-check">ตรวจสอบการยื่นอุทธรณ์นักศึกษา</li>
             </a>
 
             <div class="collapse" id="ui-basic">
@@ -35,9 +40,7 @@
 
                 </ul>
             </div>
-          
-          
+
+
         </ul>
     </div>
-
-   
