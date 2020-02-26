@@ -720,7 +720,7 @@ foreach($showall as $value){
         $i=0;
 
 
-        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation,p.person_fname,p.person_lname,p.position');
+        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation,p.person_fname,p.person_lname,p.position');
         $this->db->from('service s');
         $this->db->join('student std', 's.proposer=std.S_ID');
         $this->db->join('personnel p', 's.person_ID=p.person_ID');
@@ -733,16 +733,24 @@ foreach($showall as $value){
         foreach($showall as $row){
             $statusname = $this->statusservice($row['status']);
             $showall[$i]['statusname'] = $statusname;
+            $activity_type =$this->acticity_type($row['activity_type']);
+            $showall[$i]['activity_type_name'] = $activity_type;
             $i+=1;
         }
-       var_dump($showall);
-       die();
+    //    var_dump($showall);
+    //    die();
       
        if($query->num_rows() > 0){
            return $showall;
        }else{
            return false;
        }
+
+    }
+    function acticity_type($a_type){
+        $status = ['บำเพ็ญประโยชน์','อบรม',''];
+         return $status[$a_type];
+
 
     }
 
