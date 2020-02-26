@@ -251,7 +251,7 @@
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                     <h2 class="m-0 text-primary" id="exampleModalLongTitle">
@@ -288,7 +288,7 @@
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                     <h2 class="m-0 text-primary" id="exampleModalLongTitle">
@@ -314,7 +314,7 @@
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                     <h2 class="m-0 text-primary" id="exampleModalLongTitle">
@@ -342,7 +342,7 @@
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                     <h4 class="m-0 text-primary" id="exampleModalLongTitle">

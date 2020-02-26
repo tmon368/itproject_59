@@ -241,7 +241,7 @@
                                 <div class="modal-content">
                                 <div class="card-header1" id="card_2" >
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×</span>
+               <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                 <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;กิจกรรมบำเพ็ญประโยชน์</font></h2>
@@ -273,7 +273,7 @@
             <div class="modal-content">
             <div class="card-header1" id="card_2" >
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×</span>
+               <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                 <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;กิจกรรมอบรม</font></h2>
@@ -297,7 +297,7 @@
             <div class="modal-content">
              <div class="card-header1" id="card_2" >
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×</span>
+               <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                 <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;รายละเอียดการกระทำความผิดของนักศึกษา</font></h2>
@@ -326,7 +326,7 @@
             <div class="modal-content">
             <div class="card-header1" id="card_2" >
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
                     <h4 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 5 อันดับ</font></h4>
