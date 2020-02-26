@@ -238,7 +238,6 @@
                 $.each(datastudent, function(key, value) {
 
                     if (proofid == value.proof_ID) {
-                        //committed_date committed_time explanplace proof_date Explanation_Student_reason explan_student_reason explanplace
                         $('#proof_ID').val(value.proof_ID);
                         $('#committed_date').text(value.committed_date);
                         $('#committed_time').text(value.committed_time);
@@ -259,7 +258,6 @@
                         }else{
                             //stament
                         }
-
                         var file = '<a href="http://localhost/itproject_59/upload_proofargument/' + value.proof_name + '"><span><i class="menu-icon mdi mdi-attachment"></i>ดาวโหลดไฟล์ : ' + value.proof_name + '</span></a>';
                         $('#file2').html(file);
                         $('#fileimg').html(url_file_img);
