@@ -96,7 +96,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            <label for="file" class="label">ไฟล์หลักฐาน: </label><span id="file" class="title"></span>
+                            <label for="file" class="label">ไฟล์หลักฐาน: </label><span id="fileimg" class="title"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -170,6 +170,7 @@
                     var i = 0;
 
                     $.each(data, function(key, value) {
+                        
                         i++;
                         htmlcode += '<tr>';
                         htmlcode += '<td>' + i + '</td>';
@@ -181,7 +182,14 @@
                         htmlcode += '</tr>';
 
                         var time_committed = value.committed_time.substring(0, 5);
+                        var temp_img = value.image;
+                        var img=[];
 
+                        $.each(temp_img, function(key, value) {
+                            //console.log(value.evidenre_name);
+                            img.push(value.evidenre_name)
+                        });
+                        
                         datastudent.push({
                             proof_ID: value.proof_ID,
                             report_ID: value.report_ID,
@@ -210,7 +218,8 @@
                             off_desc: value.off_desc,
                             oc_ID: value.oc_ID,
                             point: value.point,
-                            resultsname: value.resultsname
+                            resultsname: value.resultsname,
+                            fileimg:img
                         });
 
                     });
@@ -223,21 +232,37 @@
                 $('#formaccept')[0].reset();
                 var proofid = $(this).attr('data');
 
+                console.log (datastudent);
+
+
                 $.each(datastudent, function(key, value) {
 
                     if (proofid == value.proof_ID) {
-                        //committed_date committed_time explanplace proof_date Explanation_Student_reason explan_student_reason
+                        //committed_date committed_time explanplace proof_date Explanation_Student_reason explan_student_reason explanplace
                         $('#proof_ID').val(value.proof_ID);
                         $('#committed_date').text(value.committed_date);
                         $('#committed_time').text(value.committed_time);
-                        $('#explanplace').text(value.place_name);
+                        $('#place').text(value.place_name);
+                        $('#explanplace').text(value.explanation);
                         $('#offdesc').text(value.off_desc);
                         $('#datesubmit').text(value.proof_date);
                         $('#datesubmit').text(value.proof_date);
                         $('#explan_student_reason').text(value.Explanation_Student_reason);
 
-                        var file = '<a href="http://localhost/itproject_59/upload_proofargument/' + value.proof_name + '"><span><i class="menu-icon mdi mdi-attachment"></i>ดาวโหลดไฟล์ : ' + value.proof_name + '</span></a>'
+                        var imgarray = value.fileimg;
+                        console.log(imgarray[0]);
+                        if (imgarray.length == 0){
+                            //console.log (555);
+                            var url_file_img = '<span id="no_file">ไม่พบไฟล์รูปภาพ</span>';
+                        }else if (imgarray.length != 0){
+                            var url_file_img =  '<a href="http://localhost/itproject_59/uploads/' + imgarray[0] + '"><span id="img_notify"><i class="menu-icon mdi mdi-image-area"></i></span></a>';
+                        }else{
+                            //stament
+                        }
+
+                        var file = '<a href="http://localhost/itproject_59/upload_proofargument/' + value.proof_name + '"><span><i class="menu-icon mdi mdi-attachment"></i>ดาวโหลดไฟล์ : ' + value.proof_name + '</span></a>';
                         $('#file2').html(file);
+                        $('#fileimg').html(url_file_img);
                     }
 
                 });
@@ -260,9 +285,9 @@
                     if (data == 'true') {
                         alert('ดำเนินการอนุมัติคำร้องอุทธรณ์เรียบร้อย !');
                         location.reload();
-                    }else if (data == 'false'){
-                        alert ('ไม่สามารถดำเนินการอนุมัติคำร้องอุทธรณ์ได้ กรุณาตรวจสอบข้อมูล !')
-                    }else{
+                    } else if (data == 'false') {
+                        alert('ไม่สามารถดำเนินการอนุมัติคำร้องอุทธรณ์ได้ กรุณาตรวจสอบข้อมูล !')
+                    } else {
                         //stament
                     }
                 }
