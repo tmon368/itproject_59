@@ -197,7 +197,7 @@
                                                 data: [{
                                                     type: "column",
                                                     dataPoints: data,
-                                                    click: onClickgraph,
+                                                    
                                                 }]
                                             });
 
