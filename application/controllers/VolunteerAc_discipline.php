@@ -23,7 +23,7 @@ class VolunteerAc_discipline extends Discipline_officer_dashboard
         $this->load->view('template/template2');
         $this->load->view('menu/Discipline_officer/menu_Discipline_officer');
         $this->load->view('template/template4');
-        $this->load->view('student/VolunteerAc/view_VolunteerAc');//ส่วนเนื้อหา
+        $this->load->view('discipline_officer/Volunteer_and_train/volunteer_add_activity');//ส่วนเนื้อหา
         $this->load->view('template/template5');
         $this->load->view('template/template6');
         
