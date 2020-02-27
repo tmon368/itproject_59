@@ -6,6 +6,8 @@
 .lable{
     font-family: 'Taviraj',sans-serif;
     font-size: 15px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 .status{
     font-size: 12px;

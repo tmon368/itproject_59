@@ -28,7 +28,7 @@ class VolunteerAc_discipline extends Discipline_officer_dashboard
         $this->load->view('template/template6');
         
         
-        
+    
     }
     
 

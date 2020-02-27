@@ -16,7 +16,7 @@
         }
 
         .selectplace {
-            width: 50rem;
+            width: 60rem;
             margin-top: 0.5rem;
             padding-top: 0.8rem
         }
@@ -80,37 +80,77 @@
 
                                 <form action="" id="formadd" name="formadd" method="post">
                                     <div class="FormDataAddActivity">
-
+                                        <input type="hidden" name="activity_type" id="activity_type">
                                         <div class="form-inline">
-                                            <label for="Activitylabel" class="lable">ชื่อกิจกรรม:</label>
-                                            <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off" required>
-                                            <label for="count_paticipant" class="lable">จำนวนที่รับสมัคร: </label>
-                                            <input type="text" name="received" id="received" class="form-control" placeholder="จำนวนผู้เข้ามร่วมกิจกรรม" autocomplete="off">
+                                            <label for="Activitylabel" class="lable">ชื่อกิจกรรม: <span class="fixdata">*</span></label>
+                                            <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุชื่อกิจกรรมบำเพ็ญประโยชน์')" onchange="this.setCustomValidity('')">
+                                            <label for="count_paticipant" class="lable">จำนวนที่รับสมัคร: <span class="fixdata">*</span></label>
+                                            <input type="number" name="received" id="received" class="form-control" placeholder="จำนวนผู้เข้ามร่วมกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุจำนวนผู้เข้าร่วมกิจกรรม')" onchange="this.setCustomValidity('')">
                                         </div>
 
                                         <div class="form-inline" style="margin-top: 0.5rem;">
-                                            <label for="dateactivity" class="lable">วันที่จัดกิจกรรม: </label>
-                                            <input type="date" name="service_date" id="service_date" class="form-control">
-                                            <label for="fromtime" class="lable">เวลา: </label>
-                                            <input type="time" name="start_time" id="start_time" class="form-control">
+                                            <label for="dateactivity" class="lable">วันที่จัดกิจกรรม: <span class="fixdata">*</span></label>
+                                            <input type="date" name="service_date" id="service_date" class="form-control" required oninvalid="this.setCustomValidity('ระบุวันที่จัดกิจกรรม')" onchange="this.setCustomValidity('')">
+                                            <label for="fromtime" class="lable">เวลา: <span class="fixdata">*</span></label>
+                                            <select name="start_time" id="start_time" class="form-control" required oninvalid="this.setCustomValidity('ระบุเวลาเริ่มกิจกรรม')" onchange="this.setCustomValidity('')">
+                                                <option value="05:00">05.00</option>
+                                                <option value="06:00">06.00</option>
+                                                <option value="07:00" selected="">07.00</option>
+                                                <option value="08:00">08.00</option>
+                                                <option value="09:00">09.00</option>
+                                                <option value="10:00">10.00</option>
+                                                <option value="11:00">11.00</option>
+                                                <option value="12:00">12.00</option>
+                                                <option value="13:00">13.00</option>
+                                                <option value="14:00">14.00</option>
+                                                <option value="15:00">15.00</option>
+                                                <option value="16:00">16.00</option>
+                                                <option value="17:00">17.00</option>
+                                                <option value="18:00">18.00</option>
+                                                <option value="19:00">19.00</option>
+                                                <option value="20:00">20.00</option>
+                                                <option value="21:00">21.00</option>
+                                                <option value="22:00">22.00</option>
+                                                <option value="23:00">23.00</option>
+                                                <option value="24:00">00.00</option>
+                                            </select>
                                             <label for="totime" class="lable">ถึง: </label>
-                                            <input type="time" name="end_time" id="end_time" class="form-control">
 
+                                            <select name="end_time" id="end_time" class="form-control" required oninvalid="this.setCustomValidity('ระบุเวลาสิ้นสุดกิจกรรม')" onchange="this.setCustomValidity('')">
+                                                <option value="05:00">05.00</option>
+                                                <option value="06:00">06.00</option>
+                                                <option value="07:00">07.00</option>
+                                                <option value="08:00" selected>08.00</option>
+                                                <option value="09:00">09.00</option>
+                                                <option value="10:00">10.00</option>
+                                                <option value="11:00">11.00</option>
+                                                <option value="12:00">12.00</option>
+                                                <option value="13:00">13.00</option>
+                                                <option value="14:00">14.00</option>
+                                                <option value="15:00">15.00</option>
+                                                <option value="16:00">16.00</option>
+                                                <option value="17:00">17.00</option>
+                                                <option value="18:00">18.00</option>
+                                                <option value="19:00">19.00</option>
+                                                <option value="20:00">20.00</option>
+                                                <option value="21:00">21.00</option>
+                                                <option value="22:00">22.00</option>
+                                                <option value="23:00">23.00</option>
+                                                <option value="24:00">00.00</option>
+                                            </select>
                                         </div>
 
-                                        <label for="place" class="lable">สถานที่จัดกิจกรรม: </label>
-                                        <textarea class="form-control" name="place" id="place" cols="30" rows="10"></textarea>
-                                        <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: </label>
-                                        <!-- <input type="text" name="person_ID" id="add_persennel" class=" form-control" placeholder="ค้นหาผู้ควบคุมกิจกรรม" autocomplete="off"> -->
+                                        <label for="place" class="lable">สถานที่จัดกิจกรรม: <span class="fixdata">*</span></label>
+                                        <textarea class="form-control" name="place" id="place" cols="30" rows="10" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
+                                        <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
+
                                         <div class="margin-top:0.5rem;">
-                                            <select class="selectplace input" name="person_ID" id="add_persennel"></select>
+                                            <select class="selectplace input" name="person_ID" id="add_persennel" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
                                         </div>
 
-                                        <label for="detailactivity" class="lable">รายละเอียดกิจกรรม: </label>
-                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="10"></textarea>
+                                        <label for="detailactivity" class="lable">รายละเอียดกิจกรรม: <span class="fixdata">*</span></label>
+                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="10" required oninvalid="this.setCustomValidity('ระบุรายละเอียดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
                                     </div>
-
-
                             </div>
 
                             <div class="modal-footer">
@@ -123,7 +163,6 @@
                 </div>
 
                 <!--Modal del  -->
-
                 <div class="modal fade" id="del_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -192,7 +231,6 @@
                                         <label for="place" class="lable">สถานที่จัดกิจกรรม: </label>
                                         <textarea class="form-control" name="editplace" id="editplace" cols="30" rows="10"></textarea>
                                         <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: </label>
-                                        <!-- <input type="text" name="person_ID" id="add_persennel" class=" form-control" placeholder="ค้นหาผู้ควบคุมกิจกรรม" autocomplete="off"> -->
                                         <div class="margin-top:0.5rem;">
                                             <input type="text" name="editperson_ID" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off" disabled>
                                         </div>
@@ -201,10 +239,7 @@
                                         <textarea class="form-control" name="editexplanation" id="editexplanation" cols="30" rows="10"></textarea>
                                     </div>
                                 </form>
-
-
                             </div>
-
                             <div class="modal-footer">
                                 <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
                                 <button name="btnedit" id="btnedit" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
@@ -288,7 +323,6 @@
                     console.log(data);
 
                     $.each(data, function(key, value) {
-                        //class show_data edit_data del_data
                         i++;
                         html += '<tr>';
                         html += '<td>' + i + '</td>';
@@ -565,8 +599,8 @@
             $('#exampleModalCenter').modal('show');
         });
 
-
-        $('#btnSave').click(function() {
+        $("#formadd").on("submit", function(e) {
+            e.preventDefault();
             var form_data = $('#formadd').serialize();
             console.log(form_data);
             $.ajax({
@@ -577,15 +611,17 @@
                 async: false,
                 dataType: 'json',
                 success: function(data) {
-
+                    console.log(data);
                     if (data == true) {
                         alert('ดำเนินการเสร็จสิ้นรอผลการอนุมัติกิจกรรม');
                         show_all();
                         $('#exampleModalCenter').modal('hide');
                     } else if (data == false) {
                         alert('ไม่สามารถทำรายการได้กรุณาตรวจสอบข้อมูล');
+                    }else{
+
                     }
-                    //location.reload();
+
                 }
             });
         });
