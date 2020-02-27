@@ -37,10 +37,12 @@ class teacher_dashboard_model extends CI_Model {
 
 
         $this->db->distinct();
-        $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score');
+        $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score,x.prefix_name');
         //$this->db->select('*');
         $this->db->from('offensestd ostd');
+        $this->db->order_by('s.behavior_score ASC');
         $this->db->join('student s','ostd.S_ID=s.S_ID');
+        $this->db->join('prefix x','s.prefixID=x.prefixID');
 
         $query = $this->db->get();
         $student = array();

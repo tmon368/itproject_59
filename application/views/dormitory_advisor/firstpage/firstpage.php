@@ -436,19 +436,27 @@
 
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
-                                html += '<div class="bggreen">' + n + '.' +
-                                    data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+        //                        html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+         //                           data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+         //                           '&nbsp;' +
+          //                          data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+         //                       n += 1;
+html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>'  + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-                                n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
+                                    n += 1;
                             }
                         } else {
-                            for (i = 0; i < 10; i++) {
-                                html += '<div class="bggreen">' + n + '.' +
-                                    data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+                            for (i = 0; i < 5; i++) {
+      //                          html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+      //                              data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+       //                             '&nbsp;' +
+        //                            data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+         //                       n += 1;
+         html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-                                n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
+                                    n += 1;
                             }
                         }
 
@@ -482,9 +490,7 @@
                 $('#scoreoffen').modal('show');
                 show_cll();
             });
-            $(".btnsearch").click(function() {
-                search();
-            });
+           
 
 
             function show_all() {
@@ -506,22 +512,21 @@
 
                             //console.log(counthour);
 
-                            html += '<div class="Data">';
-                            html += '<div class="Main1">';
-                            html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
-                            html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
-                            html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
-                            html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
-                            html += '</div>';
-                            html += '<div class="Main2">';
-                            html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
-                            html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
-                            html += '</div>';
-                            html += '<div class="Main3">';
-                            html += '</div>';
-                            html += '</div>';
-
-
+                            
+                        html += '<div class="Data">';
+                        html += '<div class="Main4">';
+                        html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
+                        html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                        html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
+                        html += '</div>';
+                        html += '<div class="Main5">';
+                        html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                        html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
+                        html += '</div>';
+                        html += '<div class="Main3">';
+                        html += '</div>';
+                        html += '</div>';
                         });
                         $('.ShowActivity').html(html);
                     }
@@ -639,42 +644,51 @@
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
                                 html += '<div class="Data">';
-                                html += '<div class="Main1">';
-                                html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
-                                html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
-                                html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
-                                html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
-                                html += '<span id="title6">หอพัก:  ' + data[i].dname + " " + '<span id="title6">หมายเลขห้อง:  ' + data[i].room_number + '</span>' + '</span>';
-                                html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " + '<span id="title6">Email:  ' + data[i].email + '</span>';
-                                // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
-                                // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
-                                html += '</div>';
-                                html += '<div class="Main2">';
-                                html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                                html += '<div><span id="last_count_student">' + '&ensp;' + data[i].behavior_score + '</div>';
-                                html += '</div>';
-                                html += '</div>';
-                                n += 1;
-                            }
-                        } else {
-                            for (i = 0; i < 10; i++) {
-                                html += '<div class="Data">';
-                                html += '<div class="Main1">';
-                                html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
-                                html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
-                                html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
-                                html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
-                                html += '<span id="title6">หอพัก:  ' + data[i].dname + " " + '<span id="title6">หมายเลขห้อง:  ' + data[i].room_number + '</span>' + '</span>';
-                                html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " + '<span id="title6">Email:  ' + data[i].email + '</span>';
-                                // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
-                                // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
-                                html += '</div>';
-                                html += '<div class="Main2">';
-                                html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                                html += '<div><span id="last_count_student">' + '&ensp;' + data[i].behavior_score + '</div>';
-                                html += '</div>';
-                                html += '</div>';
-                                n += 1;
+                            html += '<div class="Main8">';
+                            html += '<br>';
+                            html += n ;
+                            html += '</div>';
+                            html += '<div class="Main1">';
+                            html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
+                            html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                            html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
+                            html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                            // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
+                            // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
+                            html += '</div>';
+                            html += '<div class="Main5">';
+                            html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+                            html += '<div><span id="last_count_student">' +'&ensp;' + data[i].behavior_score + '</div>';
+                            html += '</div>';
+                            html += '</div>';
+                            n += 1;
+                        }
+                    } else {
+                        for (i = 0; i < 5; i++) {
+                            html += '<div class="Data">';
+                            html += '<div class="Main8">';
+                            html += '<br>';
+                            html += n ;
+                            html += '</div>';
+                            html += '<div class="Main1">';
+                            html += '<div class="Main1">';
+                            html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
+                            html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
+                            html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
+                            html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                            // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
+                            // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
+                            html += '</div>';
+                            html += '<div class="Main5">';
+                            html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
+                            html += '<div><span id="last_count_student">'  + '&ensp;' + data[i].behavior_score + '</div>';
+                            html += '</div>';
+                            html += '</div>';
+                            n += 1;
                             }
                         }
 
