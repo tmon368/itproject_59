@@ -56,6 +56,9 @@
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("curriculum") ?>">หลักสูตร</a>
                     </li>
+                    <li class="submenu">
+                        <a class="nav-link" href="<?php echo site_url("divisions") ?>">หน่วยงาน</a>
+                    </li>
                 </ul>
             </div>
 
@@ -83,6 +86,7 @@
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("Import_data/pagecurriculum") ?>">หลักสูตร</a>
                     </li>
+                    
 
                 </ul>
             </div>
