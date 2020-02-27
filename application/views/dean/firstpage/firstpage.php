@@ -148,11 +148,15 @@
                                                     title: "หมวดความผิด"
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+                                                    title: "จำนวน(คน)",
+                                                   
                                                 },
                                                 data: [{
                                                     type: "column",
                                                     dataPoints: data,
+                                                     indexLabel: "{y}",
+                                                indexLabelPlacement: "outside",  
+                                                indexLabelOrientation: "horizontal",
                                                     click: onClickgraph,
                                                 }]
                                             });
@@ -189,22 +193,26 @@
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "หลักสูตร"
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+                                                    title: "จำนวน(คน)",
+                                             
                                                 },
                                                 data: [{
                                                     type: "column",
                                                     dataPoints: data,
+                                                    indexLabel: "{y}",
+                                                indexLabelPlacement: "outside",  
+                                                indexLabelOrientation: "horizontal",
                                                     
                                                 }]
                                             });
-
-
                                             chart.render();
+                                            
 
                                         },
+                                        
                                         error: function() {
                                             alert('ไม่มีข้อมูล');
                                         }

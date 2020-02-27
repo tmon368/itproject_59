@@ -168,10 +168,14 @@
                                                     title: "หมวดความผิด"
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+                                                    title: "จำนวน(คน)",
+                                                   
                                                  },
                                                 data: [{
-                                                    dataPoints: data
+                                                    dataPoints: data,
+                                                    indexLabel: "{y}",
+                                                indexLabelPlacement: "outside",  
+                                                indexLabelOrientation: "horizontal",
                                                 }]
                                             });
 

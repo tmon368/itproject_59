@@ -174,10 +174,16 @@
                                                     title: "หมวดความผิด"
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+                                                    title: "จำนวน(คน)",
+                                                   
+
                                                 },
                                                 data: [{
-                                                    dataPoints: data
+                                                    dataPoints: data,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+
                                                 }]
                                             });
 
@@ -243,30 +249,32 @@
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
             <div class="modal-content">
-            <div class="card-header1" id="card_2" >
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×&nbsp;</span>
+                <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
-                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;กิจกรรมบำเพ็ญประโยชน์</font></h2>
-                                    </div>
+                    <h2 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;กิจกรรมบำเพ็ญประโยชน์</font>
+                    </h2>
+                </div>
 
-                                    <div class="modal-body">
-                                        <!--ส่วนฟอร์มกิจกรรมบำเพ็ญ-->
-                                        <form action="1" id="formadd" method="post" class="needs-validation">
-                                            <div class="form-group" id="input_group_sty">
-                                                <div class="input-group">
+                <div class="modal-body">
+                    <!--ส่วนฟอร์มกิจกรรมบำเพ็ญ-->
+                    <form action="1" id="formadd" method="post" class="needs-validation">
+                        <div class="form-group" id="input_group_sty">
+                            <div class="input-group">
 
 
-                                                    <div class="ShowActivity">
+                                <div class="ShowActivity">
 
 
-                                                    </div>
+                                </div>
 
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -298,17 +306,19 @@
     <div class="modal fade" id="Showoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
-            <div class="card-header1" id="card_2" >
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×&nbsp;</span>
+                <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
-                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;รายละเอียดการกระทำความผิดของนักศึกษา</font></h2>
-                    
+                    <h2 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;รายละเอียดการกระทำความผิดของนักศึกษา</font>
+                    </h2>
+
                 </div>
                 <div class="modal-body offenstudent">
                     <form action="" id="formakk" method="post" class="needs-validation">
-                 
+
 
                         <div class="modal-body showoffense">
                         </div>
@@ -423,27 +433,27 @@
 
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
-                   //                        html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
-         //                           data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
-         //                           '&nbsp;' +
-          //                          data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-         //                       n += 1;
-html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>'  + 'คะแนนคงเหลือ' +
+                                //                        html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+                                //                           data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+                                //                           '&nbsp;' +
+                                //                          data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+                                //                       n += 1;
+                                html += '<div class="bggreen">' + '<div class="Data1"> ' + '<div class="Main6">' + n + '</div>' + '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
-                                    n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>' + '</div>' + '</div>';
+                                n += 1;
                             }
                         } else {
                             for (i = 0; i < 5; i++) {
-      //                          html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
-      //                              data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
-       //                             '&nbsp;' +
-        //                            data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-         //                       n += 1;
-         html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
+                                //                          html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+                                //                              data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+                                //                             '&nbsp;' +
+                                //                            data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+                                //                       n += 1;
+                                html += '<div class="bggreen">' + '<div class="Data1"> ' + '<div class="Main6">' + n + '</div>' + '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
-                                    n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>' + '</div>' + '</div>';
+                                n += 1;
                             }
                         }
 
@@ -499,7 +509,7 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
 
                         //console.log(counthour);
 
-                  
+
                         html += '<div class="Data">';
                         html += '<div class="Main4">';
                         html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
@@ -619,7 +629,7 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
 
 
 
-        
+
         function show_cll() {
             $.ajax({
                 type: 'ajax',
@@ -637,21 +647,21 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                             html += '<div class="Data">';
                             html += '<div class="Main8">';
                             html += '<br>';
-                            html += n ;
+                            html += n;
                             html += '</div>';
                             html += '<div class="Main1">';
                             html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
                             html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
                             html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
-                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
-                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " + '<span id="title6">หมายเลขห้อง:  ' + data[i].room_number + '</span>' + '</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " + '<span id="title6">Email:  ' + data[i].email + '</span>';
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
                             html += '<div class="Main5">';
                             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                            html += '<div><span id="last_count_student">' +'&ensp;' + data[i].behavior_score + '</div>';
+                            html += '<div><span id="last_count_student">' + '&ensp;' + data[i].behavior_score + '</div>';
                             html += '</div>';
                             html += '</div>';
                             n += 1;
@@ -661,7 +671,7 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                             html += '<div class="Data">';
                             html += '<div class="Main8">';
                             html += '<br>';
-                            html += n ;
+                            html += n;
                             html += '</div>';
                             html += '<div class="Main1">';
                             html += '<div class="Main1">';
@@ -669,14 +679,14 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
                             html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
                             html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
-                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
-                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " + '<span id="title6">หมายเลขห้อง:  ' + data[i].room_number + '</span>' + '</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " + '<span id="title6">Email:  ' + data[i].email + '</span>';
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
                             html += '<div class="Main5">';
                             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                            html += '<div><span id="last_count_student">'  + '&ensp;' + data[i].behavior_score + '</div>';
+                            html += '<div><span id="last_count_student">' + '&ensp;' + data[i].behavior_score + '</div>';
                             html += '</div>';
                             html += '</div>';
                             n += 1;

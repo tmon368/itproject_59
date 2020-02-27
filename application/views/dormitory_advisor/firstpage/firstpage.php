@@ -183,7 +183,11 @@
                                                     title: "จำนวน(คน)"
                                                 },
                                                 data: [{
-                                                    dataPoints: data
+                                                    type: "column",
+                                                    dataPoints: data,
+                                                    indexLabel:"{y}",
+                                                indexLabelPlacement: "outside",  
+                                                indexLabelOrientation: "horizontal",
                                                 }]
                                             });
 
