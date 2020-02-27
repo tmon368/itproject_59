@@ -48,11 +48,11 @@ class Service_Feedback_model extends CI_Model {
         $i=0;
 
 
-        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation,p.person_fname,p.person_lname,p.position');
+        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position');
         $this->db->from('service s');
-        $this->db->join('student std', 's.proposer=std.S_ID');
+        //$this->db->join('student std', 's.proposer=std.S_ID');
         $this->db->join('personnel p', 's.person_ID=p.person_ID');
-        $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
+       // $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
         
         $this->db->where('p.username', $usergroup);
         $this->db->where('s.status',$status);
@@ -60,9 +60,15 @@ class Service_Feedback_model extends CI_Model {
         $showall = array();
         $showall = $query->result_array();
         foreach($showall as $row){
+           $proposer= $this->selectproposer($row['proposer']);
+        //    var_dump($proposer);
+        //    die();
+           $showall[$i]['proposer_fname'] =  $proposer[0]['proposer_fname'];
+           $showall[$i]['proposer_lname'] =  $proposer[0]['proposer_lname'];
+           $showall[$i]['usertype_name'] =  $proposer[0]['usertype_name'];
             $statusname = $this->statusservice($row['status']);
             $showall[$i]['statusname'] = $statusname;
-            $activity_type =$this->acticity_type($row['activity_type']);
+            $activity_type =$this->acticity_type($row['activity_type1']);
             $showall[$i]['activity_type_name'] = $activity_type;
             $i+=1;
         }
@@ -74,6 +80,33 @@ class Service_Feedback_model extends CI_Model {
        }else{
            return false;
        }
+
+    }
+    //select ชื่อ-สกุล ผู้แจ้ง
+     function selectproposer($usergroup){
+       // $usergroup = "jsomsri";
+        $this->db->select('std.std_fname as proposer_fname,std.std_lname as proposer_lname,ut.usertype_name as usertype_name');
+        $this->db->from('student std');
+        $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
+        $this->db->where('std.username', $usergroup);
+        $query = $this->db->get();
+        $showall = array();
+        $showall = $query->result_array();
+       
+
+        if($showall == null){
+        $this->db->select('p.person_fname as proposer_fname,p.person_lname as proposer_lname,ut.usertype_name as usertype_name');
+        $this->db->from('personnel p');
+        $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+        $this->db->where('p.username', $usergroup);
+        $queryper = $this->db->get();
+        $showall = array();
+        $showall = $queryper->result_array();
+        }
+
+        return $showall;
+        // var_dump($showall);
+        // die();
 
     }
 
@@ -153,7 +186,7 @@ class Service_Feedback_model extends CI_Model {
     }
 
     function acticity_type($a_type){
-        $status = ['บำเพ็ญประโยชน์','อบรม',''];
+        $status = ['','บำเพ็ญประโยชน์','อบรม',''];
          return $status[$a_type];
 
 

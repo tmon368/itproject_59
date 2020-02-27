@@ -113,6 +113,11 @@ class AcceptVolunteer extends Teacher_dashboard
 	    echo json_encode($result);
 
 	}
+	function selectproposer(){
+		$result = $this->Service_Feedback_model->selectproposer();
+	    echo json_encode($result);
+
+	}
 
 	/*
 	function selectstudent(){

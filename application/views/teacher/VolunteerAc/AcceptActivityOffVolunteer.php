@@ -173,7 +173,7 @@
                     html += '<span id="place">สถานที่: ' + value.place + '</span>';
                     html += '</div>';
                     html += '</td>';
-                    html += '<td id="person_control"> ' + value.std_fname + " " + value.std_lname + ' </td>';
+                    html += '<td id="person_control"> ' + value.proposer_fname + " " + value.proposer_lname + ' </td>';
                     html += '<td id="btn_accept_td"> <span class="accept_activity" data="' + value.service_ID + '">อนุมัติกิจกรรม</span> </td>';
                     html += '</tr>';
 
