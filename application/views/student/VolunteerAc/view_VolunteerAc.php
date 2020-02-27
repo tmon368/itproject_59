@@ -38,6 +38,10 @@
     </style>
 </head>
 
+<script>
+    var dataservice = [];
+</script>
+
 <body>
     <meta charset="UTF-8">
     <div class="container-fluid">
@@ -80,7 +84,7 @@
 
                                 <form action="" id="formadd" name="formadd" method="post">
                                     <div class="FormDataAddActivity">
-                                        <input type="hidden" name="activity_type" id="activity_type">
+                                        <input type="hidden" name="activity_type" id="activity_type" value="1">
                                         <div class="form-inline">
                                             <label for="Activitylabel" class="lable">ชื่อกิจกรรม: <span class="fixdata">*</span></label>
                                             <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุชื่อกิจกรรมบำเพ็ญประโยชน์')" onchange="this.setCustomValidity('')">
@@ -346,10 +350,43 @@
                         } else {
                             //stament
                         }
+                        html += '<td><span class="editicon edit_data" data="' + value.service_ID + '"><i class="fas fa-edit"></i></span><span class="delicon del_data" data="' + value.service_ID + '"><i class="fas fa-trash-alt"></i></span></td>';
+                        html += '</tr>';
 
 
-                        html += '<td><span class="editicon edit_data" data="' + value.service_ID + '"><i class="fas fa-edit"></i></span><span class="delicon del_data" data="' + value.service_ID + '"><i class="fas fa-trash-alt"></i></span></td>'
-                        html += '</tr>'
+                        dataservice.push({
+                            service_ID: value.service_ID,
+                            service_name: value.service_name,
+                            person_ID: value.person_ID,
+                            proposer: value.proposer,
+                            place: value.place,
+                            service_date: value.service_date,
+                            start_time: value.start_time,
+                            end_time: value.end_time,
+                            received: value.received,
+                            number_of: value.number_of,
+                            status: value.status,
+                            results: value.results,
+                            annotation: value.annotation,
+                            explanation: value.explanation,
+                            activity_type1: value.activity_type1,
+                            prefixID: value.prefixID,
+                            person_fname: value.person_fname,
+                            person_lname: value.person_lname,
+                            position: value.position,
+                            sex: value.sex,
+                            email: value.email,
+                            phone1: value.phone1,
+                            phone2: value.phone2,
+                            dept_ID: value.dept_ID,
+                            cur_ID: value.cur_ID,
+                            usertype_ID: value.usertype_ID,
+                            username: value.username,
+                            password: value.password,
+                            flag: value.flag,
+                            statusname: value.statusname
+                        });
+
                         $('#showdata').html(html);
                     });
                 }
@@ -400,25 +437,35 @@
         //ลบข้อมูล
         $('#showdata').on('click', '.del_data', function() {
             var id = $(this).attr('data');
-            //alert(id)
-            $('#del_file').modal('show');
+            $.each(dataservice, function(key, value) {
+                if (value.service_ID == id) {
+                    //stament
+                    if (value.status == "0") {
+                        $('#del_file').modal('show');
+                        $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/deleteVolunteerAc');
+                        $.ajax({
+                            type: 'ajax',
+                            method: 'get',
+                            url: '<?php echo base_url() ?>index.php/VolunteerAc/delete',
+                            data: {
+                                id: id
+                            },
+                            async: false,
+                            dataType: 'json',
+                            success: function(data) {
+                                $('#showddel').html('ต้องการลบกิจกรรม   "' + data[0].service_name + '"');
+                                $('input[name=delID]').val(data[0].service_ID);
+                            },
+                            error: function() {
+                                alert('ไม่สามารถลบข้อมูล');
+                            }
+                        });
 
-            $('#formdelete').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/deleteVolunteerAc');
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                url: '<?php echo base_url() ?>index.php/VolunteerAc/delete',
-                data: {
-                    id: id
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    $('#showddel').html('ต้องการลบกิจกรรม   "' + data[0].service_name + '"');
-                    $('input[name=delID]').val(data[0].service_ID);
-                },
-                error: function() {
-                    alert('ไม่สามารถลบข้อมูล');
+                    } else if (value.status != "0") {
+                        alert ('กิจกรรมอยู่ในขั้นตอนการดำเนินการไม่สามารถลบกิจกรรมได้');
+                    } else {
+                        //stament
+                    }
                 }
             });
         });
@@ -618,7 +665,7 @@
                         $('#exampleModalCenter').modal('hide');
                     } else if (data == false) {
                         alert('ไม่สามารถทำรายการได้กรุณาตรวจสอบข้อมูล');
-                    }else{
+                    } else {
 
                     }
 
