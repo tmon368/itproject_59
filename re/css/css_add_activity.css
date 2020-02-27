@@ -3,11 +3,22 @@
     font-size: 19px;
     font-weight: 800;
 }
+.TypeActivity{
+    width: 100%;
+}
+.SelectTypeActivity{
+    width: 40%;
+    height: 2rem !important;
+    font-size: 14px;
+}
 .lable{
     font-family: 'Taviraj',sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
+}
+.label_type_activity{
+    font-size: 12px;
 }
 .status{
     font-size: 12px;
