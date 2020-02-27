@@ -14,7 +14,7 @@ class offense_model extends CI_Model {
         $this->db->from('offensecate c');
        $this->db->join('offense d', 'c.oc_ID=d.oc_ID');
        //$this->db->order_by('off_ID', 'ASC');
-        $this->db->where('flag', $flag);
+        $this->db->where('flagg', $flag);
         $query = $this->db->get();
         if($query->num_rows() > 0){
             return $query->result();
