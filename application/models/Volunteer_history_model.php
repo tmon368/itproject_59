@@ -46,7 +46,7 @@ class Volunteer_history_model extends CI_Model {
     }  
     public function utilstatus($statusID){
 
-        $data = array("รอผลการเสนอ","อนุมัติ");
+        $data = array("รอผลการเสนอ","อนุมัติ",'');
         return $data[$statusID];
     }  
 

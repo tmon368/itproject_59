@@ -11,15 +11,15 @@ class Volunteer_regis_model extends CI_Model {
  
     function showAll(){
       
-       //  $status =2;
+         $status =2;
         //$service_ID= $this->input->post('txtdelID');
        //$student=59111111;
         //echo $person_ID;
         //$student = $this->session->userdata('student');
-        $this->db->select('*');
+        $this->db->select('sv.*,');
         $this->db->from('service sv');
         $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
-       // $this->db->where('sv.status', $status);
+        $this->db->where('sv.status', $status);
         $query = $this->db->get();
         //var_dump($query->result());
         //die;
