@@ -146,7 +146,7 @@ class VolunteerAc_model extends CI_Model {
         'end_time'=>$this->input->post('end_time'),
         'status'=>'0',
         'received'=>$this->input->post('received'),
-        'number_of'=>'50',
+        'number_of'=>'0',
        //'results'=>$this->input->post('results'),
         //'annotation'=>$this->input->post('annotation'),
         //'document_file'=>$this->input->post('document_file'),
