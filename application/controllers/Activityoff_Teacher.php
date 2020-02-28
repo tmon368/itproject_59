@@ -2,7 +2,7 @@
 require_once('Teacher_dashboard.php');
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AcceptVolunteer extends Teacher_dashboard
+class Activityoff_Teacher extends Teacher_dashboard
 {
 	function __construct()
 	{

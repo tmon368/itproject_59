@@ -12,25 +12,23 @@
             </a>
 
             <a href="<?php echo site_url("Notifyoffense_branch") ?>">
-                <li class="">แจ้งเหตุกระทำความผิด</li>
+            <li class="menu-icon mdi mdi-alert-circle">แจ้งเหตุกระทำความผิด</li>
             </a>
+
              <a class="" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <li class="menu-icon mdi mdi-airballoon">การบำเพ็ญประโยชน์</li>
             </a>
 
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("#") ?>">กิจกรรมบำเพ็ญประโยชน์</a>
-                    </li>
-                    <li class="submenu">
+                <li class="submenu">                
                         <a class="nav-link" href="<?php echo site_url("VolunteerAc_branch") ?>">เสนอกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("#") ?>">รับรองกิจกรรมบำเพ็ญประโยชน์</a>
+                        <a class="nav-link" href="<?php echo site_url("Participants_branchhead") ?>">รับรองกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("#") ?>">อนุมัติกิจกรรมบำเพ็ญประโยชน์</a>
+                        <a class="nav-link" href="<?php echo site_url("Activityoff_branchhead") ?>">อนุมัติกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
 
                 </ul>

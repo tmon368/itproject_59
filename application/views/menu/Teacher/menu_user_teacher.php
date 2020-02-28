@@ -25,10 +25,10 @@
                         <a class="nav-link" href="<?php echo site_url("VolunteerAc_teacher") ?>">เสนอกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("AcceptParticipants") ?>">รับรองกิจกรรมบำเพ็ญประโยชน์</a>
+                        <a class="nav-link" href="<?php echo site_url("Participants_Teacher") ?>">รับรองกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("AcceptVolunteer") ?>">อนุมัติกิจกรรมบำเพ็ญประโยชน์</a>
+                        <a class="nav-link" href="<?php echo site_url("Activityoff_Teacher") ?>">อนุมัติกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
 
                 </ul>
