@@ -44,7 +44,6 @@
                                 <th id="detail_activity_regis">ข้อมูลกิจกรรม</th>
                                 <th id="status_activity">สถานะกิจกรรม</th>
                                 <th id="person_control">ผู้ควบคุม</th>
-                                <!-- <th id="manage">จัดการกิจกรรม</th> -->
                             </tr>
                         </thead>
 
@@ -114,23 +113,7 @@
             }
         });
 
-        $('#showdata').on('click', '.cancleActivity', function() {
-
-            var serviceid = $(this).attr('data');
-            if (confirm('ต้องการยกเลิกกิจกรรมลงทะเบียน')) {
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo site_url("Volunteer_history/cancelActivity") ?>',
-                    async: false, //ห้ามลืม
-                    dataType: 'json',
-                    success: function(data) {
-                        //stament
-                    }
-                });
-
-            }
-
-        });
+        
 
 
 

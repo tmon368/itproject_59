@@ -44,6 +44,9 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="submenu">
+                        <a class="nav-link" href="<?php echo site_url("VolunteerMyActivity") ?>">กิจกรรมทั้งหมดของฉัน</a>
+                    </li>
+                    <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("Volunteer_regis") ?>">ลงทะเบียนการบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
@@ -55,7 +58,7 @@
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("Volunteer_history") ?>">ประวัติการบำเพ็ญประโยชน์</a>
                     </li>
-                    
+
                 </ul>
             </div>
 
@@ -63,9 +66,7 @@
                 <li>ออกรายงาน</li>
             </a> -->
 
-            
+
 
         </ul>
     </div>
-
-   

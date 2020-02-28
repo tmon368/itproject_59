@@ -11,7 +11,7 @@ class Volunteer_regis_model extends CI_Model {
  
     function showAll(){
       
-         $status =2;
+       //  $status =2;
         //$service_ID= $this->input->post('txtdelID');
        //$student=59111111;
         //echo $person_ID;
@@ -19,7 +19,7 @@ class Volunteer_regis_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('service sv');
         $this->db->join('personnel p', 'sv.person_ID=p.person_ID');
-        $this->db->where('sv.status', $status);
+       // $this->db->where('sv.status', $status);
         $query = $this->db->get();
         //var_dump($query->result());
         //die;
@@ -88,7 +88,7 @@ class Volunteer_regis_model extends CI_Model {
                                 'certificat_date'=>$row->service_date,
                                 'activity_time'=>$showall[$n]['time'],
                                 'results	'=>'1',
-                                'activity_type'=>$this->input->post('activity_type')
+                               // 'activity_type'=>$this->input->post('activity_type')
                             );
                             //var_dump($field);
                             $this->db->insert('participationactivities', $field);

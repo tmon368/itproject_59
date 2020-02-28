@@ -107,7 +107,6 @@
                             html += '</td>';
                             html += '</tr>';
 
-
                         }
                     });
                     $('#showdata').html(html);
@@ -118,7 +117,6 @@
 
 
         function check_activity_regis(id) {
-
             var booleen = 0;
             $.ajax({
                 type: 'ajax',
