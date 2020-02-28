@@ -20,17 +20,15 @@
 
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("#") ?>">กิจกรรมบำเพ็ญประโยชน์</a>
-                    </li>
+        
                     <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("VolunteerAc_Dormitoryadvisor") ?>">เสนอกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("#") ?>">รับรองกิจกรรมบำเพ็ญประโยชน์</a>
+                        <a class="nav-link" href="<?php echo site_url("Participants_advisor") ?>">รับรองกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
                     <li class="submenu">
-                        <a class="nav-link" href="<?php echo site_url("#") ?>">อนุมัติกิจกรรมบำเพ็ญประโยชน์</a>
+                        <a class="nav-link" href="<?php echo site_url("Activityoff_advisor") ?>">อนุมัติกิจกรรมบำเพ็ญประโยชน์</a>
                     </li>
 
                 </ul>
