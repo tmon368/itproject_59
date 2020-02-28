@@ -7,7 +7,7 @@ class VolunteerMyActivity extends Student_dashboard
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Notifyoffense_model', 'Notifyoffense_model');
+		$this->load->model('VolunteerMyActivity_model', 'VolunteerMyActivity_model');
 	}
 
 
@@ -30,4 +30,9 @@ class VolunteerMyActivity extends Student_dashboard
 		$this->load->view('template/template6');
 	}
 
+
+	public function deletemyactivity(){
+		$result = $this->VolunteerMyActivity_model->deletemyactivity();
+		echo json_encode($result);
+    }
 }
