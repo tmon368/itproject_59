@@ -114,10 +114,6 @@
         });
 
         
-
-
-
-
         function show_all() {
 
             $.ajax({
