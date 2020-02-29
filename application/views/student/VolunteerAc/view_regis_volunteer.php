@@ -67,7 +67,6 @@
 
 
         function show_all() {
-
             html = '';
             $.ajax({
                 type: 'POST',
@@ -77,7 +76,13 @@
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
-                        if (value.number_of < value.received) {
+
+                        console.log (value.number_of +'<'+ value.received)
+
+                        var get_now_person = parseInt(value.number_of);
+                        var person_group = parseInt(value.received);
+                        
+                        if (get_now_person < person_group) {
                             var temp_1 = value.start_time;
                             var temp_2 = value.end_time;
                             var show_start_time = temp_1.substring(0, 5);
@@ -106,10 +111,11 @@
                             html += '</div>';
                             html += '</td>';
                             html += '</tr>';
-
+                            $('#showdata').html(html);
                         }
+
                     });
-                    $('#showdata').html(html);
+                    
                 }
             });
         }
