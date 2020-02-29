@@ -109,16 +109,21 @@ class VolunteerAc_model extends CI_Model {
         $query = $this->db->get();
         $data = array();
         $data = $query->result_array();
+        // var_dump($data);
+        // die();
         
+        if($data == null || $data ==""){
+            $status =0;
+        }else{
         if($data[0]['usertype_ID'] == 1){
             $status =2;
         }
         else {
             $status =1;
         }
-        if($data == null){
-            $status =0;
-        }
+    }
+  
+       
         // $usergroup =$this->session->userdata('student') == null ? "":$this->session->userdata('student');
         // if($usergroup == ""){
         // $usergroup =$this->session->userdata('admin') == null ? "":$this->session->userdata('admin');
