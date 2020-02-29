@@ -78,7 +78,7 @@ class headofstudent_affairs_dashboard_model extends CI_Model {
     //$this->db->order_by('oc.oc_ID ASC');
 
        
-       $this->db->select('d.dept_ID, d.dept_name as label,COUNT(ostd.S_ID) as y ,oc.oc_ID ,oc.oc_desc');   
+       $this->db->select('oc.oc_desc,d.dept_ID, d.dept_name as label,COUNT(ostd.S_ID) as y ,oc.oc_ID ,oc.oc_desc');   
        $this->db->from('offensestd ostd');
        $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
        $this->db->join('offense o','oh.off_ID=o.off_ID'); 
@@ -134,7 +134,7 @@ class headofstudent_affairs_dashboard_model extends CI_Model {
        //  $this->db->where('oc.oc_ID',$oc_ID);
         // $this->db->order_by('oc.oc_ID ASC');
 
-        $this->db->select('c.cur_ID, c.cur_name as label,c.dept_ID, COUNT(ostd.S_ID) as y');   
+        $this->db->select('oc.oc_desc,d.dept_name,c.cur_ID, c.cur_name as label,c.dept_ID, COUNT(ostd.S_ID) as y');   
         $this->db->from('offensestd ostd');
         $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
         $this->db->join('offense o','oh.off_ID=o.off_ID'); 
