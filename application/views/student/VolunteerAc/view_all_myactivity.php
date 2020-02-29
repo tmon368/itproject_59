@@ -9,7 +9,7 @@
 </head>
 
 <script>
-    var data_student_register=[];
+    var data_student_register = [];
 </script>
 
 <body>
@@ -72,77 +72,161 @@
 
         function show_all() {
 
-            var html = '';
+            var htmlcode = '';
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url("Volunteer_history/showAll") ?>',
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
 
-            html += '<tr>';
-            html += '<td>1</td>';
-            html += '<td>';
-            html += '<div class="DetailActivity">';
-            html += '<span id="activity_name">กิจกรรม: ปลูกต้นไม้ช่วยลดโลกร้อน </span>';
-            html += '<span id="date_activity">วันที่จัดกิจกรรม: 2019-02-01 </span>';
-            html += '<span id="time_activity">เวลาเริ่ม 08.00 ถึง 09.00 ชั่วโมงกิกรรม 1 ชม.</span>';
-            html += '<span id="type_activity">ประเภทกิจกรรม : กิจกรรมบำเพ็ญประโยชน์</span>';
-            html += '<span id="place">อาคารวิชาการ 6</span>';
-            html += '</div>';
-            html += '</td>';
-            html += '<td id="person_control"> นายสุขใจ สมสุข</td>';
-            html += '<td><button name="btndel" id="btndel" type="button" class="btn btn-danger btn-rounded btn-fw cancleActivity" data="1">ยกเลิกกิจกรรม</button></td>';
-            html += '</tr>';
+                    var i = 0;
+                    $.each(data, function(key, value) {
+                        i++;
+                        htmlcode += '<tr>';
+                        htmlcode += '<td>' + i + '</td>';
+                        htmlcode += '<td>';
+                        htmlcode += '<div class="DetailActivity">';
+                        htmlcode += '<span id="activity_name">กิจกรรม:' + value.service_name + '</span>';
+                        htmlcode += '<span id="date_activity">วันที่จัดกิจกรรม: ' + value.service_date + ' </span>';
+                        htmlcode += '<span id="time_activity">เวลาเริ่ม 08.00 ถึง 09.00 ชั่วโมงกิกรรม 1 ชม.</span>';
+                        htmlcode += '<span id="type_activity">ประเภทกิจกรรม : กิจกรรมบำเพ็ญประโยชน์</span>';
+                        htmlcode += '<span id="place">' + value.place + '</span>';
+                        htmlcode += '</div>';
+                        htmlcode += '</td>';
+                        htmlcode += '<td id="person_control"> ' + value.person_fname + " " + value.person_lname + '</td>';
+                        htmlcode += '<td><button name="btndel" id="btndel" type="button" class="btn btn-danger btn-rounded btn-fw cancleActivity" data="' + value.par_ID + '">ยกเลิกกิจกรรม</button></td>';
+                        htmlcode += '</tr>';
 
-            data_student_register.push({
-                service_ID:"1",
-                date:"2019-02-01"
+                        data_student_register.push({
+                            service_ID: value.service_ID,
+                            service_name: value.service_name,
+                            person_ID: value.person_ID,
+                            proposer: value.person_ID,
+                            place: value.place,
+                            service_date: value.service_date,
+                            start_time: value.start_time,
+                            end_time: value.end_time,
+                            received: value.received,
+                            number_of: value.number_of,
+                            status: value.status,
+                            results: value.results,
+                            annotation: value.annotation,
+                            explanation: value.explanation,
+                            activity_type1: value.activity_type1,
+                            prefixID: value.prefixID,
+                            person_fname: value.person_fname,
+                            person_lname: value.person_lname,
+                            position: value.position,
+                            sex: value.sex,
+                            email: value.email,
+                            phone1: value.phone1,
+                            phone2: value.phone2,
+                            dept_ID: value.dept_ID,
+                            cur_ID: value.cur_ID,
+                            usertype_ID: value.usertype_ID,
+                            username: value.username,
+                            password: value.password,
+                            flag: value.flag,
+                            par_ID: value.par_ID,
+                            S_ID: value.S_ID,
+                            confirm_name: value.confirm_name,
+                            certificat_date: value.certificat_date,
+                            activity_time: value.activity_time,
+                            document_file: value.document_file,
+                            activity_type2: value.activity_type2,
+                            statusname: value.statusname,
+                        });
+                        $('#showdata').html(htmlcode);
+                    });
+
+                }
             });
-
-            $('#showdata').html(html);
-            // $.ajax({
-            //     type: 'POST',
-            //     url: '<?php echo site_url("Volunteer_regis/showAll") ?>',
-            //     async: false,
-            //     dataType: 'json',
-            //     success: function(data) {
-            //         console.log(data);
-
-            //     }
-            // });
         }
+
+        function calculate_dif_date(date) {
+
+            var dateservice = date;
+
+            var date = new Date();
+            var date1 = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+            var date2 = dateservice;
+
+            // First we split the values to arrays date1[0] is the year, [1] the month and [2] the day
+            date1 = date1.split('-');
+            date2 = date2.split('-');
+
+            // Now we convert the array to a Date object, which has several helpful methods
+            date1 = new Date(date1[0], date1[1], date1[2]);
+            date2 = new Date(date2[0], date2[1], date2[2]);
+
+            // We use the getTime() method and get the unixtime (in milliseconds, but we want seconds, therefore we divide it through 1000)
+            date1_unixtime = parseInt(date1.getTime() / 1000);
+            date2_unixtime = parseInt(date2.getTime() / 1000);
+
+            // This is the calculated difference in seconds
+            var timeDifference = date2_unixtime - date1_unixtime;
+
+            // in Hours
+            var timeDifferenceInHours = timeDifference / 60 / 60;
+
+            // and finaly, in days :)
+            var timeDifferenceInDays = timeDifferenceInHours / 24;
+
+            return (timeDifferenceInDays);
+        }
+
+
+        function cancle_activity(id) {
+            var par_id = id;
+            data={
+                par_ID:par_id
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url("VolunteerMyActivity/deletemyactivity") ?>',
+                async: false,
+                data:data,
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    if (data == true){
+                        alert ('ยกเลิกกิจกรรมเรียบร้อย !');
+                        show_all();
+                    }else{
+                        alert ('ไม่สามารถยกเลิกกิจกรรมดังกล่าวได้ในขณะนี้');
+                    }
+                }
+            });
+        }
+
 
         $('#showdata').on('click', '.cancleActivity', function() {
 
-            var serviceid = $(this).attr('data');
-            console.log (serviceid);
-            console.log (data_student_register);
+            var par_id = $(this).attr('data');
 
+            if (confirm('ต้องการยกเลิกกิจกรรมลงทะเบียน')) {
 
-            $.each(data_student_register, function(key, value) {
+                $.each(data_student_register, function(key, value) {
 
-                
-
-            });
-
-
-            // if (confirm('ต้องการยกเลิกกิจกรรมลงทะเบียน')) {
-
-                // if (){
-
-                // }else{
-
-                // }
-
-
-
-
-            //     $.ajax({
-            //         type: 'POST',
-            //         url: '<?php echo site_url("Volunteer_history/cancelActivity") ?>',
-            //         async: false, //ห้ามลืม
-            //         dataType: 'json',
-            //         success: function(data) {
-            //             //stament
-            //         }
-            //     });
-
-            // }
+                    if (value.par_ID == par_id) {
+                        var dayleft = calculate_dif_date(value.service_date);
+                        alert (dayleft);
+                        if (dayleft <= 3) {
+                            alert('ไม่สามารถทำการยกเลิกกิจกรรมดังกล่าวได้ กรุณาติดต่อหน่วยงานวินัยนักศึกษา โทร.075-673-392');
+                        } else if (dayleft > 3) {
+                            //stament 
+                            cancle_activity(par_id);
+                        } else {
+                            //stament
+                        }
+                    }
+                });
+            } else {
+                //stament
+            }
 
         });
     </script>
