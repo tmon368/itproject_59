@@ -21,7 +21,7 @@ class VolunteerAc_affairs extends Headofstudent_affairs_dashboard
     public function template(){
         $this->load->view('template/template1');
         $this->load->view('template/template2');
-        $this->load->view('menu/training/menu_training');//ส่วนเมนู
+        $this->load->view('menu/affairs/menu_affairs');//ส่วนเมนู
         $this->load->view('template/template4');
         $this->load->view('student/VolunteerAc/view_VolunteerAc');//ส่วนเนื้อหา
         $this->load->view('template/template5');

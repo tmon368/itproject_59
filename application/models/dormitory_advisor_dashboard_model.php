@@ -11,7 +11,7 @@ class dormitory_advisor_dashboard_model extends CI_Model {
         $dorm=$this->session->userdata('username');
         //  $dorm=5060156;
         $this->db->distinct();
-        $this->db->select('oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as y');   
+        $this->db->select('dm.dname,oc.oc_ID,oc.oc_desc as label,count(ostd.S_ID) as y');   
         $this->db->from('personnel p');
         $this->db->join('dormitory dm','p.person_ID=dm.person_ID');
         $this->db->join('student s','dm.dorm_ID=s.dorm_ID');  

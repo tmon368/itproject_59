@@ -58,8 +58,10 @@ class Discipline_officer_dashboard_model extends CI_Model {
     
     
     public function getDashboardAll(){
-        $oc_ID = $_GET['oc_ID'];
-        //$oc_ID = 8;
+        $oc_ID = $this->input->get('oc_ID');
+
+        // $oc_ID = $_GET['oc_ID'];
+        // $oc_ID = 8;
        
        //$query= $this->db->query("SELECT divisions.dept_ID, dept_name as label,COUNT(offensestd.S_ID) as y ,offensecate.oc_ID ,offensecate.oc_desc FROM `divisions` ,`offensestd` ,`offensehead`, `offense`,`offensecate`,`student`,`curriculum` WHERE offensecate.oc_ID='+$oc_ID+' and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and offensestd.S_ID=student.S_ID and student.cur_ID=curriculum.cur_ID and curriculum.dept_ID=divisions.dept_ID  GROUP BY divisions.dept_ID");
 
@@ -78,7 +80,7 @@ class Discipline_officer_dashboard_model extends CI_Model {
     //$this->db->order_by('oc.oc_ID ASC');
 
        
-       $this->db->select('d.dept_ID, d.dept_name as label,COUNT(ostd.S_ID) as y ,oc.oc_ID ,oc.oc_desc');   
+       $this->db->select('oc.oc_ID ,oc.oc_desc,d.dept_ID, d.dept_name as label,COUNT(ostd.S_ID) as y ');   
        $this->db->from('offensestd ostd');
        $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
        $this->db->join('offense o','oh.off_ID=o.off_ID'); 
@@ -88,7 +90,7 @@ class Discipline_officer_dashboard_model extends CI_Model {
         $this->db->join('divisions d','c.dept_ID=d.dept_ID');    
        $this->db->group_by('d.dept_ID');
        $this->db->where('oc.oc_ID',$oc_ID);
-       $this->db->order_by('oc.oc_ID ASC');
+    //    $this->db->order_by('oc.oc_ID ASC');
 
         $query = $this->db->get();
        $data = array();
@@ -106,8 +108,10 @@ class Discipline_officer_dashboard_model extends CI_Model {
     
    
     public function getGraphDataSchool(){
-         $oc_ID = $_GET['oc_ID'];
-         $dept_ID =$_GET['dept_ID'];
+        $oc_ID = $this->input->get('oc_ID');
+        $dept_ID = $this->input->get('dept_ID');
+
+        //  $dept_ID =$_GET['dept_ID'];
     //     $oc_ID = 8;
     //    $dept_ID = 22;
         // $field = array
@@ -133,8 +137,7 @@ class Discipline_officer_dashboard_model extends CI_Model {
         //  $this->db->where('d.dept_ID',$dept_ID);
         //  $this->db->where('oc.oc_ID',$oc_ID);
          // $this->db->order_by('oc.oc_ID ASC');
-
-         $this->db->select('c.cur_ID, c.cur_name as label,c.dept_ID, COUNT(ostd.S_ID) as y');   
+         $this->db->select('oc.oc_desc,d.dept_name,c.cur_ID, c.cur_name as label,c.dept_ID, COUNT(ostd.S_ID) as y');   
          $this->db->from('offensestd ostd');
          $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
          $this->db->join('offense o','oh.off_ID=o.off_ID'); 
@@ -712,41 +715,66 @@ foreach($showall as $value){
     function selectActivity(){
        
     $discipline_officer = $this->session->userdata('discipline_officer');
-    
-        //$discipline_officer = "jsomsri";
-        //echo $discipline_officer;
-        //die();
-        $status =1;
-        $i=0;
+    $status =1;
+    $i=0;
 
 
-        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type,std.std_fname,std.std_lname,std.sex,std.email,std.phone,std.behavior_score,ut.usertype_name,s.explanation,p.person_fname,p.person_lname,p.position');
-        $this->db->from('service s');
-        $this->db->join('student std', 's.proposer=std.S_ID');
-        $this->db->join('personnel p', 's.person_ID=p.person_ID');
-        $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
-        //$this->db->where('p.username', $discipline_officer);
-        $this->db->where('s.status',$status);
-        $query = $this->db->get();
-        $showall = array();
-        $showall = $query->result_array();
-        foreach($showall as $row){
-            $statusname = $this->statusservice($row['status']);
-            $showall[$i]['statusname'] = $statusname;
-            $activity_type =$this->acticity_type($row['activity_type']);
-            $showall[$i]['activity_type_name'] = $activity_type;
-            $i+=1;
-        }
-    //    var_dump($showall);
+    $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position');
+    $this->db->from('service s');
+    $this->db->join('personnel p', 's.person_ID=p.person_ID');
+    $this->db->where('s.status',$status);
+    $query = $this->db->get();
+    $showall = array();
+    $showall = $query->result_array();
+    foreach($showall as $row){
+       $proposer= $this->selectproposer($row['proposer']);
+    //    var_dump($proposer);
     //    die();
-      
-       if($query->num_rows() > 0){
-           return $showall;
-       }else{
-           return false;
-       }
+       $showall[$i]['proposer_fname'] =  $proposer[0]['proposer_fname'];
+       $showall[$i]['proposer_lname'] =  $proposer[0]['proposer_lname'];
+       $showall[$i]['usertype_name'] =  $proposer[0]['usertype_name'];
+        $statusname = $this->statusservice($row['status']);
+        $showall[$i]['statusname'] = $statusname;
+        $activity_type =$this->acticity_type($row['activity_type1']);
+        $showall[$i]['activity_type_name'] = $activity_type;
+        $i+=1;
+    }
+    // var_dump($showall);
+    // die();
+  
+   if($query->num_rows() > 0){
+       return $showall;
+   }else{
+       return false;
+   }
 
     }
+    function selectproposer($usergroup){
+        // $usergroup = "jsomsri";
+         $this->db->select('std.std_fname as proposer_fname,std.std_lname as proposer_lname,ut.usertype_name as usertype_name');
+         $this->db->from('student std');
+         $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
+         $this->db->where('std.username', $usergroup);
+         $query = $this->db->get();
+         $showall = array();
+         $showall = $query->result_array();
+        
+ 
+         if($showall == null){
+         $this->db->select('p.person_fname as proposer_fname,p.person_lname as proposer_lname,ut.usertype_name as usertype_name');
+         $this->db->from('personnel p');
+         $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+         $this->db->where('p.username', $usergroup);
+         $queryper = $this->db->get();
+         $showall = array();
+         $showall = $queryper->result_array();
+         }
+ 
+         return $showall;
+         // var_dump($showall);
+         // die();
+ 
+     }
     function acticity_type($a_type){
         $status = ['บำเพ็ญประโยชน์','อบรม',''];
          return $status[$a_type];

@@ -23,7 +23,7 @@ class Headofstudent_affairs_dashboard extends CI_Controller {
 	    //List ข้อมูลมาแสดงในหน้าจอ
 	    $this->load->view('template/template1');
 	    $this->load->view('template/template2');
-		$this->load->view('menu/training/menu_training'); //ส่วนเมนู
+		$this->load->view('menu/affairs/menu_affairs'); //ส่วนเมนู
 		$this->load->view('template/template4');
 		$this->load->view('headofstudent_affairs/firstpage/firstpage');
 	    $this->load->view('template/template5');
