@@ -10,6 +10,8 @@ class Participants_discipline extends Discipline_officer_dashboard
 		$this->load->model('teacher_dashboard_model', 'teacher_dashboard_model');
 		$this->load->model('Service_Feedback_model', 'Service_Feedback_model');
 		$this->load->model('SettimeSession', 'SettimeSession');
+		$this->load->model('Discipline_officer_dashboard_model', 'Discipline_officer_dashboard_model');
+
 	}
 
 
@@ -110,6 +112,11 @@ class Participants_discipline extends Discipline_officer_dashboard
   
   function Updatestatusparticipationactivities(){
 		$result = $this->Service_Feedback_model->Updatestatusparticipationactivities();
+	    echo json_encode($result);
+
+	}
+	function selectActivity(){
+		$result = $this->Discipline_officer_dashboard_model->selectActivity();
 	    echo json_encode($result);
 
 	}
