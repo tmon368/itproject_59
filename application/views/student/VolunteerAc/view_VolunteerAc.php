@@ -29,6 +29,7 @@
         }
 
         .select2-container--default .select2-selection--single {
+            width: 16rem;
             background-color: #fff;
             border: 1px solid #3e3d3d;
             border-radius: 4px;
@@ -146,7 +147,7 @@
 
                                         <label for="place" class="lable">สถานที่จัดกิจกรรม: <span class="fixdata">*</span></label>
                                         <textarea class="form-control" name="place" id="place" cols="30" rows="10" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
-                                        <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
+                                        <label style"" for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
 
                                         <div class="margin-top:0.5rem;">
                                             <select class="selectplace input" name="person_ID" id="add_persennel" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
