@@ -38,12 +38,13 @@ class Discipline_officer_dashboard extends CI_Controller {
 	public function getDashboardAll(){
 
 	$result = $this->Discipline_officer_dashboard_model->getDashboardAll();
-	echo json_encode($result);
+	echo json_encode($result,JSON_NUMERIC_CHECK);
+
         
     }
 	public function getGraphDataSchool(){
 		$result = $this->Discipline_officer_dashboard_model->getGraphDataSchool();
-		echo json_encode($result);
+		echo json_encode($result,JSON_NUMERIC_CHECK);
         
 	}
 	function selectActivity(){
