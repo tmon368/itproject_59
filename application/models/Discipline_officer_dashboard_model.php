@@ -58,8 +58,10 @@ class Discipline_officer_dashboard_model extends CI_Model {
     
     
     public function getDashboardAll(){
-        $oc_ID = $_GET['oc_ID'];
-        //$oc_ID = 8;
+        $oc_ID = $this->input->get('oc_ID');
+
+        // $oc_ID = $_GET['oc_ID'];
+        // $oc_ID = 8;
        
        //$query= $this->db->query("SELECT divisions.dept_ID, dept_name as label,COUNT(offensestd.S_ID) as y ,offensecate.oc_ID ,offensecate.oc_desc FROM `divisions` ,`offensestd` ,`offensehead`, `offense`,`offensecate`,`student`,`curriculum` WHERE offensecate.oc_ID='+$oc_ID+' and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and offensestd.S_ID=student.S_ID and student.cur_ID=curriculum.cur_ID and curriculum.dept_ID=divisions.dept_ID  GROUP BY divisions.dept_ID");
 
@@ -78,7 +80,7 @@ class Discipline_officer_dashboard_model extends CI_Model {
     //$this->db->order_by('oc.oc_ID ASC');
 
        
-       $this->db->select('d.dept_ID, d.dept_name as label,COUNT(ostd.S_ID) as y ,oc.oc_ID ,oc.oc_desc');   
+       $this->db->select('oc.oc_ID ,oc.oc_desc,d.dept_ID, d.dept_name as label,COUNT(ostd.S_ID) as y ');   
        $this->db->from('offensestd ostd');
        $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
        $this->db->join('offense o','oh.off_ID=o.off_ID'); 
@@ -88,7 +90,7 @@ class Discipline_officer_dashboard_model extends CI_Model {
         $this->db->join('divisions d','c.dept_ID=d.dept_ID');    
        $this->db->group_by('d.dept_ID');
        $this->db->where('oc.oc_ID',$oc_ID);
-       $this->db->order_by('oc.oc_ID ASC');
+    //    $this->db->order_by('oc.oc_ID ASC');
 
         $query = $this->db->get();
        $data = array();
@@ -106,8 +108,10 @@ class Discipline_officer_dashboard_model extends CI_Model {
     
    
     public function getGraphDataSchool(){
-         $oc_ID = $_GET['oc_ID'];
-         $dept_ID =$_GET['dept_ID'];
+        $oc_ID = $this->input->get('oc_ID');
+        $dept_ID = $this->input->get('dept_ID');
+
+        //  $dept_ID =$_GET['dept_ID'];
     //     $oc_ID = 8;
     //    $dept_ID = 22;
         // $field = array
