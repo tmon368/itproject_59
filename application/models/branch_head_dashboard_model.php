@@ -12,18 +12,35 @@ class branch_head_dashboard_model extends CI_Model {
          $branchhead=$this->session->userdata('username');
          // $branchhead = 7054545;
 
-         $query= $this->db->query("SELECT offensecate.oc_ID,offensecate.oc_desc as label,COUNT(offensestd.S_ID) as y 
-         FROM `offensecate`, `offensestd` , `offensehead` , `offense` , `student` , `curriculum` , `personnel` , `divisions` 
-         WHERE personnel.username='".$branchhead."' and personnel.dept_ID=divisions.dept_ID and offensestd.oh_ID=offensehead.oh_ID 
-         and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and student.cur_ID=curriculum.cur_ID and
-          curriculum.dept_ID = divisions.dept_ID and offensestd.S_ID=student.S_ID GROUP BY offensecate.oc_ID");
+        //  $query= $this->db->query("SELECT offensecate.oc_ID,offensecate.oc_desc as label,COUNT(offensestd.S_ID) as y 
+        //  FROM `offensecate`, `offensestd` , `offensehead` , `offense` , `student` , `curriculum` , `personnel` , `divisions` 
+        //  WHERE personnel.username='".$branchhead."' and personnel.dept_ID=divisions.dept_ID and offensestd.oh_ID=offensehead.oh_ID 
+        //  and offensehead.off_ID=offense.off_ID and offense.oc_ID=offensecate.oc_ID and student.cur_ID=curriculum.cur_ID and
+        //   curriculum.dept_ID = divisions.dept_ID and offensestd.S_ID=student.S_ID GROUP BY offensecate.oc_ID");
       
+      $this->db->select('c.cur_name,oc.oc_ID,oc.oc_desc as label,COUNT(ostd.S_ID) as y');
+      // $this->db->select('oc.oc_ID ,oc.oc_desc as label,COUNT(ostd.S_ID) as y ');   
+      $this->db->from('offensestd ostd');
+        $this->db->join('offensehead o','ostd.oh_ID=o.oh_ID');
+        $this->db->join('offense of','o.off_ID=of.off_ID');
+        $this->db->join('offensecate oc','of.oc_ID=oc.oc_ID');
+        $this->db->join('student s','ostd.S_ID=s.S_ID');
+        $this->db->join('curriculum c','s.cur_ID=c.cur_ID');
+        $this->db->join('personnel p','c.cur_ID=p.cur_ID');
+        $this->db->join('divisions d','p.dept_ID=d.dept_ID');
 
+        $this->db->group_by('oc.oc_ID');
+      //   $this->db->where('p.cur_ID=p.cur_ID');
+        $this->db->where('p.username',$branchhead);
+           
+          
          
         
        
         // var_dump($branchhead);
         // die;
+        $query = $this->db->get();
+
         $data = array();
         $data = $query->result_array();
         //  var_dump($data);
