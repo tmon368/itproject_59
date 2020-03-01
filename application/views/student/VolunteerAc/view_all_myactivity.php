@@ -10,7 +10,6 @@
 
 <script>
     var data_student_register = [];
-    var par_id = '';
 </script>
 
 <body>
@@ -93,7 +92,7 @@
                         htmlcode += '<span id="date_activity">วันที่จัดกิจกรรม: ' + value.service_date + ' </span>';
                         htmlcode += '<span id="time_activity">เวลาเริ่ม 08.00 ถึง 09.00 ชั่วโมงกิกรรม 1 ชม.</span>';
                         htmlcode += '<span id="type_activity">ประเภทกิจกรรม : กิจกรรมบำเพ็ญประโยชน์</span>';
-                        htmlcode += '<span id="place">' + value.place + '</span>';
+                        htmlcode += '<span id="place">สถานที่ :' + value.place + '</span>';
                         htmlcode += '</div>';
                         htmlcode += '</td>';
                         htmlcode += '<td id="person_control"> ' + value.person_fname + " " + value.person_lname + '</td>';
