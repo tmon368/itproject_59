@@ -120,8 +120,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="" class="label">ผลการพิจรณา: </label><span id="reason" class="title"></span>
-                                <label class="radio-inline title2"><input type="radio" name="status" class="AcceptActivity" value="0" checked>รับรอง</label>
-                                <label class="radio-inline title2"><input type="radio" name="status" class="UnAcceptActivity" value="1">ไม่รับรอง</label>
+                                <label class="radio-inline title2"><input type="radio" name="status" class="AcceptActivity" value="0" checked>เห็นชอบตามอุทธรณ์ความผิด</label>
+                                <label class="radio-inline title2"><input type="radio" name="status" class="UnAcceptActivity" value="1">ยืนยันตามความผิดเดิม</label>
                             </div>
                         </div>
                         <div class="row">
@@ -168,9 +168,7 @@
                     console.log(data);
                     var htmlcode = '';
                     var i = 0;
-
                     $.each(data, function(key, value) {
-                        
                         i++;
                         htmlcode += '<tr>';
                         htmlcode += '<td>' + i + '</td>';
@@ -186,7 +184,6 @@
                         var img=[];
 
                         $.each(temp_img, function(key, value) {
-                            //console.log(value.evidenre_name);
                             img.push(value.evidenre_name)
                         });
                         
@@ -226,8 +223,11 @@
                     $('#showdata').html(htmlcode);
                 }
             });
+        }
 
-            $('#showdata').on('click', '#checkstudent', function() {
+        
+
+        $('#showdata').on('click', '#checkstudent', function() {
                 $('#Aceeptdatastudent').modal('show');
                 $('#formaccept')[0].reset();
                 var proofid = $(this).attr('data');
@@ -266,7 +266,6 @@
                 });
 
             });
-        }
 
         $("#formaccept").on("submit", function(e) {
             e.preventDefault();
