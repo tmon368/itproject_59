@@ -12,7 +12,7 @@
             </a>
 
             <a href="<?php echo site_url("Notifyoffense_discipline") ?>">
-                <li class="">แจ้งเหตุกระทำความผิด</li>
+                <li class="menu-icon mdi mdi-alert-circle">แจ้งเหตุกระทำความผิด</li>
             </a>
             
             <a href="<?php echo site_url("Proofargumentfor_discipline_officer") ?>">

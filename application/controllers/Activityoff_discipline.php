@@ -28,10 +28,7 @@ class Activityoff_discipline extends Discipline_officer_dashboard
 		$this->load->view('template/template2');
 		$this->load->view('menu/Discipline_officer/menu_Discipline_officer');
 		$this->load->view('template/template4');
-		//$this->load->view('teacher/firstpage');
-		//$this->load->view('teacher/VolunteerAc/ShowActivityVolunteer');
-		//$this->load->view('teacher/VolunteerAc/test');
-		$this->load->view('teacher/VolunteerAc/AcceptActivityOffVolunteer');
+		$this->load->view('discipline_officer/Volunteer_and_train/AcceptActivityOffVolunteer');
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 	}
