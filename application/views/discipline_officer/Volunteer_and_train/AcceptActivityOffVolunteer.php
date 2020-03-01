@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="ResonNotAccept">
                                         <span class="title">หมายเหตุ: </span>
-                                        <textarea class="form-control" name="explanation" id="reson_not_accept" cols="30" rows="10" placeholder="เหตุผลที่ไม่อนุมัติกิจกรรม"></textarea>
+                                        <textarea class="form-control" name="annotation" id="reson_not_accept" cols="30" rows="10" placeholder="เหตุผลที่ไม่อนุมัติกิจกรรม"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -131,7 +131,6 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function() {
-        console.log('Ready Webpage');
         show_all();
     });
 
@@ -141,61 +140,62 @@
         i = 0;
         $.ajax({
             type: 'POST',
-            url: '<?php echo site_url("Activityoff_discipline/selectservice") ?>',
+            url: '<?php echo site_url("Activityoff_discipline/selectActivity") ?>',
             dataType: 'json',
             async: false,
             success: function(data) {
                 console.log(data);
-            //     $.each(data, function(key, value) {
+                $.each(data, function(key, value) {
 
-            //         var spendtimes_temp = convert_time_(value.start_time, value.end_time);
-            //         var spendtimes = spendtimes_temp.substring(0, 5);
+                    var spendtimes_temp = convert_time_(value.start_time, value.end_time);
+                    var spendtimes = spendtimes_temp.substring(0, 5);
 
-            //         if (spendtimes.substring(0, 2) == "00") {
-            //             //console.log ('xxxx');
-            //             var string_times = 'นาที';
-            //         } else {
-            //             var string_times = 'ชั่วโมง';
-            //         }
-            //         var temp_1 = value.start_time;
-            //         var temp_2 = value.end_time;
-            //         var show_start_time = temp_1.substring(0, 5);
-            //         var show_end_times = temp_2.substring(0, 5);
+                    if (spendtimes.substring(0, 2) == "00") {
+                        //console.log ('xxxx');
+                        var string_times = 'นาที';
+                    } else {
+                        var string_times = 'ชั่วโมง';
+                    }
+                    var temp_1 = value.start_time;
+                    var temp_2 = value.end_time;
+                    var show_start_time = temp_1.substring(0, 5);
+                    var show_end_times = temp_2.substring(0, 5);
 
-            //         i++;
-            //         html += '<tr>';
-            //         html += '<td>' + i + '</td>';
-            //         html += '<td>';
-            //         html += '<div class="DetailActivity">';
-            //         html += '<span id="activity_name">กิจกรรม: ' + value.service_name + '</span>';
-            //         html += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
-            //         html += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + spendtimes + " " + string_times + '</span>';
-            //         html += '<span id="place">สถานที่: ' + value.place + '</span>';
-            //         html += '</div>';
-            //         html += '</td>';
-            //         html += '<td id="person_control"> ' + value.proposer_fname + " " + value.proposer_lname + ' </td>';
-            //         html += '<td id="btn_accept_td"> <span class="accept_activity" data="' + value.service_ID + '">อนุมัติกิจกรรม</span> </td>';
-            //         html += '</tr>';
+                    i++;
+                    html += '<tr>';
+                    html += '<td>' + i + '</td>';
+                    html += '<td>';
+                    html += '<div class="DetailActivity">';
+                    html += '<span id="activity_name">กิจกรรม: ' + value.service_name + '</span>';
+                    html += '<span id="date_activity">วันที่จัดกิจกรรม : ' + value.service_date + '</span>';
+                    html += '<span id="time_activity">เวลาเริ่ม ' + show_start_time + ' ถึง ' + show_end_times + ' ชั่วโมงกิกรรม ' + spendtimes + " " + string_times + '</span>';
+                    html += '<span id="place">สถานที่: ' + value.place + '</span>';
+                    html += '</div>';
+                    html += '</td>';
+                    html += '<td id="person_control"> ' + value.proposer_fname + " " + value.proposer_lname + ' </td>';
+                    //html += '<td id="btn_accept_td"> <span class="accept_activity" data="' + value.service_ID + '">อนุมัติกิจกรรม</span> </td>';
+                    html += '<td id="btn_accept_td"><button class="btn btn-success btn-rounded btn-fw accept" data="' + value.service_ID + '">อนุมัติกิจกรรม</button></td>';
+                    html += '</tr>';
 
 
-            //         dataservices.push({
-            //             service_id: value.service_ID,
-            //             service_name: value.service_name,
-            //             date: value.service_date,
-            //             place: value.place,
-            //             getperson: value.received,
-            //             detailactivity: 'xxxx',
-            //             personoff: value.std_fname + " " + value.std_lname,
-            //             acceptperson: 'นายสุขใจ สมสุข หมายเลขโทรศัพท์ 085-4396778',
-            //             position: 'A',
-            //             start_time: show_start_time,
-            //             end_time: show_end_times,
-            //             spendtimes: spendtimes,
-            //             unittimes: string_times
-            //         });
+                    dataservices.push({
+                        service_id: value.service_ID,
+                        service_name: value.service_name,
+                        date: value.service_date,
+                        place: value.place,
+                        getperson: value.received,
+                        detailactivity: 'xxxx',
+                        personoff: value.std_fname + " " + value.std_lname,
+                        acceptperson: 'นายสุขใจ สมสุข หมายเลขโทรศัพท์ 085-4396778',
+                        position: 'A',
+                        start_time: show_start_time,
+                        end_time: show_end_times,
+                        spendtimes: spendtimes,
+                        unittimes: string_times
+                    });
 
-            //         $('#showdata').html(html);
-            //     });
+                    $('#showdata').html(html);
+                });
              }
         });
     }
@@ -225,7 +225,7 @@
 
 
 
-    $('#showdata').on('click', '.accept_activity', function() {
+    $('#showdata').on('click', '.accept', function() {
         $('#accept_activity_modal').modal('show');
         var serviceid = $(this).attr('data');
 
@@ -245,21 +245,23 @@
     });
 
     $('#btnSave').click(function() {
-        console.log(555);
         var data = $('#form-accept').serialize();
-        console.log(data);
         $.ajax({
             type: 'GET',
-            url: '<?php echo site_url("Teacher_dashboard/Updateactivityforperson") ?>',
+            url: '<?php echo site_url("Activityoff_discipline/Updateactivityfordiscipline_officer") ?>',
             data: data,
             dataType: 'json',
             async: false,
             success: function(data) {
                 console.log(data)
                 if (data == true) {
-                    alert('ดำเนินการส่งกิจกรรมให้เจ้าหน้าวินัยทำการอนุมัติเรียบร้อย !');
+                    alert('ดำเนินการทำรายการเสร็จสิ้น !');
                     $('#accept_activity_modal').modal('hide');
                     location.reload();
+                }else if (data == false){
+                    alert('ไม่สามารถดำเนินรายการได้ กรุณาโปรดตรวจสอบความถูกต้องของข้อมูล !');
+                }else{
+                    //stament
                 }
             }
         });
