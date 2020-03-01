@@ -670,7 +670,7 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                             n += 1;
                         }
                     } else {
-                        for (i = 0; i < 5; i++) {
+                        for (i = 0; i < 10; i++) {
                             html += '<div class="Data">';
                             html += '<div class="Main8">';
                             html += '<br>';

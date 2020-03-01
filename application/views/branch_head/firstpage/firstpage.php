@@ -19,6 +19,50 @@
 </center>
 
 <head>
+    <style type='text/css'>
+        .my-legend .legend-title {
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 90%;
+        }
+
+        .my-legend .legend-scale ul {
+            margin: 0;
+            margin-bottom: 5px;
+            padding: 0;
+            float:center;
+            list-style: none;
+        }
+
+        .my-legend .legend-scale ul li {
+            font-size: 80%;
+            list-style: none;
+            margin-left: 0;
+            line-height: 18px;
+            margin-bottom: 2px;
+        }
+
+        .my-legend ul.legend-labels li span {
+            display: block;
+          
+            height: 14px;
+            width: 23px;
+            margin-right: 5px;
+            margin-left: 1px;
+            border: 1px solid #999;
+        }
+
+        .my-legend .legend-source {
+            font-size: 70%;
+            color: #999;
+            clear: both;
+        }
+
+        .my-legend a {
+            color: #777;
+        }
+    </style>
 </head>
 <br>
 
@@ -48,12 +92,16 @@
                                 <center>จำนวนนักศึกษาที่กระทำผิด </center>
                                 <br>
                                 <center><i class="fas fa-users" id="fasfa-users"></i><br>
-                                  <table> 
-                                      <tr>
-                                        <td><div id="showscorestudent" name="showscorestudent"></div><br></td>
-                                        <td></td>
-                                        <td><h3>คน</h3></td>
-                                      </tr> 
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <div id="showscorestudent" name="showscorestudent"></div><br>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <h3>คน</h3>
+                                            </td>
+                                        </tr>
                                     </table>
                                 </center>
                             </div>
@@ -69,15 +117,17 @@
                             </div>
                             <div class="card-body " id="card_1">
                                 <font size="2">
-                                    <center><h5>ค้นหาความผิดของนักศึกษารายบุคคล</h5></center>
+                                    <center>
+                                        <h5>ค้นหาความผิดของนักศึกษารายบุคคล</h5>
+                                    </center>
                                 </font><br>
                                 <center>
-                                    
-                                        <form  id="formakk" class="example" style="margin:auto;max-width:300px">                                                                                         
-                                                   <input type="text"  id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search" >
-                                                   <button type="button"  id="offense_card" ><i class="fa fa-search"></i></button>                                 
-                                        </form>
-                                   
+
+                                    <form id="formakk" class="example" style="margin:auto;max-width:300px">
+                                        <input type="text" id="studentid" placeholder="กรอกรหัสนักศึกษา" name="search">
+                                        <button type="button" id="offense_card"><i class="fa fa-search"></i></button>
+                                    </form>
+
 
 
                                 </center>
@@ -99,10 +149,10 @@
                                 </font>
                                 <br>
                                 <center>
-                           
+
                                     <div class="row">
                                         <div class="col-sm-12">
-                                        
+
 
                                             <div id="showdata">
 
@@ -121,7 +171,7 @@
 
 
 
-             </div> 
+            </div>
 
 
 
@@ -140,10 +190,10 @@
                     <div class="card shadow mb-3">
                         <div class="card-body " id="card_1">
                             <font size="4">
-                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร.......................</center>
-                            </font>
-                            <br><br>
-                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร<span id="cur_name"></span></center>
+                            </font>  
+                              <br> <br> <br>
+                        <div id="chartContainer" style="height: 300px; max-width: 1000px!important; " ></div>
                             <script type="text/javascript">
                                 window.onload = function() {
                                     $.ajax({
@@ -154,28 +204,41 @@
                                         success: function(data) {
                                             console.log(data);
 
-
-
-
-
-
-
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
+                                                width: 950,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
+                                                
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "หมวดความผิด",
+                                                    gridThickness: 0,
+                                                    tickLength: 0,
+                                                    lineThickness: 0,
+                                                    labelFormatter: function() {
+                                                        return " ";
+                                                    }
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)",
-                                                   
-                                                 },
+                                                    title: "",
+                                                    tickLength: 0,
+                                                    margin: 0,
+                                                    
+                                                },
+
                                                 data: [{
                                                     dataPoints: data,
+                                                   
                                                     indexLabel: "{y}",
-                                                indexLabelPlacement: "outside",  
-                                                indexLabelOrientation: "horizontal",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+
                                                 }]
                                             });
 
@@ -188,15 +251,53 @@
                                     });
                                 }
                             </script>
-
-
-                            <br><br><br><br>
+                            <br><br><br>
                         </div>
+                        <table align="center" width="850" >
+                                    <tr >
+                                    <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#80B1D3;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</td>
+                                    
+                                        <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#A2F671;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม</td>
+                                       
+                            </tr>  
+                
+                         
+                         <tr>
+                        <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#FB8072;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับวินัยจราจร</td>
+                                        <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#57c7d4;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับความสะอาดเรียบร้อย</td>
+                                      
+                                    </tr>
+                                </table> 
+                                <br><br>
 
                     </div>
-                    </div>
+                </div>
 
-                    <div class="col-lg-8 ">
+                <div class="col-lg-8 ">
                     <div class="card shadow mb-3">
                         <font size="4">
                             <div class="card-header" id="card_2">
@@ -206,34 +307,34 @@
                         </font><br>
                         <table align="left" border="0" hight="70" style="width:360px;">
                             <tr>
-                                <td><button type="button" class="lobo btn" id="btnAdd" >
-                           
-                           <font size="4">
-                               <center>กิจกรรมบำเพ็ญประโยชน์ </center>
-                           </font><br>
-                           <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
-                           <br><br><br>
-                           <p id="showscoreservice" name="showscoreservice">
-                               <h3>กิจกรรม</h3>
-                           </p> 
-                   </button></td>
-                                <td></td>
-                                <td><button class="lobo2 btn " id="training_card" >
-                                    <font size="4">
-                                        <center>กิจกรรมการอบรม</center>
-                                    </font><br>
-                                    <i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
-                                    <br><br><br>
-                                    <p id="showscoretraining" name="showscoretraining">
-                                        <h3>กิจกรรม</h3>
-                                    </p>   
-                        </button></td>
-                            </tr>    
-                            </table>           
-                        </div> 
-                    </div>
+                                <td><button type="button" class="lobo btn" id="btnAdd">
 
-               
+                                        <font size="4">
+                                            <center>กิจกรรมบำเพ็ญประโยชน์ </center>
+                                        </font><br>
+                                        <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
+                                        <br><br><br>
+                                        <p id="showscoreservice" name="showscoreservice">
+                                            <h3>กิจกรรม</h3>
+                                        </p>
+                                    </button></td>
+                                <td></td>
+                                <td><button class="lobo2 btn " id="training_card">
+                                        <font size="4">
+                                            <center>กิจกรรมการอบรม</center>
+                                        </font><br>
+                                        <i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
+                                        <br><br><br>
+                                        <p id="showscoretraining" name="showscoretraining">
+                                            <h3>กิจกรรม</h3>
+                                        </p>
+                                    </button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -241,46 +342,50 @@
 
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
-                                <div class="modal-content">
-                                <div class="card-header1" id="card_2" >
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×&nbsp;</span>
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+            <div class="modal-content">
+                <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
-                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;กิจกรรมบำเพ็ญประโยชน์</font></h2>
-                                    </div>
+                    <h2 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;กิจกรรมบำเพ็ญประโยชน์</font>
+                    </h2>
+                </div>
 
-                                    <div class="modal-body">
-                                        <!--ส่วนฟอร์มกิจกรรมบำเพ็ญ-->
-                                        <form action="1" id="formadd" method="post" class="needs-validation">
-                                            <div class="form-group" id="input_group_sty">
-                                                <div class="input-group">
+                <div class="modal-body">
+                    <!--ส่วนฟอร์มกิจกรรมบำเพ็ญ-->
+                    <form action="1" id="formadd" method="post" class="needs-validation">
+                        <div class="form-group" id="input_group_sty">
+                            <div class="input-group">
 
 
-                                                    <div class="ShowActivity">
+                                <div class="ShowActivity">
 
 
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
+
                             </div>
                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
             <div class="modal-content">
-            <div class="card-header1" id="card_2" >
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×&nbsp;</span>
+                <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
-                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;กิจกรรมอบรม</font></h2>
+                    <h2 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;กิจกรรมอบรม</font>
+                    </h2>
                 </div>
 
                 <div class="modal-body BodyTrain">
@@ -296,20 +401,22 @@
 
 
 
-    <div class="modal fade" id="Showoffen" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade" id="Showoffen" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
-             <div class="card-header1" id="card_2" >
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">×&nbsp;</span>
+                <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
-                <h2 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;รายละเอียดการกระทำความผิดของนักศึกษา</font></h2>
-                    
+                    <h2 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;รายละเอียดการกระทำความผิดของนักศึกษา</font>
+                    </h2>
+
                 </div>
                 <div class="modal-body offenstudent">
                     <form action="" id="formakk" method="post" class="needs-validation">
-                 
+
 
                         <div class="modal-body showoffense">
                         </div>
@@ -326,15 +433,17 @@
 
 
     <div class="modal fade" id="scoreoffen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 750px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 720px!important;" role="document">
             <div class="modal-content">
-            <div class="card-header1" id="card_2" >
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>
-                    <h4 class="m-0 text-primary" id="exampleModalLongTitle"><font size="5">&nbsp;&nbsp;รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 5 อันดับ</font></h4>
-                   
+                    <h4 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;รายละเอียดของนักศึกษาที่มีคะแนนเหลือน้อยที่สุด 5 อันดับ</font>
+                    </h4>
+
                 </div>
                 <div class="showscoredata"></div>
 
@@ -346,17 +455,40 @@
     </div>
     </div>
 
-  
-    
+
+
+
 
     <script>
         $(document).ready(function() {
             selectscorestudent();
             selectstudentall();
             selectscoreservice();
-         //   selectscoretraining();
-         
- 
+            getDashboard();
+            //   selectscoretraining();
+
+            function getDashboard() {
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/getDashboard',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        //	$("#S_ID").html(data[0].S_ID);
+                        $("#cur_name").html(data[0].cur_name);
+
+                        //$("#email1").html(data[0].email);    	
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+            }
+
+
+
+
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
@@ -392,8 +524,8 @@
                 });
             }
 
-            
-           function selectscoretraining() {
+
+            function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
                     url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoretraining',
@@ -410,7 +542,7 @@
                     }
                 });
             }
-       
+
 
             function selectstudentall() {
                 $.ajax({
@@ -426,27 +558,27 @@
 
                         if (data.length < count) {
                             for (i = 0; i < data.length; i++) {
-        //                        html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
-         //                           data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
-         //                           '&nbsp;' +
-          //                          data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-         //                       n += 1;
-html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>'  + 'คะแนนคงเหลือ' +
+                                //                        html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+                                //                           data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+                                //                           '&nbsp;' +
+                                //                          data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+                                //                       n += 1;
+                                html += '<div class="bggreen">' + '<div class="Data1"> ' + '<div class="Main6">' + n + '</div>' + '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
-                                    n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>' + '</div>' + '</div>';
+                                n += 1;
                             }
                         } else {
                             for (i = 0; i < 5; i++) {
-      //                          html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
-      //                              data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
-       //                             '&nbsp;' +
-        //                            data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
-         //                       n += 1;
-         html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' + n  +'</div>'+ '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
+                                //                          html += '<div class="bggreen">'  + n + '.' + " " + data[i].prefix_name +
+                                //                              data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + '<br>' + 'คะแนนคงเหลือ' +
+                                //                             '&nbsp;' +
+                                //                            data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>';
+                                //                       n += 1;
+                                html += '<div class="bggreen">' + '<div class="Data1"> ' + '<div class="Main6">' + n + '</div>' + '<div class="Main7">' + " " + data[i].prefix_name + data[i].std_fname + '&nbsp;' + data[i].std_lname + '<br>' + 'คะแนนคงเหลือ' +
                                     '&nbsp;' +
-                                    data[i].behavior_score + '&nbsp;' + 'คะแนน'  +'</div>'+'</div>'+'</div>';
-                                    n += 1;
+                                    data[i].behavior_score + '&nbsp;' + 'คะแนน' + '</div>' + '</div>' + '</div>';
+                                n += 1;
                             }
                         }
 
@@ -474,15 +606,15 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
 
         });
         $('#offense_card').click(function() {
-           $('#Showoffen').modal('show');
-           search();
+            $('#Showoffen').modal('show');
+            search();
 
         });
         $('#score_card').click(function() {
             $('#scoreoffen').modal('show');
             show_cll();
         });
-      
+
 
         function show_all() {
 
@@ -554,12 +686,12 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
 
 
                     });
-                   $('.BodyTrain').html(html);
-               }
+                    $('.BodyTrain').html(html);
+                }
             });
         }
 
-       
+
 
         function search() {
 
@@ -584,18 +716,18 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                     if (data == false) {
                         alert('ไม่พบข้อมูลดังกล่าว');
                     } else {
-                            
-                           // html = '<h4>รหัสนักศึกษา: ' + " " + data[0].S_ID  + " " +'ชื่อ : '+ data[0].prefix_name + data[0].std_fname + " " + data[0].std_lname +'</h4>';
-                            html = '<h4>รหัสนักศึกษา: ' + " &ensp;" + data[0].S_ID  + " &ensp;" +'ชื่อ : '+ data[0].prefix_name + data[0].std_fname + " " + data[0].std_lname 
-                             + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; " + " "  + 'คะแนนคงเหลือ : <span id="last_count_student">' + "&ensp;" + data[0].behavior_score 
-                             +'</h4>'+'<hr width=100% size=5 color="#5B2C6F">';
-                            
-                           
-                            $.each(data, function(key, value) {
+
+                        // html = '<h4>รหัสนักศึกษา: ' + " " + data[0].S_ID  + " " +'ชื่อ : '+ data[0].prefix_name + data[0].std_fname + " " + data[0].std_lname +'</h4>';
+                        html = '<h4>รหัสนักศึกษา: ' + " &ensp;" + data[0].S_ID + " &ensp;" + 'ชื่อ : ' + data[0].prefix_name + data[0].std_fname + " " + data[0].std_lname +
+                            "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; " + " " + 'คะแนนคงเหลือ : <span id="last_count_student">' + "&ensp;" + data[0].behavior_score +
+                            '</h4>' + '<hr width=100% size=5 color="#5B2C6F">';
+
+
+                        $.each(data, function(key, value) {
                             //htmlweb += '<div class="persondata">';  
                             html += '<div class="Data">';
                             html += '<div class="Main4">';
-                           // html += '<span id="title7">รหัสนักศึกษา: ' + value.S_ID + "    " + 'ชื่อ : ' + value.std_fname + " " + value.std_lname + '</span>' + '</span>';
+                            // html += '<span id="title7">รหัสนักศึกษา: ' + value.S_ID + "    " + 'ชื่อ : ' + value.std_fname + " " + value.std_lname + '</span>' + '</span>';
                             html += '<span id="title6">วันที่กระทำผิด:  ' + value.committed_date + '</span>';
                             html += '<span id="title6">ฐานความผิด: ' + value.off_desc + '</span>';
                             html += '<span id="title6">สถานะการกระทำความผิด:  ' + value.statusoffname + '</span>';
@@ -612,14 +744,14 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                             // htmlweb += '</div>';
                             // htmlweb += '</div>';
                         });
-                      
+
                         $('.showoffense').html(html);
-                    }  
-                  
-                     
+                    }
+
+
 
                 }
-             
+
             });
 
 
@@ -636,38 +768,38 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                     var html = '';
                     var n = 1;
                     var i;
-                    var count = '5';
+                    var count = '10';
 
                     if (data.length < count) {
                         for (i = 0; i < data.length; i++) {
-                        	html += '<div class="Data">';
+                            html += '<div class="Data">';
                             html += '<div class="Main8">';
                             html += '<br>';
-                            html += n ;
+                            html += n;
                             html += '</div>';
                             html += '<div class="Main1">';
                             html += '<span id="title7">รหัสนักศึกษา: ' + data[i].S_ID + '</span>';
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
                             html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
                             html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
-                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
-                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " + '<span id="title6">หมายเลขห้อง:  ' + data[i].room_number + '</span>' + '</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " + '<span id="title6">Email:  ' + data[i].email + '</span>';
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
                             html += '<div class="Main5">';
                             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                            html += '<div><span id="last_count_student">' +'&ensp;' + data[i].behavior_score + '</div>';
+                            html += '<div><span id="last_count_student">' + '&ensp;' + data[i].behavior_score + '</div>';
                             html += '</div>';
                             html += '</div>';
                             n += 1;
                         }
                     } else {
-                        for (i = 0; i < 5; i++) {
+                        for (i = 0; i < 10; i++) {
                             html += '<div class="Data">';
                             html += '<div class="Main8">';
                             html += '<br>';
-                            html += n ;
+                            html += n;
                             html += '</div>';
                             html += '<div class="Main1">';
                             html += '<div class="Main1">';
@@ -675,14 +807,14 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                             html += '<span id="title6">ชื่อ:  ' + data[i].prefix_name + " " + data[i].std_fname + " " + data[i].std_lname + '</span>';
                             html += '<span id="title6">หลักสูตร: ' + data[i].cur_name + '</span>';
                             html += '<span id="title6">อาจารย์ที่ปรึกษา:  ' + data[i].person_fname + " " + data[i].person_lname + '</span>';
-                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " +'<span id="title6">หมายเลขห้อง:  '+ data[i].room_number + '</span>'+'</span>';
-                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " +'<span id="title6">Email:  '+ data[i].email + '</span>';
+                            html += '<span id="title6">หอพัก:  ' + data[i].dname + " " + '<span id="title6">หมายเลขห้อง:  ' + data[i].room_number + '</span>' + '</span>';
+                            html += '<span id="title6">เบอร์โทร:  ' + data[i].phone + " " + '<span id="title6">Email:  ' + data[i].email + '</span>';
                             // html += '<span id="title6">ฐานความผิด: '+ value.off_desc +'</span>';
                             // html += '<span id="title6">สถานะการกระทำความผิด:  '+ value.statusoffname +'</span>';
                             html += '</div>';
                             html += '<div class="Main5">';
                             html += '<div class="CountStudent">คะแนนคงเหลือ</div>';
-                            html += '<div><span id="last_count_student">'  + '&ensp;' + data[i].behavior_score + '</div>';
+                            html += '<div><span id="last_count_student">' + '&ensp;' + data[i].behavior_score + '</div>';
                             html += '</div>';
                             html += '</div>';
                             n += 1;
@@ -697,7 +829,6 @@ html += '<div class="bggreen">'+'<div class="Data1"> ' + '<div class="Main6">' +
                 }
             });
         }
-       
     </script>
 
 </body>

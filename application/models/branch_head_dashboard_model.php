@@ -243,6 +243,7 @@ public function utilstatus($statusID){
             $this->db->join('offensehead o', 'p.place_ID=o.place_ID');
             $this->db->join('offensestd ov', 'o.oh_ID=ov.oh_ID');
             $this->db->join('Offense os', 'o.off_ID=os.off_ID');
+            $this->db->join('Offensecate ot', 'os.oc_ID=ot.oc_ID');
             // $this->db->where('informer', $student);
             $query = $this->db->get();
             $showall = array();

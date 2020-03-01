@@ -169,4 +169,12 @@
 	padding: 0.8rem 0.2rem 0.2rem 1.2rem;
 size: 500px;
 }
+.description{
+    margin-top: 50px;
+    text-align:left;
+    font-family: calibri;
+    font-size: 16px;
+    color: gray;
+}
+a:link, a:visited, a:active{color: #4F81BC;}
 
