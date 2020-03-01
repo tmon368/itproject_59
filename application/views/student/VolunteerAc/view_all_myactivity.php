@@ -10,6 +10,7 @@
 
 <script>
     var data_student_register = [];
+    var par_id = '';
 </script>
 
 <body>
@@ -179,22 +180,22 @@
 
 
         function cancle_activity(id) {
-            var par_id = id;
+            par_id = id;
+            console.log (par_id);
             data={
                 par_ID:par_id
             }
 
             $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: '<?php echo site_url("VolunteerMyActivity/deletemyactivity") ?>',
                 async: false,
                 data:data,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
                     if (data == true){
                         alert ('ยกเลิกกิจกรรมเรียบร้อย !');
-                        show_all();
+                        location.reload();
                     }else{
                         alert ('ไม่สามารถยกเลิกกิจกรรมดังกล่าวได้ในขณะนี้');
                     }
@@ -206,6 +207,7 @@
         $('#showdata').on('click', '.cancleActivity', function() {
 
             var par_id = $(this).attr('data');
+            console.log(par_id);
 
             if (confirm('ต้องการยกเลิกกิจกรรมลงทะเบียน')) {
 
@@ -213,11 +215,9 @@
 
                     if (value.par_ID == par_id) {
                         var dayleft = calculate_dif_date(value.service_date);
-                        alert (dayleft);
                         if (dayleft <= 3) {
                             alert('ไม่สามารถทำการยกเลิกกิจกรรมดังกล่าวได้ กรุณาติดต่อหน่วยงานวินัยนักศึกษา โทร.075-673-392');
                         } else if (dayleft > 3) {
-                            //stament 
                             cancle_activity(par_id);
                         } else {
                             //stament
