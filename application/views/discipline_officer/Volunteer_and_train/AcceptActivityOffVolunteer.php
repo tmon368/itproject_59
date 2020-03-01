@@ -184,11 +184,12 @@
                         date: value.service_date,
                         place: value.place,
                         getperson: value.received,
-                        detailactivity: 'xxxx',
-                        personoff: value.std_fname + " " + value.std_lname,
-                        acceptperson: 'นายสุขใจ สมสุข หมายเลขโทรศัพท์ 085-4396778',
-                        position: 'A',
+                        detailactivity: value.explanation,
+                        // personoff: value.std_fname + " " + value.std_lname,
+                        acceptperson: value.person_fname +" "+ value.person_lname,
+                        position: value.usertype_name,
                         start_time: show_start_time,
+                        proposer:value.proposer_fname + " " + value.proposer_lname,
                         end_time: show_end_times,
                         spendtimes: spendtimes,
                         unittimes: string_times
@@ -239,7 +240,7 @@
                 $('.PersonAccept').text("ผู้รับรองกิจกรรม:" + value.acceptperson);
                 $('.Place').text(value.place);
                 $('.DetailActivity_modal_1').text(value.detailactivity);
-                $('.PersonOfferActivity').text('ผู้เสนอกิจกรรม: ' + value.personoff + ' ตำแหน่ง ' + value.position + '');
+                $('.PersonOfferActivity').text('ผู้เสนอกิจกรรม: ' + value.proposer + ' ตำแหน่ง ' + value.position + '');
             }
         });
     });
