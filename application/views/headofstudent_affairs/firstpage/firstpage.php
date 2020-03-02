@@ -134,12 +134,6 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
-
-
-
-
-
-
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
@@ -177,7 +171,7 @@
 
                                     $.ajax({
                                         type: 'ajax',
-                                        url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboardAll',
+                                        url: '<?php echo base_url() ?>index.php/Discipline_officer_dashboard/getDashboardAll',
                                         data: data,
                                         method: 'get',
                                         async: false,
