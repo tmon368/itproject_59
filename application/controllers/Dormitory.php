@@ -47,41 +47,30 @@ class Dormitory extends Admin_dashboard  {
         }
         echo json_encode($result);
     }
-  
     public function adddormitory(){
-        
-        $result = $this->dormitory_model->adddormitory();
-        //$msg['success'] = false;
-        //$msg['type'] = 'add';
-        if($result){
-            $msg['success'] = true;
-            
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/dormitory/index');    
-        }
-        echo json_encode($msg);   
-    }
-     
-    public function editdormitory(){
-        
-         
-        $result = $this->dormitory_model->editdormitory();
-        echo json_encode($result);
-    }
-    
-    public function updatedormitory(){
-        $result = $this->dormitory_model->updatedormitory();
-        $msg['success'] = false;
-        $msg['type'] = 'update';
-        if($result){
-           $msg['success'] = true;
-        }else{
-            $msg['success'] = false;
-            redirect(base_url() . 'index.php/dormitory/index');
-        }
-        echo json_encode($msg);
-    }
+	    $result = $this->dormitory_model->adddormitory();
+		//$msg['success'] = false;
+		//$msg['type'] = 'add';
+		$results['success'] = $result;
+	
+		echo json_encode($results);
+	}
+	
+	public function editdormitory(){
+	    
+	    $result = $this->dormitory_model->editdormitory();
+	    echo json_encode($result);
+	}	
+	
+	public function updatedormitory(){
+	    $result = $this->dormitory_model->updatedormitory();
+		//$msg['success'] = false;
+		//$msg['type'] = 'add';
+		$results['success'] = $result;
+	
+		echo json_encode($results);
+	}
+	
     
     public function deletedormitory(){
         $result = $this->dormitory_model->deletedormitory();
