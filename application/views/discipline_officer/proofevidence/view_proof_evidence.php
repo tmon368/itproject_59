@@ -117,16 +117,17 @@
 
                     <form action="#" method="post" name="formaccept" id="formaccept" enctype="multipart/form-data">
                         <input type="hidden" name="proof_ID" id="proof_ID">
+                        <input type="hidden" name="S_ID" id="S_ID">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="" class="label">ผลการพิจรณา: </label><span id="reason" class="title"></span>
-                                <label class="radio-inline title2"><input type="radio" name="status" class="AcceptActivity" value="0" checked>เห็นชอบตามอุทธรณ์ความผิด</label>
-                                <label class="radio-inline title2"><input type="radio" name="status" class="UnAcceptActivity" value="1">ยืนยันตามความผิดเดิม</label>
+                                <label class="radio-inline title2"><input type="radio" name="status" class="AcceptActivity" value="1" checked>เห็นชอบตามอุทธรณ์ความผิด</label>
+                                <label class="radio-inline title2"><input type="radio" name="status" class="UnAcceptActivity" value="0">ยืนยันตามความผิดเดิม</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <textarea class="form-control" name="explanation" id="reson_not_accept" cols="30" rows="5" placeholder="เหตุผลที่ไม่อนุมัติการอุทธรณ์"></textarea>
+                                <textarea class="form-control" name="explanation" id="reson_not_accept" cols="30" rows="5" placeholder="ผลการพิจรณาการอุทธรณ์"></textarea>
                             </div>
                         </div>
                 </div>
@@ -247,7 +248,7 @@
                         $('#datesubmit').text(value.proof_date);
                         $('#datesubmit').text(value.proof_date);
                         $('#explan_student_reason').text(value.Explanation_Student_reason);
-
+                        $('#S_ID').val(value.S_ID);
                         var imgarray = value.fileimg;
                         console.log(imgarray[0]);
                         if (imgarray.length == 0){
