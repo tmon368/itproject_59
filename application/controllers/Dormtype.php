@@ -73,8 +73,10 @@ class Dormtype extends Admin_dashboard {
     
     //ฟังก์ชันการอัพเดตข้อมูล เมื่ออัพเดตข้อมูลเสร็จสิ้นจะแสดงข้อความ แก้ไขข้อมูลเรียบร้อย
     public function updatedormtype(){
-        $result = $this->dormtype_model->adddormtype();
+        $result = $this->dormtype_model->updatedormtype();
         $results['success'] = $result;
+        // redirect(base_url() . 'index.php/dromtype');
+
 		
 		echo json_encode($results);
 	}
