@@ -10,41 +10,42 @@ class Service_Feedback_model extends CI_Model {
 
     //select ข้อมูลที่บุคลากรแต่ละคนต้องอนุมัติ   
     function selectservice(){
-        $usergroup =$this->session->userdata('student') == null ? "":$this->session->userdata('student');
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('admin') == null ? "":$this->session->userdata('admin');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('teacher') == null ? "":$this->session->userdata('teacher');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('discipline_officer') == null ? "":$this->session->userdata('discipline_officer');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('headofstudent_affairs') == null ? "":$this->session->userdata('headofstudent_affairs');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('dormitory_supervisor') == null ? "":$this->session->userdata('dormitory_supervisor');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('dormitory_advisor') == null ? "":$this->session->userdata('dormitory_advisor');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('branch_head') == null ? "":$this->session->userdata('branch_head');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('dean') == null ? "":$this->session->userdata('dean');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('security_guard') == null ? "":$this->session->userdata('security_guard');
-    }
-    if($usergroup == ""){
-    $usergroup =$this->session->userdata('employee') == null ? "":$this->session->userdata('employee');
-    }
+        $usergroup =$this->session->userdata('username');
+    //     $usergroup =$this->session->userdata('student') == null ? "":$this->session->userdata('student');
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('admin') == null ? "":$this->session->userdata('admin');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('teacher') == null ? "":$this->session->userdata('teacher');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('discipline_officer') == null ? "":$this->session->userdata('discipline_officer');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('headofstudent_affairs') == null ? "":$this->session->userdata('headofstudent_affairs');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('dormitory_supervisor') == null ? "":$this->session->userdata('dormitory_supervisor');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('dormitory_advisor') == null ? "":$this->session->userdata('dormitory_advisor');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('branch_head') == null ? "":$this->session->userdata('branch_head');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('dean') == null ? "":$this->session->userdata('dean');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('security_guard') == null ? "":$this->session->userdata('security_guard');
+    // }
+    // if($usergroup == ""){
+    // $usergroup =$this->session->userdata('employee') == null ? "":$this->session->userdata('employee');
+    // }
         //$usergroup = "jsomsri";
         // echo $usergroup;
         //die();
-        $status =0;
+        //$status =0;
         $i=0;
 
 
@@ -55,7 +56,7 @@ class Service_Feedback_model extends CI_Model {
        // $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
         
         $this->db->where('p.username', $usergroup);
-        $this->db->where('s.status',$status);
+        //$this->db->where('s.status',$status);
         $query = $this->db->get();
         $showall = array();
         $showall = $query->result_array();
