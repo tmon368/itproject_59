@@ -87,21 +87,42 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
 
     public function Updatestatusproofargument(){
          $getstatus = $this->input->post('status');
+         $S_ID = $this->input->post('S_ID');
          $proof_ID = $this->input->post('proof_ID');
-        // $getstatus = 0;
+        //  $S_ID = "59111111";
+        // $getstatus = 2;
         //  $proof_ID =27;
 
         // 1=อนุมัติ , 2 = ไม่อนุมัติ
-         $status = $getstatus == 1? $getstatus:2;
+        $status = $getstatus == 1? $getstatus:2;
 
+        if($status != 2){
 
+        $this->db->select('std.std_fname,std.std_lname,std.behavior_score');
+        $this->db->from('student std');
+        $this->db->where('std.S_ID', $S_ID);
+        $query = $this->db->get();
+        $data = $query->result();
+        $score = $data[0]->behavior_score+5;
+
+        $fieldscore = array(
+            'behavior_score'=>$score
+            
+    );
+        $this->db->where('student.S_ID',$S_ID);
+    $this->db->update('student', $fieldscore);
+
+        }
+         
+
+   
         $field = array(
             'results'=>$status
             
     );
     $this->db->where('proofargument.proof_ID',$proof_ID);
     $this->db->update('proofargument', $field);
-
+   
 
     if($this->db->affected_rows() > 0){
         return true;
