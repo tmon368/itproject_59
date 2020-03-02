@@ -9,8 +9,11 @@ class usertype_model extends CI_Model {
     
     
  public function showAll(){
+     $flag=0;
         $this->db->order_by('usertype_ID', 'desc');
+        $this->db->where('flag',$flag);
         $query = $this->db->get('usertype');
+
         if($query->num_rows() > 0){
             return $query->result();
         }else{
@@ -57,8 +60,9 @@ class usertype_model extends CI_Model {
 
          }else{
         $field = array(
-            'usertype_ID'=>$this->input->post('userID'),
-            'usertype_name'=>$placename  
+            // 'usertype_ID'=>$this->input->post('userID'),
+            'usertype_name'=>$placename,
+            'flag'=>'0'
             );
         $this->db->insert('usertype', $field);
         if($this->db->affected_rows() > 0){
@@ -83,7 +87,8 @@ class usertype_model extends CI_Model {
      function updateusertype(){
         $id = $this->input->post('typeeditID');
         $field = array(
-        'usertype_name	'=>$this->input->post('typeeditname'),
+
+        'usertype_name	'=>$this->input->post('typeeditname')
     
 
         );
@@ -97,13 +102,13 @@ class usertype_model extends CI_Model {
     }
     function deleteusertype(){
             $id = $this->input->post('usertypedelID');
-            /*
+            
              $field = array(
-             'active_track'=> '1'
+             'flag'=> '1'
              
-             );*/
+             );
             $this->db->where('usertype_ID', $id);
-            $this->db->delete('usertype');
+            $this->db->update('usertype',$field);
             //$this->db->update('offensecate', $field);
             if($this->db->affected_rows() > 0){
                 return true;
