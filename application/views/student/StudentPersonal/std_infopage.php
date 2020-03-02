@@ -182,7 +182,8 @@
 	$(document).ready(function() {
 		selectstudentstatus();
 		selectstudentpoint();
-		show_all();
+		//show_all();
+		$('#AlertNotifyUserModal').modal('show');
 
 		$('#AlertNotifyUserModal').modal('show');
 

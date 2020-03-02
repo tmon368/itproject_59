@@ -1,6 +1,6 @@
 <div class="logobrand">
     <a class="" href="<?php echo site_url("Admin_dashboard") ?>">
-        <img src="<?php echo base_url('re/images/logo_sys.png'); ?>" alt="logo" width="100" />
+        <img src="<?php echo base_url('re/images/logo_sys.png'); ?>" alt="logo" width="120" />
     </a>
 </div>
 
