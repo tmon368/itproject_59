@@ -16,7 +16,7 @@
         }
 
         .selectplace {
-            width: 60rem;
+            width: 24rem;
             margin-top: 0.5rem;
             padding-top: 0.8rem
         }
@@ -35,6 +35,7 @@
             height: 2.5rem;
             padding: 0.3rem;
         }
+
     </style>
 </head>
 <script>
@@ -69,7 +70,7 @@
 
                 <!--Modal add activity-->
                 <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px!important;" role="document">
                         <div class="modal-content">
 
                             <div class="modal-header">
@@ -84,11 +85,33 @@
                                 <form action="" id="formadd" name="formadd" method="post">
                                     <div class="FormDataAddActivity">
                                         <input type="hidden" name="activity_type" id="activity_type">
+                                    
+                                        <div class="TypeActivity">
+                                        <label for="type_activity" class="lable label_type_activity">ประเภทกิจกรรม: <span class="fixdata">*</span></label>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <label class="lable label_type_activity">
+                                                        <input type="radio" checked="checked" value="1"name="activity_type" id="type_activity" required oninvalid="this.setCustomValidity('ระบุประเภทกิจกรรม')" onchange="this.setCustomValidity('')">
+                                                        กิจกรรมบำเพ็ญประโยชน์
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </td>
+                                                <td><label class="lable label_type_activity">
+                                                <input type="radio"  name="activity_type"  value="2" id="type_activity" required oninvalid="this.setCustomValidity('ระบุประเภทกิจกรรม')" onchange="this.setCustomValidity('')">
+                                                การอบรม
+                                                <span class="checkmark"></span>
+                                                    </label>
+                                                </td>
+
+                                        </table>
+                                        </div>
+                                        <br>
                                         <div class="form-inline">
                                             <label for="Activitylabel" class="lable">ชื่อกิจกรรม: <span class="fixdata">*</span></label>
-                                            <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุชื่อกิจกรรมบำเพ็ญประโยชน์')" onchange="this.setCustomValidity('')">
+                                            <input type="text" name="service_name" id="service_name" class="form-control" style="max-width: 500px!important; placeholder=" กรอกชื่อกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุชื่อกิจกรรมบำเพ็ญประโยชน์')" onchange="this.setCustomValidity('')">
                                             <label for="count_paticipant" class="lable">จำนวนที่รับสมัคร: <span class="fixdata">*</span></label>
-                                            <input type="number" name="received" id="received" class="form-control" placeholder="จำนวนผู้เข้ามร่วมกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุจำนวนผู้เข้าร่วมกิจกรรม')" onchange="this.setCustomValidity('')">
+                                            <input type="number" name="received" id="received" class="form-control" style="max-width: 120px!important;" placeholder="กรอกตัวเลข" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุจำนวนผู้เข้าร่วมกิจกรรม')" onchange="this.setCustomValidity('')">
                                         </div>
 
                                         <div class="form-inline" style="margin-top: 0.5rem;">
@@ -142,31 +165,23 @@
                                                 <option value="24:00">00.00</option>
                                             </select>
                                         </div>
-
+                                        <br>
                                         <label for="place" class="lable">สถานที่จัดกิจกรรม: <span class="fixdata">*</span></label>
-                                        <textarea class="form-control" name="place" id="place" cols="30" rows="10" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
-                                        <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
+                                        <textarea class="form-control" name="place" id="place" cols="30" rows="5" placeholder="บริเวณหอพักลักษณานิเวศ 11" style="max-width: 750px!important;" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
+                                        <br> <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
 
                                         <div class="margin-top:0.5rem;">
                                             <select class="selectplace input" name="person_ID" id="add_persennel" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
                                         </div>
-
+                                        <br>
                                         <label for="detailactivity" class="lable">รายละเอียดกิจกรรม: <span class="fixdata">*</span></label>
-                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="10" required oninvalid="this.setCustomValidity('ระบุรายละเอียดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
+                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="5" placeholder="กิจกรรมบำเพ็ญประโยชน์กวาดขยะ" style="max-width: 750px!important;" required oninvalid="this.setCustomValidity('ระบุรายละเอียดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
                                     </div>
                             </div>
 
                             <div class="modal-footer">
-                                <div class="TypeActivity">
-                                    <label for="type_activity" class="lable label_type_activity">ประเภทกิจกรรม: <span class="fixdata">*</span></label>
-                                    <select name="activity_type" id="type_activity" class="form-control SelectTypeActivity" required oninvalid="this.setCustomValidity('ระบุประเภทกิจกรรม')" onchange="this.setCustomValidity('')">
-                                        <option selected>เลือกประเภทกิจกรรม</option>
-                                        <option value="1">กิจกรรมบำเพ็ญประโยชน์</option>
-                                        <option value="2">การอบรม</option>
-                                    </select>
-                                </div>
                                 <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                                <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึก</button>
                             </div>
                             </form>
                         </div>
@@ -471,7 +486,7 @@
                         });
 
                     } else if (value.status != "0") {
-                        alert ('กิจกรรมอยู่ในขั้นตอนการดำเนินการไม่สามารถลบกิจกรรมได้');
+                        alert('กิจกรรมอยู่ในขั้นตอนการดำเนินการไม่สามารถลบกิจกรรมได้');
                     } else {
                         //stament
                     }
