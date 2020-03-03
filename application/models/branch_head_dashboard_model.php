@@ -260,12 +260,12 @@ public function utilstatus($statusID){
     function showAlll(){
         
         $i=0;
-       
+        $activity=1;
         // $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position,p.email,p.phone1,p.phone2');
         $this->db->select('*');
         $this->db->from('Service s');
         $this->db->join('personnel p', 's.person_ID=p.person_ID');
-        //$this->db->where('s.S_ID', $student);
+        $this->db->where('s.activity_type1', $activity);
         $query = $this->db->get();
         //var_dump($query->result());
         //die;
@@ -327,32 +327,41 @@ public function utilstatus($statusID){
          $showall = $queryper->result_array();
          }
         }
-    function showell(){
-        
-        
-        //$service_ID= $this->input->post('txtdelID');
-        //$student=59111111;
-        //echo $person_ID;
-        //$student = $this->session->userdata('student');
+    function showactity(){
+        $i=0;
+        $activity=2;
+        // $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position,p.email,p.phone1,p.phone2');
         $this->db->select('*');
-        $this->db->from('training tn');
-        $this->db->join('personnel p', 'tn.person_ID=p.person_ID');
-        $this->db->join('offensecate c', 'tn.oc_ID=c.oc_ID');
-        $this->db->join('place l', 'tn.place_ID=l.place_ID');
-        
-        //$this->db->where('s.S_ID', $student);
+        $this->db->from('Service s');
+        $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        $this->db->where('s.activity_type1', $activity);
         $query = $this->db->get();
         //var_dump($query->result());
         //die;
+        // $query = $this->db->get();
+        $showall = array();
+        $showall = $query->result_array();
+        foreach($showall as $row){
+        //    $proposer= $this->selectproposer($row['proposer']);
+        // //    var_dump($proposer);
+        // //    die();
+        //    $showall[$i]['proposer_fname'] =  $proposer[0]['proposer_fname'];
+        //    $showall[$i]['proposer_lname'] =  $proposer[0]['proposer_lname'];
+        //    $showall[$i]['usertype_name'] =  $proposer[0]['usertype_name'];
+            $statusname = $this->statusservice($row['status']);
+            $showall[$i]['statusname'] = $statusname;
+            $activity_type =$this->acticity_type($row['activity_type1']);
+            $showall[$i]['activity_type_name'] = $activity_type;
+            $i+=1;
+        }
         
-        if($query->result() > 0){
-            return $query->result();
+        if($query->num_rows() > 0){
+            return $showall;
         }else{
             return false;
         }
-        
-    }
-          
+ 
+     }    
     /*
 //ฟังก์ชันตรวจสอบ id ซ้ำกัน ตารางstudent
     public function checkkey(){

@@ -141,8 +141,8 @@ class Branch_head_dashboard extends CI_Controller {
         $result = $this->branch_head_dashboard_model->showAlll();
         echo json_encode($result);
     }
-    public function showell(){
-        $result = $this->branch_head_dashboard_model->showell();
+    public function showactity(){
+        $result = $this->branch_head_dashboard_model->showactity();
         echo json_encode($result);
     }
     
