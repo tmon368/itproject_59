@@ -1379,19 +1379,22 @@ class Import_data extends Admin_dashboard {
                     // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
                     $col_name = array(
                         "A"=>"person_ID",
-                        "B"=>"person_fname",
-                        "C"=> "person_lname",
-                        "D"=> "position",
-                        "E"=> "role",
-                        "F"=> "email",
-                        "G"=> "phone1",
-                        "H"=> "phone2",
-                        "I"=> "username",
-                        "J"=> "password",
-                        "K"=> "active_track",
+                        "B"=>"prefixID",
+                        "C"=>"person_fname",
+                        "D"=> "person_lname",
+                        "E"=> "position",
+                        "F"=> "sex",
+                        "G"=> "email",
+                        "H"=> "phone1",
+                        "I"=> "phone2",
+                        "J"=> "dept_ID",
+                        "K"=> "cur_ID",
                         "L"=> "usertype_ID",
-                        "M"=> "cur_ID",
-                        "N"=> "dept_ID"
+                        "M"=> "username",
+                        "N"=> "password",
+                        "O"=> "flag"
+                        
+                        
                         
                     );
                     if($row >= $start_row){
@@ -1405,7 +1408,7 @@ class Import_data extends Admin_dashboard {
         // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
         function prepare_data($data){
             // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
-            $arr_field = array("person_ID","person_fname","person_lname","position","role","email","phone1","phone2","username","password","active_track","usertype_ID","cur_ID","dept_ID");
+            $arr_field = array("person_ID","prefixID","person_fname","person_lname","position","sex","email","phone1","phone2","dept_ID","cur_ID","usertype_ID","username","password","flag");
             if(is_array($data)){
                 foreach($arr_field as $v){
                     if(!isset($data[$v])){
@@ -1425,14 +1428,14 @@ class Import_data extends Admin_dashboard {
             foreach($data_arr as $row){
                 $row = prepare_data($row);
                 
-                
-                
+
                 $data_personnel =  array();
                 $data_personnel['person_ID'] = $row['person_ID'];
+                $data_personnel['prefixID'] = $row['prefixID'];
                 $data_personnel['person_fname'] = $row['person_fname'];
                 $data_personnel['person_lname'] = $row['person_lname'];
                 $data_personnel['position'] = $row['position'];
-                $data_personnel['role'] = $row['role'];
+                $data_personnel['sex'] = $row['sex'];
                 $data_personnel['email'] = $row['email'];
                 $data_personnel['phone1'] = $row['phone1'];
                 $data_personnel['phone2'] = $row['phone2'];
@@ -1441,7 +1444,7 @@ class Import_data extends Admin_dashboard {
                 $data_personnel['usertype_ID'] = $row['usertype_ID'];
                 $data_personnel['username'] = $row['username'];
                 $data_personnel['password'] = $row['password'];
-                $data_personnel['active_track'] = $row['active_track'];
+                $data_personnel['flag'] = $row['flag'];
                 
                 
                 
@@ -1491,18 +1494,19 @@ class Import_data extends Admin_dashboard {
             
             $temp_a = $this->import_data_model->checkpersonnel($row->person_ID);
             
+       
             
-            
-            if($row->person_fname != "" && $row->person_lname != "" && $row->position != "" && $row->role != "" && $row->email != "" && $row->phone1 != ""
+            if($row->person_fname != "" && $row->person_lname != "" && $row->position != "" && $row->sex != "" && $row->email != "" && $row->phone1 != ""
                 && $row->phone2 != "" && $row->dept_ID != "" && $row->cur_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
                     
                     if ($temp_a == 1) {
                         
                         $data_personnel =  array();
+                        $data_personnel['prefixID'] = $row->prefixID;
                         $data_personnel['person_fname'] = $row->person_fname;
                         $data_personnel['person_lname'] = $row->person_lname;
                         $data_personnel['position'] = $row->position;
-                        $data_personnel['role']  = $row->role;
+                        $data_personnel['sex']  = $row->sex;
                         $data_personnel['email'] = $row->email;
                         $data_personnel['phone1'] =$row->phone1;
                         $data_personnel['phone2'] = $row->phone2;
@@ -1511,17 +1515,18 @@ class Import_data extends Admin_dashboard {
                         $data_personnel['usertype_ID'] = $row->usertype_ID;
                         $data_personnel['username'] = $row->username;
                         $data_personnel['password'] = $row->password;
-                        $data_personnel['active_track'] = $row->active_track;
+                        $data_personnel['flag'] = $row->flag;
                         $this->import_data_model->update_datapersonnel($row->person_ID,$data_personnel);
                         $updtpersonnel+=1;
                     } else{
                         //เพิ่มข้อมูล
                         $data_a =  array();
                         $data_a['person_ID'] = $row->person_ID;
+                        $data_a['prefixID'] = $row->prefixID;
                         $data_a['person_fname'] = $row->person_fname;
                         $data_a['person_lname'] = $row->person_lname;
                         $data_a['position'] = $row->position;
-                        $data_a['role'] = $row->role;
+                        $data_a['sex']  = $row->sex;
                         $data_a['email'] = $row->email;
                         $data_a['phone1'] =$row->phone1;
                         $data_a['phone2'] = $row->phone2;
@@ -1530,7 +1535,7 @@ class Import_data extends Admin_dashboard {
                         $data_a['usertype_ID'] = $row->usertype_ID;
                         $data_a['username'] = $row->username;
                         $data_a['password'] = $row->password;
-                        $data_a['active_track'] = $row->active_track;
+                        $data_a['flag'] = $row->flag;
                         $this->import_data_model->insert_to_personnel($data_a);
                         $instpersonnel+=1;
                         
