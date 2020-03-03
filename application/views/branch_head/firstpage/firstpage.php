@@ -376,7 +376,7 @@
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
