@@ -523,32 +523,40 @@
         $('#showdata').on('click', '.edit_data', function() {
             var id = $(this).attr('data');
 
-            $('#edit_file').modal('show');
-            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
-
-
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc',
-                data: {
-                    id: id
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    $('input[name=txteditID]').val(data.service_ID);
-                    $('input[name=editservice_name]').val(data.service_name);
-                    $('input[name=editperson_ID]').val(data.person_fname + ' ' + data.person_lname);
-                    $('textarea[name=editplace]').val(data.place);
-                    $('input[name=editservice_date]').val(data.service_date);
-                    $('input[name=editstart_time]').val(data.start_time);
-                    $('input[name=editend_time]').val(data.end_time);
-                    $('input[name=editreceived]').val(data.received);
-                    $('textarea[name=editexplanation]').val(data.explanation);
-                },
-                error: function() {
-                    alert('ไม่สามารถแก้ไขข้อมูล');
+            $.each(dataservice, function(key, value) {
+                if (value.service_ID == id) {
+                    if (value.status == "0") {
+                        $('#edit_file').modal('show');
+                        $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
+                        $.ajax({
+                            type: 'ajax',
+                            method: 'get',
+                            url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc',
+                            data: {
+                                id: id
+                            },
+                            async: false,
+                            dataType: 'json',
+                            success: function(data) {
+                                $('input[name=txteditID]').val(data.service_ID);
+                                $('input[name=editservice_name]').val(data.service_name);
+                                $('input[name=editperson_ID]').val(data.person_fname + ' ' + data.person_lname);
+                                $('textarea[name=editplace]').val(data.place);
+                                $('input[name=editservice_date]').val(data.service_date);
+                                $('input[name=editstart_time]').val(data.start_time);
+                                $('input[name=editend_time]').val(data.end_time);
+                                $('input[name=editreceived]').val(data.received);
+                                $('textarea[name=editexplanation]').val(data.explanation);
+                            },
+                            error: function() {
+                                alert('ไม่สามารถแก้ไขข้อมูล');
+                            }
+                        });
+                    } else if (value.status != "0") {
+                        alert('กิจกรรมอยู่ในขั้นตอนการดำเนินการไม่สามารถแก้ไขกิจกรรมได้');
+                    } else {
+                        //stament
+                    }
                 }
             });
         });
@@ -672,7 +680,7 @@
                 }
             });
         });
-    </script> 
+    </script>
 </body>
 
 </html>

@@ -56,20 +56,7 @@
 
                             <form action="" id="formadd" method="post" class="needs-validation">
                                 <center>
-                                    <div class="form-group" id="input_group_sty">
-                                        <div class="input-group">
-
-                                            <label for="validationCustom01..'">รหัสประเภทผู้ใช้งาน </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
-                                            &nbsp;&nbsp;&nbsp;
-                                            <div class="col-lg-3">
-                                                <input type="text" name="userID" id="userID" class="form-control" maxlength="2"
-                                                    onkeyup="count_down_id(this);" required>
-                                                    <div id="msg1"></div>
-                                                   <!--   <div id="msg2" style="color:red"></div>-->
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <!-- Alert for the number of characters-->
 
                                     <div class="form-group" id="input_group_sty">
@@ -143,14 +130,12 @@
                             
                             <form action="" id="formupdate" method="post" class="needs-validation">
                                 <center>
-                                    <div class="form-group" id="input_group_sty">
+                                <div class="form-group" id="input_group_sty">
                                         <div class="input-group">
 
-                                            <label for="validationCustom01">รหัสประเภทผู้ใช้งาน </label>
-                                            <p class="text-danger">&nbsp;&nbsp;*</p>
-                                            &nbsp;&nbsp;&nbsp;
+                                         
                                             <div class="col-lg-3">
-                                                <input type="text" name="typeeditID" readonly class="form-control" maxlength="2"
+                                                <input type="hidden" name="typeeditID" readonly class="form-control" maxlength="2"
                                                    onkeyup="count_down_editid(this);" required>
                                             </div>
                                         </div>
@@ -334,15 +319,15 @@
             var url = $('#formadd').attr('action');
             var data = $('#formadd').serialize();
             //validate form
-            var usertype_ID = $('input[name=userID]');
+            // var usertype_ID = $('input[name=userID]');
             var usertype_name = $('input[name=username]');
             var result = '';
-            if (usertype_ID.val() == '') {
-            	usertype_ID.parent().parent().addClass('has-error');
-            } else {
-            	usertype_ID.parent().parent().removeClass('has-error');
-                result += '1';
-            }
+            // if (usertype_ID.val() == '') {
+            // 	usertype_ID.parent().parent().addClass('has-error');
+            // } else {
+            // 	usertype_ID.parent().parent().removeClass('has-error');
+            //     result += '1';
+            // }
             if (usertype_name.val() == '') {
             	usertype_name.parent().parent().addClass('has-error');
             } else {
@@ -350,7 +335,7 @@
                 result += '2';
             }
 
-            if (result == '12') {
+            if (result == '2') {
                 $.ajax({
                     type: 'ajax',
                     method: 'post',
@@ -435,12 +420,12 @@
             var usertype_name = $('input[name=typeeditname]');
             var result = '';   
             
-            if (usertype_ID.val() == '') {
-            	usertype_ID.parent().parent().addClass('has-error');
-            } else {
-            	usertype_ID.parent().parent().removeClass('has-error');
-                result += '1';
-            }
+            // if (usertype_ID.val() == '') {
+            // 	usertype_ID.parent().parent().addClass('has-error');
+            // } else {
+            // 	usertype_ID.parent().parent().removeClass('has-error');
+            //     result += '1';
+            // }
             if (usertype_name.val() == '') {
             	usertype_name.parent().parent().addClass('has-error');
             } else {
@@ -448,7 +433,7 @@
                 result += '2';
             }
 
-            if(result=='12'){
+            if(result=='2'){
 				$.ajax({
 					type: 'ajax',
 					method: 'post',

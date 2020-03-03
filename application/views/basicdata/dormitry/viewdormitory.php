@@ -171,7 +171,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" name="dormeditID"  readonly class="form-control"  maxlength="2"  required>
+                    <input type="text" name="dormeditID" id="dormeditID" readonly class="form-control"  maxlength="2"  required>
 			
 			
 				</div></div></div>
@@ -184,7 +184,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-9">
-                    <input type="text" name="dormeditname"  class="form-control"  maxlength="100"  required>
+                    <input type="text" name="dormeditname" id="dormeditname" class="form-control"  maxlength="100"  required>
 			
 	 </div></div></div>
 	  <div class="form-group" id="input_group_sty" >
@@ -205,7 +205,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-4">
-                    <input type="text" name="dormedittxt"  class="form-control"  maxlength="10"  required>
+                    <input type="text" name="dormedittxt" id="dormedittxt" class="form-control"  maxlength="10"  required>
                                         </div>
                                  <!--  
                                         <div class="form-group sty_a">
@@ -415,65 +415,48 @@ $(document).ready(function(){
 		var person_ID = $('input[name=dormtxt]');
 		var result = '';
 		 
-		if(dorm_ID.val()==''){
-			dorm_ID.parent().parent().addClass('has-error');
-		}else{
-			dorm_ID.parent().parent().removeClass('has-error');
-			result +='1';
-		}
-		if(dname.val()==''){
-			dname.parent().parent().addClass('has-error');
-		}else{
-			dname.parent().parent().removeClass('has-error');
-			result +='2';
-		}
-		if(	dormtype_ID.val()==''){
-			dormtype_ID.parent().parent().addClass('has-error');
-		}else{
-			dormtype_ID.parent().parent().removeClass('has-error');
-			result +='3';
-		}
-		if(	person_ID.val()==''){
-			person_ID.parent().parent().addClass('has-error');
-		}else{
-			person_ID.parent().parent().removeClass('has-error');
-			result +='4';
-		}
-
-      if(result=='1234'){
+    if(result==''){
         $.ajax({
-          type: 'ajax',
-          method: 'post',
-          url: url,
-          data: data,
-          async: false,
-          dataType: 'json',
-          success: function(response){
-        	  if(response.success){
-					$('#exampleModalCenter').modal('hide');
-					 //$(this).find('#formadd')[0].reset();
-					 
-					$('#formadd')[0].reset();		
-					$('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-					$('#textkey').empty();			
-					$('#msg1').empty();
-					showAll();
-				}else{
-					alert('Error');
-				}
-			},
-          error: function(){
-        	  alert('id นี้ถูกใช้งานแล้ว'    );
-				$('#exampleModalCenter').modal('hide');
-				$('#formadd')[0].reset();
-				//$('#nav_sty')[0].reset();		
-				$('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
-				$('#msg1').empty();
-				showAll();
-          }
-        });
-      }
-    });
+                        type: 'ajax',
+                        method: 'post',
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success == true) {
+                                $('#exampleModalCenter').modal('hide');
+                                //$(this).find('#formadd')[0].reset();
+
+                                $('#formadd')[0].reset();
+                                $('.alert-success').html('บันทึกข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                            }
+                            else if (response.success == "falsename") {
+                                $('#exampleModalCenter').modal('hide');
+                                //$(this).find('#formadd')[0].reset();
+
+                                $('#formadd')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                            } else {
+                                alert('Error');
+                            }
+                        },
+                        error: function() {
+                            alert('id นี้ถูกใช้งานแล้ว');
+                            $('#exampleModalCenter').modal('hide');
+                            $('#formadd')[0].reset();
+                            //$('#nav_sty')[0].reset();		
+                            $('.alert-danger').html('id นี้ถูกใช้งานแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                            $('#msg1').empty();
+                            showAll();
+                        }
+                    });
+                }
+            });
 
     //แก้ไข.
   $('#showdata').on('click', '.edit_data', function() {
@@ -505,66 +488,59 @@ $(document).ready(function(){
   $('#btnedit').click(function(){
   	var url = $('#formupdate').attr('action');
 		var data = $('#formupdate').serialize();
+    var x = document.forms["formupdate"]["dormeditID"].value;
+    var w = document.forms["formupdate"]["dormeditname"].value;
+    var e = document.forms["formupdate"]["dormedittype"].value;
+    var r = document.forms["formupdate"]["dormedittxt"].value;
+                 console.log(x)
+                 console.log(w)
+                 console.log(e)
+                 console.log(r)
 		//validate form
-        var dorm_ID = $('input[name=dormeditID]');
+    var dorm_ID = $('input[name=dormeditID]');
 		var dname = $('input[name=dormeditname]');
 		var dormtype_ID = $('textarea[name=dormedittype]');
 		var person_ID = $('input[name=dormedittxt]');
 		var result = '';
-		
-		if(dorm_ID.val()==''){
-			dorm_ID.parent().parent().addClass('has-error');
-		}else{
-			dorm_ID.parent().parent().removeClass('has-error');
-			result +='1';
-		}
-		if(dname.val()==''){
-			dname.parent().parent().addClass('has-error');
-		}else{
-			dname.parent().parent().removeClass('has-error');
-			result +='2';
-		}
-		if(	dormtype_ID.val()==''){
-			dormtype_ID.parent().parent().addClass('has-error');
-		}else{
-			dormtype_ID.parent().parent().removeClass('has-error');
-			result +='3';
-		}
-		if(	person_ID.val()==''){
-			person_ID.parent().parent().addClass('has-error');
-		}else{
-			person_ID.parent().parent().removeClass('has-error');
-			result +='4';
-		}
-		
-		 if(result=='1234'){
-		       $.ajax({
-		         type: 'ajax',
-		         method: 'post',
-		         url: url,
-		         data: data,
-		         async: false,
-		         dataType: 'json',
-		         success: function(response){
-		        	 if(response.success){
-							$('#edit_file').modal('hide');
-							$('#formupdate')[0].reset();		
-							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-							showAll();
-						}else{
-							alert('Error');
-						}
-					},
-		         error: function(){
-		        		//alert('id นี้ถูกใช้งานแล้ว');
-						$('#edit_file').modal('hide');
-						$('#formupdate')[0].reset();		
-						$('.alert-danger').html('แก้ไขเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-						showAll();
-		         }
-		       });
-		     }
-		   });
+    if(result==''){
+        $.ajax({
+   
+                        type: 'ajax',
+                        method: 'post',
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success == true) {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                showAll();
+
+                            }  else if(response.success == "falsename") {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                                
+                            } else {
+                                alert('Error');
+                            }
+                        },
+
+                        error: function() {
+                            //alert('id นี้ถูกใช้งานแล้ว');
+                            $('#edit_file').modal('hide');
+                            $('#formupdate')[0].reset();
+                            $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
+                            showAll();
+                        }
+                    });
+                }
+            });
+
 
 
 

@@ -67,7 +67,7 @@
                                             <label for="validationCustom01">รหัสประเภทหอพัก </label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             <div class="col-lg-3" >
-										<select name="txtID"class="form-control"  required >
+										<select name="txtID"  id="txtID"class="form-control"  required >
 											<option value ="F"> F </option>
 											<option value ="M"> M </option>
 										
@@ -87,7 +87,7 @@
                                             <label for="validationCustom02">ประเภทหอพัก </label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	 <!--   <div class="col-lg-6"> -->      <input type="text" name="txtname" class="form-control" maxlength="20" required>                                   
+	 <!--   <div class="col-lg-6"> -->      <input type="text" name="txtname" id="txtname"class="form-control" maxlength="20" required>                                   
                                         </div>
                                     </div>
                                    
@@ -128,7 +128,7 @@
                                             <p class="text-danger">*&nbsp;</p>
                                             &nbsp;&nbsp;&nbsp;
                                             <div class="col-lg-3">
-                                            	<input type="text" readonly name="txteditID" class="form-control"  maxlength="1" onkeyup="count_down_editid(this);" required>
+                                            	<input type="text" readonly name="txteditID" id="txteditID" class="form-control"  maxlength="1" onkeyup="count_down_editid(this);" required>
 											</div>
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                                             <label for="validationCustom02">ชื่อประเภทหอพัก</label>
                                             <p class="text-danger">&nbsp;&nbsp;*</p>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="txteditname" class="form-control" maxlength="30" required>
+                                            <input type="text" name="txteditname"  id="txteditname" class="form-control" maxlength="30" required>
                                         </div>
                                     </div>  
                                    
@@ -174,7 +174,7 @@
                                 <!--ข้อความยืนยันการลบข้อมูล-->
                                 <center>
                                     <div id="showddel"></div>
-                                    <input type="hidden" name="txtdelID">
+                                    <input type="hidden" name="txtdelID" id="txtdelID">
                                 </center>
                                 <!------------------>
                             </div>
@@ -339,11 +339,11 @@
             var id = $(this).attr('data');
             var popup = document.getElementById("editimage");
             $('#edit_file').modal('show');
-            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/dormtype/updatedormtype');
+            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/Dormtype/updatedormtype');
             $.ajax({
                 type: 'ajax',
                 method: 'get',
-                url: '<?php echo base_url() ?>index.php/dormtype/editdormtype',
+                url: '<?php echo base_url() ?>index.php/Dormtype/editdormtype',
                 data: {
                     id: id
                 },
@@ -365,65 +365,73 @@
 			var url = $('#formupdate').attr('action');
 			var data = $('#formupdate').serialize();
 			//validate form
-			var dormtype_ID = $('input[name=txteditID]');
-			var type_name = $('input[name=txteditname]');
+            var x = document.forms["formupdate"]["txteditID"].value;
+                var y = document.forms["formupdate"]["txteditname"].value;
+                 console.log(x)
+                 console.log(y)
+			var dormtype_ID = $('#txteditID').val();
+			var type_name = $('#txteditname').val();
+                 console.log(type_name)
 			
 			var result = '';
-			
-			if(dormtype_ID.val()==''){
-				dormtype_ID.parent().parent().addClass('has-error');
-			}else{
-				dormtype_ID.parent().parent().removeClass('has-error');
-				result +='1';
-			}
-			if(type_name.val()==''){
-				type_name.parent().parent().addClass('has-error');
-			}else{
-				type_name.parent().parent().removeClass('has-error');
-				result +='2';
-			}
+			// if(dormtype_ID.val()==' '){
+			// 	dormtype_ID.parent().parent().addClass('has-error');
+			// }else{
+			// 	dormtype_ID.parent().parent().removeClass('has-error');
+			// 	result +='1';
+			// }
+			// if(type_name.val()==' '){
+			// 	type_name.parent().parent().addClass('has-error');
+			// }else{
+			// 	type_name.parent().parent().removeClass('has-error');
+			// 	result +='2';
+			// }
 			
 
 
-			
-			if(result == '1' || result == '12'){
-				$.ajax({
-					type: 'ajax',
-					method: 'post',
-					url: url,
-					data: data,
-					async: false,
-					dataType: 'json',
-					success: function(response){
-						if(response.success == true){
-							$('#edit_file').modal('hide');
-							$('#formupdate')[0].reset();		
-							$('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
-							showAll();
-						
-						}  else if(response.success == "falsename") {
+
+            // $('#btnedit').click(function() {
+        
+
+
+                if (result == '') {
+                    $.ajax({
+                        type: 'ajax',
+                        method: 'post',
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success == true) {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('แก้ไขข้อมูลเรียบร้อย').fadeIn().delay(2000).fadeOut('slow');
+                                showAll();
+
+                            }  else if(response.success == "falsename") {
+                                $('#edit_file').modal('hide');
+                                $('#formupdate')[0].reset();
+                                $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
+                                $('#msg1').empty();
+                                showAll();
+                                
+                            } else {
+                                alert('Error');
+                            }
+                        },
+
+                        error: function() {
+                            //alert('id นี้ถูกใช้งานแล้ว');
                             $('#edit_file').modal('hide');
                             $('#formupdate')[0].reset();
-                            $('.alert-warning').html('มีชื่อนี้ในระบบแล้ว').fadeIn().delay(2000).fadeOut('slow');
-                            $('#msg1').empty();
+                            $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
                             showAll();
-                            
-                        } else {
-                            alert('Error');
                         }
-                    },
+                    });
+                }
+            });
 
-                    error: function() {
-                        //alert('id นี้ถูกใช้งานแล้ว');
-                        $('#edit_file').modal('hide');
-                        $('#formupdate')[0].reset();
-                        $('.alert-danger').html('ไม่สามารถแก้ไขได้').fadeIn().delay(2000).fadeOut('slow');
-                        showAll();
-                    }
-                });
-            }
-        });	
-		
         //ลบข้อมูล
         $('#showdata').on('click', '.del_data', function() {
             var id = $(this).attr('data');

@@ -69,7 +69,7 @@ class dormtype_model extends CI_Model {
             $field = array(
                 'dormtype_ID'=>$this->input->post('txtID'),
                 'type_name'=>$dormtypename,
-                'flag'=>'1'
+                'flag'=>'0'
                 
                 // 'description'=>$this->input->post('txtdescription')
                 
@@ -97,21 +97,21 @@ class dormtype_model extends CI_Model {
 
     //ฟังก์ชันอัพเดตข้อมูลในtable dormtype
     public function updatedormtype(){
-        $id = $this->input->post('txteditID');
-        $editdormtypename = $this->input->post('txteditname');
-        $editdormtypename = trim($editdormtypename);
-        $checkname = $this->checknamedormtype($editdormtypename);
+        $txteditID = $this->input->post('txteditID');
+        $dormtypename = $this->input->post('txteditname');
+        $dormtypename = trim($dormtypename);
+        $checkname = $this->checknamedormtype($dormtypename);
         if($checkname == true){
             return "falsename";
             
             
         }else{
             $field = array(
-                'type_name'=>$editdormtypename
+                'type_name'=>$dormtypename
                 // 'description'=>$this->input->post('txteditdescription')
                 
             );
-            $this->db->where('dormtype_ID', $id);
+            $this->db->where('dormtype_ID', $txteditID);
             $this->db->update('dormtype', $field);
             if($this->db->affected_rows() > 0){
                 return true;
@@ -125,7 +125,7 @@ class dormtype_model extends CI_Model {
          $id = $this->input->post('txtdelID');
          
          $field = array(
-             'flag'=>'0'
+             'flag'=>'1'
              // 'description'=>$this->input->post('txteditdescription')
              
          );

@@ -32,10 +32,32 @@ class dormitory_model extends CI_Model {
         }
         
     }
+
+    public function checkname($dname){
+        $this->db->where('dname',$dname);
+        $query = $this->db->get('dormitory');
+        
+        if($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
     public function adddormitory(){
+        $dname = $this->input->post('dormname');
+
+        $dname = trim($dname);
+        $checkname = $this->checkname($dname);
+        if($checkname == true){
+            return "falsename";
+            
+            
+        }else{
         $field = array(
             'dorm_ID'=>$this->input->post('dormID'),
-            'dname'=>$this->input->post('dormname'),
+            'dname'=>$dname,
             'dormtype_ID'=>$this->input->post('dormtype'),
             'person_ID'=>$this->input->post('dormtxt')
  
@@ -47,6 +69,7 @@ class dormitory_model extends CI_Model {
             return false;
         }
     }
+}
 
     public function editdormitory(){
         $id = $this->input->get('id');
@@ -61,10 +84,20 @@ class dormitory_model extends CI_Model {
 
     public function updatedormitory(){
         $id = $this->input->post('dormeditID');
+
+        $editoffensename = $this->input->post('dormeditname');
+        $editoffensename = trim($editoffensename);
+         $checkname = $this->checkname($editoffensename);
+         if($checkname == "ss"){
+             return "falsename";
+            }else{
+    
         $field = array(
-        'dname'=>$this->input->post('dormeditname'),
+        'dname'=>$editoffensename,
         'dormtype_ID'=>$this->input->post('dormedittype'),
         'person_ID'=>$this->input->post('dormedittxt'),
+        // 'person_ID'=>$this->input->post('dormedittxt'),
+
     
         );
         $this->db->where('dorm_ID', $id);
@@ -75,6 +108,7 @@ class dormitory_model extends CI_Model {
             return false;
         }
     }
+}
     
     function deletedormitory(){
          $id = $this->input->post('dormdelID');   
