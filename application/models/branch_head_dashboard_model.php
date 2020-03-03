@@ -875,12 +875,11 @@ public function utilstatus($statusID){
     }
     
     public function selectscoreservice(){
+        $activity=1;
         //SELECT COUNT(DISTINCT S_ID) FROM offensestd
         $this->db->select('COUNT(DISTINCT Service_ID) as numberservice');
-        $this->db->from('service');
-        
-        
-        
+        $this->db->from('service s');
+        $this->db->where('s.activity_type1', $activity);
         
         
         // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
@@ -898,9 +897,12 @@ public function utilstatus($statusID){
     
     
     public function selectscoretraining(){
+        $activity=2;
         //SELECT COUNT(DISTINCT S_ID) FROM offensestd
-        $this->db->select('COUNT(DISTINCT train_ID) as numbertraining');
-        $this->db->from('training');
+        $this->db->select('COUNT(DISTINCT Service_ID) as numbertraining');
+        $this->db->from('service s');
+        $this->db->where('s.activity_type1', $activity);
+
         
         
         
