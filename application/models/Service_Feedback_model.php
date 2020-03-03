@@ -56,6 +56,7 @@ class Service_Feedback_model extends CI_Model {
        // $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
         
         $this->db->where('p.username', $usergroup);
+        $this->db->order_by('s.service_date ASC');
         //$this->db->where('s.status',$status);
         $query = $this->db->get();
         $showall = array();
