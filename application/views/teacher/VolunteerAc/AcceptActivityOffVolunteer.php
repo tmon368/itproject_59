@@ -35,6 +35,7 @@
                             <tr>
                                 <th id="idsort">ลำดับ</th>
                                 <th id="detail_activity_regis">ข้อมูลกิจกรรม</th>
+                                <th id="status">สถานะ</th>
                                 <th id="person_control">ผู้เสนอกิจกรรม</th>
                                 <th id="manage">จัดการกิจกรรม</th>
                             </tr>
@@ -173,20 +174,41 @@
                     html += '<span id="place">สถานที่: ' + value.place + '</span>';
                     html += '</div>';
                     html += '</td>';
+
+                    if (value.status == 0) {
+                        html += '<td class="StatusActivity"><span class="badge badge-primary status">รอบุคลากรอนุมัติ</span></td>';
+                    } else if (value.status == 1) {
+                        console.log(555);
+                        html += '<td class="StatusActivity"><span class="badge badge-secondary status">รอเจ้าหน้าที่วินัยอนุมัติ</span></td>';
+                    } else if (value.status == 2) {
+                        html += '<td class="StatusActivity"><span class="badge badge-success status">อนุมัติกิจกรรม</span></td>';
+                    } else if (value.status == 3) {
+                        html += '<td class="StatusActivity"><span class="badge badge-danger status">บุคลากรไม่อนุมัติกิจกรรม</span></td>';
+                    } else if (value.status == 4) {
+                        html += '<td class="StatusActivity"><span class="badge badge-danger status">เจ้าหน้าที่วินัยไม่อนุมัติกิจกรรม</span></td>';
+                    } else {
+                        //stament
+                    }
                     html += '<td id="person_control"> ' + value.proposer_fname + " " + value.proposer_lname + ' </td>';
-                    html += '<td id="btn_accept_td"> <span class="accept_activity" data="' + value.service_ID + '">อนุมัติกิจกรรม</span> </td>';
+                    if (value.status == 0){
+                        html += '<td id="btn_accept_td"><button class="btn btn-success btn-rounded btn-fw accept" data="' + value.service_ID + '" >อนุมัติกิจกรรม</button></td>';
+                    } else if (value.status != 0){
+                        html += '<td id="btn_accept_td"><span class="TitleSucessMeassage">ทำรายการเรียบร้อย</span></td>';
+                    } else{
+                        //stament
+                    }
                     html += '</tr>';
 
-
+                    
                     dataservices.push({
                         service_id: value.service_ID,
                         service_name: value.service_name,
                         date: value.service_date,
                         place: value.place,
                         getperson: value.received,
-                        detailactivity: 'xxxx',
-                        personoff: value.std_fname + " " + value.std_lname,
-                        acceptperson: 'นายสุขใจ สมสุข หมายเลขโทรศัพท์ 085-4396778',
+                        detailactivity: value.explanation,
+                        proposer:value.proposer_fname + " " + value.proposer_lname,
+                        acceptperson: value.person_fname +" "+ value.person_lname,
                         position: 'A',
                         start_time: show_start_time,
                         end_time: show_end_times,
@@ -225,7 +247,7 @@
 
 
 
-    $('#showdata').on('click', '.accept_activity', function() {
+    $('#showdata').on('click', '.accept', function() {
         $('#accept_activity_modal').modal('show');
         var serviceid = $(this).attr('data');
 
@@ -239,7 +261,7 @@
                 $('.PersonAccept').text("ผู้รับรองกิจกรรม:" + value.acceptperson);
                 $('.Place').text(value.place);
                 $('.DetailActivity_modal_1').text(value.detailactivity);
-                $('.PersonOfferActivity').text('ผู้เสนอกิจกรรม: ' + value.personoff + ' ตำแหน่ง ' + value.position + '');
+                $('.PersonOfferActivity').text('ผู้เสนอกิจกรรม: ' + value.proposer + ' ตำแหน่ง ' + value.position + '');
             }
         });
     });

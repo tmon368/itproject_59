@@ -8,7 +8,7 @@
 </center> 
 <head>
 
-  <title>ฐานความผิด | ผู้ดูแลระบบ มหาวิทยาลัยวลัยลักษณ์</title>
+  <title>ฐานความผิด admin</title>
 
 </head>
 <body>
@@ -183,7 +183,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;
 						<div class="col-lg-4">
-                    <input type="text" readonly name="txteditID"  class="form-control"  maxlength="3" onkeyup="count_down_editid(this);" required>
+                    <input type="hidden" readonly name="txteditID" id="txteditID"  class="form-control"  maxlength="3" onkeyup="count_down_editid(this);" required>
 			
 			
 			
@@ -197,7 +197,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-9">
-                    <input type="text" name="txteditname"  class="form-control"  maxlength="100" onkeyup="count_downeditname(this);" required>
+                    <input type="text" name="txteditname" id="txteditname"  class="form-control"  maxlength="100" onkeyup="count_downeditname(this);" required>
 			
 		
 		   
@@ -212,7 +212,7 @@
 					<p class="text-danger">&nbsp;&nbsp;*</p>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div class="col-lg-3">
-                    <input type="text" name="txteditpoint"  class="form-control"  maxlength="2" onkeyup="count_downeditpoint(this);" required>
+                    <input type="text" readonly name="txteditpoint" id="txteditpoint"  class="form-control"  maxlength="2" onkeyup="count_downeditpoint(this);" required>
 			    </div>
                                         
                                         <!--  
@@ -463,8 +463,8 @@ $(document).ready(function(){
             });
 
     //แก้ไขข้อมูล
- $('#showdata').on('click', '.edit_data', function(){
-      var id = $(this).attr('data');
+    $('#showdata').on('click', '.edit_data', function(){
+        var id = $(this).attr('data');
       var popup = document.getElementById("editimage");
       $('#edit_file').modal('show');
       $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/offense/updateoffense');
@@ -488,7 +488,7 @@ $(document).ready(function(){
       });
     });
  
- $('#btnedit').click(function(){
+        $('#btnedit').click(function(){
      var url = $('#formupdate').attr('action');
      var data = $('#formupdate').serialize();
      //validate form
@@ -499,8 +499,8 @@ $(document).ready(function(){
 		var result = '';
 
 
-     if(result==''){
-      $.ajax({
+        if(result==''){
+                    $.ajax({
                         type: 'ajax',
                         method: 'post',
                         url: url,
@@ -536,7 +536,6 @@ $(document).ready(function(){
                     });
                 }
             });
-
 
 
    

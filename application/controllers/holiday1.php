@@ -93,12 +93,13 @@ class Holiday1 extends Admin_dashboard {
 		$data['year'] = $year;
 		$data['data'] = $this->holiday_model->findByYear($year);
 //		var_dump($data);
-		$this->load->view('template/template1');
-	    $this->load->view('template/template2');
-	    $this->load->view('template/template3');
-		$this->load->view('basicdata/holiday/holiday',$data);
-		//echo $data;
-		$this->load->view('template/template5');
-	    $this->load->view('template/template6');
-	}
+	
+        $this->load->view('template/template1');
+        $this->load->view('template/template2');
+        $this->load->view('menu/admin/menu_user_admin');
+        $this->load->view('template/template4');
+        $this->load->view('basicdata/holiday/holiday',$data);
+        $this->load->view('template/template5');
+        $this->load->view('template/template6');    
+    }
 }

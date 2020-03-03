@@ -49,7 +49,7 @@ class Service_Feedback_model extends CI_Model {
         $i=0;
 
 
-        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position');
+        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position,p.email,p.phone1,p.phone2');
         $this->db->from('service s');
         //$this->db->join('student std', 's.proposer=std.S_ID');
         $this->db->join('personnel p', 's.person_ID=p.person_ID');

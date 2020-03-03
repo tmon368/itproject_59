@@ -75,38 +75,45 @@ class offense_model extends CI_Model {
         }
     }
 }
-    public function editoffense(){
-        $id = $this->input->get('id');
-        $this->db->where('off_ID', $id);
-        $query = $this->db->get('offense');
-        if($query->num_rows() > 0){
-            return $query->row();
-        }else{
-            return false;
-        }
-    }
-    public function updateoffense(){
-        $id = $this->input->post('txteditID');
-        $editoffensename = $this->input->post('txteditname');
-        $editoffensename = trim($editoffensename);
-         $checkname = $this->checknameoffense($editoffensename);
-         if($checkname == true){
-             return "falsename";
-        $field = array(
-        'off_desc'=>$editoffensename,
-        'point'=>$this->input->post('txteditpoint'),
-        'oc_ID'=>$this->input->post('txteditoc'),
-    
-        );
-        $this->db->where('off_ID', $id);
-        $this->db->update('offense', $field);
-        if($this->db->affected_rows() > 0){
-            return true;
-        }else{
-            return false;
-        }
+ 
+public function editoffense(){
+    $id = $this->input->get('id');
+    $this->db->where('off_ID', $id);
+    $query = $this->db->get('offense');
+    if($query->num_rows() > 0){
+        return $query->row();
+    }else{
+        return false;
     }
 }
+
+public function updateoffense(){
+    $txteditID = $this->input->post('txteditID');
+
+    $editoffensename = $this->input->post('txteditname');
+    $editoffensename = trim($editoffensename);
+     $checkname = $this->checknameoffense($editoffensename);
+     if($checkname == true){
+         return "falsename";
+        }else{
+
+    $field = array(
+    'off_desc'=>$editoffensename,
+    'point'=>$this->input->post('txteditpoint'),
+    'oc_ID'=>$this->input->post('txteditoc'),
+
+
+    );
+    $this->db->where('off_ID', $txteditID);
+    $this->db->update('offense', $field);
+    if($this->db->affected_rows() > 0){
+        return true;
+    }else{
+        return false;
+    }
+}
+}
+
     function deleteoffense(){
          $id = $this->input->post('txtdelID');
         
