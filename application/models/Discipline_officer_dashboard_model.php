@@ -723,6 +723,7 @@ foreach($showall as $value){
     $this->db->from('service s');
     $this->db->join('personnel p', 's.person_ID=p.person_ID');
     $this->db->where('s.status',$status);
+    $this->db->order_by('s.service_date ASC');
     $query = $this->db->get();
     $showall = array();
     $showall = $query->result_array();
