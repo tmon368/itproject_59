@@ -200,9 +200,7 @@
                                                     }
                                                 },
                                                 axisY: {
-                                                    title: "",
-                                                    tickLength: 0,
-                                                    margin: 0,
+                                                   
                                                     
                                                 },
 
@@ -247,11 +245,17 @@
                                                 height: 350,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
                                                 axisX: {
                                                     title: "หลักสูตร"
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)",
+                                                   
                                              
                                                 },
                                                 data: [{

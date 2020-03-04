@@ -66,7 +66,7 @@
     </div>
 
     <div class="modal fade" id="accept_activity_modal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:850px!important;" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
@@ -85,20 +85,13 @@
                                 <span class="title DateActivity"></span>
                                 <span class="title PaticipantCount"></span>
                                 <span class="title PersonAccept"></span>
-                                <span class="title">สถานที่จัดกิจกรรม:</span>
-                                <div class="DivData Place">
-
-                                </div>
-                                <span class="title">รายละเอียดกิจกรรม:</span>
-                                <div class="DivData DetailActivity_modal_1">
-
-                                </div>
+                                <span class="title Place">สถานที่จัดกิจกรรม:</span>
+                                <span class="title DetailActivity_modal_1">รายละเอียดกิจกรรม:</span><br>
                                 <span class="title PersonOfferActivity">ผู้เสนอกิจกรรม: นายเทียนพอ พอเพียง ตำแหน่ง นักศึกษา</span>
-
                                 <form action="" method="post" name="form-accept" id="form-accept">
                                     <input type="hidden" name="service_ID" id="service_ID">
                                     <div class="ChoiceAccept">
-                                        <span class="title acceptperson">ตอบรับการเป็นผู้รับรองกิจกรรม</span>
+                                        <span class="title acceptperson">อนุมัติการเป็นผู้รับรองกิจกรรม</span>
                                         <div>
                                             <label class="radio-inline label"><input type="radio" name="status" class="AcceptActivity" value="1" checked>รับรอง</label>
                                             <label class="radio-inline label"><input type="radio" name="status" class="UnAcceptActivity" value="0">ไม่รับรอง</label>
@@ -258,9 +251,9 @@
                 $('.ActivityName').text("ชื่อกิจกรรม: " + value.service_name);
                 $('.DateActivity').text("วันที่จัดกิจกรรม: " + value.date);
                 $('.PaticipantCount').text("จำนวนรับสมัคร: " + value.getperson);
-                $('.PersonAccept').text("ผู้รับรองกิจกรรม:" + value.acceptperson);
-                $('.Place').text(value.place);
-                $('.DetailActivity_modal_1').text(value.detailactivity);
+               // $('.PersonAccept').text("ผู้รับรองกิจกรรม:" + value.acceptperson);
+                $('.Place').text("สถานที่จัดกิจกรรม:  " + value.place);
+                $('.DetailActivity_modal_1').text("รายละเอียดกิจกรรม:  " + value.detailactivity);
                 $('.PersonOfferActivity').text('ผู้เสนอกิจกรรม: ' + value.proposer + ' ตำแหน่ง ' + value.position + '');
             }
         });

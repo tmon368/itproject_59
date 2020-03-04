@@ -226,9 +226,7 @@
                                                     }
                                                 },
                                                 axisY: {
-                                                    title: "",
-                                                    tickLength: 0,
-                                                    margin: 0,
+                                                 
                                                     
                                                 },
 
