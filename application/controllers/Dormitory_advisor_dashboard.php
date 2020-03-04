@@ -131,8 +131,8 @@ public function showAlll(){
     $result = $this->dormitory_advisor_dashboard_model->showAlll();
     echo json_encode($result);
 }
-public function showell(){
-    $result = $this->dormitory_advisor_dashboard_model->showell();
+public function showactity(){
+    $result = $this->dormitory_advisor_dashboard_model->showactity();
     echo json_encode($result);
 }
 function searchoffensestudent(){
