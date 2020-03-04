@@ -86,18 +86,37 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
     }
 
     public function Updatestatusproofargument(){
-         $getstatus = $this->input->post('status');
-         $S_ID = $this->input->post('S_ID');
-         $proof_ID = $this->input->post('proof_ID');
-        //  $S_ID = "59111111";
-        // $getstatus = 2;
-        //  $proof_ID =27;
+        //  $getstatus = $this->input->post('status');
+        //  $S_ID = $this->input->post('S_ID');
+        //  $proof_ID = $this->input->post('proof_ID');
+         $S_ID = "59111111";
+        $getstatus = 1;
+         $proof_ID =27;
 
         // 1=อนุมัติ , 2 = ไม่อนุมัติ
         $status = $getstatus == 1? $getstatus:2;
 
         if($status != 2){
 
+            $this->db->select('*');
+        $this->db->from('proofargument p');
+        $this->db->join('report r', 'p.report_ID=r.report_ID');
+        $this->db->join('offensestd ostd', 'r.offensestd_ID=ostd.offensestd_ID');
+        $this->db->where('p.proof_ID', $proof_ID);
+        $query = $this->db->get();
+        $data = $query->result();
+        $offensestd_ID = $data[0]->offensestd_ID;
+        // 6 =คืนคะแนนความประพฤติ
+        $fieldupdatestatus = array(
+            'statusoff'=>'6'
+            
+    );
+        $this->db->where('o.offensestd_ID',$offensestd_ID);
+    $this->db->update('offensestd o', $fieldupdatestatus);
+
+        if($this->db->affected_rows() > 0){
+        
+   
         $this->db->select('std.std_fname,std.std_lname,std.behavior_score');
         $this->db->from('student std');
         $this->db->where('std.S_ID', $S_ID);
@@ -111,7 +130,7 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
     );
         $this->db->where('student.S_ID',$S_ID);
     $this->db->update('student', $fieldscore);
-
+}
         }
          
 
