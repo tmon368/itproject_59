@@ -161,7 +161,7 @@
                     <div class="card shadow mb-3">
                         <div class="card-body " id="card_1">
                             <font size="4">
-                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของสำนักวิชา.......................</center>
+                                <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของสำนักวิชา<span id="dept_name"></span></center>
                             </font>
                             <a href="http://localhost/itproject_59/index.php/Dean_dashboard" class="btn btn-outline-primary btn-sm">ย้อนกลับ</a>
                             <br>
@@ -474,6 +474,25 @@
             selectscorestudent();
             selectscoreservice();
             selectscoretraining();
+            getDashboard();
+            function getDashboard() {
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/dean_dashboard/getDashboard',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        //	$("#S_ID").html(data[0].S_ID);
+                        $("#dept_name").html(data[0].dept_name);
+
+                        //$("#email1").html(data[0].email);    	
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+            }
 
             function selectscorestudent() {
                 $.ajax({
