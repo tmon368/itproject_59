@@ -192,7 +192,7 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร<span id="cur_name"></span></center>
                             </font>  
-                              <br> <br> <br>
+                              <br> <br> 
                         <div id="chartContainer" style="height: 300px; max-width: 1000px!important; " ></div>
                             <script type="text/javascript">
                                 window.onload = function() {
@@ -206,7 +206,7 @@
 
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
-                                                width: 950,
+                                                width: 850,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
                                                 title: {
@@ -342,7 +342,7 @@
 
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -376,7 +376,7 @@
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -465,7 +465,7 @@
             selectstudentall();
             selectscoreservice();
             getDashboard();
-            //   selectscoretraining();
+            selectscoretraining();
 
             function getDashboard() {
                 $.ajax({
@@ -626,7 +626,7 @@
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
-
+                        
                         var temp_1 = value.start_time;
                         var temp_2 = value.end_time;
                         var start_times = parseFloat(temp_1.substring(0, 5));
@@ -662,27 +662,32 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Branch_head_dashboard/showell") ?>',
+                url: '<?php echo site_url("Branch_head_dashboard/showactity") ?>',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
+                        var temp_1 = value.start_time;
+                        var temp_2 = value.end_time;
+                        var start_times = parseFloat(temp_1.substring(0, 5));
+                        var end_times = parseFloat(temp_2.substring(0, 5));
+                        var counthour = Math.abs(end_times - start_times);
 
                         html += '<div class="Data">';
-                        html += '<div class="Main1">';
-                        html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-                        html += '<span id="title6"><i class="fas fa-users iconlabel"></i> หมวดการอบรม : ' + value.oc_desc + ' </span>';
-                        html += '<span id="title6"><i class="fas fa-user iconlabel"></i> ผู้ควบคุมการอบรม ชื่อ : ' + value.person_fname + " " + value.person_lname + ' </span>';
-                        html += '<span id="title6"><i class="far fa-calendar-alt iconlabel"></i> วันที่อบรม : ' + value.train_date + " จำนวนผู้อบรม :" + value.train_receive + '</span>';
-                        html += '<span id="title6"><i class="fas fa-building iconlabel"></i> สถานที่ : ' + value.place_name + " ห้องที่จัดอบรม :" + value.room + '</span>';
-                        html += '<span id="title6"><i class="fas fa-hourglass-half iconlabel"></i> จำนวนชั่วโมง : ' + value.time + ' </span>';
-                        html += '<span id="title6"><span><i class="fas fa-clock iconlabel"></i> หมายเหตุ : ' + value.note + ' </span>';
+                        html += '<div class="Main4">';
+                        html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
+                        html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                        html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
                         html += '</div>';
-                        html += '<div class="Main2">';
+                        html += '<div class="Main5">';
+                        html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                        html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
                         html += '</div>';
                         html += '<div class="Main3">';
                         html += '</div>';
                         html += '</div>';
+
 
 
                     });

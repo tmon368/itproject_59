@@ -16,7 +16,7 @@
         }
 
         .selectplace {
-            width: 60rem;
+            width: 27rem;
             margin-top: 0.5rem;
             padding-top: 0.8rem
         }
@@ -70,7 +70,7 @@
 
                 <!--Modal add Activity-->
                 <div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:1000px!important;" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px!important;" role="document">
                         <div class="modal-content">
 
                             <div class="modal-header">
@@ -87,11 +87,11 @@
                                         <input type="hidden" name="activity_type" id="activity_type" value="1">
                                         <div class="form-inline">
                                             <label for="Activitylabel" class="lable">ชื่อกิจกรรม: <span class="fixdata">*</span></label>
-                                            <input type="text" name="service_name" id="service_name" class="form-control" placeholder="กรอกชื่อกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุชื่อกิจกรรมบำเพ็ญประโยชน์')" onchange="this.setCustomValidity('')">
+                                            <input type="text" name="service_name" id="service_name" class="form-control" style="max-width: 500px!important;"  placeholder="กรอกชื่อกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุชื่อกิจกรรมบำเพ็ญประโยชน์')" onchange="this.setCustomValidity('')">
                                             <label for="count_paticipant" class="lable">จำนวนที่รับสมัคร: <span class="fixdata">*</span></label>
-                                            <input type="number" name="received" id="received" class="form-control" placeholder="จำนวนผู้เข้ามร่วมกิจกรรม" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุจำนวนผู้เข้าร่วมกิจกรรม')" onchange="this.setCustomValidity('')">
+                                            <input type="number" name="received" id="received" class="form-control" style="max-width: 120px!important;" placeholder="กรอกตัวเลข" autocomplete="off" required oninvalid="this.setCustomValidity('ระบุจำนวนผู้เข้าร่วมกิจกรรม')" onchange="this.setCustomValidity('')">
                                         </div>
-
+                                        <br>
                                         <div class="form-inline" style="margin-top: 0.5rem;">
                                             <label for="dateactivity" class="lable">วันที่จัดกิจกรรม: <span class="fixdata">*</span></label>
                                             <input type="date" name="service_date" id="service_date" class="form-control" required oninvalid="this.setCustomValidity('ระบุวันที่จัดกิจกรรม')" onchange="this.setCustomValidity('')">
@@ -143,23 +143,23 @@
                                                 <option value="24:00">00.00</option>
                                             </select>
                                         </div>
-
+                                        <br>
                                         <label for="place" class="lable">สถานที่จัดกิจกรรม: <span class="fixdata">*</span></label>
-                                        <textarea class="form-control" name="place" id="place" cols="30" rows="10" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
-                                        <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
+                                        <textarea class="form-control" name="place" id="place" cols="30" rows="5" placeholder="บริเวณหอพักลักษณานิเวศ 11" style="max-width: 750px!important;" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
+                                        <br>  <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
 
                                         <div class="margin-top:0.5rem;">
-                                            <select class="selectplace input" name="person_ID" id="add_persennel" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
+                                            <select class="selectplace input" name="person_ID" id="add_persennel"  style="max-width: 500px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
                                         </div>
-
+<br>
                                         <label for="detailactivity" class="lable">รายละเอียดกิจกรรม: <span class="fixdata">*</span></label>
-                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="10" required oninvalid="this.setCustomValidity('ระบุรายละเอียดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
+                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="5" placeholder="กิจกรรมบำเพ็ญประโยชน์กวาดขยะ" style="max-width: 750px!important;"  required oninvalid="this.setCustomValidity('ระบุรายละเอียดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
                                     </div>
                             </div>
 
                             <div class="modal-footer">
                                 <button name="insert" type="reset" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                                <button name="btnSave" id="btnSave" type="submit" class="btn btn-success">บันทึก</button>
                             </div>
                             </form>
                         </div>
@@ -523,40 +523,32 @@
         $('#showdata').on('click', '.edit_data', function() {
             var id = $(this).attr('data');
 
-            $.each(dataservice, function(key, value) {
-                if (value.service_ID == id) {
-                    if (value.status == "0") {
-                        $('#edit_file').modal('show');
-                        $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
-                        $.ajax({
-                            type: 'ajax',
-                            method: 'get',
-                            url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc',
-                            data: {
-                                id: id
-                            },
-                            async: false,
-                            dataType: 'json',
-                            success: function(data) {
-                                $('input[name=txteditID]').val(data.service_ID);
-                                $('input[name=editservice_name]').val(data.service_name);
-                                $('input[name=editperson_ID]').val(data.person_fname + ' ' + data.person_lname);
-                                $('textarea[name=editplace]').val(data.place);
-                                $('input[name=editservice_date]').val(data.service_date);
-                                $('input[name=editstart_time]').val(data.start_time);
-                                $('input[name=editend_time]').val(data.end_time);
-                                $('input[name=editreceived]').val(data.received);
-                                $('textarea[name=editexplanation]').val(data.explanation);
-                            },
-                            error: function() {
-                                alert('ไม่สามารถแก้ไขข้อมูล');
-                            }
-                        });
-                    } else if (value.status != "0") {
-                        alert('กิจกรรมอยู่ในขั้นตอนการดำเนินการไม่สามารถแก้ไขกิจกรรมได้');
-                    } else {
-                        //stament
-                    }
+            $('#edit_file').modal('show');
+            $('#formupdate').attr('action', '<?php echo base_url() ?>index.php/VolunteerAc/updateVolunteerAc');
+
+
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                url: '<?php echo base_url() ?>index.php/VolunteerAc/editVolunteerAc',
+                data: {
+                    id: id
+                },
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    $('input[name=txteditID]').val(data.service_ID);
+                    $('input[name=editservice_name]').val(data.service_name);
+                    $('input[name=editperson_ID]').val(data.person_fname + ' ' + data.person_lname);
+                    $('textarea[name=editplace]').val(data.place);
+                    $('input[name=editservice_date]').val(data.service_date);
+                    $('input[name=editstart_time]').val(data.start_time);
+                    $('input[name=editend_time]').val(data.end_time);
+                    $('input[name=editreceived]').val(data.received);
+                    $('textarea[name=editexplanation]').val(data.explanation);
+                },
+                error: function() {
+                    alert('ไม่สามารถแก้ไขข้อมูล');
                 }
             });
         });
@@ -680,7 +672,7 @@
                 }
             });
         });
-    </script>
+    </script> 
 </body>
 
 </html>
