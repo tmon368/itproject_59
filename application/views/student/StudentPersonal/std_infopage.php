@@ -245,7 +245,21 @@
 					var i;
 					for (i = 0; i < data.length; i++) {
 						point_cut += parseInt(data[i].point);
-						// if (data[i].statusoff == '3') {
+						 if (data[i].statusoff == '6') {
+							// html += '<tr>' +
+							// 	'<th>' + n + '</th>' +
+							// 	'<th>' + data[i].committed_date + '</th>' +
+							// 	'<th>' + data[i].off_desc + '</th>' +
+							// 	'<th>' + data[i].point + '</th>' +
+							// 	//data[i].statusoffname
+							// 	'<th> ' + data[i].statusoffname +  ' </a> </th>'+
+
+							// 	// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
+							// 	//'<th>' + '<a href="javascript:;" data= </a>' + data[i].statusoffname + ' class="show_data"> </th>' + // สถานะการกระทำความผิด 
+
+							// 	'</tr>';
+
+						 } else {
 							html += '<tr>' +
 								'<th>' + n + '</th>' +
 								'<th>' + data[i].committed_date + '</th>' +
@@ -254,28 +268,9 @@
 								//data[i].statusoffname
 								'<th> ' + data[i].statusoffname +  ' </a> </th>'+
 								// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
-								//'<th>' + '<a href="javascript:;" data= </a>' + data[i].statusoffname + ' class="show_data"> </th>' + // สถานะการกระทำความผิด 
-
-								//*html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data">*//
-								//'class="showdetil"> / javascript:;
-								//html += '<td><a href="javascript:;" +' class="edit_data"></a>
-								//<a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';
-
-
 
 								'</tr>';
-
-						// } else {
-						// 	html += '<tr>' +
-						// 		'<th>' + n + '</th>' +
-						// 		'<th>' + data[i].committed_date + '</th>' +
-						// 		'<th>' + data[i].off_desc + '</th>' +
-						// 		'<th>' + data[i].point + '</th>' +
-						// 		'<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
-
-
-						// 		'</tr>';
-						// }
+						 }
 						n += 1;
 					}
 					$('#showdata').html(html);
@@ -287,6 +282,24 @@
 			});
 		}
 	});
+
+
+// 	if(data[i].statusoff != '6'){
+
+// }else{
+// html += '<tr>' +
+// 	'<th>' + n + '</th>' +
+// 	'<th>' + data[i].committed_date + '</th>' +
+// 	'<th>' + data[i].off_desc + '</th>' +
+// 	'<th>' + data[i].point + '</th>' +
+// 	//data[i].statusoffname
+// 	'<th> ' + data[i].statusoffname +  ' </a> </th>'+
+// 	// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
+
+// 	'</tr>';
+// }
+// n += 1;
+// }
 
 
 	/// view_volunteerAc
