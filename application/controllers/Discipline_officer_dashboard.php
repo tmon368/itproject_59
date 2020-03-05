@@ -52,6 +52,37 @@ class Discipline_officer_dashboard extends CI_Controller {
 	    echo json_encode($result);
 
 	}
+
+	public function showAlll(){
+        $result = $this->Discipline_officer_dashboard_model->showAlll();
+        echo json_encode($result);
+    }
+	function selectscorestudent(){
+        //  $username = $this->session->userdata('username');        
+        $result = $this->Discipline_officer_dashboard_model->selectscorestudent();
+        echo json_encode($result);
+	}
+	function selectscoreservice(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->Discipline_officer_dashboard_model->selectscoreservice();
+        echo json_encode($result);
+	}
+	function selectscoretraining(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->Discipline_officer_dashboard_model->selectscoretraining();
+        echo json_encode($result);
+	}
+	public function showactity(){
+        $result = $this->Discipline_officer_dashboard_model->showactity();
+        echo json_encode($result);
+	}
+	function searchoffensestudent(){
+        $result = $this->Discipline_officer_dashboard_model->searchoffensestudent();
+        echo json_encode($result);
+    }
+    
 	
 	function checkAutoriry() {
 	    //$admin = $this->session->userdata('admin');
