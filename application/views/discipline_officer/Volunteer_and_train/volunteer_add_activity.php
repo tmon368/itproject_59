@@ -306,8 +306,8 @@
                                 <tr>
                                     <th id="sort">ลำดับ</th>
                                     <th id="activity_name">ชื่อกิจกรรม</th>
-                                    <th id="date">วันที่</th>
-                                    <th id="detail_activity">รายละเอียด</th>
+                                    <th id="date">วันที่จัดกิจกรรม</th>
+                                    <th id="detail_activity">รายละเอียดกิจกรรม</th>
                                     <th id="status">สถานะการเสนอกิจกรรม</th>
                                     <th id="manage">จัดการ</th>
                                 </tr>

@@ -40,7 +40,7 @@
                             <tr>
                                 <th id="idsort">ลำดับ</th>
                                 <th id="detail_activity_regis">ข้อมูลกิจกรรม</th>
-                                <th id="person_control">ผู้ควบคุม</th>
+                                <th id="person_control">ผู้รับรองกิจกรรม</th>
                                 <th id="manage">จัดการกิจกรรม</th>
                             </tr>
                         </thead>

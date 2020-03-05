@@ -40,7 +40,7 @@
                             <tr>
                                 <th id="idsort">ลำดับ</th>
                                 <th id="detail_activity_regis">ข้อมูลกิจกรรม</th>
-                                <th id="person_control">ผู้ควบคุม</th>
+                                <th id="person_control">ผู้รับรองกิจกรรม</th>
                                 <th id="manage">รายชื่อผู้เข้าร่วมกิจกรรม</th>
                             </tr>
                         </thead>
@@ -137,7 +137,6 @@
                             <th id="th2">รหัสนักศึกษา</th>
                             <th id="th3">ชื่อ-นามสกุล</th>
                             <th id="th6">หอพัก</th>
-                            <th id="th4">Email</th>
                             <th id="th5">หมายเลขโทรศัพท์</th>
                         </tr>
                     </thead>
@@ -321,7 +320,7 @@
                             htmlcode += '<td>' + value.S_ID + '</td>';
                             htmlcode += '<td>' + value.std_fname + " " + value.std_lname + '</td>';
                             htmlcode += '<td>' + value.dname + '</td>';
-                            htmlcode += '<td>' + value.email + '</td>';
+                     //       htmlcode += '<td>' + value.email + '</td>';
                             htmlcode += '<td>' + value.phone + '</td>';
                             htmlcode += '</tr>';
                             var name = value.std_fname + " " + value.std_lname;
@@ -336,7 +335,7 @@
 
                             }
 
-                            dataset.push(new Array(i, value.S_ID, name, value.email, value.phone,url, '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="' + value.S_ID + '">'));
+                            dataset.push(new Array(i, value.S_ID, name, value.phone,url, '<input type="checkbox" class="AcceptStudent" name="S_ID[]" value="' + value.S_ID + '">'));
                         }
 
 
@@ -357,9 +356,9 @@
                     {
                         title: "ชื่อ-นามสกุล"
                     },
-                    {
-                        title: "email"
-                    },
+                 //   {
+                //        title: "email"
+                //    },
                     {
                         title: "หมายเลขโทรศัพท์"
                     },

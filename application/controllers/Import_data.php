@@ -570,7 +570,7 @@ class Import_data extends Admin_dashboard {
                         //'id' => $results->id,
                         'dept_ID' => $row->dept_ID,
                         'dept_name' => $row->dept_name,
-                        'active_track'        =>   '0'
+                        'flag'        =>   '0'
                     );
                     $this->import_data_model->update_datadivisions($row->dept_ID,$data);
                     $updtdivisions+=1;
@@ -579,7 +579,7 @@ class Import_data extends Admin_dashboard {
                     $data_a =  array();
                     $data_a['dept_ID'] = $row->dept_ID;
                     $data_a['dept_name'] = $row->dept_name;
-                    $data_a['active_track'] = '0' ;
+                    $data_a['flag'] = '0' ;
                     $this->import_data_model->insert_to_divisions($data_a);
                     $instdivisions+=1;
                     
@@ -727,7 +727,7 @@ class Import_data extends Admin_dashboard {
                         'cur_ID'		=>	$cur_ID,
                         'cur_name'			=>	$cur_name,
                         'dept_ID'			=>	$dept_ID,
-                        'status'    =>	'0'
+                        'flag'    =>	'0'
                     );
                     $this->import_data_model->inserttmp_curriculum($data);
                 }
@@ -789,7 +789,7 @@ class Import_data extends Admin_dashboard {
                     $data = array(
                         //'id' => $results->id,
                         'cur_name' => $row->cur_name,
-                        'active_track' => '0',
+                        'flag' => '0',
                         'dept_ID' => $row->dept_ID
                     );
                     $this->import_data_model->update_datacurriculum($row->cur_ID,$data);
@@ -799,7 +799,7 @@ class Import_data extends Admin_dashboard {
                     $data_a =  array();
                     $data_a['cur_ID'] = $row->cur_ID;
                     $data_a['cur_name'] = $row->cur_name;
-                    $data_a['active_track'] = '0';
+                    $data_a['flag'] = '0';
                     $data_a['dept_ID'] = $row->dept_ID;
                     $this->import_data_model->insert_to_curriculum($data_a);
                     $instcur+=1;

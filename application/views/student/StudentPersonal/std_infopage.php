@@ -91,30 +91,15 @@
 							</table>
 						</div>
 
-						<?php
-
-
-						// ดึงคำมาแสดงเกณฑ์คะแนนที่โดนหัก
-						$scorestd = '70';
-						echo "<center > คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :";
-						if ($scorestd >= "70") {
-							echo " ระดับเกณฑ์ ปกติ</center>";
-						} else if ($scorestd >= "40") {
-							echo " เสนอคณะกรรมการเพื่อพิจารณา </center>";
-						} else if ($scorestd >= "1") {
-							echo " ไม่ออกหนังสือรับรองความประพฤติ </center>";
-						} else {
-							echo " พ้นสภาพนักศึกษา </center>";
-						}
-
-						?>
-
-
+						<center>
+							คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :
+							<label id="level_behavior"></label>
+						</center>
 						<br>
 						<br>
 						<div class="container">
 							<center>
-								<h4><b>รายละเอียดคะแนนความประพฤติของนักศึกษา</h4></b>
+								<h4><b>รายละเอียดคะแนนความประพฤติของนักศึกษา</b></h4>
 							</center>
 
 							<table style="width:100%">
@@ -180,10 +165,10 @@
 
 <script>
 	$(document).ready(function() {
+		let point_cut = 0;
 		selectstudentstatus();
 		selectstudentpoint();
-		//show_all();
-		$('#AlertNotifyUserModal').modal('show');
+		// show_all();
 
 		$('#AlertNotifyUserModal').modal('show');
 
@@ -193,12 +178,38 @@
 				url: '<?php echo base_url() ?>index.php/Student_dashboard/selectstudentpoint',
 				async: false,
 				dataType: 'json',
-				success: function(data) { // console.log(data); 
+				success: function(data) { 
+					// console.log("p>>>",p); 
 					//alert(data[0].behavior_score)
-					var score = data[0].behavior_score;
+					// console.log("data[0].behavior_score>>",data);
+					// console.log("data[0].behavior_score>>",data[0].behavior_score);
+					
+					var score = data[0].behavior_score-point_cut;
 					var deducted_points = 100 - score;
 					var deducted_pointss = deducted_points; // คะแนนที่หัก
 
+					/**
+					 * Set level_behavior
+					 */
+					if ( point_cut >= 100) {
+    					document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
+					} else if (point_cut >= 91) {
+    					document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
+					} else if (point_cut >= 81) {
+    					document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
+					} else if (point_cut >= 71) {
+    					document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
+					} else if (point_cut >= 51) {
+						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
+					} else if (point_cut >= 31) {
+    					document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 2 ภาคการศึกษา";
+					} else if (point_cut >= 11) {
+    					document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 1 ภาคการศึกษา";
+					} else {
+    					document.getElementById("level_behavior").innerHTML = " ตักเตือนเป็นลายลักษณ์อักษร";
+					}
+					// document.getElementById("level_behavior").innerHTML = "1234";
+					/************/
 
 					var data = [{
 							y: deducted_pointss,
@@ -233,7 +244,22 @@
 					var n = 1;
 					var i;
 					for (i = 0; i < data.length; i++) {
-						// if (data[i].statusoff == '3') {
+						point_cut += parseInt(data[i].point);
+						 if (data[i].statusoff == '6') {
+							// html += '<tr>' +
+							// 	'<th>' + n + '</th>' +
+							// 	'<th>' + data[i].committed_date + '</th>' +
+							// 	'<th>' + data[i].off_desc + '</th>' +
+							// 	'<th>' + data[i].point + '</th>' +
+							// 	//data[i].statusoffname
+							// 	'<th> ' + data[i].statusoffname +  ' </a> </th>'+
+
+							// 	// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
+							// 	//'<th>' + '<a href="javascript:;" data= </a>' + data[i].statusoffname + ' class="show_data"> </th>' + // สถานะการกระทำความผิด 
+
+							// 	'</tr>';
+
+						 } else {
 							html += '<tr>' +
 								'<th>' + n + '</th>' +
 								'<th>' + data[i].committed_date + '</th>' +
@@ -242,28 +268,9 @@
 								//data[i].statusoffname
 								'<th> ' + data[i].statusoffname +  ' </a> </th>'+
 								// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
-								//'<th>' + '<a href="javascript:;" data= </a>' + data[i].statusoffname + ' class="show_data"> </th>' + // สถานะการกระทำความผิด 
-
-								//*html += '<td> <a href="javascript:;" data=' + value.service_ID  +  ' class="show_data">*//
-								//'class="showdetil"> / javascript:;
-								//html += '<td><a href="javascript:;" +' class="edit_data"></a>
-								//<a href="javascript:;" data='+ value.service_ID +' class="del_data"><i class="fas fa-trash-alt " style="color:rgba(235,99,102,1.00)"></i></a></td>';
-
-
 
 								'</tr>';
-
-						// } else {
-						// 	html += '<tr>' +
-						// 		'<th>' + n + '</th>' +
-						// 		'<th>' + data[i].committed_date + '</th>' +
-						// 		'<th>' + data[i].off_desc + '</th>' +
-						// 		'<th>' + data[i].point + '</th>' +
-						// 		'<th>' + data[i].statusoffname + '</th>' + // สถานะการกระทำความผิด 
-
-
-						// 		'</tr>';
-						// }
+						 }
 						n += 1;
 					}
 					$('#showdata').html(html);
@@ -275,6 +282,24 @@
 			});
 		}
 	});
+
+
+// 	if(data[i].statusoff != '6'){
+
+// }else{
+// html += '<tr>' +
+// 	'<th>' + n + '</th>' +
+// 	'<th>' + data[i].committed_date + '</th>' +
+// 	'<th>' + data[i].off_desc + '</th>' +
+// 	'<th>' + data[i].point + '</th>' +
+// 	//data[i].statusoffname
+// 	'<th> ' + data[i].statusoffname +  ' </a> </th>'+
+// 	// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
+
+// 	'</tr>';
+// }
+// n += 1;
+// }
 
 
 	/// view_volunteerAc
