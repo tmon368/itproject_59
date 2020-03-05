@@ -7,7 +7,7 @@ class ReportOffender extends Student_dashboard
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Notifyoffense_model', 'Notifyoffense_model');
+		$this->load->model('ReportOffender_model', 'ReportOffender_model');
 	}
 
 
@@ -29,4 +29,17 @@ class ReportOffender extends Student_dashboard
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 	}
+	function selectstudentoffensehead(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->ReportOffender_model->selectstudentoffensehead();
+        echo json_encode($result);
+	}
+	function updatestatusoffAdmitwrongoffensestd(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->ReportOffender_model->updatestatusoffAdmitwrongoffensestd();
+        echo json_encode($result);
+	}
+	
 }
