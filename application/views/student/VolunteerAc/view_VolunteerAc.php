@@ -35,6 +35,16 @@
             height: 2.5rem;
             padding: 0.3rem;
         }
+        .card-header1{
+    color: #FFF;
+	background: rgb(74, 35, 90);
+	border-radius: 3px;
+	height: 90px;
+}
+.close1{
+    color: #FFF;
+
+}
     </style>
 </head>
 
@@ -259,20 +269,24 @@
 
                 <!-- Modal detail-->
                 <div class="modal fade" id="ShowDta" role="dialog">
-                    <div class="modal-dialog ">
+                    <div class="modal-dialog " style="max-width: 600px!important;">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">รายละเอียดกิจกรรม</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="close1" aria-hidden="true" >×&nbsp;</span>
+                    </button>
+                    <br>
+                    <h4 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;รายละเอียดกิจกรรม</font>
+                    </h4>
 
-                            </div>
+                </div>
+            <br>
                             <div class="modal-body content">
 
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>

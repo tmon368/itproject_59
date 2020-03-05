@@ -36,6 +36,17 @@
             padding: 0.3rem;
         }
 
+        .card-header1 {
+            color: #FFF;
+            background: rgb(74, 35, 90);
+            border-radius: 3px;
+            height: 90px;
+        }
+
+        .close1 {
+            color: #FFF;
+
+        }
     </style>
 </head>
 <script>
@@ -85,26 +96,26 @@
                                 <form action="" id="formadd" name="formadd" method="post">
                                     <div class="FormDataAddActivity">
                                         <input type="hidden" name="activity_type" id="activity_type">
-                                    
-                                        <div class="TypeActivity">
-                                        <label for="type_activity" class="lable label_type_activity">ประเภทกิจกรรม: <span class="fixdata">*</span></label>
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <label class="lable label_type_activity">
-                                                        <input type="radio" checked="checked" value="1"name="activity_type" id="type_activity" required oninvalid="this.setCustomValidity('ระบุประเภทกิจกรรม')" onchange="this.setCustomValidity('')">
-                                                        กิจกรรมบำเพ็ญประโยชน์
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td><label class="lable label_type_activity">
-                                                <input type="radio"  name="activity_type"  value="2" id="type_activity" required oninvalid="this.setCustomValidity('ระบุประเภทกิจกรรม')" onchange="this.setCustomValidity('')">
-                                                การอบรม
-                                                <span class="checkmark"></span>
-                                                    </label>
-                                                </td>
 
-                                        </table>
+                                        <div class="TypeActivity">
+                                            <label for="type_activity" class="lable label_type_activity">ประเภทกิจกรรม: <span class="fixdata">*</span></label>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <label class="lable label_type_activity">
+                                                            <input type="radio" checked="checked" value="1" name="activity_type" id="type_activity" required oninvalid="this.setCustomValidity('ระบุประเภทกิจกรรม')" onchange="this.setCustomValidity('')">
+                                                            กิจกรรมบำเพ็ญประโยชน์
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td><label class="lable label_type_activity">
+                                                            <input type="radio" name="activity_type" value="2" id="type_activity" required oninvalid="this.setCustomValidity('ระบุประเภทกิจกรรม')" onchange="this.setCustomValidity('')">
+                                                            การอบรม
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </td>
+
+                                            </table>
                                         </div>
                                         <br>
                                         <div class="form-inline">
@@ -281,20 +292,24 @@
 
                 <!-- Modal detail-->
                 <div class="modal fade" id="ShowDta" role="dialog">
-                    <div class="modal-dialog ">
+                    <div class="modal-dialog " style="max-width: 600px!important;">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">รายละเอียดกิจกรรม</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <div class="card-header1" id="card_2">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span class="close1" aria-hidden="true">×&nbsp;</span>
+                                </button>
+                                <br>
+                                <h4 class="m-0 text-primary" id="exampleModalLongTitle">
+                                    <font size="5">&nbsp;&nbsp;รายละเอียดกิจกรรม</font>
+                                </h4>
 
                             </div>
+                            <br>
                             <div class="modal-body content">
 
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>
