@@ -180,6 +180,20 @@ p {
     content: "\f030"
 }
 
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030"
+}
+
+#progressbar #submitdata:before {
+    font-family: FontAwesome;
+    content: "\f15c";
+}
+
+/*submitdata*/
+
+
+
 #progressbar #confirm:before {
     font-family: FontAwesome;
     content: "\f00c"
