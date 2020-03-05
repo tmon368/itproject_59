@@ -26,6 +26,16 @@
       padding: inherit;
       font-weight: 900;
     }
+    .card-header1{
+    color: #FFF;
+	background: rgb(74, 35, 90);
+	border-radius: 3px;
+	height: 90px;
+}
+.close1{
+    color: #FFF;
+
+}
   </style>
 </head>
 <script>
@@ -76,12 +86,16 @@
   <div class="modal fade" id="show_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 650px!important;" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLongTitle">การอุทธรณ์ความผิด</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+      <div class="card-header1" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="close1" aria-hidden="true" >×&nbsp;</span>
+                    </button>
+                    <br>
+                    <h4 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;การอุทธรณ์ความผิด</font>
+                    </h4>
+
+                </div>
         <div class="modal-body ">
             <div class="row">
               <div class="col-sm-12">
