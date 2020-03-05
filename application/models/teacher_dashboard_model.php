@@ -239,47 +239,52 @@ foreach($showall as $value){
     
             
 
-    public function selectscoreservice(){
-     //SELECT COUNT(DISTINCT S_ID) FROM offensestd
-        $this->db->select('COUNT(DISTINCT Service_ID) as numberservice');
-        $this->db->from('service');
-
-
-
+        public function selectscoreservice(){
+            $activity=1;
+            //SELECT COUNT(DISTINCT S_ID) FROM offensestd
+            $this->db->select('COUNT(DISTINCT Service_ID) as numberservice');
+            $this->db->from('service s');
+            $this->db->where('s.activity_type1', $activity);
+            
+            
             // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
             //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
-        $query = $this->db->get();
+            $query = $this->db->get();
             //var_dump($query->result());
             //die();
-        if($query->num_rows() > 0){
+            if($query->num_rows() > 0){
                 
-            return $query->row();
-        }else{
-            return false;
+                return $query->row();
+            }else{
+                return false;
+            }
         }
-    }
-
-    public function selectscoretraining(){
-        //SELECT COUNT(DISTINCT S_ID) FROM offensestd
-        $this->db->select('COUNT(DISTINCT train_ID) as numbertraining');
-        $this->db->from('training');
         
         
-        
-        
-        
-        // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
-        //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
-        $query = $this->db->get();
-        //var_dump($query->result());
-        //die();
-        if($query->num_rows() > 0){
+        public function selectscoretraining(){
+            $activity=2;
+            //SELECT COUNT(DISTINCT S_ID) FROM offensestd
+            $this->db->select('COUNT(DISTINCT Service_ID) as numbertraining');
+            $this->db->from('service s');
+            $this->db->where('s.activity_type1', $activity);
+    
             
-            return $query->row();
-        }else{
-            return false;
+            
+            
+            
+            
+            // $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
+            //$this->db->join('offensestd os', 'ov.oh_ID=os.oh_ID');
+            $query = $this->db->get();
+            //var_dump($query->result());
+            //die();
+            if($query->num_rows() > 0){
+                
+                return $query->row();
+            }else{
+                return false;
+            }
         }
-    }
         
 
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
@@ -724,4 +729,216 @@ foreach($showall as $value){
         }
        
     }
-}
+
+
+    public function selectstudentscore(){
+        //$student = $this->session->userdata('student');
+        //SELECT DISTINCT offensestd.S_ID,student.std_fname,student.std_lname,student.behavior_score FROM offensestd,student WHERE offensestd.S_ID=student.S_ID
+        
+        
+        $this->db->distinct();
+        $this->db->select('ostd.S_ID,s.std_fname,s.std_lname,s.behavior_score,x.prefix_name,cr.cur_name,ps.person_fname,ps.person_lname,dr.dname,dr.room_number,s.phone,s.email');
+        $this->db->from('offensestd ostd');
+        $this->db->order_by('s.behavior_score ASC');
+        $this->db->join('student s','ostd.S_ID=s.S_ID');
+        $this->db->join('prefix x','s.prefixID=x.prefixID');
+        $this->db->join('curriculum cr','s.cur_ID=cr.cur_ID');
+        $this->db->join('personnel ps','s.person_ID=ps.person_ID');
+        $this->db->join('dormitory dr','s.dorm_ID=dr.dorm_ID');
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+         
+        if($student > 0){
+            return $student;
+        }else{
+            return false;
+        }
+    }
+    public function searchoffensestudent(){
+        // $Student_ID = "59111111";
+        $i= 0;
+        // $getmonth ="09";
+        // $getyear = "2019";
+        $Student_ID =$_GET['getstdID'];
+       // $getday =$_GET['getday'];
+        //$getmonth =$_GET['getmonth'];
+       // $getyear =$_GET['getyear'];
+    
+       
+         $S_ID = $Student_ID == null ? "": $this->db->where('ostd.S_ID',$Student_ID);
+       // $day = $getday == null ? "": $this->db->where('DAY(oh.committed_date)',$getday);
+       // $month = $getmonth == null ? "": $this->db->where('MONTH(oh.committed_date)',$getmonth);       
+       // $year = $getyear == null ? "": $this->db->where('YEAR(oh.committed_date)',$getyear);
+        
+           
+        //$year =$_GET['getyear'];
+       //SELECT offensehead.committed_date,offensehead.committed_time,offensestd.S_ID,student.std_fname , student.std_lname,offense.off_desc FROM `offensehead`,`offensestd`,`offense`,`student` WHERE  YEAR(committed_date)='2019' and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offensestd.S_ID=student.S_ID
+       //$query= $this->db->query("SELECT offensehead.committed_date,offensehead.committed_time,offensestd.S_ID,student.std_fname , student.std_lname,offense.off_desc FROM `offensehead`,`offensestd`,`offense`,`student` WHERE  YEAR(committed_date)='".$year."' and offensestd.oh_ID=offensehead.oh_ID and offensehead.off_ID=offense.off_ID and offensestd.S_ID=student.S_ID");
+        
+    
+       //query จาก นศ ที่ยอมรับผิด
+    //    $this->db->select('oh.committed_date,oh.committed_time,ostd.S_ID,std.std_fname , std.std_lname,o.off_desc');   
+    //    $this->db->from('report rp');
+    //     $this->db->join('offensestd ostd','rp.offensestd_ID=ostd.offensestd_ID');
+    //    $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
+    //    $this->db->join('offense o','oh.off_ID=o.off_ID');
+    //    $this->db->join('student std','ostd.S_ID=std.S_ID'); 
+    //    $this->db->where('YEAR(oh.committed_date)',$year);
+    //    $this->db->order_by('oh.committed_date ASC');
+    
+       $this->db->select('oh.committed_date,oh.committed_time,ostd.S_ID,std.std_fname,std.std_lname,o.off_desc,point,statusoff,behavior_score,prefix_name');   
+       $this->db->from('offensestd ostd');
+       $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
+       $this->db->join('offense o','oh.off_ID=o.off_ID');
+       $this->db->join('student std','ostd.S_ID=std.S_ID'); 
+       $this->db->join('prefix x','std.prefixID=x.prefixID'); 
+       
+       //$day;
+       //$month;
+      // $year;
+       //$this->db->where('YEAR(oh.committed_date)',$year);
+        //$this->db->order_by('oh.committed_date ASC');
+        $query = $this->db->get();
+        $student = array();
+        $student = $query->result_array();
+        foreach($student as $value){
+            
+            $data = $value['statusoff'];
+            $status = $this->utilstatus($data);
+            $student[$i]["statusoffname"] = $status;
+            $i+=1;
+    
+        }
+        
+        //var_dump($student);   
+       // die();     
+        if($student > 0){
+            return $student;
+        }else{
+            return false;
+        }
+    }  
+    public function utilstatus($statusID){
+    
+        $data = array("รอรายงานตัว","รอการอนุมัติหลักฐาน","หมดเขตการรายงานตัวกรุณาติดต่อเจ้าหน้าที่"  ,"รอการอบรม","รอการบำเพ็ญประโยชน์","รอการรับรองกิจกรรม","เกินระยะเวลาการบำเพ็ญประโยชน์กรุณาติดต่อเจ้าหน้าที่","คืนคะแนนความประพฤติ"  );
+        return $data[$statusID];
+    }  
+    
+    function showAlll(){
+        
+        $i=0;
+        $activity=1;
+        // $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position,p.email,p.phone1,p.phone2');
+        $this->db->select('*');
+        $this->db->from('Service s');
+        $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        $this->db->where('s.activity_type1', $activity);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        //die;
+        // $query = $this->db->get();
+        $showall = array();
+        $showall = $query->result_array();
+        foreach($showall as $row){
+        //    $proposer= $this->selectproposer($row['proposer']);
+        // //    var_dump($proposer);
+        // //    die();
+        //    $showall[$i]['proposer_fname'] =  $proposer[0]['proposer_fname'];
+        //    $showall[$i]['proposer_lname'] =  $proposer[0]['proposer_lname'];
+        //    $showall[$i]['usertype_name'] =  $proposer[0]['usertype_name'];
+            $statusname = $this->statusservice($row['status']);
+            $showall[$i]['statusname'] = $statusname;
+            $activity_type =$this->acticity_type($row['activity_type1']);
+            $showall[$i]['activity_type_name'] = $activity_type;
+            $i+=1;
+        }
+        
+        if($query->num_rows() > 0){
+            return $showall;
+        }else{
+            return false;
+        }
+ 
+     }
+    function statusservice($getstatus){
+        $status = ['รอบุคลากรอนุมัติ','รอเจ้าหน้าที่วินัยอนุมัติ','อนุมัติเรียบร้อย','บุคลากรไม่อนุมัติ','เจ้าหน้าที่วินัยไม่อนุมัติ',''];
+         return $status[$getstatus];
+
+
+    }
+
+    function acticity_type($a_type){
+        $status = ['','บำเพ็ญประโยชน์','อบรม',''];
+         return $status[$a_type];
+
+
+    }
+    function selectproposer($usergroup){
+        // $usergroup = "jsomsri";
+         $this->db->select('std.std_fname as proposer_fname,std.std_lname as proposer_lname,ut.usertype_name as usertype_name');
+         $this->db->from('student std');
+         $this->db->join('usertype ut', 'std.usertype_ID=ut.usertype_ID');
+         $this->db->where('std.username', $usergroup);
+         $query = $this->db->get();
+         $showall = array();
+         $showall = $query->result_array();
+        
+ 
+         if($showall == null){
+         $this->db->select('p.person_fname as proposer_fname,p.person_lname as proposer_lname,ut.usertype_name as usertype_name');
+         $this->db->from('personnel p');
+         $this->db->join('usertype ut', 'p.usertype_ID=ut.usertype_ID');
+         $this->db->where('p.username', $usergroup);
+         $queryper = $this->db->get();
+         $showall = array();
+         $showall = $queryper->result_array();
+         }
+        }
+    function showactity(){
+        $i=0;
+        $activity=2;
+        // $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position,p.email,p.phone1,p.phone2');
+        $this->db->select('*');
+        $this->db->from('Service s');
+        $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        $this->db->where('s.activity_type1', $activity);
+        $query = $this->db->get();
+        //var_dump($query->result());
+        //die;
+        // $query = $this->db->get();
+        $showall = array();
+        $showall = $query->result_array();
+        foreach($showall as $row){
+        //    $proposer= $this->selectproposer($row['proposer']);
+        // //    var_dump($proposer);
+        // //    die();
+        //    $showall[$i]['proposer_fname'] =  $proposer[0]['proposer_fname'];
+        //    $showall[$i]['proposer_lname'] =  $proposer[0]['proposer_lname'];
+        //    $showall[$i]['usertype_name'] =  $proposer[0]['usertype_name'];
+            $statusname = $this->statusservice($row['status']);
+            $showall[$i]['statusname'] = $statusname;
+            $activity_type =$this->acticity_type($row['activity_type1']);
+            $showall[$i]['activity_type_name'] = $activity_type;
+            $i+=1;
+        }
+        
+        if($query->num_rows() > 0){
+            return $showall;
+        }else{
+            return false;
+        }
+ 
+     }    
+
+
+
+
+
+
+    }
+
+
+
+
+
