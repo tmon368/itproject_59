@@ -91,8 +91,8 @@
                         <ul id="progressbar">
                             <li class="active" id="account"><strong>ข้อมูลการแจ้งเหตุ</strong></li>
                             <li id="personal"><strong>ผู้กระทำความผิด</strong></li>
-                            <li id="payment"><strong>หลักฐาน</strong></li>
-                            <li id="confirm"><strong>Finish</strong></li>
+                            <li id="payment"><strong>อัปโหลดหลักฐาน</strong></li>
+                            <li id="confirm"><strong>ยืนยันข้อมูล</strong></li>
                         </ul>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -124,7 +124,6 @@
                                                 <label for="committed_date" class="lablel"><span><i class="far fa-calendar-alt iconlabel"></i></span>วันที่กระทำความผิด:
                                                 </label>
                                                 <input type="date" name="committed_date" id="committed_date" class="input data">
-                                                <!-- <span id="error_message_committed_date"></span> -->
                                                 <label for="" id="labletime" class="lablel">เวลา:</label> <input type="time" name="committed_time" id="committed_time" class="input time">
                                             </div>
 
@@ -132,14 +131,13 @@
                                                 <label for="place" class="lablel"><span><i class="far fa-building iconlabel"></i></span>สถานที่:</label>
                                                 <select class="selectplace input" name="place_ID" id="place_ID">
                                                 </select>
-                                                <!-- <span id="error_message_place"></span> -->
+
                                             </div>
 
 
                                             <div class="row">
                                                 <label for="place" class="lablel"><span><i class="fa fa-commenting-o iconlabel"></i></span>คำอธิบายสถานที่:</label>
                                                 <textarea class="textarea" rows="5" id="explanation" name="explanation"></textarea>
-                                                <span id="error_message_exp_place"></span>
                                                 <div id="snackbar">Some text some message..</div>
                                             </div>
                                         </div>
@@ -151,7 +149,7 @@
                                                 <select name="txt_oc" id="txt_oc" class="select">
                                                     <option value="">เลือกหมวดความผิด</option>
                                                 </select>
-                                                <!-- <span id="error_message_offcat"></span> -->
+
                                             </div>
 
                                             <div class="row">
@@ -159,7 +157,7 @@
                                                 <select name="txt_off" id="txt_off" class="select">
                                                     <option value="">เลือกฐานความผิด</option>
                                                 </select>
-                                                <!-- <span id="error_message_off"></span> -->
+
                                             </div>
                                         </div>
                                     </div>
@@ -190,10 +188,6 @@
                                                 <span is="alert_message"></span>
 
                                             </div>
-
-
-
-
                                         </div>
 
 
@@ -242,8 +236,7 @@
                                             </div>
                                             <div>
                                                 <div class="upload-btn-wrapper">
-                                                    <button class="btn">Browse</button>
-                                                    <!-- <input type="file" class="file_input" id="uploadImage" name="termek_file" multiple /> -->
+                                                    <button class="btn">เลือกรูปภาพ</button>
                                                     <input type="file" class="file_input" id="myFile" name="myFile[]" multiple />
                                                 </div>
                                             </div>
@@ -255,29 +248,68 @@
 
                                     </div>
                                 </div>
-                                <input type="button" name="next" class="next3 action-button" value="บันทึกข้อมูล" />
-                                <!-- <input type="submit" name="bt_upload" class="next3 action-button" id="bt_upload" value="บันทึก" /> -->
+                                <input type="button" name="next" class="next3 action-button" value="ถัดไป" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
-                                    <div class="row">
-                                        <div class="col-7">
+                                    <div class="Content3">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <span class="title"><span id="iconcheck"><i class="fas fa-clipboard-check"></i></span> ตรวจสอบความถูกต้องของข้อมูล</span>
+                                            </div>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <label for="notify_date" class="lable_check">วันที่แจ้งเหตุ:</label><span class="notify_date_check datacheck">2019-02-01</span>
+                                                </div>
+                                                <div>
+                                                    <label for="committed_date" class="lable_check">วันที่กระทำความผิด:</label><span class="committed_date_check datacheck">2019-02-01</span>
+                                                    <label for="time" class="lable_check">เวลา: </label><span class="times_check datacheck">15.30</span>
+                                                </div>
+                                                <div>
+                                                    <label for="place" class="lable_check">สถานที่:</label><span class="placecheck datacheck"></span>
+                                                </div>
+                                                <div>
+                                                    <label for="placeexp" class="lable_check">คำอธิบายสถานที่:</label><span class="placeexpcheck datacheck"></span>
+                                                </div>
+                                                <div>
+                                                    <label for="offencate" class="lable_check">หมวดความผิด:</label>
+                                                    <span class="offencate_check datacheck">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+                                                </div>
+                                                <div>
+                                                    <label for="offen" class="lable_check">ฐานความผิด:</label>
+                                                    <span class="offen_check datacheck">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+                                                </div>
+                                                <div>
+                                                    <label for="liststudentname" class="lable_check">รายชื่อผู้กระทำความผิด:</label>
+                                                    <div class="listname">
+                                                        <div class="personcheck">
 
-                                        </div>
-                                    </div> <br><br>
-                                    <h2 class="purple-text text-center alert_meassage"><strong>บันทึกการแจ้งเหตุเรียบร้อย !</strong></h2> <br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
-                                    </div> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5 class="purple-text text-center">ดำเนินการแจ้งเหตุเสร็จสิ้น กด <a href="javascript:;" id='home_notify'><strong>"หน้าแรก"</strong></a> เพื่อดูรายการแจ้งเหตุ</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label for="fileimg" class="lable_check">หลักฐานการแจ้งเหตุ:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="showfile">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <input type="button" name="next" class="next4 action-button" value="บันทึก" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
                             </fieldset>
 
 
@@ -529,53 +561,100 @@
 
         $('.next3').click(function() {
 
-            var formData = new FormData(document.getElementById("msform"));
-            console.log(formData);
+            //prepair data
+            var notifydate_check = $('#notifica_date').val();
+            var committeddate_check = $('#committed_date').val();
+            var timecheck = $('#committed_time').val();
+            var idoffcate = $('#txt_oc').val();
+            var offenccate_check = $("#txt_oc option[value='" + idoffcate + "']").text()
+            var place_exp = $('#explanation').val();
+            var idoff = $('#txt_off').val();
+            var offen_check = $("#txt_off option[value='" + idoff + "']").text()
+            var idplace = $('#place_ID').val();
+            var place_check = $("#place_ID option[value='" + idplace + "']").text()
 
-            $.ajax({
-                url: '<?php echo base_url(); ?>index.php/Notifyoffense/addnotify',
-                cache: false,
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: "POST",
-                success: function(data) {
-                    console.log(data);
+            // check data befoce submit
+            $('.notify_date_check').text(notifydate_check);
+            $('.committed_date_check').text(committeddate_check);
+            $('.times_check').text(timecheck);
+            $('.offencate_check').text(offenccate_check);
+            $('.offen_check').text(offen_check);
+            $('.placeexpcheck').text(place_exp);
+            $('.placecheck').text(place_check);
 
-                    if (data == 'null') {
 
-                    }
-                }
-            });
 
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
+            if (filesToUpload.length == 0) {
+                alert('อัปโหลดภาพถ่ายหลักฐานการแจ้งเหตุขั้นต่ำ 1 รูป');
+            } else if (filesToUpload.length != 0) {
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
 
-            // //Add Class Active
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                // //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-            // //show the next fieldset
-            next_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({
-                opacity: 0
-            }, {
-                step: function(now) {
-                    // for making fielset appear animation
-                    opacity = 1 - now;
+                // //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
 
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    next_fs.css({
-                        'opacity': opacity
-                    });
-                },
-                duration: 500
-            });
-            setProgressBar(++current);
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+
+            } else {
+                //stament
+            }
+
+
         });
+
+        $('.next4').click(function() {
+
+            if (confirm('ยืนยันข้อมูลการแจ้งเหตุกระทำความผิด')) {
+
+                var formData = new FormData(document.getElementById("msform"));
+                console.log(formData);
+
+                $.ajax({
+                    url: '<?php echo base_url(); ?>index.php/Notifyoffense/addnotify',
+                    cache: false,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: "POST",
+                    success: function(data) {
+                        console.log(data);
+                        if (data == 'true') {
+                            alert('ดำเนินการแจ้งเหตุกระทำความผิดเสร็จสิ้น');
+                            location.reload();
+                        } else if (data == 'false') {
+                            alert('ไม่สามารถทำการแจ้งเหตุได้ โปรดตรวจสอบความถูกต้องของข้อมูล');
+                        } else {
+
+                        }
+                    }
+                });
+
+            } else {
+
+            }
+        });
+
+
 
 
         $(".previous").click(function() {
@@ -842,8 +921,10 @@
             data: data,
             dataType: 'json',
             success: function(data) {
+                console.log('********');
                 console.log(data)
                 html = '';
+                htmlcheck = '';
                 $.each(data, function(key, value) {
                     var temp = value;
                     if (key == 0) {
@@ -853,9 +934,37 @@
                         html += '<input type="hidden" name="std_id[]" value="' + value.S_ID + '">';
                         html += '</div>';
                         $('.person').append(html);
-                    }
 
+                        //htmlcheck
+                        htmlcheck += '<div class="div' + value.S_ID + '">';
+                        htmlcheck += '<div class="dataperson_check row">';
+                        htmlcheck += '<div class="col-sm-1">';
+                        htmlcheck += '<span class="iconstudent"><i class="fas fa-user-circle"></i></span>';
+                        htmlcheck += '</div>';
+                        htmlcheck += '<div class="col-sm-11  detailstudent">';
+                        htmlcheck += '<div class="DataCheck">';
+                        htmlcheck += '<span class="FLnamestudent">ชื่อ: ' + value.std_fname + " " + value.std_lname + " " + '</span>';
+                        htmlcheck += '<span class="MajorCheck">หลักสูตร: ' + value.dept_name + ' </span>';
+                        htmlcheck += '</div>';
+                        htmlcheck += '<span class="SchoolCheck">สำนักวิชา: ' + value.cur_name + '</span>';
+
+                    } else if (key == "verhicles") {
+                        var verhicle = value;
+                        $.each(verhicle, function(key, value) {
+                            if (value.vetype_ID == 1) {
+                                htmlcheck += '<span class="MotorcycleNumberCheck">เลขทะเบียนรถจักรยานยนต์: ' + value.regist_num + ' จังหวัด' + value.province + '</span>';
+                            } else if (value.vetype_ID == 2) {
+                                htmlcheck += '<span class="CarNumberCheck">เลขทะเบียนรถยนต์: ' + value.regist_num + ' จังหวัด' + value.province + '</span>';
+                            } else {
+                                //stament
+                            }
+                        });
+                        htmlcheck += '</div>';
+                        htmlcheck += '</div>';
+                        htmlcheck += '</div>'
+                    }
                 });
+                $('.personcheck').append(htmlcheck);
             },
             error: function(data) {
                 alert();
@@ -876,6 +985,7 @@
         if (window.File && window.FileList && window.FileReader) {
             var filesInput = document.getElementById("myFile");
             filesInput.addEventListener("change", function(event) {
+                var check = 0;
                 var files = event.target.files;
                 var output = document.getElementById("result");
                 for (var i = 0; i < files.length; i++) {
@@ -884,42 +994,65 @@
                     var fileName = files[0].name;
 
                     var fileId = fileIdCounter;
-                    filesToUpload.push({
-                        id: fileIdCounter,
-                        file: file
-                    });
+
+                    if (filesToUpload.length == 0) {
+                        check = 1;
+                    } else if (filesToUpload.length < 5) {
+                        check = 1;
+                        alert(filesToUpload.length);
+                    } else {
+                        alert('อัปโหลดไฟล์ได้สูงสุดเพียง 5 ไฟล์')
+                    }
+
+                    if (check == 1) {
+                        filesToUpload.push({
+                            id: fileIdCounter,
+                            file: file
+                        });
+
+                        if (!file.type.match('image'))
+                            continue;
+                        var picReader = new FileReader();
+                        picReader.addEventListener("load", function(event) {
+                            var picFile = event.target;
+                            var htmlcode = '';
+                            var htmlcheck = '';
+                            htmlcode += '<div class="showpicture countdiv' + fileIdCounter + '">';
+                            htmlcode += '<div class="Imgfile">';
+                            htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result +
+                                "'" + "title='" + picFile.name + "'/>";
+                            htmlcode += '</div>';
+                            htmlcode += '<div class="filename">';
+                            htmlcode += '<div>' + fileName + '</div>';
+                            htmlcode += '<div class="Sizefile">ขนาดไฟล์ภาพ</div>';
+                            htmlcode += '</div>';
+                            htmlcode += '<span id="delete_picture" data=' + fileIdCounter +
+                                '><i class="fa fa-times-circle"></i></span>';
+                            htmlcode += '</div>';
+                            $('.PictureContent').append(htmlcode);
+
+                            htmlcheck += '<div class="countdiv' + fileIdCounter + '">';
+                            htmlcheck += "<img class='ImgCheckThumbnail' alt='Profile image' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
+                            htmlcheck += '</div>';
+                            $('.showfile').append(htmlcheck);
+                        });
+                        picReader.readAsDataURL(file);
+                    }
 
 
-                    console.log(filesToUpload);
-
-
-
-                    if (!file.type.match('image'))
-                        continue;
-                    var picReader = new FileReader();
-                    picReader.addEventListener("load", function(event) {
-                        var picFile = event.target;
-                        var htmlcode = '';
-                        htmlcode += '<div class="showpicture countdiv' + fileIdCounter + '">';
-                        htmlcode += '<div class="Imgfile">';
-                        htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result +
-                            "'" + "title='" + picFile.name + "'/>";
-                        htmlcode += '</div>';
-                        htmlcode += '<div class="filename">';
-                        htmlcode += '<div>' + fileName + '</div>';
-                        htmlcode += '<div class="Sizefile">ขนาดไฟล์ภาพ</div>';
-                        htmlcode += '</div>';
-                        htmlcode += '<span id="delete_picture" data=' + fileIdCounter +
-                            '><i class="fa fa-times-circle"></i></span>';
-                        htmlcode += '</div>';
-                        $('.PictureContent').append(htmlcode);
-
-                    });
-                    picReader.readAsDataURL(file);
                 }
 
             });
         }
+    }
+
+    function reset_form (){
+        studentid = [];
+        removestudenid = [];
+        filesToUpload = [];
+        countFilepicture = 0;
+        fileIdCounter = 0;
+        $('#msform')[0].reset();
     }
 
     //check id and create auto id
@@ -1001,6 +1134,7 @@
                 if (removestudenid[i] == studentid[i]) {
                     studentid.splice([i], 1);
                     $('#div' + removestudenid[i]).remove();
+                    $('.div' + removestudenid[i]).remove();
                     removestudenid.splice([i], 1);
                     console.log(removestudenid[i] + '=' + studentid[i]);
                 }
@@ -1109,8 +1243,6 @@
                 data: 'oc_ID=' + ocID,
                 dataType: 'json',
                 success: function(data) {
-
-                    //alert(data[1].off_ID);
 
                     for (i = 0; i < data.length; i++) {
 
