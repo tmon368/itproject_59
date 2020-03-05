@@ -27,6 +27,9 @@
             <div class="collapse" id="reportperson">
                 <ul class="nav flex-column sub-menu">
                     <li class="submenu">
+                        <a class="nav-link" href="<?php echo site_url("ReportOffender") ?>">รายงานตัวกระทำความผิด</a>
+                    </li>
+                    <li class="submenu">
                         <a class="nav-link" href="<?php echo site_url("OffenseHead") ?>">ยื่นอุทธรณ์ความผิด</a>
                     </li>
                     <li class="submenu">
