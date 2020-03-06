@@ -29,6 +29,7 @@
     var filesToUpload = [];
     var countFilepicture = 0;
     var fileIdCounter = 0;
+    var datanotify = [];
 </script>
 
 
@@ -62,7 +63,6 @@
                                         <th id="">ฐานความผิด</th>
                                         <th id="">สถานที่</th>
                                         <th id="">รายละเอียด</th>
-                                        <th id="">จัดการ</th>
                                     </tr>
                                 </thead>
                                 <tbody id="showdata">
@@ -236,7 +236,7 @@
                                             </div>
                                             <div>
                                                 <div class="upload-btn-wrapper">
-                                                    <button class="btn">เลือกรูปภาพ</button>
+                                                    <button class="btninput">เลือกรูปภาพ</button>
                                                     <input type="file" class="file_input" id="myFile" name="myFile[]" multiple />
                                                 </div>
                                             </div>
@@ -311,14 +311,41 @@
                                 <input type="button" name="next" class="next4 action-button" value="บันทึก" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="กลับ" />
                             </fieldset>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
 
+        <div class="modal fade" id="ShowDetailNotification" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">รายละเอียดการแจ้งเหตุ</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-
+                    </div>
+                    <div class="modal-body content">
+                        <div>
+                            <label for="noyify_date" class="label">วันที่แจ้งเหตุ: <span id="noyify_date_detail" class="NotifyDetail"></span></label>
+                            <label for="comitted_date" class="label">วันที่กระทำความผิด: <span id="comitted_date_detail" class="NotifyDetail"></span></label>
+                        </div>
+                        <div>
+                            <label for="place" class="label">สถานที่: <span id="place_detail" class="NotifyDetail"></span></label>
+                        </div>
+                        <div>
+                            <label for="placeexp" class="label">คำอธิบายสถานที่: <span id="placeexp_detail" class="NotifyDetail"></span></label>
+                        </div>
+                        <div>
+                            <label for="offen" class="label">ฐานความผิด: <span id="offenc_detail" class="NotifyDetail"></span></label>
                         </div>
 
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                </form>
             </div>
         </div>
 
@@ -764,21 +791,40 @@
             async: false, //ห้ามลืม
             dataType: 'json',
             success: function(data) {
+                console.log(data);
                 var html = '';
                 var i = 0;
 
                 $.each(data, function(key, value) {
-
-
                     i++;
                     html += '<tr>';
                     html += '<td>' + i + '</td>';
                     html += '<td>' + value.notifica_date + '</td>';
                     html += '<td>' + value.off_desc + '</td>';
                     html += '<td>' + value.place_name + '</td>';
-                    html += '<td>' + value.explanation + '</td>';
                     html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
                     html += '</tr>';
+
+                    datanotify.push({
+                        place_ID: value.place_ID,
+                        place_name: value.place_name,
+                        description: value.description,
+                        oh_ID: value.oh_ID,
+                        off_ID: value.off_ID,
+                        informer: value.informer,
+                        committed_date: value.committed_date,
+                        committed_time: value.committed_time,
+                        notifica_date: value.notifica_date,
+                        explanation: value.explanation,
+                        OffenseHead_oh_ID: value.OffenseHead_oh_ID,
+                        flag: value.flag,
+                        offensestd_ID: value.offensestd_ID,
+                        S_ID: value.S_ID,
+                        statusoff: value.statusoff,
+                        off_desc: value.off_desc,
+                        oc_ID: value.oc_ID,
+                        point: value.point
+                    });
 
                     $('#showdata').html(html);
 
@@ -1046,7 +1092,7 @@
         }
     }
 
-    function reset_form (){
+    function reset_form() {
         studentid = [];
         removestudenid = [];
         filesToUpload = [];
@@ -1064,7 +1110,6 @@
         B_E = date_t + 543; //แปลง ค.ศ. => พ.ศ.
         convert_be = B_E.toString(); //convert to string
         BE = convert_be.substring(2);
-
         var str = '';
         var tempid_substr = '';
         var auto_id = 0;
@@ -1263,7 +1308,22 @@
         var date_off = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         $('#notifica_show').val(date_off); //set of date in input:disable
         $('#notifica_date').val(date_off);
+    });
 
+    $('#showdata').on('click', '.show_data', function() {
+        $('#ShowDetailNotification').modal('show');
+        var id = $(this).attr('data');
+        console.log(id);
+        console.log(datanotify);
+        $.each(datanotify, function(key, value) {
+            if (value.oh_ID == id) {
+                $('#noyify_date_detail').text(value.notifica_date);
+                $('#comitted_date_detail').text(value.committed_date);
+                $('#place_detail').text(value.place_name);
+                $('#placeexp_detail').text(value.description);
+                $('#offenc_detail').text(value.off_desc);              
+            }
+        });
     });
 
     $('#btnSave').click(function() {
