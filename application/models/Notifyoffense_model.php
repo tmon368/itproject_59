@@ -338,7 +338,69 @@ class Notifyoffense_model extends CI_Model
 
 
                             if ($this->db->affected_rows() > 0) {
-                                return true;
+                                
+
+
+                                require 'phpmailer/PHPMailerAutoload.php'; 
+
+    header('Content-Type: text/html; charset=utf-8');
+    for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
+        $std = $this->input->post('std_id[' . $i . ']');
+        $this->db->select('s.email');
+         $this->db->from('student s');
+         $this->db->where('s.S_ID', $std);
+         $query = $this->db->get();
+         $student = array();
+         $student = $query->result_array();
+         $emailstd = $student[0]['email'];
+    
+    $mail = new PHPMailer;
+    $mail->CharSet = "utf-8";
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587;
+    $mail->SMTPSecure = 'tls';
+    $mail->SMTPAuth = true;
+    
+    
+    $gmail_username = "wusystem2020@gmail.com"; // gmail ที่ใช้ส่ง
+    $gmail_password = "wusystemtest2020"; // รหัสผ่าน gmail
+    // ตั้งค่าอนุญาตการใช้งานได้ที่นี่ https://myaccount.google.com/lesssecureapps?pli=1
+    
+    
+    $sender = "WUSYSTEM"; // ชื่อผู้ส่ง
+    $email_sender = "wusystem2020@gmail.com"; // เมล์ผู้ส่ง 
+    
+    $email_receiver =  $emailstd; // เมล์ผู้รับ ***
+    
+    $subject = "ทดสอบระบบ WU "; // หัวข้อเมล์
+    
+    
+    $mail->Username = $gmail_username;
+    $mail->Password = $gmail_password;
+    $mail->setFrom($email_sender, $sender);
+    $mail->addAddress($email_receiver);
+    $mail->Subject = $subject;
+    
+    $email_content = "โดนหักคะแนนแล้วจ้า";
+    
+    //  ถ้ามี email ผู้รับ
+    if($email_receiver){
+        $mail->msgHTML($email_content);
+        if (!$mail->send()) {  // สั่งให้ส่ง email
+    
+            // กรณีส่ง email ไม่สำเร็จ
+           // echo "<h3 class='text-center'>ระบบมีปัญหา กรุณาลองใหม่อีกครั้ง</h3>";
+            //echo $mail->ErrorInfo; // ข้อความ รายละเอียดการ error
+        }else{
+            // กรณีส่ง email สำเร็จ
+           // echo "ระบบได้ส่งข้อความไปเรียบร้อย";
+        }	
+    }
+}
+                                
+
+    return true;
                             } else {
                                 return false;
                             }
@@ -351,7 +413,68 @@ class Notifyoffense_model extends CI_Model
 
 
 
+function testemail(){
 
+    require 'phpmailer/PHPMailerAutoload.php'; 
+
+    header('Content-Type: text/html; charset=utf-8');
+    // for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
+    //     $std = $this->input->post('std_id[' . $i . ']');
+    //     $this->db->select('s.email');
+    //      $this->db->from('student s');
+    //      $this->db->where('s.S_ID', $std);
+    //      $query = $this->db->get();
+    //      $student = array();
+    //      $student = $query->result_array();
+    //      $emailstd = $student[0]['email'];
+    
+    $mail = new PHPMailer;
+    $mail->CharSet = "utf-8";
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587;
+    $mail->SMTPSecure = 'tls';
+    $mail->SMTPAuth = true;
+    
+    
+    $gmail_username = "wusystem2020@gmail.com"; // gmail ที่ใช้ส่ง
+    $gmail_password = "wusystemtest2020"; // รหัสผ่าน gmail
+    // ตั้งค่าอนุญาตการใช้งานได้ที่นี่ https://myaccount.google.com/lesssecureapps?pli=1
+    
+    
+    $sender = "WUSYSTEM"; // ชื่อผู้ส่ง
+    $email_sender = "wusystem2020@gmail.com"; // เมล์ผู้ส่ง 
+    
+    $email_receiver = "Guppiya80130@hotmail.com"; // เมล์ผู้รับ ***
+    
+    $subject = "ระบบวินัยนักศึกษา WU "; // หัวข้อเมล์
+    
+    
+    $mail->Username = $gmail_username;
+    $mail->Password = $gmail_password;
+    $mail->setFrom($email_sender, $sender);
+    $mail->addAddress($email_receiver);
+    $mail->Subject = $subject;
+    
+    $email_content = "โดนหักคะแนนความประพฤติ กรุณาตรวจสอบในระบบ";
+    
+    //  ถ้ามี email ผู้รับ
+    if($email_receiver){
+        $mail->msgHTML($email_content);
+    
+    
+        if (!$mail->send()) {  // สั่งให้ส่ง email
+    
+            // กรณีส่ง email ไม่สำเร็จ
+            echo "<h3 class='text-center'>ระบบมีปัญหา กรุณาลองใหม่อีกครั้ง</h3>";
+            echo $mail->ErrorInfo; // ข้อความ รายละเอียดการ error
+        }else{
+            // กรณีส่ง email สำเร็จ
+            echo "ระบบได้ส่งข้อความไปเรียบร้อย";
+        }	
+    }
+    //}
+}
 
 
     //test
