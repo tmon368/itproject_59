@@ -920,7 +920,7 @@ foreach($showall as $value){
  
      }
     function acticity_type($a_type){
-        $status = ['บำเพ็ญประโยชน์','อบรม',''];
+        $status = ['','บำเพ็ญประโยชน์','อบรม',''];
          return $status[$a_type];
 
 
