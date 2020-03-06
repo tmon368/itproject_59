@@ -127,14 +127,10 @@ class offensecate_model extends CI_Model {
         //UPDATE offense SET flagg=1 WHERE flagg=0
 
         $id = $this->input->post('txtdelID');
-        $field = array(
-           'flag'=> '1'
-           
-       );
-
+    
        
       $this->db->where('oc_ID', $id);
-      $this->db->delete('offensecate' ,$field);
+      $this->db->delete('offensecate');
         
        
        //$this->db->update('offensecate', $field);
