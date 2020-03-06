@@ -113,7 +113,7 @@
             }
         });
 
-        
+
         function show_all() {
 
             $.ajax({
@@ -147,7 +147,15 @@
                         htmlcode += '<span id="place">' + value.place + '</span>';
                         htmlcode += '</div>';
                         htmlcode += '</td>';
-                        htmlcode += '<td><span class="badge badge-success">ผ่านการเข้าร่วม</span></td>'
+
+                        if (value.results == 0) {
+                            htmlcode += '<td><span class="badge badge-success">ผ่านการเข้าร่วม</span></td>'
+                        } else if (value.results == 1) {
+                            htmlcode += '<td><span class="badge badge-danger">ไม่ผ่านการเข้าร่วม</span></td>'
+                        } else {
+
+                        }
+
                         htmlcode += '<td id="person_control">' + value.person_fname + " " + value.person_lname + '</td>';
                         //htmlcode += '<td><button name="btndel" id="btndel" type="button" class="btn btn-danger btn-rounded btn-fw cancleActivity" data="' + value.service_ID + '">ยกเลิกกิจกรรม</button></td>';
                         htmlcode += '</tr>';

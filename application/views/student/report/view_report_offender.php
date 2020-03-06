@@ -167,29 +167,10 @@
             showAll();
         });
 
-        function check_data_offenstd(data) {
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                url: '<?php echo base_url() ?>index.php/OffenseHead/selectoffenseforinsert',
-                data: {
-                    id: data
-                },
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                    console.log(data);
-                    $('#report_ID').val(data.report_ID);
-                    // $('#S_ID').val(data.S_ID);
-                    // $('#person_ID').val(data.person_ID);
-                }
-            });
-        }
-
         function showAll() {
             $.ajax({
                 type: 'ajax',
-                url: '<?php echo base_url() ?>index.php/OffenseHead/selectstudentoffensehead',
+                url: '<?php echo base_url() ?>index.php/ReportOffender/selectstudentoffensehead',
                 async: false,
                 dataType: 'json',
                 success: function(data) {
@@ -197,12 +178,14 @@
                     var html = '';
                     var i = 0;
                     $.each(data, function(key, value) {
-                        i++
+
+                        i++;
                         html += '<tr>';
                         html += '<td>' + i + '</td>'
                         html += '<td>' + value.committed_date + '</td>';
                         html += '<td>' + value.off_desc + '</td>';
                         html += '<td class="tddetail"><span class="fileicon " data="' + value.offensestd_ID + '"><i class="fas fa-file-alt"></i></span></td>';
+                        html += '<td><button class="btn btn-outline-success AcceptOffender" data="' + value.offensestd_ID + '">ยืนยัน</button></td>'
                         html += '</tr>';
 
                         var time_committed = value.committed_time.substring(0, 5);
@@ -226,6 +209,35 @@
             });
         }
 
+        //AcceptOffender
+        $('#showdata').on('click', '.AcceptOffender', function() {
+            var id = $(this).attr('data');
+            //console.log(id);
+            data={offensestd_ID: id}
+            if (confirm('ยืนยันการกระทำความผิด')) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo site_url("ReportOffender/updatestatusoffAdmitwrongoffensestd  ") ?>',
+                    async: false,
+                    data:data,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        if (data == true){
+                            alert ('ทำรายการเสร็จสิ้น');
+                            location.reload();
+                        }else if (data == false) {
+                            alert ('ไม่สามารถทำการรายการได้ กรุณาตรวจสอบข้อมูล');
+                        }else{
+
+                        }
+
+                    }
+                });
+            }else{
+                //stament
+            }
+        });
 
         $('#showdata').on('click', '.fileicon', function() {
             $('#show_detail_file').modal('show');
