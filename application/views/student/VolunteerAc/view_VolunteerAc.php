@@ -155,7 +155,7 @@
                                         </div>
                                         <br>
                                         <label for="place" class="lable">สถานที่จัดกิจกรรม: <span class="fixdata">*</span></label>
-                                        <textarea class="form-control" name="place" id="place" cols="30" rows="5" placeholder="บริเวณหอพักลักษณานิเวศ 11" style="max-width: 700px!important;" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
+                                        <textarea class="form-control" name="place" id="place" cols="30" rows="5" placeholder="" style="max-width: 700px!important;" required oninvalid="this.setCustomValidity('ระบุสถานที่จัดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
                                         <br> <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
 
                                         <div class="margin-top:0.5rem;">
@@ -163,7 +163,7 @@
                                         </div>
                                         <br>
                                         <label for="detailactivity" class="lable">รายละเอียดกิจกรรม: <span class="fixdata">*</span></label>
-                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="5" placeholder="กิจกรรมบำเพ็ญประโยชน์กวาดขยะ" style="max-width: 700px!important;" required oninvalid="this.setCustomValidity('ระบุรายละเอียดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
+                                        <textarea class="form-control" name="explanation" id="explanation" cols="30" rows="5" placeholder="" style="max-width: 700px!important;" required oninvalid="this.setCustomValidity('ระบุรายละเอียดกิจกรรม')" onchange="this.setCustomValidity('')"></textarea>
                                     </div>
                             </div>
 

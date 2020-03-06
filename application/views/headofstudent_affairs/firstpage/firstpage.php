@@ -134,21 +134,45 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
+
+                                            var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{
+                                                showdata.push({
+                                                dataPoints: [{"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                    click: onClickgraph,
+                                                
+                                            })
+                                            
+                                            })
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "หมวดความผิด",
+                                                    gridThickness: 0,
+                                                    tickLength: 0,
+                                                    lineThickness: 0,
+                                                    labelFormatter: function() {
+                                                        return " ";
+                                                    }
                                                 },
                                                 axisY: {
                                                     title: "จำนวน(คน)"
                                                 },
-                                                data: [{
-                                                    type: "column",
-                                                    dataPoints: data,
-                                                    click: onClickgraph,
-                                                }]
+                                                data: showdata,
                                             });
 
 
@@ -182,8 +206,20 @@
                                                 height: 350,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "สำนักวิชา",
+                                                    gridThickness: 0,
+                                                    tickLength: 0,
+                                                    lineThickness: 0,
+                                                    labelFormatter: function() {
+                                                        return " ";
+                                                    }
                                                 },
                                                 axisY: {
                                                     title: "จำนวน(คน)"
@@ -229,8 +265,20 @@
                                                 height: 350,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "หลักสูตร",
+                                                    gridThickness: 0,
+                                                    tickLength: 0,
+                                                    lineThickness: 0,
+                                                    labelFormatter: function() {
+                                                        return " ";
+                                                    }
                                                 },
                                                 axisY: {
                                                     title: "จำนวน(คน)"
@@ -307,7 +355,7 @@
     </div>
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -347,7 +395,7 @@
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -406,12 +454,12 @@
         $(document).ready(function() {
             selectscorestudent();
             selectscoreservice();
-            // selectscoretraining();
+            selectscoretraining();
 
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboard',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/selectscorestudent',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -428,7 +476,7 @@
             function selectscoreservice() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoreservice',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/selectscoreservice',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -446,7 +494,7 @@
             function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoretraining',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/selectscoretraining',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -489,7 +537,7 @@
                 html = '';
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url("dean_dashboard/showAlll") ?>',
+                    url: '<?php echo site_url("headofstudent_affairs_dashboard/showAlll") ?>',
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
@@ -530,28 +578,34 @@
                 html = '';
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url("dean_dashboard/showell") ?>',
+                    url: '<?php echo site_url("headofstudent_affairs_dashboard/showactity") ?>',
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
                         $.each(data, function(key, value) {
 
+                            var temp_1 = value.start_time;
+                            var temp_2 = value.end_time;
+                            var start_times = parseFloat(temp_1.substring(0, 5));
+                            var end_times = parseFloat(temp_2.substring(0, 5));
+                            var counthour = Math.abs(end_times - start_times);
+
+                            //console.log(counthour);
+
                             html += '<div class="Data">';
                             html += '<div class="Main1">';
-                            html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-                            html += '<span id="title6"><i class="fas fa-users iconlabel"></i> หมวดการอบรม : ' + value.oc_desc + ' </span>';
-                            html += '<span id="title6"><i class="fas fa-user iconlabel"></i> ผู้ควบคุมการอบรม ชื่อ : ' + value.person_fname + " " + value.person_lname + ' </span>';
-                            html += '<span id="title6"><i class="far fa-calendar-alt iconlabel"></i> วันที่อบรม : ' + value.train_date + " จำนวนผู้อบรม :" + value.train_receive + '</span>';
-                            html += '<span id="title6"><i class="fas fa-building iconlabel"></i> สถานที่ : ' + value.place_name + " ห้องที่จัดอบรม :" + value.room + '</span>';
-                            html += '<span id="title6"><i class="fas fa-hourglass-half iconlabel"></i> จำนวนชั่วโมง : ' + value.time + ' </span>';
-                            html += '<span id="title6"><span><i class="fas fa-clock iconlabel"></i> หมายเหตุ : ' + value.note + ' </span>';
+                            html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
+                            html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                            html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                            html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
                             html += '</div>';
                             html += '<div class="Main2">';
+                            html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                            html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
                             html += '</div>';
                             html += '<div class="Main3">';
                             html += '</div>';
                             html += '</div>';
-
 
                         });
                         $('.BodyTrain').html(html);

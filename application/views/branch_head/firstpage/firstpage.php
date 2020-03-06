@@ -19,50 +19,7 @@
 </center>
 
 <head>
-    <style type='text/css'>
-        .my-legend .legend-title {
-            text-align: left;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 90%;
-        }
-
-        .my-legend .legend-scale ul {
-            margin: 0;
-            margin-bottom: 5px;
-            padding: 0;
-            float:center;
-            list-style: none;
-        }
-
-        .my-legend .legend-scale ul li {
-            font-size: 80%;
-            list-style: none;
-            margin-left: 0;
-            line-height: 18px;
-            margin-bottom: 2px;
-        }
-
-        .my-legend ul.legend-labels li span {
-            display: block;
-          
-            height: 14px;
-            width: 23px;
-            margin-right: 5px;
-            margin-left: 1px;
-            border: 1px solid #999;
-        }
-
-        .my-legend .legend-source {
-            font-size: 70%;
-            color: #999;
-            clear: both;
-        }
-
-        .my-legend a {
-            color: #777;
-        }
-    </style>
+  
 </head>
 <br>
 
@@ -191,9 +148,9 @@
                         <div class="card-body " id="card_1">
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหลักสูตร<span id="cur_name"></span></center>
-                            </font>  
-                              <br> <br> 
-                        <div id="chartContainer" style="height: 300px; max-width: 1000px!important; " ></div>
+                            </font>
+                            <br> <br>
+                            <div id="chartContainer" style="height: 300px; max-width: 1000px!important; "></div>
                             <script type="text/javascript">
                                 window.onload = function() {
                                     $.ajax({
@@ -203,6 +160,22 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
+
+                                            var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{
+                                                showdata.push({
+                                                dataPoints: [{"cur_name":x.cur_name,"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                
+                                            })
+                                            
+                                            })
+                                            console.log(showdata);
 
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
@@ -215,29 +188,20 @@
                                                     fontSize: 17,
                                                     // verticalAlign: "center",
                                                 },
-                                                
+
                                                 axisX: {
-                                                    title: "หมวดความผิด",
-                                                    gridThickness: 0,
-                                                    tickLength: 0,
-                                                    lineThickness: 0,
+                                                    title: "หมวดความผิด",                                                
+                                                    tickLength: 0,                                              
                                                     labelFormatter: function() {
                                                         return " ";
                                                     }
                                                 },
                                                 axisY: {
-                                                 
-                                                    
+
+
                                                 },
-
-                                                data: [{
-                                                    dataPoints: data,
-                                                   
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-
-                                                }]
+                                          //      dataPointMaxWidth: 200,
+                                                data: showdata
                                             });
 
 
@@ -251,47 +215,7 @@
                             </script>
                             <br><br><br>
                         </div>
-                        <table align="center" width="850" >
-                                    <tr >
-                                    <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#80B1D3;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</td>
-                                    
-                                        <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#A2F671;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม</td>
-                                       
-                            </tr>  
-                
-                         
-                         <tr>
-                        <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#FB8072;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับวินัยจราจร</td>
-                                        <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#57c7d4;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับความสะอาดเรียบร้อย</td>
-                                      
-                                    </tr>
-                                </table> 
-                                <br><br>
-
+                        
                     </div>
                 </div>
 
@@ -624,7 +548,7 @@
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
-                        
+
                         var temp_1 = value.start_time;
                         var temp_2 = value.end_time;
                         var start_times = parseFloat(temp_1.substring(0, 5));

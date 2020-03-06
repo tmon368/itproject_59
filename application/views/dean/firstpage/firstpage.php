@@ -178,6 +178,22 @@
                                         success: function(data) {
                                             console.log(data);
 
+
+                                            var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{
+                                                showdata.push({
+                                                dataPoints: [{"dept_name":x.dept_name,"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                    click: onClickgraph,
+                                                
+                                            })
+                                            
+                                            })
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 width: 850,
@@ -204,15 +220,10 @@
                                                     
                                                 },
 
-                                                data: [{
-                                                    dataPoints: data,
-                                                   
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-                                                    click: onClickgraph,
+                                                data: showdata,
+                                                
 
-                                                }]
+                                               
                                             });
 
                                             chart.render();
@@ -230,8 +241,9 @@
                                     var data = {
                                         "oc_ID": id
                                     };
+                                    
                                     console.log(data);
-
+                               
                                     $.ajax({
                                         type: 'ajax',
                                         url: '<?php echo base_url() ?>index.php/Dean_dashboard/getGraphData',
@@ -281,47 +293,7 @@
                             </script>
                                <br><br><br>
                         </div>
-                        <table align="center" width="850" >
-                                    <tr >
-                                    <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#80B1D3;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</td>
-                                    
-                                        <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#A2F671;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม</td>
-                                       
-                            </tr>  
-                
-                         
-                         <tr>
-                        <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#FB8072;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับวินัยจราจร</td>
-                                        <td> <div class='my-legend' >
-                                <div class='legend-scale'>
-                                    <ul class='legend-labels' >
-                                        <li><span style='background:#57c7d4;'></span></li>
-                                    </ul>
-                                </div></div></td>
-                                        <td>ความผิดเกี่ยวกับความสะอาดเรียบร้อย</td>
-                                      
-                                    </tr>
-                                </table> 
-                                <br><br>
-
+                     
                         </div>
                     </div>
 
@@ -669,7 +641,7 @@
                 };
 
                 $.ajax({
-                    url: '<?php echo site_url("dean_dashboard/searchoffensestudent") ?>',
+                    url: '<?php echo site_url("Dean_dashboard/searchoffensestudent") ?>',
                     async: false,
                     dataType: 'json',
                     data: data,
