@@ -122,8 +122,36 @@ public function showAll(){
 	$result = $this->dormitory_supervisor_dashboard_model->showAll();
 	echo json_encode($result);
 }
-
-
+public function showAlll(){
+	$result = $this->dormitory_supervisor_dashboard_model->showAlll();
+	echo json_encode($result);
+}
+public function showactity(){
+	$result = $this->dormitory_supervisor_dashboard_model->showactity();
+	echo json_encode($result);
+}
+function searchoffensestudent(){
+	$result = $this->dormitory_supervisor_dashboard_model->searchoffensestudent();
+	echo json_encode($result);
+}
+function selectscorestudent(){
+	//  $username = $this->session->userdata('username');
+	
+	$result = $this->dormitory_supervisor_dashboard_model->selectscorestudent();
+	echo json_encode($result);
+}
+function selectscoreservice(){
+	//  $username = $this->session->userdata('username');
+	
+	$result = $this->dormitory_supervisor_dashboard_model->selectscoreservice();
+	echo json_encode($result);
+}
+function selectscoretraining(){
+	//  $username = $this->session->userdata('username');
+	
+	$result = $this->dormitory_supervisor_dashboard_model->selectscoretraining();
+	echo json_encode($result);
+}
 //ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย
 public function addnotify(){
 	$result = $this->dormitory_supervisor_dashboard_model->addnotify();

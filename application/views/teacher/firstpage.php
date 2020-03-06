@@ -20,8 +20,49 @@
 </center>
 
 <head>
-    <title></title>
-    <style>
+    <style type='text/css'>
+        .my-legend .legend-title {
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 90%;
+        }
+
+        .my-legend .legend-scale ul {
+            margin: 0;
+            margin-bottom: 5px;
+            padding: 0;
+            float: center;
+            list-style: none;
+        }
+
+        .my-legend .legend-scale ul li {
+            font-size: 80%;
+            list-style: none;
+            margin-left: 0;
+            line-height: 18px;
+            margin-bottom: 2px;
+        }
+
+        .my-legend ul.legend-labels li span {
+            display: block;
+
+            height: 14px;
+            width: 23px;
+            margin-right: 5px;
+            margin-left: 1px;
+            border: 1px solid #999;
+        }
+
+        .my-legend .legend-source {
+            font-size: 70%;
+            color: #999;
+            clear: both;
+        }
+
+        .my-legend a {
+            color: #777;
+        }
     </style>
 
 
@@ -153,7 +194,7 @@
                             </font>
                             <br><br>
 
-                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                            <div id="chartContainer" style="height: 300px; max-width: 1000px!important; "></div>
                             <script type="text/javascript">
                                 window.onload = function() {
                                     $.ajax({
@@ -165,28 +206,41 @@
                                             console.log(data);
 
 
-
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
+                                                width: 850,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
+
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "หมวดความผิด",
+                                                    gridThickness: 0,
+                                                    tickLength: 0,
+                                                    lineThickness: 0,
+                                                    labelFormatter: function() {
+                                                        return " ";
+                                                    }
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)",
-                                                   
+
 
                                                 },
+
                                                 data: [{
                                                     dataPoints: data,
+
                                                     indexLabel: "{y}",
                                                     indexLabelPlacement: "outside",
                                                     indexLabelOrientation: "horizontal",
 
                                                 }]
                                             });
-
 
                                             chart.render();
                                         },
@@ -196,50 +250,103 @@
                                     });
                                 }
                             </script>
-                            <br><br><br><br>
+                            <br><br><br>
                         </div>
+                        <table align="center" width="850">
+                            <tr>
+                                <td>
+                                    <div class='my-legend'>
+                                        <div class='legend-scale'>
+                                            <ul class='legend-labels'>
+                                                <li><span style='background:#80B1D3;'></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</td>
 
+                                <td>
+                                    <div class='my-legend'>
+                                        <div class='legend-scale'>
+                                            <ul class='legend-labels'>
+                                                <li><span style='background:#A2F671;'></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม</td>
+
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class='my-legend'>
+                                        <div class='legend-scale'>
+                                            <ul class='legend-labels'>
+                                                <li><span style='background:#FB8072;'></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>ความผิดเกี่ยวกับวินัยจราจร</td>
+                                <td>
+                                    <div class='my-legend'>
+                                        <div class='legend-scale'>
+                                            <ul class='legend-labels'>
+                                                <li><span style='background:#57c7d4;'></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>ความผิดเกี่ยวกับความสะอาดเรียบร้อย</td>
+
+                            </tr>
+                        </table>
+                        <br><br>
                     </div>
-
-
-                    <div class="col-lg-8 ">
-                        <div class="card shadow mb-3">
-                            <font size="4">
-                                <div class="card-header" id="card_2">
-                                    <h6 class="m-0 text-primary"></h6>
-                                </div><br>
-                                <center>กิจกรรมเพิ่มเติม</center>
-                            </font><br>
-                            <table align="left" border="0" hight="70" style="width:360px;">
-                                <tr>
-                                    <td><button type="button" class="lobo btn" id="btnAdd">
-
-                                            <font size="4">
-                                                <center>กิจกรรมบำเพ็ญประโยชน์ </center>
-                                            </font><br>
-                                            <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
-                                            <br><br><br>
-                                            <p id="showscoreservice" name="showscoreservice">
-                                                <h3>กิจกรรม</h3>
-                                            </p>
-                                        </button></td>
-                                    <td></td>
-                                    <td><button class="lobo2 btn " id="training_card">
-                                            <font size="4">
-                                                <center>กิจกรรมการอบรม</center>
-                                            </font><br>
-                                            <i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
-                                            <br><br><br>
-                                            <p id="showscoretraining" name="showscoretraining">
-                                                <h3>กิจกรรม</h3>
-                                            </p>
-                                        </button></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="col-lg-8 ">
+                    <div class="card shadow mb-3">
+                        <font size="4">
+                            <div class="card-header" id="card_2">
+                                <h6 class="m-0 text-primary"></h6>
+                            </div><br>
+                            <center>กิจกรรมเพิ่มเติม</center>
+                        </font><br>
+                        <table align="left" border="0" hight="70" style="width:360px;">
+                            <tr>
+                                <td><button type="button" class="lobo btn" id="btnAdd">
+
+                                        <font size="4">
+                                            <center>กิจกรรมบำเพ็ญประโยชน์ </center>
+                                        </font><br>
+                                        <i class="far fa-calendar-check" id="farfa-calendar-check"></i>
+                                        <br><br><br>
+                                        <p id="showscoreservice" name="showscoreservice">
+                                            <h3>กิจกรรม</h3>
+                                        </p>
+                                    </button></td>
+                                <td></td>
+                                <td><button class="lobo2 btn " id="training_card">
+                                        <font size="4">
+                                            <center>กิจกรรมการอบรม</center>
+                                        </font><br>
+                                        <i class="fas fa-chalkboard-teacher" id="fasfa-chalkboard-teacher"></i>
+                                        <br><br><br>
+                                        <p id="showscoretraining" name="showscoretraining">
+                                            <h3>กิจกรรม</h3>
+                                        </p>
+                                    </button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
             </div>
         </div>
     </div>
@@ -247,7 +354,7 @@
 
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -281,13 +388,16 @@
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLongTitle">กิจกรรมการอบรม</h2>
+                <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">×&nbsp;</span>
                     </button>
+                    <br>
+                    <h2 class="m-0 text-primary" id="exampleModalLongTitle">
+                        <font size="5">&nbsp;&nbsp;กิจกรรมการอบรม</font>
+                    </h2>
                 </div>
 
                 <div class="modal-body BodyTrain">
@@ -362,7 +472,7 @@
             selectscorestudent();
             selectstudentall();
             selectscoreservice(); // จำนวนกิจกรรมบำเพ็ญประโยชน์
-            // selectscoretraining();
+            selectscoretraining();
 
             function selectscorestudent() {
                 $.ajax({
@@ -404,7 +514,7 @@
             function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectscoretraining',
+                    url: '<?php echo base_url() ?>index.php/Teacher_dashboard/selectscoretraining',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -422,7 +532,7 @@
             function selectstudentall() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentall',
+                    url: '<?php echo base_url() ?>index.php/Teacher_dashboard/selectstudentall',
                     async: false,
                     dataType: 'json',
                     success: function(data) { // console.log(data); 
@@ -495,7 +605,7 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Branch_head_dashboard/showAlll") ?>',
+                url: '<?php echo site_url("Teacher_dashboard/showAlll") ?>',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
@@ -538,27 +648,37 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Branch_head_dashboard/showell") ?>',
+                url: '<?php echo site_url("Teacher_dashboard/showactity") ?>',
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
                     $.each(data, function(key, value) {
 
+                        var temp_1 = value.start_time;
+                        var temp_2 = value.end_time;
+                        var start_times = parseFloat(temp_1.substring(0, 5));
+                        var end_times = parseFloat(temp_2.substring(0, 5));
+                        var counthour = Math.abs(end_times - start_times);
+
+                        //console.log(counthour);
+
+
                         html += '<div class="Data">';
-                        html += '<div class="Main1">';
-                        html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-                        html += '<span id="title6"><i class="fas fa-users iconlabel"></i> หมวดการอบรม : ' + value.oc_desc + ' </span>';
-                        html += '<span id="title6"><i class="fas fa-user iconlabel"></i> ผู้ควบคุมการอบรม ชื่อ : ' + value.person_fname + " " + value.person_lname + ' </span>';
-                        html += '<span id="title6"><i class="far fa-calendar-alt iconlabel"></i> วันที่อบรม : ' + value.train_date + " จำนวนผู้อบรม :" + value.train_receive + '</span>';
-                        html += '<span id="title6"><i class="fas fa-building iconlabel"></i> สถานที่ : ' + value.place_name + " ห้องที่จัดอบรม :" + value.room + '</span>';
-                        html += '<span id="title6"><i class="fas fa-hourglass-half iconlabel"></i> จำนวนชั่วโมง : ' + value.time + ' </span>';
-                        html += '<span id="title6"><span><i class="fas fa-clock iconlabel"></i> หมายเหตุ : ' + value.note + ' </span>';
+                        html += '<div class="Main4">';
+                        html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
+                        html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                        html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                        html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
                         html += '</div>';
-                        html += '<div class="Main2">';
+                        html += '<div class="Main5">';
+                        html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                        html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
                         html += '</div>';
                         html += '<div class="Main3">';
                         html += '</div>';
                         html += '</div>';
+
+
 
 
                     });
@@ -582,7 +702,7 @@
             };
 
             $.ajax({
-                url: '<?php echo site_url("Branch_head_dashboard/searchoffensestudent") ?>',
+                url: '<?php echo site_url("Teacher_dashboard/searchoffensestudent") ?>',
                 async: false,
                 dataType: 'json',
                 data: data,
@@ -630,17 +750,18 @@
 
 
 
+
         function show_cll() {
             $.ajax({
                 type: 'ajax',
-                url: '<?php echo base_url() ?>index.php/Branch_head_dashboard/selectstudentscore',
+                url: '<?php echo base_url() ?>index.php/Teacher_dashboard/selectstudentscore',
                 async: false,
                 dataType: 'json',
                 success: function(data) { // console.log(data); 
                     var html = '';
                     var n = 1;
                     var i;
-                    var count = '5';
+                    var count = '10';
 
                     if (data.length < count) {
                         for (i = 0; i < data.length; i++) {
@@ -667,7 +788,7 @@
                             n += 1;
                         }
                     } else {
-                        for (i = 0; i < 5; i++) {
+                        for (i = 0; i < 10; i++) {
                             html += '<div class="Data">';
                             html += '<div class="Main8">';
                             html += '<br>';

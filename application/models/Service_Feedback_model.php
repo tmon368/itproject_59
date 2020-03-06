@@ -245,6 +245,46 @@ class Service_Feedback_model extends CI_Model {
 
     }
 
+    function selectActivity(){
+        $usergroup =$this->session->userdata('username');
+        $status =2;
+        $i=0;
+    
+    
+        $this->db->select('s.service_ID,s.service_name,s.proposer,s.place,s.service_date,s.start_time,s.end_time,s.received,s.number_of,s.status,s.activity_type1,s.explanation,p.person_fname,p.person_lname,p.position');
+        $this->db->from('service s');
+        $this->db->join('personnel p', 's.person_ID=p.person_ID');
+        $this->db->where('s.status',$status);
+        $this->db->order_by('s.service_date ASC');
+        $query = $this->db->get();
+        $showall = array();
+        $showall = $query->result_array();
+        foreach($showall as $row){
+           $proposer= $this->selectproposer($row['proposer']);
+        //    var_dump($proposer);
+        //    die();
+           $showall[$i]['proposer_fname'] =  $proposer[0]['proposer_fname'];
+           $showall[$i]['proposer_lname'] =  $proposer[0]['proposer_lname'];
+           $showall[$i]['usertype_name'] =  $proposer[0]['usertype_name'];
+            $statusname = $this->statusservice($row['status']);
+            $showall[$i]['statusname'] = $statusname;
+            $activity_type =$this->acticity_type($row['activity_type1']);
+            $showall[$i]['activity_type_name'] = $activity_type;
+            $i+=1;
+        }
+        // var_dump($showall);
+        // die();
+      
+       if($query->num_rows() > 0){
+           return $showall;
+       }else{
+           return false;
+       }
+
+
+    }
+    
+
 
 
 

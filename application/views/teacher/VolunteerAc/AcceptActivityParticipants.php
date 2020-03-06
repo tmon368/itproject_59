@@ -175,7 +175,7 @@
             html = '';
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url("Participants_discipline/selectActivity") ?>',
+                url: '<?php echo site_url("Participants_Teacher/selectActivity") ?>',
                 async: false,
                 dataType: 'json',
                 success: function(data) {

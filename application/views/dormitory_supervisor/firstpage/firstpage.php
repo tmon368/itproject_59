@@ -19,7 +19,50 @@
 </center>
 
 <head>
-    <title></title>
+<style type='text/css'>
+        .my-legend .legend-title {
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 90%;
+        }
+
+        .my-legend .legend-scale ul {
+            margin: 0;
+            margin-bottom: 5px;
+            padding: 0;
+            float:center;
+            list-style: none;
+        }
+
+        .my-legend .legend-scale ul li {
+            font-size: 80%;
+            list-style: none;
+            margin-left: 0;
+            line-height: 18px;
+            margin-bottom: 2px;
+        }
+
+        .my-legend ul.legend-labels li span {
+            display: block;
+          
+            height: 14px;
+            width: 23px;
+            margin-right: 5px;
+            margin-left: 1px;
+            border: 1px solid #999;
+        }
+
+        .my-legend .legend-source {
+            font-size: 70%;
+            color: #999;
+            clear: both;
+        }
+
+        .my-legend a {
+            color: #777;
+        }
+    </style>
 </head>
 <br>
 
@@ -137,22 +180,37 @@
 
 
 
-
-
-
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
+                                                
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "หมวดความผิด",
+                                                    gridThickness: 0,
+                                                    tickLength: 0,
+                                                    lineThickness: 0,
+                                                    labelFormatter: function() {
+                                                        return " ";
+                                                    }
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+                                                 
+                                                    
                                                 },
+
                                                 data: [{
-                                                    type: "column",
                                                     dataPoints: data,
+                                                   
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
                                                     click: onClickgraph,
                                                 }]
                                             });
@@ -188,15 +246,33 @@
                                                 height: 350,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
+                                                title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },
+                                                
                                                 axisX: {
-                                                    title: "หมวดความผิด"
+                                                    title: "หมวดความผิด",
+                                                    gridThickness: 0,
+                                                    tickLength: 0,
+                                                    lineThickness: 0,
+                                                    labelFormatter: function() {
+                                                        return " ";
+                                                    }
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+                                                 
+                                                    
                                                 },
+
                                                 data: [{
-                                                    type: "column",
                                                     dataPoints: data,
+                                                   
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
                                                
                                                 }]
                                             });
@@ -214,6 +290,46 @@
                             </script>
                             <br><br><br><br>
                         </div>
+                        <table align="center" width="850" >
+                                    <tr >
+                                    <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#80B1D3;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</td>
+                                    
+                                        <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#A2F671;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม</td>
+                                       
+                            </tr>  
+                
+                         
+                         <tr>
+                        <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#FB8072;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับวินัยจราจร</td>
+                                        <td> <div class='my-legend' >
+                                <div class='legend-scale'>
+                                    <ul class='legend-labels' >
+                                        <li><span style='background:#57c7d4;'></span></li>
+                                    </ul>
+                                </div></div></td>
+                                        <td>ความผิดเกี่ยวกับความสะอาดเรียบร้อย</td>
+                                      
+                                    </tr>
+                                </table> 
+                                <br><br>
 
                     </div>
 
@@ -266,7 +382,7 @@
     </div>
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -306,7 +422,7 @@
 
 
     <div class="modal fade" id="ShowTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 700px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="card-header1" id="card_2">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -365,12 +481,12 @@
         $(document).ready(function() {
             selectscorestudent();
             selectscoreservice();
-            // selectscoretraining();
+            selectscoretraining();
 
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
+                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/selectscorestudent',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -387,7 +503,7 @@
             function selectscoreservice() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoreservice',
+                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/selectscoreservice',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -405,7 +521,7 @@
             function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoretraining',
+                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/selectscoretraining',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -438,17 +554,14 @@
                 search();
 
             });
-            //  $(".searchko").click(function() {
-            //      search();    
-            //  });
-
+           
 
             function show_all() {
 
                 html = '';
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url("dean_dashboard/showAlll") ?>',
+                    url: '<?php echo site_url("dormitory_supervisor_dashboard/showAlll") ?>',
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
@@ -489,28 +602,34 @@
                 html = '';
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url("dean_dashboard/showell") ?>',
+                    url: '<?php echo site_url("dormitory_supervisor_dashboard/showactity") ?>',
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
                         $.each(data, function(key, value) {
 
+                            var temp_1 = value.start_time;
+                            var temp_2 = value.end_time;
+                            var start_times = parseFloat(temp_1.substring(0, 5));
+                            var end_times = parseFloat(temp_2.substring(0, 5));
+                            var counthour = Math.abs(end_times - start_times);
+
+                            //console.log(counthour);
+
                             html += '<div class="Data">';
                             html += '<div class="Main1">';
-                            html += '<span id="title1">กิจกรรม : ' + value.train_name + '</span>';
-                            html += '<span id="title6"><i class="fas fa-users iconlabel"></i> หมวดการอบรม : ' + value.oc_desc + ' </span>';
-                            html += '<span id="title6"><i class="fas fa-user iconlabel"></i> ผู้ควบคุมการอบรม ชื่อ : ' + value.person_fname + " " + value.person_lname + ' </span>';
-                            html += '<span id="title6"><i class="far fa-calendar-alt iconlabel"></i> วันที่อบรม : ' + value.train_date + " จำนวนผู้อบรม :" + value.train_receive + '</span>';
-                            html += '<span id="title6"><i class="fas fa-building iconlabel"></i> สถานที่ : ' + value.place_name + " ห้องที่จัดอบรม :" + value.room + '</span>';
-                            html += '<span id="title6"><i class="fas fa-hourglass-half iconlabel"></i> จำนวนชั่วโมง : ' + value.time + ' </span>';
-                            html += '<span id="title6"><span><i class="fas fa-clock iconlabel"></i> หมายเหตุ : ' + value.note + ' </span>';
+                            html += '<span id="title1">กิจกรรม : ' + value.service_name + '</span>';
+                            html += '<span id="title6"> <span><i class="far fa-calendar-alt iconlabel"></i></span> วันที่จัดกิจกรรม : ' + value.service_date + ' </span>';
+                            html += '<span id="title6"> <span><i class="fas fa-clock iconlabel"></i></span> เวลาเริ่ม ' + start_times + ' ถึง ' + end_times + ' ชั่วโมงกิกรรม ' + counthour + ' ชม.</span>';
+                            html += '<span id="title6"> <span><i class="fas fa-user iconlabel"></i></span>ผู้รับรองกิจกรม: ' + value.person_fname + " " + value.person_lname + '</span>';
                             html += '</div>';
                             html += '<div class="Main2">';
+                            html += '<div class="CountStudent">จำนวนผู้เข้าร่วม</div>';
+                            html += '<div><span id="last_count_student">' + value.number_of + '</span>/' + value.received + '</div>';
                             html += '</div>';
                             html += '<div class="Main3">';
                             html += '</div>';
                             html += '</div>';
-
 
                         });
                         $('.BodyTrain').html(html);
@@ -533,7 +652,7 @@
                 };
 
                 $.ajax({
-                    url: '<?php echo site_url("dean_dashboard/searchoffensestudent") ?>',
+                    url: '<?php echo site_url("dormitory_supervisor_dashboard/searchoffensestudent") ?>',
                     async: false,
                     dataType: 'json',
                     data: data,

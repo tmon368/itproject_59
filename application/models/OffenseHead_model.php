@@ -12,6 +12,7 @@ class OffenseHead_model extends CI_Model {
     
     public function selectstudentoffensehead(){
         $student = $this->session->userdata('student');
+        $statusoff = "7";
         
         $this->db->select('*');
         $this->db->from('offensestd ostd');
@@ -23,7 +24,7 @@ class OffenseHead_model extends CI_Model {
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
         $this->db->join('offevidence ov', 'oh.oh_ID=ov.oh_ID');
      
-        
+        $this->db->where('ostd.statusoff !=',$statusoff);
         $this->db->where('ostd.S_ID',$student);
         $query = $this->db->get();
         $student = array();

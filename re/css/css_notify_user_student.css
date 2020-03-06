@@ -7,27 +7,62 @@
     width: 100%;
 }
 
-#id_column{
+.Content3 {
+    padding-left: 0.8rem;
+}
+
+.title {
+    font-size: 16px;
+    color: #525558;
+    font-weight: 600;
+}
+
+#iconcheck {
+    color: #2ECC71;
+    font-size: 20px;
+}
+
+.icon1 {
+    margin-right: 0.5rem;
+}
+
+#id_column {
     width: 34px !important;
 }
-#date_commited{
+
+#date_commited {
     width: 80px !important;
 }
 
 .Content2 {
     width: 100%;
 }
-.PictureContent{
+
+.PictureContent {
     width: 100%;
     height: 380px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-.Delete_picture{
+.showfile {
+    display: grid;
+    grid-template-rows: 120px 120px 120px;
+    grid-template-columns: 120px 120px 120px;
+}
+.ImgCheckThumbnail{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+}
+
+.Delete_picture {
     width: 100%;
     text-align: right;
 }
+
 .Tag1 {
     color: #FFF;
     font-family: 'Kanit', sans-serif;
@@ -78,22 +113,43 @@ p.msg {
     width: 50%;
 }
 
-.fa-address-card-o{
+.fa-address-card-o {
     color: #007bff;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
     font-size: 16px;
 }
-#number_id_student{
+
+#number_id_student {
     font-weight: 800;
     color: #fff;
     font-size: 12px;
     background: #007bff;
 }
-.lablel{
+
+.lablel {
     width: 9rem;
     font-family: 'Taviraj', serif;
     margin: 1% 1% 1% 1%;
+}
+
+.lable_check {
+    font-family: 'Taviraj', serif;
+    font-size: 14px;
+    color: #566573;
+}
+
+.datacheck {
+    color: #25292d;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    font-size: 13px;
+    font-family: 'Taviraj', serif;
+}
+
+#iconfile {
+    color: #F5B041;
+    font-size: 20px;
 }
 
 #labletime {
@@ -130,6 +186,12 @@ select option {
 
 .select {
     font-size: 14px;
+    font-family: 'Taviraj', serif;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
     font-family: 'Taviraj', serif;
 }
 
@@ -193,6 +255,27 @@ select option {
     border: 1px solid rgb(67, 16, 161);
 }
 
+.personcheck {
+    font-size: 14px;
+    font-family: 'Taviraj', serif;
+    background: #e9ecef;
+    width: 75%;
+    height: 20rem;
+    padding: 0.5rem;
+    overflow-y: hidden;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(67, 16, 161);
+    overflow-x: hidden;
+}
+
+.dataperson_check {
+    background: #f8f9fc;
+    margin: 0.2rem;
+    padding: 0.2rem;
+    border: 1px solid #c7caec;
+    border-radius: 0rem 1rem 1rem 0rem;
+}
+
 .data {
     padding-left: 1.2rem;
 }
@@ -210,7 +293,16 @@ select option {
     height: 28rem;
 }
 
-.CardImporticture {}
+.iconstudent {
+    font-size: 30px;
+    color: #570a9e;
+}
+
+.detailstudent {
+    display: grid;
+    font-size: 12px;
+    font-family: sans-serif;
+}
 
 body {
     font-family: Verdana, Geneva, sans-serif;
@@ -279,7 +371,7 @@ body {
     padding-left: 9.5rem;
 }
 
-#error_message_committed_date{
+#error_message_committed_date {
     display: none;
     margin: 0.5rem;
     color: #ff5e44;
@@ -355,7 +447,8 @@ body {
     text-align: center;
     padding: 4rem 5rem 1rem 1rem;
 }
-.filename{
+
+.filename {
     font-size: 14px;
 }
 
@@ -374,79 +467,123 @@ body {
     border-radius: 0.8rem;
     border: 1px solid #8862e0;
 }
-.Imgfile{
+
+.Imgfile {
     margin: 0.5rem;
     width: 15%;
 }
-.DeletePicture{
+
+.DeletePicture {
     padding: 0.4rem;
 }
-.thumbnail{
-    max-width:80px ;
-    max-height:50px ;
+
+.thumbnail {
+    max-width: 80px;
+    max-height: 50px;
 }
 
-#delete_picture{
+#delete_picture {
     color: #AAB7B8;
 }
 
-#delete_picture:hover{
+#delete_picture:hover {
     cursor: pointer;
     color: #E74C3C;
 }
 
-.file{
+.file {
     font-size: 15px;
     font-family: sans-serif;
     font-weight: 600;
 }
-.Sizefile{
+
+.Sizefile {
     font-size: 12px;
     color: #8c8c8d;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
+
 #snackbar {
-    visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
-    background-color: #333; /* Black background color */
-    color: #fff; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
-    padding: 16px; /* Padding */
-    position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
-  }
-  
-  /* Show the snackbar when clicking on a button (class added with JavaScript) */
-  #snackbar.show {
-    visibility: visible; /* Show the snackbar */
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 250px;
+    /* Set a default minimum width */
+    margin-left: -125px;
+    /* Divide value of min-width by 2 */
+    background-color: #333;
+    /* Black background color */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    border-radius: 2px;
+    /* Rounded borders */
+    padding: 16px;
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 1;
+    /* Add a z-index if needed */
+    left: 50%;
+    /* Center the snackbar */
+    bottom: 30px;
+    /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+
+#snackbar.show {
+    visibility: visible;
+    /* Show the snackbar */
     /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
     However, delay the fade out process for 2.5 seconds */
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
-  
-  /* Animations to fade the snackbar in and out */
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
+}
+
+/* Animations to fade the snackbar in and out */
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

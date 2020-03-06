@@ -88,7 +88,7 @@ class Teacher_dashboard extends CI_Controller
 	{
 		//  $username = $this->session->userdata('username');
 
-		$result = $this->branch_head_dashboard_model->selectscoretraining();
+		$result = $this->teacher_dashboard_model->selectscoretraining();
 		echo json_encode($result);
 	}
 	function selectservice()
@@ -113,6 +113,13 @@ class Teacher_dashboard extends CI_Controller
 	    echo json_encode($result);
 
 	}
+	function selectstudentscore(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->teacher_dashboard_model->selectstudentscore();
+        echo json_encode($result);
+    }
+    
 
 	/*
 	function selectstudent(){
@@ -184,6 +191,21 @@ class Teacher_dashboard extends CI_Controller
 		$result = $this->teacher_dashboard_model->showAll();
 		echo json_encode($result);
 	}
+
+	public function showAlll(){
+        $result = $this->teacher_dashboard_model->showAlll();
+        echo json_encode($result);
+    }
+    public function showactity(){
+        $result = $this->teacher_dashboard_model->showactity();
+        echo json_encode($result);
+    }
+
+
+	function searchoffensestudent(){
+        $result = $this->teacher_dashboard_model->searchoffensestudent();
+        echo json_encode($result);
+    }
 
 
 	//ฟังก์ชันเพิ่มข้อมูล เมื่อเพิ่มข้อมูลเสร็จสิ้นจะแสดงข้อความ เพิ่มข้อมูลเรียบร้อย

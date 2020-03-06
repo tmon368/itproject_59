@@ -113,6 +113,11 @@ class Participants_Teacher extends Teacher_dashboard
 	    echo json_encode($result);
 
 	}
+	function selectActivity(){
+		$result = $this->Service_Feedback_model->selectActivity();
+	    echo json_encode($result);
+
+	}
 
 	/*
 	function selectstudent(){
