@@ -262,4 +262,37 @@ class Headofstudent_affairs_dashboard extends CI_Controller {
 		$result = $this->headofstudent_affairs_dashboard_model->selectregist_num();
 		echo json_encode($result);
 	}
+	function selectscorestudent(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->headofstudent_affairs_dashboard_model->selectscorestudent();
+        echo json_encode($result);
+    }
+    
+    function selectscoreservice(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->headofstudent_affairs_dashboard_model->selectscoreservice();
+        echo json_encode($result);
+    }
+    
+    
+    function selectscoretraining(){
+        //  $username = $this->session->userdata('username');
+        
+        $result = $this->headofstudent_affairs_dashboard_model->selectscoretraining();
+        echo json_encode($result);
+    }
+    
+
+	public function showAlll(){
+        $result = $this->headofstudent_affairs_dashboard_model->showAlll();
+        echo json_encode($result);
+    }
+    public function showactity(){
+        $result = $this->headofstudent_affairs_dashboard_model->showactity();
+        echo json_encode($result);
+    }
+
+
 }

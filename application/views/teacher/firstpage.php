@@ -204,7 +204,21 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
-
+                                            var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{
+                                                showdata.push({
+                                                dataPoints: [{"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                 
+                                                
+                                            })
+                                            
+                                            })
 
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
@@ -231,15 +245,7 @@
 
 
                                                 },
-
-                                                data: [{
-                                                    dataPoints: data,
-
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-
-                                                }]
+                                                data: showdata,
                                             });
 
                                             chart.render();
@@ -252,58 +258,7 @@
                             </script>
                             <br><br><br>
                         </div>
-                        <table align="center" width="850">
-                            <tr>
-                                <td>
-                                    <div class='my-legend'>
-                                        <div class='legend-scale'>
-                                            <ul class='legend-labels'>
-                                                <li><span style='background:#80B1D3;'></span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา</td>
-
-                                <td>
-                                    <div class='my-legend'>
-                                        <div class='legend-scale'>
-                                            <ul class='legend-labels'>
-                                                <li><span style='background:#A2F671;'></span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>ความผิดเกี่ยวกับความประพฤติ ศีลธรรม และวัฒนธรรมอันดีงาม</td>
-
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <div class='my-legend'>
-                                        <div class='legend-scale'>
-                                            <ul class='legend-labels'>
-                                                <li><span style='background:#FB8072;'></span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>ความผิดเกี่ยวกับวินัยจราจร</td>
-                                <td>
-                                    <div class='my-legend'>
-                                        <div class='legend-scale'>
-                                            <ul class='legend-labels'>
-                                                <li><span style='background:#57c7d4;'></span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>ความผิดเกี่ยวกับความสะอาดเรียบร้อย</td>
-
-                            </tr>
-                        </table>
-                        <br><br>
+                    
                     </div>
                 </div>
 

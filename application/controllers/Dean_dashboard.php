@@ -118,11 +118,6 @@ function searchoffensestudent(){
 	$result = $this->dean_dashboard_model->searchoffensestudent();
 	echo json_encode($result);
 }
-
-
-
-
-
 public function showAll(){
 	$result = $this->dean_dashboard_model->showAll();
 	echo json_encode($result);
