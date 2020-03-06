@@ -41,6 +41,11 @@ class Notifyoffense extends Student_dashboard
 		$result = $this->Notifyoffense_model->showAll();
 		echo json_encode($result);
 	}
+	public function testemail()
+	{
+		$result = $this->Notifyoffense_model->testemail();
+		echo json_encode($result);
+	}
 
 	public function testt()
 	{
