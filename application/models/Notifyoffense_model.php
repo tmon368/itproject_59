@@ -280,30 +280,29 @@ class Notifyoffense_model extends CI_Model
                     }
 
                     if ($this->db->affected_rows() > 0) {
+                        for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
 
-                        $this->db->select('max(offensestd_ID) as maxid');
-                        $this->db->from('offensestd ostd');
-                        $query = $this->db->get();
-                        $id = array();
-                        $id = $query->result_array();
+                            $std = $this->input->post('std_id[' . $i . ']');
+                            $this->db->select('offensestd_ID');
+                            $this->db->from('offensestd');
+                            $this->db->where('S_ID', $std);
 
-                        foreach ($id as $value) {
-                            // echo $value['maxid'];
-                            $maxid =   $value['maxid'];
-                            //echo  $offensestd_ID;
+                            $query = $this->db->get();
+                            // $id = array();
+                            // $id = $query->result_array();
 
-                        }
-                        // var_dump($maxid);
-                        // die();
+                            foreach ($query->result() as $row) {
+                                $ostd = $row->offensestd_ID;
+                            }
 
-
-                        $field5 = array(
-                            'offensestd_ID' => $maxid,
-                            'report_date' => $this->input->post('notifica_date')
-                            //'explanoff'=>$this->input->post('explanoff'),
-                        );
-                        $this->db->insert('report', $field5);
-
+                            $field5 = array(
+                                'offensestd_ID' => $ostd,
+                                'report_date' => $this->input->post('notifica_date')
+                                //'explanoff'=>$this->input->post('explanoff'),
+                            );
+                    
+                            $this->db->insert('report', $field5);
+                    }
 
                         if ($this->db->affected_rows() > 0) {
                             for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {

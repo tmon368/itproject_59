@@ -13,7 +13,7 @@ class ReportOffender_model extends CI_Model {
     public function selectstudentoffensehead(){
         $student = $this->session->userdata('student');
         $statusoff = "7";
-        
+        // $this->db->distinct();
         $this->db->select('*');
         $this->db->from('offensestd ostd');
         $this->db->join('student s', 'ostd.S_ID=s.S_ID');
@@ -23,9 +23,10 @@ class ReportOffender_model extends CI_Model {
        // $this->db->join('proofargument pr', 's.S_ID=ostd.S_ID');
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
         $this->db->join('offevidence ov', 'oh.oh_ID=ov.oh_ID');
-     
         $this->db->where('ostd.statusoff !=',$statusoff);
         $this->db->where('ostd.S_ID',$student);
+        $this->db->group_by('rp.offensestd_ID');
+
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
