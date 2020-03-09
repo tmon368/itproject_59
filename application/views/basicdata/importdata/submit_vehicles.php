@@ -142,10 +142,10 @@
                                 "<td>" + data[i].province + "</td>" +
                                 "<td>" + data[i].brand + "</td>" +
                                 "<td>" + data[i].color + "</td>" +
-                                "<td>" + data[i].type + "</td>" +
+                                "<td>" + data[i].vetype_ID + "</td>" +
                                 "<td>" + data[i].regist_date + "</td>" +
                                 "<td>" + data[i].expired_date + "</td>" +
-                                "<td>" + data[i].std_ID + "</td>" +
+                                "<td>" + data[i].S_ID + "</td>" +
                                 "</tr>";
 
                         }
