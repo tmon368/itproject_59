@@ -73,11 +73,11 @@ class Notifyoffense extends Student_dashboard
 
 	public function test()
 	{
-			echo "<pre>";
+			// echo "<pre>";
 			print_r($_POST);
 			print_r($_FILES);   
-			echo "</pre>";  
-		die;
+		// 	echo "</pre>";  
+		// die;
 
 	}
 
