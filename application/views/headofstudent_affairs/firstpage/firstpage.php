@@ -137,7 +137,7 @@
 
                                             var showdata = [];
                                             
-                                            data.forEach((x,index)=>{
+                                            data.forEach((x,index)=>{ 
                                                 showdata.push({
                                                 dataPoints: [{"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
                                                 showInLegend: true,
@@ -185,9 +185,9 @@
                                 }
 
 
-                                function onClickgraph(e) {
-                                    var id = e.dataPoint.oc_ID
-                                    //alert(id);
+                                function onClickgraph(t) {
+                                    var id = t.dataPoint.oc_ID
+                                    alert(id);
                                     var data = {
                                         "oc_ID": id
                                     };
@@ -195,13 +195,29 @@
 
                                     $.ajax({
                                         type: 'ajax',
-                                        url: '<?php echo base_url() ?>index.php/Discipline_officer_dashboard/getDashboardAll',
+                                        url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboardAll',
                                         data: data,
                                         method: 'get',
                                         async: false,
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
+                                        var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{ 
+                                                showdata.push({
+                                                dataPoints: [{"dept_name":x.dept_name,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                    click: onClickgraph2,
+                                                
+                                            })
+                                            
+                                            })
+                                            
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
@@ -224,12 +240,8 @@
                                                 axisY: {
                                                     title: "จำนวน(คน)"
                                                 },
-                                                data: [{
-                                                    type: "column",
-                                                    dataPoints: data,
-                                                    click: onClickgraph2,
-
-                                                }]
+                                                data: showdata,
+                                            
                                             });
 
 
@@ -244,8 +256,7 @@
                                 }
                                 function onClickgraph2(e) {
                                     var id = e.dataPoint.oc_ID
-                                    var ide= e.dataPoint.dept_ID
-                                    //alert(id);
+                                    var ide = e.dataPoint.dept_ID
                                     var data = {
                                         "oc_ID": id,
                                         "dept_ID": ide
@@ -271,22 +282,23 @@
                                                     fontSize: 17,
                                                     // verticalAlign: "center",
                                                 },
+                                                
                                                 axisX: {
                                                     title: "หลักสูตร",
-                                                    gridThickness: 0,
-                                                    tickLength: 0,
-                                                    lineThickness: 0,
-                                                    labelFormatter: function() {
-                                                        return " ";
-                                                    }
+                                                   
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+                                                 
+                                                    
                                                 },
+
                                                 data: [{
-                                                    type: "column",
                                                     dataPoints: data,
-                                               
+                                                   
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+
                                                 }]
                                             });
 

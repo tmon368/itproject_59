@@ -303,7 +303,7 @@ select option {
 
 .card .card-body {
     padding: 1.88rem 1.81rem;
-    height: 28rem;
+    height: auto;
 }
 
 .iconstudent {
