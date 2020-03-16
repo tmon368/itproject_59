@@ -11,10 +11,23 @@ class teacher_dashboard_model extends CI_Model {
     
     public function selectscorestudent(){
         //SELECT COUNT(DISTINCT S_ID) FROM offensestd
-        $this->db->select('COUNT(DISTINCT S_ID) as numberstudent');
-        $this->db->from('offensestd');
+        // $this->db->select('COUNT(DISTINCT S_ID) as numberstudent');
+        // $this->db->from('offensestd');
 
-
+        $teacher = $this->session->userdata('teacher');
+      $this->db->distinct();
+        $this->db->select('COUNT(DISTINCT ostd.S_ID) as numberstudent');
+        $this->db->group_by('oc.oc_ID');
+        
+        //$this->db->select('*');
+        $this->db->from('personnel p');
+        $this->db->join('student s','p.person_ID=s.person_ID');     
+        $this->db->join('offensestd ostd','s.S_ID=ostd.S_ID');
+        $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');      
+        $this->db->join('offense o','oh.off_ID=o.off_ID'); 
+        $this->db->join('offensecate oc','o.oc_ID=oc.oc_ID'); 
+        
+        $this->db->where('p.username',$teacher);
 
  
         
