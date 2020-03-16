@@ -185,22 +185,22 @@
 					/**
 					 * Set level_behavior
 					 */
-					if (score = 100) {
-						document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
-					} else if (point_cut >= 91) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
-					} else if (point_cut >= 81) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
-					} else if (point_cut >= 71) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
-					} else if (point_cut >= 51) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
-					} else if (point_cut >= 31) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 2 ภาคการศึกษา";
-					} else if (point_cut >= 11) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 1 ภาคการศึกษา";
-					} else {
+					if (deducted_pointss <= 10) {
 						document.getElementById("level_behavior").innerHTML = " ตักเตือนเป็นลายลักษณ์อักษร";
+					} else if (deducted_pointss <= 30) {
+						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 1 ภาคการศึกษา";
+					} else if (deducted_pointss <= 50) {
+						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 2 ภาคการศึกษา";
+					} else if (deducted_pointss <= 70) {
+						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
+					} else if (deducted_pointss <= 80) {
+						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
+					} else if (deducted_pointss <= 90) {
+						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
+					} else if (deducted_pointss <= 99) {
+						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
+					} else {
+						document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
 					}
 					// document.getElementById("level_behavior").innerHTML = "1234";
 					/************/
@@ -238,7 +238,7 @@
 					var n = 1;
 					var i;
 					for (i = 0; i < data.length; i++) {
-						point_cut += parseInt(data[i].point);
+						//point_cut += parseInt(data[i].point);
 						if (data[i].statusoff == '6') {
 							// html += '<tr>' +
 							// 	'<th>' + n + '</th>' +
@@ -265,13 +265,13 @@
 
 								'</tr>';
 						}
-						n += 1;
+						n ++;
 					}
 					$('#showdata').html(html);
 					//$('#dataall').html(num-1);//
 				},
 				error: function() {
-					alert('ไม่มีข้อ5555มูล');
+					alert('ไม่มีข้อมูล');
 				}
 			});
 		}
