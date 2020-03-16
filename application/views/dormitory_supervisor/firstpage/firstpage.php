@@ -246,6 +246,22 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
+                                            var showdata = [];
+                                            data.forEach((x,index)=>{
+                                                showdata.push({
+                                                dataPoints: [{"oc_ID":x.oc_ID,"oc_desc":x.oc_desc,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                    click: onClickgraph,
+
+                                                })
+                                            
+                                        })
+
+                                            
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
@@ -267,29 +283,20 @@
                                                     }
                                                 },
                                                 axisY: {
-                                                 
-                                                    
-                                                },
 
-                                                data: [{
-                                                    dataPoints: data,
-                                                   
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-                                               
-                                                }]
+
+                                                },
+                                          //      dataPointMaxWidth: 200,
+                                                data: showdata
                                             });
 
 
                                             chart.render();
-
                                         },
                                         error: function() {
                                             alert('ไม่มีข้อมูล');
                                         }
                                     });
-
                                 }
                             </script>
                             <br><br><br><br>
