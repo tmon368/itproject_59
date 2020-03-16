@@ -92,7 +92,7 @@
 						</div>
 
 						<center>
-							คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :
+						<label>คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :</label>
 							<label id="level_behavior"></label>
 						</center>
 						<br>
@@ -194,7 +194,8 @@
 					} else if (deducted_pointss <= 70) {
 						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
 					} else if (deducted_pointss <= 80) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
+						//document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
+						$('#level_behavior').html("พักการศึกษา 1 ภาคการศึกษา");
 					} else if (deducted_pointss <= 90) {
 						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
 					} else if (deducted_pointss <= 99) {
@@ -238,7 +239,7 @@
 					var n = 1;
 					var i;
 					for (i = 0; i < data.length; i++) {
-						//point_cut += parseInt(data[i].point);
+						
 						if (data[i].statusoff == '6') {
 							// html += '<tr>' +
 							// 	'<th>' + n + '</th>' +
@@ -266,12 +267,12 @@
 								'</tr>';
 						}
 						n ++;
-					}
+						}
 					$('#showdata').html(html);
 					//$('#dataall').html(num-1);//
 				},
 				error: function() {
-					alert('ไม่มีข้อมูล');
+					//alert('ไม่มีข้อมูล');
 				}
 			});
 		}
