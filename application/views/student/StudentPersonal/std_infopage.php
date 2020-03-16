@@ -158,7 +158,7 @@
 
 <script>
 	$(document).ready(function() {
-		let point_cut = 0;
+		//let point_cut = 0;
 		selectstudentstatus();
 		selectstudentpoint();
 		// show_all();
@@ -177,29 +177,30 @@
 					// console.log("data[0].behavior_score>>",data);
 					// console.log("data[0].behavior_score>>",data[0].behavior_score);
 
-					var score = data[0].behavior_score - point_cut;
+					var score = data[0].behavior_score //- point_cut;
+					var score2 = score
 					var deducted_points = 100 - score;
 					var deducted_pointss = deducted_points; // คะแนนที่หัก
 
 					/**
 					 * Set level_behavior
 					 */
-					if (point_cut >= 100) {
-						document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
-					} else if (point_cut >= 91) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
-					} else if (point_cut >= 81) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
-					} else if (point_cut >= 71) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
-					} else if (point_cut >= 51) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
-					} else if (point_cut >= 31) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 2 ภาคการศึกษา";
-					} else if (point_cut >= 11) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 1 ภาคการศึกษา";
-					} else {
+					if (deducted_pointss <= 10) {
 						document.getElementById("level_behavior").innerHTML = " ตักเตือนเป็นลายลักษณ์อักษร";
+					} else if (deducted_pointss <= 30) {
+						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 1 ภาคการศึกษา";
+					} else if (deducted_pointss <= 50) {
+						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 2 ภาคการศึกษา";
+					} else if (deducted_pointss <= 70) {
+						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
+					} else if (deducted_pointss <= 80) {
+						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
+					} else if (deducted_pointss <= 90) {
+						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
+					} else if (deducted_pointss <= 99) {
+						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
+					} else {
+						document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
 					}
 					// document.getElementById("level_behavior").innerHTML = "1234";
 					/************/
@@ -210,7 +211,7 @@
 							color: "#FF9966"
 						},
 						{
-							y: score,
+							y: score2,
 							name: "คะแนนคงเหลือ",
 							color: "#66CC66"
 						}
@@ -232,12 +233,12 @@
 				async: false,
 				dataType: 'json',
 				success: function(data) {
-					console.log(data);
+					//console.log(data);
 					var html = '';
 					var n = 1;
 					var i;
 					for (i = 0; i < data.length; i++) {
-						point_cut += parseInt(data[i].point);
+						//point_cut += parseInt(data[i].point);
 						if (data[i].statusoff == '6') {
 							// html += '<tr>' +
 							// 	'<th>' + n + '</th>' +
@@ -264,7 +265,7 @@
 
 								'</tr>';
 						}
-						n += 1;
+						n ++;
 					}
 					$('#showdata').html(html);
 					//$('#dataall').html(num-1);//
