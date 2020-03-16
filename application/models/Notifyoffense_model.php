@@ -113,7 +113,7 @@ class Notifyoffense_model extends CI_Model
 
 
 
-
+        
     //ฟังก์ชันเพิ่มข้อมูล ลงในtable notify
     public function addnotify()
     {
@@ -155,6 +155,9 @@ class Notifyoffense_model extends CI_Model
 
        $off_ID = (int) $this->input->post('txt_off');
         $committed_date =$this->input->post('committed_date');
+        // for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
+
+        //     $S_ID = $this->input->post('std_id['. $i .']');
         $S_ID = $this->input->post('std_id[0]');
         // $off_ID = 22;
         // $committed_date = "2019-10-08";
@@ -163,7 +166,7 @@ class Notifyoffense_model extends CI_Model
         $OffenseHead_oh_ID = $this->checkoh_ID($off_ID, $committed_date, $S_ID);
         // var_dump($OffenseHead_oh_ID);
         // die();
-
+        // }   
         $field = array(
 
             'oh_ID' => $this->input->post('oh_ID'),
@@ -185,7 +188,7 @@ class Notifyoffense_model extends CI_Model
 
         // $this->db->set($field)->get_compiled_insert('offensehead');
         $this->db->insert('offensehead', $field);
-
+    
         // var_dump("1");
         if ($this->db->affected_rows() > 0) {
 
@@ -223,56 +226,64 @@ class Notifyoffense_model extends CI_Model
                 }
                 //var_dump("3");
                 //die();
-                if ($this->db->affected_rows() > 0) {
-                    for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
-                        $field4 = null;
+               // if ($this->db->affected_rows() > 0) {
+                    // for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
+                    //     $field4 = null;
 
-                        $n1 = $this->input->post("txt_oc");
-                        $n2 = $this->input->post('std_id[' . $i . ']');
+                    //     $n1 = $this->input->post("txt_oc");
+                    //     $n2 = $this->input->post('std_id[' . $i . ']');
 
-                        $query = $this->db->query('SELECT * 
-                                                        FROM offcategory 
-                                                        WHERE S_ID = ' . $n2 . '
-                                                        AND  oc_ID = ' . $n1 . '
-                                                        ');
+                    //     $query = $this->db->query('SELECT * 
+                    //                                     FROM offcategory 
+                    //                                     WHERE S_ID = ' . $n2 . '
+                    //                                     AND  oc_ID = ' . $n1 . '
+                    //                                     ');
                         // var_dump($query->num_rows());
-                        if ($query->num_rows() > 0) {
-                            foreach ($query->result() as $row) {
-                                $r = $row->num_of + 1;
-                                $query = $this->db->query('UPDATE offcategory 
-                                                                    SET num_of = ' . $r . '
-                                                                    WHERE oc_ID = ' . $n1 . ' 
-                                                                    AND S_ID = ' . $n2 . ' ');
-                                //var_dump($field4);
-                                //die();
-                                //$this->db->where('S_ID', $this->input->post('std_id['.$i.']'));
-                                //$this->db->where('oc_ID', $this->input->post('oc_ID'));
-                                //$this->db->update('offcategory', $field4);
-                                //$this->db->insert('offcategory', $field4);
-                            }
-                        } else {
-                            $field4 = array(
-                                'oc_ID' => $this->input->post('txt_oc'),
-                                'S_ID' => $this->input->post('std_id[' . $i . ']'),
-                                'num_of' => '1',
-                            );
-                            //var_dump($field4);
-                            $this->db->insert('offcategory', $field4);
-                        } //
+                    //     if ($query->num_rows() > 0) {
+                    //         foreach ($query->result() as $row) {
+                    //             $r = $row->num_of + 1;
+                    //             $query = $this->db->query('UPDATE offcategory 
+                    //                                                 SET num_of = ' . $r . '
+                    //                                                 WHERE oc_ID = ' . $n1 . ' 
+                    //                                                 AND S_ID = ' . $n2 . ' ');
+                    //             //var_dump($field4);
+                    //             //die();
+                    //             //$this->db->where('S_ID', $this->input->post('std_id['.$i.']'));
+                    //             //$this->db->where('oc_ID', $this->input->post('oc_ID'));
+                    //             //$this->db->update('offcategory', $field4);
+                    //             //$this->db->insert('offcategory', $field4);
+                    //         }
+                    //     // } else {
+                    //     //     $field4 = array(
+                    //     //         'oc_ID' => $this->input->post('txt_oc'),
+                    //     //         'S_ID' => $this->input->post('std_id[' . $i . ']'),
+                    //     //         'num_of' => '1',
+                    //     //     );
+                    //     //     //var_dump($field4);
+                    //     //     $this->db->insert('offcategory', $field4);
+                    //     // } //
 
-                    }
+                    // }
 
                     if ($this->db->affected_rows() > 0) {
                         for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
 
                             $std = $this->input->post('std_id[' . $i . ']');
+                            var_dump($std);
+                            // $this->db->select('offensestd_ID');
+                            // $this->db->from('offensestd');
+                            // $this->db->where('S_ID', $std);
                             $this->db->select('offensestd_ID');
-                            $this->db->from('offensestd');
-                            $this->db->where('S_ID', $std);
+                            $this->db->from('offensestd ostd');
+                            $this->db->where('ostd.S_ID', $std);
+                            // $this->db->orderby('offensestd_ID');
+                            $this->db->order_by('ostd.offensestd_ID','DESC');
+                            $this->db->limit(1);  
 
                             $query = $this->db->get();
                             // $id = array();
                             // $id = $query->result_array();
+                            var_dump($query->result());
 
                             foreach ($query->result() as $row) {
                                 $ostd = $row->offensestd_ID;
@@ -372,25 +383,26 @@ class Notifyoffense_model extends CI_Model
     if($email_receiver){
         $mail->msgHTML($email_content);
         if (!$mail->send()) {  // สั่งให้ส่ง email
-    
+            return true;
             // กรณีส่ง email ไม่สำเร็จ
            // echo "<h3 class='text-center'>ระบบมีปัญหา กรุณาลองใหม่อีกครั้ง</h3>";
             //echo $mail->ErrorInfo; // ข้อความ รายละเอียดการ error
         }else{
+            return true;
             // กรณีส่ง email สำเร็จ
            // echo "ระบบได้ส่งข้อความไปเรียบร้อย";
         }	
     }
 }
                                 
-
-    return true;
+return true;
+   
                             } else {
                                 return false;
                             }
                         }
                     }
-                }
+               // }
             }
         }
     }
@@ -782,15 +794,12 @@ function testemail(){
     {
 
         $query = $this->db->query('SELECT MAX(oh_ID) AS oh_ID FROM offensehead');
-
-
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
             return false;
         }
     }
-
 
     function selectregist_num()
     {

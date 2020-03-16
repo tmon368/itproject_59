@@ -262,10 +262,10 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div>
-                                                    <label for="notify_date" class="lable_check">วันที่แจ้งเหตุ:</label><span class="notify_date_check datacheck">2019-02-01</span>
+                                                    <label for="notify_date" class="lable_check">วันที่แจ้งเหตุ:</label><span class="notify_date_check datacheck"></span>
                                                 </div>
                                                 <div>
-                                                    <label for="committed_date" class="lable_check">วันที่กระทำความผิด:</label><span class="committed_date_check datacheck">2019-02-01</span>
+                                                    <label for="committed_date" class="lable_check">วันที่กระทำความผิด:</label><span class="committed_date_check datacheck"></span>
                                                     <label for="time" class="lable_check">เวลา: </label><span class="times_check datacheck">15.30</span>
                                                 </div>
                                                 <div>
@@ -276,11 +276,11 @@
                                                 </div>
                                                 <div>
                                                     <label for="offencate" class="lable_check">หมวดความผิด:</label>
-                                                    <span class="offencate_check datacheck">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+                                                    <span class="offencate_check datacheck"></span>
                                                 </div>
                                                 <div>
                                                     <label for="offen" class="lable_check">ฐานความผิด:</label>
-                                                    <span class="offen_check datacheck">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+                                                    <span class="offen_check datacheck"></span>
                                                 </div>
                                                 <div>
                                                     <label for="liststudentname" class="lable_check">รายชื่อผู้กระทำความผิด:</label>
