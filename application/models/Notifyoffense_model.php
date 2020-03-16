@@ -151,50 +151,33 @@ class Notifyoffense_model extends CI_Model
                 $final_files_data[] = $this->upload->data();
             }
         }
-        $usergroup = $this->session->userdata('student') == null ? "" : $this->session->userdata('student');
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('admin') == null ? "" : $this->session->userdata('admin');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('teacher') == null ? "" : $this->session->userdata('teacher');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('discipline_officer') == null ? "" : $this->session->userdata('discipline_officer');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('headofstudent_affairs') == null ? "" : $this->session->userdata('headofstudent_affairs');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('dormitory_supervisor') == null ? "" : $this->session->userdata('dormitory_supervisor');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('dormitory_advisor') == null ? "" : $this->session->userdata('dormitory_advisor');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('branch_head') == null ? "" : $this->session->userdata('branch_head');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('dean') == null ? "" : $this->session->userdata('dean');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('security_guard') == null ? "" : $this->session->userdata('security_guard');
-        }
-        if ($usergroup == "") {
-            $usergroup = $this->session->userdata('employee') == null ? "" : $this->session->userdata('employee');
-        }
+        $usergroup = $this->session->userdata('username');
+
+       $off_ID = (int) $this->input->post('txt_off');
+        $committed_date =$this->input->post('committed_date');
+        $S_ID = $this->input->post('std_id[0]');
+        // $off_ID = 22;
+        // $committed_date = "2019-10-08";
+        // $S_ID = 59456789;
+
+        $OffenseHead_oh_ID = $this->checkoh_ID($off_ID, $committed_date, $S_ID);
+        // var_dump($OffenseHead_oh_ID);
+        // die();
 
         $field = array(
 
             'oh_ID' => $this->input->post('oh_ID'),
-            'off_ID' => (int) $this->input->post('txt_off'),
+            'off_ID' => $off_ID,
             'informer' => $usergroup,
             'place_ID' => (int) $this->input->post('place_ID'),
-            'committed_date' => $this->input->post('committed_date'),
+            'committed_date' =>  $committed_date,
             'committed_time' => $this->input->post('committed_time'),
             'notifica_date' => $this->input->post('notifica_date'),
             'explanation' => $this->input->post('explanation'),
-            'OffenseHead_oh_ID' => $this->input->post('oh_ID')
+            'OffenseHead_oh_ID' => $OffenseHead_oh_ID
         );
+
+        
 
         //var_dump($field);
         //die();
@@ -280,30 +263,29 @@ class Notifyoffense_model extends CI_Model
                     }
 
                     if ($this->db->affected_rows() > 0) {
+                        for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
 
-                        $this->db->select('max(offensestd_ID) as maxid');
-                        $this->db->from('offensestd ostd');
-                        $query = $this->db->get();
-                        $id = array();
-                        $id = $query->result_array();
+                            $std = $this->input->post('std_id[' . $i . ']');
+                            $this->db->select('offensestd_ID');
+                            $this->db->from('offensestd');
+                            $this->db->where('S_ID', $std);
 
-                        foreach ($id as $value) {
-                            // echo $value['maxid'];
-                            $maxid =   $value['maxid'];
-                            //echo  $offensestd_ID;
+                            $query = $this->db->get();
+                            // $id = array();
+                            // $id = $query->result_array();
 
-                        }
-                        // var_dump($maxid);
-                        // die();
+                            foreach ($query->result() as $row) {
+                                $ostd = $row->offensestd_ID;
+                            }
 
-
-                        $field5 = array(
-                            'offensestd_ID' => $maxid,
-                            'report_date' => $this->input->post('notifica_date')
-                            //'explanoff'=>$this->input->post('explanoff'),
-                        );
-                        $this->db->insert('report', $field5);
-
+                            $field5 = array(
+                                'offensestd_ID' => $ostd,
+                                'report_date' => $this->input->post('notifica_date')
+                                //'explanoff'=>$this->input->post('explanoff'),
+                            );
+                    
+                            $this->db->insert('report', $field5);
+                    }
 
                         if ($this->db->affected_rows() > 0) {
                             for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
@@ -317,6 +299,7 @@ class Notifyoffense_model extends CI_Model
                                 $query = $this->db->get();
                                 // var_dump($query->result());
                                 $sumpoint = 0;
+                                if($OffenseHead_oh_ID == ""){
                                 foreach ($query->result() as $row) {
                                     $sumpoint = $row->behavior_score - 5;
                                 }
@@ -334,6 +317,7 @@ class Notifyoffense_model extends CI_Model
 
                                 $this->db->where('S_ID', $std);
                                 $this->db->update('student', $field6);
+                            }
                             }
 
 
@@ -412,6 +396,26 @@ class Notifyoffense_model extends CI_Model
     }
 
 
+
+    function checkoh_ID($off_ID,$committed_date,$S_ID){
+        $this->db->select('*');
+        $this->db->from('offensehead oh');
+        $this->db->join('offensestd ostd', 'oh.oh_ID=ostd.oh_ID');
+        $this->db->where('oh.off_ID',$off_ID);
+        $this->db->where('oh.committed_date',$committed_date);
+        $this->db->where('oh.OffenseHead_oh_ID',"");
+        $this->db->where('ostd.S_ID', $S_ID);
+        $query = $this->db->get();
+        $showall = array();
+        $showall = $query->result_array();
+        if($showall == null){
+            $oh_ID = "";
+        }else{
+        $oh_ID = $showall[0]["oh_ID"];
+         }
+        //var_dump($showall);
+        return $oh_ID;
+    }
 
 function testemail(){
 

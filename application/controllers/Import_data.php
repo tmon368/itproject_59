@@ -1127,14 +1127,15 @@ class Import_data extends Admin_dashboard {
                     $start_row = 2;
                     // กำหนดชื่อ column ที่ต้องการไปเรียกใช้งาน
                     $col_name = array(
-                        "A"=>"regist_num",
-                        "B"=>"province",
-                        "C"=> "brand",
-                        "D"=> "color",
-                        "E"=> "type",
-                        "F"=> "regist_date",
-                        "G"=> "expired_date",
-                        "H"=> "std_ID",
+                        "A"=>"v_ID",
+                        "B"=>"regist_num",
+                        "C"=>"province",
+                        "D"=> "brand",
+                        "E"=> "color",
+                        "F"=> "vetype_ID",
+                        "G"=> "regist_date",
+                        "H"=> "expired_date",
+                        "I"=> "S_ID",
                         
                     );
                     if($row >= $start_row){
@@ -1148,7 +1149,7 @@ class Import_data extends Admin_dashboard {
         // สร้างฟังก์ชั่นสำหรับจัดการกับข้อมุลที่เป็นค่าว่าง หรือไม่มีข้อมูลน้้น
         function prepare_data($data){
             // กำหนดชื่อ filed ให้ตรงกับ $col_name ด้านบน
-            $arr_field = array("regist_num","province","brand","color","type","regist_date","expired_date","std_ID");
+            $arr_field = array("v_ID","regist_num","province","brand","color","vetype_ID","regist_date","expired_date","S_ID");
             if(is_array($data)){
                 foreach($arr_field as $v){
                     if(!isset($data[$v])){
@@ -1168,25 +1169,26 @@ class Import_data extends Admin_dashboard {
             foreach($data_arr as $row){
                 $row = prepare_data($row);
                 
-                
+                $v_ID = $row['v_ID'];
                 $regist_num = $row['regist_num'];
                 $province = $row['province'];
                 $brand = $row['brand'];
                 $color = $row['color'];
-                $type = $row['type'];
+                $vetype_ID = $row['vetype_ID'];
                 $regist_date = $row['regist_date'];
                 $expired_date = $row['expired_date'];
-                $std_ID = $row['std_ID'];
+                $S_ID = $row['S_ID'];
                 
                 $data = array(
+                    'v_ID'			=>	$v_ID,
                     'regist_num'			=>	$regist_num,
                     'province'			=>	$province,
                     'brand'			=>	$brand,
                     'color'			=>	$color,
-                    'type'			=>	$type,
+                    'vetype_ID'			=>	$vetype_ID,
                     'regist_date'			=>	"2019-08-08",
                     'expired_date'			=>	"2020-08-08",
-                    'std_ID'			=>	$std_ID
+                    'S_ID'			=>	$S_ID
                 );
                 $this->import_data_model->inserttmp_vehicles($data);
                 
@@ -1234,10 +1236,10 @@ class Import_data extends Admin_dashboard {
             //select by id
             
             
-            $temp_a = $this->import_data_model->checkvehicles($row->std_ID);
+            $temp_a = $this->import_data_model->checkvehicles($row->S_ID);
             
             
-            if($row->regist_num != "" && $row->province != "" && $row->brand != "" && $row->color != "" && $row->type != "" && $row->regist_date != "" && $row->expired_date != "" && $row->std_ID != ""){
+            if($row->regist_num != "" && $row->province != "" && $row->brand != "" && $row->color != "" && $row->vetype_ID != "" && $row->regist_date != "" && $row->expired_date != "" && $row->S_ID != ""){
                 if ($temp_a == 1) {
                     
                     //อัพเดตข้อมูล
@@ -1247,12 +1249,12 @@ class Import_data extends Admin_dashboard {
                         'province' => $row->province,
                         'brand' => $row->brand,
                         'color' => $row->color,
-                        'type' => $row->type,
+                        'vetype_ID' => $row->vetype_ID,
                         'regist_date' => $row->regist_date,
                         'expired_date' => $row->expired_date,
-                        'S_ID' => $row->std_ID,
+                        'S_ID' => $row->S_ID,
                     );
-                    $this->import_data_model->update_datavehicles($row->std_ID,$data);
+                    $this->import_data_model->update_datavehicles($row->S_ID,$data);
                     $updtvehicles+=1;
                 } else{
                     //เพิ่มข้อมูล
@@ -1261,10 +1263,10 @@ class Import_data extends Admin_dashboard {
                     $data_a['province'] = $row->province;
                     $data_a['brand'] = $row->brand;
                     $data_a['color'] = $row->color;
-                    $data_a['type'] = $row->type;
+                    $data_a['vetype_ID'] = $row->vetype_ID;
                     $data_a['regist_date'] = $row->regist_date;
                     $data_a['expired_date'] = $row->expired_date;
-                    $data_a['S_ID'] = $row->std_ID;
+                    $data_a['S_ID'] = $row->S_ID;
                     $this->import_data_model->insert_to_vehicles($data_a);
                     $instvehicles+=1;
                     
@@ -1642,20 +1644,21 @@ class Import_data extends Admin_dashboard {
                     // ¡ÓË¹´ª×èÍ column ·ÕèµéÍ§¡ÒÃä»àÃÕÂ¡ãªé§Ò¹
                     $col_name = array(
                         "A"=>"S_ID",
-                        "B"=>"std_fname",
-                        "C"=> "std_lname",
-                        "D"=> "email",
-                        "E"=> "phone",
-                        "F"=> "image ",
-                        "G"=> "behavior_score",
-                        "H"=> "cur_ID",
-                        "I"=> "dorm_ID",
-                        "J"=> "person_ID",
-                        "K"=> "status_ID",
-                        "L"=> "usertype_ID",
-                        "M"=> "username",
-                        "N"=> "password",
-                        "O"=> "flag"
+                        "B"=>"prefixID",
+                        "C"=>"std_fname",
+                        "D"=> "std_lname",
+                        "E"=> "sex",
+                        "F"=> "email",
+                        "G"=> "phone",
+                        "H"=> "image ",
+                        "I"=> "behavior_score",
+                        "J"=> "cur_ID",
+                        "K"=> "dorm_ID",
+                        "L"=> "person_ID",
+                        "M"=> "status_ID",
+                        "N"=> "usertype_ID",
+                        "O"=> "username",
+                        "P"=> "password"
                     );
                     
                     
@@ -1671,7 +1674,7 @@ class Import_data extends Admin_dashboard {
         // ÊÃéÒ§¿Ñ§¡ìªÑè¹ÊÓËÃÑº¨Ñ´¡ÒÃ¡Ñº¢éÍÁØÅ·Õèà»ç¹¤èÒÇèÒ§ ËÃ×ÍäÁèÁÕ¢éÍÁÙÅ¹éé¹
         function prepare_data($data){
             // ¡ÓË¹´ª×èÍ filed ãËéµÃ§¡Ñº $col_name ´éÒ¹º¹
-            $arr_field = array("S_ID","std_fname","std_lname","email","phone","image","behavior_score","cur_ID","person_ID","status_ID","usertype_ID","username","password","flag");
+            $arr_field = array("S_ID","prefixID","std_fname","std_lname","sex","email","phone","image","behavior_score","cur_ID","person_ID","status_ID","usertype_ID","username","password");
             if(is_array($data)){
                 foreach($arr_field as $v){
                     if(!isset($data[$v])){
@@ -1696,8 +1699,10 @@ class Import_data extends Admin_dashboard {
                 
                 $data_student =  array();
                 $data_student['S_ID'] = $row['S_ID'];
+                $data_student['prefixID'] = $row['prefixID'];
                 $data_student['std_fname'] = $row['std_fname'];
                 $data_student['std_lname'] = $row['std_lname'];
+                $data_student['sex'] = $row['sex'];
                 $data_student['email'] = $row['email'];
                 $data_student['phone'] = $row['phone'];
                 $data_student['image'] = $row['image'];
@@ -1709,7 +1714,6 @@ class Import_data extends Admin_dashboard {
                 $data_student['usertype_ID'] = $row['usertype_ID'];
                 $data_student['username'] = $row['username'];
                 $data_student['password'] = $row['password'];
-                $data_student['flag'] = $row['flag'];
                 
                 if($row['S_ID'] != 0){
                     
@@ -1755,34 +1759,37 @@ class Import_data extends Admin_dashboard {
             
             //&& $row->image != ""
             
-            if($row->S_ID != "" && $row->std_fname != "" && $row->std_lname != "" && $row->email != "" && $row->phone != ""
+            if($row->S_ID != ""&& $row->prefixID != "" && $row->std_fname != "" && $row->std_lname != ""&& $row->sex != "" && $row->email != "" && $row->phone != ""
                 && $row->behavior_score != "" && $row->cur_ID != "" && $row->person_ID != ""
                 && $row->status_ID != "" && $row->usertype_ID != "" && $row->username != "" && $row->password != ""){
                     if ($temp_a == 1) {
                         
+                
                         $data_u =  array();
+                        $data_u['prefixID'] = $row->prefixID;
                         $data_u['std_fname'] = $row->std_fname;
                         $data_u['std_lname'] = $row->std_lname;
+                        $data_u['sex'] = $row->sex;
                         $data_u['email'] = $row->email;
                         $data_u['phone'] = $row->phone;
                         $data_u['image'] = $row->image;
-                        $data_u['behavior_score'] = $row->behavior_score;
                         $data_u['cur_ID'] = $row->cur_ID;
-                        $data_u['dorm_ID'] = $row-> dorm_ID;
-                        $data_u['person_ID'] = $row-> person_ID;
+                        $data_u['dorm_ID'] = $row->dorm_ID;
+                        $data_u['person_ID'] = $row->person_ID;
                         $data_u['status_ID'] = $row->status_ID;
                         $data_u['usertype_ID'] = $row->usertype_ID;
                         $data_u['username'] = $row->username;
                         $data_u['password'] = $row->password;
-                        $data_u['flag'] = $row->flag;
                         $this->import_data_model->update_datastudent($row->S_ID,$data_u);
                         $updtstudent+=1;
                     } else{
                         //à¾ÔèÁ¢éÍÁÙÅ
                         $data_a =  array();
                         $data_a['S_ID'] = $row->S_ID;
+                        $data_a['prefixID'] = $row->prefixID;
                         $data_a['std_fname'] = $row->std_fname;
                         $data_a['std_lname'] = $row->std_lname;
+                        $data_a['sex'] = $row->sex;
                         $data_a['email'] = $row->email;
                         $data_a['phone'] = $row->phone;
                         $data_a['image'] = $row->image;
@@ -1794,7 +1801,6 @@ class Import_data extends Admin_dashboard {
                         $data_a['usertype_ID'] = $row->usertype_ID;
                         $data_a['username'] = $row->username;
                         $data_a['password'] = $row->password;
-                        $data_a['flag'] = $row->flag;
                         
                         $this->import_data_model->insert_to_student($data_a);
                         $inststudent+=1;
