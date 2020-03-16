@@ -158,7 +158,7 @@
 
 <script>
 	$(document).ready(function() {
-		let point_cut = 0;
+		//let point_cut = 0;
 		selectstudentstatus();
 		selectstudentpoint();
 		// show_all();
@@ -177,14 +177,15 @@
 					// console.log("data[0].behavior_score>>",data);
 					// console.log("data[0].behavior_score>>",data[0].behavior_score);
 
-					var score = data[0].behavior_score - point_cut;
+					var score = data[0].behavior_score //- point_cut;
+					var score2 = score
 					var deducted_points = 100 - score;
 					var deducted_pointss = deducted_points; // คะแนนที่หัก
 
 					/**
 					 * Set level_behavior
 					 */
-					if (point_cut >= 100) {
+					if (score = 100) {
 						document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
 					} else if (point_cut >= 91) {
 						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
@@ -210,7 +211,7 @@
 							color: "#FF9966"
 						},
 						{
-							y: score,
+							y: score2,
 							name: "คะแนนคงเหลือ",
 							color: "#66CC66"
 						}
@@ -232,7 +233,7 @@
 				async: false,
 				dataType: 'json',
 				success: function(data) {
-					console.log(data);
+					//console.log(data);
 					var html = '';
 					var n = 1;
 					var i;
@@ -270,7 +271,7 @@
 					//$('#dataall').html(num-1);//
 				},
 				error: function() {
-					alert('ไม่มีข้อมูล');
+					alert('ไม่มีข้อ5555มูล');
 				}
 			});
 		}
