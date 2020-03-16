@@ -269,7 +269,7 @@ class Notifyoffense_model extends CI_Model
                         for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
 
                             $std = $this->input->post('std_id[' . $i . ']');
-                            var_dump($std);
+                            // var_dump($std);
                             // $this->db->select('offensestd_ID');
                             // $this->db->from('offensestd');
                             // $this->db->where('S_ID', $std);
@@ -283,7 +283,7 @@ class Notifyoffense_model extends CI_Model
                             $query = $this->db->get();
                             // $id = array();
                             // $id = $query->result_array();
-                            var_dump($query->result());
+                            // var_dump($query->result());
 
                             foreach ($query->result() as $row) {
                                 $ostd = $row->offensestd_ID;
@@ -402,10 +402,10 @@ return true;
                             }
                         }
                     }
-               // }
+               }
             }
         }
-    }
+    
 
 
 
