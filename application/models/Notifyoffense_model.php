@@ -297,6 +297,40 @@ class Notifyoffense_model extends CI_Model
                     
                             $this->db->insert('report', $field5);
                     }
+                    if ($this->db->affected_rows() > 0) {
+                        for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
+
+                            $std = $this->input->post('std_id[' . $i . ']');
+                            $this->db->select('*');
+                            $this->db->from('student');
+                            $this->db->where('S_ID', $std);
+
+                            // $query = $this->db->query("SELECT behavior_score FROM student WHERE S_ID = '.$std.'");
+                            $query = $this->db->get();
+                            // var_dump($query->result());
+                            // $sumpoint = ;
+                            $behavior_score = 0;
+                            $sumpoint = 0;
+                            foreach ($query->result() as $row) {
+                                $behavior_score = $row->behavior_score + 0;
+                                $sumpoint = $row->behavior_score - 5;
+                            }
+                            
+                            $field7 = array(
+                                'S_ID' => $this->input->post('std_id[' . $i . ']'),
+                                'before_score' => $behavior_score,
+                                'after_score' => $sumpoint,
+                                'date' =>$this->input->post('notifica_date'),
+                                'explanation' => $this->input->post('explanation'),
+                                'informer' => $usergroup
+                            );
+                            //echo "field6";
+                            //var_dump($field6);
+
+                            $this->db->insert('getlog', $field7);
+                        }
+                        
+
 
                         if ($this->db->affected_rows() > 0) {
                             for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
@@ -338,7 +372,7 @@ class Notifyoffense_model extends CI_Model
 
                                 require 'phpmailer/PHPMailerAutoload.php'; 
 
-    header('Content-Type: text/html; charset=utf-8');
+    // header('Content-Type: text/html; charset=utf-8');
     for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
         $std = $this->input->post('std_id[' . $i . ']');
         $this->db->select('s.email');
@@ -405,7 +439,7 @@ return true;
                }
             }
         }
-    
+    }
 
 
 
