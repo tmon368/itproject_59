@@ -56,7 +56,7 @@ class dean_dashboard_model extends CI_Model {
        
 
 
-        $this->db->select('d.dept_name,c.cur_ID, c.cur_name as label,c.dept_ID, COUNT(ostd.S_ID) as y');   
+        $this->db->select('d.dept_name,c.cur_ID,oc.oc_desc, c.cur_name as label,c.dept_ID, COUNT(ostd.S_ID) as y');   
         $this->db->from('offensestd ostd , personnel p');
         $this->db->join('offensehead oh','ostd.oh_ID=oh.oh_ID');
         $this->db->join('offense o','oh.off_ID=o.off_ID'); 

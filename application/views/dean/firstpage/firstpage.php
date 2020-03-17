@@ -19,7 +19,7 @@
 </center>
 
 <head>
-<style type='text/css'>
+    <style type='text/css'>
         .my-legend .legend-title {
             text-align: left;
             margin-bottom: 5px;
@@ -31,7 +31,7 @@
             margin: 0;
             margin-bottom: 5px;
             padding: 0;
-            float:center;
+            float: center;
             list-style: none;
         }
 
@@ -45,7 +45,7 @@
 
         .my-legend ul.legend-labels li span {
             display: block;
-          
+
             height: 14px;
             width: 23px;
             margin-right: 5px;
@@ -167,141 +167,174 @@
                             <br>
 
 
-                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-                            <script type="text/javascript">
-                                window.onload = function() {
-                                    $.ajax({
-                                        type: 'ajax',
-                                        url: '<?php echo base_url() ?>index.php/Dean_dashboard/getDashboard',
-                                        async: false,
-                                        dataType: 'json',
-                                        success: function(data) {
-                                            console.log(data);
-
-
-                                            var showdata = [];
-                                            
-                                            data.forEach((x,index)=>{
-                                                showdata.push({
-                                                dataPoints: [{"dept_name":x.dept_name,"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
-                                                showInLegend: true,
-                                                    legendText: x.label,
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-                                                    click: onClickgraph,
-                                                
-                                            })
-                                            
-                                            })
-                                            var chart = new CanvasJS.Chart("chartContainer", {
-                                                height: 350,
-                                                width: 850,
-                                                animationEnabled: true,
-                                                animationDuration: 2000, //change to 1000, 500 etc
-                                                title: {
-                                                    text: "จำนวน (คน)",
-                                                    horizontalAlign: "left",
-                                                    fontSize: 17,
-                                                    // verticalAlign: "center",
-                                                },
-                                                
-                                                axisX: {
-                                                    title: "หมวดความผิด",
-                                                    gridThickness: 0,
-                                                    tickLength: 0,
-                                                    lineThickness: 0,
-                                                    labelFormatter: function() {
-                                                        return " ";
-                                                    }
-                                                },
-                                                axisY: {
-                                                   
-                                                    
-                                                },
-
-                                                data: showdata,
-                                                
-
-                                               
-                                            });
-
-                                            chart.render();
-                                        },
-                                        error: function() {
-                                            alert('ไม่มีข้อมูล');
-                                        }
-                                    });
-                                }
-
-
-                                function onClickgraph(e) {
-                                    var id = e.dataPoint.oc_ID
-                                    //alert(id);
-                                    var data = {
-                                        "oc_ID": id
-                                    };
-                                    
-                                    console.log(data);
-                               
-                                    $.ajax({
-                                        type: 'ajax',
-                                        url: '<?php echo base_url() ?>index.php/Dean_dashboard/getGraphData',
-                                        data: data,
-                                        method: 'get',
-                                        async: false,
-                                        dataType: 'json',
-                                        success: function(data) {
-                                            console.log(data);
-                                            var chart = new CanvasJS.Chart("chartContainer", {
-                                                height: 350,
-                                                animationEnabled: true,
-                                                animationDuration: 2000, //change to 1000, 500 etc
-                                                title: {
-                                                    text: "จำนวน (คน)",
-                                                    horizontalAlign: "left",
-                                                    fontSize: 17,
-                                                    // verticalAlign: "center",
-                                                },
-                                                axisX: {
-                                                    title: "หลักสูตร"
-                                                },
-                                                axisY: {
-                                                   
-                                             
-                                                },
-                                                data: [{
-                                                    type: "column",
-                                                    dataPoints: data,
-                                                    indexLabel: "{y}",
-                                                indexLabelPlacement: "outside",  
-                                                indexLabelOrientation: "horizontal",
-                                                    
-                                                }]
-                                            });
-                                            chart.render();
-                                            
-
-                                        },
-                                        
-                                        error: function() {
-                                            alert('ไม่มีข้อมูล');
-                                        }
-                                    });
-
-                                }
-                            </script>
-                               <br><br><br>
-                        </div>
-                     
+                            <div id="chartContainer" style="height: 300px; width: 100%;" ></div>
                         </div>
                     </div>
+                </div>
+
+            
+
+                <script type="text/javascript">
+                    window.onload = function() {
+                        $.ajax({
+                            type: 'ajax',
+                            url: '<?php echo base_url() ?>index.php/Dean_dashboard/getDashboard',
+                            async: false,
+                            dataType: 'json',
+                            success: function(data) {
+                                console.log(data);
+
+
+                                var showdata = [];
+
+                                data.forEach((x, index) => {
+                                    showdata.push({
+                                        dataPoints: [{
+                                            "dept_name": x.dept_name,
+                                            "oc_ID": x.oc_ID,
+                                            "label": x.label,
+                                            "y": x.y,
+                                            "x": index
+                                        }],
+                                        showInLegend: true,
+                                        legendText: x.label,
+                                        indexLabel: "{y}",
+                                        indexLabelPlacement: "outside",
+                                        indexLabelOrientation: "horizontal",
+                                        click: onClickgraph,
+
+                                    })
+
+                                })
+                                var chart = new CanvasJS.Chart("chartContainer", {
+                                    height: 350,
+                                    width: 850,
+                                    animationEnabled: true,
+                                    animationDuration: 2000, //change to 1000, 500 etc
+                                    title: {
+                                        text: "จำนวน (คน)",
+                                        horizontalAlign: "left",
+                                        fontSize: 17,
+                                        // verticalAlign: "center",
+                                    },
+
+                                    axisX: {
+                                        title: "หมวดความผิด",
+                                        gridThickness: 0,
+                                        tickLength: 0,
+                                        lineThickness: 0,
+                                        labelFormatter: function() {
+                                            return " ";
+                                        }
+                                    },
+                                    axisY: {
+
+
+                                    },
+
+                                    data: showdata,
+
+
+
+                                });
+
+                                chart.render();
+                            },
+                            error: function() {
+                                alert('ไม่มีข้อมูล');
+                            }
+                        });
+                    }
+
+
+                    function onClickgraph(e) {
+                        
+                        var id = e.dataPoint.oc_ID
+
+                        //alert(id);
+                        var data = {
+                            "oc_ID": id
+
+                        };
+                        html = '';
+                        $.ajax({
+                            type: 'ajax',
+                            url: '<?php echo base_url() ?>index.php/Dean_dashboard/getGraphData',
+                            data: data,
+                            method: 'get',
+                            async: false,
+                            dataType: 'json',
+                            success: function(data) {
+                                console.log(data);
+
+                                var showdata = [];
+
+                                data.forEach((x, index) => {
+                                    showdata.push({
+                                        dataPoints: [{
+                                            "dept_name": x.dept_name,
+                                            "cur_ID": x.cur_ID,
+                                            "dept_ID": x.dept_ID,
+                                            "label": x.label,
+                                            "y": x.y,
+                                            "x": index
+                                        }],
+                                        showInLegend: true,
+                                        legendText: x.label,
+                                        indexLabel: "{y}",
+                                        indexLabelPlacement: "outside",
+                                        indexLabelOrientation: "horizontal",
+                                    })
+
+                                })
+
+                                var chart = new CanvasJS.Chart("chartContainer2", {
+                                    height: 350,
+                                    width: 850,
+                                    animationEnabled: true,
+                                    animationDuration: 2000, //change to 1000, 500 etc
+                                    title: {
+                                        text: "จำนวน (คน)",
+                                        horizontalAlign: "left",
+                                        fontSize: 17,
+                                        // verticalAlign: "center",
+                                    },
+                                    axisX: {
+                                        title: "หลักสูตร",
+                                        gridThickness: 0,
+                                        tickLength: 0,
+                                        lineThickness: 0,
+                                        labelFormatter: function() {
+                                            return " ";
+                                        }
+                                    },
+                                    axisY: {
+
+
+                                    },
+                                    data: showdata,
+                                });
+                                chart.render();
+
+                            //  $('.flow').html(html);
+                            },
+                          
+                            error: function() {
+                                alert('ไม่มีข้อมูล');
+                            }
+                        });
+
+                    }
+                </script>
+                <br><br><br>
 
 
 
 
 
-             
+
+
+
 
                 <div class="col-lg-8 ">
                     <div class="card shadow mb-3">
@@ -440,13 +473,40 @@
     </div>
     </div>
 
+    <div class="modal fade" id="Showdashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px!important;" role="document">
+            <div class="modal-content">
+                <div class="" id="card_2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
+                    </button>
+                    <br>              
+                </div>
+              
+                    <form action="" id="formakk" method="post" class="needs-validation">
 
+                    <font size="4">
+                                <center>จำนวนนักศึกษาที่กระทำผิด<span id="oc_desc2"></span>ของสำนักวิชา<span id="dept_name2"></span></center>
+                            </font>
+                        <div class="modal-body " style="height:400px; width: 100px;"  >
+
+                        <center><div id="chartContainer2" style="height: 340px; width: 100%;" ></div>   </center>
+
+                        </div>
+
+               
+            </div>
+            </form>
+        </div>
+    </div>
     <script>
         $(document).ready(function() {
             selectscorestudent();
             selectscoreservice();
             selectscoretraining();
             getDashboard();
+            getDashboard2();
+
             function getDashboard() {
                 $.ajax({
                     type: 'ajax',
@@ -456,8 +516,8 @@
                     success: function(data) {
 
                         //	$("#S_ID").html(data[0].S_ID);
-                        $("#dept_name").html(data[0].dept_name);
-
+                        $("#dept_name").html(data[0].dept_name);   
+                        $("#dept_name2").html(data[0].dept_name);                    
                         //$("#email1").html(data[0].email);    	
                     },
                     error: function() {
@@ -465,6 +525,24 @@
                     }
                 });
             }
+            function getDashboard2() {
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/dean_dashboard/getDashboard',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        //	$("#S_ID").html(data[0].S_ID);
+                        $("#oc_desc2").html(data[0].label);                     
+                        //$("#email1").html(data[0].email);    	
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+            }
+
 
             function selectscorestudent() {
                 $.ajax({
@@ -537,6 +615,12 @@
                 search();
 
             });
+
+            $('#chartContainer').click(function() {
+                $('#Showdashboard').modal('show');
+                onClickgraph(e);
+
+            });
             //  $(".searchko").click(function() {
             //      search();    
             //  });
@@ -594,7 +678,7 @@
                         console.log(data);
                         $.each(data, function(key, value) {
 
-                        
+
                             var temp_1 = value.start_time;
                             var temp_2 = value.end_time;
                             var start_times = parseFloat(temp_1.substring(0, 5));
