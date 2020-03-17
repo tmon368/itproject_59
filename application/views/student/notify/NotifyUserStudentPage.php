@@ -201,7 +201,6 @@
 
                                                 </div>
                                                 <div class="add_remove_person">
-                                                    <button type="button" class="button1 addperson">+</button>
                                                     <button type="button" class="button1 remove">-</button>
                                                 </div>
                                             </div>
@@ -492,31 +491,6 @@
                     $("#txt_off").focus().css("border", "#CACFD2 solid 1px");
                 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             } else {
                 $("#explanation").focusout().css("border", "#CACFD2 solid 1px");
                 $("#committed_time").focusout().css("border", "#CACFD2 solid 1px");
@@ -589,9 +563,6 @@
                 });
                 setProgressBar(++current);
 
-
-
-
             } else {
                 return false;
             }
@@ -628,7 +599,6 @@
             } else if (filesToUpload.length != 0) {
                 current_fs = $(this).parent();
                 next_fs = $(this).parent().next();
-
                 // //Add Class Active
                 $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
@@ -974,8 +944,7 @@
             data: data,
             dataType: 'json',
             success: function(data) {
-                console.log('********');
-                console.log(data)
+
                 html = '';
                 htmlcheck = '';
                 $.each(data, function(key, value) {
@@ -1037,25 +1006,51 @@
     function IMG_preview() {
         if (window.File && window.FileList && window.FileReader) {
             var filesInput = document.getElementById("myFile");
+
+
+            filesInput.onchange = function(e) {
+                var ext = this.value.match(/\.([^\.]+)$/)[1];
+
+                if (this.files[0].size > 307200) {
+                    alert("ระบบรองรับขนาดของไฟล์ไม่เกิน 307200 bytes");
+                    this.value = "";
+                };
+
+                switch (ext) {
+                    case 'jpg':
+                        break;
+                    case 'png':
+                        break;
+                    default:
+                        alert('ระบบรองรับเฉพาะไฟล์ประเภท JPG และ PNG ไฟล์เท่านั้น');
+                        this.value = '';
+                }
+
+            };
+
             filesInput.addEventListener("change", function(event) {
                 var check = 0;
                 var files = event.target.files;
                 var output = document.getElementById("result");
+
                 for (var i = 0; i < files.length; i++) {
                     fileIdCounter++;
                     var file = files[i];
                     var fileName = files[0].name;
+                    var sizeFile = files[0].size;
 
                     var fileId = fileIdCounter;
 
                     if (filesToUpload.length == 0) {
                         check = 1;
+
                     } else if (filesToUpload.length < 5) {
                         check = 1;
-                        alert(filesToUpload.length);
+            
                     } else {
                         alert('อัปโหลดไฟล์ได้สูงสุดเพียง 5 ไฟล์')
                     }
+
 
                     if (check == 1) {
                         filesToUpload.push({
@@ -1068,16 +1063,15 @@
                         var picReader = new FileReader();
                         picReader.addEventListener("load", function(event) {
                             var picFile = event.target;
-                            var htmlcode = '';
+                            var htmlcode= '';
                             var htmlcheck = '';
                             htmlcode += '<div class="showpicture countdiv' + fileIdCounter + '">';
                             htmlcode += '<div class="Imgfile">';
-                            htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result +
-                                "'" + "title='" + picFile.name + "'/>";
+                            htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result +"'" + "title='" + picFile.name + "'/>";
                             htmlcode += '</div>';
                             htmlcode += '<div class="filename">';
-                            htmlcode += '<div>' + fileName + '</div>';
-                            htmlcode += '<div class="Sizefile">ขนาดไฟล์ภาพ</div>';
+                            htmlcode += '<div class="FileName">' + fileName + '</div>';
+                            htmlcode += '<div class="Sizefile">'+ sizeFile +' bytes</div>';
                             htmlcode += '</div>';
                             htmlcode += '<span id="delete_picture" data=' + fileIdCounter +
                                 '><i class="fa fa-times-circle"></i></span>';
@@ -1090,11 +1084,9 @@
                             $('.showfile').append(htmlcheck);
                         });
                         picReader.readAsDataURL(file);
+
                     }
-
-
                 }
-
             });
         }
     }

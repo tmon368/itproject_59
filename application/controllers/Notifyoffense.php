@@ -71,16 +71,6 @@ class Notifyoffense extends Student_dashboard
 		 echo json_encode($result);
 	}
 
-	public function test()
-	{
-			// echo "<pre>";
-			print_r($_POST);
-			print_r($_FILES);   
-		// 	echo "</pre>";  
-		// die;
-
-	}
-
 	//ฟังก์ชันแสดงการแก้ไขข้อมูล
 	public function editnotify()
 	{

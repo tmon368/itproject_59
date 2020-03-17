@@ -1,3 +1,4 @@
+
 .Content {
     display: flex;
     padding: 1rem;
@@ -64,6 +65,10 @@
     object-fit: cover;
     border-radius: 0.5rem;
     padding: 0.2rem;
+}
+.FileName{
+    font-size: 12px;
+    color: #1e3cb1;
 }
 .modal-title{
     font-size: 16px;
@@ -511,8 +516,8 @@ body {
 }
 
 .Sizefile {
-    font-size: 12px;
-    color: #8c8c8d;
+    font-size: 9px;
+    color: #6e7073;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
@@ -553,6 +558,24 @@ body {
     However, delay the fade out process for 2.5 seconds */
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+/* Respondsive on mobile */
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .Content {
+        display: block;
+    }
+    .input {
+        width: 100% !important;
+    }
+    #txt_oc{
+        width: 100%;
+    }
+    #txt_off{
+        width: 100%;
+    }
 }
 
 /* Animations to fade the snackbar in and out */
