@@ -86,6 +86,8 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
     }
 
     public function Updatestatusproofargument(){
+        $usergroup = $this->session->userdata('username');
+
          $getstatus = $this->input->post('status');
          $S_ID = $this->input->post('S_ID');
          $proof_ID = $this->input->post('proof_ID');
@@ -144,11 +146,43 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
    
 
     if($this->db->affected_rows() > 0){
-        return true;
-    }else{
-        return false;
-    }
+        // $usergroup = $this->session->userdata('username');
 
+        $this->db->select('*');
+        $this->db->from('student s');
+        $this->db->where('s.S_ID', $S_ID);
+
+        // $query = $this->db->query("SELECT behavior_score FROM student WHERE S_ID = '.$std.'");
+        $query = $this->db->get();
+        // var_dump($query->result());
+        // $sumpoint = ;
+        $behavior_score = 0;
+        $sumpoint = 0;
+        foreach ($query->result() as $row) {
+            $behavior_score = $row->behavior_score -5;
+            $sumpoint = $row->behavior_score;
+        }
+        
+        $field7 = array(
+            'S_ID' => $S_ID,
+            'before_score' => $behavior_score,
+            'after_score' => $sumpoint,
+            'date' =>$this->input->post('date_current'),
+            'explanation' => 'คืนคะแนนอุทธรณ์',
+            'informer' => $usergroup
+        );
+        //echo "field6";
+        //var_dump($field6);
+
+        $this->db->insert('getlog', $field7);
+                        
+        if($this->db->affected_rows() > 0){
+
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 function selectimage($oh_ID){
 

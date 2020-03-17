@@ -12,7 +12,7 @@ class OffenseHead_model extends CI_Model {
     
     public function selectstudentoffensehead(){
         $student = $this->session->userdata('student');
-        $statusoff = "7";
+        $statusoff = "6";
         
         $this->db->select('*');
         $this->db->from('offensestd ostd');
@@ -152,7 +152,7 @@ class OffenseHead_model extends CI_Model {
     $_FILES['userfile']['name']     = $report_ID.".".$changename[1];
     $filename =  $_FILES['userfile']['name'];
     $data = $this->checkfilename($filename);
-    if($data == true){
+    if($data == 'true'){
         unlink(FCPATH . 'upload_proofargument/'.$filename);
         $this->db->where('proofargument.proof_name', $filename);
         $this->db->delete('proofargument');
@@ -250,7 +250,7 @@ class OffenseHead_model extends CI_Model {
     $showall = array();
     $showall = $query->result_array();
     if($showall[0]["proof_name"] != null){
-        return true;
+        return 'true';
     }else{
         return false;
     }
