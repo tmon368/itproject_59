@@ -26,6 +26,8 @@ class OffenseHead_model extends CI_Model {
      
         $this->db->where('ostd.statusoff !=',$statusoff);
         $this->db->where('ostd.S_ID',$student);
+        $this->db->where('oh.OffenseHead_oh_ID','');
+
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
