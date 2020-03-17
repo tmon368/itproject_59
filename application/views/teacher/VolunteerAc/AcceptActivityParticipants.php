@@ -82,6 +82,8 @@
 
                         <form action="#" id="formaccept" name="formaccept" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="service_ID" id="service_ID" value="">
+                            <input type="hidden" name="date_current" id="date_current">
+
                             <table id="data_activity_participants" class="table table-striped table-bordered nowrap" style="width:100%">
                             </table>
 
@@ -180,6 +182,9 @@
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
+                    var date = new Date();
+                    var date_current = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                    $('#date_current').val(date_current);
                     var html = '';
                     var i = 0;
 

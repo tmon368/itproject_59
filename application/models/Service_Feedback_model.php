@@ -217,6 +217,7 @@ class Service_Feedback_model extends CI_Model {
     }
 
     function Updatestatusparticipationactivities(){
+        $usergroup =$this->session->userdata('username');
         $setstatusrs = 0;
        // $S_ID=['59123456'];
        //$service_ID= 3;
@@ -232,7 +233,6 @@ class Service_Feedback_model extends CI_Model {
     $this->db->where('service_ID',$service_ID);
     $this->db->update('participationactivities', $field);
 
-    if($this->db->affected_rows() > 0){
 
     $this->db->select('std.std_fname,std.std_lname,std.behavior_score');
         $this->db->from('student std');
@@ -245,22 +245,46 @@ class Service_Feedback_model extends CI_Model {
             
     );
         $this->db->where('student.S_ID',$value);
-    $this->db->update('student', $fieldscore);
+        $this->db->update('student', $fieldscore);
 
-    }
+    
+    if($this->db->affected_rows() > 0){
+
+        $this->db->select('*');
+        $this->db->from('student s');
+        $this->db->where('s.S_ID',$value);
+
+        $query = $this->db->get();
+        $behavior_score = 0;
+        $sumpoint = 0;
+        foreach ($query->result() as $row) {
+            $behavior_score = $row->behavior_score -5;
+            $sumpoint = $row->behavior_score;
         }
-        //$query = $this->db->get();
-    //    var_dump($query->result());
-        //die();
-      
+        
+        $field7 = array(
+            'S_ID' => $value,
+            'before_score' => $behavior_score,
+            'after_score' => $sumpoint,
+            'date' =>$this->input->post('date_current'),
+            'explanation' => 'คืนคะแนนบำเพ็ญประโยชน์',
+            'informer' => $usergroup
+        );
+        //echo "field6";
+        //var_dump($field6);
+
+        $this->db->insert('getlog', $field7);
+    } 
        if($this->db->affected_rows() > 0){
            return true;
        }else{
            return false;
        }
-
-
     }
+    
+}
+
+
 
     function selectActivity(){
         $usergroup =$this->session->userdata('username');
