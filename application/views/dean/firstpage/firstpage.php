@@ -163,7 +163,7 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของสำนักวิชา<span id="dept_name"></span></center>
                             </font>
-                            <a href="http://localhost/itproject_59/index.php/Dean_dashboard" class="btn btn-outline-primary btn-sm">ย้อนกลับ</a>
+                     
                             <br>
 
 
@@ -254,7 +254,7 @@
                         //alert(id);
                         var data = {
                             "oc_ID": id
-
+                        
                         };
                         html = '';
                         $.ajax({
@@ -290,7 +290,7 @@
 
                                 var chart = new CanvasJS.Chart("chartContainer2", {
                                     height: 350,
-                                    width: 850,
+                                    width: 900,
                                     animationEnabled: true,
                                     animationDuration: 2000, //change to 1000, 500 etc
                                     title: {
@@ -316,6 +316,7 @@
                                 });
                                 chart.render();
 
+                                $("#oc_desc2").html(data[0].oc_desc); 
                             //  $('.flow').html(html);
                             },
                           
@@ -474,10 +475,10 @@
     </div>
 
     <div class="modal fade" id="Showdashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px!important;" role="document">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="" id="card_2">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" style="color:black;" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×&nbsp;</span>
                     </button>
                     <br>              
@@ -488,12 +489,12 @@
                     <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิด<span id="oc_desc2"></span>ของสำนักวิชา<span id="dept_name2"></span></center>
                             </font>
-                        <div class="modal-body " style="height:400px; width: 100px;"  >
-
-                        <center><div id="chartContainer2" style="height: 340px; width: 100%;" ></div>   </center>
+                        <div class="modal-body" >
+                        
+                      <div id="chartContainer2" style="height: 340px; width: 100%;"></div>  
 
                         </div>
-
+<br>
                
             </div>
             </form>
@@ -505,7 +506,7 @@
             selectscoreservice();
             selectscoretraining();
             getDashboard();
-            getDashboard2();
+           
 
             function getDashboard() {
                 $.ajax({
@@ -524,26 +525,7 @@
                         alert('ไม่มีข้อมูล');
                     }
                 });
-            }
-            function getDashboard2() {
-                $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dean_dashboard/getDashboard',
-                    async: false,
-                    dataType: 'json',
-                    success: function(data) {
-
-                        //	$("#S_ID").html(data[0].S_ID);
-                        $("#oc_desc2").html(data[0].label);                     
-                        //$("#email1").html(data[0].email);    	
-                    },
-                    error: function() {
-                        alert('ไม่มีข้อมูล');
-                    }
-                });
-            }
-
-
+            }          
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
