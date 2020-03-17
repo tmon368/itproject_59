@@ -253,6 +253,28 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
+
+
+
+
+                                            var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{
+                                                showdata.push({
+                                                dataPoints: [{"oc_ID":x.oc_ID,"dept_ID":x.dept_ID,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                    click: onClickgraph2,
+                                                
+                                            })
+                                            
+                                            })
+
+
+                                            
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
@@ -273,15 +295,7 @@
                                                     
                                                 },
 
-                                                data: [{
-                                                    dataPoints: data,
-                                                   
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-                                                    click: onClickgraph2,
-
-                                                }]
+                                                data: showdata,
                                             });
 
 
@@ -298,7 +312,7 @@
                                 function onClickgraph2(e) {
                                     var id = e.dataPoint.oc_ID
                                     var ide = e.dataPoint.dept_ID
-                                    //alert(id);
+//                                  alert(id);
                                     var data = {
                                         "oc_ID": id,
                                         "dept_ID": ide
@@ -314,6 +328,22 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
+                                            var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{
+                                                showdata.push({
+                                                dataPoints: [{"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                    
+                                                
+                                            })
+                                            
+                                            })
+                                            
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
@@ -334,14 +364,7 @@
                                                     
                                                 },
 
-                                                data: [{
-                                                    dataPoints: data,
-                                                   
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-
-                                                }]
+                                                data: showdata,
                                             });
 
 
