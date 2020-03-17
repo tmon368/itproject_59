@@ -206,7 +206,7 @@
                                             
                                             data.forEach((x,index)=>{ 
                                                 showdata.push({
-                                                dataPoints: [{"dept_name":x.dept_name,"label":x.label,"y":x.y,"x":index}],
+                                                dataPoints: [{"dept_name":x.dept_name,"oc_ID":x.oc_ID,"dept_ID":x.dept_ID,"label":x.label,"y":x.y,"x":index}],
                                                 showInLegend: true,
                                                     legendText: x.label,
                                                     indexLabel: "{y}",
