@@ -829,10 +829,22 @@ public function utilstatus($statusID){
     
     
     public function selectscorestudent(){
-        //SELECT COUNT(DISTINCT S_ID) FROM offensestd
-        $this->db->select('COUNT(DISTINCT S_ID) as numberstudent');
-        $this->db->from('offensestd');
-        
+        $branchhead=$this->session->userdata('username');
+         // $branchhead = 7054545;
+      
+      $this->db->select('COUNT(DISTINCT ostd.S_ID) as numberstudent'); 
+      $this->db->from('offensestd ostd');
+        $this->db->join('offensehead o','ostd.oh_ID=o.oh_ID');
+        $this->db->join('offense of','o.off_ID=of.off_ID');
+        $this->db->join('offensecate oc','of.oc_ID=oc.oc_ID');
+        $this->db->join('student s','ostd.S_ID=s.S_ID');
+        $this->db->join('curriculum c','s.cur_ID=c.cur_ID');
+        $this->db->join('personnel p','c.cur_ID=p.cur_ID');
+        $this->db->join('divisions d','p.dept_ID=d.dept_ID');
+
+        $this->db->group_by('oc.oc_ID');
+      //   $this->db->where('p.cur_ID=p.cur_ID');
+        $this->db->where('p.username',$branchhead);
         
         
         
