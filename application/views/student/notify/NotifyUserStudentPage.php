@@ -342,7 +342,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
                     </div>
                 </div>
             </div>
@@ -636,7 +636,7 @@
             if (confirm('ยืนยันข้อมูลการแจ้งเหตุกระทำความผิด')) {
 
                 var formData = new FormData(document.getElementById("msform"));
-                console.log(formData);
+                //console.log(formData);
 
                 $.ajax({
                     url: '<?php echo base_url(); ?>index.php/Notifyoffense/addnotify',
@@ -728,7 +728,7 @@
             async: false, //ห้ามลืม
             dataType: 'json',
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 // //alert("Having Data...");
                 var html = '';
 
@@ -751,7 +751,7 @@
             dataType: 'json',
             success: function(data) {
 
-                console.log(data);
+                //console.log(data);
                 html_code += '<option value=""> เลือกหมวดความผิด </option>';
 
                 $.each(data, function(key, value) {
@@ -800,6 +800,8 @@
                         flag: value.flag,
                         offensestd_ID: value.offensestd_ID,
                         S_ID: value.S_ID,
+                        std_fname:value.std_fname,
+                        std_lname:value.std_lname,
                         statusoff: value.statusoff,
                         off_desc: value.off_desc,
                         oc_ID: value.oc_ID,
@@ -829,7 +831,7 @@
             dataType: 'json',
             success: function(data) {
 
-                console.log(data);
+                //console.log(data);
 
                 $.each(data, function(key, value) {
 
@@ -884,7 +886,7 @@
             dataType: 'json',
             success: function(data) {
 
-                console.log(data);
+                //console.log(data);
 
                 $.each(data, function(key, value) {
 
@@ -1120,7 +1122,7 @@
             url: '<?php echo site_url("Notifyoffense/check_id") ?>',
             dataType: 'json',
             success: function(data) {
-                //console.log(data);
+                ////console.log(data);
                 str = data[0].oh_ID;
                 tempid_substr = str.substring(3);
                 integer = parseInt(tempid_substr); //convert string to int
@@ -1145,12 +1147,12 @@
 
         var id = $(this).attr('data');
 
-        //console.log(removestudenid.length)
+        ////console.log(removestudenid.length)
 
 
         if (removestudenid.length == 0) {
             removestudenid.push(id);
-            // console.log(removestudenid.length);
+            // //console.log(removestudenid.length);
         } else {
             for (var i = 0; i < removestudenid.length; i++) {
                 var check = 0;
@@ -1174,13 +1176,13 @@
         for (var i = 0; i < removestudenid.length; i++) {
 
             for (i = 0; i < studentid.length; i++) {
-                console.log(studentid[i])
+                //console.log(studentid[i])
                 if (removestudenid[i] == studentid[i]) {
                     studentid.splice([i], 1);
                     $('#div' + removestudenid[i]).remove();
                     $('.div' + removestudenid[i]).remove();
                     removestudenid.splice([i], 1);
-                    console.log(removestudenid[i] + '=' + studentid[i]);
+                    //console.log(removestudenid[i] + '=' + studentid[i]);
                 }
             }
 
@@ -1191,30 +1193,30 @@
 
     $('.PictureContent').on('click', '#delete_picture', function() {
         var id = $(this).attr('data');
-        console.log(id);
+        //console.log(id);
 
         for (var i = 0; i < filesToUpload.length; ++i) {
 
             if (filesToUpload[i].id == id) {
-                console.log(444)
+                //console.log(444)
                 $('.countdiv' + id).remove();
                 filesToUpload.splice(i, 1);
             }
         }
-        console.log(filesToUpload);
+        //console.log(filesToUpload);
     });
 
 
 
     $('.result').on('click', '.img', function() {
-        console.log(studentid);
+        //console.log(studentid);
 
         var id = $(this).attr('data');
 
         if (studentid.length == 0) {
             studentid.push(id);
             add_person(id);
-            console.log(studentid);
+            //console.log(studentid);
         } else {
             for (var i = 0; i < studentid.length; i++) {
                 var check = 0;
@@ -1305,8 +1307,8 @@
     $('#showdata').on('click', '.show_data', function() {
         $('#ShowDetailNotification').modal('show');
         var id = $(this).attr('data');
-        console.log(id);
-        console.log(datanotify);
+        //console.log(id);
+        //console.log(datanotify);
         $.each(datanotify, function(key, value) {
             if (value.oh_ID == id) {
                 $('#noyify_date_detail').text(value.notifica_date);
@@ -1319,7 +1321,7 @@
     });
 
     $('#btnSave').click(function() {
-        console.log(5555);
+        //console.log(5555);
         $('.Content').hide();
         $('.Content3').show();
     });
