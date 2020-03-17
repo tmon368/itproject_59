@@ -86,12 +86,12 @@ class Proofargumentfor_discipline_officer_model extends CI_Model {
     }
 
     public function Updatestatusproofargument(){
-        //  $getstatus = $this->input->post('status');
-        //  $S_ID = $this->input->post('S_ID');
-        //  $proof_ID = $this->input->post('proof_ID');
-         $S_ID = "59111111";
-        $getstatus = 1;
-         $proof_ID =27;
+         $getstatus = $this->input->post('status');
+         $S_ID = $this->input->post('S_ID');
+         $proof_ID = $this->input->post('proof_ID');
+        //  $S_ID = "59111111";
+        // $getstatus = 1;
+        //  $proof_ID =27;
 
         // 1=อนุมัติ , 2 = ไม่อนุมัติ
         $status = $getstatus == 1? $getstatus:2;
