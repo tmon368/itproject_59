@@ -261,8 +261,8 @@
                                         "oc_ID": id,
                                         "dept_ID": ide
                                     };
-                                    console.log(data);
-
+                                   
+                                    
                                     $.ajax({
                                         type: 'ajax',
                                         url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getGraphDataSchool',
@@ -272,6 +272,25 @@
                                         dataType: 'json',
                                         success: function(data) {
                                             console.log(data);
+
+
+                                            console.log(data);
+                                            var showdata = [];
+                                            
+                                            data.forEach((x,index)=>{ 
+                                                showdata.push({
+                                                dataPoints: [{"oc_ID":x.oc_ID,"dept_ID":x.dept_ID,"label":x.label,"y":x.y,"x":index}],
+                                                showInLegend: true,
+                                                    legendText: x.label,
+                                                    indexLabel: "{y}",
+                                                    indexLabelPlacement: "outside",
+                                                    indexLabelOrientation: "horizontal",
+                                                  
+                                                
+                                            })
+                                            
+                                            })
+                                            
                                             var chart = new CanvasJS.Chart("chartContainer", {
                                                 height: 350,
                                                 animationEnabled: true,
@@ -292,14 +311,7 @@
                                                     
                                                 },
 
-                                                data: [{
-                                                    dataPoints: data,
-                                                   
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-
-                                                }]
+                                                data: showdata,
                                             });
 
 
