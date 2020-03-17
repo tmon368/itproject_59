@@ -231,6 +231,23 @@ class Service_Feedback_model extends CI_Model {
     $this->db->where('S_ID',$value);
     $this->db->where('service_ID',$service_ID);
     $this->db->update('participationactivities', $field);
+
+    if($this->db->affected_rows() > 0){
+
+    $this->db->select('std.std_fname,std.std_lname,std.behavior_score');
+        $this->db->from('student std');
+        $this->db->where('std.S_ID', $value);
+        $query = $this->db->get();
+        $data = $query->result();
+        $score = $data[0]->behavior_score+5;
+        $fieldscore = array(
+            'behavior_score'=>$score
+            
+    );
+        $this->db->where('student.S_ID',$value);
+    $this->db->update('student', $fieldscore);
+
+    }
         }
         //$query = $this->db->get();
     //    var_dump($query->result());
