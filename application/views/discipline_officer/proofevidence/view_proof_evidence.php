@@ -118,6 +118,7 @@
                     <form action="#" method="post" name="formaccept" id="formaccept" enctype="multipart/form-data">
                         <input type="hidden" name="proof_ID" id="proof_ID">
                         <input type="hidden" name="S_ID" id="S_ID">
+                        <input type="hidden" name="date_current" id="date_current">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="" class="label">ผลการพิจรณา: </label><span id="reason" class="title"></span>
@@ -167,6 +168,9 @@
                 dataType: 'json',
                 success: function(data) {
                     console.log(data);
+                    var date = new Date();
+        var date_current = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+        $('#date_current').val(date_current);
                     var htmlcode = '';
                     var i = 0;
                     $.each(data, function(key, value) {
