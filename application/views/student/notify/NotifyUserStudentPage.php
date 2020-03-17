@@ -338,6 +338,9 @@
                         <div>
                             <label for="offen" class="label">ฐานความผิด: <span id="offenc_detail" class="NotifyDetail"></span></label>
                         </div>
+                        <div>
+                            <label for="student_name" class="label">ผู้กระทำความผิด: <span id="student_name" class="NotifyDetail"></span></label>
+                        </div>
 
 
                     </div>
@@ -1316,6 +1319,7 @@
                 $('#place_detail').text(value.place_name);
                 $('#placeexp_detail').text(value.description);
                 $('#offenc_detail').text(value.off_desc);
+                $('#student_name').text(value.std_fname+" "+value.std_lname);
             }
         });
     });
