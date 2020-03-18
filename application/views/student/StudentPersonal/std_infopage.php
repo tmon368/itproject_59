@@ -234,7 +234,7 @@
 				async: false,
 				dataType: 'json',
 				success: function(data) {
-					//console.log(data);
+					console.log(data);
 					var html = '';
 					var n = 1;
 					var i;

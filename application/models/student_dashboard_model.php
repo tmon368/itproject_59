@@ -28,12 +28,14 @@ class student_dashboard_model extends CI_Model {
     public function selectstudentstatus(){
         $i=0;
         $student = $this->session->userdata('student');
-        $this->db->select('*');
+        $this->db->select('*, COUNT(*) as duplicated');
         $this->db->from('offensestd os');
         $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');     
         $this->db->where('os.S_ID',$student);
-        
+        //$this->db->where('oh.OffenseHead_oh_ID',"");
+        $this->db->group_by("oh.off_ID", "oh.notifica_date","os.S_ID");  
+        $this->db->order_by('oh.notifica_date','DESC');
         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
@@ -45,6 +47,8 @@ class student_dashboard_model extends CI_Model {
             $i+=1;
 
         }
+
+        //SELECT h.off_ID, h.notifica_date,s.S_ID, COUNT(*) FROM offensehead h JOIN offensestd s on h.oh_ID = s.oh_ID WHERE s.S_ID = '59123456' GROUP BY h.off_ID, h.notifica_date,s.S_ID
         
         //var_dump($student);   
        // die();     
