@@ -190,8 +190,10 @@
                                 data.forEach((x, index) => {
                                     showdata.push({
                                         dataPoints: [{
-                                            "dept_name": x.dept_name,
+                                         
                                             "oc_ID": x.oc_ID,
+                                            "dname":x.dname,
+                                            
                                             "label": x.label,
                                             "y": x.y,
                                             "x": index
@@ -272,10 +274,10 @@
                                 data.forEach((x, index) => {
                                     showdata.push({
                                         dataPoints: [{
-                                            "dept_name": x.dept_name,
-                                            "cur_ID": x.cur_ID,
-                                            "dept_ID": x.dept_ID,
-                                            "label": x.label,
+                                            "dname": x.dname,
+                                           " oc_ID": x.oc_ID,
+                                           
+                                            "namedorm": x.namedorm,
                                             "y": x.y,
                                             "x": index
                                         }],
