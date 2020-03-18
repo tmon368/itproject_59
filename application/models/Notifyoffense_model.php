@@ -81,6 +81,8 @@ class Notifyoffense_model extends CI_Model
         $this->db->join('student s', 'ostd.S_ID=s.S_ID');
         $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
         $this->db->where('o.informer', $student);
+        $this->db->order_by('o.oh_ID DESC');
+
         $query = $this->db->get();
         $showall = array();
         $showall = $query->result_array();
@@ -372,66 +374,66 @@ class Notifyoffense_model extends CI_Model
                                 
 
 
-                                require 'phpmailer/PHPMailerAutoload.php'; 
+//                                 require 'phpmailer/PHPMailerAutoload.php'; 
 
-    // header('Content-Type: text/html; charset=utf-8');
-    for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
-        $std = $this->input->post('std_id[' . $i . ']');
-        $this->db->select('s.email');
-         $this->db->from('student s');
-         $this->db->where('s.S_ID', $std);
-         $query = $this->db->get();
-         $student = array();
-         $student = $query->result_array();
-         $emailstd = $student[0]['email'];
+//     // header('Content-Type: text/html; charset=utf-8');
+//     for ($i = 0; $i < count($this->input->post('std_id[]')); $i++) {
+//         $std = $this->input->post('std_id[' . $i . ']');
+//         $this->db->select('s.email');
+//          $this->db->from('student s');
+//          $this->db->where('s.S_ID', $std);
+//          $query = $this->db->get();
+//          $student = array();
+//          $student = $query->result_array();
+//          $emailstd = $student[0]['email'];
     
-    $mail = new PHPMailer;
-    $mail->CharSet = "utf-8";
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
-    $mail->SMTPAuth = true;
-    
-    
-    $gmail_username = "wusystem2020@gmail.com"; // gmail ที่ใช้ส่ง
-    $gmail_password = "wusystemtest2020"; // รหัสผ่าน gmail
-    // ตั้งค่าอนุญาตการใช้งานได้ที่นี่ https://myaccount.google.com/lesssecureapps?pli=1
+//     $mail = new PHPMailer;
+//     $mail->CharSet = "utf-8";
+//     $mail->isSMTP();
+//     $mail->Host = 'smtp.gmail.com';
+//     $mail->Port = 587;
+//     $mail->SMTPSecure = 'tls';
+//     $mail->SMTPAuth = true;
     
     
-    $sender = "WUSYSTEM"; // ชื่อผู้ส่ง
-    $email_sender = "wusystem2020@gmail.com"; // เมล์ผู้ส่ง 
-    
-    $email_receiver =  $emailstd; // เมล์ผู้รับ ***
-    
-    $subject = "ทดสอบระบบ WU "; // หัวข้อเมล์
+//     $gmail_username = "wusystem2020@gmail.com"; // gmail ที่ใช้ส่ง
+//     $gmail_password = "wusystemtest2020"; // รหัสผ่าน gmail
+//     // ตั้งค่าอนุญาตการใช้งานได้ที่นี่ https://myaccount.google.com/lesssecureapps?pli=1
     
     
-    $mail->Username = $gmail_username;
-    $mail->Password = $gmail_password;
-    $mail->setFrom($email_sender, $sender);
-    $mail->addAddress($email_receiver);
-    $mail->Subject = $subject;
+//     $sender = "WUSYSTEM"; // ชื่อผู้ส่ง
+//     $email_sender = "wusystem2020@gmail.com"; // เมล์ผู้ส่ง 
     
-    $email_content = "โดนหักคะแนนแล้วจ้า";
+//     $email_receiver =  $emailstd; // เมล์ผู้รับ ***
     
-    //  ถ้ามี email ผู้รับ
-    if($email_receiver){
-        $mail->msgHTML($email_content);
-        if (!$mail->send()) {  // สั่งให้ส่ง email
-            return true;
-            // กรณีส่ง email ไม่สำเร็จ
-           // echo "<h3 class='text-center'>ระบบมีปัญหา กรุณาลองใหม่อีกครั้ง</h3>";
-            //echo $mail->ErrorInfo; // ข้อความ รายละเอียดการ error
-        }else{
-            return true;
-            // กรณีส่ง email สำเร็จ
-           // echo "ระบบได้ส่งข้อความไปเรียบร้อย";
-        }	
-    }
-}
+//     $subject = "ทดสอบระบบ WU "; // หัวข้อเมล์
+    
+    
+//     $mail->Username = $gmail_username;
+//     $mail->Password = $gmail_password;
+//     $mail->setFrom($email_sender, $sender);
+//     $mail->addAddress($email_receiver);
+//     $mail->Subject = $subject;
+    
+//     $email_content = "โดนหักคะแนนแล้วจ้า";
+    
+//     //  ถ้ามี email ผู้รับ
+//     if($email_receiver){
+//         $mail->msgHTML($email_content);
+//         if (!$mail->send()) {  // สั่งให้ส่ง email
+//             return true;
+//             // กรณีส่ง email ไม่สำเร็จ
+//            // echo "<h3 class='text-center'>ระบบมีปัญหา กรุณาลองใหม่อีกครั้ง</h3>";
+//             //echo $mail->ErrorInfo; // ข้อความ รายละเอียดการ error
+//         }else{
+//             return true;
+//             // กรณีส่ง email สำเร็จ
+//            // echo "ระบบได้ส่งข้อความไปเรียบร้อย";
+//         }	
+//     }
+// }
                                 
-return true;
+                                return true;
    
                             } else {
                                 return false;

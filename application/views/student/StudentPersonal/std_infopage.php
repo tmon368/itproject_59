@@ -50,6 +50,11 @@
 			border-collapse: collapse;
 			text-align: center;
 		}
+
+		.alignleft
+		{
+			text-align: left;
+		}
 	</style>
 </head>
 
@@ -106,7 +111,7 @@
 								<tr>
 									<th>ลำดับ</th>
 									<th>วันที่ทำผิด</th>
-									<th>ฐานความผิด</th>
+									<th>ฐานความผิด</align></th>
 									<th>คะแนนที่หัก</th>
 									<th>สถานะการกระทำความผิด</th>
 								</tr>
@@ -234,34 +239,23 @@
 				async: false,
 				dataType: 'json',
 				success: function(data) {
-					//console.log(data);
+					console.log(data);
 					var html = '';
 					var n = 1;
 					var i;
 					for (i = 0; i < data.length; i++) {
 						
 						if (data[i].statusoff == '6') {
-							// html += '<tr>' +
-							// 	'<th>' + n + '</th>' +
-							// 	'<th>' + data[i].committed_date + '</th>' +
-							// 	'<th>' + data[i].off_desc + '</th>' +
-							// 	'<th>' + data[i].point + '</th>' +
-							// 	//data[i].statusoffname
-							// 	'<th> ' + data[i].statusoffname +  ' </a> </th>'+
-
-							// 	// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
-							// 	//'<th>' + '<a href="javascript:;" data= </a>' + data[i].statusoffname + ' class="show_data"> </th>' + // สถานะการกระทำความผิด 
-
-							// 	'</tr>';
+							
 
 						} else {
 							html += '<tr>' +
-								'<th>' + n + '</th>' +
-								'<th>' + data[i].committed_date + '</th>' +
-								'<th>' + data[i].off_desc + '</th>' +
-								'<th>' + data[i].point + '</th>' +
-								//data[i].statusoffname
-								'<th> ' + data[i].statusoffname + ' </a> </th>' +
+								'<td>' + n + '</td>' +
+								'<td>' + data[i].committed_date + '</td>' +
+								'<td class="alignleft">' + data[i].off_desc + '</td>' +
+								'<td>' + data[i].point + '</td>' +
+								
+								'<td> ' + data[i].statusoffname + ' </a> </td>' +
 								// '<th> <a href="javascript:;"class="show_data" data='+data[i].statusoffname+' > ' + data[i].statusoffname +  ' </a> </th>'+
 
 								'</tr>';
