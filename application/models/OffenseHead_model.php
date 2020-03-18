@@ -256,5 +256,30 @@ class OffenseHead_model extends CI_Model {
     }
     
 }
+
+
+public function updatestatusoffAdmitwrongoffensestd(){
+    $student = $this->session->userdata('student');
+    $offensestd_ID = $this->input->post('offensestd_ID');
+   // $offensestd_ID = "72";
+    $statusoff = "6";
+
+
+    $field = array(
+        'statusoff'=>$statusoff
+        
+
+    );
+    $this->db->where('offensestd.offensestd_ID', $offensestd_ID);
+    $this->db->update('offensestd', $field);
+    
+    
+    
+    if($this->db->affected_rows() > 0){
+        return true;
+    }else{
+        return false;
+    }
+}
     
 }
