@@ -19,7 +19,7 @@
 </center>
 
 <head>
-<style type='text/css'>
+    <style type='text/css'>
         .my-legend .legend-title {
             text-align: left;
             margin-bottom: 5px;
@@ -31,7 +31,7 @@
             margin: 0;
             margin-bottom: 5px;
             padding: 0;
-            float:center;
+            float: center;
             list-style: none;
         }
 
@@ -45,7 +45,7 @@
 
         .my-legend ul.legend-labels li span {
             display: block;
-          
+
             height: 14px;
             width: 23px;
             margin-right: 5px;
@@ -163,152 +163,179 @@
                             <font size="4">
                                 <center>จำนวนนักศึกษาที่กระทำผิดแต่ละหมวดของหอพักทั้งหมด</center>
                             </font>
-                            <a href="http://localhost/itproject_59/index.php/Dean_dashboard" class="btn btn-outline-primary btn-sm">ย้อนกลับ</a>
+                     
                             <br>
 
 
-                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-                            <script type="text/javascript">
-                                window.onload = function() {
-                                    $.ajax({
-                                        type: 'ajax',
-                                        url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
-                                        async: false,
-                                        dataType: 'json',
-                                        success: function(data) {
-                                            console.log(data);
-                                            var showdata = [];
-                                            
-                                            data.forEach((x,index)=>{
-                                                showdata.push({
-                                                dataPoints: [{"dname":x.dname,"oc_ID":x.oc_ID,"label":x.label,"y":x.y,"x":index}],
-                                                showInLegend: true,
-                                                    legendText: x.label,
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-                                                    click: onClickgraph,
-
-                                                })
-                                            
-                                        })
-                                            var chart = new CanvasJS.Chart("chartContainer", {
-                                                height: 350,
-                                                animationEnabled: true,
-                                                animationDuration: 2000, //change to 1000, 500 etc
-                                                title: {
-                                                    text: "จำนวน (คน)",
-                                                    horizontalAlign: "left",
-                                                    fontSize: 17,
-                                                    // verticalAlign: "center",
-                                                },
-                                                
-                                                axisX: {
-                                                    title: "หมวดความผิด",
-                                                    gridThickness: 0,
-                                                    tickLength: 0,
-                                                    lineThickness: 0,
-                                                    labelFormatter: function() {
-                                                        return " ";
-                                                    }
-                                                },
-                                                axisY: {
-                                                 
-                                                    
-                                                },
-                                                data: showdata,
-                                            });
-
-
-                                            chart.render();
-                                        },
-                                        error: function() {
-                                            alert('ไม่มีข้อมูล');
-                                        }
-                                    });
-                                }
-
-
-                                function onClickgraph(e) {
-                                    var id = e.dataPoint.oc_ID
-                                    //alert(id);
-                                    var data = {
-                                        "oc_ID": id
-                                    };
-                                    console.log(data);
-
-                                    $.ajax({
-                                        type: 'ajax',
-                                        url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getGraphData',
-                                        data: data,
-                                        method: 'get',
-                                        async: false,
-                                        dataType: 'json',
-                                        success: function(data) {
-                                            console.log(data);
-                                            var showdata = [];
-                                            data.forEach((x,index)=>{
-                                                showdata.push({
-                                                dataPoints: [{"oc_ID":x.oc_ID,"oc_desc":x.oc_desc,"label":x.label,"y":x.y,"x":index}],
-                                                showInLegend: true,
-                                                    legendText: x.label,
-                                                    indexLabel: "{y}",
-                                                    indexLabelPlacement: "outside",
-                                                    indexLabelOrientation: "horizontal",
-                                                    click: onClickgraph,
-
-                                                })
-                                            
-                                        })
-
-                                            
-                                            var chart = new CanvasJS.Chart("chartContainer", {
-                                                height: 350,
-                                                animationEnabled: true,
-                                                animationDuration: 2000, //change to 1000, 500 etc
-                                                title: {
-                                                    text: "จำนวน (คน)",
-                                                    horizontalAlign: "left",
-                                                    fontSize: 17,
-                                                    // verticalAlign: "center",
-                                                },
-                                                
-                                                axisX: {
-                                                    title: "หอพักหญิง/ชาย",
-                                                    gridThickness: 0,
-                                                    tickLength: 0,
-                                                    lineThickness: 0,
-                                                    labelFormatter: function() {
-                                                        return " ";
-                                                    }
-                                                },
-                                                axisY: {
-
-
-                                                },
-                                          //      dataPointMaxWidth: 200,
-                                                data: showdata
-                                            });
-
-
-                                            chart.render();
-                                        },
-                                        error: function() {
-                                            alert('ไม่มีข้อมูล');
-                                        }
-                                    });
-                                }
-                            </script>
-                            <br><br><br><br>
+                            <div id="chartContainer" style="height: 300px; width: 100%;" ></div>
                         </div>
-                      
                     </div>
-
-
-
-
-
                 </div>
+
+            
+
+                <script type="text/javascript">
+                    window.onload = function() {
+                        $.ajax({
+                            type: 'ajax',
+                            url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
+                            async: false,
+                            dataType: 'json',
+                            success: function(data) {
+                                console.log(data);
+
+
+                                var showdata = [];
+
+                                data.forEach((x, index) => {
+                                    showdata.push({
+                                        dataPoints: [{
+                                            "dept_name": x.dept_name,
+                                            "oc_ID": x.oc_ID,
+                                            "label": x.label,
+                                            "y": x.y,
+                                            "x": index
+                                        }],
+                                        showInLegend: true,
+                                        legendText: x.label,
+                                        indexLabel: "{y}",
+                                        indexLabelPlacement: "outside",
+                                        indexLabelOrientation: "horizontal",
+                                        click: onClickgraph,
+
+                                    })
+
+                                })
+                                var chart = new CanvasJS.Chart("chartContainer", {
+                                    height: 350,
+                                    width: 850,
+                                    animationEnabled: true,
+                                    animationDuration: 2000, //change to 1000, 500 etc
+                                    title: {
+                                        text: "จำนวน (คน)",
+                                        horizontalAlign: "left",
+                                        fontSize: 17,
+                                        // verticalAlign: "center",
+                                    },
+
+                                    axisX: {
+                                        title: "หมวดความผิด",
+                                        gridThickness: 0,
+                                        tickLength: 0,
+                                        lineThickness: 0,
+                                        labelFormatter: function() {
+                                            return " ";
+                                        }
+                                    },
+                                    axisY: {
+
+
+                                    },
+
+                                    data: showdata,
+
+
+
+                                });
+
+                                chart.render();
+                            },
+                            error: function() {
+                                alert('ไม่มีข้อมูล');
+                            }
+                        });
+                    }
+
+
+                    function onClickgraph(e) {
+                        
+                        var id = e.dataPoint.oc_ID
+
+                        //alert(id);
+                        var data = {
+                            "oc_ID": id
+                        
+                        };
+                        html = '';
+                        $.ajax({
+                            type: 'ajax',
+                            url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getGraphData',
+                            data: data,
+                            method: 'get',
+                            async: false,
+                            dataType: 'json',
+                            success: function(data) {
+                                console.log(data);
+
+                                var showdata = [];
+
+                                data.forEach((x, index) => {
+                                    showdata.push({
+                                        dataPoints: [{
+                                            "dept_name": x.dept_name,
+                                            "cur_ID": x.cur_ID,
+                                            "dept_ID": x.dept_ID,
+                                            "label": x.label,
+                                            "y": x.y,
+                                            "x": index
+                                        }],
+                                        showInLegend: true,
+                                        legendText: x.label,
+                                        indexLabel: "{y}",
+                                        indexLabelPlacement: "outside",
+                                        indexLabelOrientation: "horizontal",
+                                    })
+
+                                })
+
+                                var chart = new CanvasJS.Chart("chartContainer2", {
+                                    height: 350,
+                                    width: 900,
+                                    animationEnabled: true,
+                                    animationDuration: 2000, //change to 1000, 500 etc
+                                    title: {
+                                        text: "จำนวน (คน)",
+                                        horizontalAlign: "left",
+                                        fontSize: 17,
+                                        // verticalAlign: "center",
+                                    },
+                                    axisX: {
+                                        title: "หอหญิง/หอชาย",
+                                        gridThickness: 0,
+                                        tickLength: 0,
+                                        lineThickness: 0,
+                                        labelFormatter: function() {
+                                            return " ";
+                                        }
+                                    },
+                                    axisY: {
+
+
+                                    },
+                                    data: showdata,
+                                });
+                                chart.render();
+
+                                $("#oc_desc2").html(data[0].oc_desc); 
+                            //  $('.flow').html(html);
+                            },
+                          
+                            error: function() {
+                                alert('ไม่มีข้อมูล');
+                            }
+                        });
+
+                    }
+                </script>
+                <br><br><br>
+
+
+
+
+
+
+
+
 
                 <div class="col-lg-8 ">
                     <div class="card shadow mb-3">
@@ -447,17 +474,63 @@
     </div>
     </div>
 
+    <div class="modal fade" id="Showdashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
+            <div class="modal-content">
+                <div class="" id="card_2">
+                    <button type="button" class="close" style="color:black;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
+                    </button>
+                    <br>              
+                </div>
+              
+                    <form action="" id="formakk" method="post" class="needs-validation">
 
+                    <font size="4">
+                                <center>จำนวนนักศึกษาที่กระทำผิดหมวด<span id="oc_desc2"></span>ของหอพักทั้งหมด</center>
+                            </font>
+                        <div class="modal-body" >
+                        
+                      <div id="chartContainer2" style="height: 340px; width: 100%;"></div>  
+
+                        </div>
+<br>
+               
+            </div>
+            </form>
+        </div>
+    </div>
     <script>
         $(document).ready(function() {
             selectscorestudent();
             selectscoreservice();
             selectscoretraining();
+            getDashboard();
+           
+
+            function getDashboard() {
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/getDashboard',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        //	$("#S_ID").html(data[0].S_ID);
+                        $("#dept_name").html(data[0].dept_name);   
+                        $("#dept_name2").html(data[0].dept_name);                    
+                        //$("#email1").html(data[0].email);    	
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+            } 
 
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/selectscorestudent',
+                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscorestudent',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -474,7 +547,7 @@
             function selectscoreservice() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/selectscoreservice',
+                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoreservice',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -492,7 +565,7 @@
             function selectscoretraining() {
                 $.ajax({
                     type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/dormitory_supervisor_dashboard/selectscoretraining',
+                    url: '<?php echo base_url() ?>index.php/dean_dashboard/selectscoretraining',
                     async: false,
                     dataType: 'json',
                     success: function(data) {
@@ -525,14 +598,23 @@
                 search();
 
             });
-           
+
+            $('#chartContainer').click(function() {
+                $('#Showdashboard').modal('show');
+                onClickgraph(e);
+
+            });
+            //  $(".searchko").click(function() {
+            //      search();    
+            //  });
+
 
             function show_all() {
 
                 html = '';
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url("dormitory_supervisor_dashboard/showAlll") ?>',
+                    url: '<?php echo site_url("dean_dashboard/showAlll") ?>',
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
@@ -573,11 +655,12 @@
                 html = '';
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo site_url("dormitory_supervisor_dashboard/showactity") ?>',
+                    url: '<?php echo site_url("dean_dashboard/showactity") ?>',
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
                         $.each(data, function(key, value) {
+
 
                             var temp_1 = value.start_time;
                             var temp_2 = value.end_time;
@@ -602,6 +685,8 @@
                             html += '</div>';
                             html += '</div>';
 
+
+
                         });
                         $('.BodyTrain').html(html);
                     }
@@ -623,7 +708,7 @@
                 };
 
                 $.ajax({
-                    url: '<?php echo site_url("dormitory_supervisor_dashboard/searchoffensestudent") ?>',
+                    url: '<?php echo site_url("Dean_dashboard/searchoffensestudent") ?>',
                     async: false,
                     dataType: 'json',
                     data: data,
