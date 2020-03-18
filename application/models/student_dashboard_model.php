@@ -35,7 +35,7 @@ class student_dashboard_model extends CI_Model {
         $this->db->where('os.S_ID',$student);
         $this->db->where('oh.OffenseHead_oh_ID',"");
         // $this->db->group_by("oh.off_ID", "oh.notifica_date","os.S_ID");  
-        // $this->db->order_by('oh.notifica_date','DESC');
+         $this->db->order_by('oh.notifica_date','DESC');
          $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
