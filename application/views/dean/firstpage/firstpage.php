@@ -19,6 +19,7 @@
 </center>
 
 <head>
+<title>คณบดี | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
     <style type='text/css'>
         .my-legend .legend-title {
             text-align: left;

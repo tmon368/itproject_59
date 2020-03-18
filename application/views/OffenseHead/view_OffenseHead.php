@@ -8,7 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
 <head>
-  <title>ยื่นหลักฐานอุทธรณ์การกระทำความผิด | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
+  <title>รายงานตัว/ยื่นหลักฐานอุทธรณ์การกระทำความผิด | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
   <style>
     input.largerCheckbox {
       width: 20px;
@@ -50,7 +50,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?php echo site_url("Student_dashboard") ?>" class="breadcrumb-link">หน้าแรก</a></li>
-        <li class="breadcrumb-item active" aria-current="page">ยื่นหลักฐานอุทธรณ์ความผิด</li>
+        <li class="breadcrumb-item active" aria-current="page">รายงานตัวยื่นหลักฐานอุทธรณ์ความผิด</li>
       </ol>
     </nav>
   </div>
@@ -58,7 +58,7 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card shadow mb-4">
       <div class="card-header" id="card_2">
-        <h6 class="m-0 text-primary"><span class=""></span>&nbsp;ยื่นหลักฐานอุทธรณ์ความผิด</h6>
+        <h6 class="m-0 text-primary"><span class=""></span>&nbsp;รายงานตัว/ยื่นหลักฐานอุทธรณ์ความผิด</h6>
       </div>
 
       <div class="card-body">
@@ -71,6 +71,7 @@
                   <th>วันที่กระทำความผิด</th>
                   <th>ฐานความผิด</th>
                   <th>รายละเอียด</th>
+                  <th>รายงานตัว</th>
                   <th>ส่งหลักฐานอุทธรณ์</th>
                 </tr>
               </thead>
@@ -265,6 +266,7 @@
             html += '<td>' + value.committed_date + '</td>';
             html += '<td>' + value.off_desc + '</td>';
             html += '<td class="tddetail"><span class="fileicon " data="' + value.offensestd_ID + '"><i class="fas fa-file-alt"></i></span></td>';
+            html += '<td><button class="btn btn-outline-success AcceptOffender" data="' + value.offensestd_ID + '">ยืนยัน</button></td>'
             html += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder" data="' + value.offensestd_ID + '"></td>';
             html += '</tr>';
 
@@ -353,4 +355,34 @@
       $('#offensestd_ID').val(offstd);
       check_data_offenstd(offstd);
     });
+
+
+    $('#showdata').on('click', '.AcceptOffender', function() {
+            var id = $(this).attr('data');
+            //console.log(id);
+            data={offensestd_ID: id}
+            if (confirm('ยืนยันการกระทำความผิด')) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo site_url("OffenseHead/updatestatusoffAdmitwrongoffensestd  ") ?>',
+                    async: false,
+                    data:data,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        if (data == true){
+                            alert ('ทำรายการเสร็จสิ้น');
+                            location.reload();
+                        }else if (data == false) {
+                            alert ('ไม่สามารถทำการรายการได้ กรุณาตรวจสอบข้อมูล');
+                        }else{
+
+                        }
+
+                    }
+                });
+            }else{
+                //stament
+            }
+        });
   </script>
