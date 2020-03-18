@@ -28,15 +28,15 @@ class student_dashboard_model extends CI_Model {
     public function selectstudentstatus(){
         $i=0;
         $student = $this->session->userdata('student');
-        $this->db->select('*, COUNT(*) as duplicated');
+        $this->db->select('*');
         $this->db->from('offensestd os');
         $this->db->join('offensehead oh', 'os.oh_ID=oh.oh_ID');
         $this->db->join('offense o', 'oh.off_ID=o.off_ID');     
         $this->db->where('os.S_ID',$student);
-        //$this->db->where('oh.OffenseHead_oh_ID',"");
-        $this->db->group_by("oh.off_ID", "oh.notifica_date","os.S_ID");  
-        $this->db->order_by('oh.notifica_date','DESC');
-        $query = $this->db->get();
+        $this->db->where('oh.OffenseHead_oh_ID',"");
+        // $this->db->group_by("oh.off_ID", "oh.notifica_date","os.S_ID");  
+        // $this->db->order_by('oh.notifica_date','DESC');
+         $query = $this->db->get();
         $student = array();
         $student = $query->result_array();
         foreach($student as $value){
