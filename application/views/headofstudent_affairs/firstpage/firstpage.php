@@ -187,7 +187,6 @@
 
                                 function onClickgraph(t) {
                                     var id = t.dataPoint.oc_ID
-                                    alert(id);
                                     var data = {
                                         "oc_ID": id
                                     };
@@ -246,6 +245,7 @@
                                                 data: showdata,
                                             });
                                             chart.render();
+                                           $("#oc_desc2").html(data[0].oc_desc); 
 
                                         },
                                         error: function() {
@@ -279,7 +279,7 @@
                                             
                                             data.forEach((x,index)=>{ 
                                                 showdata.push({
-                                                dataPoints: [{"oc_ID":x.oc_ID,"dept_ID":x.dept_ID,"label":x.label,"y":x.y,"x":index}],
+                                                dataPoints: [{"dept_name":x.dept_name,"oc_ID":x.oc_ID,"dept_ID":x.dept_ID,"label":x.label,"y":x.y,"x":index}],
                                                 showInLegend: true,
                                                     legendText: x.label,
                                                     indexLabel: "{y}",
@@ -291,7 +291,7 @@
                                             
                                             })
                                             
-                                            var chart = new CanvasJS.Chart("chartContainer2", {
+                                            var chart = new CanvasJS.Chart("chartContainer3", {
                                                 
                                             	 height: 350,
                                                  width: 900,
@@ -324,7 +324,8 @@
 
 
                                             chart.render();
-
+                                          $("#oc_desc3").html(data[0].oc_desc); 
+                                          $("#dept_name2").html(data[0].dept_name); 
                                         },
                                         error: function() {
                                             alert('ไม่มีข้อมูล');
@@ -506,7 +507,7 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="Showdashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="Showdashboard2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
             <div class="modal-content">
                 <div class="" id="card_2">
@@ -519,7 +520,7 @@
                     <form action="" id="formakk" method="post" class="needs-validation">
 
                     <font size="4">
-                                <center>จำนวนนักศึกษาที่กระทำผิดหมวด<span id="oc_desc2"></span>ของหลักสูตรทั้งหมด</center>
+                                <center>จำนวนนักศึกษาที่กระทำผิดหมวด<span id="oc_desc3"></span>ของสำนักวิชา<span id="dept_name2"></span></center>
                             </font>
                         <div class="modal-body" >
                         
@@ -539,27 +540,10 @@
             selectscorestudent();
             selectscoreservice();
             selectscoretraining();
-            getDashboard();
-            
+           
+ 
 
-            function getDashboard() {
-                $.ajax({
-                    type: 'ajax',
-                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboard',
-                    async: false,
-                    dataType: 'json',
-                    success: function(data) {
-
-                        //	$("#S_ID").html(data[0].S_ID);
-                        $("#dept_name").html(data[0].dept_name);   
-                        $("#dept_name2").html(data[0].dept_name);                    
-                        //$("#email1").html(data[0].email);    	
-                    },
-                    error: function() {
-                        alert('ไม่มีข้อมูล');
-                    }
-                });
-            }          
+           
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
@@ -636,8 +620,8 @@
                 onClickgraph(e);
 
             });
-            $('#chartContainer').click(function() {
-                $('#Showdashboard').modal('show');
+            $('#chartContainer2').click(function() {
+                $('#Showdashboard2').modal('show');
                 onClickgraph2(e);
 
             });
