@@ -218,8 +218,10 @@
                                             
                                             })
                                             
-                                            var chart = new CanvasJS.Chart("chartContainer", {
-                                                height: 350,
+                                            var chart = new CanvasJS.Chart("chartContainer2", {
+                                                
+                                            	 height: 350,
+                                                 width: 900,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
                                                 title: {
@@ -238,13 +240,11 @@
                                                     }
                                                 },
                                                 axisY: {
-                                                    title: "จำนวน(คน)"
+
+
                                                 },
                                                 data: showdata,
-                                            
                                             });
-
-
                                             chart.render();
 
                                         },
@@ -291,8 +291,10 @@
                                             
                                             })
                                             
-                                            var chart = new CanvasJS.Chart("chartContainer", {
-                                                height: 350,
+                                            var chart = new CanvasJS.Chart("chartContainer2", {
+                                                
+                                            	 height: 350,
+                                                 width: 900,
                                                 animationEnabled: true,
                                                 animationDuration: 2000, //change to 1000, 500 etc
                                                 title: {
@@ -303,7 +305,13 @@
                                                 },
                                                 
                                                 axisX: {
-                                                    title: "หลักสูตร",
+                                                	 title: "หลักสูตร",
+                                                     gridThickness: 0,
+                                                     tickLength: 0,
+                                                     lineThickness: 0,
+                                                     labelFormatter: function() {
+                                                         return " ";
+                                                     }
                                                    
                                                 },
                                                 axisY: {
@@ -472,6 +480,58 @@
     </div>
     </div>
     </div>
+     <div class="modal fade" id="Showdashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
+            <div class="modal-content">
+                <div class="" id="card_2">
+                    <button type="button" class="close" style="color:black;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
+                    </button>
+                    <br>              
+                </div>
+              
+                    <form action="" id="formakk" method="post" class="needs-validation">
+
+                    <font size="4">
+                                <center>จำนวนนักศึกษาที่กระทำผิดหมวด<span id="oc_desc2"></span>ของสำนักวิชาทั้งหมด</center>
+                            </font>
+                        <div class="modal-body" >
+                        
+                      <div id="chartContainer2" style="height: 340px; width: 100%;"></div>  
+
+                        </div>
+<br>
+               
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="Showdashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 950px!important;" role="document">
+            <div class="modal-content">
+                <div class="" id="card_2">
+                    <button type="button" class="close" style="color:black;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
+                    </button>
+                    <br>              
+                </div>
+              
+                    <form action="" id="formakk" method="post" class="needs-validation">
+
+                    <font size="4">
+                                <center>จำนวนนักศึกษาที่กระทำผิดหมวด<span id="oc_desc2"></span>ของหลักสูตรทั้งหมด</center>
+                            </font>
+                        <div class="modal-body" >
+                        
+                      <div id="chartContainer3" style="height: 340px; width: 100%;"></div>  
+
+                        </div>
+<br>
+               
+            </div>
+            </form>
+        </div>
+    </div>
 
 
     <script>
@@ -479,7 +539,27 @@
             selectscorestudent();
             selectscoreservice();
             selectscoretraining();
+            getDashboard();
+            
 
+            function getDashboard() {
+                $.ajax({
+                    type: 'ajax',
+                    url: '<?php echo base_url() ?>index.php/headofstudent_affairs_dashboard/getDashboard',
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+
+                        //	$("#S_ID").html(data[0].S_ID);
+                        $("#dept_name").html(data[0].dept_name);   
+                        $("#dept_name2").html(data[0].dept_name);                    
+                        //$("#email1").html(data[0].email);    	
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });
+            }          
             function selectscorestudent() {
                 $.ajax({
                     type: 'ajax',
@@ -549,6 +629,16 @@
             $('#offense_card').click(function() {
                 $('#Showoffen').modal('show');
                 search();
+
+            });
+            $('#chartContainer').click(function() {
+                $('#Showdashboard').modal('show');
+                onClickgraph(e);
+
+            });
+            $('#chartContainer').click(function() {
+                $('#Showdashboard').modal('show');
+                onClickgraph2(e);
 
             });
             //  $(".searchko").click(function() {
