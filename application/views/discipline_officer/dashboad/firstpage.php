@@ -357,7 +357,7 @@
                                                     horizontalAlign: "left",
                                                     fontSize: 17,
                                                     // verticalAlign: "center",
-                                                },
+                                                }, 
                                                 
                                                 axisX: {
                                                     title: "หลักสูตร",
