@@ -552,7 +552,7 @@
                     dataType: 'json',
                     success: function(data) {
                         // alert(data)
-                        $('#showscorestudent').html(data.numberstudent);
+                        $('#showscorestudent').html(data.numberstudent); 
 
                     },
                     error: function() {
