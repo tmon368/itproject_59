@@ -98,33 +98,14 @@
 					<div class="col-lg-5">
                     <input type="text" name="dormtxt"  class="form-control"  maxlength="10"  required>
              </div>
-				<!-- <div class="form-group sty_a" id="textkey">
-                                            <span id="count5">0</span>
-                                            <span>/</span>
-                                            <span id="count6" style="color:#6699ff;">100</span>
-                                        </div>
-
-                                        <!-- Alert for the number of characters
-                                        
-                                        <script>
-                                        function count_downdescription(obj) {
-                                            document.getElementById('count5').innerHTML = obj.value.length;
-                                            var element = document.getElementById('count6');
-
-                                            element.innerHTML = 100 - obj.value.length;
-                                            if (100 - obj.value.length == 0) {
-                                                element.style.color = 'red';
-
-                                            } else {
-                                                element.style.color = '#6699ff';
-                                            }
-                                        }
-                                        </script>
-                                        
-                                    </div>
-				  -->
+				
 			</center>
-			 
+			  <br> <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
+
+                                        <div class="margin-top:0.5rem;">
+                                            <select class="selectplace input" name="person_ID" id="add_persennel" style="max-width: 400px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
+                                        </div>
+                                        <br>
 		  <!------------------>
  </div>
  
@@ -207,32 +188,7 @@
 					<div class="col-lg-4">
                     <input type="text" name="dormedittxt" id="dormedittxt" class="form-control"  maxlength="10"  required>
                                         </div>
-                                 <!--  
-                                        <div class="form-group sty_a">
-                                            <span id="count11">0</span>
-                                            <span>/</span>
-                                            <span id="count12" style="color:#6699ff;">100</span>
-                                        </div>
-
-                                        <!-- Alert for the number of characters
-                                        <script>
-                                        function count_down_editdescription(obj) {
-
-                                            document.getElementById('count11').innerHTML = obj.value.length;
-                                            var element = document.getElementById('count12');
-
-                                            element.innerHTML = 100 - obj.value.length;
-                                            if (100 - obj.value.length == 0) {
-                                                element.style.color = 'red';
-
-                                            } else {
-                                                element.style.color = '#6699ff';
-                                            }
-                                        }
-                                        </script>
-                                    </div>
-                                    -->
-		
+                              
 			
 				
 				
@@ -319,7 +275,7 @@
                                                     <th>รหัสหอพัก</th>
                                                     <th>ชื่อหอพัก</th>
                                                     <th>ประเภทหอพัก</th>        
-                                                    <th>รหัสที่ปรึกษาหอพัก</th>                                   
+                                                    <th>ที่ปรึกษาหอพัก</th>                                   
 													<th>จัดการ</th>
 
                                                 </tr>
@@ -365,7 +321,33 @@
 
 		  </div>
 <script>
- 
+$(document).ready(function() {
+    select_user_accept();
+    show_all();
+    $("#add_persennel").select2({
+        placeholder: "ค้นหาผู้รับรองกิจกรรม",
+        allowClear: true,
+    });
+});
+function select_user_accept() {
+    $.ajax({
+        type: 'POST',
+        url: '<?php echo site_url("VolunteerAC/selectperson") ?>',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            var html = '';
+            html += '<option selected>เลือกผู้รับรอง</option>';
+            $.each(data, function(key, value) {
+                html += '<option value="' + value.person_ID + '">' + value.person_fname + " " + value.person_lname + '</option>';
+                $('#add_persennel').html(html);
+            });
+        }
+    });
+}
+
+
 $(document).ready(function(){
     showAll();
     
