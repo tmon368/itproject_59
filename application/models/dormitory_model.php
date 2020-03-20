@@ -59,8 +59,8 @@ class dormitory_model extends CI_Model {
             'dorm_ID'=>$this->input->post('dormID'),
             'dname'=>$dname,
             'dormtype_ID'=>$this->input->post('dormtype'),
-            'person_ID'=>$this->input->post('dormtxt')
- 
+            'person_ID'=>$this->input->post('person_ID')
+            
             );
         $this->db->insert('dormitory', $field);
         if($this->db->affected_rows() > 0){
@@ -137,6 +137,26 @@ class dormitory_model extends CI_Model {
         
         
     }
+    function selectperson()
+    {
+        
+        
+        // $keyword1 = $_POST["query"];
+        // $this->db->like('person_fname', $keyword1, 'both');
+        // $this->db->order_by('person_ID','ASC');
+        $this->db->select('*');
+        $this->db->from('personnel');
+        
+        $query = $this->db->get();
+        
+        if($query->result() > 0){
+            
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
+    
     
    
     

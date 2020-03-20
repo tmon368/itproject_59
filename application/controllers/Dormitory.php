@@ -86,4 +86,10 @@ class Dormitory extends Admin_dashboard  {
         $result = $this->dormitory_model->selectdormitory();
         echo json_encode($result);
     }
+    
+    function selectperson()
+    {
+        $result = $this->dormitory_model->selectperson();
+        echo json_encode($result);
+    }
 }

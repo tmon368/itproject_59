@@ -90,20 +90,12 @@
 					</select>
 
       </div></div></div>
-				<div class="form-group" id="input_group_sty">
-				<div class="input-group" >
-						<label for="validationCustom02..'">รหัสที่ปรึกษาหอพัก </label>
-					<p class="text-danger">&nbsp;&nbsp;*</p>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<div class="col-lg-5">
-                    <input type="text" name="dormtxt"  class="form-control"  maxlength="10"  required>
-             </div>
-				
+			
 			</center>
-			  <br> <label for="person_acceept" class="lable">ผู้รับรองกิจกรรม: <span class="fixdata">*</span></label>
+			 <label for="person_acceept" class="lable">ที่ปรึกษาหอพัก: <span class="fixdata">*</span></label>
 
-                                        <div class="margin-top:0.5rem;">
-                                            <select class="selectplace input" name="person_ID" id="add_persennel" style="max-width: 400px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
+                                        <div class="margin-top:0.3rem;">
+                                            <select class="form-control" name="person_ID" id="add_persennel" style="max-width: 400px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
                                         </div>
                                         <br>
 		  <!------------------>
@@ -332,7 +324,7 @@ $(document).ready(function() {
 function select_user_accept() {
     $.ajax({
         type: 'POST',
-        url: '<?php echo site_url("VolunteerAC/selectperson") ?>',
+        url: '<?php echo site_url("Dormitory/selectperson") ?>',
         async: false,
         dataType: 'json',
         success: function(data) {
