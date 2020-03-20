@@ -82,6 +82,7 @@ class Notifyoffense_model extends CI_Model
         $this->db->join('offevidence ov', 'o.oh_ID=ov.oh_ID');
         $this->db->where('o.informer', $student);
         $this->db->order_by('o.oh_ID DESC');
+        $this->db->group_by('o.oh_ID','p.place_ID');
 
         $query = $this->db->get();
         $showall = array();
