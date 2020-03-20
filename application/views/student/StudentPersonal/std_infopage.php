@@ -168,7 +168,7 @@
 		selectstudentpoint();
 		// show_all();
 
-		$('#AlertNotifyUserModal').modal('show');
+		//$('#AlertNotifyUserModal').modal('show');
 
 		function selectstudentpoint() {
 			$.ajax({
