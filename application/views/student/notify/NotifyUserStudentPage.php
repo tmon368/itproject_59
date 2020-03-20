@@ -30,6 +30,8 @@
     var countFilepicture = 0;
     var fileIdCounter = 0;
     var datanotify = [];
+    var datanotify_temp = [];
+    var datanotify_doubly = [];
 </script>
 
 
@@ -58,6 +60,7 @@
                             <table id="style_table" class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th id="test_id">id</th>
                                         <th id="id_column">ลำดับ</th>
                                         <th id="date_commited">วันที่แจ้งเหตุ</th>
                                         <th id="">ฐานความผิด</th>
@@ -779,20 +782,25 @@
                 var i = 0;
 
                 $.each(data, function(key, value) {
-                    i++;
-                    html += '<tr>';
-                    html += '<td>' + i + '</td>';
-                    html += '<td>' + value.notifica_date + '</td>';
-                    html += '<td>' + value.off_desc + '</td>';
-                    html += '<td>' + value.place_name + '</td>';
-                    html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
-                    html += '</tr>';
+
+
+                    if (value.OffenseHead_oh_ID == ""){
+                        i++;
+                        html += '<tr>';
+                        html += '<td>' + value.oh_ID + '</td>'
+                        html += '<td>' + i + '</td>';
+                        html += '<td>' + value.notifica_date + '</td>';
+                        html += '<td>' + value.off_desc + '<span class="Doubly Number' + value.oh_ID + '"></span></td>';
+                        html += '<td>' + value.place_name + '</td>';
+                        html += '<td> <a href="javascript:;" data=' + value.oh_ID + ' class="show_data"><i class="fa fa-file-text" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></a></td>';
+                        html += '</tr>';
+                    }
 
                     datanotify.push({
+                        oh_ID: value.oh_ID, //PK
                         place_ID: value.place_ID,
                         place_name: value.place_name,
                         description: value.description,
-                        oh_ID: value.oh_ID,
                         off_ID: value.off_ID,
                         informer: value.informer,
                         committed_date: value.committed_date,
@@ -803,20 +811,46 @@
                         flag: value.flag,
                         offensestd_ID: value.offensestd_ID,
                         S_ID: value.S_ID,
-                        std_fname:value.std_fname,
-                        std_lname:value.std_lname,
+                        std_fname: value.std_fname,
+                        std_lname: value.std_lname,
                         statusoff: value.statusoff,
                         off_desc: value.off_desc,
                         oc_ID: value.oc_ID,
-                        point: value.point
+                        point: value.point,
+                        OffenseHead_oh_ID: value.OffenseHead_oh_ID //เช็คค่าซ้ำ
                     });
 
-                    $('#showdata').html(html);
-
+                    datanotify_temp.push(value.oh_ID);
+                    datanotify_doubly.push(value.OffenseHead_oh_ID);
                 });
-
+                $('#showdata').html(html);
+                check_doubly();
             }
         });
+    }
+
+    function check_doubly() {
+
+        //console.log(datanotify_doubly);
+
+        for (var i = 0; i < datanotify_temp.length; i++) {
+            var check_count = 0;
+            temp_value = datanotify_temp[i];
+
+            for (var j = 0; j < datanotify_doubly.length; j++) {
+            
+                if (temp_value == datanotify_doubly[j]) {
+                    check_count++;
+                    var doubly_number = check_count+1;
+                    $('.Number'+temp_value).text("("+ doubly_number +")");
+                    //check_count++;
+                }
+
+            }
+
+        }
+
+
     }
 
     function search_numbertag_motorcycle(data) {
@@ -1051,7 +1085,7 @@
 
                     } else if (filesToUpload.length < 5) {
                         check = 1;
-            
+
                     } else {
                         alert('อัปโหลดไฟล์ได้สูงสุดเพียง 5 ไฟล์')
                     }
@@ -1068,15 +1102,15 @@
                         var picReader = new FileReader();
                         picReader.addEventListener("load", function(event) {
                             var picFile = event.target;
-                            var htmlcode= '';
+                            var htmlcode = '';
                             var htmlcheck = '';
                             htmlcode += '<div class="showpicture countdiv' + fileIdCounter + '">';
                             htmlcode += '<div class="Imgfile">';
-                            htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result +"'" + "title='" + picFile.name + "'/>";
+                            htmlcode += "<img class='thumbnail' alt='Profile image' src='" + picFile.result + "'" + "title='" + picFile.name + "'/>";
                             htmlcode += '</div>';
                             htmlcode += '<div class="filename">';
                             htmlcode += '<div class="FileName">' + fileName + '</div>';
-                            htmlcode += '<div class="Sizefile">'+ sizeFile +' bytes</div>';
+                            htmlcode += '<div class="Sizefile">' + sizeFile + ' bytes</div>';
                             htmlcode += '</div>';
                             htmlcode += '<span id="delete_picture" data=' + fileIdCounter +
                                 '><i class="fa fa-times-circle"></i></span>';
@@ -1288,8 +1322,7 @@
 
                     for (i = 0; i < data.length; i++) {
 
-                        html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc +
-                            '</option>';
+                        html_code += '<option value="' + data[i].off_ID + '">' + data[i].off_desc + '</option>';
 
                     }
                     $('#txt_off').html(html_code);
@@ -1319,7 +1352,7 @@
                 $('#place_detail').text(value.place_name);
                 $('#placeexp_detail').text(value.description);
                 $('#offenc_detail').text(value.off_desc);
-                $('#student_name').text(value.std_fname+" "+value.std_lname);
+                $('#student_name').text(value.std_fname + " " + value.std_lname);
             }
         });
     });
