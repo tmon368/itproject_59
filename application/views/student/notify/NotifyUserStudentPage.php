@@ -60,7 +60,6 @@
                             <table id="style_table" class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th id="test_id">id</th>
                                         <th id="id_column">ลำดับ</th>
                                         <th id="date_commited">วันที่แจ้งเหตุ</th>
                                         <th id="">ฐานความผิด</th>
@@ -787,7 +786,6 @@
                     if (value.OffenseHead_oh_ID == ""){
                         i++;
                         html += '<tr>';
-                        html += '<td>' + value.oh_ID + '</td>'
                         html += '<td>' + i + '</td>';
                         html += '<td>' + value.notifica_date + '</td>';
                         html += '<td>' + value.off_desc + '<span class="Doubly Number' + value.oh_ID + '"></span></td>';
