@@ -670,9 +670,6 @@
 
         $("#committed_date").change(function() {
 
-            // var x = new Date('2013-05-23');
-            // var y = new Date('2013-05-23');
-
             //วันที่แจ้ง
             var date = new Date($('#committed_date').val());
             var datenotify = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
