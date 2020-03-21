@@ -7,6 +7,9 @@ class Student_dashboard extends CI_Controller {
 		parent:: __construct();
 		$this->load->model('student_dashboard_model', 'model');
 		$this->load->model('SettimeSession','SettimeSession');
+		$this->load->model('ServiceProfile','ServiceProfile');
+		
+
 	}
 
 	public function index()
@@ -61,6 +64,13 @@ class Student_dashboard extends CI_Controller {
 	    
 	    
 	    $result = $this->model->selectstudentname();
+	    echo json_encode($result);
+	}
+
+	function selectfname_lname(){
+	    
+	    
+	    $result = $this->ServiceProfile->selectfname_lname();
 	    echo json_encode($result);
 	}
 	/*

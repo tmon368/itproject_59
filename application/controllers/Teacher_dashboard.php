@@ -10,6 +10,7 @@ class Teacher_dashboard extends CI_Controller
 		$this->load->model('teacher_dashboard_model', 'teacher_dashboard_model');
 		$this->load->model('Service_Feedback_model', 'Service_Feedback_model');
 		$this->load->model('SettimeSession', 'SettimeSession');
+		$this->load->model('ServiceProfile','ServiceProfile');
 	}
 
 
@@ -119,7 +120,10 @@ class Teacher_dashboard extends CI_Controller
         $result = $this->teacher_dashboard_model->selectstudentscore();
         echo json_encode($result);
     }
-    
+    function selectfname_lname(){
+	    $result = $this->ServiceProfile->selectfname_lname();
+	    echo json_encode($result);
+	}
 
 	/*
 	function selectstudent(){
