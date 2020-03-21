@@ -668,6 +668,35 @@
             }
         });
 
+        $("#committed_date").change(function() {
+
+            // var x = new Date('2013-05-23');
+            // var y = new Date('2013-05-23');
+
+            //วันที่แจ้ง
+            var date = new Date($('#committed_date').val());
+            var datenotify = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
+            //วันที่ปัจจุบัน
+            var date2 = new Date();
+            var datecurrent = date2.getFullYear() + '-' + (date2.getMonth() + 1) + '-' + date2.getDate();
+
+            var x = new Date(datenotify);
+            var y = new Date(datecurrent);
+
+
+            if (+x > +y) {
+                alert ("ไม่สามารถแจ้งเหตุกระทำความผิดล่วงหน้าได้");
+                $('#committed_date').val(null);
+            } else {
+                //stament
+            }
+
+
+
+
+        });
+
 
 
 
@@ -783,7 +812,7 @@
                 $.each(data, function(key, value) {
 
 
-                    if (value.OffenseHead_oh_ID == ""){
+                    if (value.OffenseHead_oh_ID == "") {
                         i++;
                         html += '<tr>';
                         html += '<td>' + i + '</td>';
@@ -836,11 +865,11 @@
             temp_value = datanotify_temp[i];
 
             for (var j = 0; j < datanotify_doubly.length; j++) {
-            
+
                 if (temp_value == datanotify_doubly[j]) {
                     check_count++;
-                    var doubly_number = check_count+1;
-                    $('.Number'+temp_value).text("("+ doubly_number +")");
+                    var doubly_number = check_count + 1;
+                    $('.Number' + temp_value).text("(" + doubly_number + ")");
                     //check_count++;
                 }
 
@@ -930,12 +959,10 @@
                     if (key == 0) {
 
                         html_code += '<div class="person_resule">';
-                        html_code += '<div class="img" data=' + value.S_ID +
-                            '><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
+                        html_code += '<div class="img" data=' + value.S_ID + '><span id="addicn"><i class="fa fa-plus-circle"></i></span></div>';
                         html_code += ' <div class="dataperson">';
                         html_code += '<div class="">';
-                        html_code += '<span id="name">' + value.std_fname + ' ' + value.std_lname +
-                            '</span>';
+                        html_code += '<span id="name">' + value.std_fname + ' ' + value.std_lname + '</span>';
                         html_code += '</div>';
                         html_code += '<div>';
                         html_code += '<span id="major">สาขา ' + value.dept_name + '</span>';
