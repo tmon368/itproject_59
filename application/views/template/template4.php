@@ -7,7 +7,7 @@
 <div class="user">
     <li class="nav-item dropdown d-none d-xl-inline-block">
         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-            <span class="profile-text">Hello, Richard V.Welsh !</span>
+            <span class="profile-text userlogin"></span>
             <img class="img-xs rounded-circle" src="<?php echo base_url('re/images/man.png'); ?>" alt="Profile image">
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -60,13 +60,12 @@
 
 <script>
     $(document).ready(function() {
-        selectstudentname();
+        select_user_login();
     });
 
 
 
     $("#logout").click(function() {
-        selectstudentname();
         $("#exampleModal").modal();
     });
 
@@ -75,15 +74,17 @@
     });
 
 
-    function selectstudentname() {
+    function select_user_login() {
         $.ajax({
             type: 'ajax',
-            url: '<?php echo base_url() ?>index.php/Admin_dashboard/selectstudentname',
+            url: '<?php echo site_url("Student_dashboard/selectfname_lname") ?>',
             async: false,
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                $('#fullnamestudent').html(data[0].person_fname + ' ' + data[0].person_lname);
+                $.each(data, function(key, value) {
+                    $('.userlogin').text('สวัสดี! '+ value.person_fname +" "+ value.person_lname);
+                })
             },
             error: function() {
                 alert('ไม่มีข้อมูล');

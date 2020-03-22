@@ -31,6 +31,11 @@
 	font-size: 12px;
     color: #fff;
 }
+.userlogin{
+	font-size: 14px;
+	font-family: sans-serif;
+	margin-right: 0.2rem;
+}
 .nav-link {
     display: block;
     padding: 0rem 1rem;
