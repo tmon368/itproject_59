@@ -24,12 +24,7 @@
                     </div>
                 </div>
             </a>
-            <a class="dropdown-item mt-2">
-                Manage Accounts
-            </a>
-            <a class="dropdown-item">
-                Change Password
-            </a>
+
             <a class="dropdown-item">
                 คู่มือการใช้งาน
             </a>
@@ -44,8 +39,7 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -55,10 +49,8 @@
                     ต้องการออกจากระบบ ?
                 </div>
                 <div>
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"
-                        style="width:100%;margin-bottom: 0.5rem;font-family: 'prompt',sans-serif;">ยกเลิก</button>
-                    <button type="button" class="btn btn-inverse-danger btn-fw" id="logoutsession"
-                        style="width:100%;font-family: 'prompt',sans-serif;">ออกจากระบบ</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" style="width:100%;margin-bottom: 0.5rem;font-family: 'prompt',sans-serif;">ยกเลิก</button>
+                    <button type="button" class="btn btn-inverse-danger btn-fw" id="logoutsession" style="width:100%;font-family: 'prompt',sans-serif;">ออกจากระบบ</button>
                 </div>
             </div>
 
@@ -67,14 +59,37 @@
 </div>
 
 <script>
-$("#logout").click(function() {
-    console.log(5555);
-    $("#exampleModal").modal();
-});
+    $(document).ready(function() {
+        selectstudentname();
+    });
 
-$('#logoutsession').click(function() {
-    $(location).attr('href', '<?php echo base_url() ?>index.php/Loginuser/logout');
-});
+
+
+    $("#logout").click(function() {
+        selectstudentname();
+        $("#exampleModal").modal();
+    });
+
+    $('#logoutsession').click(function() {
+        $(location).attr('href', '<?php echo base_url() ?>index.php/Loginuser/logout');
+    });
+
+
+    function selectstudentname() {
+        $.ajax({
+            type: 'ajax',
+            url: '<?php echo base_url() ?>index.php/Admin_dashboard/selectstudentname',
+            async: false,
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                $('#fullnamestudent').html(data[0].person_fname + ' ' + data[0].person_lname);
+            },
+            error: function() {
+                alert('ไม่มีข้อมูล');
+            }
+        });
+    }
 </script>
 
 

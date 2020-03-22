@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="<?php echo base_url('re/css/inputfile.css') ?>">
 
 
-
 <head>
     <title>แจ้งเหตุกระทำความผิด | ระบบวินัยนักศึกษามหาวิทยาลัยวลัยลักษณ์</title>
     <style>
