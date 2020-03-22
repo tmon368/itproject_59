@@ -6,6 +6,7 @@ class Student_dashboard extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
 		$this->load->model('student_dashboard_model', 'model');
+		$this->load->model('ServiceProfile','ServiceProfile');
 		$this->load->model('SettimeSession','SettimeSession');
 		$this->load->model('ServiceProfile','ServiceProfile');
 		
@@ -36,9 +37,13 @@ class Student_dashboard extends CI_Controller {
 	    $result = $this->model->selectstudentstatus();
 	    echo json_encode($result);
 	}
+
+	function selectfname_lname(){
+	    $result = $this->ServiceProfile->selectfname_lname();
+		echo json_encode($result);
+	}
 	
-	
-	
+
 	function selectstudentfirstpage(){
 	    //  $username = $this->session->userdata('username');
 	    

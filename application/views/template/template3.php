@@ -307,7 +307,7 @@
                     async: false,
                     dataType: 'json',
                     success: function(data) { // console.log(data); 
-                     // alert(data[0])
+                     console.log(data);
                       $('#fullnamestudent').html(data[0].person_fname+' '+data[0].person_lname);
                       //$('#lnamestudent').html(data[0].std_lname);
                     
