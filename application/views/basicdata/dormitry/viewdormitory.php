@@ -171,17 +171,22 @@
 					</select>
 
       </div></div></div>
-	 <div class="form-group" id="input_group_sty">
-				<div class="input-group" >
+<!-- 	 <div class="form-group" id="input_group_sty"> -->
+<!-- 				<div class="input-group" > -->
 				
-						<label for="validationCustom02..'">ปรึกษาหอพัก  </label>
-					<p class="text-danger">&nbsp;&nbsp;*</p>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<div class="col-lg-4">
-                    <input type="text" name="dormedittxt" id="dormedittxt" class="form-control"  maxlength="10"  required>
-                                        </div>
+<!-- 						<label for="validationCustom02..'">ปรึกษาหอพัก  </label> -->
+<!-- 					<p class="text-danger">&nbsp;&nbsp;*</p> -->
+<!-- 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+<!-- 					<div class="col-lg-4"> -->
+<!--                     <input type="text" name="dormedittxt" id="dormedittxt" class="form-control"  maxlength="10"  required> -->
+<!--                                         </div> -->
                               
-			
+			<label for="person_acceept" class="lable">ที่ปรึกษาหอพัก: <span class="fixdata">*</span></label>
+
+                                        <div class="margin-top:0.3rem;">
+                                            <select class="form-control" name="dormedittxt" id="dormedittxt" style="max-width: 400px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
+                                        </div>
+                                        <br>
 				
 				
       </center>
@@ -338,8 +343,31 @@ function select_user_accept() {
         }
     });
 }
-
-
+$(document).ready(function() {
+    select_user_accept2();
+    show_all();
+    $("#dormedittxt").select2({
+        placeholder: "ค้นหาผู้รับรองกิจกรรม",
+        allowClear: true,
+    });
+});
+function select_user_accept2() {
+    $.ajax({
+        type: 'POST',
+        url: '<?php echo site_url("Dormitory/selectperson") ?>',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            var html = '';
+            html += '<option selected>เลือกผู้รับรอง</option>';
+            $.each(data, function(key, value) {
+                html += '<option value="' + value.person_ID + '">' + value.person_fname + " " + value.person_lname + '</option>';
+                $('#dormedittxt').html(html);
+            });
+        }
+    });
+}
 $(document).ready(function(){
     showAll();
     
