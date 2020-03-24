@@ -181,7 +181,7 @@
               } else {
                 //stament
               }
-              htmlcode += '<td class="tddetail"><span class="fileicon" data="' + value.proof_ID + '"><i class="fas fa-file-alt"></i></span></td>';
+              htmlcode += '<td class="tddetail"><span class="fileicon" data="' + value.proof_ID + '"><i class="fas fa-file-alt" style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></span></td>';
               htmlcode += '</tr>';
 
               var time_committed = value.committed_time.substring(0, 5);

@@ -1,5 +1,5 @@
-<div class="bar">
 
+<div class="bar">
     <div id="menuToggle">
         <input type="checkbox" />
         <span></span>

@@ -265,7 +265,7 @@
             html += '<td>' + i + '</td>'
             html += '<td>' + value.committed_date + '</td>';
             html += '<td>' + value.off_desc + '</td>';
-            html += '<td class="tddetail"><span class="fileicon " data="' + value.offensestd_ID + '"><i class="fas fa-file-alt"></i></span></td>';
+            html += '<td class="tddetail"><span class="fileicon " data="' + value.offensestd_ID + '"><i class="fas fa-file-alt"style="color:rgba(67, 135, 254);font-size:1.5rem;"></i></span></td>';
             html += '<td><button class="btn btn-outline-success AcceptOffender" data="' + value.offensestd_ID + '">ยืนยัน</button></td>'
             html += '<td class="filetd"><img src="<?php echo base_url('re/images/folder.png') ?>" alt="" class="ImgFolder" data="' + value.offensestd_ID + '"></td>';
             html += '</tr>';
@@ -302,6 +302,7 @@
         contentType: false,
         type: "POST",
         success: function(data) {
+          console.log(data);
           if (data == 'true') {
             alert('ดำเนินการยื่นเรื่องการอุทธรณ์เสร็จสิ้น โปรดติดตามผลการอุทธรณ์');
             window.location.href = "<?php echo site_url("Proofargument") ?>";
@@ -336,7 +337,7 @@
             //stament
           }
           $("#off_desc").text(value.off_desc);
-          var file = '<a href="http://localhost/itproject_59/uploads/' + value.file + 'jpg"><span><i class="fas fa-image"></i></span></a>'
+          var file = '<a href="http://localhost/itproject_59/uploads/' + value.file + '"><span><i class="fas fa-image"></i></span></a>'
 
           $("#evidenre_name").html(file);
         }
