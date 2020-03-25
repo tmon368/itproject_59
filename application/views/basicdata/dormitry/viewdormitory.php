@@ -95,7 +95,7 @@
 			 <label for="person_acceept" class="lable">ที่ปรึกษาหอพัก: <span class="fixdata">*</span></label>
 
                                         <div class="margin-top:0.3rem;">
-                                            <select class="form-control" name="person_ID" id="add_persennel" style="max-width: 400px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
+                                            <select class="form-control" name="person_ID" id="add_persennel" style="margin-left: 7rem;margin-top: -2.5rem;max-width: 250px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
                                         </div>
                                         <br>
 		  <!------------------>
@@ -343,31 +343,31 @@ function select_user_accept() {
         }
     });
 }
-$(document).ready(function() {
-    select_user_accept2();
-    show_all();
-    $("#dormedittxt").select2({
-        placeholder: "ค้นหาผู้รับรองกิจกรรม",
-        allowClear: true,
-    });
-});
-function select_user_accept2() {
-    $.ajax({
-        type: 'POST',
+// $(document).ready(function() {
+//     select_user_accept2();
+//     show_all();
+//     $("#dormedittxt").select2({
+//         placeholder: "ค้นหาผู้รับรองกิจกรรม",
+//         allowClear: true,
+//     });
+// });
+// function select_user_accept2() {
+//     $.ajax({
+//         type: 'POST',
         url: '<?php echo site_url("Dormitory/selectperson") ?>',
-        async: false,
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);
-            var html = '';
-            html += '<option selected>เลือกผู้รับรอง</option>';
-            $.each(data, function(key, value) {
-                html += '<option value="' + value.person_ID + '">' + value.person_fname + " " + value.person_lname + '</option>';
-                $('#dormedittxt').html(html);
-            });
-        }
-    });
-}
+//         async: false,
+//         dataType: 'json',
+//         success: function(data) {
+//             console.log(data);
+//             var html = '';
+//             html += '<option selected>เลือกผู้รับรอง</option>';
+//             $.each(data, function(key, value) {
+//                 html += '<option value="' + value.person_ID + '">' + value.person_fname + " " + value.person_lname + '</option>';
+//                 $('#dormedittxt').html(html);
+//             });
+//         }
+//     });
+// }
 $(document).ready(function(){
     showAll();
     
