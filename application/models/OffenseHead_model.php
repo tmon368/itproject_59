@@ -272,7 +272,7 @@ public function updatestatusoffAdmitwrongoffensestd(){
     $student = $this->session->userdata('student');
     $offensestd_ID = $this->input->post('offensestd_ID');
    // $offensestd_ID = "72";
-    $statusoff = "6";
+    $statusoff = "3"; //รอการบำเพ็ญประโยชน์
 
 
     $field = array(
