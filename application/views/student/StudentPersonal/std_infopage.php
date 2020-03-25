@@ -97,8 +97,8 @@
 						</div>
 
 						<center>
-						<label>คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :</label>
-							<label id="level_behavior"></label>
+						<!--<label>คะแนนของคุณอยู่ใน <b>ระดับ</b> เกณฑ์ :</label>
+							<label id="level_behavior"></label>-->
 						</center>
 						<br>
 						<br>
@@ -168,7 +168,7 @@
 		selectstudentpoint();
 		// show_all();
 
-		//$('#AlertNotifyUserModal').modal('show');
+		$('#AlertNotifyUserModal').modal('show');
 
 		function selectstudentpoint() {
 			$.ajax({
@@ -190,24 +190,24 @@
 					/**
 					 * Set level_behavior
 					 */
-					if (deducted_pointss <= 10) {
-						document.getElementById("level_behavior").innerHTML = " ตักเตือนเป็นลายลักษณ์อักษร";
-					} else if (deducted_pointss <= 30) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 1 ภาคการศึกษา";
-					} else if (deducted_pointss <= 50) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 2 ภาคการศึกษา";
-					} else if (deducted_pointss <= 70) {
-						document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
-					} else if (deducted_pointss <= 80) {
-						//document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
-						$('#level_behavior').html("พักการศึกษา 1 ภาคการศึกษา");
-					} else if (deducted_pointss <= 90) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
-					} else if (deducted_pointss <= 99) {
-						document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
-					} else {
-						document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
-					}
+					// if (deducted_pointss <= 10) {
+					// 	document.getElementById("level_behavior").innerHTML = " ตักเตือนเป็นลายลักษณ์อักษร";
+					// } else if (deducted_pointss <= 30) {
+					// 	document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 1 ภาคการศึกษา";
+					// } else if (deducted_pointss <= 50) {
+					// 	document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 2 ภาคการศึกษา";
+					// } else if (deducted_pointss <= 70) {
+					// 	document.getElementById("level_behavior").innerHTML = " ภาคทัณฑ์ 3 ภาคการศึกษา";
+					// } else if (deducted_pointss <= 80) {
+					// 	//document.getElementById("level_behavior").innerHTML = " พักการศึกษา 1 ภาคการศึกษา";
+					// 	$('#level_behavior').html("พักการศึกษา 1 ภาคการศึกษา");
+					// } else if (deducted_pointss <= 90) {
+					// 	document.getElementById("level_behavior").innerHTML = " พักการศึกษา 2 ภาคการศึกษา";
+					// } else if (deducted_pointss <= 99) {
+					// 	document.getElementById("level_behavior").innerHTML = " พักการศึกษา 3 ภาคการศึกษา";
+					// } else {
+					// 	document.getElementById("level_behavior").innerHTML = " พ้นสภาพการเป็นนักศึกษา";
+					// }
 					// document.getElementById("level_behavior").innerHTML = "1234";
 					/************/
 
