@@ -181,16 +181,20 @@
 <!--                     <input type="text" name="dormedittxt" id="dormedittxt" class="form-control"  maxlength="10"  required> -->
 <!--                                         </div> -->
                               
-			<label for="person_acceept" class="lable">ที่ปรึกษาหอพัก: <span class="fixdata">*</span></label>
+			
+		 <div class="form-group" id="input_group_sty" >
+				<div class="input-group" >
+				
+					<label for="validationCustom02..'">ประเภทหอพัก  </label>
+					<p class="text-danger">&nbsp;&nbsp;*</p>
+					<div class="col-lg-4" >
+					   <select class="form-control" name="dormedittxt" id="dormedittxt" style="width: 240px;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
 
-                                        <div class="margin-top:0.3rem;">
-                                            <select class="form-control" name="dormedittxt" id="dormedittxt" style="max-width: 400px!important;" required oninvalid="this.setCustomValidity('ระบุผู้รับรองกิจกรรม')" onchange="this.setCustomValidity('')"></select>
-                                        </div>
-                                        <br>
+      </div></div></div>		
 				
 				
-      </center>
-       
+      
+
       <!------------------>
  </div>
      
