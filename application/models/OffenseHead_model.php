@@ -12,7 +12,8 @@ class OffenseHead_model extends CI_Model {
     
     public function selectstudentoffensehead(){
         $student = $this->session->userdata('student');
-        $statusoff = "6";
+        $statusoff = "0";   //6 คือ คืนคะแนนความประพฤติ
+        // $statusoff = "6";   //6 คือ คืนคะแนนความประพฤติ
         
         $this->db->select('*');
         $this->db->from('offensestd ostd');
@@ -23,8 +24,8 @@ class OffenseHead_model extends CI_Model {
        // $this->db->join('proofargument pr', 's.S_ID=ostd.S_ID');
         $this->db->join('place p', 'oh.place_ID=p.place_ID');
         $this->db->join('offevidence ov', 'oh.oh_ID=ov.oh_ID');
-     
-        $this->db->where('ostd.statusoff !=',$statusoff);
+        $this->db->where('ostd.statusoff',$statusoff);
+        // $this->db->where('ostd.statusoff !=',$statusoff);
         $this->db->where('ostd.S_ID',$student);
         $this->db->where('oh.OffenseHead_oh_ID','');
 
@@ -140,6 +141,7 @@ class OffenseHead_model extends CI_Model {
             $report_ID = $row->report_ID;
             $S_ID = $row->S_ID;
             $person_ID = $row->person_ID;
+            $offensestd_ID = $row->offensestd_ID;
         }
 
         $changename =explode(".",$_FILES["myFile"]["name"]);
@@ -192,9 +194,17 @@ class OffenseHead_model extends CI_Model {
             
             
         );
-
         $this->db->insert('proofargument', $field);
 
+        if($this->db->affected_rows() > 0){
+        $updatestatusoff = array(
+            'statusoff'=>'1'
+            
+            
+        );
+        $this->db->where('ostd.offensestd_ID', $offensestd_ID);
+    $this->db->update('offensestd ostd', $updatestatusoff);
+    }
     if($this->db->affected_rows() > 0){
 
             return true;
