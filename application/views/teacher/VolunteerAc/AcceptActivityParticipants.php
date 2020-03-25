@@ -219,7 +219,7 @@
                         html += '<span id="place">' + value.place + '</span>';
                         html += '</div>';
                         html += '</td>';
-                        html += '<td id="person_control">สมฤดี เย็นใจ</td>';
+                        html += '<td id="person_control">'+ value.person_fname + '  ' + value.person_lname +'</td>';
                         html += '<td id="file"><span id="open_name_participants" data=' + value.service_ID + '><i class="fa fa-folder-open"></i></span></td>';
                         html += '</tr>';
 
