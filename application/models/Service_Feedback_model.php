@@ -296,6 +296,8 @@ class Service_Feedback_model extends CI_Model {
         $this->db->from('service s');
         $this->db->join('personnel p', 's.person_ID=p.person_ID');
         $this->db->where('s.status',$status);
+        $this->db->where('p.username',$usergroup);
+        
         $this->db->order_by('s.service_date ASC');
         $query = $this->db->get();
         $showall = array();
