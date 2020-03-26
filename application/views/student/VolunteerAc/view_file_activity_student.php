@@ -189,6 +189,8 @@
                 success: function(data) {
                     if (data == 'true'){
                         alert ('อัพโหลดไฟล์หลักฐานกิจกรรมเรียบร้อย');
+                        location.reload();
+
                     }else if (data == 'flase'){
                         alert ('การอัพโหลดไฟล์หลักฐานล้มเหลว');
                     }else{
