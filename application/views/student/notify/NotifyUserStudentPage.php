@@ -682,7 +682,7 @@
 
 
             if (+x > +y) {
-                alert ("ไม่สามารถแจ้งเหตุกระทำความผิดล่วงหน้าได้");
+                alert("ไม่สามารถแจ้งเหตุกระทำความผิดล่วงหน้าได้");
                 $('#committed_date').val(null);
             } else {
                 //stament
@@ -1180,16 +1180,20 @@
             url: '<?php echo site_url("Notifyoffense/check_id") ?>',
             dataType: 'json',
             success: function(data) {
-                ////console.log(data);
-                str = data[0].oh_ID;
-                tempid_substr = str.substring(3);
-                integer = parseInt(tempid_substr); //convert string to int
-                auto_id = integer + 1;
+                console.log(data);
 
+                if (data[0].oh_ID == null) {
+                    auto_id = 1;
+                } else if (data[0].oh_ID != null) {
+                    str = data[0].oh_ID;
+                    tempid_substr = str.substring(3);
+                    integer = parseInt(tempid_substr); //convert string to int
+                    auto_id = integer + 1;
+                } else {
+
+                }
+                console.log (title + BE + auto_id);
                 $('#oh_ID').val(title + BE + auto_id); // Create auto id
-                //alert(sum);
-                //alert (integer);
-                //sum= tempid_substr+1;
             },
             error: function() {
                 alert("Can't create auto id");
@@ -1205,12 +1209,8 @@
 
         var id = $(this).attr('data');
 
-        ////console.log(removestudenid.length)
-
-
         if (removestudenid.length == 0) {
             removestudenid.push(id);
-            // //console.log(removestudenid.length);
         } else {
             for (var i = 0; i < removestudenid.length; i++) {
                 var check = 0;
