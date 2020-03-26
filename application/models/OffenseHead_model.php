@@ -153,13 +153,13 @@ class OffenseHead_model extends CI_Model {
 
     $_FILES['userfile']['name']     = $report_ID.".".$changename[1];
     $filename =  $_FILES['userfile']['name'];
-    $data = $this->checkfilename($filename);
-    if($data == 'true'){
-        unlink(FCPATH . 'upload_proofargument/'.$filename);
-        $this->db->where('proofargument.proof_name', $filename);
-        $this->db->delete('proofargument');
+    // $data = $this->checkfilename($filename);
+    // if($data == 'true'){
+    //     unlink(FCPATH . 'upload_proofargument/'.$filename);
+    //     $this->db->where('proofargument.proof_name', $filename);
+    //     $this->db->delete('proofargument');
 
-    }
+    // }
 
     $_FILES['userfile']['type']     = $_FILES['myFile']['type'];
   $_FILES['userfile']['tmp_name'] = $_FILES['myFile']['tmp_name'];
