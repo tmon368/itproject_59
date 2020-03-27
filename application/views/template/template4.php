@@ -82,8 +82,29 @@
             dataType: 'json',
             success: function(data) {
                 console.log(data);
+                var first_name = '';
+                var last_name = '';
                 $.each(data, function(key, value) {
-                    $('.userlogin').text('สวัสดี! '+ value.person_fname +" "+ value.person_lname);
+
+
+                    //check sesion personal
+                    if (value.person_fname == undefined && value.person_lname == undefined) {
+                        //
+                    } else if (value.person_fname != undefined && value.person_lname != undefined) {
+                        first_name = value.person_fname;
+                        last_name = value.person_lname;
+                    } else {}
+
+                    //check sesion student
+                    if (value.std_fname == undefined && value.std_lname == undefined) {
+                        //
+                    } else if (value.std_fname != undefined && value.std_lname != undefined) {
+                        console.log(5555);
+                        first_name = value.std_fname;
+                        last_name = value.std_lname;
+                    } else {}
+
+                    $('.userlogin').text('สวัสดี! ' + first_name + " " + last_name);
                 })
             },
             error: function() {
