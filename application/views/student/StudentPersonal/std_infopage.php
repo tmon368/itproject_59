@@ -127,39 +127,6 @@
 </body>
 
 
-<div class="modal fade" id="AlertNotifyUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<div class="NotifyAlert"><span id="icon_alert"><i class="fas fa-bell"></i></span></div>
-				<div class="Message">Notification</div>
-			</div>
-			<div class="modal-body">
-				<div class="MessageBackground">
-					<div class="IMGMessage"><img src="<?php echo base_url('re/images/gmail.png') ?>" alt="" width="30"></div>
-					<div class="Detail">
-						<div class="HeardMessage">คุณมี 1 ข้อความสำหรับคุณ</div>
-						<div class="NotificationAlert">คุณ นราธร สมเย็นใจ ขณะนี้คุณโดนหักคะแนนความประพฤติ 10 คะแนน จากกรณีของ
-							จอดรถในบริเวณที่ห้ามจอด ทางหน่วยงานวินัยนักศึกษา มหาวิทยาลัยวลัยลักษณ์ จึงทำการหักคะแนน
-							ความประพฤติของท่าน
-						</div>
-						<div class="AceeptAllegation">
-							<a href="http://">ยอมรับการกระทำความผิด</a>
-							<a href="http://">ไม่ยอมรับการกระทำความผิด</a>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="modal-footer">
-				<div class="NotShowMessage"><input type="checkbox"> ไม่ต้องแสดงข้อความอีก</div>
-				<div class="ButtonClose"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
 
 <script>
 	$(document).ready(function() {
@@ -168,7 +135,6 @@
 		selectstudentpoint();
 		// show_all();
 
-		$('#AlertNotifyUserModal').modal('show');
 
 		function selectstudentpoint() {
 			$.ajax({
