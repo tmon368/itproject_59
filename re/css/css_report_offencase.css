@@ -1,13 +1,14 @@
 @media print {
-    .test{
+    .test {
         display: block;
     }
 }
 
-.test{
+.test {
     display: none;
 }
 
-
-
-
+.HeaderGroup {
+    font-size: 14px;
+    font-weight: 800;
+}
