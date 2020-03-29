@@ -19,7 +19,7 @@ class getOffenseCate_model extends CI_Model {
      function getOffense(){
         $this->db->select('*');      
         $this->db->from('Offense');
-        $this->db->order_by('off_ID', 'ASC');
+        $this->db->order_by('off_desc', 'ASC');
         $query = $this->db->get();
         return $query->result();
      }
@@ -27,7 +27,7 @@ class getOffenseCate_model extends CI_Model {
      function getDivisions(){
         $this->db->select('*');      
         $this->db->from('Divisions');
-        $this->db->order_by('dept_ID', 'ASC');
+        $this->db->order_by('dept_name', 'ASC');
         $query = $this->db->get();
         return $query->result();
      }
@@ -35,7 +35,7 @@ class getOffenseCate_model extends CI_Model {
      function getCurriculum(){
         $this->db->select('*');      
         $this->db->from('Curriculum');
-        $this->db->order_by('cur_ID', 'ASC');
+        $this->db->order_by('cur_name', 'ASC');
         $query = $this->db->get();
         return $query->result();
      }
@@ -43,7 +43,7 @@ class getOffenseCate_model extends CI_Model {
      function getDormitory(){
         $this->db->select('*');      
         $this->db->from('Dormitory');
-        $this->db->order_by('dorm_ID', 'ASC');
+        $this->db->order_by('dorm_name', 'ASC');
         $query = $this->db->get();
         return $query->result();
      }

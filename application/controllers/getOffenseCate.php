@@ -23,14 +23,14 @@ class getOffenseCate extends CI_Controller {
 		$this->load->view('template/template2');
 		$this->load->view('menu/student/menu_user_student');
 		$this->load->view('template/template4');
-        $this->load->view('Offc_view');
-        $this->load->view('Offe_view');
-        $this->load->view('dv_view');
-        $this->load->view('Curri_view');
-        $this->load->view('dmt_view');
-        $this->load->view('Offd_view');
-        $this->load->view('R_place');
-        $this->load->view('cur');
+        // $this->load->view('Offc_view');
+        // $this->load->view('Offe_view');
+        // $this->load->view('dv_view');
+        // $this->load->view('Curri_view');
+        // $this->load->view('dmt_view');
+        // $this->load->view('Offd_view');
+        // $this->load->view('R_place');
+        // $this->load->view('cur');
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');
 	}
