@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script src="<?php echo base_url('re/js/canvasjs.js') ?>"> </script>
+</head>
+<body>
+<head>
+ 
+    <style>
+        .select2-container--open .select2-dropdown--below {
+            width: 420px !important;
+        }
+
+        .selectplace {
+            width: 20rem;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: 2;
+            font-size: 14px;
+            font-family: 'Taviraj', serif;
+        }
+    </style>
+</head>
+<script>
+    var studentid = [];
+    var removestudenid = [];
+    var filesToUpload = [];
+    var countFilepicture = 0;
+    var fileIdCounter = 0;
+</script>
+
+
+<body>
+    
+        <div class="container-fluid">
+            <div class="row">
+		        <div class="col-10">
+                    <div class="card-body">
+                        <div id="chartContainer" style="height: 350px; width: 100%;">
+                            </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div id="yearDD"></div>
+                    <div id="monthDD"></div>
+                    <button type="button" class="" id="search_data">ค้นหา</button>
+                </div>
+            </div>
+        </div>
+</body>
+
+
+
+<script type="text/javascript">
+
+
+function gen_graph(sel_year,sel_month) {	
+var html = [];
+var chart_name = "สถิตินักศึกษาที่กระทำผิดจำแนกตามสำนัก ประจำเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + "";
+	   $.ajax({
+           type: 'ajax',
+           url: '<?php echo base_url() ?>index.php/ReportChartdivisionsmonthHeader/chartcur?sel_month='+sel_month+'&sel_year='+sel_year,
+           async: false,
+           dataType: 'json',
+           success: function(data) {
+               
+               console.log(data);
+               var i;
+               for (i = 0; i < data.length; i++) {
+                   html.push({
+					x:i,
+                       label: data[i].label, 
+                       y:data[i].y
+                   });
+               }
+            	var interval = 5;
+
+               console.log(html);
+               
+               var chart = new CanvasJS.Chart("chartContainer", {
+                            title: {
+                                                    text: "จำนวน (คน)",
+                                                    horizontalAlign: "left",
+                                                    fontSize: 17,
+                                                    // verticalAlign: "center",
+                                                },	
+                    
+            		title:{
+            			text: chart_name
+                        
+            		},
+					axisX:{
+						title: "สำนัก"
+                        
+					},
+            		data: [
+            		
+            		{
+            			// Change type to "bar", "area", "spline", "pie",etc.
+						type: "column",
+				
+
+            			
+            			dataPoints: html
+            				/*
+            				{ label: "หมวด 6 ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา",  y: 60  },
+            				{ label: "หมวด 8 ความผิดเกี่ยวกับวินัยจราจร", y: 15  },
+            				{ label: "หมวด 9 ความผิดเกี่ยวกับความประพฤติ  ศีลธรรม และวัฒนธรรมอันดีงาม", y: 25  },
+            				{ label: "หมวด 11 ความผิดเกี่ยวกับความสะอาดเรียบร้อย",  y: 60  },
+            		*/
+            				
+            			
+            		}]
+            	});
+           	
+
+               chart.render();
+           },
+           error: function() {
+               alert('ไม่มีข้อมูล');
+           }
+	   });     
+
+}
+
+$( document ).ready(function() {
+	getMonthSetInDropdownlists();
+	getYearSetInDropdownlists();
+
+    var sel_year = <?php echo  (date("Y")+543) ?>;
+    var sel_month = <?php echo  (date("m")) ?>;
+    gen_graph(sel_year,sel_month);
+
+    $("#search_data").click(function(){
+        
+        var sel_year = $("#year").val();
+        var sel_month = $("#month").val();
+        gen_graph(sel_year,sel_month);
+    });
+ 
+});
+function getMonthSetInDropdownlists() {
+	
+    var html = '<select id="month" name="month"><option value="" disabled selected>เลือกเดือน</option>';
+    var cur_month = <?php echo  (date("m")) ?>;
+    for(var i = 1; i <= 12; i++){
+        var sel = "";
+        if(i==cur_month){sel = "selected";}
+        html += 
+                '<option value="' + i + '" '+sel+'>' + monthThai(i) + '</option>';
+        /*if(i < 10){
+		
+            html += 
+                '<option value="' + i + '">' + monthThai("0"+i) + '</option>';
+        }else{
+            html += 
+            '<option value="' + i + '">' + monthThai(i.toString()) + '</option>';
+        }*/
+    }
+    html += 
+        '</select>';
+	$('#monthDD').html(html);
+	
+}
+
+function monthThai(data){
+    
+    var month_name = [  "","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม",
+                        "มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];
+    return month_name[data];
+
+    /*var month = ""; switch($data){
+        case "01" : month = "มกราคม"; break;
+        case "02" : month = "กุมภาพันธ์"; break;
+        case "03" : month = "มีนาคม"; break;
+        case "04" : month = "เมษายน"; break;
+        case "05" : month = "พฤษภาคม"; break;
+        case "06" : month = "มิถุนายน"; break;
+        case "07" : month = "กรกฎาคม"; break;
+        case "08" : month = "สิงหาคม"; break;
+        case "09" : month = "กันยายน"; break;
+        case "10" : month = "ตุลาคม"; break;
+        case "11" : month = "พฤศจิกายน"; break;
+        case "12" : month = "ธันวาคม"; break;
+    }
+
+    return month;*/
+}
+function getYearSetInDropdownlists() {
+    var cur_year = <?php echo  (date("Y")+543) ?>;
+    
+
+    var html = '<select id="year" name="year">';
+    for(var i = (cur_year-4); i <=cur_year; i++){
+        var sel = "";
+        if(i==cur_year){sel = "selected";}
+        html += 
+                '<option value="'+ i +'" '+sel+'>' + i + '</option>';
+    }
+    html += 
+        '</select>';
+    $('#yearDD').html(html);
+}
+//ใส่ฟังก์ชั่นเดือน
+</script>
+</html>
