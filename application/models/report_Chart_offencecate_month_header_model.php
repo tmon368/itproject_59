@@ -6,25 +6,25 @@ class report_Chart_offencecate_month_header_model extends CI_Model {
         parent::__construct();
         
     }
-   public function showAll(){
+//    public function showAll(){
 
-     $this->db->select('c.oc_ID','c.oc_desc') ;
-      $this->db->from ('offensecate c', 'left') ;
-      $this->db->join ('offense o ',' c.oc_ID = o.oc_ID', 'left');
-      $this->db->join (' offensehead h',' o.off_ID = h.off_ID' , 'left');
-       $this->db->where ('c.oc_ID',1);
-        //var_dump($query->result());
+//      $this->db->select('c.oc_ID','c.oc_desc') ;
+//       $this->db->from ('offensecate c', 'left') ;
+//       $this->db->join ('offense o ',' c.oc_ID = o.oc_ID', 'left');
+//       $this->db->join (' offensehead h',' o.off_ID = h.off_ID' , 'left');
+//        $this->db->where ('c.oc_ID',1);
+//         //var_dump($query->result());
 
         
-        if($query->num_rows() != 0)
-        {
-            return $query->result_array();
-        }else
-        {
-            return false;
-            }
+//         if($query->num_rows() != 0)
+//         {
+//             return $query->result_array();
+//         }else
+//         {
+//             return false;
+//             }
 
-}
+// }
 
 
 

@@ -2,25 +2,40 @@
 <html>
 <head>
 	<script src="<?php echo base_url('re/js/canvasjs.js') ?>"> </script>
-	<style>
-.square1 {
-  height: 15px;
-  width: 15px;
-  background-color:Firebrick;
-  display: inline-block;
-}
-.square2 {
-  height: 15px;
-  width: 15px;
-  background-color:blue;
-  display: inline-block;
-}
-</style>
+    <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_show_activity_.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
+
+    <style>
+    .square1 {
+    height: 15px;
+    width: 15px;
+    background-color:DarkTurquoise;
+    display: inline-block;
+    }
+    .square2 {
+    height: 15px;
+    width: 15px;
+    background-color:Moccasin;
+    display: inline-block;
+    }
+    </style>
+
 </head>
 <body>
 
-<form action="<?php echo site_url("report_Chart_dormitory_month_header_model")?>">
 <div class="container-fluid">
+
+    <div class="page-breadcrumb" id="nav_sty">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
+            </ol>
+        </nav>
+    </div>
+
     <div class="row">
         <div class="col-9"></div> 
         <div class="col-1"><div id="yearDD"></div></div> 
@@ -37,13 +52,12 @@
     </div>
     
     <div class="row">
-        <div class="col-2"><div class="square1"></div> หอพักนักศึกษาหญิง</div>
-        <div class="col-2"><div class="square2"></div> หอพักนักศึกษาชาย</div>
+        <div class="col-2"><div class="square2"></div> หอพักนักศึกษาหญิง</div>
+        <div class="col-2"><div class="square1"></div> หอพักนักศึกษาชาย</div>
         <div class="col-8"></div> 
     </div>
   
 </div>
-</form>
 </body>
 
 <script type="text/javascript">
@@ -63,14 +77,14 @@ var chart_name = "สถิตินักศึกษาที่กระท�
 				if(data[i].dorm_ID==5 || data[i].dorm_ID==7 || data[i].dorm_ID ==17){
 					html.push({
                        label: data[i].label, 
-					   y:data[i].y,
-					   color:"blue"
+                       y:data[i].y,
+					   color:"Moccasin"
 					});
 				}else{
 					html.push({
 						label: data[i].label, 
-					   	y:data[i].y,
-					   	color:"Firebrick"
+                        y:data[i].y,
+					   	color:"DarkTurquoise"
 					});	
 				}
                }
@@ -78,7 +92,8 @@ var chart_name = "สถิตินักศึกษาที่กระท�
                 console.log(html);
                 var chart = new CanvasJS.Chart("chartContainer", {
             		theme: "light1", // "light2", "dark1", "dark2"
-					animationEnabled: false, // change to true	
+                    animationEnabled: false, // change to tru
+                    exportEnabled: true,	
             		title:{
             			text: ""+chart_name
             		},
@@ -93,7 +108,6 @@ var chart_name = "สถิตินักศึกษาที่กระท�
 						type: "column",
                         indexLabel: "{y}", //Shows y value on all Data Points
 
-            			
             			dataPoints: html
             				/*
             				{ label: "หมวด 6 ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา",  y: 60  },

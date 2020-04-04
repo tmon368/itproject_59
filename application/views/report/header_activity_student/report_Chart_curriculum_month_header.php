@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<script src="<?php echo base_url('re/js/canvasjs.js') ?>"> </script>
-</head>
-<body>
-<head>
- 
+    <script src="<?php echo base_url('re/js/canvasjs.js') ?>"> </script>
+    <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_show_activity_.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
+
     <style>
         .select2-container--open .select2-dropdown--below {
             width: 420px !important;
@@ -23,6 +24,7 @@
         }
     </style>
 </head>
+
 <script>
     var studentid = [];
     var removestudenid = [];
@@ -34,21 +36,34 @@
 
 <body>
     
-        <div class="container-fluid">
-            <div class="row">
-		        <div class="col-10">
-                    <div class="card-body">
-                        <div id="chartContainer" style="height: 350px; width: 100%;">
-                            </div>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div id="yearDD"></div>
-                    <div id="monthDD"></div>
-                    <button type="button" class="" id="search_data">ค้นหา</button>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid">
+
+<div class="page-breadcrumb" id="nav_sty">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-9"></div> 
+        <div class="col-1"><div id="yearDD"></div></div> 
+        <div class="col-1"><div id="monthDD"></div></div>
+        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
+    </div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card-body">
+			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
+			</div>
+		</div>
+    </div>
+</div>
+
 </body>
 
 
@@ -90,7 +105,8 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             		title:{
             			text: chart_name
                         
-            		},
+                    },
+                    exportEnabled: true,
 					axisX:{
 						title: "หลักสูตร"
                         
