@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ReportChartdivisionsmonthHeader extends CI_Controller {
+class ReportChartcurriculummonthHeader extends CI_Controller {
 	function __construct(){
 		parent:: __construct();
-		$this->load->model('report_Chart_divisions_month_header_model', 'report_Chart_divisions_month_header_model');
+		$this->load->model('report_Chart_curriculum_month_header_model','report_Chart_curriculum_month_header_model');
 	}
 
 	public function index()
@@ -20,7 +20,7 @@ class ReportChartdivisionsmonthHeader extends CI_Controller {
 		$this->load->view('menu/student/menu_user_student');
 
 	    $this->load->view('template/template4');
-	    $this->load->view('report/header_activity_student/report_Chart_divisions_month_header');
+	    $this->load->view('report/header_activity_student/report_Chart_curriculum_month_header');
 	    $this->load->view('template/template5');
 	    $this->load->view('template/template6');
 	    
@@ -28,16 +28,18 @@ class ReportChartdivisionsmonthHeader extends CI_Controller {
 	    
 	}
 	public function chart(){
-	    $result = $this->report_Chart_divisions_month_header_model->chart();
+	    $result = $this->report_Chart_curriculum_month_header_model->chart();
 	    echo json_encode($result, JSON_NUMERIC_CHECK);
 	}
 	public function chartcur(){
-	    $result = $this->report_Chart_divisions_month_header_model->chartcur();
+	    $result = $this->report_Chart_curriculum_month_header_model->chartcur();
 	    echo json_encode($result, JSON_NUMERIC_CHECK);
 	}
+
+	
 	//ฟังก์ชันตรวจสอบ id ซ้ำกัน ตาราง Usertype
 	public function checkkey(){
-	    $result = $this->report_Chart_divisions_month_header_model->checkkey();
+	    $result = $this->report_Chart_curriculum_month_header_model->checkkey();
 	    if($result){
 	        $msg['success'] = true;
 	        

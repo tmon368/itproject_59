@@ -2,11 +2,25 @@
 <html>
 <head>
 	<script src="<?php echo base_url('re/js/canvasjs.js') ?>"> </script>
+    <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_show_activity_.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
 
 </head>
 <body>
-<form action="<?php echo site_url("ReportChartOffencemonthHeader")?>">
+
 <div class="container-fluid">
+
+    <div class="page-breadcrumb" id="nav_sty">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
+            </ol>
+        </nav>
+    </div>
+
     <div class="row">
         <div class="col-9"></div> 
         <div class="col-1"><div id="yearDD"></div></div> 
@@ -21,11 +35,8 @@
 			</div>
 		</div>
     </div>
-    
-   
-  
+
 </div>
-</form>
 </body>
 
 
@@ -33,7 +44,7 @@
 function gen_graph(sel_year,sel_month) {	
 	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำผิดของฐานความผิด ประจำเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + "";
+var chart_name = "สถิตินักศึกษาที่กระทำผิดจำแนกตามฐานความผิด ประจำเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + "";
 	
 	   $.ajax({
            type: 'ajax',
@@ -59,7 +70,8 @@ var chart_name = "สถิตินักศึกษาที่กระท�
                
                var chart = new CanvasJS.Chart("chartContainer", {
             		theme: "light1", // "light2", "dark1", "dark2"
-            		animationEnabled: false, // change to true	
+                    animationEnabled: false, // change to true	
+                    exportEnabled: true,
             		title:{
             			text: ""+chart_name
             		},
