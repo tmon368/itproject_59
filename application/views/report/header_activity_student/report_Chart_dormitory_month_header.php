@@ -64,7 +64,7 @@
 
 function gen_graph(sel_year,sel_month) {	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำผิดของหอพัก ประจำเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + "";
+var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหอพัก ประจำเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + "";
 	   $.ajax({
            type: 'ajax',
            url: '<?php echo base_url() ?>index.php/ReportChartdormitorymonthHeader/chartdorm?sel_month='+sel_month+'&sel_year='+sel_year,

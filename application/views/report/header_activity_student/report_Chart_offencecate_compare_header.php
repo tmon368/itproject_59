@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<form action="<?php echo site_url("compare_offence_contro")?>">
 <div class="container-fluid">
 
     <div class="page-breadcrumb" id="nav_sty">
@@ -28,6 +29,13 @@
         <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
     </div>
 
+    <div class="row">
+        <div class="col-9"></div> 
+        <div class="col-1"><div id="yearDD2"></div></div> 
+        <div class="col-1"><div id="monthDD2"></div></div> 
+        <div class="col-1"></div> 
+    </div>
+
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
@@ -36,20 +44,30 @@
 		</div>
     </div>
 
+    <div class="row">
+        <div class="col-2"><div class="square1"></div><div id="yearmonthname"></div></div>
+        <div class="col-2"><div class="square2"></div><div id="yearmonthname2"></div></div>
+        <div class="col-8"></div> 
+    </div>
+  
+
 </div>
+</form>
 </body>
 
 
 <script type="text/javascript">
-function gen_graph(sel_year,sel_month) {	
+function gen_graph(sel_year,sel_month,sel_year2,sel_month2) {	
 	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามฐานความผิด ประจำเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + "";
-	
+var html2 = [];
+var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหมวดความผิด ระหว่างเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + " กับ " + monthThai(sel_month2)+" ปี "+ sel_year2;
+$('#yearmonthname').html(monthThai(sel_month)+" ปี "+ sel_year);
+$('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
 	   $.ajax({
            type: 'ajax',
            indexLabel: "{y}",
-           url: '<?php echo base_url() ?>index.php/ReportChartOffencemonthHeader/chart?sel_month='+sel_month+'&sel_year='+sel_year,
+           url: '<?php echo base_url() ?>index.php/ReportChartOffencecatecompareHeader/chart?sel_month='+sel_month+'&sel_year='+sel_year,
            async: false,
            dataType: 'json',
            success: function(data) {
@@ -64,9 +82,28 @@ var chart_name = "สถิตินักศึกษาที่กระท�
                        	y:data[i].y
                    });
                }
+               var interval = 5;
+               $.ajax({
+                        type: 'ajax',
+                        indexLabel: "{y}",
+                         url: '<?php echo base_url() ?>index.php/ReportChartOffencecatecompareHeader/chart?sel_month='+sel_month2+'&sel_year='+sel_year2,
+                        async: false,
+                         dataType: 'json',
+                         success: function(data) {
+               
+                              console.log(data);
+                        var i;
+                        for (i = 0; i < data.length; i++) {
+                            html.push({
+                                    
+                                    x: i, 
+                                    label: data[i].label, 
+                                    y:data[i].y
+                            });
+               }
             	var interval = 5;
 
-               console.log(html);
+               console.log(html2);
                
                var chart = new CanvasJS.Chart("chartContainer", {
             		theme: "light1", // "light2", "dark1", "dark2"
@@ -76,14 +113,15 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             			text: ""+chart_name
             		},
             		axisY:{
-						interval:interval,
+						//interval:interval,
                 		},
             		data: [
             		
             		{
             			// Change type to "bar", "area", "spline", "pie",etc.
-            			type: "bar",
+            			type: "column",
                         indexLabel: "{y}",
+						
 						
 
             			
@@ -95,12 +133,38 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             				{ label: "หมวด 11 ความผิดเกี่ยวกับความสะอาดเรียบร้อย",  y: 60  },
             		*/
             				
-            			
-            		}]
-            	});
-           	
+            			 },
+                                {
+                                    // Change type to "bar", "area", "spline", "pie",etc.
+                                    type: "column",
+                                    indexLabel: "{y}", //Shows y value on all Data Points
 
-               chart.render();
+                                    
+                                      
+                                    dataPoints: html2
+                                        /*
+                                        { label: "หมวด 6 ความผิดเกี่ยวกับการเสพสุราหรือของมึนเมา",  y: 60  },
+                                        { label: "หมวด 8 ความผิดเกี่ยวกับวินัยจราจร", y: 15  },
+                                        { label: "หมวด 9 ความผิดเกี่ยวกับความประพฤติ  ศีลธรรม และวัฒนธรรมอันดีงาม", y: 25  },
+                                        { label: "หมวด 11 ความผิดเกี่ยวกับความสะอาดเรียบร้อย",  y: 60  },
+                                */
+                                        
+                                    
+                                },
+                                
+                                
+                                ]
+                            });
+                        
+                            
+                        chart.render();
+                        
+                    },
+                    error: function() {
+                        alert('ไม่มีข้อมูล');
+                    }
+                });  
+
            },
            error: function() {
                alert('ไม่มีข้อมูล');
@@ -109,21 +173,32 @@ var chart_name = "สถิตินักศึกษาที่กระท�
 
 }
 $( document ).ready(function() {
-	getMonthSetInDropdownlists();
+    getMonthSetInDropdownlists();
+    getMonthSetInDropdownlists2();
 	getYearSetInDropdownlists();
+    getYearSetInDropdownlists2();
+
 
     var sel_year = <?php echo  (date("Y")+543) ?>;
     var sel_month = <?php echo  (date("m")) ?>;
-    gen_graph(sel_year,sel_month);
+    var sel_year2 = <?php echo  (date("Y")+543) ?>;
+    var sel_month2 = <?php echo  (date("m")) ?>;
+    gen_graph(sel_year,sel_month,sel_year2,sel_month2);
+    
 	$("#search_data").click(function(){
         var sel_year = $("#year").val();
         var sel_month = $("#month").val();
-        gen_graph(sel_year,sel_month);
+        var sel_year2 = $("#year2").val();
+        var sel_month2= $("#month2").val();
+        gen_graph(sel_year,sel_month,sel_year2,sel_month2);
     });
  
 });
+
+
 function getMonthSetInDropdownlists() {
-	
+    
+    
     var html = '<select id="month" name="month"><option value="" disabled selected>เลือกเดือน</option>';
     var cur_month = <?php echo  (date("m")) ?>;
     for(var i = 1; i <= 12; i++){
@@ -144,6 +219,28 @@ function getMonthSetInDropdownlists() {
         '</select>';
 	$('#monthDD').html(html);
 	
+}
+function getMonthSetInDropdownlists2() {
+	
+    var html = '<select id="month2" name="month2"><option value="" disabled selected>เลือกเดือน</option>';
+    var cur_month = <?php echo  (date("m")) ?>;
+    for(var i = 1; i <= 12; i++){
+        var sel = "";
+        if(i==cur_month){sel = "selected";}
+        html += 
+                '<option value="' + i + '" '+sel+'>' + monthThai(i) + '</option>';
+        /*if(i < 10){
+		
+            html += 
+                '<option value="' + i + '">' + monthThai("0"+i) + '</option>';
+        }else{
+            html += 
+            '<option value="' + i + '">' + monthThai(i.toString()) + '</option>';
+        }*/
+    }
+    html += 
+        '</select>';
+	$('#monthDD2').html(html);
 }
 
 function monthThai(data){
@@ -183,6 +280,22 @@ function getYearSetInDropdownlists() {
     html += 
         '</select>';
     $('#yearDD').html(html);
+}
+
+function getYearSetInDropdownlists2() {
+    var cur_year = <?php echo  (date("Y")+543) ?>;
+    
+
+    var html = '<select id="year2" name="year2">';
+    for(var i = (cur_year-4); i <=cur_year; i++){
+        var sel = "";
+        if(i==cur_year){sel = "selected";}
+        html += 
+                '<option value="'+ i +'" '+sel+'>' + i + '</option>';
+    }
+    html += 
+        '</select>';
+    $('#yearDD2').html(html);
 }
 //ใส่ฟังก์ชั่นเดือน
 </script>
