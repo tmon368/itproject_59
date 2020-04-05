@@ -1,39 +1,58 @@
 .content-wrapper {
     height: 100%;
 }
-.MainMenu{
+.MainMenu {
     height: 90%;
 }
-.container-fluid{
+.container-fluid {
     height: 100%;
 }
-.ReportGraph{
+.ReportGraph {
     padding: 13.5rem;
     text-align: center;
 }
-.ReportGraph:hover{
+.ReportGraph:hover {
     cursor: pointer;
-    background-color: #16A085 ;
-    color: #F4D03F;
+    background-color: #16a085;
+    color: #f4d03f;
     transition: 0.8s;
     opacity: 0.8;
 }
-.ReportTable{
+.ReportTable {
     padding: 13.5rem;
     text-align: center;
 }
-.ReportTable:hover{
+.ReportTable:hover {
     cursor: pointer;
-    background-color: #16A085;
-    color: #F4D03F;
+    background-color: #16a085;
+    color: #f4d03f;
     transition: 0.3s;
     opacity: 0.8;
 }
-.icongraph{
+.icongraph {
     font-size: 80px;
 }
-.TextStyReport{
+.TextStyReport {
     font-size: 20px;
     font-weight: 600;
+    font-family: "prompt", sans-serif;
+}
+.Report {
+    width: 17rem;
+    padding: 1.8rem;
+    background: #efeded;
+    border-radius: 0.5rem;
+    border: 1px solid #666363;
+}
+.title {
+    font-size: 18px;
+    font-weight: 600;
     font-family: 'prompt',sans-serif;
+    width: 12rem;
+    text-align: center;
+}
+.btn-inverse-primary:hover {
+    color: #ffffff;
+    background-color: #308ee0;
+    border-color: #308ee0;
 }
