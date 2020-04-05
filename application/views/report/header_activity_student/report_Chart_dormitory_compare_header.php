@@ -1,7 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<script src="<?php echo base_url('re/js/canvasjs.js') ?>"> </script>
+<script src="<?php echo base_url('re/js/canvasjs.js') ?>"> </script>
+    <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_show_activity_.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
+
 	<style>
 .square1 {
   height: 15px;
@@ -21,6 +26,15 @@
 
 <form action="<?php echo site_url("compare_dormitory_contro")?>">
 <div class="container-fluid">
+
+<div class="page-breadcrumb" id="nav_sty">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
+                </ol>
+            </nav>
+        </div>
 
     <div class="row">
         <div class="col-9"></div> 
@@ -59,7 +73,7 @@
 function gen_graph(sel_year,sel_month,sel_year2,sel_month2) {	
 var html = [];
 var html2 = [];
-var chart_name = "สถิตินักศึกษาที่กระทำผิดของหอพัก ระหว่างเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + " กับ " + monthThai(sel_month2)+" ปี "+ sel_year2;
+var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหอพัก ระหว่างเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + " กับ " + monthThai(sel_month2)+" ปี "+ sel_year2;
 $('#yearmonthname').html(monthThai(sel_month)+" ปี "+ sel_year);
 $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
 	   $.ajax({

@@ -73,7 +73,7 @@
 
 function gen_graph(sel_year,sel_month) {	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำผิดของหลักสูตร ประจำเดือน"+ monthThai(sel_month)+" ปี "+ sel_year + "";
+var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหลักสูตร ประจำเดือน"+ monthThai(sel_month)+" ปี "+ sel_year + "";
 	   $.ajax({
            type: 'ajax',
            url: '<?php echo base_url() ?>index.php/ReportChartcurriculummonthHeader/chartcur?sel_month='+sel_month+'&sel_year='+sel_year,
@@ -115,7 +115,8 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             		
             		{
             			// Change type to "bar", "area", "spline", "pie",etc.
-						type: "column",
+                        type: "column",
+                        indexLabel: "{y}",
 				
 
             			
