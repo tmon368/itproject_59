@@ -29,3 +29,16 @@
         </div>
 
     </div>
+    <script>
+    $(document).ready(function() {
+
+
+    });
+    
+    $(".ReportTable").click(function() {
+        window.location.href = "<?php echo site_url('ReportTable')?>";
+    });
+
+
+
+    </script>
