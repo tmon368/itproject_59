@@ -43,7 +43,7 @@ class getOffenseCate_model extends CI_Model {
      function getDormitory(){
         $this->db->select('*');      
         $this->db->from('Dormitory');
-        $this->db->order_by('dorm_name', 'ASC');
+        $this->db->order_by('dorm_ID', 'ASC');
         $query = $this->db->get();
         return $query->result();
      }
