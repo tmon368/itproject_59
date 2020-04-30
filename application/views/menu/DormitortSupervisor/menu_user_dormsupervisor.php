@@ -32,7 +32,9 @@
 
                 </ul>
             </div>
-          
+            <a href="<?php echo site_url("ReportMenuDormSup") ?>">
+                <li class="menu-icon mdi mdi-chart-bar"> &nbsp;ออกรายงาน</li>
+            </a>
         </ul>
     </div>
 

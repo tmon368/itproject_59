@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="<?php echo base_url('re/css/load_style.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('re/css/css_show_activity_.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencate.css') ?>">
 
 </head>
 <body>
