@@ -7,37 +7,11 @@
     <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
 
-    <style>
-        .select2-container--open .select2-dropdown--below {
-            width: 420px !important;
-        }
-
-        .selectplace {
-            width: 20rem;
-        }
-
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            color: #444;
-            line-height: 2;
-            font-size: 14px;
-            font-family: 'Taviraj', serif;
-        }
-    </style>
+    
 </head>
 
-<script>
-    var studentid = [];
-    var removestudenid = [];
-    var filesToUpload = [];
-    var countFilepicture = 0;
-    var fileIdCounter = 0;
-</script>
-
-
 <body>
-    
 <div class="container-fluid">
-
 <div class="page-breadcrumb" id="nav_sty">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -46,26 +20,37 @@
         </ol>
     </nav>
 </div>
-
+<div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+                    <div class="card-body">
+                    
+<form action="<?php echo site_url("dormitory_contro")?>">
 <div class="container-fluid">
     <div class="row">
-        <div class="col-9"></div> 
+    <div class="col-7"></div> 
+        <div class="col-1">เลือกปี</div>
         <div class="col-1"><div id="yearDD"></div></div> 
+        <div class="col-1">เลือกเดือน</div>
         <div class="col-1"><div id="monthDD"></div></div>
-        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
+        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div> 
     </div>
-
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดจำแนกตามหลักสูตร ประจำเดือน  <span class="month_name"></span> พ.ศ. <span class="sel_year"></span></h2> <center>
 			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
-			</div>
+            </div>
+           
 		</div>
     </div>
 </div>
 
+</form>
 </body>
-
 
 
 <script type="text/javascript">
@@ -73,7 +58,7 @@
 
 function gen_graph(sel_year,sel_month) {	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหลักสูตร ประจำเดือน"+ monthThai(sel_month)+" ปี "+ sel_year + "";
+var chart_name = "";
 	   $.ajax({
            type: 'ajax',
            url: '<?php echo base_url() ?>index.php/ReportChartcurriculummonthHeader/chartcur?sel_month='+sel_month+'&sel_year='+sel_year,
@@ -95,20 +80,20 @@ var chart_name = "สถิตินักศึกษาที่กระท�
                console.log(html);
                
                var chart = new CanvasJS.Chart("chartContainer", {
-                            title: {
-                                                    text: "จำนวน (คน)",
-                                                    horizontalAlign: "left",
-                                                    fontSize: 17,
-                                                    // verticalAlign: "center",
-                                                },	
+
                     
-            		title:{
-            			text: chart_name
-                        
-                    },
+                         title:{
+            			text: ""+chart_name
+            		},
                     exportEnabled: true,
+                    axisY:{
+                        title: "จำนวน(คน)"
+                        
+                        
+					},
 					axisX:{
-						title: "หลักสูตร"
+                        title: "หลักสูตร"
+                        
                         
 					},
             		data: [
@@ -134,6 +119,8 @@ var chart_name = "สถิตินักศึกษาที่กระท�
            	
 
                chart.render();
+               $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
+           
            },
            error: function() {
                alert('ไม่มีข้อมูล');
@@ -151,10 +138,13 @@ $( document ).ready(function() {
     gen_graph(sel_year,sel_month);
 
     $("#search_data").click(function(){
-        
         var sel_year = $("#year").val();
         var sel_month = $("#month").val();
+        monthname = monthThai(sel_month);
         gen_graph(sel_year,sel_month);
+        $('.sel_month').text(sel_month);
+        $('.sel_year').text(sel_year);
+        $('.month_name').text(monthname);
     });
  
 });

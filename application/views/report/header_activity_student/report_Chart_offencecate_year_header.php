@@ -9,41 +9,55 @@
 
 </head>
 <body>
+
 <div class="container-fluid">
 
-<div class="page-breadcrumb" id="nav_sty">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
-            <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
-        </ol>
-    </nav>
-</div>
-
+    <div class="page-breadcrumb" id="nav_sty">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+                    <div class="card-body">
 <form action="<?php echo site_url("dormitory_contro")?>">
 <div class="container-fluid">
+
     <div class="row">
-        <div class="col-9"></div> 
+        <div class="col-8"></div> 
+        <div class="col-1">เลือกปี</div>
         <div class="col-1"><div id="yearDD"></div></div> 
         
         <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
     </div>
+
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
-			    <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดจำแนกตามหมวดความผิด ประจำปี พ.ศ.2563 <span class="sel_year"></span></h2> <center>
+			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
 			</div>
+            </div>
+           
 		</div>
+		</div> 
     </div>
+
 </div>
-</form>
 </body>
 
 <script type="text/javascript">
 function gen_graph(sel_year) {	
 	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหมวดความผิด ประจำปี "+ sel_year + "";
+var chart_name = "";
 	
 	   $.ajax({
            type: 'ajax',
@@ -74,8 +88,15 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             			text: ""+chart_name
             		},
             		axisY:{
-						interval:interval,
-                		},
+                        title: "จำนวน(คน)"
+                        
+                        
+					},
+					axisX:{
+                        title: "หมวดความผิด"
+                        
+                        
+					},
             		data: [
             		
             		{
@@ -100,6 +121,7 @@ var chart_name = "สถิตินักศึกษาที่กระท�
            	
 
                chart.render();
+               $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
            },
            error: function() {
                alert('ไม่มีข้อมูล');

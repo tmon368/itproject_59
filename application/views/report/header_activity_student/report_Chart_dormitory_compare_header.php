@@ -35,34 +35,47 @@
                 </ol>
             </nav>
         </div>
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+                    <div class="card-body">
 
-    <div class="row">
-        <div class="col-9"></div> 
+    <div class="row text-right">
+        <div class="col-5"></div> 
+        <div class="col-2">เลือกปีก่อนหน้า</div>
         <div class="col-1"><div id="yearDD"></div></div> 
+        <div class="col-2">เลือกเดือน</div>
         <div class="col-1"><div id="monthDD"></div></div>
-        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
+        <div class="col-1"><button style="margin-top: 20px;" type="button" class="" id="search_data">ค้นหา</button></div>   
     </div>
 
-    <div class="row">
-        <div class="col-9"></div> 
+    <div class="row text-right">
+        <div class="col-5"></div> 
+        <div class="col-2">เลือกปีปัจจุบัน</div>
         <div class="col-1"><div id="yearDD2"></div></div> 
+        <div class="col-2">เลือกเดือน</div>
         <div class="col-1"><div id="monthDD2"></div></div> 
         <div class="col-1"></div> 
     </div>
 
+
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
-			    <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดแยกตามหอพัก ระหว่างเดือน ตุลาคม ปี2562 กับ กุมภาพันธ์ ปี2563<span class="month_name"></span>  <span class="sel_year"></span></h2> <center>
+			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
 			</div>
 		</div>
     </div>
-    
-    <div class="row">
+     <div class="row">
         <div class="col-2"><div class="square1"></div><div id="yearmonthname"></div></div>
         <div class="col-2"><div class="square2"></div><div id="yearmonthname2"></div></div>
         <div class="col-8"></div> 
-    </div>
+    </div> 
+  
   
 </div>
 </form>
@@ -73,7 +86,7 @@
 function gen_graph(sel_year,sel_month,sel_year2,sel_month2) {	
 var html = [];
 var html2 = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหอพัก ระหว่างเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + " กับ " + monthThai(sel_month2)+" ปี "+ sel_year2;
+var chart_name = "";
 $('#yearmonthname').html(monthThai(sel_month)+" ปี "+ sel_year);
 $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
 	   $.ajax({
@@ -111,12 +124,19 @@ $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
                             console.log(html2);
                             var chart = new CanvasJS.Chart("chartContainer", {
                                 theme: "light1", // "light2", "dark1", "dark2"
-                                animationEnabled: false, // change to true	
+                                animationEnabled: false,
+                                exportEnabled: true, // change to true	
                                 title:{
                                     text: ""+chart_name
                                 },
                                 axisY:{
-                                    //interval:interval
+                        title: "จำนวน(คน)",
+                        //interval: interval
+                        
+                        
+					},
+					axisX:{
+                        title: "หอพัก"
                                 
                                     },
                                 data: [
@@ -160,6 +180,7 @@ $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
                         
                             
                         chart.render();
+                        $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
                         
                     },
                     error: function() {
@@ -189,12 +210,7 @@ $( document ).ready(function() {
     
 
 
-/*   
-1 == tag   ex.   $("div").click(function(){ xxx });
-2 == id   ex.   $("#yearDD").click(function(){ xxx });
-3 == class   ex.   $(".row").click(function(){ xxx });
 
-*/ 
     $("#search_data").click(function(){
         var sel_year = $("#year").val();
         var sel_month = $("#month").val();

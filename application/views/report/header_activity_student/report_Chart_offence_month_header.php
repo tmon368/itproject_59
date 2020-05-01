@@ -6,49 +6,57 @@
     <link rel="stylesheet" href="<?php echo base_url('re/css/css_show_activity_.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
-
 </head>
+
 <body>
-
 <div class="container-fluid">
-
-    <div class="page-breadcrumb" id="nav_sty">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
-                <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
-            </ol>
-        </nav>
-    </div>
-
+<div class="page-breadcrumb" id="nav_sty">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+                    <div class="card-body">
+<form action="<?php echo site_url("dormitory_contro")?>">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-9"></div> 
+    <div class="col-7"></div> 
+        <div class="col-1">เลือกปี</div>
         <div class="col-1"><div id="yearDD"></div></div> 
+        <div class="col-1">เลือกเดือน</div>
         <div class="col-1"><div id="monthDD"></div></div>
-        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
+        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div> 
     </div>
-
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดจำแนกตามฐานความผิด ประจำเดือน  <span class="month_name"></span> พ.ศ. <span class="sel_year"></span></h2> <center>
 			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
-			</div>
+            </div>
+           
 		</div>
     </div>
-
 </div>
-</body>
 
+</form>
+</body>
 
 <script type="text/javascript">
 function gen_graph(sel_year,sel_month) {	
 	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามฐานความผิด ประจำเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + "";
+var chart_name = "";
 	
 	   $.ajax({
            type: 'ajax',
-           indexLabel: "{y}",
            url: '<?php echo base_url() ?>index.php/ReportChartOffencemonthHeader/chart?sel_month='+sel_month+'&sel_year='+sel_year,
            async: false,
            dataType: 'json',
@@ -64,10 +72,10 @@ var chart_name = "สถิตินักศึกษาที่กระท�
                        	y:data[i].y
                    });
                }
-            	var interval = 5;
+            	var interval = 2;
 
                console.log(html);
-               
+               console.log("Hello world!");
                var chart = new CanvasJS.Chart("chartContainer", {
             		theme: "light1", // "light2", "dark1", "dark2"
                     animationEnabled: false, // change to true	
@@ -76,14 +84,27 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             			text: ""+chart_name
             		},
             		axisY:{
-						interval:interval,
-                		},
+                        title: "จำนวน(คน)",
+                        interval: interval
+                        //valueFormatString:"###"
+                        
+                        
+					},
+					axisX:{
+                        title: "ฐานความผิด"
+                        
+                        
+					},
             		data: [
             		
             		{
             			// Change type to "bar", "area", "spline", "pie",etc.
             			type: "bar",
                         indexLabel: "{y}",
+                        indexLabelFontColor: "#5A5757",
+      	                indexLabelFontSize: 16,
+
+
 						
 
             			
@@ -101,6 +122,9 @@ var chart_name = "สถิตินักศึกษาที่กระท�
            	
 
                chart.render();
+               $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
+             
+             
            },
            error: function() {
                alert('ไม่มีข้อมูล');
@@ -111,14 +135,19 @@ var chart_name = "สถิตินักศึกษาที่กระท�
 $( document ).ready(function() {
 	getMonthSetInDropdownlists();
 	getYearSetInDropdownlists();
-
+    
     var sel_year = <?php echo  (date("Y")+543) ?>;
     var sel_month = <?php echo  (date("m")) ?>;
     gen_graph(sel_year,sel_month);
+    
 	$("#search_data").click(function(){
         var sel_year = $("#year").val();
         var sel_month = $("#month").val();
+        monthname = monthThai(sel_month);
         gen_graph(sel_year,sel_month);
+        $('.sel_month').text(sel_month);
+        $('.sel_year').text(sel_year);
+        $('.month_name').text(monthname);
     });
  
 });

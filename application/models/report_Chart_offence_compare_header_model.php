@@ -34,24 +34,14 @@ public function chart(){
     $sel_month = $_GET['sel_month'];
     $sel_year= $_GET['sel_year']; 
 
-    $query = $this->db->query('
-    SELECT
-        o.off_ID,
-        o.off_desc AS label,
-        COUNT(otd.S_ID) AS y
+    $query = $this->db->query(' SELECT o.off_ID,off_desc AS label,count(otd.S_ID) as y
     FROM
-        offensehead ofh
-    JOIN offensestd otd ON
-        ofh.oh_ID = otd.oh_ID
-    LEFT JOIN student s ON
-        otd.S_ID = s.S_ID
-    LEFT JOIN offense o ON
-        ofh.off_ID = o.off_ID
+        offensehead ofh join offensestd otd on ofh.oh_ID = otd.oh_ID 
+    LEFT JOIN student s on otd.S_ID = s.S_ID
+    LEFT JOIN offense o on ofh.off_ID = o.off_ID
     WHERE
         year(committed_date) = '.($sel_year-543).' and month(committed_date) = '.$sel_month.'
-    GROUP BY
-        o.off_ID
-    ');
+    GROUP BY o.off_ID');
 
    
     
