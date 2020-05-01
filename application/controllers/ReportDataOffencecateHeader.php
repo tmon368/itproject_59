@@ -25,6 +25,7 @@ class ReportDataOffencecateHeader extends CI_Controller {
 		$this->load->view('menu/Discipline_officer/menu_Discipline_officer');
 		$this->load->view('template/template4');
 		$this->load->view('report/header_activity_student/report_data_offencecate_header');
+		// $this->load->view('report/header_activity_student/report_data_offencecate_header_print');
 		//$this->load->view('Test');
 		$this->load->view('template/template5');
 		$this->load->view('template/template6');

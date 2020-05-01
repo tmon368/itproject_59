@@ -33,6 +33,19 @@
 
                 </ul>
             </div>
+            <a class="" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+                <li class="menu-icon mdi mdi-airballoon">ออกรายงาน</li>
+            </a>
 
+            <div class="collapse" id="ui-basic2">
+                <ul class="nav flex-column sub-menu">
+                   
+                    <li class="submenu">
+                        <a class="nav-link" href="<?php echo site_url("ReportDataTeacher") ?>">รายชื่อนักศึกษาที่กระทำความผิด</a>
+                    </li>
+                   
+                    
+                </ul>
+            </div>
         </ul>
     </div>
