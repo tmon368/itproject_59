@@ -7,7 +7,23 @@
     <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
 
+    	<style>
+   .square1 {
+  height: 15px;
+  width: 15px;
+  background-color:Khaki;
+  display: inline-block;
+}
+.square2 {
+  height: 15px;
+  width: 15px;
+  background-color:SkyBlue;
+  display: inline-block;
+}
+    </style>
+
 </head>
+
 <body>
 
 <form action="<?php echo site_url("compare_offence_contro")?>">
@@ -21,17 +37,28 @@
             </ol>
         </nav>
     </div>
-
     <div class="row">
-        <div class="col-9"></div> 
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+                    <div class="card-body">
+
+    <div class="row text-right">
+        <div class="col-5"></div> 
+        <div class="col-2">เลือกปีก่อนหน้า</div>
         <div class="col-1"><div id="yearDD"></div></div> 
+        <div class="col-2">เลือกเดือน</div>
         <div class="col-1"><div id="monthDD"></div></div>
-        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
+        <div class="col-1"><button style="margin-top: 20px;" type="button" class="" id="search_data">ค้นหา</button></div>   
     </div>
 
-    <div class="row">
-        <div class="col-9"></div> 
+    <div class="row text-right">
+        <div class="col-5"></div> 
+        <div class="col-2">เลือกปีปัจจุบัน</div>
         <div class="col-1"><div id="yearDD2"></div></div> 
+        <div class="col-2">เลือกเดือน</div>
         <div class="col-1"><div id="monthDD2"></div></div> 
         <div class="col-1"></div> 
     </div>
@@ -39,6 +66,7 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดแยกตามหมวดความผิด ระหว่างเดือน ตุลาคม ปี2562 กับ กุมภาพันธ์ ปี2563</span></h2> <center>
 			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
 			</div>
 		</div>
@@ -61,12 +89,12 @@ function gen_graph(sel_year,sel_month,sel_year2,sel_month2) {
 	
 var html = [];
 var html2 = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหมวดความผิด ระหว่างเดือน "+ monthThai(sel_month)+" ปี "+ sel_year + " กับ " + monthThai(sel_month2)+" ปี "+ sel_year2;
+var chart_name = "";
 $('#yearmonthname').html(monthThai(sel_month)+" ปี "+ sel_year);
 $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
 	   $.ajax({
            type: 'ajax',
-           indexLabel: "{y}",
+        //    indexLabel: "{y}",
            url: '<?php echo base_url() ?>index.php/ReportChartOffencecatecompareHeader/chart?sel_month='+sel_month+'&sel_year='+sel_year,
            async: false,
            dataType: 'json',
@@ -77,15 +105,16 @@ $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
                for (i = 0; i < data.length; i++) {
                    html.push({
 						
-                      	x: i, 
+                      	 x: i,
                        	label: data[i].label, 
-                       	y:data[i].y
+                       	y:data[i].y,
+                        color:"Khaki"
                    });
                }
-               var interval = 5;
+
                $.ajax({
                         type: 'ajax',
-                        indexLabel: "{y}",
+                        // indexLabel: "{y}",
                          url: '<?php echo base_url() ?>index.php/ReportChartOffencecatecompareHeader/chart?sel_month='+sel_month2+'&sel_year='+sel_year2,
                         async: false,
                          dataType: 'json',
@@ -94,11 +123,12 @@ $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
                               console.log(data);
                         var i;
                         for (i = 0; i < data.length; i++) {
-                            html.push({
+                            html2.push({
                                     
-                                    x: i, 
+                                    // x: i,
                                     label: data[i].label, 
-                                    y:data[i].y
+                                    y:data[i].y,
+                                    color:"SkyBlue"
                             });
                }
             	var interval = 5;
@@ -112,8 +142,15 @@ $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
             		title:{
             			text: ""+chart_name
             		},
+                    dataPointWidth: 50, //ปรับขนาดของแท่งข้อมูล
             		axisY:{
-						//interval:interval,
+                        title: "จำนวน(คน)"
+                        
+                        
+					},
+					axisX:{
+                        title: "หมวดความผิด"
+                        
                 		},
             		data: [
             		
@@ -158,6 +195,7 @@ $('#yearmonthname2').html(monthThai(sel_month2)+" ปี "+ sel_year2);
                         
                             
                         chart.render();
+                        $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
                         
                     },
                     error: function() {
@@ -191,14 +229,13 @@ $( document ).ready(function() {
         var sel_year2 = $("#year2").val();
         var sel_month2= $("#month2").val();
         gen_graph(sel_year,sel_month,sel_year2,sel_month2);
+        $('.sel_month').text(sel_month);
+        $('.sel_year').text(sel_year);
+        $('.month_name').text(monthname);
     });
- 
 });
-
-
 function getMonthSetInDropdownlists() {
-    
-    
+	
     var html = '<select id="month" name="month"><option value="" disabled selected>เลือกเดือน</option>';
     var cur_month = <?php echo  (date("m")) ?>;
     for(var i = 1; i <= 12; i++){

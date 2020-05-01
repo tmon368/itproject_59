@@ -3,7 +3,7 @@
 class report_Chart_dormitory_compare_header_model extends CI_Model {
     public function _construct()
     {
-        parent::_construct();
+        parent::__construct();
         
     }
    public function showAll(){
@@ -51,7 +51,10 @@ WHERE 1 GROUP BY c.oc_ID');
     $sel_month = $_GET['sel_month'];
     $sel_year= $_GET['sel_year']; 
     $query = $this->db->query('SELECT d.dorm_ID ,d.dname as label,count(otd.S_ID) as y 
-    FROM offensehead ofh join offensestd otd on ofh.oh_ID = otd.oh_ID LEFT JOIN  student s on otd.S_ID=s.S_ID LEFT JOIN dormitory d on s.dorm_ID=d.dorm_ID 
+    FROM
+     offensehead ofh join offensestd otd on ofh.oh_ID = otd.oh_ID 
+    LEFT JOIN  student s on otd.S_ID=s.S_ID 
+    LEFT JOIN dormitory d on s.dorm_ID=d.dorm_ID 
     WHERE year(committed_date) = '.($sel_year-543).' and month(committed_date) = '.$sel_month.'
     GROUP by d.dorm_ID  ');
     

@@ -7,63 +7,52 @@
     <link rel="stylesheet" href="<?php echo base_url('re/css/normalize.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('re/css/css_report_offencase.css') ?>">
 
-    <style>
-        .select2-container--open .select2-dropdown--below {
-            width: 420px !important;
-        }
-
-        .selectplace {
-            width: 20rem;
-        }
-
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            color: #444;
-            line-height: 2;
-            font-size: 14px;
-            font-family: 'Taviraj', serif;
-        }
-    </style>
 </head>
-
-<script>
-    var studentid = [];
-    var removestudenid = [];
-    var filesToUpload = [];
-    var countFilepicture = 0;
-    var fileIdCounter = 0;
-</script>
 
 
 <body>
-    
-<div class="container-fluid">
-
-<div class="page-breadcrumb" id="nav_sty">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
-            <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
-        </ol>
-    </nav>
-</div>
 
 <div class="container-fluid">
+
+    <div class="page-breadcrumb" id="nav_sty">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?php echo site_url('#') ?>" class="breadcrumb-link">หน้าแรก</a></li>
+                <li class="breadcrumb-item active" aria-current="page">ออกรายงาน</li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
-        <div class="col-9"></div> 
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+ <div class="card-body">
+<form action="<?php echo site_url("dormitory_contro")?>">
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-8"></div> 
+        <div class="col-1">เลือกปี</div>
         <div class="col-1"><div id="yearDD"></div></div> 
-  
+        
         <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
     </div>
 
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดจำแนกตามสำนักวิชา ประจำปี พ.ศ.2563 <span class="sel_year"></span></h2> <center>
 			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
 			</div>
+            </div>
+           
 		</div>
+		</div> 
     </div>
-</div>
 
+</div>
 </body>
 
 
@@ -73,7 +62,7 @@
 
 function gen_graph(sel_year) {	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามสำนักวิชา ประจำปี "+ sel_year + "";
+var chart_name = "";
 	   $.ajax({
            type: 'ajax',
            url: '<?php echo base_url() ?>index.php/ReportChartdivisionsyearHeader/chartcur?&sel_year='+sel_year,
@@ -105,10 +94,16 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             		title:{
             			text: chart_name
                         
+                        
                     },
+                    dataPointWidth: 100,
                     exportEnabled: true,
-					axisX:{
-						title: "สำนัก"
+                    axisX:{
+						title: "สำนักวิชา"
+                        
+                    },
+                    axisY:{
+						title: "จำนวน(คน)"
                         
 					},
             		data: [
@@ -134,6 +129,7 @@ var chart_name = "สถิตินักศึกษาที่กระท�
            	
 
                chart.render();
+               $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
            },
            error: function() {
                alert('ไม่มีข้อมูล');

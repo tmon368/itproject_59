@@ -35,18 +35,29 @@
             </ol>
         </nav>
     </div>
-
     <div class="row">
-        <div class="col-9"></div> 
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+                    <div class="card-body">
+<form action="<?php echo site_url("dormitory_contro")?>">
+
+
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-8"></div> 
+        <div class="col-1">เลือกปี</div>
         <div class="col-1"><div id="yearDD"></div></div> 
-        <div class="col-1"><div id="monthDD"></div></div>
-        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
+        <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div> 
     </div>
 
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
-			    <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดจำแนกหอพักประจำปี พ.ศ.2563 <span class="sel_year"></span></h2> <center>
+			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
 			</div>
 		</div>
     </div>
@@ -64,7 +75,7 @@
 
 function gen_graph(sel_year,sel_month) {	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามหอพัก ประจำปี "+ sel_year + "";
+var chart_name ="";
 	   $.ajax({
            type: 'ajax',
            url: '<?php echo base_url() ?>index.php/ReportChartdormitoryyearHeader/chartdorm?&sel_year='+sel_year,
@@ -97,8 +108,14 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             		title:{
             			text: ""+chart_name
             		},
-            		axisY:{
-						//interval:interval
+                    dataPointWidth: 70,
+                    exportEnabled: true,
+					axisX:{
+						title: "หอพัก"
+                        
+					},
+                    axisY:{
+						title: "จำนวน(คน)"
 					
                 		},
             		data: [
@@ -122,6 +139,7 @@ var chart_name = "สถิตินักศึกษาที่กระท�
 			   
 				
 			   chart.render();
+               $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
 			   
            },
            error: function() {

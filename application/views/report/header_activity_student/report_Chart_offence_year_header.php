@@ -20,9 +20,19 @@
             </ol>
         </nav>
     </div>
+    <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card shadow mb-4">
+                    <div class="card-header" id="card_2">
+                        <h6 class="m-0 text-primary"><span><i class="#"></i></span>&nbsp;</h6>
+                    </div>
+                    <div class="card-body">
+<form action="<?php echo site_url("dormitory_contro")?>">
+<div class="container-fluid">
 
     <div class="row">
-        <div class="col-9"></div> 
+        <div class="col-8"></div> 
+        <div class="col-1">เลือกปี</div>
         <div class="col-1"><div id="yearDD"></div></div> 
         
         <div class="col-1"><button type="button" class="" id="search_data">ค้นหา</button></div>   
@@ -31,9 +41,13 @@
 	<div class="row">
 		<div class="col-12">
 			<div class="card-body">
+            <center><h2>สถิตินักศึกษาที่กระทำความผิดจำแนกตามฐานความผิด ประจำปี พ.ศ.2563 <span class="sel_year"></span></h2> <center>
 			    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
 			</div>
+            </div>
+           
 		</div>
+		</div> 
     </div>
 
 </div>
@@ -44,7 +58,7 @@
 function gen_graph(sel_year) {	
 	
 var html = [];
-var chart_name = "สถิตินักศึกษาที่กระทำความผิดแยกตามฐานความผิด ประจำปี "+ " ปี "+ sel_year + "";
+var chart_name =  "";
 	
 	   $.ajax({
            type: 'ajax',
@@ -75,14 +89,23 @@ var chart_name = "สถิตินักศึกษาที่กระท�
             		title:{
             			text: ""+chart_name
             		},
-            		axisY:{
-						interval:interval,
-                		},
+                    dataPointWidth: 60,
+                    exportEnabled: true,
+                    axisY:{
+                        title: "จำนวน(คน)"
+                        
+                        
+					},
+					axisX:{
+                        title: "ฐานความผิด"
+                        
+                        
+					},
             		data: [
             		
             		{
             			// Change type to "bar", "area", "spline", "pie",etc.
-            			type: "bar",
+            			type: "column",
                         indexLabel: "{y}",
 						
 
@@ -95,6 +118,7 @@ var chart_name = "สถิตินักศึกษาที่กระท�
            	
 
                chart.render();
+               $('.canvasjs-chart-toolbar button').html('<img style="width:30px;" src="../re/images/print.png">');
            },
            error: function() {
                alert('ไม่มีข้อมูล');
@@ -113,6 +137,7 @@ $( document ).ready(function() {
         var sel_year = $("#year").val();
         
         gen_graph(sel_yearh);
+        $('.sel_year').text(sel_year);
     });
  
 });

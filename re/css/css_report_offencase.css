@@ -1,6 +1,9 @@
 @media print {
-    .test {
-        display: block;
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+    .hideWhenPrint {
+        display: none;
     }
 }
 
@@ -9,7 +12,111 @@
 }
 
 .HeaderGroup {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 800;
+    font-family: 'serif';
 }
 
+.group {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'serif';
+}
+
+.table-bordered {
+    border-radius: 100%;
+    border: 10px solid rgb(2, 2, 54);
+    border-collapse: separate;
+}
+
+.table-striped {
+    border-radius: 100%;
+    border: 10px solid rgb(2, 2, 54);
+    border-collapse: separate;
+}
+
+.th {
+    border: 1px solid black;
+}
+
+.card-body {
+   
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'serif';
+}
+
+.data_activity_participants {
+    border-radius: 100%;
+    border: 10px solid rgb(2, 2, 54);
+    border-collapse: separate;
+}
+
+.dataTables_info {
+    font-size: 14px;
+    font-weight: 800;
+    font-family: 'serif';
+}
+
+.thead {
+    font-family: 'serif';
+}
+
+.td {
+    border: 1px solid black;
+}
+
+.odd {
+    font-size: 16px;
+    font-weight: 500px;
+    font-family: 'serif';
+}
+
+.chart_name {
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'serif';
+}
+
+.data_activity_participants {
+    border-collapse: separate;
+}
+
+.dataTables_filter {
+    display: none;
+}
+
+.h2 {
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'serif';
+}
+
+a:link {
+    color: green;
+}
+
+
+/* visited link */
+
+a:visited {
+    color: green;
+}
+
+
+/* mouse over link */
+
+a:hover {
+    color: red;
+}
+
+
+/* selected link */
+
+a:active {
+    color: yellow;
+}
+
+.Print {
+    text-align: right;
+}

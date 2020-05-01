@@ -51,7 +51,7 @@ WHERE 1 GROUP BY c.oc_ID');
      $sql ='SELECT c.cur_ID ,c.cur_name as label,count(otd.S_ID) as y 
      FROM offensehead ofh join offensestd otd on ofh.oh_ID = otd.oh_ID LEFT JOIN  student s on otd.S_ID=s.S_ID LEFT JOIN curriculum c on s.cur_ID=c.cur_ID 
      WHERE year(committed_date) = '.($sel_year-543).' and month(committed_date) = '.$sel_month.'
-     GROUP by c.cur_ID  ';
+     GROUP by c.cur_name  ';
 
      //echo $sql;
      //die();
